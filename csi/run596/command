@@ -1,0 +1,15 @@
+
+###############CsI RawADC and Target XY position################
+1. check CsI LRT
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILRT_rawADC>1700&&CsILRT_rawADC<1770","colz")
+ tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILRT_rawADC<1850&&CsILRT_rawADC>1770","colz")
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILRT_rawADC<2100&&CsILRT_rawADC>1850","colz")
+.x rootfiles/draw_ellipse.C
+2. CsILL
+tree_BEAM->Draw("CsILL_rawADC>>(1000,0,4100)","","")
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILL_rawADC>1360&&CsILL_rawADC<1420","colz")
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILL_rawADC>1250&&CsILL_rawADC<1320","colz")
+3. CsLRB
+ tree_BEAM->Draw("CsILRB_rawADC>>(1000,0,4100)","","")
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILRB_rawADC>1710&&CsILRB_rawADC<1800","colz")
+tree_BEAM->Draw("Target_Y:Target_X>>(100,-50,50,100,-50,50)","CsILRB_rawADC>1600&&CsILRB_rawADC<1650","colz")

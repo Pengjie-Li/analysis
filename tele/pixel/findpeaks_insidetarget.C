@@ -1,0 +1,583 @@
+//
+
+int runnum=595;
+int npeaks=1;
+
+int RLTbin=1000;
+int RLTmin=500;
+int RLTmax=2500;
+
+int RRTbin=1000;
+int RRTmin=500;
+int RRTmax=2500;
+
+int RLBbin=1000;
+int RLBmin=500;
+int RLBmax=2500;
+
+int RRBbin=1000;
+int RRBmin=500;
+int RRBmax=2500;
+
+int llbin=1000;
+int llmin=500;
+int llmax=2500;
+
+int lrtbin=1000;
+int lrtmin=500; 
+int lrtmax=2500;
+
+int lrbbin=1000;
+int lrbmin=500; 
+int lrbmax=2500;
+
+
+
+int Rtarget=15;
+
+int SiRFmin=5500;
+int SiRFmax=8500;
+int SiRBmin=5500;
+int SiRBmax=8500;
+
+int SiLFmin=5500;
+int SiLFmax=8500;
+int SiLBmin=5500;
+int SiLBmax=8500;
+
+
+
+//int runnum=598;
+//int SiRFmin=8500;
+//int SiRFmax=11500;
+//int SiRBmin=8500;
+//int SiRBmax=11500;
+
+
+//int runnum=596;
+//int npeaks=1;
+//
+//int Rtarget=14;
+
+//int runnum=599;
+//int npeaks=1;
+//
+//int llbin=1000;
+//int llmin=500;
+//int llmax=2500;
+//
+//int lrtbin=1000;
+//int lrtmin=500; 
+//int lrtmax=2500;
+//
+//int lrbbin=1000;
+//int lrbmin=500; 
+//int lrbmax=2500;
+//
+//int Rtarget=14;
+//int SiLFmin=8500;
+//int SiLFmax=11500;
+//int SiLBmin=8500;
+//int SiLBmax=11500;
+
+
+
+double esti_peak_sigma_LL=5;
+double esti_peak_sigma_LRT=5;
+double esti_peak_sigma_LRB=5;
+
+double esti_peak_sigma_RLT=5;
+double esti_peak_sigma_RLB=5;
+double esti_peak_sigma_RRT=5;
+double esti_peak_sigma_RRB=5;
+
+
+
+
+
+bool Exist(int fid,int bid,int runnum);
+void pixelL(int fid,int bid,int runnum);
+void pixelR(int fid,int bid,int runnum);
+void LL(int fid,int bid,int runnum);
+void LL(int fid,int bid,int runnum,TTree *tree);
+void LRT(int fid,int bid,int runnum,TTree *tree);
+void LRB(int fid,int bid,int runnum,TTree *tree);
+void RLT(int fid,int bid,int runnum,TTree *tree);
+void RLB(int fid,int bid,int runnum,TTree *tree);
+void RRT(int fid,int bid,int runnum,TTree *tree);
+void RRB(int fid,int bid,int runnum,TTree *tree);
+void inside_target(TTree *tree);
+void target_frame();
+void find(TH1D *temp,double *fpeaks,double esti_peak_sigma);
+void out_cali_par(int fid,int bid,int runnum,double *fpeaks,TString name);
+
+//void findpeaks()
+void findpeaks_insidetarget()
+{
+
+	// inside target marker run 596,599 for(int i=23;i<24;i++)
+	// inside target marker run 596,599 for(int i=9;i<10;i++)
+	for(int i=15;i<16;i++)
+		//	for(int i=0;i<32;i++)
+		//for(int j=10;j<12;j++)
+		for(int j=26;j<27;j++)
+		//for(int j=16;j<17;j++)
+		{
+                        //if(Exist(i,j,runnum)) continue;
+			pixelL(i,j,runnum);
+			//pixelR(i,j,runnum);
+
+		}
+
+
+
+
+
+}
+bool Exist(int fid,int bid,int runnum)
+{
+	TString inputname=Form("pixelrootfiles/pixel%d_%d_run0%d.root",fid,bid,runnum);
+	cout<<inputname<<endl;
+	return gSystem->AccessPathName(inputname);
+	
+
+
+}
+
+void pixelL(int fid,int bid,int runnum)
+{
+	//TString inputname=Form("pixelrootfiles/pixel%d_%d_run0%d_insidetarget.root",fid,bid,runnum);
+	//TString inputname=Form("pixelrootfiles/pixel%d_%d_run0%d.root",fid,bid,runnum);
+	// mod for run595
+	TString inputname=Form("pixelrootfiles/Lpixel%d_%d_run0%d.root",fid,bid,runnum);
+	cout<<inputname<<endl;
+	TFile *f = new TFile(inputname,"UPDATE");
+	TTree *tree=(TTree*)f->Get("tree");
+
+	TString cname=Form("cpixel%d_%d_run0%d",fid,bid,runnum);
+	TCanvas *cpixel=new TCanvas(cname,cname);
+	cpixel->Divide(2,2);
+
+	cpixel->cd(1);
+	LL(fid,bid,runnum,tree);
+	cpixel->cd(2);
+	LRT(fid,bid,runnum,tree);
+	cpixel->cd(3);
+	LRB(fid,bid,runnum,tree);
+
+	cpixel->Write();
+	f->Close();
+	//delete cpixel;
+
+}
+void pixelR(int fid,int bid,int runnum)
+{
+	//TString inputname=Form("pixelrootfiles/pixel%d_%d_run0%d_insidetarget.root",fid,bid,runnum);
+	//TString inputname=Form("pixelrootfiles/pixel%d_%d_run0%d.root",fid,bid,runnum);
+	//mod for run595
+	TString inputname=Form("pixelrootfiles/Rpixel%d_%d_run0%d.root",fid,bid,runnum);
+	cout<<inputname<<endl;
+	TFile *f = new TFile(inputname,"UPDATE");
+	TTree *tree=(TTree*)f->Get("tree");
+	if(tree->GetEntries()>10){
+
+		TString cname=Form("cpixel%d_%d_run0%d",fid,bid,runnum);
+		TCanvas *cpixel=new TCanvas(cname,cname);
+		cpixel->Divide(2,2);
+
+		cpixel->cd(1);
+		RLT(fid,bid,runnum,tree);
+		cpixel->cd(2);
+		RLB(fid,bid,runnum,tree);
+		cpixel->cd(3);
+		RRT(fid,bid,runnum,tree);
+		cpixel->cd(4);
+		RRB(fid,bid,runnum,tree);
+
+
+
+		cpixel->Write();
+
+		delete cpixel;
+	}
+
+	f->Close();
+
+
+}
+void LL(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hLL_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelLL>>"+hname+Form("(%d,%d,%d)",llbin,llmin,llmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.6)*(Target_Y+1.6))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiLFmin,SiLFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiLBmin,SiLBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>10)
+	{
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_LL);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"LL");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",llmin,llmax);
+		fpeak->SetParameters(&fpeaks[0]);
+		fpeak->SetNpx(2000);
+		//fpeak->Draw("same");
+
+
+	}
+
+
+}
+void LRT(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hLRT_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelLRT>>"+hname+Form("(%d,%d,%d)",lrtbin,lrtmin,lrtmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiLFmin,SiLFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiLBmin,SiLBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>10)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_LRT);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"LRT");
+
+//		temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",lrtmin,lrtmax);
+		fpeak->SetParameters(&fpeaks[0]);
+		fpeak->SetNpx(2000);
+//		fpeak->Draw("same");
+
+	}
+
+
+}
+void LRB(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hLRB_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelLRB>>"+hname+Form("(%d,%d,%d)",lrbbin,lrbmin,lrbmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiLFmin,SiLFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiLBmin,SiLBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>10)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_LRB);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"LRB");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",lrbmin,lrbmax);
+
+		fpeak->SetNpx(2000);
+		fpeak->SetParameters(&fpeaks[0]);
+		//fpeak->Draw("same");
+
+
+
+	}
+
+
+
+}
+void RLT(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hRLT_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelRLT>>"+hname+Form("(%d,%d,%d)",RLTbin,RLTmin,RLTmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiRFmin,SiRFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiRBmin,SiRBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>7)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_RLT);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"RLT");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",lrbmin,lrbmax);
+
+		fpeak->SetNpx(2000);
+		fpeak->SetParameters(&fpeaks[0]);
+		//fpeak->Draw("same");
+
+
+
+	}
+
+
+
+}
+void RLB(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hRLB_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelRLB>>"+hname+Form("(%d,%d,%d)",RLBbin,RLBmin,RLBmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiRFmin,SiRFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiRBmin,SiRBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>7)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_RLB);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"RLB");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",lrbmin,lrbmax);
+
+		fpeak->SetNpx(2000);
+		fpeak->SetParameters(&fpeaks[0]);
+		//fpeak->Draw("same");
+
+
+
+	}
+
+
+
+}
+void RRT(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hRRT_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelRRT>>"+hname+Form("(%d,%d,%d)",RLTbin,RLTmin,RLTmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiRFmin,SiRFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiRBmin,SiRBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>7)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_RRT);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"RRT");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",RRTmin,RRTmax);
+
+		fpeak->SetNpx(2000);
+		fpeak->SetParameters(&fpeaks[0]);
+		//fpeak->Draw("same");
+
+
+
+	}
+
+
+
+}
+void RRB(int fid,int bid,int runnum,TTree *tree)
+{
+
+
+
+	TString hname=Form("hRRB_pixel%d_%d_run0%d.root",fid,bid,runnum);
+	TString draw="pixelRRB>>"+hname+Form("(%d,%d,%d)",RLTbin,RLTmin,RLTmax);
+	TString condition1=Form("sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.1)*(Target_Y+1.1))<%d",Rtarget);
+	TString condition2=Form("&&pixelF>%d&&pixelF<%d",SiRFmin,SiRFmax);
+	TString condition3=Form("&&pixelB>%d&&pixelB<%d",SiRBmin,SiRBmax);
+	TString condition=condition1+condition2+condition3;
+	TString color="";
+
+	tree->Draw(draw,condition,color);
+	TH1D *temp =  (TH1D*)gDirectory->Get(hname);
+
+	//if(temp->GetEntries()>20)
+	if(temp->GetEntries()>20&&temp->GetBinContent(temp->GetMaximumBin())>7)
+	{
+
+
+		double fpeaks[3]={0};
+		find(temp,fpeaks,esti_peak_sigma_RRB);
+
+		out_cali_par(fid,bid,runnum,fpeaks,"RRB");
+
+		//temp->Draw();
+		TF1 *fpeak = new TF1("fpeak","gaus(0)",RRBmin,RRBmax);
+
+		fpeak->SetNpx(2000);
+		fpeak->SetParameters(&fpeaks[0]);
+		//fpeak->Draw("same");
+
+
+
+	}
+
+
+
+}
+void target_frame()
+{
+
+
+
+}
+
+
+void find(TH1D *temp,double *fpeaks,double esti_peak_sigma)
+{
+
+
+	double estimate_peak_sigma=esti_peak_sigma;
+
+	//Use TSpectrum to find the peak candidates
+	TSpectrum *s = new TSpectrum(2*npeaks,5);
+	Int_t nfound = s->Search(temp,estimate_peak_sigma,"nobackground new",0.1); // histo_name, peak_sigma,"",threshold_percentage
+	//Int_t nfound = s->Search(temp,estimate_peak_sigma,"",0.05); // histo_name, peak_sigma,"",threshold_percentage
+	cout<<"how many peaks found "<<nfound<<endl;
+
+
+	if(nfound!=1)
+	{
+
+
+		double ratio=0.5;
+		//while(1)
+		for(int m=0;m<10;m++)
+		{
+			if(m%2==0) nfound = s->Search(temp,ratio*estimate_peak_sigma,"",0.1);
+			else nfound = s->Search(temp,ratio*estimate_peak_sigma,"nobackground",0.2);
+
+			if(nfound==1) break;
+			ratio+=0.1;
+
+		}
+
+
+
+	}
+
+
+	temp->Draw();
+
+	printf("Found %d candidate peaks to fit\n",nfound);
+
+
+	Double_t *xpeaks = s->GetPositionX();
+
+	Double_t par[15]={0};
+	// fit parameter
+	Double_t fpar[15]={0};
+
+	for (int p=0;p<nfound;p++) {
+		Double_t xp = xpeaks[p];
+		Int_t bin = temp->GetXaxis()->FindBin(xp);
+		Double_t yp = temp->GetBinContent(bin);
+
+		par[3*p+0] = yp;
+		par[3*p+1] = xp;
+		//par[3*npeaks+2] = estimate_peak_sigma>ratio*estimate_peak_sigma?estimate_peak_sigma:ratio*estimate_peak_sigma;
+		par[3*p+2] = estimate_peak_sigma;
+		cout<<"npeaks="<<p<<" yp="<<yp<<" xp="<<xp<<endl;
+	}
+	printf("Found %d useful peaks to fit\n",npeaks);
+	printf("Now fitting: Be patient\n");
+
+
+	// range of f needed to be adjusted
+	double afr1=10;
+	double abr1=10;
+	double fr1=par[1]-afr1*par[2];
+	double br1=par[1]+abr1*par[2];
+
+
+	TF1 *peak1 = new TF1("peak1","gaus(0)",fr1,br1);
+	peak1->SetParameters(&par[0]);
+	peak1->SetNpx(2000);
+	temp->Fit(peak1,"R");
+	peak1->GetParameters(&fpeaks[0]);
+	//peak1->Draw("same");
+
+	delete peak1;
+	delete s;
+
+	//	peak1->Delete();
+
+	//	s->Delete();
+
+}
+
+void out_cali_par(int fid,int bid,int runnum,double *fpeaks,TString name)
+{
+
+	TString inputname=Form("pixel_run0%d.root",runnum);
+	inputname=name+inputname;
+	TString outputname="par_"+inputname;
+	outputname.ReplaceAll("root","txt");
+	ofstream out(outputname,ios_base::app | ios_base::out);
+	out.flags (ios::left);
+	out<<setw(20)<<fid<<setw(20)<<bid<<setw(20)<<setw(20)<<fpeaks[0]<<setw(20)<<fpeaks[1]<<setw(20)<<fpeaks[2]<<endl;
+	out.close();
+
+}
+

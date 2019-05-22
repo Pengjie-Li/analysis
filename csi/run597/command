@@ -1,0 +1,8 @@
+
+.x rootfiles/draw_ellipse.C
+###############CsI RawADC and Target XY position################
+1. check CsI RLT
+ tree_BEAM->Draw("CsIRLT_rawADC>>(1000,0,4100)","","")
+tree_BEAM->Draw("Target_Y:-Target_X>>(100,-50,50,100,-50,50)","CsIRLT_rawADC>1730&&CsIRLT_rawADC<1820","colz")
+:q
+

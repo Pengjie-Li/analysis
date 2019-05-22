@@ -1,0 +1,48 @@
+
+void Ped_SiLF(TTree *tree);
+void strip_ped()
+{
+	gROOT->Reset();
+	//gStyle->SetStatStyle(0);
+	gStyle->SetOptStat(1111111);
+
+
+
+	TString inputname="./rootfiles/run0596_Beamv8.root";
+	//cout<<"inputname"<<inputname<<endl;
+	TFile *f = new TFile(inputname,"UPDATE");
+	TTree *tree_BEAM=(TTree*)f->Get("tree_BEAM");
+
+	Ped_SiLF(tree_BEAM);
+
+
+}
+
+void Ped_SiLF(TTree *tree)
+{
+
+	TString cname=gFile->GetName();
+        cname=cname+"_SiLF";
+	TCanvas *cSiLF=new TCanvas("SiLF",cname,1800,1000);
+	cSiLF->Divide(8,4);
+
+	for(int i=0;i<32;i++)
+	{
+		cSiLF->cd(i+1);
+		gPad->SetLogy();
+		int nbin=100;
+		int min=50;
+		int max=300;
+		TString draw=Form("SiLF_rawADC[%d]>>SiLF%d(%d,%d,%d)",i,i,nbin,min,max);
+		tree->Draw(draw);
+		//tree->Draw(draw);
+		cSiLF->Modified();
+		cSiLF->Update();
+
+	}
+
+	cSiLF->cd(0);
+
+
+
+}

@@ -1,0 +1,16 @@
+
+runNumber:340
+MaxEventNumber:5000000
+inputPath:cutWindow/
+runPrefix:run0
+runSuffix:_analysed_cutWindow.root
+
+outputPath:./rootfiles/
+outputPrefix:Position_Resolution_run
+outputSuffix:_cutWindow_gatedTarget.root
+
+xBDC2Offset:-0.2
+yBDC2Offset:-0.2
+           
+xFDC0Offset:0
+yFDC0Offset:0

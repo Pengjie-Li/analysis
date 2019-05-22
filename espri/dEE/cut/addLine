@@ -1,0 +1,2 @@
+   cutg->SetFillColor(1);
+   cutg->SetLineColor(2);

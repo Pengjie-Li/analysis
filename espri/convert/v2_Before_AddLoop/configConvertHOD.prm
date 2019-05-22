@@ -1,0 +1,10 @@
+dataBaseFile:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIHOD.xml
+
+inputPath:/media/Rawdata/RIKEN_Cluster_2018/
+inputPrefix:run0
+inputSuffix:.ridf.gz
+
+
+outputPath:./rootfiles/
+outputPrefix:run0
+outputSuffix:_HODO.root

@@ -1,0 +1,7 @@
+inputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/merger/rootfiles/
+runPrefix:run0
+runSuffix:_analysed.root_v1
+
+outputPath:./rootfiles/
+outputPrefix:Position_Resolution_run
+outputSuffix:.root

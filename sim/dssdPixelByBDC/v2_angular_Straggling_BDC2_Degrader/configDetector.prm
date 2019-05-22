@@ -1,0 +1,16 @@
+xBDC1Sigma:0.45
+yBDC1Sigma:0.45
+isBDC1Add:true
+angBDC1Sigma:0.5
+isBDC1AddAng:false
+
+
+
+xBDC2Sigma:0.45
+yBDC2Sigma:0.45
+isBDC2Add:true
+angBDC2Sigma:0.5
+isBDC2AddAng:true
+
+angDegraderSigma:10
+isDegrederAddAng:true
