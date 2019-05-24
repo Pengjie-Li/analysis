@@ -1,0 +1,4 @@
+{
+
+	cutg->Draw("same");
+}

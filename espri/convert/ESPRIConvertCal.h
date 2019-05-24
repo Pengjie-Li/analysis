@@ -1,3 +1,6 @@
+//TEnv *calib =new TEnv("configCalibESPRI_Be12.prm");
+
+TEnv *calib;
 class ESPRIRdcCal{
 	private:
 		double rdcChi2[2];
@@ -77,14 +80,18 @@ class ESPRIRdcCal{
 class ESPRINaiCalPara{
 	private:
 		double naiPedestal[4][7];
+		double naiGain[4][7];
 	public:
 		ESPRINaiCalPara(){
 			init();
 			load();
+			print();
 		}
 		void load(){
 			ifstream in;
-			TString inputName = env->GetValue("naiPedestal","naiPedestal.txt");
+			TString inputName = calib->GetValue("naiPedestal","naiPedestal.txt");
+			cout<<calibFileName<<endl;
+			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
 			int barID;
@@ -97,6 +104,7 @@ class ESPRINaiCalPara{
 			}
 		}
 		void print(){
+			cout<<" Nai QCal Para:"<<endl;
 			for (int i = 0; i < 4; ++i) {
 				for (int j = 0; j < 7; ++j) {
 						
@@ -109,6 +117,7 @@ class ESPRINaiCalPara{
 			for(int i =0;i<4;i++){
 				for(int j = 0;j<7;j++){
 					naiPedestal[i][j] = 0;
+					naiGain[i][j] = 1;
 				}
 			}
 		}
@@ -131,7 +140,6 @@ class ESPRINaiCal{
 
 		ESPRINaiCal(){
 			naiPara = new ESPRINaiCalPara();
-			naiPara->print();
 		}
 		~ESPRINaiCal(){
 			delete naiPara;
@@ -227,9 +235,58 @@ class ESPRINaiCal{
 		}
 };
 
+class ESPRIPlasCalPara{
+	private: 
+		double plasPedestal[4];
+		double plasGain[4];
+	public:
+		ESPRIPlasCalPara(){
+			init();
+			load();
+			print();
+		}
+		double getPedestal(int i){
+			return plasPedestal[i];
+		}
+		double getCalibPar(int i){
+			return plasGain[i];
+		}
+		void load(){
+			ifstream in;
+			TString inputName = calib->GetValue("plasCalib","plasCalib.txt");
+			in.open(inputName);
+			int side;
+			double ped;
+			double gain;
+			while(1){
+				in >>side>>ped>>gain;
+				if(!in.good()) break;
+				//cout<<side<<":"<<barID<<":"<<ped<<endl;
+				plasPedestal[side] = ped;
+				plasGain[side] = gain;
+			}
+
+		}
+		void init(){
+			for (int i = 0; i < 4; ++i) {
+				plasPedestal[i] = 0;
+				plasGain[i] = 1;
+			}
+		}
+		void print(){
+			cout<<"Plas QCal Para:"<<endl;		
+			for (int i = 0; i < 4; ++i) {
+				cout<<i<<":"<<plasPedestal[i]<<plasGain[i]<<endl;
+			}
+
+
+		}
+		
+};
 class ESPRIPlasCal{
 	private:
 		ESPRIPlasRaw *plasRaw;
+		ESPRIPlasCalPara *plasPara;
 		double plasQCal[4];	
 		double plasQPed[4];
 		double plasTCal[4];	
@@ -243,7 +300,7 @@ class ESPRIPlasCal{
 	public:
 
 		ESPRIPlasCal(){
-			//loadQPedestal();
+			plasPara = new ESPRIPlasCalPara();
 		}
 		void init(){
 			plasQ[0] = -9999;
@@ -313,12 +370,14 @@ class ESPRIPlasCal{
 			return plasRaw->getQRaw(i);
 		}
 		double getPedestal(int i){
-			double QPed[4] = {118.9,140.2,135.1,64.4};
-			return QPed[i];
+		//	double QPed[4] = {118.9,140.2,135.1,64.4};
+		//	return QPed[i];
+			return plasPara->getPedestal(i);
 		}
 		double getCalibPar(int i){
-			double QCal[4] = {0.005481292918,0.008481058508,0.008006974455,0.008363636921};// gu gd left, gu gd right
-			return QCal[i];
+		//	double QCal[4] = {0.005481292918,0.008481058508,0.008006974455,0.008363636921};// gu gd left, gu gd right
+		//	return QCal[i];
+			return plasPara->getCalibPar(i);
 		}
 		void printQ(){
 			cout<<"Plastic QCal[4]: ";

@@ -1,6 +1,7 @@
 #include "header.h"
 
 TEnv *env = new TEnv("configConvertESPRI.prm");
+TString calibFileName;
 #include "ESPRIReadRaw.h"
 #include "ESPRIConvertCal.h"
 
@@ -233,6 +234,13 @@ class ConvertESPRI{
 		}
 };
 
+void loadCalibParameter(int runNumber){
+	if(runNumber<331&&runNumber>290) calibFileName = "configCalibESPRI_Be10.prm";
+	else if(runNumber<366&&runNumber>330) calibFileName = "configCalibESPRI_Be12.prm";
+	else if(runNumber>365&&runNumber<455) calibFileName = "configCalibESPRI_Be14.prm";
+	else calibFileName = "configCalibESPRI.prm";
+	calib =new TEnv(calibFileName);
+}
 int main(int argc, char *argv[]){
 	int runNumber=-1;
 	Long64_t maxEventNumber = 10000000;
@@ -244,6 +252,8 @@ int main(int argc, char *argv[]){
 		cout<<" USAGE: ./ConvertESPRI  runNumberber"<<endl;
 		cout<<" USAGE: ./ConvertESPRI  runnumber maxevtnumber"<<endl;
 	}
+
+	loadCalibParameter(runNumber);
 
 	ConvertESPRI *convertESPRI =new ConvertESPRI(runNumber, maxEventNumber);
 

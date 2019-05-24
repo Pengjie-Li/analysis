@@ -23,7 +23,8 @@
 			h[i][j]->SetMaximum(10000);
 			gPad->SetLogz();
 			
-			gROOT->ProcessLine(Form(".x cut/side%dBarNo%d.C",i,j));
+			gROOT->ProcessLine(Form(".x cut/Be14_2/side%dBarNo%d.C",i,j));
+			gROOT->ProcessLine(Form("side%dBarNo%d->Draw(\"same\");",i,j));
 		}
 		
 	}
