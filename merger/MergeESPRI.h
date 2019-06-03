@@ -36,20 +36,18 @@ class MergeESPRI:public Convert{
 		Double_t        rdcDL[2][7];
 		Double_t        rdcTch[2][7];
 		Double_t        rdcRes[2][7];
-		Double_t        naiQCal[4][7];
-		Double_t        naiQ[2][7];
-		Double_t        naiQL;
-		Double_t        naiQR;
-		Double_t        naiQLId;
-		Double_t        naiQRId;
+
+		Double_t	naiQCal[4][7];
+                Double_t	naiQPed[4][7];
+                Double_t	naiBarQCal[2][7];
+                Double_t	naiQ[2];
+                Int_t		naiQId[2];
+
 		Double_t        plasQCal[4];
+		Double_t        plasQPed[4];
 		Double_t        plasTCal[4];
 		Double_t	plasQ[2];
 		Double_t	plasT[2];
-	//	Double_t        plasQL;
-	//	Double_t        plasQR;
-	//	Double_t        plasTL;
-	//	Double_t        plasTR;
 
 	public:
 
@@ -90,13 +88,15 @@ class MergeESPRI:public Convert{
 			inputTree->SetBranchAddress("rdcDL",rdcDL);
 			inputTree->SetBranchAddress("rdcTch",rdcTch);
 			inputTree->SetBranchAddress("rdcRes",rdcRes);
+
+                        inputTree->SetBranchAddress("naiQPed", naiQPed);
+                        inputTree->SetBranchAddress("naiBarQCal", naiBarQCal);
+                        inputTree->SetBranchAddress("naiQId", &naiQId);
 			inputTree->SetBranchAddress("naiQCal",naiQCal);
 			inputTree->SetBranchAddress("naiQ",naiQ);
-			inputTree->SetBranchAddress("naiQL",&naiQL);
-			inputTree->SetBranchAddress("naiQR",&naiQR);
-			inputTree->SetBranchAddress("naiIdQL",&naiQLId);
-			inputTree->SetBranchAddress("naiIdQR",&naiQRId);
+
 			inputTree->SetBranchAddress("plasQCal",plasQCal);
+			inputTree->SetBranchAddress("plasQPed",plasQPed);
 			inputTree->SetBranchAddress("plasTCal",plasTCal);
 			inputTree->SetBranchAddress("plasQ",&plasQ);
 			inputTree->SetBranchAddress("plasT",&plasT);
@@ -130,13 +130,15 @@ class MergeESPRI:public Convert{
 			tree->Branch("rdcDL",rdcDL,"rdcDL[2][7]/D");
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
-			tree->Branch("naiQCal",naiQCal,"naiQCal[4][7]/D");
-			tree->Branch("naiQ",naiQ,"naiQ[2][7]/D");
-			tree->Branch("naiQL",&naiQL);
-			tree->Branch("naiQR",&naiQR);
-			tree->Branch("naiIdQL",&naiQLId);
-			tree->Branch("naiIdQR",&naiQRId);
+
+                        tree->Branch("naiQCal", naiQCal, "naiQCal[4][7]/D");
+                        tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
+                        tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
+                        tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
+                        tree->Branch("naiQId", &naiQId, "naiQId[2]/I");
+
 			tree->Branch("plasQCal",plasQCal,"plasQCal[4]/D");
+			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
 			tree->Branch("plasQ",&plasQ,"plasQ[2]/D");
 			tree->Branch("plasT",&plasT,"plasT[2]/D");
@@ -156,8 +158,8 @@ class MergeESPRI:public Convert{
 			if(rdcX[1]>0&&rdcY[1]>0) isRdcR = 1;
 			if(plasQ[0]>0&&plasT[0]!=0) isPlasL = 1;
 			if(plasQ[1]>0&&plasT[1]!=0) isPlasR = 1;
-			if(naiQL>0) isNaiL = 1;
-			if(naiQR>0) isNaiR = 1;
+			if(naiQ[0]>0) isNaiL = 1;
+			if(naiQ[1]>0) isNaiR = 1;
 
 			if(isRdcL==1){
 				if(isNaiL ==1||isPlasL ==1){
@@ -182,7 +184,7 @@ class MergeESPRI:public Convert{
 		}
 		int largerEnergySide(){
 			// compare E total
-			if(naiQL>naiQR) return 0;
+			if(naiQ[0]>naiQ[1]) return 0;
 			else return 1;
 		}
 		TVector3 getESPRIPosition(){
@@ -200,7 +202,7 @@ class MergeESPRI:public Convert{
 			return positionESPRI->getESPRIPosition(lr,X,Y);
 		}
 		double getESPRINaiEnergy(){
-			return isLR>0?naiQR:naiQL;
+			return isLR>0?naiQ[1]:naiQ[0];
 		}
 		double getESPRIPlasTime(){
 			return isLR>0?plasT[1]:plasT[0];

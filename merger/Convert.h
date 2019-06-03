@@ -26,7 +26,7 @@ class Convert{
 			//inputTree->Print();
 		}
 		void printTotalEventNumber(){
-			//cout << "N of entries ("<<detector<<"):\t" << inputTree->GetEntries() << endl;
+			cout << "N of entries ("<<detector<<"):\t" << inputTree->GetEntries() << endl;
 		}
 		void getEntry(Long64_t ientry){
 			inputTree->GetEntry(ientry);

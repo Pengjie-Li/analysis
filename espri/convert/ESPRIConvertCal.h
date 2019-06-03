@@ -80,7 +80,7 @@ class ESPRIRdcCal{
 class ESPRINaiCalPara{
 	private:
 		double naiPedestal[4][7];
-		double naiGain[4][7];
+		double naiBarGain[2][7];
 	public:
 		ESPRINaiCalPara(){
 			init();
@@ -88,6 +88,27 @@ class ESPRINaiCalPara{
 			print();
 		}
 		void load(){
+			loadPedestal();
+			loadGain();
+		}
+		void loadGain(){
+			ifstream in;
+			TString inputName = calib->GetValue("naiBarGain","naiBarGain.txt");
+			cout<<calibFileName<<endl;
+			cout<<inputName<<endl;
+			in.open(inputName);
+			int side;
+			int barID;
+			double gain;
+			while(1){
+				in >>side>>barID>>gain;
+				if(!in.good()) break;
+				//cout<<side<<":"<<barID<<":"<<ped<<endl;
+				naiBarGain[side][barID] = gain;
+			}
+		}
+
+		void loadPedestal(){
 			ifstream in;
 			TString inputName = calib->GetValue("naiPedestal","naiPedestal.txt");
 			cout<<calibFileName<<endl;
@@ -104,26 +125,39 @@ class ESPRINaiCalPara{
 			}
 		}
 		void print(){
-			cout<<" Nai QCal Para:"<<endl;
+			cout<<" Nai QCal Pedestal Para:"<<endl;
 			for (int i = 0; i < 4; ++i) {
 				for (int j = 0; j < 7; ++j) {
 						
 					cout<<i<<":"<<j<<":"<<naiPedestal[i][j]<<endl;
 				}
 			}	
+			cout<<" Nai QCal Gain Para:"<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+						
+					cout<<i<<":"<<j<<":"<<naiBarGain[i][j]<<endl;
+				}
+			}	
+
 		}
 		~ESPRINaiCalPara(){}
 		void init(){
 			for(int i =0;i<4;i++){
 				for(int j = 0;j<7;j++){
 					naiPedestal[i][j] = 0;
-					naiGain[i][j] = 1;
+					if(i<2) naiBarGain[i][j] = 1;
 				}
 			}
 		}
 		double getPedestal(int i, int j){
 			return naiPedestal[i][j];
 		}
+		double getBarGain(int i, int j){
+			return naiBarGain[i][j];
+		}
+
+
 
 };
 class ESPRINaiCal{
@@ -203,11 +237,15 @@ class ESPRINaiCal{
 		double getPedestal(int i,int j){
 			return naiPara->getPedestal(i,j);
 		}
+		double getBarGain(int i,int j){
+			return naiPara->getBarGain(i,j);
+		}
 		void setNaiBarQ(){
 			for (int i = 0; i < 2; ++ i) {
 				for (int j = 0; j < 7; ++ j) {
 
-					if(naiQCal[i*2][j]>0&&naiQCal[i*2+1][j]>0)  naiBarQCal[i][j] = sqrt(naiQCal[i*2][j]*naiQCal[i*2+1][j]);
+					//if(naiQCal[i*2][j]>0&&naiQCal[i*2+1][j]>0)  naiBarQCal[i][j] = sqrt(naiQCal[i*2][j]*naiQCal[i*2+1][j]);
+					if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = getBarGain(i,j)*sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]);
 				}
 			}
 		}
@@ -230,7 +268,7 @@ class ESPRINaiCal{
 			tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
 
 			tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
-			tree->Branch("naiQId", &naiQId, "naiQId[2]/D");
+			tree->Branch("naiQId", &naiQId, "naiQId[2]/I");
 
 		}
 };

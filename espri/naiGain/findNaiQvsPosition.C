@@ -60,65 +60,67 @@ class NaiGain{
 				}
 
 			}
-			void drawPositionVsQDiff(TTree *tree,int i,int j){
-				int nBin = 1000;
-				int qMin = -1;
-				int qMax = 1;
-				int pMin = -250; 
-				int pMax = 250;
-				TString draw = Form("rdcX[%d]-227.5:(TMath::Log(naiQCal[%d][%d])-TMath::Log(naiQCal[%d][%d]))>>hQDiff%d_%d(%d,%d,%d,%d,%d,%d)",i,2*i+1,j,2*i,j,i,j,nBin,qMin,qMax,nBin,pMin,pMax);
-				TString condition = Form("naiQCal[%d][%d]>20&&naiQCal[%d][%d]>20",2*i+1,j,2*i,j);
-				tree->Draw(draw,condition,"colz");
-			}
-			void fitHisto(int i,int j){
-
-				TF1 *f = new TF1("f","pol1",-150,150);
-				TH2D *h2D = (TH2D *)gDirectory->Get(Form("hQDiff%d_%d",i,j));
-				//h2D->Draw("colz");
-				TProfile *hPy = h2D->ProfileY();
-				//TProfile *hPy = h2D->ProfileY("hPy",0,nBin);
-				//hPy->Draw("same");
-				hPy->Fit(f,"R");
-				if(f->GetChisquare()<5000){
-					f->GetParameters(paraFit);
-				}
-				delete f;
-				//f->GetParErrors(paraFitError);
-
-				//hPy->Fit("pol1");
-				//double lamda = 1/f->GetParameter(1);
-				//double gdOvergu = TMath::Exp(f->GetParameter(0));
-				//cout<<"Ln(g_d/g_u)"<<f->GetParameter(0)<<" Error:"<<f->GetParError(0)<<endl;
-				//cout<<"lamda = "<<lamda<<" gd/gu = "<<gdOvergu<<endl;
-
-			}
-			void outputTxt(int i,int j){
-
-				outputname=Form("NaiticGainRun.txt");
-				ofstream fout(outputname,ios_base::app | ios_base::out);
-				double lamda = 1/paraFit[1];
-				double gdOvergu = TMath::Exp(paraFit[0]);
-
-				fout <<runNumber<<"\t"<<i<<"\t"<<j<<"\t"<<lamda<<"\t"<< gdOvergu <<"\t"<< paraFit[0] << "\t" << paraFit[1] <<endl;
-				fout.close();
-			}
-		};
-
-		int findNaiQvsPosition(){
-
-			for(int i= 296;i<500;i++){
-				NaiGain *naiGain = new NaiGain(i);
-			}
-
-			return 0;
 		}
-		int main(int argc, char **argv){
-
-			//	for(int i= 444;i<500;i++){
-			//		if(i == 431||i==432||(i>440&&i<448)) continue;
-			//		NaiGain *naiGain = new NaiGain(i);
-			//	}
-
-			NaiGain *naiGain = new NaiGain(360);
-			return 0;
+		void drawPositionVsQDiff(TTree *tree,int i,int j){
+			int nBin = 1000;
+			int qMin = -3;
+			int qMax = 3;
+			int pMin = -250; 
+			int pMax = 250;
+			TString draw = Form("rdcX[%d]-227.5:(TMath::Log(naiQCal[%d][%d])-TMath::Log(naiQCal[%d][%d]))>>hQDiff%d_%d(%d,%d,%d,%d,%d,%d)",i,2*i+1,j,2*i,j,i,j,nBin,qMin,qMax,nBin,pMin,pMax);
+			TString condition = Form("naiQCal[%d][%d]>20&&naiQCal[%d][%d]>20",2*i+1,j,2*i,j);
+			tree->Draw(draw,condition,"colz");
 		}
+		void fitHisto(int i,int j){
+
+			TF1 *f = new TF1("f","pol1",-150,150);
+			TH2D *h2D = (TH2D *)gDirectory->Get(Form("hQDiff%d_%d",i,j));
+			//h2D->Draw("colz");
+			TProfile *hPy = h2D->ProfileY();
+			//TProfile *hPy = h2D->ProfileY("hPy",0,nBin);
+			//hPy->Draw("same");
+			hPy->Fit(f,"R");
+			if(f->GetChisquare()<5000){
+				f->GetParameters(paraFit);
+			}
+			delete f;
+			//f->GetParErrors(paraFitError);
+
+			//hPy->Fit("pol1");
+			//double lamda = 1/f->GetParameter(1);
+			//double gdOvergu = TMath::Exp(f->GetParameter(0));
+			//cout<<"Ln(g_d/g_u)"<<f->GetParameter(0)<<" Error:"<<f->GetParError(0)<<endl;
+			//cout<<"lamda = "<<lamda<<" gd/gu = "<<gdOvergu<<endl;
+
+		}
+		void outputTxt(int i,int j){
+
+			outputname=Form("NaiGainRun.txt");
+			ofstream fout(outputname,ios_base::app | ios_base::out);
+			double lamda = 1/paraFit[1];
+			double gdOvergu = TMath::Exp(paraFit[0]);
+
+			fout <<runNumber<<"\t"<<i<<"\t"<<j<<"\t"<<lamda<<"\t"<< gdOvergu <<"\t"<< paraFit[0] << "\t" << paraFit[1] <<endl;
+			fout.close();
+		}
+};
+
+int findNaiQvsPosition(){
+
+	//for(int i= 296;i<500;i++){
+	for(int i= 363;i<364;i++){
+		NaiGain *naiGain = new NaiGain(i);
+	}
+
+	return 0;
+}
+int main(int argc, char **argv){
+
+	//	for(int i= 444;i<500;i++){
+	//		if(i == 431||i==432||(i>440&&i<448)) continue;
+	//		NaiGain *naiGain = new NaiGain(i);
+	//	}
+
+	NaiGain *naiGain = new NaiGain(363);
+	return 0;
+}
