@@ -4,3 +4,55 @@ Already up-to-date.
 Branch master set up to track remote branch master from origin.
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9e5cbbf] v1.0
+ 63 files changed, 1142 insertions(+), 94 deletions(-)
+ rewrite espri/convert/ConvertESPRI (90%)
+ create mode 100644 espri/convert/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/rootfiles/deuteron.C
+ create mode 100644 espri/convert/rootfiles/drawDEELeft.C
+ create mode 100644 espri/convert/rootfiles/drawNaiBarCal2D.C
+ create mode 100644 espri/convert/rootfiles/drawNaiRaw.C
+ create mode 100644 espri/convert/rootfiles/drawPlasQRaw.C
+ create mode 100644 espri/convert/rootfiles/drawPlasTCal.C
+ create mode 100644 espri/convert/rootfiles/drawPlasTRaw.C
+ create mode 100644 espri/convert/rootfiles/drawPlasTRaw2D.C
+ create mode 100644 espri/convert/rootfiles/drawToFdE.C
+ create mode 100644 espri/convert/rootfiles/part1.C
+ create mode 100644 espri/convert/rootfiles/part2.C
+ create mode 100644 espri/convert/rootfiles/part3.C
+ create mode 100644 espri/convert/rootfiles/part4.C
+ create mode 100644 espri/convert/rootfiles/proton.C
+ create mode 100644 espri/convert/rootfiles/triton.C
+ create mode 100644 espri/convert/rootfiles/turn.C
+ create mode 100644 espri/convert/rootfiles/unknown.C
+ create mode 120000 espri/convert/txt/naiBarGain_Be10.txt
+ create mode 120000 espri/convert/txt/naiBarGain_Be12.txt
+ create mode 120000 espri/convert/txt/naiBarGain_Be14.txt
+ create mode 120000 espri/convert/txt/naiBarGain_Be14_2.txt
+ create mode 100644 espri/dEE/drawDEEnew.C
+ create mode 100644 espri/dEE/txt/dEERelation_298_329.txt
+ create mode 100644 espri/dEE/txt/dEERelation_334_365.txt
+ create mode 100644 espri/dEE/txt/dEERelation_366_430.txt
+ create mode 100644 espri/dEE/txt/dEERelation_433_455.txt
+ create mode 100644 espri/naiGain/calDEERelation.C
+ create mode 100644 espri/naiGain/calDEERelation_C_ACLiC_dict_rdict.pcm
+ create mode 100755 espri/naiGain/findNaiQvsPosition
+ create mode 100644 espri/naiGain/txt/NaiGainRun.txt
+ create mode 100644 espri/naiGain/txt/NaiticGainRun.txt
+ create mode 100644 espri/naiGain/txt/naiBarGain_Be10.txt
+ create mode 100644 espri/naiGain/txt/naiBarGain_Be12.txt
+ create mode 100644 espri/naiGain/txt/naiBarGain_Be14.txt
+ create mode 100644 espri/naiGain/txt/naiBarGain_Be14_2.txt
+ create mode 100644 espri/plasGain/txt/plasGain_Be10.txt
+ create mode 100644 espri/plasGain/txt/plasGain_Be12.txt
+ create mode 100644 espri/plasGain/txt/plasGain_Be14.txt
+ rewrite merger/Merger (86%)
+ create mode 100644 merger/rootfiles/part1.C
+ create mode 100644 merger/rootfiles/part2.C
+ create mode 100644 merger/rootfiles/part3.C
+ create mode 100644 merger/rootfiles/part4.C
+ create mode 100644 merger/rootfiles/scanNai.C
+ create mode 100644 merger/rootfiles/scanPlasQLeft.C
+ create mode 100644 merger/rootfiles/scanPlasQRight.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
