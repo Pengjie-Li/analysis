@@ -56,3 +56,13 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/scanPlasQRight.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 53657a0] v1.0
+ 10 files changed, 460 insertions(+), 20 deletions(-)
+ create mode 100644 espri/convert/rootfiles/drawPlasTCal2D.C
+ create mode 100644 espri/convert/rootfiles/leftPlastic.C
+ create mode 100644 espri/convert/rootfiles/rightPlastic.C
+ create mode 100644 espri/dEE/backup_drawDEE.C
+ create mode 100644 espri/dEE/cut/leftPlastic.C
+ create mode 100644 espri/dEE/cut/rightPlastic.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
