@@ -17,16 +17,8 @@ class ConvertPLA{
 		TArtEventStore *EventStore;
 		TArtCalibPlastic *CalibPlastic;
 
-		TArtPlastic *PlasticF3  ; 
-		TArtPlastic *PlasticF7  ; 
-		TArtPlastic *PlasticSBT1;
-		TArtPlastic *PlasticSBT2;
-		TArtPlastic *PlasticSBV ;
-
-
 		TFile *outputFile;
 		TTree *tree;
-		PLARead *plaRead;
 
 		TString getInputName(){
 			TString inputPath=env->GetValue("inputPath","./rootfile/");
@@ -76,11 +68,10 @@ class ConvertPLA{
 
 				EventNumber++;
 				if(maxEventNumber<100) cout<<EventNumber<<endl;
-				getRawData();
-				readData();
 				//readRawData();
 				//convertRawData();
 				tree->Fill();
+
 			}
 		}
 		void showAnalysisProgress(){
@@ -95,32 +86,6 @@ class ConvertPLA{
 				clock0 = std::clock();
 			}
 
-		}
-                void getRawData(){
-                        clearReconstructedData();
-                        reconstructData();
-                        //getDataContainer();
-
-                }
-                void clearReconstructedData(){
-
-			CalibPlastic->ClearData();
-
-                }
-                void reconstructData(){
-			CalibPlastic->ReconstructData();
-
-                }
-                void getDataContainer(){
-			PlasticF3 = CalibPlastic->FindPlastic((char*)"F3pl");
-			PlasticF7 = CalibPlastic->FindPlastic((char*)"F7pl");
-			PlasticSBT1 = CalibPlastic->FindPlastic((char*)"F13pl-1");
-			PlasticSBT2 = CalibPlastic->FindPlastic((char*)"F13pl-2");
-			PlasticSBV = CalibPlastic->FindPlastic((char*)"SBV");
-
-		}
-		void readData(){
-			plaRead->read(CalibPlastic);
 		}
 	public:
 		ConvertPLA(int rn,Long64_t men){
@@ -174,7 +139,7 @@ class ConvertPLA{
 			outputFile = new TFile(getOutputName(),"recreate");
 			tree = new TTree("CalTreePLA","Convert Raw Cal Sync");
 
-			plaRead = new PLARead();
+			//plaReadRaw = new plaReadRaw();
 
 			setOutputBranch();
 

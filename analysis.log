@@ -66,3 +66,37 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/dEE/cut/rightPlastic.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7f36b9b] v1.0
+ 31 files changed, 8817 insertions(+)
+ create mode 100644 espri/convert/rootfiles/example.C
+ create mode 100644 merger/rootfiles/.example.C.swp
+ create mode 100644 merger/rootfiles/drawBeamPlasTime.C
+ create mode 100644 merger/rootfiles/drawBeamToFDE.C
+ create mode 100644 merger/rootfiles/example.C
+ create mode 100755 pla/backup/LoadTDCDistribution.h
+ create mode 100755 pla/backup/Makefile
+ create mode 100755 pla/backup/beam_plastic_raw
+ create mode 100755 pla/backup/beam_plastic_raw.C
+ create mode 100755 pla/backup/caltree.C
+ create mode 100755 pla/backup/distance.h
+ create mode 100755 pla/backup/example.c
+ create mode 100755 pla/backup/header.h
+ create mode 100755 pla/backup/plastic
+ create mode 100755 pla/backup/plastic.C
+ create mode 100755 pla/backup/rootlogoff.C
+ create mode 100755 pla/backup/rootlogon.C
+ create mode 100755 pla/class/Makefile
+ create mode 100755 pla/class/MyDict.cxx
+ create mode 100755 pla/class/MyDict.h
+ create mode 100755 pla/class/classtest.cpp
+ create mode 100755 pla/class/classtest.h
+ create mode 100755 pla/class/global.h
+ create mode 100755 pla/class/main.cpp
+ create mode 100755 pla/class/rootlogoff.C
+ create mode 100755 pla/class/rootlogon.C
+ create mode 100755 pla/class/test
+ create mode 100755 pla/class/test_LinkDef.h
+ create mode 100644 pla/convert/ConvertPLA.C
+ create mode 100755 pla/convert/caltree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
