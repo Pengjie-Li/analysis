@@ -1,5 +1,6 @@
 #include "header.h"
 TEnv *env =new TEnv("configConvertPLA.prm");
+#include "PLARead.h"
 class ConvertPLA{
 	private:
 
@@ -48,7 +49,7 @@ class ConvertPLA{
 
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
-			//plaReadRaw->setBranch(tree);
+			plaRead->setBranch(tree);
 			//espriConvertCal->setBranch(tree);
 		}
 		void preSetting(){

@@ -1,0 +1,3 @@
+{
+	CalTreePLA->Scan("SBT1T:SBT2T:F13T:SBT1Q:SBT2Q:F13Q");
+}
