@@ -62,6 +62,7 @@ class Convert{
 					inputPath = env->GetValue("MAINInputPath","MAIN Path Error!");
 					runPrefix = env->GetValue("MAINRunPrefix","MAIN Prefix Error!");
 					runSuffix = env->GetValue("MAINRunSuffix","MAIN Suffix Error!");
+					break;
 	
 				case 'P':
 					inputPath = env->GetValue("PLAInputPath","PLA Path Error!");

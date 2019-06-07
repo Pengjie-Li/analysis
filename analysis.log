@@ -110,3 +110,58 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/v1_Sample.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 5895e44] v1.0
+ 53 files changed, 7502 insertions(+), 1 deletion(-)
+ create mode 100644 merger/Backup/newPlastic/'
+ create mode 100644 merger/Backup/newPlastic/AnalysingBDC.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingESPRI.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingFDC0.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingHOD.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingMAIN.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingPLA.h
+ create mode 100644 merger/Backup/newPlastic/AnalysingTELE.h
+ create mode 100644 merger/Backup/newPlastic/Convert.h
+ create mode 100644 merger/Backup/newPlastic/Detector.h
+ create mode 100755 merger/Backup/newPlastic/Makefile
+ create mode 100644 merger/Backup/newPlastic/MergeBDC.h
+ create mode 100644 merger/Backup/newPlastic/MergeESPRI.h
+ create mode 100644 merger/Backup/newPlastic/MergeFDC0.h
+ create mode 100644 merger/Backup/newPlastic/MergeHOD.h
+ create mode 100644 merger/Backup/newPlastic/MergeMAIN.h
+ create mode 100644 merger/Backup/newPlastic/MergePLA.h
+ create mode 100644 merger/Backup/newPlastic/MergeSample.h
+ create mode 100644 merger/Backup/newPlastic/MergeTELE.h
+ create mode 100755 merger/Backup/newPlastic/Merger
+ create mode 100644 merger/Backup/newPlastic/Merger.cpp
+ create mode 100644 merger/Backup/newPlastic/Merger.h
+ create mode 100644 merger/Backup/newPlastic/PositionESPRI.h
+ create mode 100755 merger/Backup/newPlastic/analysis.C
+ create mode 100644 merger/Backup/newPlastic/backup_1st_Merger.C
+ create mode 100644 merger/Backup/newPlastic/bdc.C
+ create mode 100644 merger/Backup/newPlastic/configMerger.prm
+ create mode 100644 merger/Backup/newPlastic/constant.h
+ create mode 100644 merger/Backup/newPlastic/convert.sh
+ create mode 100755 merger/Backup/newPlastic/distance.h
+ create mode 100644 merger/Backup/newPlastic/fdc.C
+ create mode 100755 merger/Backup/newPlastic/header.h
+ create mode 100644 merger/Backup/newPlastic/hod.C
+ create mode 100644 merger/Backup/newPlastic/loop.sh
+ create mode 100644 merger/Backup/newPlastic/looprun.sh
+ create mode 100644 merger/Backup/newPlastic/main.cpp
+ create mode 100644 merger/Backup/newPlastic/mvRootVersion.sh
+ create mode 100644 merger/Backup/newPlastic/read.me
+ create mode 100644 merger/Backup/newPlastic/sampleESPRI.C
+ create mode 100644 merger/Backup/newPlastic/tele.C
+ rewrite pla/convert/ConvertPLA (95%)
+ create mode 100644 pla/convert/PLARead.h
+ create mode 100644 pla/convert/convert.sh
+ create mode 100644 pla/convert/loop.sh
+ create mode 100644 pla/convert/looprun.sh
+ create mode 100644 pla/convert/rootfiles/scanF13.C
+ create mode 100644 pla/convert/rootfiles/scanF3.C
+ create mode 100644 pla/convert/rootfiles/scanF7.C
+ create mode 100644 pla/convert/rootfiles/scanSBT1.C
+ create mode 100644 pla/convert/rootfiles/scanSBT2.C
+ create mode 100644 pla/convert/rootfiles/scanSBV.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

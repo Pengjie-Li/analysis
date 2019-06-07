@@ -1,15 +1,19 @@
 void Merger::analysingPLA(){
 
 	initAnalysedPLA();
-	TOF713=getF13Time() - getF7Time() + 570.619; // ns //20181025
-	Beta713=Dist_F7F13/TOF713/C_light;
-	Gamma713=1/sqrt(1-Beta713*Beta713);
-	Ek713=(Gamma713-1)*AMU;
+	if(getF13Time()!=-9999&&getF7Time()!=-9999){
+		TOF713=getF13Time() - getF7Time() + 570.619; // ns //20181025
+		Beta713=Dist_F7F13/TOF713/C_light;
+		Gamma713=1/sqrt(1-Beta713*Beta713);
+		Ek713=(Gamma713-1)*AMU;
+	}
 
-	TOF37=getF7Time() - getF3Time() + 299.091; // ns
-	Beta37=Dist_F3F7/TOF37/C_light;
-	Gamma37=1/sqrt(1-Beta37*Beta37);
-	Ek37=(Gamma37-1)*AMU;
+	if(getF3Time()!=-9999&&getF7Time()!=-9999){
+		TOF37=getF7Time() - getF3Time() + 299.091; // ns
+		Beta37=Dist_F3F7/TOF37/C_light;
+		Gamma37=1/sqrt(1-Beta37*Beta37);
+		Ek37=(Gamma37-1)*AMU;
+	}
 }
 void Merger::initAnalysedPLA(){
 	/****** Plastics **********/

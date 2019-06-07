@@ -2,133 +2,115 @@ class MergePLA:public Convert{
 	private:
 	public:
 		//Declaration of leaves types
-		Double_t        F3_LTRaw;
-		Double_t        F3_RTRaw;
-		Double_t        F3_LTSlew;
-		Double_t        F3_RTSlew;
-		Double_t        F3_LQRaw;
-		Double_t        F3_RQRaw;
-		Double_t        F7_LTRaw;
-		Double_t        F7_RTRaw;
-		Double_t        F7_LTSlew;
-		Double_t        F7_RTSlew;
-		Double_t        F7_LQRaw;
-		Double_t        F7_RQRaw;
-		Double_t        SBT1_LTRaw;
-		Double_t        SBT1_RTRaw;
-		Double_t        SBT1_LTSlew;
-		Double_t        SBT1_RTSlew;
-		Double_t        SBT1_LQRaw;
-		Double_t        SBT1_RQRaw;
-		Double_t        SBT2_LTRaw;
-		Double_t        SBT2_RTRaw;
-		Double_t        SBT2_LTSlew;
-		Double_t        SBT2_RTSlew;
-		Double_t        SBT2_LQRaw;
-		Double_t        SBT2_RQRaw;
-		Double_t        SBV_RQRaw;
-		Double_t        SBV_RTRaw;
-		Double_t        SBV_RTSlew;
-		Double_t        F3_Charge;
-		Double_t        F3_Time;
-		Double_t        F7_Charge;
-		Double_t        F7_Time;
-		Double_t        F13_Charge;
-		Double_t        F13_Time;
-		Double_t        SBV_Charge;
-		Double_t        SBV_Time;
-		Double_t        SBT1_Charge;
-		Double_t        SBT1_Time;
-		Double_t        SBT2_Charge;
-		Double_t        SBT2_Time;
+		Int_t           F3TRaw[2];
+		Int_t           F3QRaw[2];
+		Double_t        F3TCal[2];
+		Double_t        F3QCal[2];
+		Double_t        F3T;
+		Double_t        F3Q;
+		Int_t           F7TRaw[2];
+		Int_t           F7QRaw[2];
+		Double_t        F7TCal[2];
+		Double_t        F7QCal[2];
+		Double_t        F7T;
+		Double_t        F7Q;
+		Int_t           SBT1TRaw[2];
+		Int_t           SBT1QRaw[2];
+		Double_t        SBT1TCal[2];
+		Double_t        SBT1QCal[2];
+		Double_t        SBT1T;
+		Double_t        SBT1Q;
+		Int_t           SBT2TRaw[2];
+		Int_t           SBT2QRaw[2];
+		Double_t        SBT2TCal[2];
+		Double_t        SBT2QCal[2];
+		Double_t        SBT2T;
+		Double_t        SBT2Q;
+		Double_t        F13T;
+		Double_t        F13Q;
+		Int_t           SBVTRaw[2];
+		Int_t           SBVQRaw[2];
+		Double_t        SBVTCal[2];
+		Double_t        SBVQCal[2];
+		Double_t        SBVT;
+		Double_t        SBVQ;
+
 
 		void setBranch(){
 
 
 			// Set branch addresses.
-			inputTree->SetBranchAddress("F3_LTRaw",&F3_LTRaw);
-			inputTree->SetBranchAddress("F3_RTRaw",&F3_RTRaw);
-			inputTree->SetBranchAddress("F3_LTSlew",&F3_LTSlew);
-			inputTree->SetBranchAddress("F3_RTSlew",&F3_RTSlew);
-			inputTree->SetBranchAddress("F3_LQRaw",&F3_LQRaw);
-			inputTree->SetBranchAddress("F3_RQRaw",&F3_RQRaw);
-			inputTree->SetBranchAddress("F7_LTRaw",&F7_LTRaw);
-			inputTree->SetBranchAddress("F7_RTRaw",&F7_RTRaw);
-			inputTree->SetBranchAddress("F7_LTSlew",&F7_LTSlew);
-			inputTree->SetBranchAddress("F7_RTSlew",&F7_RTSlew);
-			inputTree->SetBranchAddress("F7_LQRaw",&F7_LQRaw);
-			inputTree->SetBranchAddress("F7_RQRaw",&F7_RQRaw);
-			inputTree->SetBranchAddress("SBT1_LTRaw",&SBT1_LTRaw);
-			inputTree->SetBranchAddress("SBT1_RTRaw",&SBT1_RTRaw);
-			inputTree->SetBranchAddress("SBT1_LTSlew",&SBT1_LTSlew);
-			inputTree->SetBranchAddress("SBT1_RTSlew",&SBT1_RTSlew);
-			inputTree->SetBranchAddress("SBT1_LQRaw",&SBT1_LQRaw);
-			inputTree->SetBranchAddress("SBT1_RQRaw",&SBT1_RQRaw);
-			inputTree->SetBranchAddress("SBT2_LTRaw",&SBT2_LTRaw);
-			inputTree->SetBranchAddress("SBT2_RTRaw",&SBT2_RTRaw);
-			inputTree->SetBranchAddress("SBT2_LTSlew",&SBT2_LTSlew);
-			inputTree->SetBranchAddress("SBT2_RTSlew",&SBT2_RTSlew);
-			inputTree->SetBranchAddress("SBT2_LQRaw",&SBT2_LQRaw);
-			inputTree->SetBranchAddress("SBT2_RQRaw",&SBT2_RQRaw);
-			inputTree->SetBranchAddress("SBV_RQRaw",&SBV_RQRaw);
-			inputTree->SetBranchAddress("SBV_RTRaw",&SBV_RTRaw);
-			inputTree->SetBranchAddress("SBV_RTSlew",&SBV_RTSlew);
-			inputTree->SetBranchAddress("F3_Charge",&F3_Charge);
-			inputTree->SetBranchAddress("F3_Time",&F3_Time);
-			inputTree->SetBranchAddress("F7_Charge",&F7_Charge);
-			inputTree->SetBranchAddress("F7_Time",&F7_Time);
-			inputTree->SetBranchAddress("F13_Charge",&F13_Charge);
-			inputTree->SetBranchAddress("F13_Time",&F13_Time);
-			inputTree->SetBranchAddress("SBV_Charge",&SBV_Charge);
-			inputTree->SetBranchAddress("SBV_Time",&SBV_Time);
-			inputTree->SetBranchAddress("SBT1_Charge",&SBT1_Charge);
-			inputTree->SetBranchAddress("SBT1_Time",&SBT1_Time);
-			inputTree->SetBranchAddress("SBT2_Charge",&SBT2_Charge);
-			inputTree->SetBranchAddress("SBT2_Time",&SBT2_Time);
+			inputTree->SetBranchAddress("F3TRaw",F3TRaw);
+			inputTree->SetBranchAddress("F3QRaw",F3QRaw);
+			inputTree->SetBranchAddress("F3TCal",F3TCal);
+			inputTree->SetBranchAddress("F3QCal",F3QCal);
+			inputTree->SetBranchAddress("F3T",&F3T);
+			inputTree->SetBranchAddress("F3Q",&F3Q);
+			inputTree->SetBranchAddress("F7TRaw",F7TRaw);
+			inputTree->SetBranchAddress("F7QRaw",F7QRaw);
+			inputTree->SetBranchAddress("F7TCal",F7TCal);
+			inputTree->SetBranchAddress("F7QCal",F7QCal);
+			inputTree->SetBranchAddress("F7T",&F7T);
+			inputTree->SetBranchAddress("F7Q",&F7Q);
+			inputTree->SetBranchAddress("SBT1TRaw",SBT1TRaw);
+			inputTree->SetBranchAddress("SBT1QRaw",SBT1QRaw);
+			inputTree->SetBranchAddress("SBT1TCal",SBT1TCal);
+			inputTree->SetBranchAddress("SBT1QCal",SBT1QCal);
+			inputTree->SetBranchAddress("SBT1T",&SBT1T);
+			inputTree->SetBranchAddress("SBT1Q",&SBT1Q);
+			inputTree->SetBranchAddress("SBT2TRaw",SBT2TRaw);
+			inputTree->SetBranchAddress("SBT2QRaw",SBT2QRaw);
+			inputTree->SetBranchAddress("SBT2TCal",SBT2TCal);
+			inputTree->SetBranchAddress("SBT2QCal",SBT2QCal);
+			inputTree->SetBranchAddress("SBT2T",&SBT2T);
+			inputTree->SetBranchAddress("SBT2Q",&SBT2Q);
+			inputTree->SetBranchAddress("F13T",&F13T);
+			inputTree->SetBranchAddress("F13Q",&F13Q);
+			inputTree->SetBranchAddress("SBVTRaw",SBVTRaw);
+			inputTree->SetBranchAddress("SBVQRaw",SBVQRaw);
+			inputTree->SetBranchAddress("SBVTCal",SBVTCal);
+			inputTree->SetBranchAddress("SBVQCal",SBVQCal);
+			inputTree->SetBranchAddress("SBVT",&SBVT);
+			inputTree->SetBranchAddress("SBVQ",&SBVQ);
+
 
 		}
 
 		void setOutputBranch(TTree *tree){
+
 			// Set branch addresses.
-			tree->Branch("F3_LTRaw",&F3_LTRaw);
-			tree->Branch("F3_RTRaw",&F3_RTRaw);
-			tree->Branch("F3_LTSlew",&F3_LTSlew);
-			tree->Branch("F3_RTSlew",&F3_RTSlew);
-			tree->Branch("F3_LQRaw",&F3_LQRaw);
-			tree->Branch("F3_RQRaw",&F3_RQRaw);
-			tree->Branch("F7_LTRaw",&F7_LTRaw);
-			tree->Branch("F7_RTRaw",&F7_RTRaw);
-			tree->Branch("F7_LTSlew",&F7_LTSlew);
-			tree->Branch("F7_RTSlew",&F7_RTSlew);
-			tree->Branch("F7_LQRaw",&F7_LQRaw);
-			tree->Branch("F7_RQRaw",&F7_RQRaw);
-			tree->Branch("SBT1_LTRaw",&SBT1_LTRaw);
-			tree->Branch("SBT1_RTRaw",&SBT1_RTRaw);
-			tree->Branch("SBT1_LTSlew",&SBT1_LTSlew);
-			tree->Branch("SBT1_RTSlew",&SBT1_RTSlew);
-			tree->Branch("SBT1_LQRaw",&SBT1_LQRaw);
-			tree->Branch("SBT1_RQRaw",&SBT1_RQRaw);
-			tree->Branch("SBT2_LTRaw",&SBT2_LTRaw);
-			tree->Branch("SBT2_RTRaw",&SBT2_RTRaw);
-			tree->Branch("SBT2_LTSlew",&SBT2_LTSlew);
-			tree->Branch("SBT2_RTSlew",&SBT2_RTSlew);
-			tree->Branch("SBT2_LQRaw",&SBT2_LQRaw);
-			tree->Branch("SBT2_RQRaw",&SBT2_RQRaw);
-			tree->Branch("SBV_RQRaw",&SBV_RQRaw);
-			tree->Branch("SBV_RTRaw",&SBV_RTRaw);
-			tree->Branch("SBV_RTSlew",&SBV_RTSlew);
-			tree->Branch("F3_Charge",&F3_Charge);
-			tree->Branch("F3_Time",&F3_Time);
-			tree->Branch("F7_Charge",&F7_Charge);
-			tree->Branch("F7_Time",&F7_Time);
-			tree->Branch("F13_Charge",&F13_Charge);
-			tree->Branch("F13_Time",&F13_Time);
-			tree->Branch("SBV_Charge",&SBV_Charge);
-			tree->Branch("SBV_Time",&SBV_Time);
-			tree->Branch("SBT1_Charge",&SBT1_Charge);
-			tree->Branch("SBT1_Time",&SBT1_Time);
-			tree->Branch("SBT2_Charge",&SBT2_Charge);
-			tree->Branch("SBT2_Time",&SBT2_Time);
+			tree->Branch("F3TRaw",F3TRaw,"F3TRaw[2]/I");
+			tree->Branch("F3QRaw",F3QRaw,"F3QRaw[2]/I");
+			tree->Branch("F3TCal",F3TCal,"F3TCal[2]/D");
+			tree->Branch("F3QCal",F3QCal,"F3QCal[2]/D");
+			tree->Branch("F3T",&F3T);
+			tree->Branch("F3Q",&F3Q);
+			tree->Branch("F7TRaw",F7TRaw,"F7TRaw[2]/I");
+			tree->Branch("F7QRaw",F7QRaw,"F7QRaw[2]/I");
+			tree->Branch("F7TCal",F7TCal,"F7TCal[2]/D");
+			tree->Branch("F7QCal",F7QCal,"F7QCal[2]/D");
+			tree->Branch("F7T",&F7T);
+			tree->Branch("F7Q",&F7Q);
+			tree->Branch("SBT1TRaw",SBT1TRaw,"SBT1TRaw[2]/I");
+			tree->Branch("SBT1QRaw",SBT1QRaw,"SBT1QRaw[2]/I");
+			tree->Branch("SBT1TCal",SBT1TCal,"SBT1TCal[2]/D");
+			tree->Branch("SBT1QCal",SBT1QCal,"SBT1QCal[2]/D");
+			tree->Branch("SBT1T",&SBT1T);
+			tree->Branch("SBT1Q",&SBT1Q);
+			tree->Branch("SBT2TRaw",SBT2TRaw,"SBT2TRaw[2]/I");
+			tree->Branch("SBT2QRaw",SBT2QRaw,"SBT2QRaw[2]/I");
+			tree->Branch("SBT2TCal",SBT2TCal,"SBT2TCal[2]/D");
+			tree->Branch("SBT2QCal",SBT2QCal,"SBT2QCal[2]/D");
+			tree->Branch("SBT2T",&SBT2T);
+			tree->Branch("SBT2Q",&SBT2Q);
+			tree->Branch("F13T",&F13T);
+			tree->Branch("F13Q",&F13Q);
+			tree->Branch("SBVTRaw",SBVTRaw,"SBVTRaw[2]/I");
+			tree->Branch("SBVQRaw",SBVQRaw,"SBVQRaw[2]/I");
+			tree->Branch("SBVTCal",SBVTCal,"SBVTCal[2]/D");
+			tree->Branch("SBVQCal",SBVQCal,"SBVQCal[2]/D");
+			tree->Branch("SBVT",&SBVT);
+			tree->Branch("SBVQ",&SBVQ);
 
 
 		}
@@ -156,13 +138,13 @@ class MergePLA:public Convert{
 		void init(){
 		}
 		Double_t getF3Time(){
-			return F3_Time;
+			return F3T;
 		}
 		Double_t getF7Time(){
-			return F7_Time;
+			return F7T;
 		}
 		Double_t getF13Time(){
-			return F13_Time;
+			return F13T;
 		}
 
 

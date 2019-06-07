@@ -1,10 +1,10 @@
-maxEventNumber:5000000
+maxEventNumber:5000
 
 MAINInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/main/convert/rootfiles/
 MAINRunPrefix:run
 MAINRunSuffix:_MAIN.root
 
-PLAInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/plastic/convert/rootfiles/
+PLAInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/pla/convert/rootfiles/
 PLARunPrefix:run
 PLARunSuffix:_PLA.root
 
