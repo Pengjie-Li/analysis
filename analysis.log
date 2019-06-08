@@ -165,3 +165,17 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/rootfiles/scanSBV.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 12de353] v1.0
+ 14 files changed, 441 insertions(+), 179 deletions(-)
+ rewrite merger/MergePLA.h (86%)
+ rewrite merger/Merger (78%)
+ create mode 100644 merger/pla.C
+ create mode 100644 merger/rootfiles/scanF13.C
+ create mode 100644 merger/rootfiles/scanF3.C
+ create mode 100644 merger/rootfiles/scanF7.C
+ create mode 100644 merger/rootfiles/scanSBT1.C
+ create mode 100644 merger/rootfiles/scanSBT2.C
+ create mode 100644 merger/rootfiles/scanSBV.C
+ create mode 100644 pla/convert/rootfiles/pla.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
