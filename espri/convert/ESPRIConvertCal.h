@@ -325,6 +325,7 @@ class ESPRIPlasCal{
 	private:
 		ESPRIPlasRaw *plasRaw;
 		ESPRIPlasCalPara *plasPara;
+		
 		double plasQCal[4];	
 		double plasQPed[4];
 		double plasTCal[4];	
@@ -371,7 +372,7 @@ class ESPRIPlasCal{
 
 		}
 		double getTCalSlope(int i){
-			return 1;
+			return 0.025;
 		}
 		int getTRaw(int i){
 			return plasRaw->getTRaw(i);
@@ -383,10 +384,20 @@ class ESPRIPlasCal{
 			return 0;
 		}
 		void setPlasTL(){
-			plasT[0] = 0.5*(plasTCal[0]+plasTCal[1]);
+			setPlasT(0);
 		}
 		void setPlasTR(){
-			plasT[1] = 0.5*(plasTCal[2]+plasTCal[3]);
+			setPlasT(1);
+		}
+		void setPlasT(int side){
+			if(getTRaw(2*side)!=0 && getTRaw(2*side+1)!=0 ){
+				plasT[side] = 0.5*(plasTCal[2*side]+plasTCal[2*side+1]);
+			}else if(getTRaw(2*side)==0 && getTRaw(2*side+1)!=0 ){
+				plasT[side] = plasTCal[2*side+1];
+			}else if(getTRaw(2*side+1)==0 && getTRaw(2*side)!=0 ){
+				plasT[side] = plasTCal[2*side];
+			}else{
+			}
 		}
 		void calibrateQ(){
 			//plasRaw->printQ();

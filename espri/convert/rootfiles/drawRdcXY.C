@@ -1,8 +1,8 @@
 {
 
 	int nBin = 600;
-	int min = -10;
-	int max = 50;
+	int min = -100;
+	int max = 500;
 
 	TCanvas *cESPRI = new TCanvas("ESPRI X vs Y","ESPRI X vs Y",1600,700);
 	cESPRI->Divide(2,1);
