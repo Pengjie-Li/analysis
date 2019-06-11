@@ -10,7 +10,7 @@
 	for(int i=0;i<4;i++){
 		c1->cd(i+1);
 		gPad->SetLogy();
-		CalTreeESPRI->Draw(Form("plasTCal[%d]>>hTPlas%d(%d,%d,%d)",i,i,nBin,tMin,tMax));
+		tree->Draw(Form("plasTCal[%d]>>hTPlas%d(%d,%d,%d)",i,i,nBin,tMin,tMax));
 	}
 
 

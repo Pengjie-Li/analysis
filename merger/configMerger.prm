@@ -1,4 +1,4 @@
-maxEventNumber:5000
+maxEventNumber:5000000
 
 MAINInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/main/convert/rootfiles/
 MAINRunPrefix:run
