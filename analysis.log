@@ -194,3 +194,19 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/rootfiles/scanPlasTL.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 3ed64cf] v1.0
+ 18 files changed, 260 insertions(+), 11 deletions(-)
+ create mode 100644 espri/convert/rootfiles/drawPlasQY.C
+ create mode 100644 espri/convert/rootfiles/drawPlasTY.C
+ create mode 100644 espri/convert/rootfiles/scanPlasQRight.C
+ create mode 100755 espri/plasPositionY/Makefile
+ create mode 100644 espri/plasPositionY/findPlasVsPosition.C
+ create mode 100644 merger/rootfiles/drawPlasQY.C
+ create mode 100644 merger/rootfiles/drawPlasTCal.C
+ create mode 100644 merger/rootfiles/drawPlasTY.C
+ create mode 100644 merger/rootfiles/drawRdcXY.C
+ create mode 100644 merger/rootfiles/drawToFdE.C
+ create mode 100644 merger/rootfiles/scanPlasQL.C
+ create mode 100644 merger/rootfiles/scanPlasQR.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

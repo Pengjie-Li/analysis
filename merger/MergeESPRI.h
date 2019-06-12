@@ -32,6 +32,7 @@ class MergeESPRI:public Convert{
 		Double_t        rdcY[2];
 		Double_t        rdcA[2];
 		Double_t        rdcB[2];
+
 		Double_t        rdcChi2[2];
 		Double_t        rdcDL[2][7];
 		Double_t        rdcTch[2][7];
@@ -122,11 +123,11 @@ class MergeESPRI:public Convert{
 			tree->Branch("plasTRaw",plasTRaw,"plasTRaw[4]/I");
 			tree->Branch("plasTimeRef",&plasTimeRef);
 			tree->Branch("rdcMult",&rdcMult);
-			tree->Branch("rdcX",rdcX);
-			tree->Branch("rdcY",rdcY);
-			tree->Branch("rdcA",rdcA);
-			tree->Branch("rdcB",rdcB);
-			tree->Branch("rdcChi2",rdcChi2);
+			tree->Branch("rdcX",rdcX,"rdcX[2]/D");
+			tree->Branch("rdcY",rdcY,"rdcY[2]/D");
+			tree->Branch("rdcA",rdcA,"rdcA[2]/D");
+			tree->Branch("rdcB",rdcB,"rdcB[2]/D");
+			tree->Branch("rdcChi2",rdcChi2,"rdcChi2[2]/D");
 			tree->Branch("rdcDL",rdcDL,"rdcDL[2][7]/D");
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
