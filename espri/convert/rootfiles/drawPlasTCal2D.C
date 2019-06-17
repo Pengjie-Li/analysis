@@ -1,9 +1,9 @@
 {
-	int nBin = 200;
+	int nBin = 1000;
 	int tMin = -700;
 	//int tMax = -20000;
-	int tMax = -450;
-	//int tMax = 600;
+	//int tMax = -450;
+	int tMax = 600;
 	//int tMin = -30000;
 	//int tMax = 25000;
 
