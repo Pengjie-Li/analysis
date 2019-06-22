@@ -1,7 +1,7 @@
 
 void drawHodIdRaw(){
 	//int runNumber = 310;
-	int runNumber = 436; //beam tunning on May 15
+	int runNumber = 360; //beam tunning on May 15
 	draw(runNumber);
 
 

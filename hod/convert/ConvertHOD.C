@@ -276,6 +276,7 @@ class ConvertHOD{
 
 		int EventNumber;
 		int RunNumber;
+		int hodID[40];
 		ConvertHOD(int rn,int men){
 			runNumber=rn;
 			maxEventNumber=men;
@@ -341,9 +342,17 @@ class ConvertHOD{
 		void setOutputBranch(){
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
+			setHodIDBranch();
 			hodPlasticRaw->setBranch(tree);
 			hodPlasticCal->setBranch(tree);
 		}
+		void setHodIDBranch(){
+			for (int i = 0; i < NUMBER_OF_HOD; ++i) {
+				hodID[i] = i ;
+			}
+			tree->Branch("hodID",hodID,"hodID[40]/I");
+		}
+
 		void launchAnalysisLoop(){
 			start = std::clock();
 			clock0 = std::clock();
@@ -427,7 +436,7 @@ class ConvertHOD{
 int main(int argc, char *argv[]){
 	int runNumber=-1;
 	Long64_t maxEventNumber = 10000000;
-	//      Long64_t maxEventNumber = 30;
+	      //Long64_t maxEventNumber = 30000;
 	//cout<<maxEventNumber<<endl;
 	if(argc==2) runNumber=atoi(argv[1]);
 	else if(argc==3) { runNumber=atoi(argv[1]); maxEventNumber=atoi(argv[2]);}
