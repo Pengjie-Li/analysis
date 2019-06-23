@@ -1,7 +1,7 @@
 
 void drawHodIdCal(){
 	//int runNumber = 310;
-	int runNumber = 596; //beam tunning on May 15
+	int runNumber = 360; //beam tunning on May 15
 	draw(runNumber);
 
 
@@ -36,7 +36,7 @@ void draw(int runNumber){
 	TH2F *hHodIdEnergyDownCal = new TH2F("hHodIdEnergyDownCal","hHodIdEnergyDownCal",40,-0.5,39.5,4096,-100,3995);
 	
 	Long64_t nentries = CalTreeHOD->GetEntries();
-	nentries = 100000;
+	//nentries = 100000;
 
 	for (Long64_t ientry=0; ientry<nentries;ientry++) {
 		CalTreeHOD->GetEntry(ientry);

@@ -37,10 +37,8 @@ class Convert{
 			return isFileExists(detector);
 		}
 		bool isFileExists(TString detector){
-
 			inputName = getFileName(detector);
-			cout<<getFileName(detector)<<endl;
-
+			//cout<<getFileName(detector)<<endl;
 			bool isFile = gSystem->AccessPathName(inputName);
 			if(!isFile){
 				cout<<detector<<" Confirmed::"<<getFileName(detector)<<endl;

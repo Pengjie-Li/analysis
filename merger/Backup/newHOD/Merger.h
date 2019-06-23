@@ -15,7 +15,7 @@ class Merger{
 		const static bool kBDC = true;
 		const static bool kFDC0 = true;
 		const static bool kTELE = true;
-		const static bool kHOD = true;
+		const static bool kHOD = false;
 		const static bool kESPRI = true;
 	public :
 

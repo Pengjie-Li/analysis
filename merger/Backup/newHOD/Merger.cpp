@@ -129,8 +129,7 @@ void Merger::printTotalEventNumber(){
 
 bool Merger::isFilesExist(){
 	//return mergeMAIN->isFileExists()&&mergePLA->isFileExists()&&mergeBDC->isFileExists()&&mergeFDC0->isFileExists()&&mergeTELE->isFileExists()&&mergeHOD->isFileExists();
-	//return mergeMAIN->isFileExists()&&mergePLA->isFileExists()&&mergeBDC->isFileExists()&&mergeFDC0->isFileExists()&&mergeTELE->isFileExists()&&mergeESPRI->isFileExists();
-	return mergeMAIN->isFileExists()&&mergePLA->isFileExists()&&mergeBDC->isFileExists()&&mergeFDC0->isFileExists()&&mergeTELE->isFileExists()&&mergeESPRI->isFileExists()&&mergeHOD->isFileExists();
+	return mergeMAIN->isFileExists()&&mergePLA->isFileExists()&&mergeBDC->isFileExists()&&mergeFDC0->isFileExists()&&mergeTELE->isFileExists()&&mergeESPRI->isFileExists();
 	//return mergePLA->isFileExists()&&isFileExists("BDC")&&isFileExists("FDC")&&isFileExists("TELE");
 }
 void Merger::setOutputBranch(){
