@@ -24,6 +24,7 @@ class MergeHOD:public Convert{
 		void setOutputBranch(TTree *tree){
 
 			// Set branch addresses.
+			tree->Branch("hodID",hodID,"hodID[40]/I");
 			tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
 			tree->Branch("hodQRaw",hodQRaw,"hodQRaw[2][40]/I");
 

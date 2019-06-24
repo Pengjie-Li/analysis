@@ -534,3 +534,57 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/.AnalysingESPRI.h.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9e0d486] v1.0
+ 58 files changed, 6207 insertions(+), 1803 deletions(-)
+ rewrite hod/convert/ConvertHOD (93%)
+ create mode 100644 hod/convert/HODConvertCal.h
+ create mode 100644 hod/convert/HODReadRaw.h
+ create mode 100644 hod/convert/rootfiles/cutHodBe14.C
+ create mode 100644 hod/convert/rootfiles/drawHodY.C
+ create mode 100644 merger/Backup/newHOD/'
+ create mode 100644 merger/Backup/newHOD/AnalysingBDC.h
+ create mode 100644 merger/Backup/newHOD/AnalysingESPRI.h
+ create mode 100644 merger/Backup/newHOD/AnalysingFDC0.h
+ create mode 100644 merger/Backup/newHOD/AnalysingHOD.h
+ create mode 100644 merger/Backup/newHOD/AnalysingMAIN.h
+ create mode 100644 merger/Backup/newHOD/AnalysingPLA.h
+ create mode 100644 merger/Backup/newHOD/AnalysingTELE.h
+ create mode 100644 merger/Backup/newHOD/Convert.h
+ create mode 100644 merger/Backup/newHOD/Detector.h
+ create mode 100755 merger/Backup/newHOD/Makefile
+ create mode 100644 merger/Backup/newHOD/MergeBDC.h
+ create mode 100644 merger/Backup/newHOD/MergeESPRI.h
+ create mode 100644 merger/Backup/newHOD/MergeFDC0.h
+ rename merger/{ => Backup/newHOD}/MergeHOD.h (100%)
+ create mode 100644 merger/Backup/newHOD/MergeMAIN.h
+ create mode 100644 merger/Backup/newHOD/MergePLA.h
+ create mode 100644 merger/Backup/newHOD/MergeSample.h
+ create mode 100644 merger/Backup/newHOD/MergeTELE.h
+ rename merger/{ => Backup/newHOD}/Merger (100%)
+ create mode 100644 merger/Backup/newHOD/Merger.cpp
+ create mode 100644 merger/Backup/newHOD/Merger.h
+ create mode 100644 merger/Backup/newHOD/PositionESPRI.h
+ create mode 100755 merger/Backup/newHOD/analysis.C
+ create mode 100644 merger/Backup/newHOD/backup_1st_Merger.C
+ create mode 100644 merger/Backup/newHOD/bdc.C
+ create mode 100644 merger/Backup/newHOD/configMerger.prm
+ create mode 100644 merger/Backup/newHOD/constant.h
+ create mode 100644 merger/Backup/newHOD/convert.sh
+ create mode 100755 merger/Backup/newHOD/distance.h
+ create mode 100644 merger/Backup/newHOD/fdc.C
+ create mode 100755 merger/Backup/newHOD/header.h
+ create mode 100644 merger/Backup/newHOD/hod.C
+ create mode 100644 merger/Backup/newHOD/hodnew.C
+ create mode 100644 merger/Backup/newHOD/loop.sh
+ create mode 100644 merger/Backup/newHOD/looprun.sh
+ create mode 100644 merger/Backup/newHOD/main.cpp
+ create mode 100644 merger/Backup/newHOD/mvRootVersion.sh
+ create mode 100644 merger/Backup/newHOD/pla.C
+ create mode 100644 merger/Backup/newHOD/read.me
+ create mode 100644 merger/Backup/newHOD/sampleESPRI.C
+ create mode 100644 merger/Backup/newHOD/tele.C
+ rewrite merger/MergeHOD.h (99%)
+ rewrite merger/Merger (92%)
+ create mode 100644 merger/hodnew.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
