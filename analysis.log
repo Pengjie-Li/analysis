@@ -588,3 +588,12 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/hodnew.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master cb9a19e] v1.0
+ 9 files changed, 240 insertions(+), 1 deletion(-)
+ create mode 100644 hod/convert/rootfiles/rootlogon.C
+ create mode 100644 hod/slewEffect/Be14Cut1.C
+ create mode 100644 hod/slewEffect/Be14Cut2.C
+ create mode 100644 hod/slewEffect/Be14Cut3.C
+ create mode 100644 hod/slewEffect/slewEffect.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
