@@ -47,7 +47,7 @@ class Convert{
 			}else{
 				inputName = getOldFileName(detector);
 				isFile = gSystem->AccessPathName(inputName);
-				//cout<<getOldFileName(detector);
+				cout<<getOldFileName(detector);
 				if(!isFile) cout<<detector<<" Old File Confirmed::"<<getOldFileName(detector)<<endl;
 				else cout<<detector<<" Failed:: New Path and Old Path not found"<<endl;
 			}

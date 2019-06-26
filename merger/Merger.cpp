@@ -80,7 +80,7 @@ void Merger::getEntry(Long64_t ientry){
 
 void Merger::createOutput(){
 
-	outputFile = new TFile(Form("./rootfiles/run%04d_analysed.root",runNumber), "recreate"); 
+	outputFile = new TFile(Form("./rootfiles/run%04d_analysed.root_1",runNumber), "recreate"); 
 	tree = new TTree("tree","Analysed Tree:raw,cal,analysed");
 	setOutputBranch();
 }
