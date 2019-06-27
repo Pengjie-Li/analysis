@@ -609,3 +609,14 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/tchain.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 3744b15] v1.0
+ 14 files changed, 158 insertions(+), 8 deletions(-)
+ create mode 100644 merger/rootfiles/cutBar29Be14.C
+ create mode 100644 merger/rootfiles/cutBar30Be14.C
+ create mode 100644 merger/rootfiles/cutBar31Be14.C
+ create mode 100644 merger/rootfiles/cutBar32Be14.C
+ create mode 100644 merger/rootfiles/cutBeamPid.C
+ create mode 100644 merger/rootfiles/cutProton.C
+ create mode 100644 merger/rootfiles/drawHodBarQT.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
