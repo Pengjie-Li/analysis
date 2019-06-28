@@ -6,6 +6,8 @@
    cutg->SetVarX("TOF713");
    cutg->SetVarY("F13Q");
    cutg->SetTitle("Graph");
+    cutg->SetLineColor(2);
+   cutg->SetLineWidth(2);
    cutg->SetFillColor(1);
    cutg->SetPoint(0,234.606,809.534);
    cutg->SetPoint(1,234.179,665.331);
@@ -19,5 +21,5 @@
    cutg->SetPoint(9,234.99,801.444);
    cutg->SetPoint(10,234.677,810.486);
    cutg->SetPoint(11,234.606,809.534);
-   cutg->Draw("");
+   cutg->Draw("same");
 }

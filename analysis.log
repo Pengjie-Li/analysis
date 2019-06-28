@@ -620,3 +620,20 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawHodBarQT.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ab6528c] v1.0
+ 14 files changed, 341 insertions(+)
+ create mode 100644 merger/rootfiles/bathc.sh
+ create mode 100644 merger/rootfiles/cutBe10HodBe10.C
+ create mode 100644 merger/rootfiles/cutBe10Pronton.C
+ create mode 100644 merger/rootfiles/cutBe12HodBe12.C
+ create mode 100644 merger/rootfiles/cutBe12Proton.C
+ create mode 100644 merger/rootfiles/cutBe14HodBe14.C
+ create mode 100644 merger/rootfiles/cutBe14Proton.C
+ create mode 100644 merger/rootfiles/cutBeamBe10.C
+ create mode 100644 merger/rootfiles/cutBeamBe12.C
+ create mode 100644 merger/rootfiles/cutBeamBe14.C
+ create mode 100644 merger/rootfiles/ppBe10.C
+ create mode 100644 merger/rootfiles/ppBe12.C
+ create mode 100644 merger/rootfiles/ppBe14.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
