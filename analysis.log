@@ -637,3 +637,24 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/ppBe14.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0625654] v1.0
+ 25 files changed, 434 insertions(+), 162 deletions(-)
+ create mode 100644 merger/rootfiles/cutHodBe10.C
+ rewrite merger/rootfiles/cutHodBe12.C (88%)
+ create mode 100644 merger/rootfiles/cutHodBe14.C
+ create mode 100644 merger/rootfiles/cutProtonBe10.C
+ create mode 100644 merger/rootfiles/cutProtonBe12.C
+ create mode 100644 merger/rootfiles/cutProtonBe14.C
+ create mode 100644 merger/rootfiles/drawBeamBe10.C
+ create mode 100644 merger/rootfiles/drawBeamBe12.C
+ create mode 100644 merger/rootfiles/drawBeamBe14.C
+ create mode 100644 merger/rootfiles/drawProtonBe10.C
+ create mode 100644 merger/rootfiles/drawProtonBe12.C
+ create mode 100644 merger/rootfiles/drawProtonBe14.C
+ rewrite merger/rootfiles/ppBe10.C (71%)
+ rewrite merger/rootfiles/ppBe12.C (68%)
+ rename merger/rootfiles/{ppBe12.C => ppBe12.C_v1} (100%)
+ rewrite merger/rootfiles/ppBe14.C (71%)
+ rename merger/rootfiles/{ppBe14.C => ppBe14.C_v1} (100%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
