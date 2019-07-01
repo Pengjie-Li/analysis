@@ -73,14 +73,18 @@ class HODPlasticCal{
 
 		double hodTCal[2][40];
 		double hodQCal[2][40];
+		double hodQPed[2][40];
 		double hodBarQCal[40];
+		double hodBarTCal[40];
 
 
 
 		void setBranch(TTree *tree){
 			tree->Branch("hodTCal",hodTCal,"hodTCal[2][40]/D");
 			tree->Branch("hodQCal",hodQCal,"hodQCal[2][40]/D");
+			tree->Branch("hodQPed",hodQPed,"hodQPed[2][40]/D");
 			tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
+			tree->Branch("hodBarTCal",hodBarTCal,"hodBarTCal[40]/D");
 		}
 
 		void loadPedestalParameters(){
@@ -92,7 +96,9 @@ class HODPlasticCal{
 				for(int j=0;j<NUMBER_OF_HOD;j++){
 					hodTCal[i][j] = NAN;
 					hodQCal[i][j] = NAN;
+					hodQPed[i][j] = NAN;
 					hodBarQCal[j] = NAN;
+					hodBarTCal[j] = NAN;
 				}
 			}
 		}
@@ -104,14 +110,43 @@ class HODPlasticCal{
 		void loadRawData(HODPlasticRaw *inputData){
 			rawData = inputData;
 		}
+		void calibQ(){
+			substractPedestal();
+			convertQ();
+		}
 		void substractPedestal(){
 
 			for (int i = 0; i < 2; ++i) {
 				for(int j=0;j<NUMBER_OF_HOD;j++){
-					if(getEnergyRaw(i,j)!=-1) hodQCal[i][j] = getEnergyRaw(i,j) - getPedestal(i,j);
+					if(getEnergyRaw(i,j)!=-1) hodQPed[i][j] = getEnergyRaw(i,j) - getPedestal(i,j);
 				}
 			}
 
+		}
+		void convertQ(){
+			for (int i = 0; i < 2; ++i) {
+				for(int j=0;j<NUMBER_OF_HOD;j++){
+					if(getEnergyRaw(i,j)!=-1) hodQCal[i][j] = getEnergySlope(i,j)*hodQPed[i][j];
+				}
+			}
+
+		}
+
+		void calibT(){
+			convertT();
+		}
+		void convertT(){
+			for (int i = 0; i < 2; ++i) {
+				for(int j=0;j<NUMBER_OF_HOD;j++){
+					if(getTimeRaw(i,j)!=-1) hodTCal[i][j] = getTimeSlope(i,j)*getTimeRaw(i,j);
+				}
+			}
+
+		}
+
+		void calculateBar(){
+			calculateBarEnergy();
+			calculateBarTime();
 		}
 		void calculateBarEnergy(){
 
@@ -119,11 +154,29 @@ class HODPlasticCal{
 				if(hodQCal[0][i]>0 && hodQCal[1][i]>0 ) hodBarQCal[i] = sqrt(hodQCal[0][i]*hodQCal[1][i]);
 			}
 		}
+		void calculateBarTime(){
+
+			for(int i=0;i<NUMBER_OF_HOD;i++){
+				if(hodTCal[0][i]!=NAN && hodTCal[1][i]!=NAN ) hodBarTCal[i] = 0.5*(hodTCal[0][i]+hodTCal[1][i]);
+			}
+
+		}
+
+		int getTimeRaw(int side, int ID){
+			return rawData->getTimeRaw(side,ID);
+		}
+		double getTimeSlope(int side, int ID){
+			return 0.0684615384615384626;
+		}
 		int getEnergyRaw(int side, int ID){
 			return rawData->getEnergyRaw(side,ID);
 		}
 		double getPedestal(int side, int ID){
 			return hodPedestal->getPedestal(side,ID);
 		}
+		double getEnergySlope(int side, int ID){
+			return 1;
+		}
+
 };
 

@@ -60,6 +60,7 @@ class HODPlasticRaw{
 	private:
 	public:
 
+		int hodNHit;
 		int hodTRaw[2][40];
 		int hodQRaw[2][40];
 
@@ -67,10 +68,12 @@ class HODPlasticRaw{
 			initialize();
 		}
 		void setBranch(TTree *tree){
+			tree->Branch("hodNHit",&hodNHit,"hodNHit/I");
 			tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
 			tree->Branch("hodQRaw",hodQRaw,"hodQRaw[2][40]/I");
 		}
 		void initialize(){
+			hodNHit = 0;
 			for (int i = 0; i < 2; ++i) {
 				for(int j=0;j<NUMBER_OF_HOD;j++){
 					hodTRaw[i][j] = -1;
@@ -80,13 +83,14 @@ class HODPlasticRaw{
 		}
 		void readRaw(TClonesArray *HODPlaHit){
 
-			int nHits = HODPlaHit->GetEntriesFast();
+			initialize(); // init by function itself
+			hodNHit = HODPlaHit->GetEntriesFast();
 
-			cout<<"HOD Plastic nHit = "<<HODPlaHit->GetEntriesFast()<<endl;
-			if(nHits != 0)
+			//cout<<"HOD Plastic nHit = "<<HODPlaHit->GetEntriesFast()<<endl;
+			if(hodNHit != 0)
 			{
 				PlasticRaw *plastic =new PlasticRaw();
-				for(Int_t i=0; i<nHits; i++)
+				for(Int_t i=0; i<hodNHit; i++)
 				{
 					plastic->initialize();
 					TArtHODPla *HODPla = (TArtHODPla*)HODPlaHit->At(i);
@@ -108,10 +112,13 @@ class HODPlasticRaw{
 
 
 		}
-
 		int getEnergyRaw(int side, int ID){
 			return hodQRaw[side][ID];
 		}
+		int getTimeRaw(int side, int ID){
+			return hodTRaw[side][ID];
+		}
+
 
 };
 

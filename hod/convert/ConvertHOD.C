@@ -160,8 +160,9 @@ class ConvertHOD{
 		}
 		void calibrateHODRaw(){
 				hodPlasticCal->loadRawData(hodPlasticRaw);
-				hodPlasticCal->substractPedestal();
-				hodPlasticCal->calculateBarEnergy();
+				hodPlasticCal->calibQ();
+				hodPlasticCal->calibT();
+				hodPlasticCal->calculateBar();
 		}
 
 		void saveOutputFile(){

@@ -7,13 +7,13 @@
    cutg->SetVarY("hodBarQCal[29]");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetPoint(0,1597.64,2165.26);
-   cutg->SetPoint(1,1627.34,2608.3);
-   cutg->SetPoint(2,1659.09,2404.36);
-   cutg->SetPoint(3,1654.99,1961.32);
-   cutg->SetPoint(4,1631.95,1827.71);
-   cutg->SetPoint(5,1610.95,1799.58);
-   cutg->SetPoint(6,1602.76,1834.74);
-   cutg->SetPoint(7,1597.64,2165.26);
+   cutg->SetPoint(0,1597.57,1962.69);
+   cutg->SetPoint(1,1630.85,2599.89);
+   cutg->SetPoint(2,1655.64,2376);
+   cutg->SetPoint(3,1651.07,1974.17);
+   cutg->SetPoint(4,1626.28,1733.07);
+   cutg->SetPoint(5,1602.14,1830.65);
+   cutg->SetPoint(6,1600.84,2031.57);
+   cutg->SetPoint(7,1597.57,1962.69);
    cutg->Draw("");
 }

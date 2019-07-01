@@ -59,7 +59,7 @@ class DrawSlewEffect{
 
 
 void slewEffect(){
-	//drawSlewEffect();
+	drawSlewEffect();
 	//fitSlewEffect();
 	//correctSlewEffect();
 	//combineFiles();
