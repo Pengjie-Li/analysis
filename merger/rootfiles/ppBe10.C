@@ -5,12 +5,12 @@
 //	tree->Add("run0361_analysed.root");
 //	tree->Add("run0361_analysed.root");
 
-	bool isDrawEAng = false;
-	bool isDrawTOFAng = true;
+	bool isDrawEAng = true;
+	bool isDrawTOFAng = false;
 
 	int runStart = 310;
-	int runStop = 330;
-	//int runStop = 326;
+	//int runStop = 330;
+	int runStop = 320;
 	for (int i = runStart; i < runStop; ++i) {
 		
 		tree->Add(Form("run0%d_analysed.root",i));
@@ -21,6 +21,13 @@
 	gROOT->ProcessLine(".x cutProtonBe10.C");
 	gROOT->ProcessLine(".x cutTargetArea.C");
 	gROOT->ProcessLine(".x cutHodBe10.C");
+
+	gROOT->ProcessLine(".x cutBar23Be10.C");
+	gROOT->ProcessLine(".x cutBar22Be10.C");
+	gROOT->ProcessLine(".x cutBar21Be10.C");
+	gROOT->ProcessLine(".x cutBar20Be10.C");
+	gROOT->ProcessLine(".x cutBar19Be10.C");
+	
 	if(isDrawTOFAng){
 		TCanvas *c = new TCanvas("ppToFAng"," ppToFAng",1500,900);
 		c->Divide(4,2);
@@ -59,8 +66,10 @@
 		c->cd(6);
 		tree->Draw("2*naiQ[0]:protonTheta>>hBPT(200,40,80,200,0,200)","BeamBe10&&Proton&&"+peak5,"colz");
 		c->cd(7);
-		tree->Draw("2*naiQ[0]:protonTheta>>hH(200,40,80,200,0,200)","HodBe10","colz");
+
+		TString hodGate = "(!Trig_BxTEL)&&(Bar23Be10||Bar22Be10||Bar21Be10||Bar20Be10||Bar19Be10)";
+		tree->Draw("2*naiQ[0]:protonTheta>>hH(200,40,80,200,0,200)",hodGate,"colz");
 		c->cd(8);
-		tree->Draw("2*naiQ[0]:protonTheta>>hBPTH(200,40,80,200,0,200)","BeamBe10&&Proton&&HodBe10&&"+peak5,"colz");
+		tree->Draw("2*naiQ[0]:protonTheta>>hBPTH(200,40,80,200,0,200)","BeamBe10&&Proton&&"+hodGate+"&&"+peak5,"colz");
 	}
 }

@@ -669,3 +669,24 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/cut2.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 5920f6f] v1.0
+ 27 files changed, 379 insertions(+), 71 deletions(-)
+ rewrite hod/convert/ConvertHOD (89%)
+ create mode 100644 hod/convert/rootfiles/example.C
+ create mode 100644 hod/convert/rootfiles/scanTime.C
+ rewrite merger/Merger (74%)
+ create mode 100644 merger/rootfiles/cutBar19Be14.C
+ create mode 100644 merger/rootfiles/cutBar20Be14.C
+ create mode 100644 merger/rootfiles/cutBar21Be14.C
+ create mode 100644 merger/rootfiles/cutBar22Be14.C
+ create mode 100644 merger/rootfiles/cutBar23Be14.C
+ create mode 100644 merger/rootfiles/cutBar24Be14.C
+ create mode 100644 merger/rootfiles/cutBar28Be14.C
+ rewrite merger/rootfiles/cutBar30Be14.C (69%)
+ rewrite merger/rootfiles/cutBar31Be14.C (65%)
+ create mode 100644 merger/rootfiles/drawSBTQT.C
+ create mode 100644 merger/rootfiles/drawSBTQTRaw.C
+ create mode 100644 merger/rootfiles/scanHodEnergy.C
+ create mode 100644 merger/rootfiles/scanHodTime.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
