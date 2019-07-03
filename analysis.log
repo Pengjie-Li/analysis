@@ -690,3 +690,13 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/scanHodTime.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7d08aae] v1.0
+ 9 files changed, 151 insertions(+), 9 deletions(-)
+ create mode 100644 merger/rootfiles/Bar21Be10
+ create mode 100644 merger/rootfiles/cutBar19Be10.C
+ create mode 100644 merger/rootfiles/cutBar20Be10.C
+ create mode 100644 merger/rootfiles/cutBar21Be10.C
+ create mode 100644 merger/rootfiles/cutBar22Be10.C
+ create mode 100644 merger/rootfiles/cutBar23Be10.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
