@@ -1,32 +1,30 @@
 {
 
-	TChain *tree = new TChain("tree");
-
-//	tree->Add("run0361_analysed.root");
-//	tree->Add("run0361_analysed.root");
-
 	bool isDrawEAng = true;
 	bool isDrawTOFAng = false;
 
-	int runStart = 310;
-	//int runStop = 330;
-	int runStop = 311;
+
+	TChain *tree = new TChain("tree");
+
+
+	int runStart = 298;
+	int runStop = 330;
+	//int runStop = 311;
 	for (int i = runStart; i < runStop; ++i) {
 		
-		tree->Add(Form("run0%d_analysed.root",i));
+		tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 	}
 
-	TString drawETheta = "2*naiQ[0]:protonTheta>>(500,40,80,500,0,140)";
-	gROOT->ProcessLine(".x cutBeamBe10.C");
-	gROOT->ProcessLine(".x cutProtonBe10.C");
-	gROOT->ProcessLine(".x cutTargetArea.C");
-	gROOT->ProcessLine(".x cutHodBe10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBeamBe10.C");
+	gROOT->ProcessLine(".x rootfiles/cutProtonBe10.C");
+	gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
+	gROOT->ProcessLine(".x rootfiles/cutHodBe10.C");
 
-	gROOT->ProcessLine(".x cutBar23Be10.C");
-	gROOT->ProcessLine(".x cutBar22Be10.C");
-	gROOT->ProcessLine(".x cutBar21Be10.C");
-	gROOT->ProcessLine(".x cutBar20Be10.C");
-	gROOT->ProcessLine(".x cutBar19Be10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBar23Be10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBar22Be10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBar21Be10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBar20Be10.C");
+	gROOT->ProcessLine(".x rootfiles/cutBar19Be10.C");
 	
 	if(isDrawTOFAng){
 		TCanvas *c = new TCanvas("ppToFAng"," ppToFAng",1500,900);
@@ -50,7 +48,7 @@
 
 	}
 	if(isDrawEAng){
-		TCanvas *c = new TCanvas(" Proton E vs Theta  ","  Proton E vs Theta   ",1500,900);
+		TCanvas *c = new TCanvas("ppET","ppET",1500,900);
 		c->Divide(4,2);
 
 		c->cd(1);
