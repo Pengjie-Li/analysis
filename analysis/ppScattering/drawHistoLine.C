@@ -5,7 +5,7 @@ void drawHistoLine(){
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
 
-	TFile *g =new TFile("v3_ppBe10Histo.root","read");
+	TFile *g =new TFile("v2_ppBe10Histo.root","read");
 	TCanvas *cPad = new TCanvas("ppBe10L","ppBe10L",1400,900);
 	cPad->Divide(4,2);
 	TH2F *h[8];
