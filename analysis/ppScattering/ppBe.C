@@ -176,6 +176,13 @@ class PPBe14:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe14.C");
 
+			gROOT->ProcessLine(".x rootfiles/cutBar32Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar31Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar30Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar29Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar28Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar27Be14.C");
+	
 			gROOT->ProcessLine(".x rootfiles/cutBar23Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBar22Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBar21Be14.C");
@@ -188,7 +195,9 @@ class PPBe14:public PPScattering {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
+			//hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
+			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14||Bar28Be14||Bar27Be14)";
+			hodGate = "(Bar29Be14||Bar28Be14||Bar27Be14)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
@@ -203,7 +212,8 @@ void ppBe(){
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);
 	PPBe14 *ppBe = new PPBe14();
-	ppBe->loadTChain(366,456);
+	ppBe->loadTChain(436,437);
+	//ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineHodGate();
