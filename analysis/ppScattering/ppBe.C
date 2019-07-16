@@ -197,7 +197,8 @@ class PPBe14:public PPScattering {
 		void defineHodGate(){
 			//hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14||Bar28Be14||Bar27Be14)";
-			hodGate = "(Bar29Be14||Bar28Be14||Bar27Be14)";
+			//hodGate = "(Bar29Be14||Bar28Be14||Bar27Be14)";
+			hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
