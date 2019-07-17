@@ -2,7 +2,7 @@
 //========= Macro generated from object: CUTG/Graph
 //========= by ROOT version5.34/20
    
-   cutg = new TCutG("CUTG",7);
+   cutg = new TCutG("Bar31Central",7);
    cutg->SetVarX("0.5*(hodTRaw[0][31]+hodTRaw[1][31])");
    cutg->SetVarY("hodBarQCal[31]");
    cutg->SetTitle("Graph");

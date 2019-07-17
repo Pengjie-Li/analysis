@@ -771,3 +771,18 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/cutBar32Be14.C (67%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7efa353] v1.0
+ 13 files changed, 205 insertions(+), 1 deletion(-)
+ create mode 100644 merger/rootfiles/Bar31Central
+ create mode 100644 merger/rootfiles/Bar31Right
+ create mode 100644 merger/rootfiles/cutBar30Bottom.C
+ create mode 100644 merger/rootfiles/cutBar30Central.C
+ create mode 100644 merger/rootfiles/cutBar30Left.C
+ create mode 100644 merger/rootfiles/cutBar30Right.C
+ create mode 100644 merger/rootfiles/cutBar30Top.C
+ create mode 100644 merger/rootfiles/cutBar31Bottom.C
+ create mode 100644 merger/rootfiles/cutBar31Central.C
+ create mode 100644 merger/rootfiles/cutBar31Left.C
+ create mode 100644 merger/rootfiles/cutBar31Top.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

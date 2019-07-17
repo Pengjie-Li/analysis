@@ -36,13 +36,13 @@ class PPScattering{
 			defineProtonGate();
 			defineHodGate();
 			defineBeamGate();
-			gate[0] = "Trig_BxESPRI";
-			gate[1] = defaultGate + protonGate;
-			gate[2] = defaultGate + targetArea;
+			gate[0] = defaultGate;
+			gate[1] = defaultGate +"&&"+ protonGate;
+			gate[2] = defaultGate +"&&"+ targetArea;
 			gate[3] = protonGate +"&&"+ gate[2];
-			gate[4] = defaultGate + beamGate;
+			gate[4] = defaultGate +"&&"+ beamGate;
 			gate[5] = beamGate +"&&"+ gate[3];
-			gate[6] = defaultGate + hodGate;
+			gate[6] = defaultGate+"&&" + hodGate;
 			gate[7] = gate[5] +"&&"+ hodGate;
 			printGate();
 
@@ -53,7 +53,8 @@ class PPScattering{
 			}
 		}
 		void defineDefaultGate(){
-			defaultGate = "Trig_BxESPRI&&";
+			defaultGate = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0";
+			//defaultGate = "Trig_BxESPRI";
 			//defaultGate = "";
 		}
 		void defineProtonGate(){
@@ -91,8 +92,8 @@ class PPScattering{
 			TCanvas *c = new TCanvas("ppET","ppET",1500,900);
 			c->Divide(4,2);
 
-			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
-			TString drawVar = "2*naiQ[0]:protonTheta>>";
+			TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
+			//TString drawVar = "2*naiQ[0]:protonTheta>>";
 			TString drawRange = "(200,40,80,200,0,200)";
 			for (int i = 0; i < 8; ++i) {
 				c->cd(i+1);	
@@ -188,6 +189,19 @@ class PPBe14:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutBar21Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBar20Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBar19Be14.C");
+
+			gROOT->ProcessLine(".x rootfiles/cutBar31Central.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar31Bottom.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar31Top.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar31Left.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar31Right.C");
+
+			gROOT->ProcessLine(".x rootfiles/cutBar30Central.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar30Bottom.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar30Top.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar30Left.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar30Right.C");
+
 		}
 
 		void assignOutputName(){
@@ -198,7 +212,9 @@ class PPBe14:public PPScattering {
 			//hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14||Bar28Be14||Bar27Be14)";
 			//hodGate = "(Bar29Be14||Bar28Be14||Bar27Be14)";
-			hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14)";
+			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14)";
+			//hodGate = "(Bar30Central||Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Central||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
+			hodGate = "(Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
@@ -208,12 +224,13 @@ class PPBe14:public PPScattering {
 void ppBe(){
 
 	//PPBe10 *ppBe = new PPBe10();
+	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
-	//PPBe12 *ppBe = new PPBe12();
-	//ppBe->loadTChain(334,365);
+	PPBe12 *ppBe = new PPBe12();
+	ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);
-	PPBe14 *ppBe = new PPBe14();
-	ppBe->loadTChain(436,437);
+	//PPBe14 *ppBe = new PPBe14();
+	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
