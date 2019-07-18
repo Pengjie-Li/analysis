@@ -31,19 +31,29 @@ class PPScattering{
 
 		}
 		void defineGate(){
-			defineDefaultGate();
 			defineTargetArea();	
 			defineProtonGate();
 			defineHodGate();
 			defineBeamGate();
+			defineDefaultGate();
 			gate[0] = defaultGate;
-			gate[1] = defaultGate +"&&"+ protonGate;
-			gate[2] = defaultGate +"&&"+ targetArea;
-			gate[3] = protonGate +"&&"+ gate[2];
-			gate[4] = defaultGate +"&&"+ beamGate;
-			gate[5] = beamGate +"&&"+ gate[3];
-			gate[6] = defaultGate+"&&" + hodGate;
-			gate[7] = gate[5] +"&&"+ hodGate;
+
+			gate[1] = defaultGate + "&&Bar32Be14"; 
+			gate[2] = defaultGate + "&&Bar31Be14"; 
+			gate[3] = defaultGate + "&&Bar30Be14"; 
+			gate[4] = defaultGate + "&&Bar29Be14"; 
+			gate[5] = defaultGate + "&&Bar28Be14"; 
+			gate[6] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14||Bar31Be14||Bar32Be14)"; 
+			gate[7] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14)"; 
+
+
+		//	gate[1] = defaultGate +"&&"+ protonGate;
+		//	gate[2] = defaultGate +"&&"+ targetArea;
+		//	gate[3] = protonGate +"&&"+ gate[2];
+		//	gate[4] = defaultGate +"&&"+ beamGate;
+		//	gate[5] = beamGate +"&&"+ gate[3];
+		//	gate[6] = defaultGate+"&&" + hodGate;
+		//	gate[7] = gate[5] +"&&"+ hodGate;
 			printGate();
 
 		}
@@ -53,12 +63,21 @@ class PPScattering{
 			}
 		}
 		void defineDefaultGate(){
-			defaultGate = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0";
+			//defaultGate = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";
+			TString trigger = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";
+			defaultGate = trigger + "&&" + protonGate + "&&" + targetArea + "&&" + beamGate;
+		//	gate[1] = defaultGate +"&&"+ protonGate;
+		//	gate[2] = defaultGate +"&&"+ targetArea;
+		//	gate[3] = protonGate +"&&"+ gate[2];
+		//	gate[4] = defaultGate +"&&"+ beamGate;
+		//	gate[5] = beamGate +"&&"+ gate[3];
+	
 			//defaultGate = "Trig_BxESPRI";
 			//defaultGate = "";
 		}
 		void defineProtonGate(){
 			protonGate = "Proton";
+			//protonGate = "espriNaiEnergy>5&&espriPlasDeltaE>1";
 		}
 		void defineHodGate(){};
 		void defineBeamGate(){};
@@ -92,9 +111,13 @@ class PPScattering{
 			TCanvas *c = new TCanvas("ppET","ppET",1500,900);
 			c->Divide(4,2);
 
-			TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
-			//TString drawVar = "2*naiQ[0]:protonTheta>>";
-			TString drawRange = "(200,40,80,200,0,200)";
+			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
+			//TString drawVar = "2*naiQ[1]:protonTheta>>";
+			TString drawVar = "espriNaiEnergy:protonTheta>>";
+			TString drawRange = "(200,40,80,200,0,100)";
+			//TString drawVar = "plasQ[1]:naiQ[1]>>";
+			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
+			//TString drawRange = "(200,0,150,200,0,40)";
 			for (int i = 0; i < 8; ++i) {
 				c->cd(i+1);	
 				TString draw = drawVar + hName[i] + drawRange;
@@ -211,10 +234,12 @@ class PPBe14:public PPScattering {
 		void defineHodGate(){
 			//hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14||Bar28Be14||Bar27Be14)";
-			//hodGate = "(Bar29Be14||Bar28Be14||Bar27Be14)";
+			//hodGate = "(Bar30Be14)";
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14)";
+			hodGate = "(Bar31Be14||Bar30Be14||Bar29Be14)";
+			//hodGate = "(Bar29Be14)";
 			//hodGate = "(Bar30Central||Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Central||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
-			hodGate = "(Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
+			//hodGate = "(Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
@@ -226,12 +251,12 @@ void ppBe(){
 	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
-	PPBe12 *ppBe = new PPBe12();
-	ppBe->loadTChain(334,365);
+	//PPBe12 *ppBe = new PPBe12();
+	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);
-	//PPBe14 *ppBe = new PPBe14();
+	PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	//ppBe->loadTChain(366,456);
+	ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineHodGate();
