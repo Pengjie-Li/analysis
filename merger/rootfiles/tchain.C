@@ -15,7 +15,7 @@
 		tree->Add(Form("run0%d_analysed.root",i));
 	}
 
-	TString trigger = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0";
+	TString trigger = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";
 	TString drawETheta = "2*naiQ[0]:protonTheta>>(500,40,80,500,0,140)";
 	TString drawEspriPid = "plasQ[0]:2*naiQ[0]>>(100,0,140,100,0,40)";
 	gROOT->ProcessLine(".x cutBeamPid.C");

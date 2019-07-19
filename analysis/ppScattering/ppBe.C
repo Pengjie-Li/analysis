@@ -38,22 +38,22 @@ class PPScattering{
 			defineDefaultGate();
 			gate[0] = defaultGate;
 
-			gate[1] = defaultGate + "&&Bar32Be14"; 
-			gate[2] = defaultGate + "&&Bar31Be14"; 
-			gate[3] = defaultGate + "&&Bar30Be14"; 
-			gate[4] = defaultGate + "&&Bar29Be14"; 
-			gate[5] = defaultGate + "&&Bar28Be14"; 
-			gate[6] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14||Bar31Be14||Bar32Be14)"; 
-			gate[7] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14)"; 
+	//		gate[1] = defaultGate + "&&Bar32Be14"; 
+	//		gate[2] = defaultGate + "&&Bar31Be14"; 
+	//		gate[3] = defaultGate + "&&Bar30Be14"; 
+	//		gate[4] = defaultGate + "&&Bar29Be14"; 
+	//		gate[5] = defaultGate + "&&Bar28Be14"; 
+	//		gate[6] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14||Bar31Be14||Bar32Be14)"; 
+	//		gate[7] = defaultGate + "&&(Bar28Be14||Bar29Be14||Bar30Be14)"; 
 
 
-		//	gate[1] = defaultGate +"&&"+ protonGate;
-		//	gate[2] = defaultGate +"&&"+ targetArea;
-		//	gate[3] = protonGate +"&&"+ gate[2];
-		//	gate[4] = defaultGate +"&&"+ beamGate;
-		//	gate[5] = beamGate +"&&"+ gate[3];
-		//	gate[6] = defaultGate+"&&" + hodGate;
-		//	gate[7] = gate[5] +"&&"+ hodGate;
+			gate[1] = defaultGate +"&&"+ protonGate;
+			gate[2] = defaultGate +"&&"+ targetArea;
+			gate[3] = protonGate +"&&"+ gate[2];
+			gate[4] = defaultGate +"&&"+ beamGate;
+			gate[5] = beamGate +"&&"+ gate[3];
+			gate[6] = defaultGate+"&&" + hodGate;
+			gate[7] = gate[5] +"&&"+ hodGate;
 			printGate();
 
 		}
@@ -65,7 +65,8 @@ class PPScattering{
 		void defineDefaultGate(){
 			//defaultGate = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";
 			TString trigger = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";
-			defaultGate = trigger + "&&" + protonGate + "&&" + targetArea + "&&" + beamGate;
+			defaultGate = trigger;
+			//defaultGate = trigger + "&&" + protonGate + "&&" + targetArea + "&&" + beamGate;
 		//	gate[1] = defaultGate +"&&"+ protonGate;
 		//	gate[2] = defaultGate +"&&"+ targetArea;
 		//	gate[3] = protonGate +"&&"+ gate[2];
@@ -225,6 +226,14 @@ class PPBe14:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutBar30Left.C");
 			gROOT->ProcessLine(".x rootfiles/cutBar30Right.C");
 
+
+			gROOT->ProcessLine(".x rootfiles/cutBar17Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar18Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar19Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar20Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar21Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar22Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBar23Be10.C");
 		}
 
 		void assignOutputName(){
@@ -236,10 +245,11 @@ class PPBe14:public PPScattering {
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14||Bar28Be14||Bar27Be14)";
 			//hodGate = "(Bar30Be14)";
 			//hodGate = "(Bar32Be14||Bar31Be14||Bar30Be14||Bar29Be14)";
-			hodGate = "(Bar31Be14||Bar30Be14||Bar29Be14)";
+			//hodGate = "(Bar31Be14||Bar30Be14||Bar29Be14)";
 			//hodGate = "(Bar29Be14)";
 			//hodGate = "(Bar30Central||Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Central||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
 			//hodGate = "(Bar30Top||Bar30Bottom||Bar30Left||Bar30Right||Bar31Top||Bar31Bottom||Bar31Left||Bar31Right)";
+			hodGate = "(Bar17Be10||Bar18Be10||Bar19Be10||Bar20Be10||Bar21Be10||Bar22Be10||Bar23Be10)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
