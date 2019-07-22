@@ -1,9 +1,9 @@
 {
-        double targetx=-2.13;
-        //double targety=-1.10;
+        double targetx=-1.8;
+        double targety=-1.10;
         //double targety=-1.50;
-        double targety=-1.60;
-	double selectRadius = 13;
+        //double targety=-1.60;
+	double selectRadius = 16;
         TEllipse *Si1 = new TEllipse(targetx,targety,selectRadius,selectRadius);
         Si1->SetLineStyle(1);
         Si1->SetLineColor(2);
@@ -14,7 +14,7 @@
 
         Double_t targetRadius=15;
         TEllipse *Si2 = new TEllipse(targetx,targety,targetRadius,targetRadius);
-        Si2->SetLineColor(1);
+        Si2->SetLineColor(2);
         Si2->SetLineWidth(2);
         Si2->SetFillStyle(0);
         Si2->SetLineStyle(2);

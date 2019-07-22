@@ -142,11 +142,18 @@ class PPBe10:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe10.C");
 
-			gROOT->ProcessLine(".x rootfiles/cutBar23Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar22Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar21Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar20Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar19Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar23Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar22Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar21Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar20Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar19Be10.C");
+
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar23Be9.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar22Be9.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar21Be9.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar20Be9.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar19Be9.C");
+
 		}
 
 		void assignOutputName(){
@@ -154,7 +161,8 @@ class PPBe10:public PPScattering {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			hodGate = "(Bar23Be10||Bar22Be10||Bar21Be10||Bar20Be10||Bar19Be10)";
+			//hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+			hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe10";
@@ -258,15 +266,15 @@ class PPBe14:public PPScattering {
 
 void ppBe(){
 
-	//PPBe10 *ppBe = new PPBe10();
+	PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
-	//ppBe->loadTChain(298,330);
+	ppBe->loadTChain(298,330);
 	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);
-	PPBe14 *ppBe = new PPBe14();
+	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	ppBe->loadTChain(366,456);
+	//ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineHodGate();
