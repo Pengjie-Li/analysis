@@ -832,3 +832,33 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a04c77d] v1.0
+ 31 files changed, 7489 insertions(+), 18 deletions(-)
+ create mode 100644 merger/rootfiles/Be10BarBe9
+ create mode 100644 merger/rootfiles/cutBe10Bar14Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar19Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar19Be9.C
+ create mode 100644 merger/rootfiles/cutBe10Bar20Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar20Be9.C
+ create mode 100644 merger/rootfiles/cutBe10Bar21Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar21Be9.C
+ create mode 100644 merger/rootfiles/cutBe10Bar22Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar22Be9.C
+ create mode 100644 merger/rootfiles/cutBe10Bar23Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar23Be9.C
+ create mode 100644 merger/rootfiles/cutBe12Bar19Be12.C
+ create mode 100644 merger/rootfiles/cutBe14Bar18Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar18Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar19Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar19Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar20Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar20Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar21Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar21Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar22Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar22Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar23Be10.C
+ create mode 100644 merger/rootfiles/cutBe14Bar23Be14.C
+ create mode 100644 merger/rootfiles/cutTrigger.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

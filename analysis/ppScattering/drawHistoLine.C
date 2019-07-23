@@ -3,9 +3,12 @@ void drawHistoLine(){
 	TFile *fCurve = new TFile("../../../plot/esBe10Excitation/protonCurve.root","READ");
 	TGraph *gs = (TGraph *)gDirectory->Get("gs");
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
+	TGraph *sn = (TGraph *)gDirectory->Get("sn");
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
 
-	TFile *g =new TFile("v2_ppBe10Histo.root","read");
+	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be9";
+	TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
+	TFile *g =new TFile(fileName,"read");
 	TCanvas *cPad = new TCanvas("ppBe10L","ppBe10L",1400,900);
 	cPad->Divide(4,2);
 	TH2F *h[8];
@@ -26,6 +29,7 @@ void drawHistoLine(){
 		h[i]->Draw("colz");
 		gs->Draw("l");
 		fex->Draw("l");
+		sn->Draw("l");
 		mex->Draw("l");
 	}
 }
