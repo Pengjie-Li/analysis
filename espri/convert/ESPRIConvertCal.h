@@ -168,6 +168,7 @@ class ESPRINaiCal{
 		double naiQCal[4][7];
 		double naiQPed[4][7];
 		double naiBarQCal[2][7];
+		//double naiBarQPed[2][7];
 		double naiQ[2];
 		int    naiQId[2];
 	public:
