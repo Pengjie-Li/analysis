@@ -114,7 +114,7 @@ class PPScattering{
 
 			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
 			//TString drawVar = "2*naiQ[1]:protonTheta>>";
-			TString drawVar = "(espriPlasDeltaE+2*espriNaiEnergy):protonTheta>>";
+			TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
 			//TString drawVar = "espriNaiEnergy:protonTheta>>";
 			TString drawRange = "(200,40,80,200,0,200)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
@@ -162,8 +162,8 @@ class PPBe10:public PPScattering {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			//hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
-			hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
+			hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+			//hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe10";
@@ -268,8 +268,8 @@ class PPBe14:public PPScattering {
 void ppBe(){
 
 	PPBe10 *ppBe = new PPBe10();
-	//ppBe->loadTChain(310,311);
-	ppBe->loadTChain(298,330);
+	ppBe->loadTChain(310,311);
+	//ppBe->loadTChain(298,330);
 	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);

@@ -1,0 +1,3 @@
+{
+	tree->Scan("SBT2TRaw:SBT2TCal:SBT2QRaw:SBT2QCal:SBT2T:SBT2Q");
+}

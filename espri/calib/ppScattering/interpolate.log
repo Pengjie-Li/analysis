@@ -1,0 +1,64 @@
+[15:47:06] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+65.042622 70.9215
+Please input second Pair:
+64.947974 71.4825               
+Data:(65.0426,70.9215) (64.948,71.4825)
+Desired X value:
+65
+Coresponding Y= 71.1741
+[15:47:52] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+64.001671 77.1936
+Please input second Pair:
+63.907067 77.7747
+Data:(64.0017,77.1936) (63.9071,77.7747)
+Desired X value:
+64
+Coresponding Y= 77.2039
+[15:49:20] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+63.055946 83.0847 
+Please input second Pair:
+62.961418 83.6835
+Data:(63.0559,83.0847) (62.9614,83.6835)
+Desired X value:
+63
+Coresponding Y= 83.4391
+[15:50:11] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+66.083763 64.8746
+Please input second Pair:
+65.989121 65.4148
+Data:(66.0838,64.8746) (65.9891,65.4148)
+Desired X value:
+66
+Coresponding Y= 65.3527
+[15:51:04] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+67.029919 59.5791 
+Please input second Pair:
+66.935333 60.0998
+Data:(67.0299,59.5791) (66.9353,60.0998)
+Desired X value:
+67
+Coresponding Y= 59.7438
+[15:52:00] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+68.069673 53.9821 
+Please input second Pair:
+67.975214 54.4809
+Data:(68.0697,53.9821) (67.9752,54.4809)
+Desired X value:
+68
+Coresponding Y= 54.35
+[15:52:51] lipj@localhost ppScattering$ ./interpolate 
+Please input first Pair:
+69.013302 49.1068
+Please input second Pair:
+68.919029 49.5851
+Data:(69.0133,49.1068) (68.919,49.5851)
+Desired X value:
+69
+Coresponding Y= 49.1743
+

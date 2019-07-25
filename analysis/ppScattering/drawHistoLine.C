@@ -7,7 +7,8 @@ void drawHistoLine(){
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
 
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be9";
-	TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
+	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
+	TString fileName = "ppBe10Histo.root";
 	TFile *g =new TFile(fileName,"read");
 	TCanvas *cPad = new TCanvas("ppBe10L","ppBe10L",1400,900);
 	cPad->Divide(4,2);
