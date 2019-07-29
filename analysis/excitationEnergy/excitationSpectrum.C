@@ -8,6 +8,9 @@ class ReadFile{
 void excitationSpectrum(){
         if (!gROOT->GetClass("TGenPhaseSpace")) gSystem->Load("libPhysics");
 
+	Double_t AMU = 931.49410242;
+        Double_t Mass_p=1.007276*AMU; //Mev
+	cout<<"Proton Mass Energy = "<<Mass_p<<endl;
        // Double_t Mass_p=938.28e-3; //Mev
        // Double_t Mass_Beam=Mass_p; //Mev
        // double E_beam=165.e-3+Mass_Beam;;// GeV
