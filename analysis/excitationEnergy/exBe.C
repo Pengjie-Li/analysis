@@ -1,11 +1,11 @@
 #include <TFile.h>
-class PPScattering{
+class EXSpectrum{
 	private:
 
 		TChain *tree;
 		TString gate[8];
 		TString hName[8];
-		TH2F *h[8];
+		TH1F *h[8];
 
 	protected:
 		TString targetArea ;
@@ -18,7 +18,7 @@ class PPScattering{
 		TString outputName;
 
 	public:
-		PPScattering(){
+		EXSpectrum(){
 
 			tree = new TChain("tree");
 			defineName();
@@ -28,6 +28,25 @@ class PPScattering{
 
 				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
+
+		}
+		void defineAlias(){
+			tree->SetAlias("AMU","931.49410242*1");
+			tree->SetAlias("MassBe10","10.0113*1");
+			tree->SetAlias("MassH","1.007276*1");
+
+			tree->SetAlias("beamMass","MassBe10*AMU");
+			tree->SetAlias("protonMass","MassH*AMU");
+			tree->SetAlias("beamEk","Ek713*MassBe10");
+
+			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
+			tree->SetAlias("protonEk","espriPlasDeltaE+espriNaiEnergy");
+			tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
+
+			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(protonTheta))");
+			tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
+			tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
+			tree->SetAlias("excitationEnergy","residueMass-beamMass");
 
 		}
 		void defineGate(){
@@ -114,28 +133,39 @@ class PPScattering{
 
 			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
 			//TString drawVar = "2*naiQ[1]:protonTheta>>";
-			TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
+			TString drawVar = "excitationEnergy>>";
 			//TString drawVar = "espriNaiEnergy:protonTheta>>";
-			TString drawRange = "(200,40,80,200,0,200)";
+			TString drawRange = "(1000,0,200)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
 			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
 			//TString drawRange = "(200,0,150,200,0,40)";
 			for (int i = 0; i < 8; ++i) {
 				c->cd(i+1);	
 				TString draw = drawVar + hName[i] + drawRange;
+				cout<<draw<<endl;
 				tree->Draw(draw,gate[i],"colz");
-				h[i] = (TH2F*)gDirectory->Get(hName[i]);
+				//gPad->Modified();
+				//gPad->Update();
+				h[i] = (TH1F*)gDirectory->Get(hName[i]);
 				h[i]->Write();
 			}
 
 			c->Write();
+			delete c;
+		}
+		void scan(){
+			//TString scanVar = "excitationEnergy:residueMass:beamMass";
+			TString scanVar = "excitationEnergy:residueMass:residueEnergy:residueMomentum";
+			cout<<gate[7]<<endl;
+			tree->Scan(scanVar,gate[7]);
+
 		}
 
 };
-class PPBe10:public PPScattering {
+class EXBe10:public EXSpectrum {
 	private:
 	public:
-		PPBe10(){
+		EXBe10(){
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe10.C");
@@ -158,21 +188,21 @@ class PPBe10:public PPScattering {
 		}
 
 		void assignOutputName(){
-			outputName = "ppBe10Histo.root";
+			outputName = "exBe10Histo.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			//hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
-			hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
+			hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+			//hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe10";
 		}
 };
-class PPBe12:public PPScattering {
+class EXBe12:public EXSpectrum {
 	private:
 	public:
-		PPBe12(){
+		EXBe12(){
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe12.C");
@@ -188,7 +218,7 @@ class PPBe12:public PPScattering {
 		}
 
 		void assignOutputName(){
-			outputName = "ppBe12Histo.root";
+			outputName = "exBe12Histo.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
@@ -199,10 +229,10 @@ class PPBe12:public PPScattering {
 		}
 };
 
-class PPBe14:public PPScattering {
+class EXBe14:public EXSpectrum {
 	private:
 	public:
-		PPBe14(){
+		EXBe14(){
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");
@@ -246,7 +276,7 @@ class PPBe14:public PPScattering {
 		}
 
 		void assignOutputName(){
-			outputName = "ppBe14Histo.root";
+			outputName = "exBe14Histo.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
@@ -265,25 +295,26 @@ class PPBe14:public PPScattering {
 		}
 };
 
-void ppBe(){
+void exBe(){
 
-	PPBe10 *ppBe = new PPBe10();
-	//ppBe->loadTChain(310,311);
-	ppBe->loadTChain(298,330);
-	//PPBe12 *ppBe = new PPBe12();
-	//ppBe->loadTChain(334,365);
-	//ppBe->loadTChain(360,361);
-	//PPBe14 *ppBe = new PPBe14();
-	//ppBe->loadTChain(436,437);
-	//ppBe->loadTChain(366,456);
+	EXBe10 *exBe = new EXBe10();
+	exBe->loadTChain(310,311);
+	//exBe->loadTChain(298,330);
+	//EXBe12 *exBe = new EXBe12();
+	//exBe->loadTChain(334,365);
+	//exBe->loadTChain(360,361);
+	//EXBe14 *exBe = new EXBe14();
+	//exBe->loadTChain(436,437);
+	//exBe->loadTChain(366,456);
 
-	//ppBe->loadTChain();
-	ppBe->defineHodGate();
-	ppBe->defineBeamGate();
-	ppBe->defineGate();
-	ppBe->loadCut();
-	ppBe->assignOutputName();
-	ppBe->createOutputFile();
-	ppBe->draw();
+	exBe->defineAlias();
+	exBe->defineHodGate();
+	exBe->defineBeamGate();
+	exBe->defineGate();
+	exBe->loadCut();
+	exBe->assignOutputName();
+	exBe->createOutputFile();
+	//exBe->draw();
+	exBe->scan();
 
 }
