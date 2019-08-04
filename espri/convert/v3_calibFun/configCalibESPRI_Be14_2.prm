@@ -1,0 +1,3 @@
+naiPedestal:./txt/naiPedestal_Be14.txt
+naiBarGain:./txt/naiBarGain_Be14_2.txt
+plasCalib:./txt/plasCalib_Be14.txt

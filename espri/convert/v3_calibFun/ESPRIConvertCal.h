@@ -81,9 +81,6 @@ class ESPRINaiCalPara{
 	private:
 		double naiPedestal[4][7];
 		double naiBarGain[2][7];
-		double naiPol3P0[2][7];
-		double naiPol3P1[2][7];
-		double naiPol3P2[2][7];
 	public:
 		ESPRINaiCalPara(){
 			init();
@@ -93,28 +90,6 @@ class ESPRINaiCalPara{
 		void load(){
 			loadPedestal();
 			loadGain();
-			loadPol3Gain();
-		}
-		void loadPol3Gain(){
-			ifstream in;
-			TString inputName = calib->GetValue("naiPol3Calib","naiPol3Calib.txt");
-			cout<<calibFileName<<endl;
-			cout<<inputName<<endl;
-			in.open(inputName);
-			int side;
-			int barID;
-			double p0;
-			double p1;
-			double p2;
-			while(1){
-				in >>side>>barID>>p0>>p1>>p2;
-				if(!in.good()) break;
-				//cout<<side<<":"<<barID<<":"<<ped<<endl;
-				naiPol3P0[side][barID] = p0;
-				naiPol3P1[side][barID] = p1;
-				naiPol3P2[side][barID] = p2;
-			}
-
 		}
 		void loadGain(){
 			ifstream in;
@@ -171,12 +146,7 @@ class ESPRINaiCalPara{
 			for(int i =0;i<4;i++){
 				for(int j = 0;j<7;j++){
 					naiPedestal[i][j] = 0;
-					if(i<2){
-						naiBarGain[i][j] = 1;
-						naiPol3P0[i][j] = 1;
-						naiPol3P1[i][j] = 0;
-						naiPol3P2[i][j] = 0;
-					}
+					if(i<2) naiBarGain[i][j] = 1;
 				}
 			}
 		}
@@ -186,15 +156,9 @@ class ESPRINaiCalPara{
 		double getBarGain(int i, int j){
 			return naiBarGain[i][j];
 		}
-		double getPol3P0(int i, int j){
-			return naiPol3P0[i][j];
-		}
-		double getPol3P1(int i, int j){
-			return naiPol3P1[i][j];
-		}
-		double getPol3P2(int i, int j){
-			return naiPol3P2[i][j];
-		}
+
+
+
 };
 class ESPRINaiCal{
 	private:
@@ -277,37 +241,20 @@ class ESPRINaiCal{
 		double getBarGain(int i,int j){
 			return naiPara->getBarGain(i,j);
 		}
-		double linearCalibNaiBar(int i,int j,double ped){
-			return getBarGain(i,j)*ped;
-		}
-		double getPol3P0(int i,int j){
-			return naiPara->getPol3P0(i,j);
-		}
-		double getPol3P1(int i,int j){
-			return naiPara->getPol3P1(i,j);
-		}
-		double getPol3P2(int i,int j){
-			return naiPara->getPol3P2(i,j);
-		}
-		double pol3CalibNaiBar(int i,int j,double ped){
-
-			//cout<<i<<":"<<j<<":"<<ped<<":"<<getPol3P0(i,j)<<":"<<getPol3P1(i,j)<<":"<<getPol3P2(i,j)<<":"<<endl;
-			return getPol3P0(i,j)*ped + getPol3P1(i,j)*ped*ped+getPol3P2(i,j)*ped*ped*ped;
-		}
-
 		void setNaiBarQ(){
 			for (int i = 0; i < 2; ++ i) {
 				for (int j = 0; j < 7; ++ j) {
 
 					//if(naiQCal[i*2][j]>0&&naiQCal[i*2+1][j]>0)  naiBarQCal[i][j] = sqrt(naiQCal[i*2][j]*naiQCal[i*2+1][j]);
 					//if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = getBarGain(i,j)*sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]);
-					//if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = linearCalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
-					if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = pol3CalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
+					if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = linearCalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
 
 				}
 			}
 		}
-
+		double linearCalibNaiBar(int i,int j,double ped){
+			return getBarGain(i,j)*ped;
+		}
 		void printQ(){
 			cout<<"Nai Cal[4][7]:"<<endl;
 			for(int i=0;i<4;i++)
