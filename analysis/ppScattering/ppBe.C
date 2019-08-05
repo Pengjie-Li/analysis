@@ -26,7 +26,7 @@ class PPScattering{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
 			}
 
 		}
@@ -162,8 +162,8 @@ class PPBe10:public PPScattering {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			//hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
-			hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
+			hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+			//hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe10";

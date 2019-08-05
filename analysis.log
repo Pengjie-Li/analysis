@@ -1128,3 +1128,29 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ea0d044] v1.0
+ 25 files changed, 4120 insertions(+), 5 deletions(-)
+ create mode 100644 espri/calib/ppScattering/plot/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/plot/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/plot/naiPol3Calib.txt
+ rewrite espri/convert/ConvertESPRI (88%)
+ create mode 120000 espri/convert/txt/naiPol3Calib.txt
+ create mode 100755 espri/convert/v3_calibFun/ConvertESPRI
+ create mode 100644 espri/convert/v3_calibFun/ConvertESPRI.C
+ create mode 100644 espri/convert/v3_calibFun/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v3_calibFun/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v3_calibFun/Makefile
+ create mode 100755 espri/convert/v3_calibFun/caltree.C
+ create mode 100644 espri/convert/v3_calibFun/configCalibESPRI.prm
+ create mode 100644 espri/convert/v3_calibFun/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v3_calibFun/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v3_calibFun/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v3_calibFun/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v3_calibFun/configConvertESPRI.prm
+ create mode 100644 espri/convert/v3_calibFun/convert.sh
+ create mode 100755 espri/convert/v3_calibFun/header.h
+ create mode 100644 espri/convert/v3_calibFun/loop.sh
+ create mode 100644 espri/convert/v3_calibFun/looprun.sh
+ create mode 100644 espri/convert/v3_calibFun/v1_ConvertESPRI.C_Sample
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
