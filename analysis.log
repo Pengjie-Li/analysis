@@ -1154,3 +1154,14 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/v3_calibFun/v1_ConvertESPRI.C_Sample
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master fa6fe5d] v1.0
+ 12 files changed, 363 insertions(+), 287 deletions(-)
+ rewrite espri/calib/dEE/drawDEE.C (69%)
+ create mode 120000 espri/calib/dEE/rootfiles
+ rename espri/calib/dEE/{drawDEE.C => v2_backup_drawDEE.C} (100%)
+ create mode 100644 espri/calib/ppScattering/plot/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/plot/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/plot/plasPedAngle.txt
+ create mode 100644 espri/convert/rootfiles/setAlias.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

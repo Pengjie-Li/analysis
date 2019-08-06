@@ -51,8 +51,19 @@ class ReadPed{
 				}
 			}
 
-			plasPed[0][7] = 3298.806;
-			plasPed[1][7] = 2590.814;
+		// v1
+		//	plasPed[0][7] = 3298.806;
+		//	plasPed[1][7] = 2590.814;
+		// v2
+	//		plasPed[0][7] = 3340;
+	//		plasPed[1][7] = 2630;
+		// v3
+			plasPed[0][7] = 3390;
+			plasPed[1][7] = 2650;
+
+
+
+
 		}
 		void print(){
 			for (int i = 0; i < angleNo; ++i) {

@@ -336,10 +336,15 @@ class ESPRIPlasCalPara{
 	private: 
 		double plasPedestal[4];
 		double plasGain[4];
+
+		double plasBirksParA[2];
+		double plasBirksParB[2];
+
 	public:
 		ESPRIPlasCalPara(){
 			init();
 			load();
+			loadBirksPara();
 			print();
 		}
 		double getPedestal(int i){
@@ -364,8 +369,37 @@ class ESPRIPlasCalPara{
 			}
 
 		}
+		double getBirksParA(int i){
+			return plasBirksParA[i];
+		}
+		double getBirksParB(int i){
+			return plasBirksParB[i];
+		}
+		void loadBirksPara(){
+			ifstream in;
+			TString inputName = calib->GetValue("plasBirksCalib","plasBirksCalib.txt");
+			in.open(inputName);
+			int side;
+			double parA;
+			double parB;
+			while(1){
+				in >>side>>parA>>parB;
+				if(!in.good()) break;
+				//cout<<side<<":"<<barID<<":"<<ped<<endl;
+				plasBirksParA[side] = parA;
+				plasBirksParB[side] = parB;
+			}
+
+		}
 		void init(){
+
+			plasBirksParA[0] = NAN;
+			plasBirksParA[1] = NAN;
+			plasBirksParB[0] = NAN;
+			plasBirksParB[1] = NAN;
+
 			for (int i = 0; i < 4; ++i) {
+
 				plasPedestal[i] = 0;
 				plasGain[i] = 1;
 			}
@@ -373,10 +407,13 @@ class ESPRIPlasCalPara{
 		void print(){
 			cout<<"Plas QCal Para:"<<endl;		
 			for (int i = 0; i < 4; ++i) {
-				cout<<i<<":"<<plasPedestal[i]<<plasGain[i]<<endl;
+				cout<<i<<":"<<plasPedestal[i]<<":"<<plasGain[i]<<endl;
 			}
 
-
+			cout<<"Plas Birks Para:"<<endl;		
+			for (int i = 0; i < 2; ++i) {
+				cout<<i<<":"<<plasBirksParA[i]<<":"<<plasBirksParB[i]<<endl;
+			}
 		}
 		
 };
@@ -469,10 +506,10 @@ class ESPRIPlasCal{
 			//printQ();
 		}
 		void setPlasQL(){
-			if(plasQCal[0]>0&&plasQCal[1]>0) plasQ[0] = sqrt(plasQCal[0]*plasQCal[1]);
+			if(plasQPed[0]>0&&plasQPed[1]>0) plasQ[0] = sqrt(plasQPed[0]*plasQPed[1])/(getBirksParA(0)+getBirksParB(0)*sqrt(plasQPed[0]*plasQPed[1]));
 		}
 		void setPlasQR(){
-			if(plasQCal[2]>0&&plasQCal[3]>0) plasQ[1] = sqrt(plasQCal[2]*plasQCal[3]);
+			if(plasQPed[2]>0&&plasQPed[3]>0) plasQ[1] = sqrt(plasQPed[2]*plasQPed[3])/(getBirksParA(1)+getBirksParB(1)*sqrt(plasQPed[2]*plasQPed[3]));
 		}
 		double getQRaw(int i){
 			return plasRaw->getQRaw(i);
@@ -487,6 +524,13 @@ class ESPRIPlasCal{
 		//	return QCal[i];
 			return plasPara->getCalibPar(i);
 		}
+		double getBirksParA(int i){
+			return plasPara->getBirksParA(i);
+		}
+		double getBirksParB(int i){
+			return plasPara->getBirksParB(i);
+		}
+
 		void printQ(){
 			cout<<"Plastic QCal[4]: ";
 			for(int i=0;i<4;i++){

@@ -115,6 +115,10 @@ class PPScattering{
 			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
 			//TString drawVar = "2*naiQ[1]:protonTheta>>";
 			TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
+			tree->SetAlias("plasQLPed","sqrt(plasQPed[0]*plasQPed[1])");
+			tree->SetAlias("plasQRPed","sqrt(plasQPed[2]*plasQPed[3])");
+			//TString drawVar = "(naiQ[1]+plasQRPed/(342.653 -0.0507624*plasQRPed)):protonTheta>>";
+			//TString drawVar = "(naiQ[1]+plasQRPed/(257.172 -0.0467016*plasQRPed)):protonTheta>>";
 			//TString drawVar = "espriNaiEnergy:protonTheta>>";
 			TString drawRange = "(200,40,80,200,0,200)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";

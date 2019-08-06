@@ -5,8 +5,8 @@
 //	tree->Add("run0361_analysed.root");
 //	tree->Add("run0361_analysed.root");
 
-	int runStart = 298;
-	int runStop = 330;
+	int runStart = 300;
+	int runStop = 310;
 
 
 	//int runStart = 350;
