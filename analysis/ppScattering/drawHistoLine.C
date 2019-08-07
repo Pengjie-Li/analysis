@@ -5,6 +5,7 @@ void drawHistoLine(){
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
 	TGraph *sn = (TGraph *)gDirectory->Get("sn");
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
+	//gs->SetLineColor("");
 
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be9";
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
@@ -28,9 +29,9 @@ void drawHistoLine(){
 		cPad->cd(i+1);
 		h[i] =(TH2F *)gDirectory->Get(hName[i]);
 		h[i]->Draw("colz");
-		gs->Draw("l");
+		//gs->Draw("l");
 		fex->Draw("l");
-		sn->Draw("l");
-		mex->Draw("l");
+		//sn->Draw("l");
+		//mex->Draw("l");
 	}
 }

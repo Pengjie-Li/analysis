@@ -43,6 +43,7 @@ class Particle{
 
 
 void particle(){
-	Particle *Be10 = new Particle(10.0113, 150);
+	//Particle *Be10 = new Particle(10.0113, 150);
+	Particle *Be10 = new Particle(10.0113,1498.0119/10.0113);
 	Be10->print();
 }

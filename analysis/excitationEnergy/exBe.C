@@ -1,47 +1,5 @@
 #include <TFile.h>
 
-double AMU = 931.49410242;
-//double speedOfLight = 299792458;
-double speedOfLight = 1;
-class Particle{
-	private:
-		// Energy in MeV
-		int A;
-		int Z;
-		double mass;// in u unit
-		double momtum;
-		double kE;// kinematic Energy
-
-		double totE;// totE = mE + kE;
-		double momE;
-		double massE;
-	public:
-		Particle(){}
-		Particle(m,k){// rest mass in u, kinematic Energy per u
-			mass = m;
-			kE = k*mass;
-			massE = mass*AMU;
-			momE = sqrt(kE*kE+2*kE*massE);
-			totE = massE + kE;
-			momentum = momE/speedOfLight;
-		}
-		~Particle(){}
-		double getMassEnergy(){
-			return massE;
-		}
-		double getMomentumEnergy{
-			return momE;
-		}
-		double getTotalEnergy(){
-			return totE;
-		}
-		void print(){
-			cout<<"mass = "<<mass<<" u "<<" mass Energy = "<<massE<<endl;;
-			cout<<"momentum = "<<momentum<<" MeV/c "<<" Momentum Energy = "<<momE<<endl;;
-			cout<<"kinematic Energy = "<<kE <<" total Energy = "<<totE<<endl;
-		}
-};
-
 class EXSpectrum{
 	private:
 
@@ -69,7 +27,7 @@ class EXSpectrum{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
 			}
 
 		}
@@ -86,7 +44,7 @@ class EXSpectrum{
 			tree->SetAlias("protonEk","espriPlasDeltaE+espriNaiEnergy");
 			tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
 
-			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(protonTheta))");
+			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(protonTheta*TMath::DegToRad()))");
 			tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
 			tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
 			tree->SetAlias("excitationEnergy","residueMass-beamMass");
@@ -178,7 +136,7 @@ class EXSpectrum{
 			//TString drawVar = "2*naiQ[1]:protonTheta>>";
 			TString drawVar = "excitationEnergy>>";
 			//TString drawVar = "espriNaiEnergy:protonTheta>>";
-			TString drawRange = "(1000,0,200)";
+			TString drawRange = "(5000,-20,80)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
 			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
 			//TString drawRange = "(200,0,150,200,0,40)";
@@ -341,8 +299,8 @@ class EXBe14:public EXSpectrum {
 void exBe(){
 
 	EXBe10 *exBe = new EXBe10();
-	exBe->loadTChain(310,311);
-	//exBe->loadTChain(298,330);
+	//exBe->loadTChain(310,311);
+	exBe->loadTChain(298,330);
 	//EXBe12 *exBe = new EXBe12();
 	//exBe->loadTChain(334,365);
 	//exBe->loadTChain(360,361);
@@ -357,7 +315,7 @@ void exBe(){
 	exBe->loadCut();
 	exBe->assignOutputName();
 	exBe->createOutputFile();
-	//exBe->draw();
-	exBe->scan();
+	exBe->draw();
+	//exBe->scan();
 
 }

@@ -1165,3 +1165,20 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/rootfiles/setAlias.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master d7b4e48] v1.0
+ 23 files changed, 263 insertions(+), 43 deletions(-)
+ create mode 100644 analysis/excitationEnergy/2q
+ create mode 100644 analysis/excitationEnergy/particle.C
+ create mode 100644 analysis/ppScattering/v7_ppBe10Histo.root_newCalibration
+ create mode 100644 analysis/ppScattering/v8_ppBe10Histo.root_newCalibration
+ create mode 100644 espri/calib/ppScattering/plot/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/plot/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/plot/plasBirkCalib.txt_v3
+ create mode 100644 espri/convert/.ESPRIConvertCal.h.swp
+ rewrite espri/convert/ConvertESPRI (96%)
+ create mode 120000 espri/convert/txt/plasBirksCalib.txt
+ rewrite merger/rootfiles/cutProtonBe10.C (80%)
+ rename merger/rootfiles/{cutProtonBe10.C => cutProtonBe10.C_newCalib_v2} (100%)
+ create mode 100644 merger/rootfiles/setAlias.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
