@@ -1182,3 +1182,14 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/setAlias.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 49600c9] v1.0
+ 14 files changed, 513 insertions(+), 397 deletions(-)
+ create mode 100644 merger/rootfiles/run0599_analysed.root_1
+ create mode 100644 merger/rootfiles/scanBeam.C
+ create mode 100644 merger/rootfiles/scanProton.C
+ create mode 100644 merger/rootfiles/scanResidue.C
+ rewrite tele/Draw2D/backup.Draw_IMPACT.C (60%)
+ create mode 100644 tele/Draw2D/drawEnergyVsId.C
+ create mode 100644 tele/Draw2D/drawIMPACT.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
