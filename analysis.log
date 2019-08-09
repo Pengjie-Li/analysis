@@ -1193,3 +1193,24 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/Draw2D/drawIMPACT.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7e22376] v1.0
+ 20 files changed, 1309 insertions(+), 282 deletions(-)
+ create mode 100644 csi/.caltree.C.swp
+ create mode 100644 espri/convert/.ConvertESPRI.C.swp
+ create mode 100644 tele/convert/.TELEConvertCal.h.swp
+ rewrite tele/convert/ConvertTele (98%)
+ create mode 100644 tele/convert/CsIEnergyCal.h
+ create mode 100644 tele/convert/DSSDEnergyCal.h
+ create mode 100644 tele/convert/TELEConvertCal.h
+ create mode 100644 tele/convert/TELEReadRaw.h
+ rename tele/convert/{ => v1_beforeRefactor}/ConvertTele (100%)
+ create mode 100644 tele/convert/v1_beforeRefactor/ConvertTele.C
+ create mode 100644 tele/convert/v1_beforeRefactor/DSSDEnergy.h
+ create mode 100755 tele/convert/v1_beforeRefactor/Makefile
+ create mode 100644 tele/convert/v1_beforeRefactor/configConvertTELE.prm
+ create mode 100644 tele/convert/v1_beforeRefactor/convert.sh
+ create mode 100755 tele/convert/v1_beforeRefactor/header.h
+ create mode 100644 tele/convert/v1_beforeRefactor/loop.sh
+ create mode 100644 tele/convert/v1_beforeRefactor/looprun.sh
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -37,6 +37,13 @@ class CsIEnergyCal{
 		double calibrate(int id,double raw){
 				return getCsISlope(id)*raw+getCsIOffset(id);
 		}
+
+		void setBranch(TTree *tree){
+
+			tree->Branch("csiEnergyCal",csiEnergyCal,"csiEnergyCal[7]/D");
+		}
+
+
 		double getCsISlope(int id){
 			return csiEnergyCalParameter->getCsISlope(id);
 		}
