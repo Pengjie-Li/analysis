@@ -80,25 +80,6 @@ class TELEConvertCal{
 			csiTime->calibrate(rawData);
 
 		}
-		void calibration(){
-			for(int side = 0;side<4;side++)
-				for(int id=0;id<32;id++){
-
-					dssdEnergyCal[side][id] = dssdEnergy->calibrate(side,id,getSiliconRawADC(side,id));
-					//					dssdTime->calibrate(teleReadRaw);
-				}
-
-			for(int k = 0;k<7;k++){
-				csiEnergyCal[k] = csiEnergy->calibrate(k,getCsIRawADC(k));
-			}
-			//csiTime->calibrate(teleReadRaw);
-		}
-		double getSiliconRawADC(int side, int id){
-			return teleReadRaw->getDssdQRaw(side,id);
-		}
-		double getCsIRawADC(int id){
-			return teleReadRaw->getCsIQRaw(id);
-		}
 
 		~TELEConvertCal(){
 			delete dssdEnergy;

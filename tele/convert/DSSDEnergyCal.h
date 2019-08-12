@@ -1,5 +1,4 @@
-
-class DSSDEnergyCalParameter{
+class DSSDEnergyCalPara{
 	private:
 		double kScmSlope[4][32];
 		double bScmOffset[4][32];
@@ -11,22 +10,22 @@ class DSSDEnergyCalParameter{
 
 	public:
 
-		DSSDEnergyCalParameter(){
-			loadSiliconCalibrationParameters(kScmSlope,bScmOffset,ekScmSlope,ebScmOffset);
+		DSSDEnergyCalPara(){
+			loadSiliconCalibrationParas(kScmSlope,bScmOffset,ekScmSlope,ebScmOffset);
 			kCalSlope[0] = 7.17797775;
 			bCalOffset[0] = -1524.240925;
 
 			kCalSlope[1] = 7.685283145;
 			bCalOffset[1] = -1646.273395;
 		}
-		void loadSiliconCalibrationParameters(double k[4][32],double b[4][32],double ek[4][32],double eb[4][32]){
+		void loadSiliconCalibrationParas(double k[4][32],double b[4][32],double ek[4][32],double eb[4][32]){
 			ifstream in;
-			TString par_name;
+			TString inputName;
 
-			par_name="/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/scm/Remove/DSSD_Fit_Whole.txt";
-
-			in.open(par_name);
-			//      if(!in.open(par_name))
+			inputName = env->GetValue("dssdScmPara","DSSD_Fit_Whole.txt");
+			cout<<inputName<<endl;
+			in.open(inputName);
+			//      if(!in.open(inputName))
 			//      {
 			//              cout<<"Error: parameter file didn't open"<<endl;
 			//              cout<<par_name<<endl;
@@ -42,7 +41,6 @@ class DSSDEnergyCalParameter{
 				in >>side>>strip>>k0>>b0>>ek0>>eb0;
 				//cout<<side<< "  "<<strip<<endl;
 				if (!in.good()) break;
-
 
 				k[side][strip]=k0;
 				ek[side][strip]=ek0;
@@ -72,7 +70,7 @@ class DSSDEnergyCalParameter{
 class DSSDEnergyCal{
 	private:
 
-		DSSDEnergyCalParameter *dssdCalibrationParameter;
+		DSSDEnergyCalPara *dssdCalibrationPara;
 		double dssdEnergyCal[4][32];	
 		void init(){
 			for(int i = 0; i<4;i++){
@@ -81,17 +79,6 @@ class DSSDEnergyCal{
 				}
 			}
 		}
-
-	public:
-		DSSDEnergyCal(){
-			dssdCalibrationParameter = new DSSDEnergyCalParameter();
-		}
-
-		void setBranch(TTree *tree){
-			tree->Branch("dssdEnergyCal",dssdEnergyCal,"dssdEnergyCal[4][32]/D");
-		}
-
-
 		double calibrate(int side,int id,double raw){
 			// raw->SCM->cal
 			//side = 0 LF, 1 LB, 2 RF, 3 RB
@@ -108,18 +95,40 @@ class DSSDEnergyCal{
 
 		}
 		double getSiliconScmSlope(int side, int id){
-			return dssdCalibrationParameter->getSiliconScmSlope(side,id);
+			return dssdCalibrationPara->getSiliconScmSlope(side,id);
 		}
 		double getSiliconScmOffset(int side, int id){
-			return dssdCalibrationParameter->getSiliconScmOffset(side,id);
+			return dssdCalibrationPara->getSiliconScmOffset(side,id);
 		}
 
 		double getSiliconCalSlope(int side){
-			return dssdCalibrationParameter->getSiliconCalSlope(side);
+			return dssdCalibrationPara->getSiliconCalSlope(side);
 		}
 
 		double getSiliconCalOffset(int side){
-			return dssdCalibrationParameter->getSiliconCalOffset(side);
+			return dssdCalibrationPara->getSiliconCalOffset(side);
+		}
+
+
+
+
+	public:
+		DSSDEnergyCal(){
+			dssdCalibrationPara = new DSSDEnergyCalPara();
+		}
+
+		~DSSDEnergyCal(){
+			delete dssdCalibrationPara;
+		}
+
+		void setBranch(TTree *tree){
+			tree->Branch("dssdEnergyCal",dssdEnergyCal,"dssdEnergyCal[4][32]/D");
+		}
+		void calibrate(TELEReadRaw *rawData){
+			for(int side = 0;side<4;side++)
+				for(int id=0;id<32;id++){
+					dssdEnergyCal[side][id] = calibrate(side,id,rawData->getDssdQRaw(side,id));
+				}
 		}
 };
 

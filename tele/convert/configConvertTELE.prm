@@ -8,3 +8,5 @@ inputSuffix:.ridf.gz
 outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_TELE.root
+
+dssdScmPara:./txt/DSSD_Fit_Whole.txt

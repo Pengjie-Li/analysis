@@ -1,7 +1,7 @@
 #include "header.h"
+TEnv *env = new TEnv("configConvertTELE.prm");
 #include "TELEReadRaw.h"
 #include "TELEConvertCal.h"
-TEnv *env = new TEnv("configConvertTELE.prm");
 
 class ConvertTELE{
 	private:

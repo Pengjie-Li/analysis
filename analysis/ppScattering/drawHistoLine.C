@@ -30,8 +30,8 @@ void drawHistoLine(){
 		h[i] =(TH2F *)gDirectory->Get(hName[i]);
 		h[i]->Draw("colz");
 		//gs->Draw("l");
-		fex->Draw("l");
-		//sn->Draw("l");
+		//fex->Draw("l");
+		sn->Draw("l");
 		//mex->Draw("l");
 	}
 }
