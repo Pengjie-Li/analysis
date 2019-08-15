@@ -1,5 +1,14 @@
+inputPath:/media/Rawdata/RIKEN_Cluster_2018/
+inputPrefix:run0
+inputSuffix:.ridf.gz
+
+outputPath:./rootfile1/
+outputPrefix:run0
+outputSuffix:_DC.root
+
 plaDataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/db/SAMURAIPlastic.xml
 bdc1DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIBDC1.xml
 bdc2DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIBDC2.xml
 fdc0DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC0.xml
 fdc2DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC2.xml
+
