@@ -1,10 +1,8 @@
 #include "header.h"
 #include "distance.h"
-#include "DCRaw.h"
 #ifdef __MAKECINT__ 
 #pragma link C++ class 
 std::vector < std::vector<int> >+;
-std::vector < std::vector<std::vector<int>> >+;
 #endif
 
 
@@ -15,18 +13,22 @@ class TDCSpectrum{
 		static const bool isEventByEvent=false;
 		static const bool kBDC=true;
 		static const bool kFDC=true;
-		static const bool kSaveTree = false;
 
 		static const int DISPLAY_EVERY_EVENT = 1000 ;
 		std::clock_t start  ;
 		std::clock_t clock0 ;
 
 
+
+
+
+	
+
+
 	public :
 
-		int runNumber;
-		int eventNumber;
-		Long64_t maxEventNumber;
+		int runnum;
+		Long64_t MaxEventNumber;
 
 		TArtEventStore *EventStore;
 		TArtStoreManager *sman;
@@ -51,17 +53,10 @@ class TDCSpectrum{
                 TH2* hFDC2Layer[7];
 
 		// Head Variables
-
-		DCRaw *BDC1RawData;
-		DCRaw *BDC2RawData;
-		DCRaw *FDC0RawData;
-		DCRaw *FDC2RawData;
+		Long64_t EventNumber;
+		Int_t RunNumber ;
 
 
-//		BDC1Raw *BDC1RawData;
-//		BDC2Raw *BDC2RawData;
-//		FDC0Raw *FDC0RawData;
-//		FDC2Raw *FDC2RawData;
 
 		// DC Raw Data
 		// Each Drift Chamber raw Data 
@@ -71,6 +66,7 @@ class TDCSpectrum{
 		// * ...
 		Int_t BDC1_nhits;
 		vector<int> BDC1_TDC;// for each hits, no matter layer, wireid
+		vector<int> BDC1_TDC1;// for each hits, no matter layer, wireid
 		vector<double> BDC1_layerid;// for each hits, no matter layer, wireid
 		vector<double> BDC1_wireid;// for each hits, no matter layer, wireid
 
@@ -183,7 +179,7 @@ class TDCSpectrum{
 			EventStore = new TArtEventStore;
 
 			TString inputpath="/media/Rawdata/RIKEN_Cluster_2018/";
-			TString inputfilename=Form("run0%d.ridf.gz",runNumber);
+			TString inputfilename=Form("run0%d.ridf.gz",runnum);
 			TString inputname=inputpath+inputfilename;
 
 			//EventStore->Open(inputname);
@@ -204,7 +200,7 @@ class TDCSpectrum{
 			fout = NULL;
 			tree = NULL;
 
-			fout = new TFile(Form("./rootfiles/run0%d_tdcSpectrum.root",runNumber),"recreate");
+			fout = new TFile(Form("./rootfiles/run0%d_tdcSpectrum.root",runnum),"recreate");
 			tree = new TTree(treeName,"TDC Spectrum");
 			tree->AutoSave("SaveSelf");
 			tree->SetAutoSave(1e5);
@@ -261,46 +257,74 @@ class TDCSpectrum{
 
 		void setOutputBranch(){
 			//Beam
-			tree->Branch("runNumber",&runNumber);
-			tree->Branch("eventNumber",&eventNumber);
+			tree->Branch("RunNumber",&RunNumber);
+			tree->Branch("EventNumber",&EventNumber);
 
 			///////////////////////////////////////////////////////////////
 			//
-		
-			BDC1RawData->setRawDataBranch(tree);
-			BDC2RawData->setRawDataBranch(tree);
-			FDC0RawData->setRawDataBranch(tree);
-			FDC2RawData->setRawDataBranch(tree);
+			tree->Branch("BDC1_TDC",&BDC1_TDC);
+			tree->Branch("BDC1_TDC1",&BDC1_TDC1);
+			tree->Branch("BDC1_layerid",&BDC1_layerid);
+			tree->Branch("BDC1_wireid",&BDC1_wireid);
+
+			tree->Branch("BDC1_nhits",&BDC1_nhits);
+			tree->Branch("BDC1_layer_hits",&BDC1_layer_hits);
+			tree->Branch("BDC1_layer_TDC",&BDC1_layer_TDC);
+	
+
+			tree->Branch("BDC2_TDC",&BDC2_TDC);
+			tree->Branch("BDC2_layerid",&BDC2_layerid);
+			tree->Branch("BDC2_wireid",&BDC2_wireid);
+
+			tree->Branch("BDC2_nhits",&BDC2_nhits);
+			tree->Branch("BDC2_layer_hits",&BDC2_layer_hits);
+			tree->Branch("BDC2_layer_TDC",&BDC2_layer_TDC);
+	
+	
+			tree->Branch("FDC0_TDC",&FDC0_TDC);
+			tree->Branch("FDC0_layerid",&FDC0_layerid);
+			tree->Branch("FDC0_wireid",&FDC0_wireid);
+
+			tree->Branch("FDC0_nhits",&FDC0_nhits);
+			tree->Branch("FDC0_layer_hits",&FDC0_layer_hits);
+			tree->Branch("FDC0_layer_TDC",&FDC0_layer_TDC);
+
+			tree->Branch("FDC2_TDC",&FDC2_TDC);
+			tree->Branch("FDC2_layerid",&FDC2_layerid);
+			tree->Branch("FDC2_wireid",&FDC2_wireid);
+
+			tree->Branch("FDC2_nhits",&FDC2_nhits);
+			tree->Branch("FDC2_layer_hits",&FDC2_layer_hits);
+			tree->Branch("FDC2_layer_TDC",&FDC2_layer_TDC);
+	
 		}
 
 		void openAnarootStoreManager(){
 			sman = TArtStoreManager::Instance();
 		}
 
-		TDCSpectrum(int mode,int runnum,int maxevt){
-			runNumber = runnum;
-			maxEventNumber = maxevt;
-
-			BDC1RawData = new BDC1Raw();
-			BDC2RawData = new BDC2Raw();
-			FDC0RawData = new FDC0Raw();
-			FDC2RawData = new FDC2Raw();
-
-
-		//	/**
-		//	 * 
-		//	 * TDC Spectrum: Generate good Calibration Spectrum
-		//	 * 3 Modes: 1File1TDCSpectrum, 1Beam1TDCSpectrum, 1TDCSpectrumforAll
-		//	 * Output: TDC 1D, 2D with Wireid, Correlation between adjcent layer
-		//	 */
-		//	switch(mode){
-		//		case 1: oneFileTDCSpectrum();break;
-		//		case 2: TDCSpectrumFromOneFileAndOneHitInEachLayer();break;
-		//		case 3: break;
-		//	}
+		TDCSpectrum(int mode){
+			/**
+			 * 
+			 * TDC Spectrum: Generate good Calibration Spectrum
+			 * 3 Modes: 1File1TDCSpectrum, 1Beam1TDCSpectrum, 1TDCSpectrumforAll
+			 * Output: TDC 1D, 2D with Wireid, Correlation between adjcent layer
+			 */
+			switch(mode){
+				case 1: oneFileTDCSpectrum();break;
+				case 2: break;
+				case 3: break;
+			}
 
 		}
-		void analysis(){
+		void oneFileTDCSpectrum(){
+			int rn = env->GetValue("runNumber",595);
+			Long64_t men = env->GetValue("maxEventNumber",1000);
+			analysis(rn,men);
+		}
+		void analysis(int rn, Long64_t men){
+			runnum=rn;
+			MaxEventNumber=men;
 
 			loadAnarootDecoder();
 			openAnarootStoreManager();
@@ -321,12 +345,12 @@ class TDCSpectrum{
 		}
 
 		void showAnalysisProgress(){
-			if (eventNumber%DISPLAY_EVERY_EVENT == 0)
+			if (EventNumber%DISPLAY_EVERY_EVENT == 0)
 			{
 				double duration =  int(10*((std::clock()-start)/ (double) CLOCKS_PER_SEC))/10. ;
 				Double_t rate = DISPLAY_EVERY_EVENT/((std::clock()-clock0)/ (double) CLOCKS_PER_SEC) ;
 				Int_t color = rate<100?33:31 ;//int(TMath::Log(rate)/TMath::Ln10())+31;
-				std::clog << "\e[1;" << color << "m  ANALYSIS-Info : " << eventNumber/1000 << "k events treated in " 
+				std::clog << "\e[1;" << color << "m  ANALYSIS-Info : " << EventNumber/1000 << "k events treated in " 
 					<< duration << "s. Instantaneous rate = " 
 					<< rate << "evt/s\e[0m             \r";
 				clock0 = std::clock();
@@ -364,61 +388,181 @@ class TDCSpectrum{
 			start = std::clock();
 			clock0 = std::clock();
 
-			eventNumber = 0;
+			EventNumber = 0;
+			RunNumber = runnum;
 
 			////////////////////////////////Analysis  loop/////////////
 			while(EventStore->GetNextEvent() 
-					&& eventNumber < maxEventNumber
+					&& EventNumber < MaxEventNumber
 			     )
 			{
 
-				eventNumber++;
-				if(maxEventNumber<100) cout<<eventNumber<<endl;
+				EventNumber++;
+				if(MaxEventNumber<100) cout<<EventNumber<<endl;
 				showAnalysisProgress();
 				clearDCObject();
 				reconstructDCObject();
 
 				clearDataContainer();
 				getDataContainer();
-				
-				readDCHit(BDC1RawData,BDC1Hit);
-				readDCHit(BDC2RawData,BDC2Hit);
-				readDCHit(FDC0RawData,FDC0Hit);
-				readDCHit(FDC2RawData,FDC2Hit);
 
-				if(maxEventNumber<100) BDC1RawData->printRaw();
+				readBDC1Hit();
+				if(MaxEventNumber<100) printBDC1();
+				readBDC2Hit();
+				readFDC0Hit();
+				readFDC2Hit();
 
 				fillHistograms();
-				if(kSaveTree) tree->Fill();
+				tree->Fill();
 			}
 
 		}
 
-		void readDCHit(DCRaw* DCRawData,TClonesArray *DCHit){
-			//DC
+		void readBDC1Hit(){
+			//BDC1
 			// Initialize Array
-		
-			DCRawData->initialize();
+			BDC1_nhits=-1;
+			BDC1_layer_hits.clear();
+			BDC1_layer_hits.resize(8,0);
+			BDC1_TDC1.clear();
+			BDC1_layerid.clear();
+			BDC1_wireid.clear();
 
-			if(DCHit){
+			BDC1_layer_TDC.clear();
+			BDC1_layer_TDC.resize(8);
 
-				int DC_nhits=DCHit->GetEntries();
-				DCRawData->setNHits(DC_nhits);
-				for(int i=0;i<DCHit->GetEntries();i++){
-					TArtDCHit *hit = (TArtDCHit *)DCHit->At(i);
+
+
+			if(BDC1Hit){
+
+				BDC1_nhits=BDC1Hit->GetEntries();
+				for(int i=0;i<BDC1Hit->GetEntries();i++){
+					TArtDCHit *hit = (TArtDCHit *)BDC1Hit->At(i);
 					int layer = hit->GetLayer();
 					int wireid = hit->GetWireID();
 					int val = hit->GetTDC();
-					DCRawData->fillHit(layer,wireid,val);
-
+					BDC1_layer_hits[layer]++;
+					//cout<<BDC1_layer_hits[layer]<<endl;
+					//cout<< layer<<"  "<<wireid<<"  "<<val<<"  "<<BDC1_layer_hits[layer]<<endl;
+					BDC1_TDC1.push_back(val);
+					BDC1_layerid.push_back(layer);
+					BDC1_wireid.push_back(wireid);
+					BDC1_layer_TDC[layer].push_back(val);
 				}
+			//	for(int i=0;i<BDC1_layer_TDC.size();i++){
+			//		for(int j=0;j<BDC1_layer_TDC[i].size();j++){
+			//			cout<<"Layer ="<<i<<" val = "<<BDC1_layer_TDC[i][j]<<endl;
+			//		}
+			//	}
 
 			}
-
-			//DCRawData->printRaw();
-	
 		}
+		void readBDC2Hit(){
+			//BDC2
+			// Initialize Array
+			BDC2_nhits=-1;
+			BDC2_layer_hits.clear();
+			BDC2_layer_hits.resize(8,0);
+			BDC2_TDC.clear();
+			BDC2_layerid.clear();
+			BDC2_wireid.clear();
 
+			BDC2_layer_TDC.clear();
+			BDC2_layer_TDC.resize(8);
+
+
+
+			if(BDC2Hit){
+
+				BDC2_nhits=BDC2Hit->GetEntries();
+				for(int i=0;i<BDC2Hit->GetEntries();i++){
+					TArtDCHit *hit = (TArtDCHit *)BDC2Hit->At(i);
+					int layer = hit->GetLayer();
+					int wireid = hit->GetWireID();
+					int val = hit->GetTDC();
+					BDC2_layer_hits[layer]++;
+					//cout<<BDC2_layer_hits[layer]<<endl;
+					BDC2_TDC.push_back(val);
+					BDC2_layerid.push_back(layer);
+					BDC2_wireid.push_back(wireid);
+					BDC2_layer_TDC[layer].push_back(val);
+
+
+				}
+			}
+		}
+		void readFDC0Hit(){
+			//FDC0
+			// Initialize Array
+			FDC0_nhits=0;
+			FDC0_layer_hits.clear();
+			FDC0_layer_hits.resize(8,0);
+			FDC0_TDC.clear();
+			FDC0_layerid.clear();
+			FDC0_wireid.clear();
+
+			FDC0_layer_TDC.clear();
+			FDC0_layer_TDC.resize(8);
+
+
+
+			if(FDC0Hit){
+
+				FDC0_nhits=FDC0Hit->GetEntries();
+				for(int i=0;i<FDC0Hit->GetEntries();i++){
+					TArtDCHit *hit = (TArtDCHit *)FDC0Hit->At(i);
+					int layer = hit->GetLayer();
+					int wireid = hit->GetWireID();
+					int val = hit->GetTDC();
+					FDC0_layer_hits[layer]++;
+					//cout<<FDC0_layer_hits[layer]<<endl;
+					FDC0_TDC.push_back(val);
+					FDC0_layerid.push_back(layer);
+					FDC0_wireid.push_back(wireid);
+					FDC0_layer_TDC[layer].push_back(val);
+
+				}
+			}
+		}
+		void readFDC2Hit(){
+			//FDC2
+			// Initialize Array
+			FDC2_nhits=0;
+			FDC2_layer_hits.clear();
+			FDC2_layer_hits.resize(14,0);
+			FDC2_TDC.clear();
+			FDC2_layerid.clear();
+			FDC2_wireid.clear();
+
+			FDC2_layer_TDC.clear();
+			FDC2_layer_TDC.resize(14);
+
+
+
+			if(FDC2Hit){
+
+				FDC2_nhits=FDC2Hit->GetEntries();
+				for(int i=0;i<FDC2Hit->GetEntries();i++){
+					TArtDCHit *hit = (TArtDCHit *)FDC2Hit->At(i);
+					int layer = hit->GetLayer();
+					int wireid = hit->GetWireID();
+					int val = hit->GetTDC();
+					FDC2_layer_hits[layer]++;
+					//cout<<FDC2_layer_hits[layer]<<endl;
+					FDC2_TDC.push_back(val);
+					FDC2_layerid.push_back(layer);
+					FDC2_wireid.push_back(wireid);
+					FDC2_layer_TDC[layer].push_back(val);
+
+				}
+//				for(int i=0;i<FDC2_layer_TDC.size();i++){
+//					for(int j=0;j<FDC2_layer_TDC[i].size();j++){
+//						cout<<"Layer ="<<i<<" val = "<<FDC2_layer_TDC[i][j]<<endl;
+//					}
+//				}
+
+			}
+		}
 		void fillHistograms(){
 			fillBDC1Histograms();
 			fillBDC2Histograms();
@@ -426,33 +570,72 @@ class TDCSpectrum{
 			fillFDC2Histograms();
 		}
 		void fillBDC1Histograms(){
-			BDC1RawData->fillTDC(hbdc1tdc);
-			BDC1RawData->fillTDCvsWire(hBDC1TDC);
-			BDC1RawData->fillAdjcentLayerTDC(hBDC1Layer);
-	
+			for (int i=0;i<BDC1_nhits;i++){
+				int layer = BDC1_layerid[i];
+				hbdc1tdc[layer]->Fill(BDC1_TDC1[i]);
+				hBDC1TDC[layer]->Fill(BDC1_TDC1[i],BDC1_wireid[i]);
+			}
+			for(int i=0; i<4;i++){
+				for(int j=0;j<BDC1_layer_TDC[2*i].size();j++)
+					for(int k=0;k<BDC1_layer_TDC[2*i+1].size();k++){
+						hBDC1Layer[i]->Fill(BDC1_layer_TDC[2*i][j],BDC1_layer_TDC[2*i+1][k]);
+					}
+			}
 		}
+
 		void fillBDC2Histograms(){
-			BDC2RawData->fillTDC(hbdc2tdc);
-			BDC2RawData->fillTDCvsWire(hBDC2TDC);
-			BDC2RawData->fillAdjcentLayerTDC(hBDC2Layer);
-	
+			for (int i=0;i<BDC2_nhits;i++){
+				int layer = BDC2_layerid[i];
+				hbdc2tdc[layer]->Fill(BDC2_TDC[i]);
+				hBDC2TDC[layer]->Fill(BDC2_TDC[i],BDC2_wireid[i]);
+			}
+			for(int i=0; i<4;i++){
+				for(int j=0;j<BDC2_layer_TDC[2*i].size();j++)
+					for(int k=0;k<BDC2_layer_TDC[2*i+1].size();k++){
+						hBDC2Layer[i]->Fill(BDC2_layer_TDC[2*i][j],BDC2_layer_TDC[2*i+1][k]);
+					}
+			}
+
 		}
+
 		void fillFDC0Histograms(){
-			FDC0RawData->fillTDC(hfdc0tdc);
-			FDC0RawData->fillTDCvsWire(hFDC0TDC);
-			FDC0RawData->fillAdjcentLayerTDC(hFDC0Layer);
-	
+
+			for (int i=0;i<FDC0_nhits;i++){
+				int layer = FDC0_layerid[i];
+				hfdc0tdc[layer]->Fill(FDC0_TDC[i]);
+				hFDC0TDC[layer]->Fill(FDC0_TDC[i],FDC0_wireid[i]);
+			}
+			for(int i=0; i<4;i++){
+				for(int j=0;j<FDC0_layer_TDC[2*i].size();j++)
+					for(int k=0;k<FDC0_layer_TDC[2*i+1].size();k++){
+						hFDC0Layer[i]->Fill(FDC0_layer_TDC[2*i][j],FDC0_layer_TDC[2*i+1][k]);
+					}
+			}
+
 		}
+
 		void fillFDC2Histograms(){
-			FDC2RawData->fillTDC(hfdc2tdc);
-			FDC2RawData->fillTDCvsWire(hFDC2TDC);
-			FDC2RawData->fillAdjcentLayerTDC(hFDC2Layer);
-	
+			for (int i=0;i<FDC2_nhits;i++){
+				int layer = FDC2_layerid[i];
+				hfdc2tdc[layer]->Fill(FDC2_TDC[i]);
+				hFDC2TDC[layer]->Fill(FDC2_TDC[i],FDC2_wireid[i]);
+				
+			}
+			for(int i=0; i<7;i++){
+				for(int j=0;j<FDC2_layer_TDC[2*i].size();j++)
+					for(int k=0;k<FDC2_layer_TDC[2*i+1].size();k++){
+						hFDC2Layer[i]->Fill(FDC2_layer_TDC[2*i][j],FDC2_layer_TDC[2*i+1][k]);
+					}
+			}
+
 		}
+
+
+
 
 		void saveTreeAndCloseOutputFile(){
 			//std::clog << std::endl;
-			tree->BuildIndex("runNumber","eventNumber");
+			tree->BuildIndex("RunNumber","EventNumber");
 			fout->cd();
 			fout->Write();
 			fout->Close("R"); 
@@ -467,47 +650,36 @@ class TDCSpectrum{
 			delete TArtStoreManager::Instance();
 		}
 		void printBDC1(){
-			cout<<"eventNumber = "<< eventNumber <<endl;
+			cout<<"EventNumber = "<< EventNumber <<endl;
 			printBDC1Raw();
 			cout<<endl;
 		}
 		void printBDC1Raw(){
 			cout<<" Printing Raw Info:"<<endl;
 			for(int i = 0; i<BDC1_layerid.size(); i++)
-				cout<<"Layer = "<< BDC1_layerid[i]<<" wireid = "<<BDC1_wireid[i]<<" TDC = "<<BDC1_TDC[i]<<" nhit of layer ="<<BDC1_layer_hits[BDC1_layerid[i]]<<endl;
+				cout<<"Layer = "<< BDC1_layerid[i]<<" wireid = "<<BDC1_wireid[i]<<" TDC = "<<BDC1_TDC1[i]<<" nhit of layer ="<<BDC1_layer_hits[BDC1_layerid[i]]<<endl;
 		}
 
 };
 
 int main(int argc, char *argv[])
 {
-	int run1=-1;
-	int run2=-1;
-	//Long64_t maxEventNumber = LLONG_MAX;
-	Long64_t maxEventNumber = 10000000;
-	//cout<<MaxeventNumber<<endl;
-	if(argc==2) {
-		run1=atoi(argv[1]);
-		run2=run1+1;
-		
-	} else if(argc==3) {
-		run1=atoi(argv[1]);
-		run2=atoi(argv[2]);
-	} else {
-		cout<<" USAGE: ./TDCSpectrum  runNumberber"<<endl;
-		cout<<" USAGE: ./TDCSpectrum  run1 run2"<<endl;
+	int runnum=-1;
+	Long64_t MaxEventNumber = LLONG_MAX;
+	//Long64_t MaxEventNumber = 10000;
+	//cout<<MaxEventNumber<<endl;
+	if(argc==2) runnum=atoi(argv[1]);
+	else if(argc==3) { runnum=atoi(argv[1]); MaxEventNumber=atoi(argv[2]);}
+	else {
+		cout<<" USAGE: ./TDCSpectrum  runnumber"<<endl;
+		cout<<" USAGE: ./TDCSpectrum  runnumber maxevtnumber"<<endl;
 	}
-	//TDCSpectrum *tdcSpectrum =new TDCSpectrum(1,runNumber,maxEventNumber);
-	TDCSpectrum *tdcSpectrum =new TDCSpectrum();
-	tdcSpectrum->loadChain(run1,run2);
+	/**
+	 * Mode 1: 1File1TDCSpectrum ; 2: 1Beam1TDCSpectrum ; 3: TDCSpectrum for all
+	 * Mode 1: 1File1TDCSpectrum without any condition
+	 * Mode 2: Mode 1 + nhits = 1 in each layer 
+	 */
+	TDCSpectrum *tdcSpectrum =new TDCSpectrum(2);
 
-	tdcSpectrum->openData();
-
-	tdcSpectrum->setOutput();
-	
-	tdcSpectrum->fillHistogram();
-	
-	tdcSpectrum->saveRootfile();
-	
 	return 0;
 }

@@ -1,5 +1,5 @@
 #TARGET =event_by_event_bdc
-TARGET =calibDC
+TARGET =TDCSpectrum
 #TARGET =bdc
 
 CODESOURCE =  $(TARTSYS)

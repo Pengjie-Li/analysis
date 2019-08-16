@@ -287,18 +287,23 @@ class TDCSpectrum{
 			FDC2RawData = new FDC2Raw();
 
 
-		//	/**
-		//	 * 
-		//	 * TDC Spectrum: Generate good Calibration Spectrum
-		//	 * 3 Modes: 1File1TDCSpectrum, 1Beam1TDCSpectrum, 1TDCSpectrumforAll
-		//	 * Output: TDC 1D, 2D with Wireid, Correlation between adjcent layer
-		//	 */
-		//	switch(mode){
-		//		case 1: oneFileTDCSpectrum();break;
-		//		case 2: TDCSpectrumFromOneFileAndOneHitInEachLayer();break;
-		//		case 3: break;
-		//	}
+			/**
+			 * 
+			 * TDC Spectrum: Generate good Calibration Spectrum
+			 * 3 Modes: 1File1TDCSpectrum, 1Beam1TDCSpectrum, 1TDCSpectrumforAll
+			 * Output: TDC 1D, 2D with Wireid, Correlation between adjcent layer
+			 */
+			switch(mode){
+				case 1: oneFileTDCSpectrum();break;
+				case 2: TDCSpectrumFromOneFileAndOneHitInEachLayer();break;
+				case 3: break;
+			}
 
+		}
+		void TDCSpectrumFromOneFileAndOneHitInEachLayer(){
+		}
+		void oneFileTDCSpectrum(){
+			analysis();
 		}
 		void analysis(){
 
@@ -481,33 +486,22 @@ class TDCSpectrum{
 
 int main(int argc, char *argv[])
 {
-	int run1=-1;
-	int run2=-1;
+	int runNumber=-1;
 	//Long64_t maxEventNumber = LLONG_MAX;
 	Long64_t maxEventNumber = 10000000;
 	//cout<<MaxeventNumber<<endl;
-	if(argc==2) {
-		run1=atoi(argv[1]);
-		run2=run1+1;
-		
-	} else if(argc==3) {
-		run1=atoi(argv[1]);
-		run2=atoi(argv[2]);
-	} else {
+	if(argc==2) runNumber=atoi(argv[1]);
+	else if(argc==3) { runNumber=atoi(argv[1]); maxEventNumber=atoi(argv[2]);}
+	else {
 		cout<<" USAGE: ./TDCSpectrum  runNumberber"<<endl;
-		cout<<" USAGE: ./TDCSpectrum  run1 run2"<<endl;
+		cout<<" USAGE: ./TDCSpectrum  runNumberber maxevtnumber"<<endl;
 	}
-	//TDCSpectrum *tdcSpectrum =new TDCSpectrum(1,runNumber,maxEventNumber);
-	TDCSpectrum *tdcSpectrum =new TDCSpectrum();
-	tdcSpectrum->loadChain(run1,run2);
+	/**
+	 * Mode 1: 1File1TDCSpectrum ; 2: 1Beam1TDCSpectrum ; 3: TDCSpectrum for all
+	 * Mode 1: 1File1TDCSpectrum without any condition
+	 * Mode 2: Mode 1 + nhits = 1 in each layer 
+	 */
+	TDCSpectrum *tdcSpectrum =new TDCSpectrum(1,runNumber,maxEventNumber);
 
-	tdcSpectrum->openData();
-
-	tdcSpectrum->setOutput();
-	
-	tdcSpectrum->fillHistogram();
-	
-	tdcSpectrum->saveRootfile();
-	
 	return 0;
 }

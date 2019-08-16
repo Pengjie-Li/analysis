@@ -14,7 +14,6 @@
 
 // root
 #include "TFile.h"
-#include "TChain.h"
 #include "TSystem.h"
 #include "TString.h"
 #include "TH1F.h"
