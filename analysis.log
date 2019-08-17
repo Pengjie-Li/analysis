@@ -1461,3 +1461,30 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/.configConvertESPRI.prm.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 631b14e] v1.0
+ 30 files changed, 3614 insertions(+), 42 deletions(-)
+ create mode 100644 analysis/ppScattering/.ppBe.C.swp
+ create mode 100644 bdc/Calib/CalibDC.h
+ rewrite bdc/Calib/TDCSpectrum (95%)
+ create mode 100755 bdc/Calib/calibDC
+ create mode 100755 bdc/Calib/calibDC.C
+ create mode 120000 bdc/Calib/mergerRootfiles
+ create mode 100644 bdc/Calib/v1/DCRaw.h
+ create mode 100755 bdc/Calib/v1/MakeSAMURAIDCTPF.C
+ create mode 100755 bdc/Calib/v1/MakeTDCCalibrations.C
+ create mode 100755 bdc/Calib/v1/Makefile
+ rename bdc/Calib/{ => v1}/TDCSpectrum (100%)
+ create mode 100755 bdc/Calib/v1/TDCSpectrum.C
+ create mode 100755 bdc/Calib/v1/TDCSpectrum.C_v20190311
+ create mode 100755 bdc/Calib/v1/backup_TDCSpectrum.C
+ create mode 100644 bdc/Calib/v1/configTDCSpectrum.prm
+ create mode 100755 bdc/Calib/v1/distance.h
+ create mode 100755 bdc/Calib/v1/header.h
+ create mode 100644 bdc/Calib/v1/loop.sh
+ create mode 100755 bdc/Calib/v1/mkdcdist.cc
+ create mode 100755 bdc/Calib/v1/pid_prm.txt
+ create mode 100755 bdc/Calib/v1/tof713off.txt
+ create mode 100644 bdc/Calib/v1/vv.C
+ rewrite bdc/convert/ConvertDC (92%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
