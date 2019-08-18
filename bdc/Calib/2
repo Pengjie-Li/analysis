@@ -1,575 +1,72 @@
 #include "header.h"
-#include "distance.h"
+#ifdef __MAKECINT__ 
+#pragma link C++ class 
+std::vector < std::vector<int> >+;
+#endif
 
+class DCRaw{
+	private: 
+		const static bool kOneHitInOneLayer = true; // App wants to check one hit event, isOneHit means checking one hit, both condition will make a good one hit event
 
-TEnv *env = new TEnv("configTDCSpectrum.prm");
-class TDCSpectrum{
+		TH1 *h[16];
+	public : 
 
-	private:
-		static const bool isEventByEvent=false;
-		static const bool kBDC=true;
-		static const bool kFDC=true;
-
-		static const int DISPLAY_EVERY_EVENT = 1000 ;
-		std::clock_t start  ;
-		std::clock_t clock0 ;
-
-
-
-
-
-	
-
-
-	public :
-
-		int runnum;
-		Long64_t MaxEventNumber;
-
-		TArtEventStore *EventStore;
-		TArtStoreManager *sman;
-
-		// Output
-		TFile *fout;
-		TTree *tree;
-
-		TH1* hbdc1tdc[8];
-		TH1* hbdc2tdc[8];
-		TH1* hfdc1tdc[14];
-		TH1* hfdc2tdc[14];
-
-
-		// Head Variables
-		Long64_t EventNumber;
-		Int_t RunNumber ;
+		int NumberOfLayer;
+		TString detectorName;
 
 
 
-		// DC Raw Data
-		// Each Drift Chamber raw Data 
-		// * hit1 (layerid,wireid,TDC)
-		// * hit2
-		// * hit3
-		// * ...
-		Int_t BDC1_nhits;
-		vector<double> BDC1_TDC;// for each hits, no matter layer, wireid
-		vector<double> BDC1_layerid;// for each hits, no matter layer, wireid
-		vector<double> BDC1_wireid;// for each hits, no matter layer, wireid
-
-		Int_t BDC2_nhits;
-		vector<double> BDC2_TDC;// for each hits, no matter layer, wireid
-		vector<double> BDC2_layerid;// for each hits, no matter layer, wireid
-		vector<double> BDC2_wireid;// for each hits, no matter layer, wireid
-
-		Int_t FDC0_nhits;
-		vector<double> FDC0_TDC;// for each hits, no matter layer, wireid
-		vector<double> FDC0_layerid;// for each hits, no matter layer, wireid
-		vector<double> FDC0_wireid;// for each hits, no matter layer, wireid
-
-		Int_t FDC2_nhits;
-		vector<double> FDC2_TDC;// for each hits, no matter layer, wireid
-		vector<double> FDC2_layerid;// for each hits, no matter layer, wireid
-		vector<double> FDC2_wireid;// for each hits, no matter layer, wireid
-
-
-		// how many hits in each layer(layer: 16 wire)
-		vector<int> BDC1_layer_hits;
-		vector<int> BDC2_layer_hits;
-		vector<int> FDC0_layer_hits;
-		vector<int> FDC2_layer_hits;
-
-
-		//DC Possible Track Data
-		Int_t BDC1_nlayerx;
-		Int_t BDC1_nlayery;
-		vector<double> BDC1_Track_dl;
-		vector<double> BDC1_Track_XY;
-		vector<double> BDC1_Track_Z;
-		vector<double> BDC1_Track_dXY;
-
-		Int_t BDC2_nlayerx;
-		Int_t BDC2_nlayery;
-		vector<double> BDC2_Track_dl;
-		vector<double> BDC2_Track_XY;
-		vector<double> BDC2_Track_Z;
-		vector<double> BDC2_Track_dXY;
-
-
-		Int_t FDC0_nlayerx;
-		Int_t FDC0_nlayery;
-		vector<double> FDC0_Track_dl;
-		vector<double> FDC0_Track_XY;
-		vector<double> FDC0_Track_Z;
-		vector<double> FDC0_Track_dXY;
-
-
-		// Analysis Result 
-		Double_t BDC1_X,BDC1_Y,BDC2_X,BDC2_Y,FDC0_X,FDC0_Y;
-		Double_t BDC1_ThetaX,BDC1_ThetaY,BDC2_ThetaX,BDC2_ThetaY,FDC0_ThetaX,FDC0_ThetaY;
-		Double_t FDC2_X,FDC2_Y,FDC2_ThetaX,FDC2_ThetaY;
-
-		Double_t BDC1_Chi2x,BDC2_Chi2x,FDC0_Chi2x;
-		Double_t BDC1_Chi2y,BDC2_Chi2y,FDC0_Chi2y;
-
-		// Load Drift Chambers
-		TArtCalibDCHit   *CalibBDC1Hit   ; 
-		TArtCalibDCHit   *CalibBDC2Hit   ; 
-		TArtCalibDCHit   *CalibFDC0Hit   ; 
-		TArtCalibDCHit   *CalibFDC2Hit   ; 
-
-		// In each event
-		TClonesArray *BDC1Hit   ;
-
-		TClonesArray *BDC2Hit   ;
-
-		TClonesArray *FDC0Hit   ;
-
-		TClonesArray *FDC2Hit   ;
-
-
-		void loadAnarootDecoder(){
-			//////////////////// Load anaroot decode class ////////////////////      
-			gSystem->Load("libanacore.so");
-			gSystem->Load("libanasamurai.so");
-			gSystem->Load("libXMLParser.so");
-
-
+		DCRaw(){
 		}
-		void loadAnarootDatabase(){
-			// ====================== ANAROOT Parameters =======================
-			TArtBigRIPSParameters *BigRIPSPara = TArtBigRIPSParameters::Instance();
-			TArtSAMURAIParameters *SamuraiPara = new TArtSAMURAIParameters();
-
-			BigRIPSPara->LoadParameter((char*)"/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/db/SAMURAIPlastic.xml"); //F3 F7 and SBT plastic
-			SamuraiPara->LoadParameter((char*)"/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIBDC1.xml");
-			SamuraiPara->LoadParameter((char*)"/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIBDC2.xml");
-			SamuraiPara->LoadParameter((char*)"/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC0.xml");
-			SamuraiPara->LoadParameter((char*)"/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC2.xml");
+		void saveHistograms(){
 		}
 
-		void createDCObject(){
-			////////////////////Create ANAROOT Reconstruction classes////////////////////   
-
-			CalibBDC1Hit   = new TArtCalibBDC1Hit();
-			CalibBDC2Hit   = new TArtCalibBDC2Hit();
-			CalibFDC0Hit   = new TArtCalibFDC0Hit();
-			CalibFDC2Hit   = new TArtCalibFDC2Hit();
-		}
-		void clearDCObject(){
-
-			CalibBDC1Hit->ClearData();
-
-			CalibBDC2Hit->ClearData();
-
-			CalibFDC0Hit->ClearData();
-
-			CalibFDC2Hit->ClearData();
-	
-		}
-
-
-		void reconstructDCObject(){
-			CalibBDC1Hit->ReconstructData();
-
-			CalibBDC2Hit->ReconstructData();
-
-			CalibFDC0Hit->ReconstructData();
-
-			CalibFDC2Hit->ReconstructData();
-
-		}
-
-		void setAnarootTDCWindow(){
-			/* before 20190219 using this range*/
-			//CalibBDC1Track->SetTDCWindow(1700,1870);  
-			//CalibBDC2Track->SetTDCWindow(1700,1870);  
-			//CalibFDC0Track->SetTDCWindow(1700,1870);  
-			//
-			CalibBDC1Track->SetTDCWindow(1770,1860);  
-			CalibBDC2Track->SetTDCWindow(1760,1860);  
-			CalibFDC0Track->SetTDCWindow(1740,1850);  
-
-		}
-
-
-
-		void openRawData(){
-			///////////////////////////////////////////////////////////////////
-			///////////////////// Open Raw Data ///////////////////////////////
-			///////////////////////////////////////////////////////////////////
-
-			EventStore = new TArtEventStore;
-
-			TString inputpath="/media/Rawdata/RIKEN_Cluster_2018/";
-			TString inputfilename=Form("run0%d.ridf.gz",runnum);
-			TString inputname=inputpath+inputfilename;
-
-			//EventStore->Open(inputname);
-			if(!EventStore->Open(inputname)) 
-			{
-				std::cout << "\e[34m " << "cannot open " <<inputname<< "\e[37m" << std::endl;
-				exit(0);
-			}
-		}
-
-		void createOutput(){
-			///////////////////////////////////////////////////////////////////
-			///////////////////// Create TFile and TTree  /////////////////////
-			///////////////////////////////////////////////////////////////////
-
-
-			TString treeName="tree";
-			fout = NULL;
-			tree = NULL;
-
-			fout = new TFile(Form("./rootfiles/run0%d_tdcSpectrum.root",runnum),"recreate");
-			tree = new TTree(treeName,"TDC Spectrum");
-			tree->AutoSave("SaveSelf");
-			tree->SetAutoSave(1e5);
-
-			///////////////////////////////////////////////////////////////////
-			///////////////////// Create Histograms  /////////////////////
-			///////////////////////////////////////////////////////////////////
-
-			for (int ilayer=0;ilayer<8;++ilayer){
-				hbdc1tdc[ilayer] = new TH1I(Form("hbdc1tdc%d",ilayer),
-						Form("BDC1 TDC layer=%d",ilayer),200,1700,1900);
-			}
-			for (int ilayer=0;ilayer<8;++ilayer){
-				hbdc2tdc[ilayer] = new TH1I(Form("hbdc2tdc%d",ilayer),
-						Form("BDC2 TDC layer=%d",ilayer),200,1700,1900);
-			}
-			for (int ilayer=0;ilayer<14;++ilayer){
-				hfdc1tdc[ilayer] = new TH1I(Form("hfdc1tdc%d",ilayer),
-						Form("FDC1 TDC layer=%d",ilayer),500,1400,1900);
-			}
-			for (int ilayer=0;ilayer<14;++ilayer){
-				hfdc2tdc[ilayer] = new TH1I(Form("hfdc2tdc%d",ilayer),
-						Form("FDC2 TDC layer=%d",ilayer),700,1000,1700);
-			}
-
-
-
-
-		}
-
-		void setOutputBranch(){
-			//Beam
-			tree->Branch("RunNumber",&RunNumber);
-			tree->Branch("EventNumber",&EventNumber);
-
-			///////////////////////////////////////////////////////////////
-			//
-			tree->Branch("BDC1_TDC",&BDC1_TDC);
-			tree->Branch("BDC1_layerid",&BDC1_layerid);
-			tree->Branch("BDC1_wireid",&BDC1_wireid);
-
-			tree->Branch("BDC1_nhits",&BDC1_nhits);
-			tree->Branch("BDC1_layer_hits",&BDC1_layer_hits);
-	
-
-			tree->Branch("BDC2_TDC",&BDC2_TDC);
-			tree->Branch("BDC2_layerid",&BDC2_layerid);
-			tree->Branch("BDC2_wireid",&BDC2_wireid);
-			tree->Branch("BDC2_nhits",&BDC2_nhits);
-			tree->Branch("BDC2_layer_hits",&BDC2_layer_hits);
-	
-			tree->Branch("FDC0_TDC",&FDC0_TDC);
-			tree->Branch("FDC0_layerid",&FDC0_layerid);
-			tree->Branch("FDC0_wireid",&FDC0_wireid);
-			tree->Branch("FDC0_nhits",&FDC0_nhits);
-			tree->Branch("FDC0_layer_hits",&FDC0_layer_hits);
-	
-		}
-
-		void openAnarootStoreManager(){
-			sman = TArtStoreManager::Instance();
-		}
-
-		TDCSpectrum(int mode){
-			/**
-			 * 
-			 * TDC Spectrum: Generate good Calibration Spectrum
-			 * 3 Modes: 1File1TDCSpectrum, 1Beam1TDCSpectrum, 1TDCSpectrumforAll
-			 * Output: TDC 1D, 2D with Wireid, Correlation between adjcent layer
-			 */
-			switch(mode){
-				case 1: oneFileTDCSpectrum();break;
-				case 2: break;
-				case 3: break;
-			}
-
-		}
-		void oneFileTDCSpectrum(){
-			int rn = env->GetValue("runNumber",595);
-			Long64_t men = env->GetValue("maxEventNumber",1000);
-			analysis(rn,men);
-		}
-		void analysis(int rn, Long64_t men){
-			runnum=rn;
-			MaxEventNumber=men;
-
-			loadAnarootDecoder();
-			openAnarootStoreManager();
-			loadAnarootDatabase();
-
-			openRawData();
-			createDCObject();
-
-			createOutput();
-			setOutputBranch();
-
-			launchAnalysisLoop();
-
-			saveTreeAndCloseOutputFile();
-			releaseMemory();
-
-
-		}
-
-		void showAnalysisProgress(){
-			if (EventNumber%DISPLAY_EVERY_EVENT == 0)
-			{
-				double duration =  int(10*((std::clock()-start)/ (double) CLOCKS_PER_SEC))/10. ;
-				Double_t rate = DISPLAY_EVERY_EVENT/((std::clock()-clock0)/ (double) CLOCKS_PER_SEC) ;
-				Int_t color = rate<100?33:31 ;//int(TMath::Log(rate)/TMath::Ln10())+31;
-				std::clog << "\e[1;" << color << "m  ANALYSIS-Info : " << EventNumber/1000 << "k events treated in " 
-					<< duration << "s. Instantaneous rate = " 
-					<< rate << "evt/s\e[0m             \r";
-				clock0 = std::clock();
+		void fillTDC(){
+			for (int i=0;i<nhits;i++){
+				int layer = layerid[i];
+				if((kOneHitInOneLayer) && (!isLayerOneHit(layer))) continue;
+				h[layer]->Fill(TDC[i]);
 			}
 
 		}
 
-		void clearDataContainer(){
-			BDC1Hit   = NULL ; 
-
-			BDC2Hit   = NULL ; 
-
-			FDC0Hit   = NULL ; 
-
-			FDC2Hit   = NULL ; 
-
-		}
-		void getDataContainer(){
-
-			// ======================= Obtain event =============================//
-			BDC1Hit   = (TClonesArray *)sman->FindDataContainer("SAMURAIBDC1Hit");
-
-			BDC2Hit   = (TClonesArray *)sman->FindDataContainer("SAMURAIBDC2Hit");
-
-			FDC0Hit   = (TClonesArray *)sman->FindDataContainer("SAMURAIFDC0Hit");
-
-			FDC2Hit   = (TClonesArray *)sman->FindDataContainer("SAMURAIFDC2Hit");
-
-		}
-
-
-
-		void launchAnalysisLoop(){
-
-			start = std::clock();
-			clock0 = std::clock();
-
-
-			EventNumber = 0;
-			RunNumber = runnum;
-
-
-
-			////////////////////////////////Analysis  loop/////////////
-
-			while(EventStore->GetNextEvent() 
-					&& EventNumber < MaxEventNumber
-			     )
-			{
-
-				EventNumber++;
-				//cout<<EventNumber<<endl;
-				showAnalysisProgress();
-				clearDCObject();
-				reconstructDCObject();
-
-				clearDataContainer();
-				getDataContainer();
-
-				//BDC1
-				// Initialize Array
-				BDC1_nhits=-1;
-				BDC1_layer_hits.clear();
-				BDC1_layer_hits.resize(8,0);
-				BDC1_TDC.clear();
-				BDC1_layerid.clear();
-				BDC1_wireid.clear();
-
-				if(BDC1Hit){
-
-					BDC1_nhits=BDC1Hit->GetEntries();
-					for(int i=0;i<BDC1Hit->GetEntries();i++){
-						TArtDCHit *hit = (TArtDCHit *)BDC1Hit->At(i);
-						int layer = hit->GetLayer();
-						int wireid = hit->GetWireID();
-						int val = hit->GetTDC();
-						BDC1_layer_hits[layer]=BDC1_layer_hits[layer]+1;
-						if(BDC1_layer_hits[layer]>16) cout<< EventNumber<<"  "<<BDC1_layer_hits[layer]<<endl;
-						//cout<< layer<<"  "<<wireid<<"  "<<val<<"  "<<BDC1_layer_hits[layer]<<endl;
-						BDC1_TDC.push_back(val);
-						BDC1_layerid.push_back(layer);
-						BDC1_wireid.push_back(wireid);
-
-
-					}
-				}
-
-
-				if(MaxEventNumber<100) printBDC1();
-
-				//BDC2
-				// Initialize Array
-				BDC2_nhits=-1;
-				BDC2_layer_hits.clear();
-				BDC2_layer_hits.resize(8,0);
-				BDC2_TDC.clear();
-				BDC2_layerid.clear();
-				BDC2_wireid.clear();
-
-				if(BDC2Hit){
-
-					BDC2_nhits=BDC2Hit->GetEntries();
-					for(int i=0;i<BDC2Hit->GetEntries();i++){
-						TArtDCHit *hit = (TArtDCHit *)BDC2Hit->At(i);
-						int layer = hit->GetLayer();
-						int wireid = hit->GetWireID();
-						int val = hit->GetTDC();
-						BDC2_layer_hits[layer]++;
-						//cout<<BDC2_layer_hits[layer]<<endl;
-						BDC2_TDC.push_back(val);
-						BDC2_layerid.push_back(layer);
-						BDC2_wireid.push_back(wireid);
-
-
-					}
-				}
-
-				//FDC0
-				// Initialize Array
-				FDC0_nhits=0;
-				FDC0_layer_hits.clear();
-				FDC0_layer_hits.resize(8,0);
-				FDC0_TDC.clear();
-				FDC0_layerid.clear();
-				FDC0_wireid.clear();
-
-				if(FDC0Hit){
-
-					FDC0_nhits=FDC0Hit->GetEntries();
-					for(int i=0;i<FDC0Hit->GetEntries();i++){
-						TArtDCHit *hit = (TArtDCHit *)FDC0Hit->At(i);
-						int layer = hit->GetLayer();
-						int wireid = hit->GetWireID();
-						int val = hit->GetTDC();
-						FDC0_layer_hits[layer]++;
-						//cout<<FDC0_layer_hits[layer]<<endl;
-						FDC0_TDC.push_back(val);
-						FDC0_layerid.push_back(layer);
-						FDC0_wireid.push_back(wireid);
-
-					}
-				}
-
-				//FDC2
-				// Initialize Array
-				FDC2_nhits=0;
-				FDC2_layer_hits.clear();
-				FDC2_layer_hits.resize(8,0);
-				FDC2_TDC.clear();
-				FDC2_layerid.clear();
-				FDC2_wireid.clear();
-
-				if(FDC2Hit){
-
-					FDC2_nhits=FDC2Hit->GetEntries();
-					for(int i=0;i<FDC2Hit->GetEntries();i++){
-						TArtDCHit *hit = (TArtDCHit *)FDC2Hit->At(i);
-						int layer = hit->GetLayer();
-						int wireid = hit->GetWireID();
-						int val = hit->GetTDC();
-						FDC2_layer_hits[layer]++;
-						//cout<<FDC2_layer_hits[layer]<<endl;
-						FDC2_TDC.push_back(val);
-						FDC2_layerid.push_back(layer);
-						FDC2_wireid.push_back(wireid);
-
-					}
-				}
-
-
-				
-
-
-				tree->Fill();
-
-				// END BEAM ANALYSIS
-
-
-			}
-
-
-
-
-
-
-		}
-		void saveTreeAndCloseOutputFile(){
-			//std::clog << std::endl;
-			{ tree->BuildIndex("RunNumber","EventNumber"); fout->cd();  fout->Write(); fout->Close("R"); }
-		}
-		void releaseMemory(){
-			EventStore->ClearData();
-
-			delete CalibBDC1Hit;
-			delete CalibBDC2Hit;
-			delete CalibFDC0Hit;
-			delete CalibFDC2Hit;
-			delete TArtStoreManager::Instance();
-		}
-		void printBDC1(){
-			cout<<"EventNumber = "<< EventNumber <<endl;
-			printBDC1Raw();
-			printBDC1Track();
-			cout<<endl;
-		}
-		void printBDC1Raw(){
-			cout<<" Printing Raw Info:"<<endl;
-			for(int i = 0; i<BDC1_layerid.size(); i++)
-				cout<<"Layer = "<< BDC1_layerid[i]<<" wireid = "<<BDC1_wireid[i]<<" TDC = "<<BDC1_TDC[i]<<" nhit of layer ="<<BDC1_layer_hits[BDC1_layerid[i]]<<endl;
-		}
-
-		void printBDC1Track(){
-			cout<<"Printing Track Info:"<<endl;
-			for(int i = 0;i<BDC1_Track_Z.size(); i++)
-			cout<<"Layer = "<<i<<" Drift length="<<setw(9)<<BDC1_Track_dl[i]<<" xypos="<<setw(9)<<BDC1_Track_XY[i]<<" zpos="<<setw(9)<<BDC1_Track_Z[i]<<" Residue dxy = "<<setw(9)<<BDC1_Track_dXY[i]<<endl;
-
-		}
 
 };
+class BDC1Raw:public DCRaw{
+	private:
+	public:
+		BDC1Raw(){
+			NumberOfLayer = 8;
+			detectorName = "BDC1";
+		}
 
-int main(int argc, char *argv[])
-{
-	int runnum=-1;
-	Long64_t MaxEventNumber = LLONG_MAX;
-	//Long64_t MaxEventNumber = 10000;
-	//cout<<MaxEventNumber<<endl;
-	if(argc==2) runnum=atoi(argv[1]);
-	else if(argc==3) { runnum=atoi(argv[1]); MaxEventNumber=atoi(argv[2]);}
-	else {
-		cout<<" USAGE: ./TDCSpectrum  runnumber"<<endl;
-		cout<<" USAGE: ./TDCSpectrum  runnumber maxevtnumber"<<endl;
-	}
-	/**
-	 * Mode 1: 1File1TDCSpectrum ; 2: 1Beam1TDCSpectrum ; 3: TDCSpectrum for all
-	 */
-	TDCSpectrum *tdcSpectrum =new TDCSpectrum(1);
 
-	return 0;
-}
+
+
+};
+class BDC2Raw:public DCRaw{
+	private:
+	public:
+		BDC2Raw(){
+			NumberOfLayer = 8;
+			detectorName = "BDC2";
+		}
+};
+class FDC0Raw:public DCRaw{
+	private:
+	public:
+		FDC0Raw(){
+			NumberOfLayer = 8;
+			detectorName = "FDC0";
+		}
+};
+class FDC2Raw:public DCRaw{
+	private:
+	public:
+		FDC2Raw(){
+			NumberOfLayer = 14;
+			detectorName = "FDC2";
+		}
+
+
+};

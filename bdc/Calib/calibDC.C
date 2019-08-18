@@ -6,26 +6,26 @@ int main(int argc, char *argv[])
 	int runStop=-1;
 	if(argc==2) {
 		runStart=atoi(argv[1]);
-		runStop=runStart+1;
+		runStop=runStart;
 		
 	} else if(argc==3) {
 		runStart=atoi(argv[1]);
 		runStop=atoi(argv[2]);
 	} else {
-		cout<<" USAGE: ./TDCSpectrum  runNumberber"<<endl;
-		cout<<" USAGE: ./TDCSpectrum  runStart runStop"<<endl;
+		cout<<" USAGE: ./calibDC  runNumberber"<<endl;
+		cout<<" USAGE: ./calibDC  runStart runStop"<<endl;
 	}
+	cout<<"Converting calib tdc spectrum from run"<<runStart<<" to "<<runStop<<endl;
+
 	CalibDC *calibDC =new CalibDC();
 
 	calibDC->loadChain(runStart,runStop);
-
-//	calibDC->openData();
 //
-//	calibDC->setOutput();
+	calibDC->setOutput();
 //	
-//	calibDC->fillHistogram();
+	calibDC->fillHistogram();
 //	
-//	calibDC->saveRootfile();
+	calibDC->saveRootfile();
 	
 	return 0;
 }
