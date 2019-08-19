@@ -2,6 +2,7 @@
 TEnv *env = new TEnv("configConvertDC.prm");
 #include "DCReadRaw.h"
 #include "DCConvertCal.h"
+#include "DCTracking.h"
 
 class ConvertDC{
 	private:
@@ -31,6 +32,10 @@ class ConvertDC{
 		DCConvertCal *bdc1ConvertCal ;
 		DCConvertCal *bdc2ConvertCal ;
 		DCConvertCal *fdc0ConvertCal ;
+
+		DCTracking *bdc1Track;
+		DCTracking *bdc2Track;
+		DCTracking *fdc0Track;
 
 		TFile *outputFile;
 		TTree *tree;
@@ -92,6 +97,9 @@ class ConvertDC{
 			bdc1ConvertCal = new BDC1ConvertCal();
 			bdc2ConvertCal = new BDC2ConvertCal();
 			fdc0ConvertCal = new FDC0ConvertCal();
+			bdc1Track	= new BDC1Tracking();
+			bdc2Track	= new BDC2Tracking();
+			fdc0Track	= new FDC0Tracking();
 		}
 
 		void setOutputBranch(){
@@ -105,6 +113,11 @@ class ConvertDC{
 			bdc1ConvertCal->setBranch(tree);
 			bdc2ConvertCal->setBranch(tree);
 			fdc0ConvertCal->setBranch(tree);
+
+			bdc1Track->setBranch(tree);
+			bdc2Track->setBranch(tree);
+			fdc0Track->setBranch(tree);
+
 		}
 
 
@@ -130,6 +143,7 @@ class ConvertDC{
 				getRawData();
 				readDCRawData();
 				convertDCCalData();
+				trackingDCData();
 				tree->Fill();
 
 			}
@@ -183,13 +197,17 @@ class ConvertDC{
 			bdc2ConvertCal->calibrate(bdc2ReadRaw);
 			fdc0ConvertCal->calibrate(fdc0ReadRaw);
 		}
+		void trackingDCData(){
+			bdc1Track->findBestTrack(bdc1ConvertCal);
+			bdc2Track->findBestTrack(bdc2ConvertCal);
+			fdc0Track->findBestTrack(fdc0ConvertCal);
+		}
 		void clearDCObject(){
 			CalibBDC1Hit->ClearData();
 
 			CalibBDC2Hit->ClearData();
 
 			CalibFDC0Hit->ClearData();
-
 
 		}
 		void reconstructDCObject(){
@@ -237,6 +255,7 @@ class ConvertDC{
 		}
 
 		void saveOutputFile(){
+			outputFile->cd();
 			tree->Write();
 			outputFile->Close();
 		}	

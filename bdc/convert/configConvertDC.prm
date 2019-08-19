@@ -12,6 +12,8 @@ bdc2DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMUR
 fdc0DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC0.xml
 fdc2DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIFDC2.xml
 
-bdc1ConvertPara:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/run0310_tdcSpectrum.root
-bdc2ConvertPara:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/run0310_tdcSpectrum.root
-fdc0ConvertPara:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/run0310_tdcSpectrum.root
+convertPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/calib/
+
+bdc1ConvertPara:bdc1TDCCalibSpectrum.root
+bdc2ConvertPara:bdc2TDCCalibSpectrum.root
+fdc0ConvertPara:fdc0TDCCalibSpectrum.root

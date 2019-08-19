@@ -51,7 +51,7 @@ class BDC1Raw:public DCRaw{
 			tdcMin = 1700;
 			tdcMax = 1900;
 			NumberOfLayer = 8;
-			detectorName = "BDC1";
+			detectorName = "bdc1";
 			createHistograms();
 		}
 
@@ -68,7 +68,7 @@ class BDC2Raw:public DCRaw{
 			tdcMax = 1900;
 
 			NumberOfLayer = 8;
-			detectorName = "BDC2";
+			detectorName = "bdc2";
 			createHistograms();
 		}
 };
@@ -81,7 +81,7 @@ class FDC0Raw:public DCRaw{
 			tdcMax = 1900;
 
 			NumberOfLayer = 8;
-			detectorName = "FDC0";
+			detectorName = "fdc0";
 			createHistograms();
 		}
 };
@@ -93,7 +93,7 @@ class FDC2Raw:public DCRaw{
 			tdcMin = 1000;
 			tdcMax = 1900;
 			NumberOfLayer = 14;
-			detectorName = "FDC2";
+			detectorName = "fdc2";
 			createHistograms();
 		}
 
