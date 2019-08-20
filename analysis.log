@@ -1503,3 +1503,11 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 bdc/convert/.ConvertDC.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 138b1cb] v1.0
+ 12 files changed, 290 insertions(+), 34 deletions(-)
+ create mode 100644 bdc/Calib/rootfiles/checkConsistency.C
+ create mode 100644 bdc/Calib/rootfiles/checkWindow.C
+ rewrite bdc/convert/ConvertDC (95%)
+ create mode 100644 bdc/convert/DCTracking.h
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
