@@ -136,7 +136,7 @@ class EXSpectrum{
 			//TString drawVar = "2*naiQ[1]:protonTheta>>";
 			TString drawVar = "excitationEnergy>>";
 			//TString drawVar = "espriNaiEnergy:protonTheta>>";
-			TString drawRange = "(5000,-20,80)";
+			TString drawRange = "(1000,-20,80)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
 			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
 			//TString drawRange = "(200,0,150,200,0,40)";
@@ -193,8 +193,8 @@ class EXBe10:public EXSpectrum {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			//hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
-			hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
+			hodGate = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+			//hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe10";

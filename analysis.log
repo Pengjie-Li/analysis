@@ -1511,3 +1511,19 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 bdc/convert/DCTracking.h
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e396840] v1.0
+ 18 files changed, 363 insertions(+), 5 deletions(-)
+ create mode 100644 espri/calib/ppScattering/plot_gs/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/plot_gs/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/plot_gs/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/plot_gs/naiPol3Calib.txt
+ create mode 100644 espri/calib/ppScattering/plot_gs/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/plot_gs/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/plot_gs/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/plot_gs/plasBirkCalib.txt_v3
+ create mode 100644 espri/calib/ppScattering/plot_gs/plasPedAngle.txt
+ create mode 120000 espri/convert/txt/naiPol3Calib_gs.txt
+ create mode 120000 espri/convert/txt/plasBirksCalib_gs.txt
+ create mode 100644 merger/rootfiles/changeName.sh
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -10,7 +10,9 @@ void drawHistoLine(){
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be9";
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
 	//TString fileName = "ppBe10Histo.root";
-	TString fileName = "v8_ppBe10Histo.root_newCalibration_Be10";
+	//TString fileName = "v8_ppBe10Histo.root_newCalibration_Be10";
+	//TString fileName = "v9_ppBe10Histo.root_Be9_gs";
+	TString fileName = "v9_ppBe10Histo.root_Be10_gs";
 	TFile *g =new TFile(fileName,"read");
 	TCanvas *cPad = new TCanvas("ppBe10L","ppBe10L",1400,900);
 	cPad->Divide(4,2);
@@ -30,8 +32,8 @@ void drawHistoLine(){
 		cPad->cd(i+1);
 		h[i] =(TH2F *)gDirectory->Get(hName[i]);
 		h[i]->Draw("colz");
-		//gs->Draw("l");
-		fex->Draw("l");
+		gs->Draw("l");
+		//fex->Draw("l");
 		//sn->Draw("l");
 		//mex->Draw("l");
 	}
