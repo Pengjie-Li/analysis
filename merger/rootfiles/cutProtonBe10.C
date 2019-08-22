@@ -1,30 +1,27 @@
 {
 //========= Macro generated from object: Proton/Graph
-//========= by ROOT version5.34/20
+//========= by ROOT version5.34/36
    
-   TCutG *cutg = new TCutG("Proton",19);
+   TCutG *cutg = new TCutG("Proton",16);
    cutg->SetVarX("espriNaiEnergy");
    cutg->SetVarY("espriPlasDeltaE");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetPoint(0,5.78818,19.6336);
-   cutg->SetPoint(1,21.4901,13.3663);
-   cutg->SetPoint(2,43.9655,7.53959);
-   cutg->SetPoint(3,68.5961,5.04244);
-   cutg->SetPoint(4,100.924,3.72041);
-   cutg->SetPoint(5,131.096,3.57352);
-   cutg->SetPoint(6,133.251,2.39839);
-   cutg->SetPoint(7,126.17,1.61497);
-   cutg->SetPoint(8,47.3522,0.78259);
-   cutg->SetPoint(9,42.734,2.20254);
-   cutg->SetPoint(10,65.2094,2.69218);
-   cutg->SetPoint(11,43.9655,4.06316);
-   cutg->SetPoint(12,31.0345,5.77689);
-   cutg->SetPoint(13,23.0296,7.88233);
-   cutg->SetPoint(14,11.9458,11.2119);
-   cutg->SetPoint(15,4.55665,14.3945);
-   cutg->SetPoint(16,2.70936,15.4717);
-   cutg->SetPoint(17,6.09606,19.5847);
-   cutg->SetPoint(18,5.78818,19.6336);
+   cutg->SetPoint(0,2.95229,20.0571);
+   cutg->SetPoint(1,10.8707,14.2352);
+   cutg->SetPoint(2,21.8196,10.411);
+   cutg->SetPoint(3,32.7685,7.95662);
+   cutg->SetPoint(4,56.1327,5.78767);
+   cutg->SetPoint(5,59.0654,5.61644);
+   cutg->SetPoint(6,58.5766,4.07534);
+   cutg->SetPoint(7,55.0574,3.90411);
+   cutg->SetPoint(8,43.2286,4.1895);
+   cutg->SetPoint(9,32.3775,5.38813);
+   cutg->SetPoint(10,19.8644,7.15753);
+   cutg->SetPoint(11,13.4124,9.44064);
+   cutg->SetPoint(12,4.90745,14.4064);
+   cutg->SetPoint(13,1.97471,16.6324);
+   cutg->SetPoint(14,3.05005,19.8858);
+   cutg->SetPoint(15,2.95229,20.0571);
    cutg->Draw("");
 }

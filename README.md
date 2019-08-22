@@ -8,16 +8,17 @@ Task List
 # analysis
 Data analysis code for s12
 ## Raw To root
-- [x] BeamLine Plastic
-- [x] BDC1, BDC2
-- [x] FDC0
-- [x] Telescope
-- - [x] DSSD
-- - [x] CsI
-- [x] ESPRI
-- - [x] RDC
-- - [x] Plastic
-- - [x] NaI
-- [] FDC2
-- [] HODO
+- [ ] BeamLine Plastic
+- [ ] BDC1, BDC2
+- [ ] FDC0
+- [ ] Telescope
+- - [ ] DSSD
+- - [ ] CsI
+- [ ] ESPRI
+- - [ ] RDC
+- - [ ] Plastic
+- - [ ] NaI
+- - [ ] Recheck plastic QPed dependency with Y Position after fine RDC calibration 
+- [ ] FDC2
+- [ ] HODO
 

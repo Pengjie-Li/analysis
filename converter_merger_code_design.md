@@ -79,9 +79,9 @@
 ![scheme](./pic/ESPRIConverterScheme.png)
 ### Branches
 #### `ESPRIRdcRaw` in vector
--[ ] rdcTDC            
+-[ ] rdcTDC
 -[ ] rdcPlaneID
--[ ] rdcPlaneNHit    
+-[ ] rdcPlaneNHit
 -[ ] rdcWireID
 -[ ] plasTimeRef
 - (TDC,planeId,wireId) packs give Raw Data
@@ -95,7 +95,7 @@
 - storing in array makes no need to name different detectors
 #### `ESPRIPlasRaw`
 -[ ] plasQRaw[4]
--[ ] plasTRaw[4]                
+-[ ] plasTRaw[4]
 -[ ] plasTimeRef
 #### `ESPRIRdcCal`
 - [ ] rdcChi2[2]: Trajectory chi2          

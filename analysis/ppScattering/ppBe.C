@@ -26,7 +26,8 @@ class PPScattering{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
 
 		}
@@ -271,12 +272,12 @@ class PPBe14:public PPScattering {
 
 void ppBe(){
 
-	PPBe10 *ppBe = new PPBe10();
+	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
-	ppBe->loadTChain(298,330);
-	//PPBe12 *ppBe = new PPBe12();
+	//ppBe->loadTChain(298,330);
+	PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(334,365);
-	//ppBe->loadTChain(360,361);
+	ppBe->loadTChain(360,361);
 	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(366,456);
