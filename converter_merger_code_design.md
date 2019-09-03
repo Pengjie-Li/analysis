@@ -113,6 +113,10 @@
 - [ ] naiBarQCal[2][7]
 - [ ] naiQ[2]
 - [ ] naiQId[2]
+|naiQPed[4][7]|naiQRaw-Ped|
+|naiBarQCal[2][7]|calibratedQ for each bar|
+|naiQ[2]|calibratedQ for each side ESPRI|
+|naiQId[2]|which bar detected ESPRIQ| 
 #### `ESPRIPlasCal`
 - [ ] plasQPed[4]
 - [ ] plasTCal[4]
