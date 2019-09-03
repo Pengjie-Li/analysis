@@ -114,13 +114,13 @@ class PPScattering{
 			c->Divide(4,2);
 
 			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
-			//TString drawVar = "2*naiQ[1]:protonTheta>>";
-			TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
+			//TString drawVar = "(2*naiQ[1]+plasQ[1]):protonTheta>>";
+			//TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
 			tree->SetAlias("plasQLPed","sqrt(plasQPed[0]*plasQPed[1])");
 			tree->SetAlias("plasQRPed","sqrt(plasQPed[2]*plasQPed[3])");
 			//TString drawVar = "(naiQ[1]+plasQRPed/(342.653 -0.0507624*plasQRPed)):protonTheta>>";
 			//TString drawVar = "(naiQ[1]+plasQRPed/(257.172 -0.0467016*plasQRPed)):protonTheta>>";
-			//TString drawVar = "espriNaiEnergy:protonTheta>>";
+			TString drawVar = "2*espriNaiEnergy+espriPlasDeltaE:protonTheta>>";
 			TString drawRange = "(200,40,80,200,0,200)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
 			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
@@ -185,11 +185,11 @@ class PPBe12:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe12.C");
 
-			gROOT->ProcessLine(".x rootfiles/cutBar23Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar22Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar21Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar20Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar19Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar23Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar22Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar21Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar20Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar19Be12.C");
 		}
 
 		void assignOutputName(){
@@ -197,7 +197,7 @@ class PPBe12:public PPScattering {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			hodGate = "(Bar23Be12||Bar22Be12||Bar21Be12||Bar20Be12||Bar19Be12)";
+			hodGate = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe12";
@@ -276,8 +276,8 @@ void ppBe(){
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
 	PPBe12 *ppBe = new PPBe12();
-	//ppBe->loadTChain(334,365);
-	ppBe->loadTChain(360,361);
+	ppBe->loadTChain(334,365);
+	//ppBe->loadTChain(360,361);
 	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(366,456);

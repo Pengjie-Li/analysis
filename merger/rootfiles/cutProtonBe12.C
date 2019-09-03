@@ -3,8 +3,11 @@
 //========= by ROOT version5.34/20
    
    cutg = new TCutG("Proton",14);
-   cutg->SetVarX("naiQ[0]");
-   cutg->SetVarY("plasQ[0]");
+   cutg->SetVarX("espriNaiEnergy");
+   cutg->SetVarY("espriPlasDeltaE");
+ 
+   //cutg->SetVarX("naiQ[0]");
+   //cutg->SetVarY("plasQ[0]");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
    cutg->SetLineColor(2);

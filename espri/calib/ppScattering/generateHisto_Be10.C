@@ -7,12 +7,9 @@ class GenerateHisto{
 		TCanvas *cPlas;
 		TCanvas *cNai;
 		void loadCut(){
-			//gROOT->ProcessLine(".x rootfiles/cutPPETBe10.C");
+			gROOT->ProcessLine(".x rootfiles/cutPPETBe10.C");
 			gROOT->ProcessLine(".x rootfiles/cutLeftPlas.C");
 			gROOT->ProcessLine(".x rootfiles/cutRightPlas.C");
-		}
-		void loadCut(TString line){
-			gROOT->ProcessLine(line);
 		}
 	public:
 		GenerateHisto(){
@@ -34,7 +31,6 @@ class GenerateHisto{
 				cPlas->cd(i+1);
 				if(i==0) cutPlas = "LeftPlas";
 				else cutPlas = "RightPlas";
-				cutPlas = "1>0";
 				tree->Draw(Form("sqrt(plasQPed[%d]*plasQPed[%d]):protonTheta>>hPed%d(100,60,73,100,200,4000)",2*i,2*i+1,i),"ppET&&"+cutPlas,"colz");
 				gPad->Modified();
 				gPad->Update();
@@ -50,7 +46,7 @@ class GenerateHisto{
 				for (int j = 0; j < 7; ++j) {
 
 					cNai->cd(i*8+j+1);
-					tree->Draw(Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d]):protonTheta>>hPed%d_%d(100,40,80,100,200,4000)",2*i,j,2*i+1,j,i,j),"ppET","colz");
+					tree->Draw(Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d]):protonTheta>>hPed%d_%d(100,40,80,100,500,4000)",2*i,j,2*i+1,j,i,j),"ppET","colz");
 					gPad->Modified();
 					gPad->Update();
 
@@ -58,8 +54,10 @@ class GenerateHisto{
 			}
 
 		}
-		void createRootFile(TString fileName){
+		void createRootFile(){
+			TString fileName = "calibHisto.root";
 			outputFile = new TFile(fileName,"recreate");		
+
 		}
 		void saveToRootFile(){
 			outputFile->Write();
@@ -67,13 +65,9 @@ class GenerateHisto{
 		}
 };
 void generateHisto(){
-	int runNumber = 360;
 	GenerateHisto *gh = new GenerateHisto();
-	gh->loadCut(".x rootfiles/cutPPETBe12.C");
-	//gh->loadCut(".x rootfiles/cutPPETBe10.C");
-	gh->openInputFile(Form("rootfiles/run0%d_analysed.root",runNumber));
-	//gh->createRootFile("calibHisto.root");
-	gh->createRootFile("calibHistoBe12.root");
+	gh->openInputFile("rootfiles/run0310_analysed.root");
+	gh->createRootFile();
 	gh->generatePlas();
 	gh->generateNai();
 	gh->saveToRootFile();
