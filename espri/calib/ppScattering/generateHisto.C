@@ -8,8 +8,8 @@ class GenerateHisto{
 		TCanvas *cNai;
 		void loadCut(){
 			//gROOT->ProcessLine(".x rootfiles/cutPPETBe10.C");
-			gROOT->ProcessLine(".x rootfiles/cutLeftPlas.C");
-			gROOT->ProcessLine(".x rootfiles/cutRightPlas.C");
+			//gROOT->ProcessLine(".x rootfiles/cutLeftPlas.C");
+			//gROOT->ProcessLine(".x rootfiles/cutRightPlas.C");
 		}
 		void loadCut(TString line){
 			gROOT->ProcessLine(line);
@@ -34,7 +34,7 @@ class GenerateHisto{
 				cPlas->cd(i+1);
 				if(i==0) cutPlas = "LeftPlas";
 				else cutPlas = "RightPlas";
-				cutPlas = "1>0";
+				//cutPlas = "1>0";
 				tree->Draw(Form("sqrt(plasQPed[%d]*plasQPed[%d]):protonTheta>>hPed%d(100,60,73,100,200,4000)",2*i,2*i+1,i),"ppET&&"+cutPlas,"colz");
 				gPad->Modified();
 				gPad->Update();
@@ -70,6 +70,8 @@ void generateHisto(){
 	int runNumber = 360;
 	GenerateHisto *gh = new GenerateHisto();
 	gh->loadCut(".x rootfiles/cutPPETBe12.C");
+	gh->loadCut(".x rootfiles/cutLeftPlasBe12.C");
+	gh->loadCut(".x rootfiles/cutRightPlasBe12.C");
 	//gh->loadCut(".x rootfiles/cutPPETBe10.C");
 	gh->openInputFile(Form("rootfiles/run0%d_analysed.root",runNumber));
 	//gh->createRootFile("calibHisto.root");
