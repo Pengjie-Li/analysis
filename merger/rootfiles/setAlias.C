@@ -1,7 +1,13 @@
 {
-	tree->SetAlias("plasQLPed","sqrt(plasQPed[0]*plasQPed[1])");
-	tree->SetAlias("plasQRPed","sqrt(plasQPed[2]*plasQPed[3])");
-	tree->SetAlias("naiBar00QPed","sqrt(naiQPed[0][0]*naiQPed[1][0])");
+	tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
+	tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");
+	for (int i = 0; i < 2; ++i) {
+		for (int j = 0; j < 7; ++j) {
+
+			tree->SetAlias(Form("naiBar%d%dQPed",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
+		}
+
+	}
 
 	tree->SetAlias("AMU","931.49410242*1");
 	tree->SetAlias("MassBe10","10.0113*1");

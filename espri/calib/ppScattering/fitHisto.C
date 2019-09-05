@@ -93,7 +93,8 @@ void fitNaiAll(){
 	cNai->Write();
 }
 void fitHisto(){
-	TString fileName = "calibHisto.root";
+	//TString fileName = "calibHisto.root";
+	TString fileName = "calibHistoBe12.root";
 	TFile *inputFile = new TFile(fileName,"UPDATE");
 	fitPlasAll();
 	//fitNaiAll();
