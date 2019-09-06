@@ -124,16 +124,11 @@
 - [ ] plasQ[2]
 - [ ] plasT[2]
 
-|plasQPed[4] |QPed = QRaw - Pedestal|
 |--- | --- |
+|plasQPed[4] |QPed = QRaw - Pedestal|
 |plasTCal[4] |NAN|
 |plasQ[2]    |plasQ = sqrt(QUPed*QDPed)/(A+B*sqrt(QUPed*QDPed))|
 |plasT[2]    |NAN|
-
-
-不 | 漂亮 | 的文字
-*依然* | `渲染的` | **很好**
-1 | 2 | 3
 
 # Merger
 
