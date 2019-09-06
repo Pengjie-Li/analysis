@@ -113,6 +113,7 @@
 - [ ] naiBarQCal[2][7]
 - [ ] naiQ[2]
 - [ ] naiQId[2]
+
 |naiQPed[4][7]|naiQRaw-Ped|
 |naiBarQCal[2][7]|calibratedQ for each bar|
 |naiQ[2]|calibratedQ for each side ESPRI|
@@ -122,6 +123,13 @@
 - [ ] plasTCal[4]
 - [ ] plasQ[2]
 - [ ] plasT[2]
+
+|plasQPed[4] |QPed = QRaw - Pedestal|
+|plasTCal[4] |NAN|
+|plasQ[2]    |plasQ = sqrt(QUPed*QDPed)/(A+B*sqrt(QUPed*QDPed))|
+|plasT[2]    |NAN|
+
+
 
 # Merger
 
