@@ -80,7 +80,7 @@ class ESPRIRdcCal{
 class ESPRINaiCalPara{
 	private:
 		double naiPedestal[4][7];
-		double naiBarGain[2][7];
+		double naiBarGain[2][7]; // Expired BarGain
 		double naiPol3P0[2][7];
 		double naiPol3P1[2][7];
 		double naiPol3P2[2][7];
@@ -164,6 +164,13 @@ class ESPRINaiCalPara{
 					cout<<i<<":"<<j<<":"<<naiBarGain[i][j]<<endl;
 				}
 			}	
+			cout<<" Nai BarQCal Pol3 Para:"<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					cout<<i<<":"<<j<<":"<<naiPol3P0[i][j]<<":"<<naiPol3P1[i][j]<<":"<<naiPol3P2[i][j]<<endl;
+				}
+			}	
+
 
 		}
 		~ESPRINaiCalPara(){}
@@ -498,8 +505,8 @@ class ESPRIPlasCal{
 		void calibrateQ(){
 			//plasRaw->printQ();
 			for(int i=0;i<4;i++){
-				plasQPed[i] = (getQRaw(i) - getPedestal(i));
-				plasQCal[i] = getCalibPar(i)*plasQPed[i];
+				if(getQRaw(i)!=-9999) plasQPed[i] = (getQRaw(i) - getPedestal(i));
+				if(plasQPed[i]!=-9999) plasQCal[i] = getCalibPar(i)*plasQPed[i];
 			}
 			setPlasQL();
 			setPlasQR();

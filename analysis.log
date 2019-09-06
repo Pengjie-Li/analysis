@@ -1619,3 +1619,43 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/cutRightPlasBe12.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9fa4876] v1.0
+ 39 files changed, 1395 insertions(+), 4 deletions(-)
+ create mode 100644 espri/calib/ppScattering/Be10/plot/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be10/plot/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be10/plot/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot/naiPol3Calib.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/Be10/plot/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/Be10/plot/plasBirkCalib.txt_v3
+ create mode 100644 espri/calib/ppScattering/Be10/plot/plasPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/naiPol3Calib.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/plasBirkCalib.txt_v3
+ create mode 100644 espri/calib/ppScattering/Be10/plot_gs/plasPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be12/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be12/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be12/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be12/naiPol3Calib.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/Be12/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/Be12/plasBirkCalib.txt_v3
+ create mode 100644 espri/calib/ppScattering/Be12/plasPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plot/drawNaiPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be12/plot/drawPlasPedEnergy.C
+ create mode 100644 espri/calib/ppScattering/Be12/plot/naiPedAngle.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plot/naiPol3Calib.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plot/plasBirkCalib.txt
+ create mode 100644 espri/calib/ppScattering/Be12/plot/plasBirkCalib.txt_v1
+ create mode 100644 espri/calib/ppScattering/Be12/plot/plasBirkCalib.txt_v2
+ create mode 100644 espri/calib/ppScattering/Be12/plot/plasBirkCalib.txt_v3
+ create mode 100644 espri/calib/ppScattering/Be12/plot/plasPedAngle.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -1,5 +1,6 @@
 naiPedestal:./txt/naiPedestal_Be10.txt
 naiBarGain:./txt/naiBarGain_Be10.txt
 plasCalib:./txt/plasCalib_Be10.txt
-naiPol3Calib:./txt/naiPol3Calib_gs.txt
-plasBirksCalib:./txt/plasBirksCalib_gs.txt
+
+naiPol3Calib:./txt/naiPol3Be10.txt
+plasBirksCalib:./txt/plasBirksBe10.txt

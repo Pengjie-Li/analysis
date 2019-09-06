@@ -43,23 +43,26 @@ class ReadPed{
 			double gain[7];
 			double gainError[7];
 			while(1){
-				in >>side>>ped[0]>>gain[0]>>gainError[0]>>ped[1]>>gain[1]>>gainError[1]>>ped[2]>>gain[2]>>gainError[2]>>ped[3]>>gain[3]>>gainError[3]>>ped[4]>>gain[4]>>gainError[4]>>ped[5]>>gain[5]>>gainError[5]>>ped[6]>>gain[6]>>gainError[6];
+				in >>side>>ped[0]>>ped[1]>>ped[2]>>ped[3]>>ped[4]>>ped[5]>>ped[6];
 				if(!in.good()) break;
 				for (int i = 0; i < angleNo-1; ++i) {
 					plasPed[side][i] = ped[i];
 					//cout<<ped[i]<<endl;
 				}
 			}
+//v1
+			//plasPed[0][7] = 3059.872;
+			//plasPed[1][7] = 2432.057143;
+//v2
+			//plasPed[0][7] = 2859.872;
+			//plasPed[1][7] = 2232.057143;
+//v3
+			plasPed[0][7] = 3300;
+			plasPed[1][7] = 2700;
 
-		// v1
-		//	plasPed[0][7] = 3298.806;
-		//	plasPed[1][7] = 2590.814;
-		// v2
-	//		plasPed[0][7] = 3340;
-	//		plasPed[1][7] = 2630;
-		// v3
-			plasPed[0][7] = 3390;
-			plasPed[1][7] = 2650;
+
+
+
 
 
 
