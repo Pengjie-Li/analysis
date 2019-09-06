@@ -117,7 +117,7 @@
 |Branch|Meaning|
 |--- | --- |
 |naiQPed[4][7]|naiQRaw-Ped|
-|naiBarQCal[2][7]|calibratedQ for each bar|
+|naiBarQCal[2][7]|`BarQCal = p1*BarQPed+ p2+BarQPed<sup>2</sup> + p3*BarQPed<sup>3</sup>` calibratedQ for each bar|
 |naiQ[2]|calibratedQ for each side ESPRI|
 |naiQId[2]|which bar detected ESPRIQ| 
 #### `ESPRIPlasCal`
@@ -125,6 +125,7 @@
 - [ ] plasTCal[4]
 - [ ] plasQ[2]
 - [ ] plasT[2]
+
 |Branch|Meaning|
 |--- | --- |
 |plasQPed[4] |QPed = QRaw - Pedestal|
