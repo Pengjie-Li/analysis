@@ -114,6 +114,8 @@
 - [ ] naiQ[2]
 - [ ] naiQId[2]
 
+|Branch|Meaning|
+|--- | --- |
 |naiQPed[4][7]|naiQRaw-Ped|
 |naiBarQCal[2][7]|calibratedQ for each bar|
 |naiQ[2]|calibratedQ for each side ESPRI|
@@ -123,7 +125,7 @@
 - [ ] plasTCal[4]
 - [ ] plasQ[2]
 - [ ] plasT[2]
-
+|Branch|Meaning|
 |--- | --- |
 |plasQPed[4] |QPed = QRaw - Pedestal|
 |plasTCal[4] |NAN|
