@@ -117,9 +117,9 @@
 |Branch|Meaning|
 |--- | --- |
 |naiQPed[4][7]|naiQRaw-Ped|
-|naiBarQCal[2][7]|`BarQCal = p1*BarQPed+ p2+BarQPed<sup>2</sup> + p3*BarQPed<sup>3</sup>` calibratedQ for each bar|
-|naiQ[2]|calibratedQ for each side ESPRI|
-|naiQId[2]|which bar detected ESPRIQ| 
+|naiBarQCal[2][7]|`BarQCal = p1*BarQPed+ p2+BarQPed^2 + p3*BarQPed^3` calibratedQ for each bar|
+|naiQ[2]|selection BarQCal for each ESPRI|
+|naiQId[2]|BarId for BarQCal selection| 
 #### `ESPRIPlasCal`
 - [ ] plasQPed[4]
 - [ ] plasTCal[4]
@@ -128,9 +128,9 @@
 
 |Branch|Meaning|
 |--- | --- |
-|plasQPed[4] |QPed = QRaw - Pedestal|
+|plasQPed[4] |`QPed = QRaw - Pedestal`|
 |plasTCal[4] |NAN|
-|plasQ[2]    |plasQ = sqrt(QUPed*QDPed)/(A+B*sqrt(QUPed*QDPed))|
+|plasQ[2]    |`plasQ = sqrt(QUPed*QDPed)/(A+B*sqrt(QUPed*QDPed))`|
 |plasT[2]    |NAN|
 
 # Merger
