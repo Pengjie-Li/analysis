@@ -1659,3 +1659,18 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/calib/ppScattering/Be12/plot/plasPedAngle.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 558e675] v1.0
+ 17 files changed, 119 insertions(+), 26 deletions(-)
+ create mode 100644 espri/calib/ppScattering/txt/naiPol3Be10.txt
+ create mode 100644 espri/calib/ppScattering/txt/naiPol3Be12.txt
+ create mode 100644 espri/calib/ppScattering/txt/plasBirksBe10.txt
+ create mode 100644 espri/calib/ppScattering/txt/plasBirksBe12.txt
+ rewrite espri/convert/ConvertESPRI (95%)
+ create mode 120000 espri/convert/txt/naiPol3Be10.txt
+ create mode 120000 espri/convert/txt/naiPol3Be12.txt
+ create mode 120000 espri/convert/txt/plasBirksBe10.txt
+ create mode 120000 espri/convert/txt/plasBirksBe12.txt
+Merge made by the 'recursive' strategy.
+ converter_merger_code_design.md | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+Branch master set up to track remote branch master from origin.
