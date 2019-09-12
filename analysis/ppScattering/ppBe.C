@@ -26,8 +26,8 @@ class PPScattering{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
-				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
 
 		}
@@ -115,12 +115,12 @@ class PPScattering{
 
 			//TString drawVar = "(2*naiQ[0]+plasQ[0]):protonTheta>>";
 			//TString drawVar = "(2*naiQ[1]+plasQ[1]):protonTheta>>";
-			//TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
+			TString drawVar = "(espriPlasDeltaE+espriNaiEnergy):protonTheta>>";
 			tree->SetAlias("plasQLPed","sqrt(plasQPed[0]*plasQPed[1])");
 			tree->SetAlias("plasQRPed","sqrt(plasQPed[2]*plasQPed[3])");
 			//TString drawVar = "(naiQ[1]+plasQRPed/(342.653 -0.0507624*plasQRPed)):protonTheta>>";
 			//TString drawVar = "(naiQ[1]+plasQRPed/(257.172 -0.0467016*plasQRPed)):protonTheta>>";
-			TString drawVar = "2*espriNaiEnergy+espriPlasDeltaE:protonTheta>>";
+			//TString drawVar = "2*espriNaiEnergy+espriPlasDeltaE:protonTheta>>";
 			TString drawRange = "(200,40,80,200,0,200)";
 			//TString drawVar = "plasQ[1]:naiQ[1]>>";
 			//TString drawVar = "espriPlasDeltaE:espriNaiEnergy>>";
@@ -276,8 +276,8 @@ void ppBe(){
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
 	PPBe12 *ppBe = new PPBe12();
-	ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(360,361);
+	ppBe->loadTChain(334,365);
 	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(366,456);

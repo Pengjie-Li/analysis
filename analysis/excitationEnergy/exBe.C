@@ -210,12 +210,12 @@ class EXBe12:public EXSpectrum {
 			gROOT->ProcessLine(".x rootfiles/cutProtonBe12.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe12.C");
-
-			gROOT->ProcessLine(".x rootfiles/cutBar23Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar22Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar21Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar20Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBar19Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar23Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar22Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar21Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar20Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe12Bar19Be12.C");
+	
 		}
 
 		void assignOutputName(){
@@ -223,7 +223,7 @@ class EXBe12:public EXSpectrum {
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
-			hodGate = "(Bar23Be12||Bar22Be12||Bar21Be12||Bar20Be12||Bar19Be12)";
+			hodGate = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe12";
@@ -298,11 +298,11 @@ class EXBe14:public EXSpectrum {
 
 void exBe(){
 
-	EXBe10 *exBe = new EXBe10();
+	//EXBe10 *exBe = new EXBe10();
 	//exBe->loadTChain(310,311);
-	exBe->loadTChain(298,330);
-	//EXBe12 *exBe = new EXBe12();
-	//exBe->loadTChain(334,365);
+	//exBe->loadTChain(298,330);
+	EXBe12 *exBe = new EXBe12();
+	exBe->loadTChain(334,365);
 	//exBe->loadTChain(360,361);
 	//EXBe14 *exBe = new EXBe14();
 	//exBe->loadTChain(436,437);
