@@ -85,6 +85,10 @@ class ReadPed{
 			return plasPed[id];
 		}
 };
+Double_t fitExp(Double_t *x,Double_t *par){
+	Double_t fitVal = par[0]*(TMath::Exp(par[1]*x[0])-1);
+	return fitVal;
+}
 class DrawGraph{
 	private:
 		TGraph *gr;
@@ -95,7 +99,11 @@ class DrawGraph{
 		DrawGraph(double *ped,double *energy){
 			gr = new TGraph(sizeof(ped),ped,energy);
 			//fit = new TF1("fit","[0]*x+[1]*x*x+[2]*x*x*x");
-			fit = new TF1("fit","x/([0]+[1]*x)");
+			//fit = new TF1("fit","x/([0]+[1]*x)");
+			fit = new TF1("fit",fitExp,0,4000,2);
+			fit->SetParameters(1,0.001);
+			//cout<<"Fit::"<<fit->Eval(0)<<endl;
+			//fit = new TF1("fit","(-([1]-[0]/x)+sqrt(([1]-[0]/x)*([1]-[0]/x)-4*[2]))/2*[2]");
 			setPlotStyle();
 			gr->Draw("ap");
 			//gr->Fit(fit,"Q");

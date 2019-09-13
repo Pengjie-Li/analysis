@@ -4,7 +4,7 @@
 	for (int i = 0; i < 2; ++i) {
 		for (int j = 0; j < 7; ++j) {
 
-			tree->SetAlias(Form("naiBar%d%dQPed",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
+			tree->SetAlias(Form("naiBarQPed%d%d",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
 		}
 
 	}
