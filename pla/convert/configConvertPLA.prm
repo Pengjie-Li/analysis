@@ -10,4 +10,4 @@ inputSuffix:.ridf.gz
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_PLA.root
+outputSuffix:_PLA.root_1

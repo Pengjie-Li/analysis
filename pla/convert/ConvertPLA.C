@@ -192,8 +192,8 @@ class ConvertPLA{
 
 int main(int argc, char *argv[]){
 	int runNumber=-1;
-	Long64_t maxEventNumber = 10000000;
-	//      Long64_t maxEventNumber = 30;
+	//Long64_t maxEventNumber = 10000000;
+	Long64_t maxEventNumber = 30;
 	//cout<<maxEventNumber<<endl;
 	if(argc==2) runNumber=atoi(argv[1]);
 	else if(argc==3) { runNumber=atoi(argv[1]); maxEventNumber=atoi(argv[2]);}
