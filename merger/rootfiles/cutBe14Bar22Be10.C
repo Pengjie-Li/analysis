@@ -1,20 +1,26 @@
 {
-//========= Macro generated from object: Bar22Be10/Graph
-//========= by ROOT version5.34/36
+//========= Macro generated from object: Be14Bar22Be10/Graph
+//========= by ROOT version5.34/20
    
-   cutg = new TCutG("Bar22Be10",9);
+   cutg = new TCutG("Be14Bar22Be10",13);
    cutg->SetVarX("0.5*(hodTRaw[0][22]+hodTRaw[1][22])");
    cutg->SetVarY("hodBarQCal[22]");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetPoint(0,18079.6,2245.43);
-   cutg->SetPoint(1,18130.5,2319.63);
-   cutg->SetPoint(2,18187.2,2239.73);
-   cutg->SetPoint(3,18185.2,2068.49);
-   cutg->SetPoint(4,18152,1988.58);
-   cutg->SetPoint(5,18093.3,2028.54);
-   cutg->SetPoint(6,18073.8,2131.28);
-   cutg->SetPoint(7,18114.8,2234.02);
-   cutg->SetPoint(8,18079.6,2245.43);
+   cutg->SetLineColor(2);
+   cutg->SetLineWidth(2);
+   cutg->SetPoint(0,18100.9,2301.38);
+   cutg->SetPoint(1,18071.6,2226.75);
+   cutg->SetPoint(2,18065.1,2140.64);
+   cutg->SetPoint(3,18078.1,2025.83);
+   cutg->SetPoint(4,18107.4,1974.17);
+   cutg->SetPoint(5,18146.5,1979.91);
+   cutg->SetPoint(6,18195.4,2031.57);
+   cutg->SetPoint(7,18188.9,2152.12);
+   cutg->SetPoint(8,18169.3,2243.97);
+   cutg->SetPoint(9,18143.2,2312.86);
+   cutg->SetPoint(10,18113.9,2307.12);
+   cutg->SetPoint(11,18104.1,2289.9);
+   cutg->SetPoint(12,18100.9,2301.38);
    cutg->Draw("");
 }

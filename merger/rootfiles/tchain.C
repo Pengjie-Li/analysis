@@ -15,11 +15,12 @@
 //	int runStart = 366;
 //	int runStop = 445;
 	
-	//int runStart = 366;
-	//int runStop = 440;
+//	int runStart = 420;
+//	int runStop = 440;
 	for (int i = runStart; i < runStop; ++i) {
 		
-		tree->Add(Form("run0%d_analysed.root_1",i));
+		//tree->Add(Form("run0%d_analysed.root_1",i));
+		tree->Add(Form("run0%d_analysed.root",i));
 	}
 
 	TString trigger = "Trig_BxESPRI>0&&Trig_DSB==0&&Trig_BxESPRIxTEL==0&&Trig_BxNEBULA==0&&Trig_BxTEL==0";

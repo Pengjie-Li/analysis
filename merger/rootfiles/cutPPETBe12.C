@@ -14,5 +14,5 @@
    cutg->SetPoint(4,61.8099,86.3847);
    cutg->SetPoint(5,62.2964,84.387);
    cutg->SetPoint(6,62.2216,84.387);
-   cutg->Draw("");
+   cutg->Draw("same");
 }

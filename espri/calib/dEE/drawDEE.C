@@ -50,7 +50,8 @@ class DrawDE{
 			drawVar = var1 +":"+var2+">>";
 		}
 		void initGate(){
-			gate="1>0";
+			//gate="1>0";
+			gate="rdcY[0]>355&&rdcY[0]<375";
 			loadTargetCut();
 		}
 		void setGate(TString gateIn){
@@ -138,21 +139,26 @@ class PlasDE{
 			drawDE->draw();
 
 		}
-		void drawAllBars(){
-			TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-			cPad->Divide(7,2);
+		void drawBar(int side, int barNo){
 			DrawDE *drawDE = new DrawDE(tree);
 			drawDE->loadTargetCut();
 			drawDE->setRange(500,0,4000,0,4000);
 
+			drawDE->setHistoName(Form("hSide%dBar%d",side,barNo));
+			drawDE->setDrawVar(Form("sqrt(plasQPed[%d]*plasQPed[%d])",2*side,2*side+1),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*side,barNo,2*side+1,barNo));
+			drawDE->initGate();
+			drawDE->setGate(Form("(plasQPed[%d]>0&&plasQPed[%d]>0)&&(naiQPed[%d][%d]>0&&naiQPed[%d][%d]>0)",2*side,2*side+1,2*side,barNo,2*side+1,barNo));
+			drawDE->draw();
+		}
+
+		void drawAllBars(){
+			TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+			cPad->Divide(7,2);
+
 			for(int side = 0;side<2;side++){
 				for(int barNo = 0;barNo<7;barNo++){
 					cPad->cd(7*side+barNo+1);
-					drawDE->setHistoName(Form("hSide%dBar%d",side,barNo));
-					drawDE->setDrawVar(Form("sqrt(plasQPed[%d]*plasQPed[%d])",2*side,2*side+1),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*side,barNo,2*side+1,barNo));
-					drawDE->initGate();
-					drawDE->setGate(Form("(plasQPed[%d]>0&&plasQPed[%d]>0)&&(naiQPed[%d][%d]>0&&naiQPed[%d][%d]>0)",2*side,2*side+1,2*side,barNo,2*side+1,barNo));
-					drawDE->draw();
+					drawBar(side,barNo);
 					cPad->Modified();
 					cPad->Update();
 				}
@@ -175,9 +181,9 @@ class PlasDE{
 };
 void drawDEEPlot(){
 	PlasDE *plasGain = new PlasDE();
-	//plasGain->loadRun(298,330);
+	plasGain->loadRun(298,330);
 	//plasGain->loadRun(334,365);
-	plasGain->loadRun(366,455);
+	//plasGain->loadRun(366,455);
 	//plasGain->loadRun(310);
 	plasGain->createOutputFile();
 	//plasGain->loadCut();
@@ -186,7 +192,21 @@ void drawDEEPlot(){
 	//plasGain->drawOneBarsWithCut(1,3);
 	plasGain->write();
 }
+void drawDEEWithRDCY(){
+	PlasDE *plasGain = new PlasDE();
+	plasGain->loadRun(298,330);
+	//plasGain->loadRun(334,365);
+	//plasGain->loadRun(366,455);
+	//plasGain->loadRun(310);
+	plasGain->createOutputFile();
+	//plasGain->loadCut();
+	plasGain->drawBar(0,0);
+	plasGain->drawBar(0,1);
+	//plasGain->drawAllBars();
+	plasGain->write();
+}
 void drawDEE(){
 	drawDEEPlot();
+	//drawDEEWithRDCY();
 	//drawDEEPlotWithCut();
 }

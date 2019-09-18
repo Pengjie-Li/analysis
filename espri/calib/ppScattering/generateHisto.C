@@ -67,7 +67,7 @@ class GenerateHisto{
 		}
 };
 void generateHisto(){
-	int runNumber = 360;
+	int runNumber = 340;
 	GenerateHisto *gh = new GenerateHisto();
 	gh->loadCut(".x rootfiles/cutPPETBe12.C");
 	gh->loadCut(".x rootfiles/cutLeftPlasBe12.C");
