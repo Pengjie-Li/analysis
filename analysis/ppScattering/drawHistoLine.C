@@ -2,8 +2,10 @@
 void drawHistoLine(){
 	//TFile *fCurve = new TFile("../../../plot/esBe10Excitation/protonCurve.root","READ");
 	TFile *fCurve = new TFile("../../../plot/esBe12Excitation/protonCurve.root","READ");
+	//TFile *fCurve = new TFile("../../../plot/esBe14Excitation/protonCurve.root","READ");
 	TGraph *gs = (TGraph *)gDirectory->Get("gs");
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
+	//TGraph *sn = (TGraph *)gDirectory->Get("s2n");
 	TGraph *sn = (TGraph *)gDirectory->Get("sn");
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
 	//gs->SetLineColor("");
@@ -12,6 +14,9 @@ void drawHistoLine(){
 	//TString fileName = "v5_ppBe10Histo.root_Bar19-23_Be10";
 	//TString fileName = "ppBe10Histo.root";
 	TString fileName = "ppBe12Histo.root";
+	//TString fileName = "v2_ppBe14HistoBe14.root_UsingBe10Calib_Bar19-32";
+	//TString fileName = "v2_ppBe14HistoBe14.root_UsingBe10Calib_Bar27-29";
+	//TString fileName = "v2_ppBe14HistoBe10.root_UsingBe10Calib_Bar19-23";
 	//TString fileName = "v8_ppBe10Histo.root_newCalibration_Be10";
 	//TString fileName = "v9_ppBe10Histo.root_Be9_gs";
 	//TString fileName = "v9_ppBe10Histo.root_Be10_gs";

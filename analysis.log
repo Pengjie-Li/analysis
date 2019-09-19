@@ -1853,3 +1853,53 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 hod/pid/test.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a653cbc] v1.0
+ 60 files changed, 961 insertions(+), 309 deletions(-)
+ create mode 100644 espri/calib/alignDEE/alignBeams.C
+ create mode 100644 espri/calib/alignDEE/alignBothSides.C
+ create mode 100644 espri/calib/alignDEE/alignOneSideBars.C
+ create mode 120000 espri/calib/alignDEE/rootfiles
+ create mode 100644 espri/convert/rootfiles/run0373_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0441_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0442_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0443_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0444_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0445_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0446_ESPRI.root_1
+ create mode 100644 espri/convert/rootfiles/run0447_ESPRI.root_1
+ rewrite merger/rootfiles/cutBe14Bar19Be10.C (71%)
+ create mode 100644 merger/rootfiles/cutBe14Bar19Be11.C
+ create mode 100644 merger/rootfiles/cutBe14Bar19Be12.C
+ rewrite merger/rootfiles/cutBe14Bar19Be14.C (63%)
+ rewrite merger/rootfiles/cutBe14Bar20Be10.C (72%)
+ create mode 100644 merger/rootfiles/cutBe14Bar20Be11.C
+ create mode 100644 merger/rootfiles/cutBe14Bar20Be12.C
+ rewrite merger/rootfiles/cutBe14Bar20Be14.C (65%)
+ rewrite merger/rootfiles/cutBe14Bar21Be10.C (71%)
+ create mode 100644 merger/rootfiles/cutBe14Bar21Be11.C
+ create mode 100644 merger/rootfiles/cutBe14Bar21Be12.C
+ rewrite merger/rootfiles/cutBe14Bar21Be14.C (63%)
+ rewrite merger/rootfiles/cutBe14Bar22Be10.C (72%)
+ create mode 100644 merger/rootfiles/cutBe14Bar22Be11.C
+ create mode 100644 merger/rootfiles/cutBe14Bar22Be12.C
+ rewrite merger/rootfiles/cutBe14Bar22Be14.C (63%)
+ rewrite merger/rootfiles/cutBe14Bar23Be10.C (71%)
+ create mode 100644 merger/rootfiles/cutBe14Bar23Be11.C
+ create mode 100644 merger/rootfiles/cutBe14Bar23Be12.C
+ rewrite merger/rootfiles/cutBe14Bar23Be14.C (63%)
+ create mode 100644 merger/rootfiles/cutBe14Bar24Be12.C
+ create mode 100644 merger/rootfiles/cutBe14Bar25Be12.C
+ create mode 100644 merger/rootfiles/cutBe14Bar26Be12.C
+ create mode 100644 merger/rootfiles/cutBe14Bar27Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar28Be14.C
+ rewrite merger/rootfiles/cutBe14Bar29Be14.C (77%)
+ rewrite merger/rootfiles/cutProtonBe14.C (82%)
+ create mode 100644 merger/rootfiles/drawProtonCurveBe14.C
+ create mode 100644 merger/rootfiles/run0442_analysed.root_1
+ create mode 100644 merger/rootfiles/run0443_analysed.root_1
+ create mode 100644 merger/rootfiles/run0444_analysed.root_1
+ create mode 100644 merger/rootfiles/run0445_analysed.root_1
+ create mode 100644 merger/rootfiles/run0446_analysed.root_1
+ create mode 100644 merger/rootfiles/run0447_analysed.root_1
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

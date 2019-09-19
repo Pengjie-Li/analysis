@@ -27,18 +27,18 @@ class EXSpectrum{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
 			}
 
 		}
 		void defineAlias(){
 			tree->SetAlias("AMU","931.49410242*1");
-			tree->SetAlias("MassBe10","10.0113*1");
 			tree->SetAlias("MassH","1.007276*1");
 
-			tree->SetAlias("beamMass","MassBe10*AMU");
+			tree->SetAlias("beamMass","MassBe*AMU");
 			tree->SetAlias("protonMass","MassH*AMU");
-			tree->SetAlias("beamEk","Ek713*MassBe10");
+			tree->SetAlias("beamEk","Ek713*MassBe");
 
 			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
 			tree->SetAlias("protonEk","espriPlasDeltaE+espriNaiEnergy");
@@ -167,6 +167,7 @@ class EXBe10:public EXSpectrum {
 	private:
 	public:
 		EXBe10(){
+			tree->SetAlias("MassBe","10.0113*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe10.C");
@@ -204,6 +205,7 @@ class EXBe12:public EXSpectrum {
 	private:
 	public:
 		EXBe12(){
+			tree->SetAlias("MassBe","12.0247*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe12.C");
@@ -234,6 +236,7 @@ class EXBe14:public EXSpectrum {
 	private:
 	public:
 		EXBe14(){
+			tree->SetAlias("MassBe","14.0407*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");

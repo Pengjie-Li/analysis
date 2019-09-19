@@ -26,7 +26,8 @@ class PPScattering{
 		void loadTChain(int runStart = 310,int runStop = 311){
 			for (int i = runStart; i < runStop; ++i) {
 
-				tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
 				//tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
 
@@ -211,7 +212,8 @@ class PPBe14:public PPScattering {
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");
-			gROOT->ProcessLine(".x rootfiles/cutProtonBe14.C");
+			//gROOT->ProcessLine(".x rootfiles/cutProtonBe14.C");
+			gROOT->ProcessLine(".x rootfiles/cutProtonBe14_1.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe14.C");
 
@@ -261,11 +263,13 @@ class PPBe14:public PPScattering {
 		void defineHodGate(){
 			//hodGate = "(Bar23Be14||Bar22Be14||Bar21Be14||Bar20Be14||Bar19Be14)";
 			//hodGate = "(Bar17Be10||Bar18Be10||Bar19Be10||Bar20Be10||Bar21Be10||Bar22Be10||Bar23Be10)";
-			hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
+			//hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
+			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+			hodGate = "(Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14||Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
 			//hodGate = "(Be14Bar23Be12||Be14Bar22Be12||Be14Bar21Be12||Be14Bar20Be12||Be14Bar19Be12)";
 			//hodGate = "(Be14Bar23Be11||Be14Bar22Be11||Be14Bar21Be11||Be14Bar20Be11||Be14Bar19Be11)";
 			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
-			hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 		}
 		void defineBeamGate(){
 			beamGate = "BeamBe14";
@@ -277,12 +281,13 @@ void ppBe(){
 	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
-	//PPBe12 *ppBe = new PPBe12();
-	//ppBe->loadTChain(360,361);
+	PPBe12 *ppBe = new PPBe12();
+	//ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
-	PPBe14 *ppBe = new PPBe14();
+	ppBe->loadTChain(334,363);
+	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	ppBe->loadTChain(366,456);
+	//ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineHodGate();
