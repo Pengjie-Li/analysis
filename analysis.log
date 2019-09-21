@@ -1957,3 +1957,15 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/cutProtonBe14_1.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e0d23d2] v1.0
+ 10 files changed, 195 insertions(+), 4 deletions(-)
+ create mode 100644 merger/rootfiles/checkF3Time.C
+ create mode 100644 merger/rootfiles/checkF7Time.C
+ create mode 100644 merger/rootfiles/checkSBT1Time.C
+ create mode 100644 merger/rootfiles/checkSBT2Time.C
+ create mode 100644 merger/rootfiles/checkSBVTime.C
+ create mode 100644 pla/slewEffect/.slewEffect.C.swp
+ create mode 120000 pla/slewEffect/rootfiles
+ create mode 100644 pla/slewEffect/slewEffect.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
