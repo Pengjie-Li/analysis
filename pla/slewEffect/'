@@ -9,7 +9,6 @@ Double_t fitfunc(Double_t *x,Double_t *par) {
 
 class SlewCorrection{
 	private:
-		int runNumber;
 		TChain *tree;
 		TString timeVar;
 		TString energyVar;
@@ -18,7 +17,7 @@ class SlewCorrection{
 		TString drawRange;
 		TString draw;
 		TString gate;
-		TCanvas *cPad;
+
 		TH2F *hDraw;
 		TH2F *hDrawCorr;
 		TF1 *fitFunction;
@@ -26,7 +25,6 @@ class SlewCorrection{
 	public:
 		SlewCorrection(){
 			tree = new TChain("tree");
-			fitFunction = new TF1("fit","pol1",0,4000);
 		}
 		~SlewCorrection(){}
 		void loadChain(int runStart,int runStop){
@@ -36,15 +34,10 @@ class SlewCorrection{
 			}
 		}
 		void loadRun(int run){
-			runNumber = run;
 			loadChain(run,run+1);
 		}
 		void loadRuns(int runStart,int runStop){
 			loadChain(runStart,runStop+1);
-		}
-		void setCanvas(TString cPadName){
-			cPad = new TCanvas(cPadName,cPadName,1400,700);
-			cPad->Divide(2,1);
 		}
 		void setVar(TString t,TString q, TString h){
 			timeVar = t;
@@ -65,23 +58,17 @@ class SlewCorrection{
 			gate = g;
 		}
 		void drawBeforeCorrection(){
-			cPad->cd(1);
 			draw = drawVar + drawRange;
 			TString color = "colz";
 			tree->Draw(draw,gate,color);
 			hDraw = (TH2F*)gDirectory->Get(hName);
 			hDraw->Write();
-			
-			profileX(hDraw);
 		}
 
 		void profileX(){
+			fitFunction = new TF1("fit","pol1",0,4000);
+			//TCanvas *cProfile = new TCanvas("cProfile","cProfile",700,700);
 			TProfile *hPDEE = hDraw->ProfileX();
-			hPDEE->Draw("same");
-			hPDEE->Fit(fitFunction,"Q");
-		}
-		void profileX(TH2F *hTest){
-			TProfile *hPDEE = hTest->ProfileX();
 			//hPDEE->SetMarkerColor(2);
 			hPDEE->Draw("same");
 			//TF1 *fit = new TF1("fit",fitfunc,0,4000,2);	
@@ -98,9 +85,8 @@ class SlewCorrection{
 			cout<<"Fit Parameters: "<<fitPara[0]<<":"<<fitPara[1]<<endl;
 		}
 		void drawAfterCorrection(){
-			cPad->cd(2);
 			getFitPara();	
-			timeVar = timeVar + Form("- %f*",fitPara[1])+energyVar;
+			timeVar = timeVar + Form("+ %f*",fitPara[1])+energyVar;
 			TString hNameCorr = hName  + "After";
 			drawVar = timeVar+ ":"+ energyVar + ">>" + hNameCorr ;
 			draw = drawVar + drawRange;
@@ -109,21 +95,13 @@ class SlewCorrection{
 			hDrawCorr = (TH2F*)gDirectory->Get(hNameCorr);
 			hDrawCorr->Write();
 	
-			profileX(hDrawCorr);
-			//getFitPara();
-		}
-		double getSlopePara(){
-			return fitPara[1];
-		}
-		void printPNG(){
-			TString printName ="./png/"+hName+Form("run%d.png",runNumber);
-			cPad->Print(printName);
 		}
 };
 class F3Slew0:public SlewCorrection{
 	private:
 	public:
 		F3Slew0(){
+			TCanvas *F30Pad = new TCanvas("F30Pad","F30Pad",700,700);
 			setCanvas("F30Pad");
 			setVar("F3TCal[0]","F3QRaw[0]", "hF3Slew0");
 			setRange(500,100,1300,500,540,580);
@@ -138,11 +116,12 @@ class F3Slew1:public SlewCorrection{
 	private:
 	public:
 		F3Slew1(){
-			setCanvas("F31Pad");
+			TCanvas *F31Pad = new TCanvas("F31Pad","F31Pad",700,700);
 			setVar("F3TCal[1]","F3QRaw[1]", "hF3Slew1");
 			setRange(500,100,1300,500,540,580);
 			//gROOT->ProcessLine(".x rootfiles/cutBe10.C");
 			setGate("Trig_DSB");
+
 
 		}
 		~F3Slew1(){}
@@ -152,7 +131,7 @@ class F7Slew0:public SlewCorrection{
 	private:
 	public:
 		F7Slew0(){
-			setCanvas("F70Pad");
+			TCanvas *F70Pad = new TCanvas("F70Pad","F70Pad",700,700);
 			setVar("F7TCal[0]","F7QRaw[0]", "hF7Slew0");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -164,8 +143,7 @@ class F7Slew1:public SlewCorrection{
 	private:
 	public:
 		F7Slew1(){
-			setCanvas("F71Pad");
-			setVar("F7TCal[0]","F7QRaw[0]", "hF7Slew0");
+			TCanvas *F71Pad = new TCanvas("F71Pad","F71Pad",700,700);
 			setVar("F7TCal[1]","F7QRaw[1]", "hF7Slew1");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -177,7 +155,7 @@ class SBT1Slew0:public SlewCorrection{
 	private:
 	public:
 		SBT1Slew0(){
-			setCanvas("SBT10Pad");
+			TCanvas *SBT10Pad = new TCanvas("SBT10Pad","SBT10Pad",700,700);
 			setVar("SBT1TCal[0]","SBT1QRaw[0]", "hSBT1Slew0");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -189,7 +167,7 @@ class SBT1Slew1:public SlewCorrection{
 	private:
 	public:
 		SBT1Slew1(){
-			setCanvas("SBT11Pad");
+			TCanvas *SBT11Pad = new TCanvas("SBT11Pad","SBT11Pad",700,700);
 			setVar("SBT1TCal[1]","SBT1QRaw[1]", "hSBT1Slew1");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -200,7 +178,7 @@ class SBT2Slew0:public SlewCorrection{
 	private:
 	public:
 		SBT2Slew0(){
-			setCanvas("SBT20Pad");
+			TCanvas *SBT20Pad = new TCanvas("SBT20Pad","SBT20Pad",700,700);
 			setVar("SBT2TCal[0]","SBT2QRaw[0]", "hSBT2Slew0");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -212,7 +190,7 @@ class SBT2Slew1:public SlewCorrection{
 	private:
 	public:
 		SBT2Slew1(){
-			setCanvas("SBT21Pad");
+			TCanvas *SBT21Pad = new TCanvas("SBT21Pad","SBT21Pad",700,700);
 			setVar("SBT2TCal[1]","SBT2QRaw[1]", "hSBT2Slew1");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -223,7 +201,7 @@ class SBVSlew1:public SlewCorrection{
 	private:
 	public:
 		SBVSlew1(){
-			setCanvas("SBV1Pad");
+			TCanvas *SBV1Pad = new TCanvas("SBV1Pad","SBV1Pad",700,700);
 			setVar("SBVTCal[1]","SBVQRaw[1]", "hSBVSlew1");
 			setRange(500,0,1500,500,540,580);
 			setGate("Trig_DSB");
@@ -239,20 +217,6 @@ class BeamPlas{
 		Double_t tof713Mean;
 		Double_t tof713Width;
 		TString gate;
-
-		SlewCorrection *F30;
-		SlewCorrection *F31;
-		SlewCorrection *F70;
-		SlewCorrection *F71;
-		SlewCorrection *SBT10;
-		SlewCorrection *SBT11;
-		SlewCorrection *SBT20;
-		SlewCorrection *SBT21;
-		SlewCorrection *SBV1;
-	
-	
-	
-		
 	public:
 		BeamPlas(int run){ runNumber = run;}
 		~BeamPlas(){}
@@ -266,127 +230,95 @@ class BeamPlas{
 
 		void checkF3Slew(){
 
-			F30 = new F3Slew0();
+
+			F3Slew0 *F30 = new F3Slew0();
 			F30->loadRun(runNumber);
 			F30->setGate(gate);
 			F30->setRange(2000,0,4000,1000,540,580);
 			F30->drawBeforeCorrection();
-			//F30->profileX();
-			F30->drawAfterCorrection();
+			F30->profileX();
 
-			F31 = new F3Slew1();
+			F3Slew1 *F31 = new F3Slew1();
 			F31->loadRun(runNumber);
 			F31->setGate(gate);
 			F31->setRange(2000,0,4000,1000,540,580);
 			F31->drawBeforeCorrection();
-			//F31->profileX();
-			F31->drawAfterCorrection();
+			F31->profileX();
 		}
 		void checkF7Slew(){
 
-			F70 = new F7Slew0();
+			F7Slew0 *F70 = new F7Slew0();
 			F70->loadRun(runNumber);
 			F70->setGate(gate);
 			F70->setRange(2000,0,4000,1000,540,580);
 			F70->drawBeforeCorrection();
-			F70->drawAfterCorrection();
+			F70->profileX();
 
-			F71 = new F7Slew1();
+			F7Slew1 *F71 = new F7Slew1();
 			F71->loadRun(runNumber);
 			F71->setGate(gate);
 			F71->setRange(2000,0,4000,1000,540,580);
 			F71->drawBeforeCorrection();
-			F71->drawAfterCorrection();
+			F71->profileX();
 		}
 		void checkSBT1Slew(){
 
-			SBT10 = new SBT1Slew0();
+			SBT1Slew0 *SBT10 = new SBT1Slew0();
 			SBT10->loadRun(runNumber);
 			SBT10->setGate(gate);
 			SBT10->setRange(2000,0,4000,1000,200,240);
 			SBT10->drawBeforeCorrection();
-			SBT10->drawAfterCorrection();
+			SBT10->profileX();
 
-			SBT11 = new SBT1Slew1();
+			SBT1Slew1 *SBT11 = new SBT1Slew1();
 			SBT11->loadRun(runNumber);
 			SBT11->setGate(gate);
 			SBT11->setRange(2000,0,4000,1000,200,240);
 			SBT11->drawBeforeCorrection();
-			SBT11->drawAfterCorrection();
+			SBT11->profileX();
 		}
 		void checkSBT2Slew(){
 
-			SBT20 = new SBT2Slew0();
+			SBT2Slew0 *SBT20 = new SBT2Slew0();
 			SBT20->loadRun(runNumber);
 			SBT20->setGate(gate);
 			SBT20->setRange(2000,0,4000,1000,200,240);
 			SBT20->drawBeforeCorrection();
-			SBT20->drawAfterCorrection();
+			SBT20->profileX();
 
-			SBT21 = new SBT2Slew1();
+			SBT2Slew1 *SBT21 = new SBT2Slew1();
 			SBT21->loadRun(runNumber);
 			SBT21->setGate(gate);
 			SBT21->setRange(2000,0,4000,1000,200,240);
 			SBT21->drawBeforeCorrection();
-			SBT21->drawAfterCorrection();
+			SBT21->profileX();
 		}
 	
 		void checkSBVSlew(){
 
-			SBV1 = new SBVSlew1();
+			SBVSlew1 *SBV1 = new SBVSlew1();
 			SBV1->loadRun(runNumber);
 			SBV1->setGate(gate);
 			SBV1->setRange(2000,0,4000,1000,210,250);
 			SBV1->drawBeforeCorrection();
-			SBV1->drawAfterCorrection();
+			SBV1->profileX();
 		}
-                void outputTxt(){
-
-                        TString outputName=Form("./txt/SlewParaRun%d.txt",runNumber);
-                        //ofstream fout(outputName,ios_base::app | ios_base::out);
-                        ofstream fout(outputName, ios_base::out);
-			fout<<F30->getSlopePara()<<endl;
-			fout<<F31->getSlopePara()<<endl;
-			fout<<F70->getSlopePara()<<endl;
-			fout<<F71->getSlopePara()<<endl;
-			fout<<SBT10->getSlopePara()<<endl;
-			fout<<SBT11->getSlopePara()<<endl;
-			fout<<SBT20->getSlopePara()<<endl;
-			fout<<SBT21->getSlopePara()<<endl;
-			fout<<SBV1->getSlopePara()<<endl;
-        
-                        fout.close();
-                }
-		void printPNG(){
-
-			F30->printPNG();
-			F31->printPNG();
-			F70->printPNG();
-			F71->printPNG();
-			SBT10->printPNG();
-			SBT11->printPNG();
-			SBT20->printPNG();
-			SBT21->printPNG();
-			SBV1->printPNG();
-
-		}
-
 
 };
 void slewEffect(){
 
 	//int runNumber = 310;
-	int runNumber = 320;
-	double tof37Mean = 299.2;
-	double tof37Width = 0.5;
-	double tof713Mean = 236.6;
-	double tof713Width = 0.5;
-	//int runNumber = 340;
-	//int runNumber = 360;
-	//double tof37Mean = 300.6;
+	//int runNumber = 320;
+	//double tof37Mean = 299.2;
 	//double tof37Width = 0.5;
-	//double tof713Mean = 236.1;
+	//double tof713Mean = 236.6;
 	//double tof713Width = 0.5;
+	//int runNumber = 340;
+	int runNumber = 360;
+	double tof37Mean = 300.6;
+	double tof37Width = 0.5;
+	double tof713Mean = 236.1;
+	double tof713Width = 0.5;
 	
 	//int runNumber = 380;
 	//int runNumber = 595;
@@ -398,12 +330,10 @@ void slewEffect(){
 	BeamPlas *bp = new BeamPlas(runNumber);
 	bp->loadGate(tof37Mean,tof37Width,tof713Mean,tof713Width);
 	bp->checkF3Slew();
-	bp->checkF7Slew();
-	bp->checkSBT1Slew();
-	bp->checkSBT2Slew();
-	bp->checkSBVSlew();
-	bp->outputTxt();	
-	bp->printPNG();	
+//	bp->checkF7Slew();
+//	bp->checkSBT1Slew();
+//	bp->checkSBT2Slew();
+//	bp->checkSBVSlew();
 	//checkF3Slew(runNumber,tof37Mean,tof37Width,tof713Mean,tof713Width);
 	//checkF7Slew(runNumber);
 	//	checkSBT1Slew(runNumber);

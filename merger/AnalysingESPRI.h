@@ -2,6 +2,9 @@ void Merger::analysingESPRI(){
 	initAnalysedESPRI();
 	//analysisESPRI->input(mergeESPRI);
 	setESPRIEvent();
+
+	espriEvent->loadData(mergeESPRI);
+	espriEvent->analysing();
 }
 void Merger::initAnalysedESPRI(){
 	/************* ESPRI *****************/

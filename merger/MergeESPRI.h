@@ -214,4 +214,8 @@ class MergeESPRI:public Convert{
 		~MergeESPRI(){
 			delete positionESPRI;
 		}
+
+		double getNaiBarQCal(int side,int id){
+			return naiBarQCal[side][id];
+		}
 };

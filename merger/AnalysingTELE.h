@@ -23,7 +23,7 @@ void Merger::getMultiplicity(){
 
 }
 void Merger::printMultiplicity(){
-	cout<<"Multiplicity: LF= "<<multiplicity[0]<<" LB= "<<multiplicity[1]<<" RF= "<<multiplicity[2]<<" RB= "<<multiplicity[4]<<endl;
+	//cout<<"Silicon Multiplicity: LF= "<<multiplicity[0]<<" LB= "<<multiplicity[1]<<" RF= "<<multiplicity[2]<<" RB= "<<multiplicity[4]<<endl;
 }
 Int_t Merger::getMultiplicity(int side){
 	return mergeTELE->getMultiplicity(side);

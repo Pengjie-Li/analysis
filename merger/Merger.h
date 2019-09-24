@@ -8,6 +8,9 @@
 #include "MergeHOD.h"
 #include "MergeESPRI.h"
 
+
+#include "EspriEvent.h"
+
 class Merger{
 	private: 
 		const static bool kMAIN = true;
@@ -132,6 +135,7 @@ class Merger{
 		void analysingHOD();
 
 		void analysingESPRI();
+		EspriEvent *espriEvent;
 		void initAnalysedESPRI();
 		void setESPRIEvent();
 		TVector3 getESPRIPosition();
