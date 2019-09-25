@@ -218,4 +218,14 @@ class MergeESPRI:public Convert{
 		double getNaiBarQCal(int side,int id){
 			return naiBarQCal[side][id];
 		}
+		double getPlasBarQCal(int side){
+			return plasQ[side];
+		}
+		double getRdcX(int side){
+			return rdcX[side];
+		}
+		double getRdcY(int side){
+			return rdcY[side];
+		}
+
 };

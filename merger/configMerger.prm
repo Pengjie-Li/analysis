@@ -1,4 +1,4 @@
-maxEventNumber:50000
+maxEventNumber:100
 
 MAINInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/main/convert/rootfiles/
 MAINRunPrefix:run
@@ -31,7 +31,7 @@ ESPRIRunSuffix:_ESPRI.root_2
 
 
 outputPath:./rootfiles/
-outputPrefix:run
+outputPrefix:run0
 outputSuffix:_analysed.root_test
 
 

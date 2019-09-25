@@ -1,15 +1,16 @@
 void Merger::analysingTELE(){
 
-	//calibrateSilicon();
 	getMultiplicity();
-	//if(maxEventNumber <100) printSilicon();
 
-	//calibrateCsI();
-	//if(maxEventNumber <100) printCsI();
+	teleEvent->loadData(mergeTELE);
+	teleEvent->loadTargetPosition(vTarget);
+	teleEvent->loadBeamVector(vBeam);
+	teleEvent->analysing();
+	teleEvent->setTELEEvent();
 }
 void Merger::setTELEOutputBranch(){
 	mergeTELE->setOutputBranch(tree);
-
+	teleEvent->setOutputBranch(tree);
 	tree->Branch("multiplicity",&multiplicity,"multiplicity[4]/I");
 }
 

@@ -4,7 +4,9 @@ void Merger::analysingESPRI(){
 	setESPRIEvent();
 
 	espriEvent->loadData(mergeESPRI);
-	espriEvent->analysing();
+	espriEvent->loadTargetPosition(vTarget);
+	espriEvent->loadBeamVector(vBeam);
+	espriEvent->setESPRIEvent();
 }
 void Merger::initAnalysedESPRI(){
 	/************* ESPRI *****************/
@@ -23,6 +25,7 @@ void Merger::setESPRIOutputBranch(){
 	vESPRI = new TVector3;
 	vProton = new TVector3;
 	mergeESPRI->setOutputBranch(tree);
+	espriEvent->setOutputBranch(tree);
 	tree->Branch("vESPRI","TVector3",&vESPRI);
 	tree->Branch("vProton","TVector3",&vProton);
 

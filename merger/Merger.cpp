@@ -18,8 +18,11 @@ Merger::Merger(int runNumber):runNumber(runNumber){
 	if(kBDC) mergeBDC =new MergeBDC(runNumber);
 	if(kFDC0) mergeFDC0 =new MergeFDC0(runNumber);
 //	if(kFDC2) mergeFDC2 =new MergeFDC2(runNumber);
-	if(kTELE) mergeTELE =new MergeTELE(runNumber);
 	if(kHOD) mergeHOD =new MergeHOD(runNumber);
+	if(kTELE) {
+		mergeTELE =new MergeTELE(runNumber);
+		teleEvent = new TeleEvent();
+	}
 	if(kESPRI) { 
 		mergeESPRI =new MergeESPRI(runNumber);
 		espriEvent = new EspriEvent();
@@ -86,7 +89,7 @@ void Merger::createOutput(){
 	TString outputPath = env->GetValue("outputPath","./rootfiles/");
 	TString outputPrefix = env->GetValue("outputPrefix","./rootfiles/");
 	TString outputSuffix = env->GetValue("outputSuffix","./rootfiles/");
-	TString runString = Form("%4d",runNumber);
+	TString runString = Form("%d",runNumber);
 	TString outputFileName = outputPath + outputPrefix + runString+ outputSuffix;
 	cout<<outputFileName<<endl;
 	outputFile = new TFile(outputFileName, "recreate"); 

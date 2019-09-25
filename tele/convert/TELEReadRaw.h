@@ -71,7 +71,7 @@ class DSSDRaw{
 class CsIRaw{
 	private:
 		/********************************
-		 * CsI: 0 = LL; 1 = LRT; 2 = LRB; 3 = RLT; 4 = RLB; 5 =RRT; 6 = RRB;
+		 * CsI: 0 = RLT; 1 = RRT; 2 = RLB; 3 = RRB; 4 = LL; 5 =LRT; 6 = LRB;
 		 ********************************/
 		int csiEnergyRaw[7];
 		int csiTimeRaw[7];

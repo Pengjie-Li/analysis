@@ -1984,3 +1984,52 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/cutBe12.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 020c9f9] v1.0
+ 54 files changed, 622 insertions(+), 47 deletions(-)
+ create mode 100644 espri/calib/ppScattering/Be12/gs/.naiPol3Be12.txt.swp
+ create mode 100644 merger/.EspriEvent.h.swp
+ create mode 100644 merger/EspriEvent.h
+ rewrite merger/Merger (95%)
+ create mode 100644 pla/slewEffect/'
+ create mode 100644 pla/slewEffect/png/hF3Slew0run310.png
+ create mode 100644 pla/slewEffect/png/hF3Slew0run320.png
+ create mode 100644 pla/slewEffect/png/hF3Slew0run340.png
+ create mode 100644 pla/slewEffect/png/hF3Slew0run360.png
+ create mode 100644 pla/slewEffect/png/hF3Slew1run310.png
+ create mode 100644 pla/slewEffect/png/hF3Slew1run320.png
+ create mode 100644 pla/slewEffect/png/hF3Slew1run340.png
+ create mode 100644 pla/slewEffect/png/hF3Slew1run360.png
+ create mode 100644 pla/slewEffect/png/hF7Slew0run310.png
+ create mode 100644 pla/slewEffect/png/hF7Slew0run320.png
+ create mode 100644 pla/slewEffect/png/hF7Slew0run340.png
+ create mode 100644 pla/slewEffect/png/hF7Slew0run360.png
+ create mode 100644 pla/slewEffect/png/hF7Slew1run310.png
+ create mode 100644 pla/slewEffect/png/hF7Slew1run320.png
+ create mode 100644 pla/slewEffect/png/hF7Slew1run340.png
+ create mode 100644 pla/slewEffect/png/hF7Slew1run360.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew0run310.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew0run320.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew0run340.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew0run360.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew1run310.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew1run320.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew1run340.png
+ create mode 100644 pla/slewEffect/png/hSBT1Slew1run360.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew0run310.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew0run320.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew0run340.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew0run360.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew1run310.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew1run320.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew1run340.png
+ create mode 100644 pla/slewEffect/png/hSBT2Slew1run360.png
+ create mode 100644 pla/slewEffect/png/hSBVSlew1run310.png
+ create mode 100644 pla/slewEffect/png/hSBVSlew1run320.png
+ create mode 100644 pla/slewEffect/png/hSBVSlew1run340.png
+ create mode 100644 pla/slewEffect/png/hSBVSlew1run360.png
+ create mode 100644 pla/slewEffect/txt/SlewParaRun310.txt
+ create mode 100644 pla/slewEffect/txt/SlewParaRun320.txt
+ create mode 100644 pla/slewEffect/txt/SlewParaRun340.txt
+ create mode 100644 pla/slewEffect/txt/SlewParaRun360.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

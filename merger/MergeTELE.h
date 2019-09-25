@@ -96,6 +96,13 @@ class MergeTELE:public Convert{
 		double getSiliconRawADC(int side, int id){
 			return dssdEnergyRaw[side][id];
 		}
+		double getCsiQCal(int id){
+			return csiEnergyCal[id];
+		}
+		double getDssdEnergyCal(int side, int id){
+			return dssdEnergyCal[side][id];
+		}
+	
 
 };
 

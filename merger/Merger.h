@@ -10,6 +10,7 @@
 
 
 #include "EspriEvent.h"
+#include "TeleEvent.h"
 
 class Merger{
 	private: 
@@ -127,6 +128,7 @@ class Merger{
 
 		void analysingFDC0();
 		void analysingTELE();
+		TeleEvent *teleEvent;
 		void  getMultiplicity();
 		Int_t getMultiplicity(int side);
 		void printMultiplicity();
