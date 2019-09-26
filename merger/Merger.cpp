@@ -33,7 +33,11 @@ void Merger::eventLoop(){
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
 	for(Long64_t ientry = 0; ientry<nentries;ientry++){
-		if(nentries<100) cout<<ientry<<endl;
+		if(nentries<1000) {
+			cout<<endl;
+			cout<<ientry<<endl;
+		}
+
 		//inputTree->GetEntry(ientry);
 		getEntry(ientry);
 

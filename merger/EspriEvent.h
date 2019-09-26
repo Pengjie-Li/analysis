@@ -16,6 +16,16 @@ class EspriEvent{
 		TVector3 *vBeam;
 		PositionESPRI *positionESPRI;
 	public:
+		void print(){
+			if(naiId !=-1){
+				cout<<"ESPRI Event:"<<endl;
+				cout<<"naiNHit = "<<naiNHit<<" naiId = "<<endl;
+				cout<<"dE = "<<espriPlasE<<" E ="<<espriNaiE<<" TotalE = "<<espriEnergy<<endl;
+				cout<<"Angle = "<<espriAngle<<endl;
+				espriPosition->Print();
+			}
+
+		}
 		EspriEvent(){
 			positionESPRI = new PositionESPRI();
 		}

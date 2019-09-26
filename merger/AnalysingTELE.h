@@ -5,22 +5,23 @@ void Merger::analysingTELE(){
 	teleEvent->loadData(mergeTELE);
 	teleEvent->loadTargetPosition(vTarget);
 	teleEvent->loadBeamVector(vBeam);
-	teleEvent->analysing();
 	teleEvent->setTELEEvent();
+	if(maxEventNumber <1000) teleEvent->print();	
+	
 }
 void Merger::setTELEOutputBranch(){
 	mergeTELE->setOutputBranch(tree);
 	teleEvent->setOutputBranch(tree);
-	tree->Branch("multiplicity",&multiplicity,"multiplicity[4]/I");
+	//tree->Branch("multiplicity",&multiplicity,"multiplicity[4]/I");
 }
 
 void Merger::getMultiplicity(){
 
-	for(int i = 0;i<4;i++){
-		multiplicity[i] = getMultiplicity(i);	
-	}
+	//for(int i = 0;i<4;i++){
+		//multiplicity[i] = getMultiplicity(i);	
+	//}
 
-	if(maxEventNumber <100) printMultiplicity();	
+	//if(maxEventNumber <100) printMultiplicity();	
 
 }
 void Merger::printMultiplicity(){

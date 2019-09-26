@@ -11,5 +11,6 @@
 	TString peak5=R2;
 	TString peak1=Frame+"&&!("+R4+")&&!("+Neck+")";
 	TString targetArea="sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.6)*(Target_Y+1.6))<13";
+	TString smallTargetArea="sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.6)*(Target_Y+1.6))<10";
 
 }

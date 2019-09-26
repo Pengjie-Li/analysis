@@ -1,8 +1,11 @@
+#include "PositionTELE.h"
 class TeleEvent{
 	private:
+		TEnv *env;
 
 		double dssdSideQ[4];
 		double dssdNHit[4];
+		int dssdId[4];
 	
 		int csiNHit;
 		int hitIdArray[5];
@@ -10,7 +13,6 @@ class TeleEvent{
 		int dssdFid;
 		int dssdBid;
 
-	//double csiQ
 		MergeTELE *calibData;
 		double teleDssdE;
 		double teleCsiE;
@@ -19,19 +21,17 @@ class TeleEvent{
 		TVector3 *telePosition;
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
+		PositionTELE *positionTELE;
 
 	public:
-		void analysingDSSD(){
-			for (int i = 0; i < 4; ++i) {
-				setDssdSide(i);
-			}
-		}
-		void setDssdSide(int side){
-
-			double dssdQThr = env->GetValue("siliconHitThreshold",500.);
-			for (int i = 0; i < 32; ++i) {
-				if(getDssdEnergyCal(side,i)>dssdQThr) dssdNHit[side]++; 
-				if(getDssdEnergyCal(side,i)>dssdSideQ[side]) dssdSideQ[side] = getDssdEnergyCal(side,i);
+		void print(){
+			if(csiId!=-1){	
+				cout<<"TELE Event:"<<endl;
+				cout<<"csiNHit = "<<csiNHit<<" csiId = "<<csiId<<endl;
+				cout<<"dE = "<<teleDssdE<<" E ="<<teleCsiE<<" TotalE = "<<teleEnergy<<endl;
+				cout<<"side = "<<((csiId<4)?1:0)<<" dssdFid = "<<dssdFid<<" dssdBid = "<<dssdBid<<endl;
+				cout<<"Angle = "<<teleAngle<<endl;
+				telePosition->Print();
 			}
 		}
 		void setTELEEvent(){
@@ -47,8 +47,18 @@ class TeleEvent{
 			findCsiMultHit();		
 			determineCsiId();
 		}
-		void setTELEEnergy(){}
-		void setTELEAngle(){}
+		void setTELEEnergy(){
+			teleDssdE = getDssdEnergy(csiId);	
+			teleCsiE = getCsiQCal(csiId);
+			teleEnergy = teleDssdE + teleCsiE;
+			//cout<<"dE = "<<teleDssdE<<" E ="<<teleCsiE<<" Total = "<<teleEnergy<<endl;
+		}
+		void setTELEAngle(){
+			//loadPos
+			setTELEPosition();
+			teleAngle = ((*telePosition)-(*targetPosition)).Angle((*vBeam))*TMath::RadToDeg();
+	
+		}
 
 		void findCsiMultHit(){
 			for (int i = 0; i < 7; ++i) {
@@ -56,28 +66,84 @@ class TeleEvent{
 				if(getCsiQCal(i)>50){
 					hitIdArray[csiNHit] = i;
 					csiNHit++;
-					cout<<i<<":"<<csiNHit<<endl;
+					//cout<<i<<":"<<csiNHit<<endl;
 				}	
 
 			}
-			if(csiNHit>2) cout<<csiNHit<<endl;
+			//if(csiNHit>2) cout<<csiNHit<<endl;
 		}
 		double getDssdEnergyCal(int side,int id){
 			return calibData->getDssdEnergyCal(side,id);
 		}
+		double getDssdEnergy(int csi){
+			int side = (csi<4)?1:0;
+			//cout<<dssdSideQ[2*side]<<":"<<dssdSideQ[2*side+1]<<endl;
+			return 0.5*(dssdSideQ[2*side]+dssdSideQ[2*side+1])/1000.;
+		}
 		double getCsiQCal(int id){
 			return calibData->getCsiQCal(id);	
 		}
-		double getSiQCal(int id){
-			int side = (id<4)?1:0;
-			//return dssdQ[side];
-		}
 		void determineCsiId(){
+			if(csiNHit == 1&&checkDssdHit(hitIdArray[0])){
+				csiId = hitIdArray[0];
+			}
+			if(csiNHit > 1){
+				for (int i = 0; i < csiNHit; ++i) {
+				int csiNum = hitIdArray[i];
+				if(checkCsiRange(csiNum)&&checkDssdHit(csiNum)) csiId = csiNum;	
+				}
+				if(csiId == -1) csiId = hitIdArray[0];
+			}
+			//cout<<"csiNHit = "<<csiNHit<<" csiId = "<<csiId<<endl;
 		}
-		void determineSiEnergy(){
+		bool checkCsiRange(int i){
+			if(getCsiQCal(i)>50&&getCsiQCal(i)<1000) return true;
+			return false;
 		}
-		TeleEvent(){}
-		~TeleEvent(){}
+		bool checkDssdHit(int id){
+			int side = (id<4)?1:0;
+			if(dssdNHit[2*side]>0&&dssdNHit[2*side+1]>0) return true;
+			return false;
+		}
+		void analysingDSSD(){
+			for (int i = 0; i < 4; ++i) {
+				setDssdSide(i);
+			}
+		}
+		void setDssdSide(int side){
+
+			double dssdQThr = env->GetValue("siliconHitThreshold",500.);
+			for (int i = 0; i < 32; ++i) {
+				if(getDssdEnergyCal(side,i)>dssdQThr){
+					dssdNHit[side]++; 
+					if(getDssdEnergyCal(side,i)>dssdSideQ[side]){
+						dssdId[side] = i;	
+						dssdSideQ[side] = getDssdEnergyCal(side,i);
+					}
+				}
+			}
+		}
+		void setTELEPosition(){
+			int side = (csiId<4)?1:0;
+			dssdFid = dssdId[2*side];	
+			dssdBid = dssdId[2*side+1];	
+			//cout<<side<<":"<<dssdFid<<":"<<dssdBid<<endl;
+			if(dssdFid!=-1&&dssdBid!=-1){
+				(*telePosition) = positionTELE->getTELEPosition(side,dssdFid,dssdBid);
+				//telePosition->Print();
+			}
+
+		}
+
+		
+		TeleEvent(){
+			env = new TEnv("configMerger.prm");
+			positionTELE = new PositionTELE();
+		}
+		~TeleEvent(){
+			delete env;
+			delete positionTELE;
+		}
 		void loadData(MergeTELE *mergeTELE){
 			calibData = mergeTELE;
 		}
@@ -89,9 +155,11 @@ class TeleEvent{
 		}
 		void init(){
 			for (int i = 0; i < 4; ++i) {
-				dssdSideQ[i] = NAN;
+				dssdSideQ[i] = -9999;
 				dssdNHit[i] = 0;
 			}
+			dssdFid = -1;
+			dssdBid = -1;
 
 			csiNHit = 0;
 			for (int i = 0; i < 5; ++i) {
@@ -109,6 +177,7 @@ class TeleEvent{
 
 			tree->Branch("dssdNHit",dssdNHit,"dssdNHit[4]/I");
 			tree->Branch("dssdSideQ",dssdSideQ,"dssdSideQ[4]/D");
+			tree->Branch("dssdId",dssdId,"dssdId[4]/I");
 
 			tree->Branch("csiNHit",&csiNHit,"csiNHit/I");
 			tree->Branch("csiHitIdArray",&hitIdArray,"hitIdArray[csiNHit]/I");
@@ -119,7 +188,7 @@ class TeleEvent{
 			tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
 			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
 			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
-			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
+			tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
 			tree->Branch("telePosition","TVector3",&telePosition);
 		}	
 };

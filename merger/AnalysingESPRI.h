@@ -7,6 +7,7 @@ void Merger::analysingESPRI(){
 	espriEvent->loadTargetPosition(vTarget);
 	espriEvent->loadBeamVector(vBeam);
 	espriEvent->setESPRIEvent();
+	if(maxEventNumber <1000) espriEvent->print();	
 }
 void Merger::initAnalysedESPRI(){
 	/************* ESPRI *****************/
