@@ -3,7 +3,8 @@
 	TString smallArea="sqrt((-Target_X+6)*(-Target_X+6)+(Target_Y)*(Target_Y))<3";
 	gROOT->ProcessLine(".x cutTargetArea.C");
 	for (int i = 0; i < 7; ++i) {
-		tree->Draw(Form("csiEnergyRaw[%d]>>hCsI%d(1000,0,4000)",i,i),targetArea);
+		//tree->Draw(Form("csiEnergyRaw[%d]>>hCsI%d(1000,0,4000)",i,i),targetArea);
+		tree->Draw(Form("csiEnergyRaw[%d]>>hCsI%d(200,0,200)",i,i),targetArea);
 	}
 
 	//TCanvas *cPad = new TCanvas("cPad","cPad",1500,900);

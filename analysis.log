@@ -2040,3 +2040,23 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/run0340_analysed.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 084aab5] v1.0
+ 32 files changed, 670 insertions(+), 76 deletions(-)
+ create mode 100644 analysis/ppScattering/v2_ppBe14HistoBe12.root_UsingBe10Calib_Bar19-26
+ create mode 100644 merger/FindPixel.h
+ rewrite merger/Merger (90%)
+ create mode 100644 merger/PositionTELE.h
+ create mode 100644 merger/rootfiles/cutBe12Bar30He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar31He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar32He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar33He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar34He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar35He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar36He8.C
+ create mode 100644 merger/rootfiles/cutSmallBeamBe14.C
+ create mode 100644 merger/rootfiles/drawCsiQRaw.C
+ create mode 100644 tele/calib/gainAlignment/drawCsiEnergyVsId.C
+ create mode 120000 tele/calib/gainAlignment/rootfiles
+ create mode 100644 tele/plot/Draw2D/drawCsiEnergyVsId.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

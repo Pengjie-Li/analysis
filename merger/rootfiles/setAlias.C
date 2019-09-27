@@ -1,4 +1,15 @@
 {
+
+	tree->SetAlias("rltQPed","csiEnergyRaw[0]-75.26");
+	tree->SetAlias("rrtQPed","csiEnergyRaw[1]-80.14");
+	tree->SetAlias("rlbQPed","csiEnergyRaw[2]-89.47");
+	tree->SetAlias("rrbQPed","csiEnergyRaw[3]-94.84");
+
+	tree->SetAlias("llQPed","csiEnergyRaw[4]-97.27");
+	tree->SetAlias("lrtQPed","csiEnergyRaw[5]-99.21");
+	tree->SetAlias("lrbQPed","csiEnergyRaw[6]-84.04");
+
+
 	tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
 	tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");
 	for (int i = 0; i < 2; ++i) {
