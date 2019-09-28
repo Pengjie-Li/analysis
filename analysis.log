@@ -2060,3 +2060,25 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/plot/Draw2D/drawCsiEnergyVsId.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 1b4d76e] v1.0
+ 23 files changed, 770 insertions(+), 3 deletions(-)
+ create mode 100644 merger/rootfiles/cutNarrowAlpha596.C
+ create mode 100644 merger/rootfiles/cutNarrowAlpha597.C
+ create mode 100644 merger/rootfiles/cutNarrowAlpha598.C
+ create mode 100644 merger/rootfiles/drawLeftCsiQ.C
+ create mode 100644 merger/rootfiles/drawRightCsiQ.C
+ create mode 100644 tele/calib/pedestral/csiPedestal.C
+ create mode 100644 tele/calib/pedestral/slewEffect.C
+ create mode 100644 tele/calib/pedestral/txt/Pedestal300.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal310.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal340.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal360.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal380.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal400.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal595.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal596.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal597.txt
+ create mode 100644 tele/calib/pedestral/txt/Pedestal598.txt
+ create mode 100644 tele/calib/pedestral/txt/PedestalCsI.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -9,6 +9,16 @@
 	tree->SetAlias("lrtQPed","csiEnergyRaw[5]-99.21");
 	tree->SetAlias("lrbQPed","csiEnergyRaw[6]-84.04");
 
+	tree->SetAlias("rltQSync","0.841158*rltQPed/(1-1.79596e-05*rltQPed)");
+	tree->SetAlias("rrtQSync","0.967906*rrtQPed/(1+4.94199e-05*rrtQPed)");
+	tree->SetAlias("rlbQSync","rlbQPed");
+	tree->SetAlias("rrbQSync","0.967843*rrbQPed/(1+4.51799e-05*rrbQPed)");
+
+	tree->SetAlias("llQSync" ,"llQPed");
+	tree->SetAlias("lrtQSync","0.763724*lrtQPed/(1+5.15633E-05*lrtQPed)");
+	tree->SetAlias("lrbQSync","0.833370*lrbQPed/(1+4.58668E-05*lrbQPed)");
+
+
 
 	tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
 	tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");

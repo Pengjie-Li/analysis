@@ -115,7 +115,7 @@ class TeleEvent{
 			double dssdQThr = env->GetValue("siliconHitThreshold",500.);
 			for (int i = 0; i < 32; ++i) {
 				if(getDssdEnergyCal(side,i)>dssdQThr){
-					dssdNHit[side]++; 
+					dssdNHit[side]+=1; 
 					if(getDssdEnergyCal(side,i)>dssdSideQ[side]){
 						dssdId[side] = i;	
 						dssdSideQ[side] = getDssdEnergyCal(side,i);
