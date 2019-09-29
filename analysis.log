@@ -2082,3 +2082,13 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/calib/pedestral/txt/PedestalCsI.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 040085f] v1.0
+ 9 files changed, 205 insertions(+), 1 deletion(-)
+ create mode 100644 merger/.TeleEvent.h.swp
+ create mode 100644 merger/rootfiles/drawLeftCsiQSync.C
+ create mode 100644 merger/rootfiles/drawRightCsiQSync.C
+ create mode 100644 tele/calib/gainAlignment/csiAlignment.C
+ create mode 100644 tele/calib/gainAlignment/csiAlphaRunQPed.txt
+ create mode 100644 tele/calib/gainAlignment/txt/csiQPedAlignment.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
