@@ -9,8 +9,12 @@
 //	int runStop = 320;
 
 
+//	int runStart = 330;
+//	int runStop = 365;
 	int runStart = 330;
-	int runStop = 365;
+	int runStop = 345;
+
+
 
 //	int runStart = 366;
 //	int runStop = 445;
