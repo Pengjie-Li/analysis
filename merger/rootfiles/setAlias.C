@@ -18,6 +18,17 @@
 	tree->SetAlias("lrtQSync","0.763724*lrtQPed/(1+5.15633E-05*lrtQPed)");
 	tree->SetAlias("lrbQSync","0.833370*lrbQPed/(1+4.58668E-05*lrbQPed)");
 
+	tree->SetAlias("rltE","0.264445*rltQSync/(1-0.000153044*rltQSync)");
+	tree->SetAlias("rlbE","0.264445*rlbQSync/(1-0.000153044*rlbQSync)");
+	tree->SetAlias("rrtE","0.264445*rrtQSync/(1-0.000153044*rrtQSync)");
+	tree->SetAlias("rrbE","0.264445*rrbQSync/(1-0.000153044*rrbQSync)");
+
+	tree->SetAlias("llE","0.297221*llQSync/(1-0.000182688*llQSync)");
+	tree->SetAlias("lrtE","0.297221*lrtQSync/(1-0.000182688*lrtQSync)");
+	tree->SetAlias("lrbE","0.297221*lrbQSync/(1-0.000182688*lrbQSync)");
+
+
+
 
 
 	tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");

@@ -12,11 +12,18 @@ class DSSDEnergyCalPara{
 
 		DSSDEnergyCalPara(){
 			loadSiliconCalibrationParas(kScmSlope,bScmOffset,ekScmSlope,ebScmOffset);
-			kCalSlope[0] = 7.17797775;
-			bCalOffset[0] = -1524.240925;
 
-			kCalSlope[1] = 7.685283145;
-			bCalOffset[1] = -1646.273395;
+			kCalSlope[0] =  0.00645438;
+			bCalOffset[0] = -0.621313;
+
+			kCalSlope[1] = 0.00683802;
+			bCalOffset[1] = -0.612683;
+	
+			//kCalSlope[0] = 7.17797775;
+			//bCalOffset[0] = -1524.240925;
+
+			//kCalSlope[1] = 7.685283145;
+			//bCalOffset[1] = -1646.273395;
 		}
 		void loadSiliconCalibrationParas(double k[4][32],double b[4][32],double ek[4][32],double eb[4][32]){
 			ifstream in;

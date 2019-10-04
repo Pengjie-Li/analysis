@@ -30,24 +30,40 @@ class CsIEnergyCalPara{
 class CsIEnergyCal{
 	private:
 
+		TELEReadRaw *rawData;
 		CsIEnergyCalPara *csiEnergyCalPara;
 		double csiEnergyCal[7];
+		double csiQPed[7];
+		double csiQSync[7];
 
 		void init(){
 			for(int k = 0;k<7;k++){
+				csiQPed[k] = NAN;
+				csiQSync[k] = NAN;
 				csiEnergyCal[k] = NAN;
 			}
 
 		}
-		double calibrate(int id,double raw){
-				return getCsISlope(id)*raw+getCsIOffset(id);
+		double getCsIQRaw(int id){
+			return rawData->getCsIQRaw(k);
 		}
-		double getCsISlope(int id){
-			return csiEnergyCalPara->getCsISlope(id);
+		double getCsIPedestal(int id){
+			return csiEnergyCalPara->getCsIPedestal(k);
 		}
-		double getCsIOffset(int id){
-			return csiEnergyCalPara->getCsIOffset(id);
+		double getCsISyncA(int id){
+			return csiEnergyCalPara->getCsISyncA(k);
 		}
+		double getCsISyncB(int id){
+			return csiEnergyCalPara->getCsISyncB(k);
+		}
+		double getCsICalibA(int id){
+			return csiEnergyCalPara->getCsICalibA(k);
+		}
+		double getCsICalibB(int id){
+			return csiEnergyCalPara->getCsICalibB(k);
+		}
+	
+	
 	public:
 		CsIEnergyCal(){
 
@@ -57,14 +73,19 @@ class CsIEnergyCal{
 		~CsIEnergyCal(){
 			delete csiEnergyCalPara;
 		}
-		void calibrate(TELEReadRaw *rawData){
+		void calibrate(TELEReadRaw *raw){
+			rawData = raw;
 			for(int k = 0;k<7;k++){
-				csiEnergyCal[k] = calibrate(k,rawData->getCsIQRaw(k));
+				csiQPed[k] = getCsIQRaw(k) - getCsICalibA;
+				csiQSync[k] = getCsISyncA(k)*csiQPed[k]/(1+getCsISyncB(k)*csiQPed[k]);
+				csiEnergyCal[k] = getCsICalibA(k)*csiQSync[k]/(1+getCsICalibB(k)*csiQSync[k]);
 			}
 		}
 	
 		void setBranch(TTree *tree){
 
+			tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
+			tree->Branch("csiQSync",csiQSync,"csiQSync[7]/D");
 			tree->Branch("csiEnergyCal",csiEnergyCal,"csiEnergyCal[7]/D");
 		}
 };
