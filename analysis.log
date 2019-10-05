@@ -2112,3 +2112,22 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 3d2ef80] v1.0
+ 20 files changed, 485 insertions(+), 22 deletions(-)
+ create mode 100644 merger/rootfiles/.setAlias.C.swp
+ create mode 100644 merger/rootfiles/drawTeleLeftCsiEnergy.C
+ create mode 100644 merger/rootfiles/drawTeleLeftCsiQSync.C
+ create mode 100644 merger/rootfiles/drawTeleRightCsiEnergy.C
+ create mode 100644 merger/rootfiles/drawTeleRightCsiQSync.C
+ create mode 100644 tele/calib/csiCalib/csiCalib.C
+ create mode 100644 tele/calib/csiCalib/teleCsiCalibInput.txt
+ create mode 100644 tele/calib/csiGainAlignment/csiAlignment.C
+ create mode 100644 tele/calib/csiGainAlignment/csiAlphaRunQPed.txt
+ create mode 100644 tele/calib/csiGainAlignment/drawCsiEnergyVsId.C
+ create mode 120000 tele/calib/csiGainAlignment/rootfiles
+ create mode 100644 tele/calib/csiGainAlignment/txt/csiQPedAlignment.txt
+ create mode 100644 tele/calib/dssd/.dssdSCMCalib.txt.swp
+ create mode 100644 tele/calib/dssd/dssdSCMCalib.txt
+ create mode 100644 tele/calib/dssd/fit.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
