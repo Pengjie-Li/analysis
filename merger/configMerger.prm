@@ -35,4 +35,5 @@ outputPrefix:run0
 outputSuffix:_analysed.root_2
 
 
-siliconHitThreshold:500
+siliconHitThreshold:0.5
+csiHitThreshold:2

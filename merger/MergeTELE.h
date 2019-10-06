@@ -24,44 +24,53 @@ class MergeTELE:public Convert{
 		 * frontEnergy, backEnergy
 		 */
 		//Declaration of leaves types
-		Int_t           dssdEnergyRaw[4][32];
-		Int_t           dssdTimeRaw[4][32];
-		Int_t           csiEnergyRaw[7];
-		Int_t           csiTimeRaw[7];
+		Int_t           dssdQRaw[4][32];
+		Int_t           dssdTRaw[4][32];
+		Int_t           csiQRaw[7];
+		Int_t           csiTRaw[7];
 		Int_t           RefTime1;
 		Int_t           RefTime2;
-		Double_t        dssdEnergyCal[4][32];
-		Double_t        dssdTimeCal[4][32];
-		Double_t        csiEnergyCal[7];
-		Double_t        csiTimeCal[7];
+		Double_t        dssdQScm[4][32];
+		Double_t        dssdQCal[4][32];
+		Double_t        dssdTCal[4][32];
+		Double_t        csiQPed[7];
+		Double_t        csiQSync[7];
+		Double_t        csiQCal[7];
+		Double_t        csiTCal[7];
 
 
 		void setBranch(){
 			// Set branch addresses.
-			inputTree->SetBranchAddress("dssdEnergyRaw",dssdEnergyRaw);
-			inputTree->SetBranchAddress("dssdTimeRaw",dssdTimeRaw);
-			inputTree->SetBranchAddress("csiEnergyRaw",csiEnergyRaw);
-			inputTree->SetBranchAddress("csiTimeRaw",csiTimeRaw);
+			inputTree->SetBranchAddress("dssdQRaw",dssdQRaw);
+			inputTree->SetBranchAddress("dssdTRaw",dssdTRaw);
+			inputTree->SetBranchAddress("csiQRaw",csiQRaw);
+			inputTree->SetBranchAddress("csiTRaw",csiTRaw);
 			inputTree->SetBranchAddress("RefTime1",&RefTime1);
 			inputTree->SetBranchAddress("RefTime2",&RefTime2);
-			inputTree->SetBranchAddress("dssdEnergyCal",dssdEnergyCal);
-			inputTree->SetBranchAddress("dssdTimeCal",dssdTimeCal);
-			inputTree->SetBranchAddress("csiEnergyCal",csiEnergyCal);
-			inputTree->SetBranchAddress("csiTimeCal",csiTimeCal);
+			inputTree->SetBranchAddress("dssdQScm",dssdQScm);
+			inputTree->SetBranchAddress("dssdQCal",dssdQCal);
+			inputTree->SetBranchAddress("dssdTCal",dssdTCal);
+			inputTree->SetBranchAddress("csiQPed",csiQPed);
+			inputTree->SetBranchAddress("csiQSync",csiQSync);
+			inputTree->SetBranchAddress("csiQCal",csiQCal);
+			inputTree->SetBranchAddress("csiTCal",csiTCal);
 
 
 		}
 		void setOutputBranch(TTree *tree){
 
-                        tree->Branch("dssdEnergyRaw",dssdEnergyRaw,"dssdEnergyRaw[4][32]/I");
-                        tree->Branch("dssdTimeRaw",dssdTimeRaw,"dssdTimeRaw[4][32]/I");
-                        tree->Branch("dssdEnergyCal",dssdEnergyCal,"dssdEnergyCal[4][32]/D");
-                        tree->Branch("dssdTimeCal",dssdTimeCal,"dssdTimeCal[4][32]/D");
+                        tree->Branch("dssdQRaw",dssdQRaw,"dssdQRaw[4][32]/I");
+                        tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[4][32]/I");
+                        tree->Branch("dssdQScm",dssdQScm,"dssdQScm[4][32]/D");
+                        tree->Branch("dssdQCal",dssdQCal,"dssdQCal[4][32]/D");
+                        tree->Branch("dssdTCal",dssdTCal,"dssdTCal[4][32]/D");
 
-			tree->Branch("csiEnergyRaw",csiEnergyRaw,"csiEnergyRaw[7]/I");
-			tree->Branch("csiTimeRaw",csiTimeRaw,"csiTimeRaw[7]/I");
-			tree->Branch("csiEnergyCal",csiEnergyCal,"csiEnergyCal[7]/D");
-			tree->Branch("csiTimeCal",csiTimeCal,"csiTimeCal[7]/D");
+			tree->Branch("csiQRaw",csiQRaw,"csiQRaw[7]/I");
+			tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
+			tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
+			tree->Branch("csiQSync",csiQSync,"csiQSync[7]/D");
+			tree->Branch("csiQCal",csiQCal,"csiQCal[7]/D");
+			tree->Branch("csiTCal",csiTCal,"csiTCal[7]/D");
 
 		}
 
@@ -89,18 +98,18 @@ class MergeTELE:public Convert{
 			double siliconHitThreshold = env->GetValue("siliconHitThreshold",500.);
 			int nHit = 0;
 			for(int i = 0;i<32;i++){
-				if(dssdEnergyCal[side][i]>siliconHitThreshold) nHit++; 
+				if(dssdQCal[side][i]>siliconHitThreshold) nHit++; 
 			}
 			return nHit;
 		}
 		double getSiliconRawADC(int side, int id){
-			return dssdEnergyRaw[side][id];
+			return dssdQRaw[side][id];
 		}
 		double getCsiQCal(int id){
-			return csiEnergyCal[id];
+			return csiQCal[id];
 		}
 		double getDssdEnergyCal(int side, int id){
-			return dssdEnergyCal[side][id];
+			return dssdQCal[side][id];
 		}
 	
 

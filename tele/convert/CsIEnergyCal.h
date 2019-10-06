@@ -1,38 +1,107 @@
 class CsIEnergyCalPara{
 	private:
-	public:
-		double kCsISlope[7];
-		double kCsIOffset[7];
-
-		CsIEnergyCalPara(){
-			/********************************
-			 * CsI: 0 = RLT; 1 = RRT; 2 = RLB; 3 = RRB; 4 = LL; 5 =LRT; 6 = LRB;
-			 ********************************/
-
-			double CsISlope[7] = {0.350748,0.306815,0.464291,0.353228,0.357925,0.40584 ,0.350254};
-			double CsIOffset[7]= {-108.566,-101.453,-150.243,-117.866,-139.651,-137.378,-105.061};
+		double csiPedestal[7];
+		double csiSyncA[7];
+		double csiSyncB[7];
+		double csiCalibA[7];
+		double csiCalibB[7];
 	
-			//double CsISlope[7] = {0.357925,0.40584 ,0.350254,0.350748,0.464291,0.306815,0.353228};
-			//double CsIOffset[7]= {-139.651,-137.378,-105.061,-108.566,-150.243,-101.453,-117.866};
-			for(int i = 0;i<7;i++){
-				kCsISlope[i] = CsISlope[i];
-				kCsIOffset[i] = CsIOffset[i];
+		void init(){
+			for (int i = 0; i < 7; ++i) {
+				csiPedestal[i] = NAN;	
+				csiSyncA[i] = NAN;
+				csiSyncB[i] = NAN;
+				csiCalibA[i] = NAN;
+				csiCalibB[i] = NAN;
 			}
 		}
-		double getCsISlope(int id){
-			return kCsISlope[id];
+		void load(){
+			loadPedestal();
+			loadSync();
+			loadCalib();
 		}
-		double getCsIOffset(int id){
-			return kCsIOffset[id];
+		void loadPedestal(){
+			ifstream in;
+			TString inputName;
+			inputName = env->GetValue("csiPedestal","csiPedestal.txt");
+			cout<<"Openning CsI Pedestal Txt: "<<inputName<<endl;
+			in.open(inputName);
+			int id;
+			double ped;
+			while(1){
+				if(!in.good()) break;
+				in>>id>>ped;
+				cout<<id<<"\t"<<ped<<endl;
+				csiPedestal[id] = ped;
+			}
 		}
+		void loadSync(){
+			ifstream in;
+			TString inputName;
+			inputName = env->GetValue("csiSyncPara","csiSyncPara.txt");
+			in.open(inputName);
+			cout<<"Openning Sync  Txt: "<<inputName<<endl;
+			int id;
+			double syncA;
+			double syncB;
+			while(1){
+				if(!in.good()) break;
+				in>>id>>syncA>>syncB;
+				cout<<id<<"\t"<<syncA<<"\t"<<syncB<<endl;
+				csiSyncA[id] = syncA;
+				csiSyncB[id] = syncB;
+			}
+		}
+		void loadCalib(){
+			ifstream in;
+			TString inputName;
+			inputName = env->GetValue("csiCalibPara","csiCalibPara.txt");
+			in.open(inputName);
+			cout<<"Openning Calib  Txt: "<<inputName<<endl;
+			int id;
+			double calibA;
+			double calibB;
+			while(1){
+				if(!in.good()) break;
+				in>>id>>calibA>>calibB;
+				cout<<id<<"\t"<<calibA<<"\t"<<calibB<<endl;
+				csiCalibA[id] = calibA;
+				csiCalibB[id] = calibB;
+			}
+		}
+
+	public:
+
+		CsIEnergyCalPara(){
+			init();
+			load();
+		}
+		double getCsIPedestal(int id){
+			return csiPedestal[id];
+		}
+		double getCsISyncA(int id){
+			return csiSyncA[id];
+		}
+		double getCsISyncB(int id){
+			return csiSyncB[id];
+		}
+		double getCsICalibA(int id){
+			return csiCalibA[id];
+		}
+		double getCsICalibB(int id){
+			return csiCalibB[id];
+		}
+	
+	
+	
 		
 };
 class CsIEnergyCal{
 	private:
 
 		TELEReadRaw *rawData;
-		CsIEnergyCalPara *csiEnergyCalPara;
-		double csiEnergyCal[7];
+		CsIEnergyCalPara *csiQCalPara;
+		double csiQCal[7];
 		double csiQPed[7];
 		double csiQSync[7];
 
@@ -40,45 +109,45 @@ class CsIEnergyCal{
 			for(int k = 0;k<7;k++){
 				csiQPed[k] = NAN;
 				csiQSync[k] = NAN;
-				csiEnergyCal[k] = NAN;
+				csiQCal[k] = NAN;
 			}
 
 		}
 		double getCsIQRaw(int id){
-			return rawData->getCsIQRaw(k);
+			return rawData->getCsIQRaw(id);
 		}
 		double getCsIPedestal(int id){
-			return csiEnergyCalPara->getCsIPedestal(k);
+			return csiQCalPara->getCsIPedestal(id);
 		}
 		double getCsISyncA(int id){
-			return csiEnergyCalPara->getCsISyncA(k);
+			return csiQCalPara->getCsISyncA(id);
 		}
 		double getCsISyncB(int id){
-			return csiEnergyCalPara->getCsISyncB(k);
+			return csiQCalPara->getCsISyncB(id);
 		}
 		double getCsICalibA(int id){
-			return csiEnergyCalPara->getCsICalibA(k);
+			return csiQCalPara->getCsICalibA(id);
 		}
 		double getCsICalibB(int id){
-			return csiEnergyCalPara->getCsICalibB(k);
+			return csiQCalPara->getCsICalibB(id);
 		}
 	
 	
 	public:
 		CsIEnergyCal(){
 
-			csiEnergyCalPara = new CsIEnergyCalPara();
+			csiQCalPara = new CsIEnergyCalPara();
 		}
 
 		~CsIEnergyCal(){
-			delete csiEnergyCalPara;
+			delete csiQCalPara;
 		}
 		void calibrate(TELEReadRaw *raw){
 			rawData = raw;
 			for(int k = 0;k<7;k++){
-				csiQPed[k] = getCsIQRaw(k) - getCsICalibA;
+				csiQPed[k] = getCsIQRaw(k) - getCsIPedestal(k);
 				csiQSync[k] = getCsISyncA(k)*csiQPed[k]/(1+getCsISyncB(k)*csiQPed[k]);
-				csiEnergyCal[k] = getCsICalibA(k)*csiQSync[k]/(1+getCsICalibB(k)*csiQSync[k]);
+				csiQCal[k] = getCsICalibA(k)*csiQSync[k]/(1+getCsICalibB(k)*csiQSync[k]);
 			}
 		}
 	
@@ -86,7 +155,7 @@ class CsIEnergyCal{
 
 			tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
 			tree->Branch("csiQSync",csiQSync,"csiQSync[7]/D");
-			tree->Branch("csiEnergyCal",csiEnergyCal,"csiEnergyCal[7]/D");
+			tree->Branch("csiQCal",csiQCal,"csiQCal[7]/D");
 		}
 };
 

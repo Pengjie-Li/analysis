@@ -2,6 +2,7 @@
 class TeleEvent{
 	private:
 		TEnv *env;
+		double csiQThr;
 
 		double dssdSideQ[4];
 		double dssdNHit[4];
@@ -63,7 +64,7 @@ class TeleEvent{
 		void findCsiMultHit(){
 			for (int i = 0; i < 7; ++i) {
 				//if(getCsiQCal(i)>10&&getSiQCal(i)> 1)
-				if(getCsiQCal(i)>50){
+				if(getCsiQCal(i)>csiQThr){
 					hitIdArray[csiNHit] = i;
 					csiNHit++;
 					//cout<<i<<":"<<csiNHit<<endl;
@@ -78,7 +79,7 @@ class TeleEvent{
 		double getDssdEnergy(int csi){
 			int side = (csi<4)?1:0;
 			//cout<<dssdSideQ[2*side]<<":"<<dssdSideQ[2*side+1]<<endl;
-			return 0.5*(dssdSideQ[2*side]+dssdSideQ[2*side+1])/1000.;
+			return 0.5*(dssdSideQ[2*side]+dssdSideQ[2*side+1]);
 		}
 		double getCsiQCal(int id){
 			return calibData->getCsiQCal(id);	
@@ -97,7 +98,7 @@ class TeleEvent{
 			//cout<<"csiNHit = "<<csiNHit<<" csiId = "<<csiId<<endl;
 		}
 		bool checkCsiRange(int i){
-			if(getCsiQCal(i)>50&&getCsiQCal(i)<1000) return true;
+			if(getCsiQCal(i)>csiQThr&&getCsiQCal(i)<1000) return true;
 			return false;
 		}
 		bool checkDssdHit(int id){
@@ -113,6 +114,7 @@ class TeleEvent{
 		void setDssdSide(int side){
 
 			double dssdQThr = env->GetValue("siliconHitThreshold",500.);
+			//cout<<"Para:: DSSD Thr = "<<dssdQThr<<endl;
 			for (int i = 0; i < 32; ++i) {
 				if(getDssdEnergyCal(side,i)>dssdQThr){
 					dssdNHit[side]+=1; 
@@ -138,6 +140,7 @@ class TeleEvent{
 		
 		TeleEvent(){
 			env = new TEnv("configMerger.prm");
+			csiQThr = env->GetValue("csiHitThreshold",2);
 			positionTELE = new PositionTELE();
 		}
 		~TeleEvent(){

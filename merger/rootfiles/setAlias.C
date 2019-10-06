@@ -1,13 +1,13 @@
 {
 
-	tree->SetAlias("rltQPed","csiEnergyRaw[0]-75.26");
-	tree->SetAlias("rrtQPed","csiEnergyRaw[1]-80.14");
-	tree->SetAlias("rlbQPed","csiEnergyRaw[2]-89.47");
-	tree->SetAlias("rrbQPed","csiEnergyRaw[3]-94.84");
+	tree->SetAlias("rltQPed","csiQRaw[0]-75.26");
+	tree->SetAlias("rrtQPed","csiQRaw[1]-80.14");
+	tree->SetAlias("rlbQPed","csiQRaw[2]-89.47");
+	tree->SetAlias("rrbQPed","csiQRaw[3]-94.84");
 
-	tree->SetAlias("llQPed","csiEnergyRaw[4]-97.27");
-	tree->SetAlias("lrtQPed","csiEnergyRaw[5]-99.21");
-	tree->SetAlias("lrbQPed","csiEnergyRaw[6]-84.04");
+	tree->SetAlias("llQPed","csiQRaw[4]-97.27");
+	tree->SetAlias("lrtQPed","csiQRaw[5]-99.21");
+	tree->SetAlias("lrbQPed","csiQRaw[6]-84.04");
 
 	tree->SetAlias("rltQSync","0.841158*rltQPed/(1-1.79596e-05*rltQPed)");
 	tree->SetAlias("rrtQSync","0.967906*rrtQPed/(1+4.94199e-05*rrtQPed)");

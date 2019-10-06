@@ -2,12 +2,12 @@
 #include "CsIEnergyCal.h"
 class DSSDTimeCal{
 
-		double dssdTimeCal[4][32];	
+		double dssdTCal[4][32];	
 	public:
 		void init(){
 			for(int i = 0; i<4;i++){
 				for(int j = 0; j<32;j++){
-					dssdTimeCal[i][j] = NAN;
+					dssdTCal[i][j] = NAN;
 				}
 			}
 
@@ -17,18 +17,18 @@ class DSSDTimeCal{
 		void calibrate(TELEReadRaw *rawData){
 		}
 		void setBranch(TTree *tree){
-			tree->Branch("dssdTimeCal",dssdTimeCal,"dssdTimeCal[4][32]/D");
+			tree->Branch("dssdTCal",dssdTCal,"dssdTCal[4][32]/D");
 		}
 
 };
 
 class CsITimeCal{
 
-		double csiTimeCal[7];
+		double csiTCal[7];
 	public:
 		void init(){
 			for(int k = 0;k<7;k++){
-				csiTimeCal[k] = NAN;
+				csiTCal[k] = NAN;
 			}
 
 		}
@@ -38,7 +38,7 @@ class CsITimeCal{
 		}
 
 		void setBranch(TTree *tree){
-			tree->Branch("csiTimeCal",csiTimeCal,"csiTimeCal[7]/D");
+			tree->Branch("csiTCal",csiTCal,"csiTCal[7]/D");
 		}
 
 

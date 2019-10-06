@@ -1,0 +1,1 @@
+../../calib/csiGainAlignment/txt/csiSyncPara.txt
