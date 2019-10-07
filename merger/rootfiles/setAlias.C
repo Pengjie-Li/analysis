@@ -1,4 +1,8 @@
 {
+	TString hodBe10He6 = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+		TString	hodBe12He8 = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
+	TString dssdFB = "((abs(dssdSideQ[0]-dssdSideQ[1])<1)||(abs(dssdSideQ[0]-dssdSideQ[1])<1))";
+	TString lrSelect = "((plasQ[0]>2&&dssdSideQ[2]>2)||(plasQ[1]>2&&dssdSideQ[0]>2))";
 
 	tree->SetAlias("rltQPed","csiQRaw[0]-75.26");
 	tree->SetAlias("rrtQPed","csiQRaw[1]-80.14");
