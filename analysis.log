@@ -2148,3 +2148,25 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 tele/convert/txt/csiSyncPara.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b131175] v1.0
+ 28 files changed, 637 insertions(+), 42 deletions(-)
+ create mode 100644 analysis/ppAlpha/drawHistoLine.C
+ create mode 100644 analysis/ppAlpha/ppaBe.C
+ create mode 100644 analysis/ppAlpha/ppaBe10Histo.root_run310
+ create mode 120000 analysis/ppAlpha/rootfiles
+ create mode 100644 analysis/ppAlpha/rootlogon.C
+ create mode 100644 merger/rootfiles/cutAlphaBe10.C
+ create mode 100644 merger/rootfiles/cutAlphaBe12.C
+ create mode 100644 merger/rootfiles/cutBe10Bar29He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar30He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar31He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar32He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar33He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar34He6.C
+ rewrite merger/rootfiles/cutProtonBe10.C (78%)
+ create mode 100644 merger/rootfiles/drawCurveBe12EspriAvsTeleA.C
+ create mode 100644 merger/rootfiles/drawCurveBe12EspriEvsA.C
+ create mode 100644 merger/rootfiles/drawCurveBe12EspriEvsTeleE.C
+ create mode 100644 merger/rootfiles/drawCurveBe12TeleEvsA.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
