@@ -26,14 +26,16 @@ HODRunSuffix:_HOD.root
 
 ESPRIInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/espri/convert/rootfiles/
 ESPRIRunPrefix:run
-ESPRIRunSuffix:_ESPRI.root
+ESPRIRunSuffix:_ESPRI.root_1
 
 
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_analysed.root_2
+outputSuffix:_analysed.root_3
 
 
 siliconHitThreshold:0.5
 csiHitThreshold:2
+dssdLeftPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/scattering_angle/OnePixelGenerateAllPixelPosition/LeftDSSDPixelPosition.txt
+dssdRightPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/scattering_angle/OnePixelGenerateAllPixelPosition/RightDSSDPixelPosition.txt

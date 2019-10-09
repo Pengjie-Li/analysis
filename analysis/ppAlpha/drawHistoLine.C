@@ -17,8 +17,8 @@ void drawHistoLine(){
 		gCurve[i]->SetLineColor(1);
 	}
 
-	//TString fileName = "ppaBe12Histo.root";
-	TString fileName = "ppaBe10Histo.root";
+	TString fileName = "v2_ppaBe12Histo.root";
+	//TString fileName = "ppaBe10Histo.root";
 	TFile *g =new TFile(fileName,"read");
 	TCanvas *cPad = new TCanvas("ppBe","ppBe",1400,900);
 	cPad->Divide(2,2);

@@ -7,8 +7,8 @@ void Merger::analysingBDC(){
 		Target_ThetaX = TMath::ATan( (getBDC2X() - getBDC1X()) / Dist_BDC1BDC2 );
 		Target_ThetaY = TMath::ATan( (getBDC2Y() - getBDC1Y()) / Dist_BDC1BDC2 );
 
-		vBDC1->SetXYZ(getBDC1X(),getBDC1Y(),getBDC1Z());
-		vBDC2->SetXYZ(getBDC2X(),getBDC2Y(),getBDC2Z());
+		vBDC1->SetXYZ(-getBDC1X(),getBDC1Y(),getBDC1Z());
+		vBDC2->SetXYZ(-getBDC2X(),getBDC2Y(),getBDC2Z());
 
 		(*vBeam)=(*vBDC2)-(*vBDC1);
 		(*vBeam)=(*vBeam).Unit();
