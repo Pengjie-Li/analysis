@@ -139,7 +139,7 @@ class ConvertDC{
 				showAnalysisProgress();
 
 				EventNumber++;
-				if(maxEventNumber<100) cout<<EventNumber<<endl;
+				if(maxEventNumber<100) print();
 				getRawData();
 				readDCRawData();
 				convertDCCalData();
@@ -159,6 +159,21 @@ class ConvertDC{
 					<< rate << "evt/s\e[0m             \r";
 				clock0 = std::clock();
 			}
+
+		}
+		void print(){
+			cout<<"EventNumber = "<<EventNumber<<endl;
+			bdc1ReadRaw->print();
+			bdc1ConvertCal->print();
+			bdc1Track->print();
+
+			bdc2ReadRaw->print();
+			bdc2ConvertCal->print();
+			bdc2Track->print();
+
+			fdc0ReadRaw->print();
+			fdc0ConvertCal->print();
+			fdc0Track->print();
 
 		}
 

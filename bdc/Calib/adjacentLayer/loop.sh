@@ -1,5 +1,7 @@
 #!/bin/bash
 
+run1=1
+run2=600
 # Be10
 #run1=294
 #run2=330
@@ -13,12 +15,12 @@ run2=455
 
 
 # Be14 Empty
-run1=587
+#run1=587
 #run2=594
 
 # Alpha
 #run1=595
-run2=600
+#run2=600
 n=12
 
 

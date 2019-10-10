@@ -17,3 +17,17 @@ convertPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/ana
 bdc1ConvertPara:bdc1TDCCalibSpectrum.root
 bdc2ConvertPara:bdc2TDCCalibSpectrum.root
 fdc0ConvertPara:fdc0TDCCalibSpectrum.root
+
+
+bdc1TdcMin:1700
+bdc1TdcMax:1900
+bdc2TdcMin:1700
+bdc2TdcMax:1900
+fdc0TdcMin:1600
+fdc0TdcMax:1900
+fdc2TdcMin:1000
+fdc2TdcMax:1900
+
+bdc1Layer:txt/bdc1Layer.txt
+bdc2Layer:txt/bdc2Layer.txt
+fdc0Layer:txt/fdc0Layer.txt

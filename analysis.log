@@ -2174,3 +2174,29 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 22 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 67d3ae9] v1.0
+ 30 files changed, 1113 insertions(+), 59 deletions(-)
+ create mode 100644 analysis/ppAlpha/v2_ppaBe12Histo.root_TargetXReversed
+ create mode 100644 bdc/Calib/adjcentLayer/CalibDC.h
+ create mode 100644 bdc/Calib/adjcentLayer/DCRaw.h
+ create mode 100755 bdc/Calib/adjcentLayer/Makefile
+ create mode 100644 bdc/Calib/adjcentLayer/ReadFile.h
+ create mode 100644 bdc/Calib/adjcentLayer/ShowProcess.h
+ create mode 100755 bdc/Calib/adjcentLayer/calibDC
+ create mode 100755 bdc/Calib/adjcentLayer/calibDC.C
+ create mode 100755 bdc/Calib/adjcentLayer/distance.h
+ create mode 100755 bdc/Calib/adjcentLayer/header.h
+ create mode 120000 bdc/Calib/adjcentLayer/mergerRootfiles
+ rewrite bdc/Calib/rootfiles/checkConsistency.C (90%)
+ rewrite merger/Merger (89%)
+ create mode 100644 merger/env
+ create mode 100644 merger/rootfiles/run0442_analysed.root_3
+ create mode 100644 merger/rootfiles/run0443_analysed.root_3
+ create mode 100644 merger/rootfiles/run0444_analysed.root_3
+ create mode 100644 merger/rootfiles/run0445_analysed.root_3
+ create mode 100644 merger/rootfiles/run0446_analysed.root_3
+ create mode 100644 merger/rootfiles/run0447_analysed.root_3
+ create mode 100644 merger/t1.txt
+ create mode 100644 merger/t2.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
