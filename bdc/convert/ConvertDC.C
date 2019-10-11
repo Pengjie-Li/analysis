@@ -139,11 +139,12 @@ class ConvertDC{
 				showAnalysisProgress();
 
 				EventNumber++;
-				if(maxEventNumber<100) print();
 				getRawData();
 				readDCRawData();
 				convertDCCalData();
 				trackingDCData();
+
+				if(maxEventNumber<100) print();
 				tree->Fill();
 
 			}

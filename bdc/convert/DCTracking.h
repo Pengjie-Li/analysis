@@ -1,3 +1,4 @@
+#include "DCTrack.h"
 class DCPositionPara{
 	private:
 		double pitch;
@@ -38,12 +39,12 @@ class DCPositionPara{
 			print();
 		}
 		~DCPositionPara(){}
-		void setWirePosition(vector<vector<double> > &trackXY,vector<vector<double> > &trackZ,int layerId, int wireId){
-			int isXY = getWireXYDirection(layerId);
-			trackXY[isXY].push_back(getWireXYPosition(layerId,wireId));
-			trackZ[isXY].push_back(getWireZPosition(layerId));
+		void setWirePosition(vector<vector<double> > &trackXY,vector<vector<double> > &trackDL,vector<double>  &trackZ,int layerId, int wireId,double dl){
+			trackXY[layerId].push_back(getWireXYPosition(layerId,wireId));
+			trackDL[layerId].push_back(dl);
+			trackZ[layerId] = getWireZPosition(layerId);
 		}
-		int getWireXYDirection(int layerId){
+		int getLayerXYDirection(int layerId){
 			return dcDirection[layerId];
 		}
 		double getWireXYPosition(int layerId,int wireId){
@@ -56,7 +57,8 @@ class DCPositionPara{
 class DCTracking{
 	private:
 		vector<vector<double> > trackXY;
-		vector<vector<double> > trackZ;
+		vector<vector<double> > trackDL;//Drift Length
+		vector<double> trackZ;
 		double chiXY[2];
 		double ndfXY[2];
 		vector<double> layerResidue;
@@ -70,24 +72,31 @@ class DCTracking{
 
 		DCPositionPara *dcPositionPara;
 		DCConvertCal *convertData;
+		DCTrack	*dcTrack[2];
 		void init(){
-			trackXY.resize(2);
-			trackZ.resize(2);
+			trackXY.clear();
+			trackDL.clear();
+			trackZ.clear();
+			trackXY.resize(totalLayerNumber);
+			trackDL.resize(totalLayerNumber);
+			trackZ.resize(totalLayerNumber);
 			convertData = NULL;
-			trackXY[0].clear();
-			trackXY[1].clear();
-			trackZ[0].clear();
-			trackZ[1].clear();
 			chiXY[0] = NAN;
 			chiXY[1] = NAN;
 			ndfXY[0] = NAN;
 			ndfXY[1] = NAN;
 			layerResidue.resize(totalLayerNumber,NAN);
+			dcTrack[0]->init();
+			dcTrack[1]->init();
 		}
 	public:
 		int totalLayerNumber;
 		TString dcName;
-		DCTracking(){}
+		DCTracking(){
+			dcTrack[0] = new DCTrack();
+			dcTrack[1] = new DCTrack();
+
+		}
 		~DCTracking(){}
 
 		void loadPositionPara(){
@@ -115,10 +124,11 @@ class DCTracking{
 			init();
 			convertData = dcConvertCal;
 			setWirePosition();
+			tracking();
 			//convertData->print();
 			/**
 			 * 1. (wire,layer)->wire Position in X,Z
-			 * 2. generate 2^layer possible Hit Position in X,Z
+			 * 2. seperate hits into X and Y Array,find numLayer and 
 			 * 3. loop Hit Position, fit into Track, sort with Chi2
 			 */
 			//	for (int i = 0; i < getNHits(); ++i) {
@@ -128,16 +138,31 @@ class DCTracking{
 		}
 		void setWirePosition(){
 			for (int i = 0; i < getNHits(); ++i) {
-				dcPositionPara->setWirePosition(trackXY,trackZ,getLayerId(i),getWireId(i));
+				dcPositionPara->setWirePosition(trackXY,trackDL,trackZ,getLayerId(i),getWireId(i),getDriftLength(i));
+
 			}
+		}
+		void tracking(){
+	
+			for (int i = 0; i < totalLayerNumber; ++i) {
+				dcTrack[getLayerXYDirection(i)]->loadData(trackXY[i],trackDL[i],trackZ[i]);
+			}
+
+			dcTrack[0]->tracking();
+			dcTrack[1]->tracking();
 		}
 		void print(){
 			cout<<"Tracking Data"<<endl;
 			for (int i = 0; i < trackXY.size(); ++i) {
 				for (int j = 0; j < trackXY[i].size(); ++j) {
-					cout<<i<<":"<<j<<":"<<trackXY[i][j]<<":"<<trackZ[i][j]<<endl;	
+					cout<<i<<":"<<j<<":"<<trackXY[i][j]<<":"<<trackDL[i][j]<<":"<<trackZ[i]<<endl;	
 				}
 			}
+			cout<<"X Track Direction:"<<endl;
+			dcTrack[0]->print();
+			cout<<"Y Track Direction:"<<endl;
+			dcTrack[1]->print();
+			
 		}
 		int getNHits(){
 			return convertData->getNHits();
@@ -153,6 +178,9 @@ class DCTracking{
 		}
 		double getDriftLength(int i){
 			return convertData->getDriftLength(i);
+		}
+		int getLayerXYDirection(int i){
+			return dcPositionPara->getLayerXYDirection(i);
 		}
 
 

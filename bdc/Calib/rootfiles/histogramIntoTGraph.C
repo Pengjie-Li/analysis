@@ -51,7 +51,7 @@ void convert(TString detectorName,int windowStart,int windowStop){
 		//gTemp->Draw("apl");
 	}	
 	detectorName.ToLower();
-	TString fileName = "./calib/"+detectorName+"TDCCalibSpectrum.root";
+	TString fileName = "./calib/"+detectorName+"TDCCalibSpectrum.root_new";
 	TFile *outputFile = new TFile(fileName,"recreate");
 	for (int i = 0; i < 8; ++i) {
 		gr[i]->SetName(detectorName+Form("tdc%d",i));

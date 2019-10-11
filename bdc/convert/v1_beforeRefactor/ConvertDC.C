@@ -214,7 +214,7 @@ class ConvertDC{
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/dc/root/dcdist0%d_v6.root",runnum),"READ");
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/dc/root/dcdist0%d.root",runnum),"READ");
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/dc/root_v20190114/dcdist0%d.root",runnum),"READ");
-			dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/run0%d_tdcSpectrum.root",runnum),"READ");
+			dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/rootfiles_v1/run0%d_tdcSpectrum.root",runnum),"READ");
 			if(dcin->IsOpen()){
 				loadTDCDistribution(CalibBDC1Track,"bdc1");
 				loadTDCDistribution(CalibBDC2Track,"bdc2");

@@ -2200,3 +2200,33 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/t2.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 2b361aa] v1.0
+ 34 files changed, 2148 insertions(+), 35 deletions(-)
+ create mode 100644 bdc/Calib/adjacentLayer/CalibDC.h
+ create mode 100644 bdc/Calib/adjacentLayer/DCRaw.h
+ create mode 100755 bdc/Calib/adjacentLayer/Makefile
+ create mode 100644 bdc/Calib/adjacentLayer/ReadFile.h
+ create mode 100644 bdc/Calib/adjacentLayer/ShowProcess.h
+ create mode 100755 bdc/Calib/adjacentLayer/calibDC
+ create mode 100755 bdc/Calib/adjacentLayer/calibDC.C
+ create mode 100644 bdc/Calib/adjacentLayer/convert.sh
+ create mode 100755 bdc/Calib/adjacentLayer/distance.h
+ create mode 100755 bdc/Calib/adjacentLayer/header.h
+ create mode 100644 bdc/Calib/adjacentLayer/loop.sh
+ create mode 120000 bdc/Calib/adjacentLayer/mergerRootfiles
+ create mode 100644 bdc/Calib/adjacentWire/CalibDC.h
+ create mode 100644 bdc/Calib/adjacentWire/DCRaw.h
+ create mode 100755 bdc/Calib/adjacentWire/Makefile
+ create mode 100644 bdc/Calib/adjacentWire/ReadFile.h
+ create mode 100644 bdc/Calib/adjacentWire/ShowProcess.h
+ create mode 100755 bdc/Calib/adjacentWire/calibDC
+ create mode 100755 bdc/Calib/adjacentWire/calibDC.C
+ create mode 100755 bdc/Calib/adjacentWire/distance.h
+ create mode 100755 bdc/Calib/adjacentWire/header.h
+ create mode 120000 bdc/Calib/adjacentWire/mergerRootfiles
+ rewrite bdc/convert/ConvertDC (95%)
+ create mode 100644 bdc/convert/txt/bdc1Layer.txt
+ create mode 100644 bdc/convert/txt/bdc2Layer.txt
+ create mode 100644 bdc/convert/txt/fdc0Layer.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
