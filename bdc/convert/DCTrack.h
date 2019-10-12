@@ -44,7 +44,6 @@ class DCTrack{
 					nHitLayer++;
 				}
 			}
-			cout<<"Number of Pattern: "<<nPattern<<endl;
 		}
 	public:
 		void init(){
@@ -110,16 +109,17 @@ class DCTrack{
 		}
 		Track1D * CalcTrack1D(vector<double> x,vector<double> dl){
 			Track1D *tr = new Track1D();
-			for (int i = 0; i < x.size(); ++i) {
-				cout<<x[i]<<":"<<dl[i]<<endl;	
-			}
 			return tr;
 		}
 		void sort(){}
 		void print(){
-			for (int i = 0; i < xArrayLayer.size(); ++i) {
-				//cout<<"each layer size"<<xArrayLayer[i].size()<<endl;
-				//cout<<zArrayLayer[i]<<endl;
+
+			cout<<"Number of Pattern: "<<nPattern<<endl;
+			for (int i = 0; i < nPattern; ++i) {
+				for (int j = 0; j < xPatternArray[i].size(); ++j) {
+					cout<<xPatternArray[i][j]<<"\t"<<dlPatternArray[i][j]<<endl;	
+				}
+
 			}
 		}
 };

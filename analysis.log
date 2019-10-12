@@ -2230,3 +2230,14 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 bdc/convert/txt/fdc0Layer.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 00a91ae] v1.0
+ 14 files changed, 245 insertions(+), 23 deletions(-)
+ create mode 100644 analysis/ppScattering/v10_ppBe12Histo.root_TargetXReversed
+ create mode 100644 bdc/Calib/adjacentLayer/rootfiles/bdc2Layer01.C
+ create mode 100644 bdc/Calib/rootfiles/calib/fdc0TDCCalibSpectrum.root_new
+ create mode 100644 bdc/convert/.DCTrack.h.swp
+ rewrite bdc/convert/ConvertDC (92%)
+ create mode 100644 bdc/convert/DCTrack.h
+ create mode 100644 merger/rootfiles/bdc2Layer01.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
