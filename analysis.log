@@ -2241,3 +2241,8 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/bdc2Layer01.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9edbe30] v1.0
+ 3 files changed, 18 insertions(+), 7 deletions(-)
+ rewrite bdc/convert/ConvertDC (73%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
