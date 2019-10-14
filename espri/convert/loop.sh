@@ -14,12 +14,12 @@
 
 
 # Be14 empty
-#run1=587
-#run2=594
+run1=587
+run2=594
 
 # Alpha
-run1=595
-run2=600
+#run1=595
+#run2=600
 
 
 #run1=1

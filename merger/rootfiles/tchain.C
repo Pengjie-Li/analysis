@@ -31,7 +31,12 @@
 	//tree->Add(Form("run0%d_analysed.root_2",599));
 	//tree->Add(Form("run0%d_analysed.root_2",597));
 	//tree->Add(Form("run0%d_analysed.root_2",598));
-	tree->Add(Form("run0%d_analysed.root_2",340));
+	tree->Add(Form("run0%d_analysed.root",310));
+	tree->Add(Form("run0%d_analysed.root",340));
+	tree->Add(Form("run0%d_analysed.root",360));
+	tree->Add(Form("run0%d_analysed.root",588));
+	tree->Add(Form("run0%d_analysed.root",596));
+	tree->Add(Form("run0%d_analysed.root",598));
 	//tree->Add(Form("run0%d_analysed.root_2",336));
 	//tree->Add(Form("run0%d_analysed.root_2",337));
 	//tree->Add(Form("run0%d_analysed.root_2",338));

@@ -34,8 +34,8 @@ class PPScattering{
 
 				//tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
 				//tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
-				tree->Add(Form("rootfiles/run0%d_analysed.root_3",i));
-				//tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root_3",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
 
 		}
@@ -50,7 +50,8 @@ class PPScattering{
 			defineBeamGate();
 			defineTrigger();
 			//gate = trigger+"&&"+beamGate+"&&"+protonGate+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea+"&&"+dssdFB+"&&"+csiHit+"&&"+lrSelect;
-			gate = trigger+"&&"+hodGate+"&&"+targetArea;
+			//gate = trigger+"&&"+hodGate+"&&"+targetArea;
+			gate = hodGate+"&&"+targetArea;
 			printGate();
 
 		}
