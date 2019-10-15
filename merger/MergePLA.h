@@ -1,3 +1,10 @@
+/**
+ * MergePLA Provides:
+ * 1 TRaw QRaw
+ * 2 TCal
+ * 3 TCorrection 
+ * 4 Detector Q and T
+ */
 class MergePLA:public Convert{
 	private:
 	public:
@@ -130,6 +137,48 @@ class MergePLA:public Convert{
 		void printTotalEventNumber(){
 			cout << "N of entries (PLA):\t" << inputTree->GetEntries() << endl;
 		}
+		void print(){
+			cout<<"PLA Raw Data:"<<endl;
+			printF3();
+			printF7();
+			printF13();
+			printSBV();
+		}
+		void printF3(){
+			cout<<"F3T :"<<F3TRaw[0]<<":"<<F3TRaw[1]<<":"<<F3TCal[0]<<":"<<F3TCal[1]<<":"<<F3T<<endl;
+			cout<<"F3Q :"<<F3QRaw[0]<<":"<<F3QRaw[1]<<":"<<F3QCal[0]<<":"<<F3QCal[1]<<":"<<F3Q<<endl;
+		}
+		void printF7(){
+			cout<<"F7T :"<<F7TRaw[0]<<":"<<F7TRaw[1]<<":"<<F7TCal[0]<<":"<<F7TCal[1]<<":"<<F7T<<endl;
+			cout<<"F7Q :"<<F7QRaw[0]<<":"<<F7QRaw[1]<<":"<<F7QCal[0]<<":"<<F7QCal[1]<<":"<<F7Q<<endl;
+		}
+		void printF13(){
+			printSBT1();
+			printSBT2();
+			cout<<"F13TQ:"<<F13T<<":"<<F13Q<<endl;	
+		}
+
+		void printSBT1(){
+			cout<<"SBT1T :"<<SBT1TRaw[0]<<":"<<SBT1TRaw[1]<<":"<<SBT1TCal[0]<<":"<<SBT1TCal[1]<<":"<<SBT1T<<endl;
+			cout<<"SBT1Q :"<<SBT1QRaw[0]<<":"<<SBT1QRaw[1]<<":"<<SBT1QCal[0]<<":"<<SBT1QCal[1]<<":"<<SBT1Q<<endl;
+
+		}
+		void printSBT2(){
+			cout<<"SBT2T :"<<SBT2TRaw[0]<<":"<<SBT2TRaw[1]<<":"<<SBT2TCal[0]<<":"<<SBT2TCal[1]<<":"<<SBT2T<<endl;
+			cout<<"SBT2Q :"<<SBT2QRaw[0]<<":"<<SBT2QRaw[1]<<":"<<SBT2QCal[0]<<":"<<SBT2QCal[1]<<":"<<SBT2Q<<endl;
+
+		}
+		void printSBV(){
+			cout<<"SBVT :"<<SBVTRaw[0]<<":"<<SBVTRaw[1]<<":"<<SBVTCal[0]<<":"<<SBVTCal[1]<<":"<<SBVT<<endl;
+			cout<<"SBVQ :"<<SBVQRaw[0]<<":"<<SBVQRaw[1]<<":"<<SBVQCal[0]<<":"<<SBVQCal[1]<<":"<<SBVQ<<endl;
+
+		}
+
+
+
+
+
+
 
 
 		void getEntry(Long64_t ientry){
@@ -146,6 +195,5 @@ class MergePLA:public Convert{
 		Double_t getF13Time(){
 			return F13T;
 		}
-
 
 };

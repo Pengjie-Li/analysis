@@ -8,9 +8,13 @@
 #include "MergeHOD.h"
 #include "MergeESPRI.h"
 
+//#include "constant.h"
 
+#include "PlaEvent.h"
 #include "EspriEvent.h"
 #include "TeleEvent.h"
+
+
 
 class Merger{
 	private: 
@@ -109,7 +113,9 @@ class Merger{
 		Int_t getCoincidenceTrigger();
 
 		void analysingPLA();
+		PlaEvent *plaEvent;
 		void initAnalysedPLA();
+		void printPLA();
 		Double_t getF3Time();
 		Double_t getF7Time();
 		Double_t getF13Time();

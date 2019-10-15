@@ -1,6 +1,5 @@
 #include "Merger.h"
 #include "constant.h"
-
 #include "AnalysingMAIN.h"
 #include "AnalysingPLA.h"
 #include "AnalysingBDC.h"
@@ -9,12 +8,16 @@
 #include "AnalysingHOD.h"
 #include "AnalysingESPRI.h"
 
+
 Merger::Merger(int runNumber):runNumber(runNumber){
 	env = new TEnv("configMerger.prm");
 	maxEventNumber = env->GetValue("maxEventNumber",5000);
 	inputTree = new TTree("tree","tree");
 	if(kMAIN) mergeMAIN =new MergeMAIN(runNumber);
-	if(kPLA) mergePLA =new MergePLA(runNumber);
+	if(kPLA){
+		mergePLA =new MergePLA(runNumber);
+		plaEvent = new PlaEvent();
+	}
 	if(kBDC) mergeBDC =new MergeBDC(runNumber);
 	if(kFDC0) mergeFDC0 =new MergeFDC0(runNumber);
 //	if(kFDC2) mergeFDC2 =new MergeFDC2(runNumber);

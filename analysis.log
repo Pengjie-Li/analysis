@@ -2250,3 +2250,15 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 5 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 5f417e5] v1.0
+ 16 files changed, 510 insertions(+), 14 deletions(-)
+ create mode 100644 merger/rootfiles/drawF3QT.C
+ create mode 100644 merger/rootfiles/drawF3Slew.C
+ create mode 100644 merger/rootfiles/drawF7QT.C
+ create mode 100644 merger/rootfiles/drawF7Slew.C
+ create mode 100644 merger/rootfiles/drawSBT1QT.C
+ create mode 100644 merger/rootfiles/drawSBT1Slew.C
+ create mode 100644 merger/rootfiles/drawSBT2Slew.C
+ create mode 100644 pla/slewEffect/generateRaw.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

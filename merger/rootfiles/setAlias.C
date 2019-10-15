@@ -8,10 +8,10 @@
 	tree->SetAlias("F3TSlew1","F3TCal[1]+0.0014*F3QRaw[1]");
 	tree->SetAlias("F7TSlew0","F7TCal[0]+0.00092*F7QRaw[0]");
 	tree->SetAlias("F7TSlew1","F7TCal[1]+0.00107*F7QRaw[1]");
-	tree->SetAlias("SBT1TSlew0","SBT1TCal[0]+0.0*SBT1QRaw[0]");
-	tree->SetAlias("SBT1TSlew1","SBT1TCal[1]+0.0*SBT1QRaw[1]");
-	tree->SetAlias("SBT2TSlew0","SBT2TCal[0]+0.0*SBT2QRaw[0]");
-	tree->SetAlias("SBT2TSlew1","SBT2TCal[1]+0.0*SBT2QRaw[1]");
+	tree->SetAlias("SBT1TSlew0","SBT1TCal[0]");
+	tree->SetAlias("SBT1TSlew1","SBT1TCal[1]+1.24");
+	tree->SetAlias("SBT2TSlew0","SBT2TCal[0]");
+	tree->SetAlias("SBT2TSlew1","SBT2TCal[1]-2.8");
 
 	tree->SetAlias("F3TSlew","0.5*(F3TSlew0+F3TSlew1)");
 	tree->SetAlias("F7TSlew","0.5*(F7TSlew0+F7TSlew1)");

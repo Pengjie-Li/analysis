@@ -1,7 +1,5 @@
 #include "header.h"
 TEnv *env =new TEnv("configConvertPLA.prm");
-#include "PLARead.h"
-#include "PLAConvert.h"
 class ConvertPLA{
 	private:
 
@@ -19,17 +17,8 @@ class ConvertPLA{
 		TArtEventStore *EventStore;
 		TArtCalibPlastic *CalibPlastic;
 
-		TArtPlastic *PlasticF3  ; 
-		TArtPlastic *PlasticF7  ; 
-		TArtPlastic *PlasticSBT1;
-		TArtPlastic *PlasticSBT2;
-		TArtPlastic *PlasticSBV ;
-
-
 		TFile *outputFile;
 		TTree *tree;
-		PLARead *plaRead;
-		PLAConvert *plaConvert;
 
 		TString getInputName(){
 			TString inputPath=env->GetValue("inputPath","./rootfile/");
@@ -51,8 +40,8 @@ class ConvertPLA{
 
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
-			plaRead->setBranch(tree);
-			plaConvert->setBranch(tree);
+			//plaReadRaw->setBranch(tree);
+			//espriConvertCal->setBranch(tree);
 		}
 		void preSetting(){
 			start = std::clock();
@@ -78,44 +67,13 @@ class ConvertPLA{
 				showAnalysisProgress();
 
 				EventNumber++;
-
-				getRawData();
-				readData();
+				if(maxEventNumber<100) cout<<EventNumber<<endl;
 				//readRawData();
-				convertData();
+				//convertRawData();
 				tree->Fill();
-				if(maxEventNumber<100) print();
+
 			}
 		}
-		void print(){
-			cout<<"EventNumber = "<<EventNumber<<endl;
-			printF3();
-			printF7();
-			printSBT1();
-			printSBT2();
-			printSBV();
-		}
-		void printF3(){
-			plaRead->printF3();
-			plaConvert->printF3();
-		}
-		void printF7(){
-			plaRead->printF7();
-			plaConvert->printF7();
-		}
-		void printSBT1(){
-			plaRead->printSBT1();
-			plaConvert->printSBT1();
-		}
-		void printSBT2(){
-			plaRead->printSBT2();
-			plaConvert->printSBT2();
-		}
-		void printSBV(){
-			plaRead->printSBV();
-			plaConvert->printSBV();
-		}
-
 		void showAnalysisProgress(){
 			if (EventNumber%DISPLAY_EVERY_EVENT == 0)
 			{
@@ -129,36 +87,6 @@ class ConvertPLA{
 			}
 
 		}
-                void getRawData(){
-                        clearReconstructedData();
-                        reconstructData();
-                        //getDataContainer();
-
-                }
-                void clearReconstructedData(){
-
-			CalibPlastic->ClearData();
-
-                }
-                void reconstructData(){
-			CalibPlastic->ReconstructData();
-
-                }
-                void getDataContainer(){
-			PlasticF3 = CalibPlastic->FindPlastic((char*)"F3pl");
-			PlasticF7 = CalibPlastic->FindPlastic((char*)"F7pl");
-			PlasticSBT1 = CalibPlastic->FindPlastic((char*)"F13pl-1");
-			PlasticSBT2 = CalibPlastic->FindPlastic((char*)"F13pl-2");
-			PlasticSBV = CalibPlastic->FindPlastic((char*)"SBV");
-
-		}
-		void readData(){
-			plaRead->read(CalibPlastic);
-		}
-		void convertData(){
-			plaConvert->convert(plaRead);
-		}
-
 	public:
 		ConvertPLA(int rn,Long64_t men){
 			runNumber = rn;
@@ -211,8 +139,7 @@ class ConvertPLA{
 			outputFile = new TFile(getOutputName(),"recreate");
 			tree = new TTree("CalTreePLA","Convert Raw Cal Sync");
 
-			plaRead = new PLARead();
-			plaConvert = new PLAConvert();
+			//plaReadRaw = new plaReadRaw();
 
 			setOutputBranch();
 
@@ -230,7 +157,7 @@ class ConvertPLA{
 int main(int argc, char *argv[]){
 	int runNumber=-1;
 	Long64_t maxEventNumber = 10000000;
-	//Long64_t maxEventNumber = 30;
+	//      Long64_t maxEventNumber = 30;
 	//cout<<maxEventNumber<<endl;
 	if(argc==2) runNumber=atoi(argv[1]);
 	else if(argc==3) { runNumber=atoi(argv[1]); maxEventNumber=atoi(argv[2]);}
