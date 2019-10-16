@@ -2262,3 +2262,28 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/slewEffect/generateRaw.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4701830] v1.0
+ 34 files changed, 4355 insertions(+), 211 deletions(-)
+ rewrite merger/AnalysingPLA.h (89%)
+ rewrite merger/Merger (92%)
+ create mode 100644 merger/PlaEvent.h
+ create mode 100644 merger/rootfiles/drawSBT1PosDependence.C
+ create mode 100644 merger/rootfiles/drawSBT2PosDependence.C
+ create mode 100644 merger/rootfiles/run0300_analysed.root_3
+ rewrite pla/convert/ConvertPLA (93%)
+ create mode 100644 pla/convert/PLAConvert.h
+ create mode 100755 pla/convert/v2_AllBeamPlastic/ConvertPLA
+ create mode 100644 pla/convert/v2_AllBeamPlastic/ConvertPLA.C
+ create mode 100755 pla/convert/v2_AllBeamPlastic/Makefile
+ create mode 100644 pla/convert/v2_AllBeamPlastic/PLAConvert.h
+ create mode 100644 pla/convert/v2_AllBeamPlastic/PLARead.h
+ create mode 100755 pla/convert/v2_AllBeamPlastic/caltree.C
+ create mode 100644 pla/convert/v2_AllBeamPlastic/configConvertPLA.prm
+ create mode 100644 pla/convert/v2_AllBeamPlastic/convert.sh
+ create mode 100755 pla/convert/v2_AllBeamPlastic/header.h
+ create mode 100644 pla/convert/v2_AllBeamPlastic/loop.sh
+ create mode 100644 pla/convert/v2_AllBeamPlastic/looprun.sh
+ create mode 100755 pla/convert/v2_AllBeamPlastic/plastic.C
+ create mode 100644 pla/convert/v2_AllBeamPlastic/v1_Sample.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

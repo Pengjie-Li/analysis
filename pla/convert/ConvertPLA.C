@@ -93,6 +93,7 @@ class ConvertPLA{
 			printF7();
 			printSBT1();
 			printSBT2();
+			printF13();
 			printSBV();
 		}
 		void printF3(){
@@ -110,6 +111,9 @@ class ConvertPLA{
 		void printSBT2(){
 			plaRead->printSBT2();
 			plaConvert->printSBT2();
+		}
+		void printF13(){
+			plaConvert->printF13();
 		}
 		void printSBV(){
 			plaRead->printSBV();

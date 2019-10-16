@@ -39,7 +39,7 @@ class PlaEvent{
 
 			Double_t AMU = 931.494; // Atomic Mass Unit (MeV/c²)
 			if(getF13Time()!=-9999&&getF7Time()!=-9999){
-				TOF713=getF13Time() - getF7Time() + 570.619; // ns //20181025
+				TOF713=getF13Time() - getF7Time() + 570.387; // 20191016  570.619; // ns //20181025
 				Beta713=Dist_F7F13/TOF713/C_light;
 				Gamma713=1/sqrt(1-Beta713*Beta713);
 				Ek713=(Gamma713-1)*AMU;
