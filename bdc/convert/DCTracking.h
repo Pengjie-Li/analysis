@@ -1,5 +1,4 @@
-#include "DCTrack.h"
-class DCPositionPara{
+class DCDetectorPara{
 	private:
 		double pitch;
 
@@ -10,6 +9,7 @@ class DCPositionPara{
 		void loadLayer(){
 			ifstream in;	
 			TString fileName = env->GetValue(dcName+"Layer","txt/direction.txt");
+			cout<<fileName<<endl;
 			in.open(fileName);
 			int isXY;
 			int layerId;
@@ -32,158 +32,176 @@ class DCPositionPara{
 			}
 		}
 	public:
-		DCPositionPara(TString dc){
+		DCDetectorPara(TString dc){
 			dcName = dc;
 			pitch = 5;//mm
 			loadLayer();
 			print();
 		}
-		~DCPositionPara(){}
-		void setWirePosition(vector<vector<double> > &trackXY,vector<vector<double> > &trackDL,vector<double>  &trackZ,int layerId, int wireId,double dl){
-			trackXY[layerId].push_back(getWireXYPosition(layerId,wireId));
-			trackDL[layerId].push_back(dl);
-			trackZ[layerId] = getWireZPosition(layerId);
-		}
-		int getLayerXYDirection(int layerId){
+		~DCDetectorPara(){}
+		int getLayerDirection(int layerId){
 			return dcDirection[layerId];
 		}
-		double getWireXYPosition(int layerId,int wireId){
+		double getWirePosition(int layerId,int wireId){
 			return dcXYPosition[layerId]-wireId*pitch;
 		}
 		double getWireZPosition(int layerId){
 			return dcZPosition[layerId];
 		}
 };
+
+class TrackPattern{
+	private:
+		vector<DCHit> hitArray;
+	public:
+		TrackPattern(){}
+		~TrackPattern(){}
+		void addHit(DCHit hit){
+			hitArray.push_back(hit);
+		}
+		void print(){
+			for (int i = 0; i < hitArray.size(); ++i) {
+				hitArray[i].print();	
+			}
+		}
+	//	void tracking(){
+	//		cout<<"come on Tracking"<<endl;
+	//	}
+};
+class TrackHit{
+	private:
+		vector<DCLayerHit> hitArray;
+		vector<TrackPattern> trackPattern;
+		int nPattern;
+		int nHitLayer;
+
+		void calPattern(){
+			for (int i = 0; i < hitArray.size(); ++i) {
+				if(hitArray[i].size()>0){
+					nPattern *= hitArray[i].size();
+					nHitLayer++;
+				}
+			}
+		}
+		void generatePattern(){
+			
+			trackPattern.resize(nPattern);
+			int np = 1;
+			for (int i = 0;  i < hitArray.size(); ++i) {
+				if(hitArray[i].size()>0){
+					for (int j = 0; j < nPattern; j+=np) {
+						for (int k = 0; k < np; ++k) {
+							trackPattern[j+k].addHit(hitArray[i].getHit((j%(np*hitArray[i].size()))/np));
+						}
+
+					}
+					np *= hitArray[i].size();
+				}
+
+			}
+		}
+//		void trackEachPattern(){
+//			for (int i = 0; i < trackPattern.size(); ++i) {
+//				trackPattern[i].tracking();
+//			}
+//		}
+
+
+
+	public:
+		TrackHit(){
+		}
+		~TrackHit(){}
+		void init(){
+			nPattern = 1;
+			nHitLayer = 0;
+			hitArray.clear();
+			trackPattern.clear();
+		}
+		void loadData(DCLayerHit hit){
+			hitArray.push_back(hit);
+		}
+		void tracking(){
+			calPattern();
+			generatePattern();
+			//trackEachPattern();
+		}
+		void print(){
+			cout<<"nPattern = "<< nPattern<<endl;
+			for (int i = 0; i < hitArray.size(); ++i) {
+					hitArray[i].print();
+			}
+			for (int i = 0; i < trackPattern.size(); ++i) {
+				cout<<"Pattern Number:"<< i <<endl;
+				trackPattern[i].print();	
+			}
+			
+		}
+
+		
+};
 class DCTracking{
 	private:
-		vector<vector<double> > trackXY;
-		vector<vector<double> > trackDL;//Drift Length
-		vector<double> trackZ;
-		double chiXY[2];
-		double ndfXY[2];
-		vector<double> layerResidue;
-
-
-		// Analysis Result
-		double X;
-		double Y;
-		double thetaX;
-		double thetaY;
-
-		DCPositionPara *dcPositionPara;
-		DCConvertCal *convertData;
-		DCTrack	*dcTrack[2];
+		
+		DCReadRaw *rawData;
+		TrackHit *xTrackHit;
+		TrackHit *yTrackHit;
+		DCDetectorPara *dcDetectorPara;
 		void init(){
-			trackXY.clear();
-			trackDL.clear();
-			trackZ.clear();
-			trackXY.resize(totalLayerNumber);
-			trackDL.resize(totalLayerNumber);
-			trackZ.resize(totalLayerNumber);
-			convertData = NULL;
-			chiXY[0] = NAN;
-			chiXY[1] = NAN;
-			ndfXY[0] = NAN;
-			ndfXY[1] = NAN;
-			layerResidue.resize(totalLayerNumber,NAN);
-			dcTrack[0]->init();
-			dcTrack[1]->init();
+			rawData = NULL;
+			xTrackHit->init();
+			yTrackHit->init();
 		}
 	public:
-		int totalLayerNumber;
 		TString dcName;
+		int totalLayerNumber;
 		DCTracking(){
-			dcTrack[0] = new DCTrack();
-			dcTrack[1] = new DCTrack();
-
+			xTrackHit = new TrackHit();
+			yTrackHit = new TrackHit();
 		}
 		~DCTracking(){}
-
-		void loadPositionPara(){
-			dcPositionPara = new DCPositionPara(dcName);	
+		void loadDetector(){
+			dcDetectorPara = new DCDetectorPara(dcName);
 		}
-		void setBranch(TTree *tree){
-
-			
-			
-			tree->Branch(dcName+"TrackXY",&trackXY);
-	
-			// How good fitness
-			tree->Branch(dcName+"ChiXY",&chiXY,"chiXY[2]/D");
-			tree->Branch(dcName+"NdfXY",&ndfXY,"ndfXY[2]/D");
-
-			tree->Branch(dcName+"X",&X);
-			tree->Branch(dcName+"Y",&Y);
-			tree->Branch(dcName+"ThetaX",&thetaX);
-			tree->Branch(dcName+"ThetaY",&thetaY);
-
-			tree->Branch(dcName+"LayerResidue",&layerResidue);
-
-		}
-		void findBestTrack(DCConvertCal *dcConvertCal){
+		void calibrate(DCReadRaw *dc){
 			init();
-			convertData = dcConvertCal;
-			setWirePosition();
+			rawData = dc;
+			loadXYHitsIntoTrack();
 			tracking();
-			//convertData->print();
-			/**
-			 * 1. (wire,layer)->wire Position in X,Z
-			 * 2. seperate hits into X and Y Array,find numLayer and 
-			 * 3. loop Hit Position, fit into Track, sort with Chi2
-			 */
-			//	for (int i = 0; i < getNHits(); ++i) {
-		//		
-		//	}
-			
 		}
-		void setWirePosition(){
-			for (int i = 0; i < getNHits(); ++i) {
-				dcPositionPara->setWirePosition(trackXY,trackDL,trackZ,getLayerId(i),getWireId(i),getDriftLength(i));
-
+		void loadXYHitsIntoTrack(){
+			for (int i = 0; i < totalLayerNumber; ++i) {
+				if(getLayerDirection(i) == 0) xTrackHit->loadData(rawData->getHit(i));
+				else yTrackHit->loadData(rawData->getHit(i));
 			}
 		}
 		void tracking(){
-	
-			for (int i = 0; i < totalLayerNumber; ++i) {
-				dcTrack[getLayerXYDirection(i)]->loadData(trackXY[i],trackDL[i],trackZ[i]);
-			}
-
-			dcTrack[0]->tracking();
-			dcTrack[1]->tracking();
+			xTrackHit->tracking();
+			yTrackHit->tracking();
+		}
+		void setBranch(TTree *tree){
 		}
 		void print(){
-			cout<<"Tracking Data"<<endl;
-			for (int i = 0; i < trackXY.size(); ++i) {
-				for (int j = 0; j < trackXY[i].size(); ++j) {
-					cout<<i<<":"<<j<<":"<<trackXY[i][j]<<":"<<trackDL[i][j]<<":"<<trackZ[i]<<endl;	
-				}
-			}
-			cout<<"X Track Direction:"<<endl;
-			dcTrack[0]->print();
-			cout<<"Y Track Direction:"<<endl;
-			dcTrack[1]->print();
-			
+			cout<<"X Tracking Hit:"<<endl;
+			xTrackHit->print();	
+			cout<<"Y Tracking Hit:"<<endl;
+			yTrackHit->print();	
 		}
 		int getNHits(){
-			return convertData->getNHits();
+			return rawData->getNHits();
 		}
 		int getLayerId(int i){
-			return convertData->getLayerId(i);
+			return rawData->getLayerId(i);
 		}
 		int getWireId(int i){
-			return convertData->getWireId(i);
+			return rawData->getWireId(i);
 		}
 		int getTdc(int i){
-			return convertData->getTdc(i);
+			return rawData->getTdc(i);
 		}
-		double getDriftLength(int i){
-			return convertData->getDriftLength(i);
+		int getLayerDirection(int layerId){
+			return dcDetectorPara->getLayerDirection(layerId);
 		}
-		int getLayerXYDirection(int i){
-			return dcPositionPara->getLayerXYDirection(i);
-		}
-
-
 
 };
 class BDC1Tracking:public DCTracking{
@@ -192,7 +210,7 @@ class BDC1Tracking:public DCTracking{
 		BDC1Tracking(){
 			dcName = "bdc1";
 			totalLayerNumber = 8;
-			loadPositionPara();
+			loadDetector();
 		}
 		~BDC1Tracking(){}
 };
@@ -202,7 +220,7 @@ class BDC2Tracking:public DCTracking{
 		BDC2Tracking(){
 			dcName = "bdc2";
 			totalLayerNumber = 8;
-			loadPositionPara();
+			loadDetector();
 		}
 		~BDC2Tracking(){}
 };
@@ -212,7 +230,7 @@ class FDC0Tracking:public DCTracking{
 		FDC0Tracking(){
 			dcName = "fdc0";
 			totalLayerNumber = 8;
-			loadPositionPara();
+			loadDetector();
 		}
 		~FDC0Tracking(){}
 };

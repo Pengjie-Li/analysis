@@ -29,6 +29,9 @@ class ConvertDC{
 		DCReadRaw *bdc1ReadRaw    ;
 		DCReadRaw *bdc2ReadRaw    ;
 		DCReadRaw *fdc0ReadRaw    ;
+		DCConvertCal *bdc1ConvertCal ;
+		DCConvertCal *bdc2ConvertCal ;
+		DCConvertCal *fdc0ConvertCal ;
 
 		DCTracking *bdc1Track;
 		DCTracking *bdc2Track;
@@ -91,7 +94,9 @@ class ConvertDC{
 			bdc1ReadRaw    = new BDC1ReadRaw();
 			bdc2ReadRaw    = new BDC2ReadRaw();
 			fdc0ReadRaw    = new FDC0ReadRaw();
-
+			bdc1ConvertCal = new BDC1ConvertCal();
+			bdc2ConvertCal = new BDC2ConvertCal();
+			fdc0ConvertCal = new FDC0ConvertCal();
 			bdc1Track	= new BDC1Tracking();
 			bdc2Track	= new BDC2Tracking();
 			fdc0Track	= new FDC0Tracking();
@@ -104,6 +109,10 @@ class ConvertDC{
 			bdc1ReadRaw->setBranch(tree);
 			bdc2ReadRaw->setBranch(tree);
 			fdc0ReadRaw->setBranch(tree);
+
+			bdc1ConvertCal->setBranch(tree);
+			bdc2ConvertCal->setBranch(tree);
+			fdc0ConvertCal->setBranch(tree);
 
 			bdc1Track->setBranch(tree);
 			bdc2Track->setBranch(tree);
@@ -132,6 +141,7 @@ class ConvertDC{
 				EventNumber++;
 				getRawData();
 				readDCRawData();
+				convertDCCalData();
 				trackingDCData();
 
 				if(maxEventNumber<100) print();
@@ -154,13 +164,16 @@ class ConvertDC{
 		}
 		void print(){
 			cout<<"EventNumber = "<<EventNumber<<endl;
-			//bdc1ReadRaw->print();
+	//		bdc1ReadRaw->print();
+			bdc1ConvertCal->print();
 			bdc1Track->print();
 
 		//	bdc2ReadRaw->print();
+		//	bdc2ConvertCal->print();
 		//	bdc2Track->print();
 
 		//	fdc0ReadRaw->print();
+		//	fdc0ConvertCal->print();
 		//	fdc0Track->print();
 
 		}
@@ -195,10 +208,15 @@ class ConvertDC{
 			bdc2ReadRaw->readRaw(BDC2Hit);
 			fdc0ReadRaw->readRaw(FDC0Hit);
 		}
+		void convertDCCalData(){
+			bdc1ConvertCal->calibrate(bdc1ReadRaw);
+			bdc2ConvertCal->calibrate(bdc2ReadRaw);
+			fdc0ConvertCal->calibrate(fdc0ReadRaw);
+		}
 		void trackingDCData(){
-				bdc1Track->calibrate(bdc1ReadRaw);
-				bdc2Track->calibrate(bdc2ReadRaw);
-				fdc0Track->calibrate(fdc0ReadRaw);
+			bdc1Track->findBestTrack(bdc1ConvertCal);
+			bdc2Track->findBestTrack(bdc2ConvertCal);
+			fdc0Track->findBestTrack(fdc0ConvertCal);
 		}
 		void clearDCObject(){
 			CalibBDC1Hit->ClearData();

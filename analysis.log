@@ -2287,3 +2287,60 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/v2_AllBeamPlastic/v1_Sample.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 1304d36] v1.0
+ 68 files changed, 126 insertions(+), 39 deletions(-)
+ create mode 100644 merger/rootfiles/drawF13QT.C
+ create mode 100644 merger/rootfiles/drawSBT2QT.C
+ create mode 100644 merger/rootfiles/run0593_analysed.root_3
+ rewrite pla/convert/ConvertPLA (89%)
+ create mode 100644 pla/convert/rootfiles/run0118_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0178_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0193_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0194_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0195_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0196_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0197_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0198_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0199_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0200_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0201_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0202_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0203_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0204_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0205_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0206_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0227_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0228_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0229_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0279_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0281_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0282_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0283_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0284_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0285_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0286_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0287_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0288_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0289_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0290_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0291_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0292_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0373_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0441_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0442_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0443_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0444_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0445_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0446_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0447_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0474_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0491_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0492_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0493_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0580_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0582_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0583_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0586_PLA.root_1
+ create mode 100644 pla/convert/rootfiles/run0593_PLA.root_1
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
