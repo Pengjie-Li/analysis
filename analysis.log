@@ -2344,3 +2344,44 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/rootfiles/run0593_PLA.root_1
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 14a03a9] v1.0
+ 42 files changed, 10473 insertions(+), 263 deletions(-)
+ rewrite bdc/convert/ConvertDC (94%)
+ rewrite bdc/convert/DCTracking.h (62%)
+ create mode 100644 bdc/convert/rootfile1/run0300_DC.root_1
+ create mode 100755 bdc/convert/v2_NewStructure/ConvertDC
+ create mode 100644 bdc/convert/v2_NewStructure/ConvertDC.C
+ create mode 100755 bdc/convert/v2_NewStructure/ConvertDC.C_old
+ create mode 100644 bdc/convert/v2_NewStructure/DCConvertCal.h
+ create mode 100644 bdc/convert/v2_NewStructure/DCReadRaw.h
+ create mode 100644 bdc/convert/v2_NewStructure/DCTrack.h
+ rename bdc/convert/{ => v2_NewStructure}/DCTracking.h (84%)
+ create mode 100755 bdc/convert/v2_NewStructure/Makefile
+ create mode 100644 bdc/convert/v2_NewStructure/configConvertDC.prm
+ create mode 100644 bdc/convert/v2_NewStructure/convert.sh
+ create mode 100755 bdc/convert/v2_NewStructure/distance.h
+ create mode 100755 bdc/convert/v2_NewStructure/header.h
+ create mode 100644 bdc/convert/v2_NewStructure/loop.sh
+ create mode 100644 bdc/convert/v2_NewStructure/looprun.sh
+ create mode 100755 bdc/v1_convert/DriftLength.h
+ create mode 100755 bdc/v1_convert/LoadTDCDistribution.h
+ create mode 100755 bdc/v1_convert/Makefile
+ create mode 100755 bdc/v1_convert/bdc
+ create mode 100755 bdc/v1_convert/bdc.C
+ create mode 100755 bdc/v1_convert/beam
+ create mode 100755 bdc/v1_convert/beam.C
+ create mode 100755 bdc/v1_convert/beam_focus.cc
+ create mode 100755 bdc/v1_convert/beam_v1.C
+ create mode 100755 bdc/v1_convert/beam_v2.C
+ create mode 100755 bdc/v1_convert/beam_v3.C
+ create mode 100755 bdc/v1_convert/beam_v4.C
+ create mode 100755 bdc/v1_convert/caltree.C
+ create mode 100755 bdc/v1_convert/distance.h
+ create mode 100755 bdc/v1_convert/event_by_event_bdc
+ create mode 100755 bdc/v1_convert/event_by_event_bdc.C
+ create mode 100755 bdc/v1_convert/example.c
+ create mode 100755 bdc/v1_convert/header.h
+ create mode 100755 bdc/v1_convert/rootlogoff.C
+ create mode 100755 bdc/v1_convert/rootlogon.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

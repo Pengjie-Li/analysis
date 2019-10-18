@@ -1,7 +1,6 @@
 #include "header.h"
 TEnv *env = new TEnv("configConvertDC.prm");
 #include "DCReadRaw.h"
-#include "DCConvertCal.h"
 #include "DCTracking.h"
 
 class ConvertDC{

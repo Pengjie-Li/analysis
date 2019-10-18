@@ -1,32 +1,32 @@
 {
-//========= Macro generated from object: CUTG/Graph
-//========= by ROOT version5.34/20
+//========= Macro generated from object: Proton/Graph
+//========= by ROOT version5.34/36
    
    TCutG *cutg = new TCutG("Proton",21);
    cutg->SetVarX("espriNaiEnergy");
    cutg->SetVarY("espriPlasDeltaE");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetPoint(0,0.550425,17.4455);
-   cutg->SetPoint(1,4.3679,18.5936);
-   cutg->SetPoint(2,9.16193,15.3215);
-   cutg->SetPoint(3,13.3345,12.9104);
-   cutg->SetPoint(4,22.4787,9.63835);
-   cutg->SetPoint(5,37.8374,7.05511);
-   cutg->SetPoint(6,61.63,5.10333);
-   cutg->SetPoint(7,65.625,4.8163);
-   cutg->SetPoint(8,67.8445,3.38117);
-   cutg->SetPoint(9,61.9851,3.32377);
-   cutg->SetPoint(10,22.5675,1.94604);
-   cutg->SetPoint(11,21.2358,2.06085);
-   cutg->SetPoint(12,27.3615,4.01263);
-   cutg->SetPoint(13,36.6832,4.70149);
-   cutg->SetPoint(14,31.0014,5.33295);
-   cutg->SetPoint(15,25.2308,6.07922);
-   cutg->SetPoint(16,19.7266,7.16992);
-   cutg->SetPoint(17,13.5121,9.40873);
-   cutg->SetPoint(18,8.8956,11.6475);
-   cutg->SetPoint(19,3.48011,15.5511);
-   cutg->SetPoint(20,0.550425,17.4455);
+   cutg->SetPoint(0,4.46128,19.1784);
+   cutg->SetPoint(1,11.6162,16.5045);
+   cutg->SetPoint(2,21.2963,11.926);
+   cutg->SetPoint(3,34.9747,8.00686);
+   cutg->SetPoint(4,56.4394,5.2964);
+   cutg->SetPoint(5,79.5875,3.79465);
+   cutg->SetPoint(6,117.887,2.84233);
+   cutg->SetPoint(7,127.567,2.40279);
+   cutg->SetPoint(8,117.256,2.03651);
+   cutg->SetPoint(9,39.3939,0.937674);
+   cutg->SetPoint(10,33.5017,1.30395);
+   cutg->SetPoint(11,36.2374,2.03651);
+   cutg->SetPoint(12,52.2306,2.51267);
+   cutg->SetPoint(13,40.0253,3.42837);
+   cutg->SetPoint(14,26.7677,5.22314);
+   cutg->SetPoint(15,14.9832,9.32547);
+   cutg->SetPoint(16,4.88215,13.6842);
+   cutg->SetPoint(17,2.56734,15.2958);
+   cutg->SetPoint(18,4.46128,19.0319);
+   cutg->SetPoint(19,4.46128,19.0319);
+   cutg->SetPoint(20,4.46128,19.1784);
    cutg->Draw("");
 }

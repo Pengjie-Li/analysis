@@ -34,8 +34,8 @@ class PPScattering{
 
 				//tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
 				//tree->Add(Form("rootfiles/run0%d_analysed.root_2",i));
-				//tree->Add(Form("rootfiles/run0%d_analysed.root_3",i));
-				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root_3",i));
+				//tree->Add(Form("rootfiles/run0%d_analysed.root",i));
 			}
 
 		}
@@ -50,6 +50,9 @@ class PPScattering{
 			defineBeamGate();
 			defineTrigger();
 			//gate = trigger+"&&"+beamGate+"&&"+protonGate+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea+"&&"+dssdFB+"&&"+csiHit+"&&"+lrSelect;
+			//gate = trigger+"&&"+protonGate+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea+"&&"+dssdFB+"&&"+csiHit+"&&"+lrSelect;
+			//gate = trigger+"&&"+protonGate+"&&"+hodGate+"&&"+targetArea;
+			//gate = trigger+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea;
 			//gate = trigger+"&&"+hodGate+"&&"+targetArea;
 			gate = hodGate+"&&"+targetArea;
 			printGate();
@@ -59,7 +62,7 @@ class PPScattering{
 			lrSelect = "((plasQ[0]>2&&dssdSideQ[2]>2)||(plasQ[1]>2&&dssdSideQ[0]>2))";
 		}
 		void defineDssdFB(){
-			dssdFB = "((abs(dssdSideQ[0]-dssdSideQ[1])<1)||(abs(dssdSideQ[0]-dssdSideQ[1])<1))";
+			dssdFB = "((abs(dssdSideQ[0]-dssdSideQ[1])<1)||(abs(dssdSideQ[2]-dssdSideQ[3])<1))";
 		}
 		void defineCsiHit(){
 			csiHit = "csiNHit==1";
@@ -112,15 +115,10 @@ class PPScattering{
 
 			TString drawRange[4];
 			drawRange[0] = "(200,40,80,200,0,150)";
-			drawRange[1] = "(200,0,18,200,0,1000)";
+			drawRange[1] = "(200,0,18,200,200,700)";
 			drawRange[2] = "(200,0,18,200,40,80)";
-			drawRange[3] = "(200,0,1000,200,0,150)";
+			drawRange[3] = "(200,200,700,200,0,150)";
 			
-			TString drawCurve[4];
-			drawCurve[0] = ".x rootfiles/drawCurveBe12EspriEvsA.C";
-			drawCurve[1] = ".x rootfiles/drawCurveBe12TeleEvsA.C";
-			drawCurve[2] = ".x rootfiles/drawCurveBe12EspriAvsTeleA.C";
-			drawCurve[3] = ".x rootfiles/drawCurveBe12EspriEvsTeleE.C";
 			for (int i = 0; i < 4; ++i) {
 				c->cd(i+1);	
 				TString draw = drawVar[i] + hName[i] + drawRange[i];
@@ -142,6 +140,8 @@ class PPBe10:public PPScattering {
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe10.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT1Be10.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT2Be10.C");
 			gROOT->ProcessLine(".x rootfiles/cutProtonBe10.C");
 			gROOT->ProcessLine(".x rootfiles/cutAlphaBe10.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
@@ -163,7 +163,8 @@ class PPBe10:public PPScattering {
 			hodGate = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";	
 		}
 		void defineBeamGate(){
-			beamGate = "BeamBe10";
+			//beamGate = "BeamBe10";
+			beamGate = "(SBT1Be10||SBT2Be10)";
 		}
 };
 class PPBe12:public PPScattering {
@@ -173,6 +174,8 @@ class PPBe12:public PPScattering {
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe12.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT1Be12.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT2Be12.C");
 			gROOT->ProcessLine(".x rootfiles/cutProtonBe12.C");
 			gROOT->ProcessLine(".x rootfiles/cutAlphaBe12.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
@@ -196,7 +199,8 @@ class PPBe12:public PPScattering {
 			hodGate = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
 		}
 		void defineBeamGate(){
-			beamGate = "BeamBe12";
+			//beamGate = "BeamBe12";
+			beamGate = "(SBT1Be12||SBT2Be12)";
 		}
 };
 
@@ -207,56 +211,37 @@ class PPBe14:public PPScattering {
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT1Be14.C");
+			gROOT->ProcessLine(".x rootfiles/cutSBT2Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutSmallBeamBe14.C");
-			//gROOT->ProcessLine(".x rootfiles/cutProtonBe14.C");
-			gROOT->ProcessLine(".x rootfiles/cutProtonBe14_1.C");
+			gROOT->ProcessLine(".x rootfiles/cutProtonBe14.C");
+			gROOT->ProcessLine(".x rootfiles/cutAlphaBe14.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutHodBe14.C");
 
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar32Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar31Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar30Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar29Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar28Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar27Be14.C");
-	                                                        
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar23Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar22Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar21Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar20Be14.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar19Be14.C");
 
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar26Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar25Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar24Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar23Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar22Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar21Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar20Be12.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar19Be12.C");
-
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar23Be11.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar22Be11.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar21Be11.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar20Be11.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar19Be11.C");
-
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar23Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar22Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar21Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar20Be10.C");
-			gROOT->ProcessLine(".x rootfiles/cutBe14Bar19Be10.C");
-
-
-
-
-
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar3He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar4He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar5He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar6He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar7He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar8He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar9He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar10He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar11He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar12He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar13He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar14He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar15He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar16He4.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar17He4.C");
 
 
 		}
 
 		void assignOutputName(){
-			outputName = "ppSmallBe14HistoBe10Bar19-23.root";
+			//outputName = "ppSmallBe14HistoBe10Bar19-23.root";
+			outputName = "ppaBe14HistoHe4Bar3-17.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
@@ -267,11 +252,14 @@ class PPBe14:public PPScattering {
 			//
 			//hodGate = "(Be14Bar26Be12||Be14Bar25Be12||Be14Bar24Be12||Be14Bar23Be12||Be14Bar22Be12||Be14Bar21Be12||Be14Bar20Be12||Be14Bar19Be12)";
 			//hodGate = "(Be14Bar23Be11||Be14Bar22Be11||Be14Bar21Be11||Be14Bar20Be11||Be14Bar19Be11)";
-			hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
+			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
+			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
+			hodGate = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
 		}
 		void defineBeamGate(){
 			//beamGate = "BeamBe14";
-			beamGate = "SmallBeamBe14";
+			//beamGate = "SmallBeamBe14";
+			beamGate = "(SBT1Be14||SBT2Be14)";
 		}
 };
 
@@ -280,12 +268,12 @@ void ppaBe(){
 	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
-	PPBe12 *ppBe = new PPBe12();
+	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(341,342);
-	ppBe->loadTChain(334,365);
-	//PPBe14 *ppBe = new PPBe14();
+	//ppBe->loadTChain(334,365);
+	PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	//ppBe->loadTChain(366,456);
+	ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineTrigger();

@@ -17,7 +17,9 @@ void drawHistoLine(){
 		gCurve[i]->SetLineColor(1);
 	}
 
-	TString fileName = "v2_ppaBe12Histo.root";
+	//TString fileName = "v2_ppaBe12Histo.root_TargetXReversed";
+	//TString fileName = "v3_ppaBe12Histo.root_GateOnlyHe8";
+	TString fileName = "v3_ppaBe14HistoHe4Bar3-17.root_BeamGateSBT1AndSBT2";
 	//TString fileName = "ppaBe10Histo.root";
 	TFile *g =new TFile(fileName,"read");
 	TCanvas *cPad = new TCanvas("ppBe","ppBe",1400,900);
