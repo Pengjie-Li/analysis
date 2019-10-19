@@ -2385,3 +2385,41 @@ Branch master set up to track remote branch master from origin.
  create mode 100755 bdc/v1_convert/rootlogon.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7b2eeb5] v1.0
+ 43 files changed, 860 insertions(+), 118 deletions(-)
+ create mode 100644 analysis/ppAlpha/.ppaBe.C.swp
+ create mode 100644 analysis/ppAlpha/v2_ppaBe10Histo.root_TargetXReversed
+ create mode 100644 analysis/ppAlpha/v2_ppaBe12Histo.root_GateHe8Only
+ create mode 100644 analysis/ppAlpha/v3_ppaBe10Histo.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppAlpha/v3_ppaBe12Histo.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppAlpha/v3_ppaBe12Histo.root_GateOnlyHe8
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe4Bar3-17.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppScattering/v10_ppBe10Histo.root_TargetXReversed
+ rewrite bdc/convert/ConvertDC (92%)
+ create mode 100644 merger/rootfiles/Be14Bar10He4
+ create mode 100644 merger/rootfiles/cutAlphaBe14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar10He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar11He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar12He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar13He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar14He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar15He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar16He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar17He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar3He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar4He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar5He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar6He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar7He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar8He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar9He4.C
+ create mode 100644 merger/rootfiles/cutHodBe12He8.C
+ rewrite merger/rootfiles/cutProtonBe14.C (82%)
+ create mode 100644 merger/rootfiles/cutSBT1Be10.C
+ create mode 100644 merger/rootfiles/cutSBT1Be12.C
+ create mode 100644 merger/rootfiles/cutSBT1Be14.C
+ create mode 100644 merger/rootfiles/cutSBT2Be10.C
+ create mode 100644 merger/rootfiles/cutSBT2Be12.C
+ create mode 100644 merger/rootfiles/cutSBT2Be14.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
