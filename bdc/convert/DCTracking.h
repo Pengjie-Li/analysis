@@ -96,15 +96,18 @@ class Track1D{
 	public:
 		Track1D(){
 			x=0;a=0;chi2=99999.;ndf=-1;nhit=0;
-			hitid=NULL;dl=NULL;hitx=NULL;hitz=NULL;
+			dl=NULL; lid=NULL;wid=NULL;tdc=NULL;wpos=NULL;xpos=NULL;zpos=NULL;
+
+
 		}
 		~Track1D(){
-			if(hitid)   delete [] hitid;
-			if(dl)   delete [] dl;
-			if(hitx) delete [] hitx;
-			if(hitz) delete [] hitz;
-			if(layer_id) delete [] layer_id;
-			if(plane_id) delete [] plane_id;
+			delete [] dl;
+			delete [] lid;
+			delete [] wid;
+			delete [] tdc;
+			delete [] wpos;
+			delete [] xpos;
+			delete [] zpos;
 		}
 		Track1D& operator=(const Track1D &right);
 		Double_t x;
@@ -112,12 +115,14 @@ class Track1D{
 		Double_t chi2;
 		Int_t ndf;
 		Int_t nhit;
-		Int_t *hitid;
+
 		Double_t *dl;
-		Double_t *hitx;
-		Double_t *hitz;
-		Int_t *layer_id;
-		Int_t *plane_id;
+		Int_t *lid;
+		Int_t *wid;
+		Int_t *tdc;
+		Double_t *wpos;
+		Double_t *xpos;
+		Double_t *zpos;
 
 		// overriding functions for sorting based on chi2
 		Bool_t IsEqual(TObject *obj) const {return chi2 == ((Track1D*)obj)->chi2;}
@@ -128,6 +133,9 @@ class Track1D{
 			else return 0;
 		}
 		void print(){
+			for (int i = 0; i < nhit; ++i) {
+				cout<<setw(4)<<i<<" layer = "<<setw(4)<<lid[i]<<" wire = "<<setw(4)<<wid[i]<<" wpos = "<<setw(8)<<wpos[i]<<" tdc = "<<setw(8)<<tdc[i]<<" dl = "<<setw(8)<<dl[i]<<" xpos = "<<setw(8)<<xpos[i]<<" zpos = "<<setw(8)<<zpos[i]<<endl;	
+			}
 			cout<<"x = "<<x<<" a = "<<a<<" chi2 = "<<chi2<<endl;
 		}
 };
@@ -151,6 +159,15 @@ class TrackPattern{
 		void loadPara(DCDetectorPara *para){
 			dcDetectorPara = para;
 		}
+		bool checkWirePosition(){
+			int nl = hitArray.size();
+			int *wid = new int[nl];
+			for(Int_t l=0;l<nl;l++){
+				wid[l] = hitArray[l].getWire();
+				if(l>0&&abs(wid[l]-wid[l-1])>1) return false;
+			}
+			return true;
+		}
 		Track1D * tracking(){
 			//cout<<"come on Tracking"<<endl;
 
@@ -161,34 +178,49 @@ class TrackPattern{
 			Int_t nl = hitArray.size();
 			//cout<<"In each Hits(Pattern) How Many wires included:"<<nl<<endl;
 			Int_t npattern = (Int_t)pow(2,nl);
-			Double_t *dl = new Double_t[nl];
 			Double_t *xpos = new Double_t[nl];
-			Double_t *zpos = new Double_t[nl];
+
 			Int_t *lid = new Int_t[nl];
-			tr->hitid = new Int_t[nl];
+			Int_t *wid = new Int_t[nl];
+			Int_t *tdc = new Int_t[nl];
+			Double_t *wpos = new Double_t[nl];
+			Double_t *dl = new Double_t[nl];
+			Double_t *zpos = new Double_t[nl];
+
+			tr->lid = new Int_t[nl];
+			tr->wid = new Int_t[nl];
+			tr->tdc = new Int_t[nl];
+			tr->wpos = new Double_t[nl];
 			tr->dl = new Double_t[nl];
-			tr->hitx = new Double_t[nl];
-			tr->hitz = new Double_t[nl];
-			tr->layer_id = new Int_t[nl];
-			tr->plane_id = new Int_t[nl];
+			tr->xpos = new Double_t[nl];
+			tr->zpos = new Double_t[nl];
+
+
 			Double_t bestchi2 = 9999.;
 
+
+			for(Int_t l=0;l<nl;l++){
+				lid[l] = hitArray[l].getLayer();
+				wid[l] = hitArray[l].getWire();
+				tdc[l] = hitArray[l].getTdc();
+				dl[l] = dcDetectorPara->calDriftLength(lid[l],wid[l],tdc[l]);
+				wpos[l] = dcDetectorPara->getWireXPosition(lid[l],wid[l]);
+				zpos[l] = dcDetectorPara->getWireZPosition(lid[l]);
+			}
+
+			cout<<"nPattern = "<<npattern<<endl;
 			for(Int_t i=0;i<npattern;i++){
 
 				Double_t tmpx, tmpa = 0;
-
-				for(Int_t j=0;j<3;j++){
+				cout<<"tmpx = " <<tmpx<<" tmpa = "<<tmpa<<endl;
+				for(Int_t j=0;j<3;j++){// Needed????!
 					vec.Zero();
 					mat.Zero();
 					for(Int_t l=0;l<nl;l++){
-						lid[l] = hitArray[l].getLayer();
-						dl[l] = dcDetectorPara->calDriftLength(lid[l],hitArray[l].getWire(),hitArray[l].getTdc());
 						dl[l] *= sqrt(1+tmpa*tmpa);
-						xpos[l] = dcDetectorPara->getWireXPosition(hitArray[l].getLayer(),hitArray[l].getWire());
-						zpos[l] = dcDetectorPara->getWireZPosition(lid[l]);
 
 						Int_t sign = i&((Int_t)pow(2,l)) ? 1 : -1;
-						xpos[l] += sign*dl[l];
+						xpos[l] = wpos[l] + sign*dl[l];
 
 						vec(0,0) += xpos[l];
 						vec(1,0) += zpos[l] * xpos[l];
@@ -202,12 +234,10 @@ class TrackPattern{
 
 					Double_t det = mat(0,0) * mat(1,1) - mat(0,1) * mat(1,0);
 
-					//if(fabs(det)<1e-5) cout<<"I am Hongna Singular"<<endl;
-					//cout<<"fabs(det)="<<fabs(det)<<endl;
+					cout<<"fabs(det)="<<fabs(det)<<endl;
 					if(fabs(det)<1e-5) continue;
 					TMatrixD rxvec(2,1) ;
 					rxvec = mat.Invert() * vec;
-					//cout<<"I am Hongna Invert now"<<endl;
 					tmpx = rxvec(0,0);
 					tmpa = rxvec(1,0);
 				}
@@ -215,6 +245,7 @@ class TrackPattern{
 				Double_t chi2 = 0;
 				for(Int_t j=0;j<nl;j++)
 					chi2 += pow(tmpx+tmpa*zpos[j] - xpos[j],2);
+
 
 				if(chi2<bestchi2){
 					bestchi2 = chi2;
@@ -224,14 +255,21 @@ class TrackPattern{
 					tr->ndf = nl-2-1;
 					tr->nhit = nl;
 					for(Int_t j=0;j<nl;j++){
-						tr->dl[j] = dl[j]/sqrt(1+tmpa*tmpa); // drift length
-						tr->hitx[j] = xpos[j];
-						tr->hitz[j] = zpos[j];
-						tr->layer_id[j] = lid[j];
+						//tr->dl[j] = dl[j]/sqrt(1+tmpa*tmpa); // drift length
+						tr->xpos[j] = xpos[j];
 					}
 				}
 
 			}
+			for(Int_t l=0;l<nl;l++){
+				tr->lid[l]  = lid[l] ;
+				tr->wid[l]  = wid[l] ;
+				tr->tdc[l]  = tdc[l] ;
+				tr->dl[l]   = dl[l]  ;
+				tr->wpos[l] = wpos[l];
+				tr->zpos[l] = zpos[l];
+			}
+
 
 			delete [] dl;
 			delete [] xpos;
@@ -276,6 +314,16 @@ class TrackHit{
 
 			}
 		}
+		void removeImpossiblePattern(){
+			for (int i = 0; i < nPattern; ++i) {
+				if(!trackPattern[i].checkWirePosition()){
+					cout<<"Pattern "<<i<<" Bad!!"<<endl;
+					nPattern--;
+					trackPattern.erase(trackPattern.begin()+i);
+					i--;
+				}
+			}
+		}
 		void trackEachPattern(){
 			for (int i = 0; i < trackPattern.size(); ++i) {
 				trackPattern[i].loadPara(dcDetectorPara);
@@ -294,6 +342,7 @@ class TrackHit{
 			nHitLayer = 0;
 			hitArray.clear();
 			trackPattern.clear();
+			trackArray.clear();
 		}
 		void loadData(DCLayerHit hit){
 			hitArray.push_back(hit);
@@ -304,6 +353,7 @@ class TrackHit{
 		void tracking(){
 			calPattern();
 			generatePattern();
+			removeImpossiblePattern();
 			trackEachPattern();
 		}
 		void print(){
