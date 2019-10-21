@@ -128,6 +128,7 @@ class ConvertDC{
 
 				showAnalysisProgress();
 
+				//cout<<"EventNumber = "<<EventNumber<<endl;
 				EventNumber++;
 				getRawData();
 				readDCRawData();
@@ -154,13 +155,13 @@ class ConvertDC{
 		void print(){
 			cout<<"EventNumber = "<<EventNumber<<endl;
 			//bdc1ReadRaw->print();
-			bdc1Track->print();
+			//bdc1Track->print();
 
 		//	bdc2ReadRaw->print();
 		//	bdc2Track->print();
 
-		//	fdc0ReadRaw->print();
-		//	fdc0Track->print();
+			fdc0ReadRaw->print();
+			fdc0Track->print();
 
 		}
 

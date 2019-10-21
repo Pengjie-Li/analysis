@@ -553,7 +553,7 @@ class ConvertDC{
 											BDC1_Track_XY[planeid]=TrackBDC1->GetHitXPosition(st);
 											BDC1_Track_Z[planeid]=TrackBDC1->GetHitZPosition(st);
 											BDC1_Track_dXY[planeid]=TrackBDC1->GetAngle(0)*BDC1_Track_Z[planeid]+TrackBDC1->GetPosition(0)-BDC1_Track_XY[planeid];
-											if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
+											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -574,7 +574,7 @@ class ConvertDC{
 											BDC1_Track_XY[planeid]=TrackBDC1->GetHitXPosition(st);
 											BDC1_Track_Z[planeid]=TrackBDC1->GetHitZPosition(st);
 											BDC1_Track_dXY[planeid]=TrackBDC1->GetAngle(1)*BDC1_Track_Z[planeid]+TrackBDC1->GetPosition(1)-BDC1_Track_XY[planeid];
-											if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
+											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -586,7 +586,7 @@ class ConvertDC{
 					}
 				}
 
-				if(MaxEventNumber<100) printBDC1();
+				//if(MaxEventNumber<100) printBDC1();
 
 				//BDC2
 				// Initialize Array
@@ -668,7 +668,7 @@ class ConvertDC{
 											BDC2_Track_XY[planeid]=TrackBDC2->GetHitXPosition(st);
 											BDC2_Track_Z[planeid]=TrackBDC2->GetHitZPosition(st);
 											BDC2_Track_dXY[planeid]=TrackBDC2->GetAngle(0)*BDC2_Track_Z[planeid]+TrackBDC2->GetPosition(0)-BDC2_Track_XY[planeid];
-											if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC2_Track_dl[planeid]<<" xpos="<<BDC2_Track_XY[planeid]<<" zpos="<<BDC2_Track_Z[planeid]<<" dx="<<BDC2_Track_dXY[planeid]<<endl;
+											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC2_Track_dl[planeid]<<" xpos="<<BDC2_Track_XY[planeid]<<" zpos="<<BDC2_Track_Z[planeid]<<" dx="<<BDC2_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -689,7 +689,7 @@ class ConvertDC{
 											BDC2_Track_XY[planeid]=TrackBDC2->GetHitXPosition(st);
 											BDC2_Track_Z[planeid]=TrackBDC2->GetHitZPosition(st);
 											BDC2_Track_dXY[planeid]=TrackBDC2->GetAngle(1)*BDC2_Track_Z[planeid]+TrackBDC2->GetPosition(1)-BDC2_Track_XY[planeid];
-											if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC2_Track_dl[planeid]<<" xpos="<<BDC2_Track_XY[planeid]<<" zpos="<<BDC2_Track_Z[planeid]<<" dx="<<BDC2_Track_dXY[planeid]<<endl;
+											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC2_Track_dl[planeid]<<" xpos="<<BDC2_Track_XY[planeid]<<" zpos="<<BDC2_Track_Z[planeid]<<" dx="<<BDC2_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -788,7 +788,7 @@ class ConvertDC{
 											FDC0_Track_XY[planeid]=TrackFDC0->GetHitXPosition(st);
 											FDC0_Track_Z[planeid]=TrackFDC0->GetHitZPosition(st);
 											FDC0_Track_dXY[planeid]=TrackFDC0->GetAngle(0)*FDC0_Track_Z[planeid]+TrackFDC0->GetPosition(0)-FDC0_Track_XY[planeid];
-											//if(EventByEvent==1) cout<<"    hitlayer="<<planeid<<" drift length="<<FDC0_Track_dl[planeid]<<" xpos="<<FDC0_Track_XY[planeid]<<" zpos="<<FDC0_Track_Z[planeid]<<" dx="<<FDC0_Track_dXY[planeid]<<endl;
+											if(isEventByEvent==1) cout<<"    hitlayer="<<planeid<<" drift length="<<FDC0_Track_dl[planeid]<<" xpos="<<FDC0_Track_XY[planeid]<<" zpos="<<FDC0_Track_Z[planeid]<<" dx="<<FDC0_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -815,7 +815,7 @@ class ConvertDC{
 											FDC0_Track_XY[planeid]=TrackFDC0->GetHitXPosition(st);
 											FDC0_Track_Z[planeid]=TrackFDC0->GetHitZPosition(st);
 											FDC0_Track_dXY[planeid]=TrackFDC0->GetAngle(1)*FDC0_Track_Z[planeid]+TrackFDC0->GetPosition(1)-FDC0_Track_XY[planeid];
-											//if(EventByEvent==1) cout<<"    hitlayer="<<planeid<<" drift length="<<FDC0_Track_dl[planeid]<<" xpos="<<FDC0_Track_XY[planeid]<<" zpos="<<FDC0_Track_Z[planeid]<<" dx="<<FDC0_Track_dXY[planeid]<<endl;
+											if(isEventByEvent==1) cout<<"    hitlayer="<<planeid<<" drift length="<<FDC0_Track_dl[planeid]<<" xpos="<<FDC0_Track_XY[planeid]<<" zpos="<<FDC0_Track_Z[planeid]<<" dx="<<FDC0_Track_dXY[planeid]<<endl;
 
 										}
 
@@ -828,6 +828,7 @@ class ConvertDC{
 				}
 
 
+				if(MaxEventNumber<100) printFDC0();
 
 
 
@@ -879,6 +880,25 @@ class ConvertDC{
 			cout<<"Printing Track Info:"<<endl;
 			for(int i = 0;i<BDC1_Track_Z.size(); i++)
 			cout<<"Layer = "<<i<<" Drift length="<<setw(9)<<BDC1_Track_dl[i]<<" xypos="<<setw(9)<<BDC1_Track_XY[i]<<" zpos="<<setw(9)<<BDC1_Track_Z[i]<<" Residue dxy = "<<setw(9)<<BDC1_Track_dXY[i]<<endl;
+
+		}
+
+		void printFDC0(){
+			cout<<"EventNumber = "<< EventNumber <<endl;
+			printFDC0Raw();
+			printFDC0Track();
+			cout<<endl;
+		}
+		void printFDC0Raw(){
+			cout<<" Printing Raw Info:"<<endl;
+			for(int i = 0; i<FDC0_layerid.size(); i++)
+				cout<<"Layer = "<< FDC0_layerid[i]<<" wireid = "<<FDC0_wireid[i]<<" TDC = "<<FDC0_TDC[i]<<" nhit of layer ="<<FDC0_layer_hits[FDC0_layerid[i]]<<endl;
+		}
+
+		void printFDC0Track(){
+			cout<<"Printing Track Info:"<<endl;
+			for(int i = 0;i<FDC0_Track_Z.size(); i++)
+			cout<<"Layer = "<<i<<" Drift length="<<setw(9)<<FDC0_Track_dl[i]<<" xypos="<<setw(9)<<FDC0_Track_XY[i]<<" zpos="<<setw(9)<<FDC0_Track_Z[i]<<" Residue dxy = "<<setw(9)<<FDC0_Track_dXY[i]<<endl;
 
 		}
 

@@ -110,8 +110,10 @@ class DCReadRaw{
 				if(checkTdcUnderAndOverflow(val)){
 					nHits++;
 					nLayerHits[layer] = nLayerHits[layer] + 1;
-					if(nLayerHits[layer]>16) cout<<dcName<<":"<<nLayerHits[layer]<<endl;
-					//cout<< layer<<"  "<<wire<<"  "<<val<<"  "<<nLayerHits[layer]<<endl;
+					if(nLayerHits[layer]>16){
+						cout<<dcName<<":"<<nLayerHits[layer]<<endl;
+						cout<< layer<<"  "<<wire<<"  "<<val<<"  "<<nLayerHits[layer]<<endl;
+					}
 					tdc.push_back(val);
 					layerId.push_back(layer);
 					wireId.push_back(wire);

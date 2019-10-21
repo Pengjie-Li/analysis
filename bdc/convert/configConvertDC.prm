@@ -2,7 +2,7 @@ inputPath:/media/Rawdata/RIKEN_Cluster_2018/
 inputPrefix:run0
 inputSuffix:.ridf.gz
 
-outputPath:./rootfile1/
+outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_DC.root_1
 
@@ -19,14 +19,19 @@ bdc2ConvertPara:bdc2TDCCalibSpectrum.root
 fdc0ConvertPara:fdc0TDCCalibSpectrum.root
 
 
-bdc1TdcMin:1700
-bdc1TdcMax:1900
-bdc2TdcMin:1700
-bdc2TdcMax:1900
-fdc0TdcMin:1600
-fdc0TdcMax:1900
+bdc1TdcMin:1730
+bdc1TdcMax:1870
+bdc2TdcMin:1730
+bdc2TdcMax:1870
+fdc0TdcMin:1730
+fdc0TdcMax:1850
 fdc2TdcMin:1000
 fdc2TdcMax:1900
+
+bdc1WirePositionDifference:5
+bdc1WirePositionDifference:5
+fdc0WirePositionDifference:5
+fdc2WirePositionDifference:10
 
 bdc1Layer:txt/bdc1Layer.txt
 bdc2Layer:txt/bdc2Layer.txt
