@@ -2433,3 +2433,9 @@ Branch master set up to track remote branch master from origin.
  rewrite bdc/convert/ConvertDC (91%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b0cb5eb] v1.0
+ 11 files changed, 293 insertions(+), 74 deletions(-)
+ rewrite bdc/convert/ConvertDC (91%)
+ rewrite bdc/convert/v1_beforeRefactor/ConvertDC (75%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

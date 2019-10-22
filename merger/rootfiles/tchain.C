@@ -11,32 +11,32 @@
 
 //	int runStart = 330;
 //	int runStop = 365;
-	int runStart = 330;
-	int runStop = 345;
+//	int runStart = 330;
+//	int runStop = 345;
 
 
 
 //	int runStart = 366;
 //	int runStop = 445;
 	
-//	int runStart = 420;
-//	int runStop = 440;
-//	for (int i = runStart; i < runStop; ++i) {
-//		
-//		tree->Add(Form("run0%d_analysed.root_2",i));
-//		//tree->Add(Form("run0%d_analysed.root",i));
-//	}
+	int runStart = 420;
+	int runStop = 440;
+	for (int i = runStart; i < runStop; ++i) {
+		
+		tree->Add(Form("run0%d_analysed.root_3",i));
+		//tree->Add(Form("run0%d_analysed.root",i));
+	}
 
 	//tree->Add(Form("run0%d_analysed.root_2",596));
 	//tree->Add(Form("run0%d_analysed.root_2",599));
 	//tree->Add(Form("run0%d_analysed.root_2",597));
 	//tree->Add(Form("run0%d_analysed.root_2",598));
-	tree->Add(Form("run0%d_analysed.root",310));
-	tree->Add(Form("run0%d_analysed.root",340));
-	tree->Add(Form("run0%d_analysed.root",360));
-	tree->Add(Form("run0%d_analysed.root",588));
-	tree->Add(Form("run0%d_analysed.root",596));
-	tree->Add(Form("run0%d_analysed.root",598));
+	//tree->Add(Form("run0%d_analysed.root",310));
+	//tree->Add(Form("run0%d_analysed.root",340));
+	//tree->Add(Form("run0%d_analysed.root",360));
+	//tree->Add(Form("run0%d_analysed.root",588));
+	//tree->Add(Form("run0%d_analysed.root",596));
+	//tree->Add(Form("run0%d_analysed.root",598));
 	//tree->Add(Form("run0%d_analysed.root_2",336));
 	//tree->Add(Form("run0%d_analysed.root_2",337));
 	//tree->Add(Form("run0%d_analysed.root_2",338));

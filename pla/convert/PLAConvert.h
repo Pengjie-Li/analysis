@@ -185,19 +185,21 @@ class PLAConvert{
 			double SBT1Q = hitSBT1->getQ();
 			double SBT2Q = hitSBT2->getQ();
 	
-			if(SBT2T!= NAN) SBT2T = SBT2T + sbtPara[0]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
-			if(SBT2Q!= NAN) SBT2Q = SBT2Q*sbtPara[1]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
-			if(SBT1T!=NAN && SBT2T!= NAN){
+
+			if(!isnan(SBT2T)) SBT2T = SBT2T + sbtPara[0]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
+			if(!isnan(SBT2Q)) SBT2Q = SBT2Q*sbtPara[1]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
+
+			if(!isnan(SBT1T) && !isnan(SBT2T)){
 				F13T = 0.5*(SBT1T+SBT2T);
 			}else{
-				if(SBT1T!= NAN) F13T = SBT1T;
-				if(SBT2T!= NAN) F13T = SBT2T;
+				if(!isnan(SBT1T)) F13T = SBT1T;
+				if(!isnan(SBT2T)) F13T = SBT2T;
 			}
-			if(SBT1Q!=NAN && SBT2Q!= NAN){
+			if(!isnan(SBT1Q) && !isnan(SBT2Q)){
 				F13Q = 0.5*(SBT1Q+SBT2Q);
 			}else{
-				if(SBT1Q!= NAN) F13Q = SBT1Q;
-				if(SBT2Q!= NAN) F13Q = SBT2Q;
+				if(!isnan(SBT1Q)) F13Q = SBT1Q;
+				if(!isnan(SBT2Q)) F13Q = SBT2Q;
 			}
 
 		}

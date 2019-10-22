@@ -62,8 +62,8 @@ void checkTRawOffset(){
 	//int runStart = 334;
 	//int runStop = 365;
 	//Be14
-	int runStart = 366;
-	int runStop = 456;
+	//int runStart = 366;
+	//int runStop = 456;
 	
 	
 	TString fileName = Form("checkTRawOffset%d_%d.root",runStart,runStop);
