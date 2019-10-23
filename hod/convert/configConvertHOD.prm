@@ -7,4 +7,6 @@ inputSuffix:.ridf.gz
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_HODO.root
+outputSuffix:_HODO.root_test
+
+upDownTOffset:./txt/hodUDTOffset.txt

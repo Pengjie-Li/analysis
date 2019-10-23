@@ -5,6 +5,33 @@ class PlasticEnergyCal{
 		bool isUpBar;
 		int rawADC;
 };
+class HODUpDownTOffset{
+	private:
+		double TOffset[40];
+	public:
+		HODUpDownTOffset(){
+			loadUpDownTOffset();
+		}
+		~HODUpDownTOffset(){}
+		void loadUpDownTOffset(){
+			TString inputName = env->GetValue("upDownTOffset","./txt/test.txt");
+			ifstream in;
+			in.open(inputName);
+			int id;
+			double offset;
+			while (1)
+			{
+				if (!in.good()) break;
+				in >>id>> offset;
+				TOffset[id] = offset;
+			}
+		}
+		double getOffset(int side,int id){
+			if(side == 0) return 0;
+			else return TOffset[id];
+		}
+
+};
 class HODPlasticPedestal{
 	private:
 	public:
@@ -69,8 +96,10 @@ class HODPlasticCal{
 	public:
 		HODPlasticRaw *rawData;
 		HODPedestal *hodPedestal;
+		HODUpDownTOffset *hodUpDownTOffset;
 
 
+		double hodTSync[2][40];
 		double hodTCal[2][40];
 		double hodQCal[2][40];
 		double hodQPed[2][40];
@@ -80,6 +109,7 @@ class HODPlasticCal{
 
 
 		void setBranch(TTree *tree){
+			tree->Branch("hodTSync",hodTSync,"hodTSync[2][40]/D");
 			tree->Branch("hodTCal",hodTCal,"hodTCal[2][40]/D");
 			tree->Branch("hodQCal",hodQCal,"hodQCal[2][40]/D");
 			tree->Branch("hodQPed",hodQPed,"hodQPed[2][40]/D");
@@ -87,13 +117,15 @@ class HODPlasticCal{
 			tree->Branch("hodBarTCal",hodBarTCal,"hodBarTCal[40]/D");
 		}
 
-		void loadPedestalParameters(){
+		void loadHodParameters(){
 			hodPedestal = new HODPedestal();
+			hodUpDownTOffset = new HODUpDownTOffset();
 		}
 		void initialize(){
 
 			for (int i = 0; i < 2; ++i) {
 				for(int j=0;j<NUMBER_OF_HOD;j++){
+					hodTSync[i][j] = NAN;
 					hodTCal[i][j] = NAN;
 					hodQCal[i][j] = NAN;
 					hodQPed[i][j] = NAN;
@@ -105,7 +137,8 @@ class HODPlasticCal{
 
 		HODPlasticCal(){
 			initialize();
-			loadPedestalParameters();
+			loadHodParameters();
+			
 		}
 		void loadRawData(HODPlasticRaw *inputData){
 			rawData = inputData;
@@ -138,7 +171,8 @@ class HODPlasticCal{
 		void convertT(){
 			for (int i = 0; i < 2; ++i) {
 				for(int j=0;j<NUMBER_OF_HOD;j++){
-					if(getTimeRaw(i,j)!=-1) hodTCal[i][j] = getTimeSlope(i,j)*getTimeRaw(i,j);
+					if(getTimeRaw(i,j)!=-1) hodTSync[i][j] = getUpDownTOffset(i,j) + getTimeRaw(i,j);
+					if(getTimeRaw(i,j)!=-1) hodTCal[i][j] = getTimeSlope(i,j)*hodTSync[i][j];
 				}
 			}
 
@@ -157,7 +191,7 @@ class HODPlasticCal{
 		void calculateBarTime(){
 
 			for(int i=0;i<NUMBER_OF_HOD;i++){
-				if(hodTCal[0][i]!=NAN && hodTCal[1][i]!=NAN ) hodBarTCal[i] = 0.5*(hodTCal[0][i]+hodTCal[1][i]);
+				if(!isnan(hodTCal[0][i]) && !isnan(hodTCal[1][i])) hodBarTCal[i] = 0.5*(hodTCal[0][i]+hodTCal[1][i]);
 			}
 
 		}
@@ -166,7 +200,10 @@ class HODPlasticCal{
 			return rawData->getTimeRaw(side,ID);
 		}
 		double getTimeSlope(int side, int ID){
-			return 0.0684615384615384626;
+			return 0.0684615384615384626; // Why???
+		}
+		double getUpDownTOffset(int side, int ID){
+			return hodUpDownTOffset->getOffset(side,ID);
 		}
 		int getEnergyRaw(int side, int ID){
 			return rawData->getEnergyRaw(side,ID);

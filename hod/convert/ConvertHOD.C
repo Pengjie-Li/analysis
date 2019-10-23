@@ -92,7 +92,7 @@ class ConvertHOD{
 		TString getOutputName(){
 			TString outputPath=env->GetValue("outputPath","./rootfile/");
 			TString outputPrefix = env->GetValue("outputPrefix","run0");
-			TString outputSuffix = env->GetValue("outputSufffix","_HOD.root");
+			TString outputSuffix = env->GetValue("outputSuffix","_HOD.root");
 			return outputPath+outputPrefix+Form("%d",runNumber)+outputSuffix;
 		}
 

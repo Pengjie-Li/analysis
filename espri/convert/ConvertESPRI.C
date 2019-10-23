@@ -121,7 +121,8 @@ class ConvertESPRI{
 				showAnalysisProgress();
 
 				EventNumber++;
-				if(maxEventNumber<100) cout<<EventNumber<<endl;
+				//if(maxEventNumber<100) cout<<EventNumber<<endl;
+				cout<<"EventNumber = "<<EventNumber<<endl;
 				getRawData();
 				readRawData();
 				convertRawData();

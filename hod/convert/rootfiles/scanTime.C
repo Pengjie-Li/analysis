@@ -1,3 +1,3 @@
 {
-	CalTreeHOD->Scan("hodTRaw[0][10]:hodTRaw[1][10]:hodTCal[0][10]:hodTCal[1][10]:hodBarTCal[10]");
+	CalTreeHOD->Scan("hodTRaw[0]:hodTRaw[1]:hodTSync[0]:hodTSync[1]:hodTCal[0]:hodTCal[1]:hodBarTCal");
 }

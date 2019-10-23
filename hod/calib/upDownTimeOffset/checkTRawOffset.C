@@ -11,10 +11,20 @@ class TRawOffset{
 		void loadChain(int runStart,int runStop){
 
 			outputName = Form("upDownOffset%d_%d.txt",runStart,runStop);
-			for (int i = runStart; i < runStop; ++i) {
-				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
-				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
-			}
+
+			//for (int i = runStart; i < runStop; ++i) {
+			//	//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+			//	tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+			//}
+
+			tree->Add(Form("rootfiles/run0%d_analysed.root",310));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",340));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",436));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",437));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",438));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",587));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",588));
+			tree->Add(Form("rootfiles/run0%d_analysed.root",595));
 		}
 		void loadRuns(int run){
 			loadChain(run,run+1);
@@ -120,9 +130,16 @@ void checkTRawOffset(){
 	//int runStart = 366;
 	//int runStop = 456;
 	
-	int runStart = 436;
-	int runStop = 437;
+	//int run = 310;
+	//int run = 340;
+	//int run = 595;
+	//int runStart = run;
+	//int runStop = run;
+	//
+	int runStart = 1;
+	int runStop = 600;
 	
+
 	
 	TString fileName = Form("checkTRawOffset%d_%d.root",runStart,runStop);
 	TFile *outputFile = new TFile(fileName,"RECREATE");

@@ -2439,3 +2439,62 @@ Branch master set up to track remote branch master from origin.
  rewrite bdc/convert/v1_beforeRefactor/ConvertDC (75%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 44c24d0] v1.0
+ 80 files changed, 890 insertions(+), 26 deletions(-)
+ create mode 100644 hod/calib/timeOffset/fitOffset.C
+ create mode 100644 hod/calib/upDownTimeOffset/checkTRawOffset.C
+ create mode 120000 hod/calib/upDownTimeOffset/rootfiles
+ create mode 100644 hod/calib/upDownTimeOffset/upDownOffset436_438.txt
+ create mode 100644 merger/rootfiles/cutBe14Bar11He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar12He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar13He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar14He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar15He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar16He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar17He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar18He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar18He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar19He4.C
+ create mode 100644 merger/rootfiles/cutBe14Bar19He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar20He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar21He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar22He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar23He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar24He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar26He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar27He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar28He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar29He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar30He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar31He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar32He6.C
+ create mode 100644 merger/rootfiles/cutBe14Bar33He8.C
+ create mode 100644 merger/rootfiles/cutBe14Bar34He8.C
+ create mode 100644 merger/rootfiles/cutBe14Bar35He8.C
+ create mode 100644 merger/rootfiles/cutBe14Bar36He8.C
+ create mode 100644 merger/rootfiles/cutBe14Bar37He8.C
+ create mode 100644 merger/rootfiles/cutBe14Bar38He8.C
+ create mode 100644 merger/rootfiles/drawBeamPlasTRaw.C
+ create mode 100644 pla/convert/rootfiles/run0286_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0288_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0289_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0290_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0291_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0373_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0441_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0442_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0443_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0444_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0445_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0446_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0447_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0474_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0491_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0492_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0493_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0580_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0582_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0583_PLA.root_test
+ create mode 100644 pla/convert/rootfiles/run0586_PLA.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
