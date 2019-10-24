@@ -1,44 +1,82 @@
 
-class ESPRIRdcRaw{
+class ESPRITdcRaw{
 	private:
-                vector<int> rdcTDC;// for each hits, no matter layer, wireid
-                vector<int> rdcPlaneID;// for each hits, no matter layer, wireid
-                vector<int>	rdcPlaneNHit;// for each hits, no matter layer, wireid
-                vector<int> rdcWireID;// for each hits, no matter layer, wireid
+                vector<int> tdc;// for each hits, no matter layer, wireid
+                vector<int> tdcWireId;// for each hits, no matter layer, wireid
+                vector<int> tdcLayerId;// for each hits, no matter layer, wireid
+                vector<int> tdcPlaneId;// for each hits, no matter layer, wireid
+                vector<int> tdcPlaneNHit;// for each hits, no matter layer, wireid
+
+		vector<int> rdcTdc;// for each hits, no matter layer, wireid
+                vector<int> rdcWireId;// for each hits, no matter layer, wireid
+                vector<int> rdcLayerId;// for each hits, no matter layer, wireid
+                vector<int> rdcPlaneId;// for each hits, no matter layer, wireid
+                vector<int> rdcPlaneNHit;// for each hits, no matter layer, wireid
+
+
 		int plasTimeRef;
+		vector<vector<int> > plasTRaw;
+
 		
 	public:
-		ESPRIRdcRaw(){}
+		ESPRITdcRaw(){
+			plasTRaw.resize(4);
+		}
 		void init(){
 			plasTimeRef = 0;
-			rdcTDC.clear();
-			rdcPlaneID.clear();
-			rdcWireID.clear();
-			//rdcLayerID.clear();
+			plasTRaw.clear();
+			plasTRaw.resize(4);
+
+			tdc.clear();
+			tdcPlaneId.clear();
+			tdcWireId.clear();
+			tdcLayerId.clear();
+			//tdcLayerId.clear();
+			tdcPlaneNHit.clear();
+			tdcPlaneNHit.resize(16,0);
+
+			rdcTdc.clear();
+			rdcPlaneId.clear();
+			rdcWireId.clear();
+			rdcLayerId.clear();
 			rdcPlaneNHit.clear();
 			rdcPlaneNHit.resize(14,0);
+
 		}
 		void readRaw(TClonesArray *tdcArray){
 			init();
 			for(int i=0;i<tdcArray->GetEntries();i++){
-				TArtTDCHit *tdc = (TArtTDCHit *)tdcArray->At(i);
-				//cout<<"RawData:"<<tdc->GetPlaneID()<<" "<<tdc->GetLayer()<<" "<<tdc->GetWireID()<<" "<<tdc->GetTDC()<<" "<<tdc->GetTrailTDC()<<endl;
-				//cout<<"RawData:\t"<<tdc->GetPlaneID()<<"\t"<<tdc->GetLayer()<<"\t"<<tdc->GetWireID()<<"\t"<<tdc->GetTDC()<<endl;
-				if(tdc->GetPlaneID()==0){
-					plasTimeRef = tdc->GetTDC();
+				TArtTDCHit *tdcHit = (TArtTDCHit *)tdcArray->At(i);
+				//cout<<"RawData:"<<tdc->GetPlaneId()<<" "<<tdc->GetLayer()<<" "<<tdc->GetWireId()<<" "<<tdc->Get()<<" "<<tdc->GetTrail()<<endl;
+				//cout<<"RawData:\t"<<tdc->GetPlaneId()<<"\t"<<tdc->GetLayer()<<"\t"<<tdc->GetWireId()<<"\t"<<tdc->Get()<<endl;
+				if(tdcHit->GetPlaneID()==0){
+					plasTimeRef = tdcHit->GetTDC();
 					continue;
 				}
-				int planeId=tdc->GetPlaneID()-17;
-				//int planeId=tdc->GetPlaneID();
-				int layerId=tdc->GetLayer();
-				int wireId=tdc->GetWireID();
-				int TDC = tdc->GetTDC();
-				rdcTDC.push_back(TDC);
-				rdcPlaneID.push_back(planeId);
-				rdcWireID.push_back(wireId);
+				int planeId=tdcHit->GetPlaneID()-17;
+				//int planeId=tdcHit->GetPlaneId();
+				int layerId=tdcHit->GetLayer();
+				int wireId=tdcHit->GetWireID();
+				int tdcVal = tdcHit->GetTDC();
+				tdc.push_back(tdcVal);
+				tdcPlaneId.push_back(planeId);
+				tdcWireId.push_back(wireId);
+				tdcLayerId.push_back(layerId);
+				tdcPlaneNHit[planeId]+=1;
+				//cout<<"NHit:"<<planeId<<":"<<tdcPlaneNHit[planeId]<<endl;
+
 				if(planeId>=0&&planeId<14){
-				 	rdcPlaneNHit[planeId]+=1;
-					//cout<<"NHit:"<<planeId<<":"<<rdcPlaneNHit[planeId]<<endl;
+					rdcTdc.push_back(tdcVal);
+					rdcPlaneId.push_back(planeId);
+					rdcWireId.push_back(wireId);
+					rdcLayerId.push_back(layerId);
+					rdcPlaneNHit[planeId]+=1;
+				}else if(planeId==14){
+					plasTRaw[wireId-1].push_back(tdcVal);
+				}else if(planeId ==15){
+					plasTRaw[wireId+1].push_back(tdcVal);
+				}else{
+					cout<<"planeId = "<<planeId<<endl;
 				}
 
 			}
@@ -46,13 +84,45 @@ class ESPRIRdcRaw{
 		int getPlasTimeRef(){
 			return plasTimeRef;
 		}
+		vector<vector<int> > getPlasRaw(){
+			return plasTRaw;
+		}
+		void printRDC(){
+
+			cout<<"RDC TDC Raw Data:"<<endl;
+			for (int i = 0; i < rdcTdc.size(); ++i) {
+				cout<<"\t"<<rdcPlaneId[i]<<"\t"<<rdcLayerId[i]<<"\t"<<rdcWireId[i]<<"\t"<<rdcTdc[i]<<endl;
+			}
+		}
+		void printPlas(){
+			cout<<"Plas TDC Raw Data:"<<endl;
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < plasTRaw[i].size(); j++) {
+					cout<<"\t"<<i<<"\t"<<plasTRaw[i][j]<<endl;	
+				}
+			}
+		}
+		void print(){
+			//cout<<" TDC Raw Data:"<<endl;
+			//for (int i = 0; i < tdc.size(); ++i) {
+
+			//	cout<<"\t"<<tdcPlaneId[i]<<"\t"<<tdcLayerId[i]<<"\t"<<tdcWireId[i]<<"\t"<<tdc[i]<<endl;
+			//}
+			//printRDC();
+			printPlas();
+		}
 		
 		void setBranch(TTree *tree){
-			tree->Branch("rdcTDC",&rdcTDC);
-			tree->Branch("rdcPlaneID",&rdcPlaneID);
-			//tree->Branch("rdcLayerID",&rdcLayerID);
-			tree->Branch("rdcWireID",&rdcWireID);
+			tree->Branch("plasTdcRaw0",&plasTRaw[0]);
+			tree->Branch("plasTdcRaw1",&plasTRaw[1]);
+			tree->Branch("plasTdcRaw2",&plasTRaw[2]);
+			tree->Branch("plasTdcRaw3",&plasTRaw[3]);
+			tree->Branch("rdcTdc",&rdcTdc);
+			tree->Branch("rdcPlaneId",&rdcPlaneId);
+			tree->Branch("rdcWireId",&rdcWireId);
+			tree->Branch("rdcLayerId",&rdcLayerId);
 			tree->Branch("rdcPlaneNHit",&rdcPlaneNHit);
+			//tree->Branch("plasTimeRef",&plasTimeRef);
 		}
 };
 class ESPRINaiRaw{
@@ -120,13 +190,14 @@ class ESPRIPlasRaw{
 		int plasQRaw[4];// 0:LU, 1:LD, 2:RU, 3:RD
 		int plasTRaw[4];
 		int plasTimeRef;
+
 	public:
 		ESPRIPlasRaw(){}
 		void init(){
 			plasTimeRef = 0;
 			for(int i=0;i<4;i++){
 				plasQRaw[i] = -9999;
-				plasTRaw[i] = 0;
+				plasTRaw[i] = -9999;
 			}
 		}
 
@@ -149,7 +220,7 @@ class ESPRIPlasRaw{
 			printQ();
 			printT();
 		}
-		void readRaw(TClonesArray *plasArray){
+		void readRaw(TClonesArray *plasArray,ESPRITdcRaw *tdcRaw){
 			init();
 			//cout<<endl;
 			for(int i=0;i<plasArray->GetEntries();i++){
@@ -158,9 +229,21 @@ class ESPRIPlasRaw{
 				int ID= plas->GetID();
 				int layer = plas->GetLayer();
 				int ADC = plas->GetRawADC();
-				int TDC = plas->GetTime();
+				//int TDC = plas->GetTime();
 				plasQRaw[ID-1]=ADC;
-				plasTRaw[ID-1]=TDC;
+				//plasTRaw[ID-1]=TDC;
+			}
+			plasTimeRef = tdcRaw->getPlasTimeRef();
+			vector<vector<int> > tdcPlasRaw = tdcRaw->getPlasRaw();	
+			for (int i = 0; i < tdcPlasRaw.size(); ++i) {
+				for (int j = 0; j < tdcPlasRaw[i].size(); ++j) {
+					//cout<<i<<":"<<j<<":"<<tdcPlasRaw[i][j]<<endl;	
+					if(tdcPlasRaw[i].size() ==1) plasTRaw[i] = tdcPlasRaw[i][j];
+					else if((tdcPlasRaw[i][j]-plasTimeRef)<-25600){
+						plasTRaw[i] = tdcPlasRaw[i][j];
+					}else {}
+				}
+				//cout<<"plasTRaw "<<i<<":"<<plasTRaw[i]<<endl;
 			}
 		}
 		void setPlasTimeRef(int ref){
@@ -185,30 +268,29 @@ class ESPRIPlasRaw{
 
 class ESPRIReadRaw{
 	private:
-		ESPRIRdcRaw *rdcRaw;
+		ESPRITdcRaw *tdcRaw;
 		ESPRINaiRaw *naiRaw;
 		ESPRIPlasRaw *plasRaw;
 	public:
 
 		ESPRIReadRaw(){
-			rdcRaw	 = new ESPRIRdcRaw();
+			tdcRaw	 = new ESPRITdcRaw();
 			naiRaw	 = new ESPRINaiRaw();
 			plasRaw	 = new ESPRIPlasRaw();
 		}
 		~ESPRIReadRaw(){
-			delete rdcRaw;
+			delete tdcRaw;
 			delete naiRaw;
 			delete plasRaw;
 		}
 
-		void readRaw(TClonesArray *rdc,TClonesArray *nai,TClonesArray *plas){
-			rdcRaw->readRaw(rdc);
+		void readRaw(TClonesArray *tdc,TClonesArray *nai,TClonesArray *plas){
+			tdcRaw->readRaw(tdc);
 			naiRaw->readRaw(nai);
-			plasRaw->readRaw(plas);
-			plasRaw->setPlasTimeRef(getPlasTimeRef());
+			plasRaw->readRaw(plas,tdcRaw);
 		}
-		ESPRIRdcRaw * getRdcRaw(){
-			return rdcRaw;
+		ESPRITdcRaw * getTdcRaw(){
+			return tdcRaw;
 		}
 		ESPRINaiRaw * getNaiRaw(){
 			return naiRaw;
@@ -216,12 +298,16 @@ class ESPRIReadRaw{
 		ESPRIPlasRaw * getPlasRaw(){
 			return plasRaw;
 		}
-		int getPlasTimeRef(){
-			return rdcRaw->getPlasTimeRef();
+		void printTDC(){
+			tdcRaw->print();
+		}
+		void printPlas(){
+			plasRaw->print();
 		}
 	
+	
 		void setBranch(TTree *tree){
-			rdcRaw->setBranch(tree);
+			tdcRaw->setBranch(tree);
 			naiRaw->setBranch(tree); 
 			plasRaw->setBranch(tree);
 		}

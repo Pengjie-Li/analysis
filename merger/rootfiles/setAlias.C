@@ -1,8 +1,17 @@
 {
+
+
 	TString hodBe10He6 = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 	TString	hodBe12He8 = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
 	TString dssdFB = "((abs(dssdSideQ[0]-dssdSideQ[1])<1)||(abs(dssdSideQ[0]-dssdSideQ[1])<1))";
 	TString lrSelect = "((plasQ[0]>2&&dssdSideQ[2]>2)||(plasQ[1]>2&&dssdSideQ[0]>2))";
+
+
+	tree->SetAlias("SOL","299.792458*1");
+	tree->SetAlias("AMU","931.49410242*1");
+	tree->SetAlias("MassBe10","10.0113*1");
+	tree->SetAlias("MassH","1.007276*1");
+
 
 	tree->SetAlias("F3TSlew0","F3TCal[0]+0.0015*F3QRaw[0]");
 	tree->SetAlias("F3TSlew1","F3TCal[1]+0.0014*F3QRaw[1]");
@@ -20,6 +29,9 @@
 
 
 
+	tree->SetAlias("beta","(flightLengthTargetESPRI+200)/(SOL*((plasTCal[3]-F13T+873+40.51)-20.67))");
+	tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
+	tree->SetAlias("KEproton","(gamma-1)*AMU*MassH");
 
 
 
@@ -64,10 +76,6 @@
 		}
 
 	}
-
-	tree->SetAlias("AMU","931.49410242*1");
-	tree->SetAlias("MassBe10","10.0113*1");
-	tree->SetAlias("MassH","1.007276*1");
 
 	tree->SetAlias("beamMass","MassBe10*AMU");
 	tree->SetAlias("protonMass","MassH*AMU");

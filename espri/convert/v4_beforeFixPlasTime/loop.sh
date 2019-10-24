@@ -1,5 +1,8 @@
 #!/bin/bash
 
+run1=1
+run2=293
+#
 # Be10
 #run1=294
 #run2=330
@@ -7,12 +10,13 @@
 #run1=331
 #run2=365
 
-# Be14
+# Be14 
 #run1=366
-#run2=455
+#run2=456
 
 
-# Be14 Empty
+
+# Be14 empty
 #run1=587
 #run2=594
 
@@ -20,8 +24,10 @@
 #run1=595
 #run2=600
 
-run1=1
-run2=600
+
+#run1=1
+#run2=600
+
 n=12
 
 
@@ -34,3 +40,4 @@ for (( i=1; i<=$n; i++ )); do
 }&
 done
 wait
+

@@ -19,10 +19,18 @@ class MergeESPRI:public Convert{
 		//Declaration of leaves types
 		Int_t           EventNumber;
 		Int_t           RunNumber;
-		vector<int>     *rdcTDC;
-		vector<int>     *rdcPlaneID;
-		vector<int>     *rdcWireID;
+
+		vector<int>     *plasTdcRaw0;
+		vector<int>     *plasTdcRaw1;
+		vector<int>     *plasTdcRaw2;
+		vector<int>     *plasTdcRaw3;
+
+		vector<int>     *rdcTdc;
+		vector<int>     *rdcPlaneId;
+		vector<int>     *rdcWireId;
+		vector<int>     *rdcLayerId;
 		vector<int>     *rdcPlaneNHit;
+
 		Int_t           naiQRaw[4][7];
 		Int_t           plasQRaw[4];
 		Int_t           plasTRaw[4];
@@ -64,17 +72,27 @@ class MergeESPRI:public Convert{
 		void setBranch(){
 
 			// when you have vector in your tree
-			rdcTDC		= 0;
-			rdcPlaneID	= 0;
-			rdcWireID	= 0;
+			rdcTdc		= 0;
+			rdcPlaneId	= 0;
+			rdcLayerId	= 0;
+			rdcWireId	= 0;
 			rdcPlaneNHit	= 0;
+
+			plasTdcRaw0 = 0;
+			plasTdcRaw1 = 0;
+			plasTdcRaw2 = 0;
+			plasTdcRaw3 = 0;
 
 			// Set branch addresses.
 			inputTree->SetBranchAddress("EventNumber",&EventNumber);
 			inputTree->SetBranchAddress("RunNumber",&RunNumber);
-			inputTree->SetBranchAddress("rdcTDC",&rdcTDC);
-			inputTree->SetBranchAddress("rdcPlaneID",&rdcPlaneID);
-			inputTree->SetBranchAddress("rdcWireID",&rdcWireID);
+			inputTree->SetBranchAddress("plasTdcRaw0",&plasTdcRaw0);
+			inputTree->SetBranchAddress("plasTdcRaw1",&plasTdcRaw1);
+			inputTree->SetBranchAddress("plasTdcRaw2",&plasTdcRaw2);
+			inputTree->SetBranchAddress("plasTdcRaw3",&plasTdcRaw3);
+			inputTree->SetBranchAddress("rdcTdc",&rdcTdc);
+			inputTree->SetBranchAddress("rdcPlaneId",&rdcPlaneId);
+			inputTree->SetBranchAddress("rdcWireId",&rdcWireId);
 			inputTree->SetBranchAddress("rdcPlaneNHit",&rdcPlaneNHit);
 			inputTree->SetBranchAddress("naiQRaw",naiQRaw);
 			inputTree->SetBranchAddress("plasQRaw",plasQRaw);
@@ -114,9 +132,15 @@ class MergeESPRI:public Convert{
 			// Set branch addresses.
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
-			tree->Branch("rdcTDC",&rdcTDC);
-			tree->Branch("rdcPlaneID",&rdcPlaneID);
-			tree->Branch("rdcWireID",&rdcWireID);
+
+			tree->Branch("plasTdcRaw0",&plasTdcRaw0);
+			tree->Branch("plasTdcRaw1",&plasTdcRaw1);
+			tree->Branch("plasTdcRaw2",&plasTdcRaw2);
+			tree->Branch("plasTdcRaw3",&plasTdcRaw3);
+	
+			tree->Branch("rdcTdc",&rdcTdc);
+			tree->Branch("rdcPlaneId",&rdcPlaneId);
+			tree->Branch("rdcWireId",&rdcWireId);
 			tree->Branch("rdcPlaneNHit",&rdcPlaneNHit);
 			tree->Branch("naiQRaw",naiQRaw,"naiQRaw[4][7]/I");
 			tree->Branch("plasQRaw",plasQRaw,"plasQRaw[4]/I");
@@ -143,10 +167,6 @@ class MergeESPRI:public Convert{
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
 			tree->Branch("plasQ",&plasQ,"plasQ[2]/D");
 			tree->Branch("plasT",&plasT,"plasT[2]/D");
-		//	tree->Branch("plasQL",&plasQL);
-		//	tree->Branch("plasQR",&plasQR);
-		//	tree->Branch("plasTL",&plasTL);
-		//	tree->Branch("plasTR",&plasTR);
 
 		}
 		void selfAnalysis(){

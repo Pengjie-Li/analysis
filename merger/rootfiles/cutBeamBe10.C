@@ -2,23 +2,25 @@
 //========= Macro generated from object: BeamBe10/Graph
 //========= by ROOT version5.34/20
    
-   TCutG *cutg = new TCutG("BeamBe10",11);
+   TCutG *cutg = new TCutG("BeamBe10",15);
    cutg->SetVarX("TOF713");
    cutg->SetVarY("F13Q");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetLineColor(2);
-   cutg->SetLineWidth(2);
-   cutg->SetPoint(0,234.47,814.687);
-   cutg->SetPoint(1,233.361,747.342);
-   cutg->SetPoint(2,233.339,679.165);
-   cutg->SetPoint(3,233.883,602.674);
-   cutg->SetPoint(4,235.47,578.563);
-   cutg->SetPoint(5,237.709,565.26);
-   cutg->SetPoint(6,237.991,612.651);
-   cutg->SetPoint(7,238.339,721.568);
-   cutg->SetPoint(8,237.426,785.587);
-   cutg->SetPoint(9,234.665,814.687);
-   cutg->SetPoint(10,234.47,814.687);
-   cutg->Draw("same");
+   cutg->SetPoint(0,233.476,820.179);
+   cutg->SetPoint(1,233.165,758.828);
+   cutg->SetPoint(2,233.122,704.914);
+   cutg->SetPoint(3,233.273,637.986);
+   cutg->SetPoint(4,233.766,591.508);
+   cutg->SetPoint(5,234.313,597.086);
+   cutg->SetPoint(6,234.677,647.282);
+   cutg->SetPoint(7,234.849,704.914);
+   cutg->SetPoint(8,234.752,781.138);
+   cutg->SetPoint(9,234.409,870.375);
+   cutg->SetPoint(10,234.141,872.234);
+   cutg->SetPoint(11,233.562,853.643);
+   cutg->SetPoint(12,233.369,829.475);
+   cutg->SetPoint(13,233.305,805.306);
+   cutg->SetPoint(14,233.476,820.179);
+   cutg->Draw("");
 }

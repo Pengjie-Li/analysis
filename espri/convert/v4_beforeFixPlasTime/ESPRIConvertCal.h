@@ -15,7 +15,7 @@ class ESPRIRdcCal{
 		int rdcMult;
 	public:
 		ESPRIRdcCal(){}
-		void convertCal(ESPRITdcRaw *rdcRaw){
+		void convertCal(ESPRIRdcRaw *rdcRaw){
 		}
 		void init(){
 			rdcMult = 0;
@@ -582,7 +582,7 @@ class ESPRIConvertCal{
 		}
 
 		void convertCal(ESPRIReadRaw *espriRaw){
-			rdcCal->convertCal(espriRaw->getTdcRaw());
+			rdcCal->convertCal(espriRaw->getRdcRaw());
 			naiCal->convertCal(espriRaw->getNaiRaw());
 			plasCal->convertCal(espriRaw->getPlasRaw());
 		}

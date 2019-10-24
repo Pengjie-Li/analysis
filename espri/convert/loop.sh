@@ -1,7 +1,7 @@
 #!/bin/bash
 
 run1=1
-run2=293
+run2=600
 #
 # Be10
 #run1=294

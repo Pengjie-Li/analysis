@@ -19,7 +19,6 @@ class PositionESPRI{
 			rightBaseY.SetXYZ(0.000000,1.000000,-0.000000);
 			centerX = 227.5;
 			centerY = 227.5;
-	
 		}
 		TVector3 getESPRIPosition(int lr,double X,double Y){
 			X = X -centerX;

@@ -2498,3 +2498,40 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/rootfiles/run0586_PLA.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0033927] v1.0
+ 50 files changed, 295 insertions(+), 41 deletions(-)
+ create mode 100644 espri/convert/rootfiles/run0268_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0300_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0310_ESPRI.root_test
+ create mode 100644 hod/calib/upDownTimeOffset/txt/hodUDTOffset.txt
+ create mode 100644 hod/calib/upDownTimeOffset/txt/upDownOffset1_601.txt
+ create mode 100644 hod/calib/upDownTimeOffset/upDownOffset310_312.txt
+ create mode 100644 hod/calib/upDownTimeOffset/upDownOffset340_342.txt
+ create mode 100644 hod/calib/upDownTimeOffset/upDownOffset595_597.txt
+ rewrite hod/convert/ConvertHOD (96%)
+ create mode 100644 hod/convert/rootfiles/run0178_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0229_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0285_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0286_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0287_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0288_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0289_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0290_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0291_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0292_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0373_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0441_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0442_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0443_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0444_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0445_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0446_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0447_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0474_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0580_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0582_HODO.root_test
+ create mode 100644 hod/convert/rootfiles/run0593_HODO.root_test
+ create mode 120000 hod/convert/txt/hodUDTOffset.txt
+ create mode 100644 merger/rootfiles/drawEspriPlasTRaw2D.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
