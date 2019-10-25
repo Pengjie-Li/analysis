@@ -2535,3 +2535,36 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawEspriPlasTRaw2D.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7e75c5c] v1.0
+ 42 files changed, 4480 insertions(+), 141 deletions(-)
+ rewrite espri/convert/ConvertESPRI (92%)
+ create mode 100644 espri/convert/rootfiles/espri.C
+ create mode 100644 espri/convert/rootfiles/run0585_ESPRI.root_new
+ rename espri/convert/{ => v4_beforeFixPlasTime}/ConvertESPRI (100%)
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/ConvertESPRI.C
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v4_beforeFixPlasTime/Makefile
+ create mode 100755 espri/convert/v4_beforeFixPlasTime/caltree.C
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configCalibESPRI.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/configConvertESPRI.prm
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/convert.sh
+ create mode 100755 espri/convert/v4_beforeFixPlasTime/header.h
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/loop.sh
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/looprun.sh
+ create mode 100644 espri/convert/v4_beforeFixPlasTime/v1_ConvertESPRI.C_Sample
+ create mode 100644 hod/convert/rootfiles/run0586_HODO.root_test
+ rewrite merger/Merger (74%)
+ rewrite merger/rootfiles/cutBeamBe10.C (72%)
+ create mode 100644 merger/rootfiles/cutDeutronBe10.C
+ rewrite merger/rootfiles/cutProtonBe10.C (81%)
+ create mode 100644 merger/rootfiles/drawEspriPlasMultTDC.C
+ create mode 100644 merger/rootfiles/drawEspriPlasTRaw.C
+ rewrite merger/rootfiles/run0445_analysed.root_3 (68%)
+ create mode 100644 merger/rootfiles/run0474_analysed.root_3
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

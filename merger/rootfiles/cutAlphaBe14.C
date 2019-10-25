@@ -1,12 +1,14 @@
 {
 //========= Macro generated from object: Alpha/Graph
-//========= by ROOT version5.34/36
+//========= by ROOT version5.34/20
    
-   TCutG *cutg = new TCutG("Alpha",17);
+   cutg = new TCutG("Alpha",17);
    cutg->SetVarX("teleCsiE");
    cutg->SetVarY("teleDssdE");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
+   cutg->SetLineColor(2);
+   cutg->SetLineWidth(2);
    cutg->SetPoint(0,75.5187,26.3528);
    cutg->SetPoint(1,105.447,21.8038);
    cutg->SetPoint(2,149.342,17.0965);

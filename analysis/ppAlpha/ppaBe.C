@@ -8,6 +8,8 @@ class PPScattering{
 		TString hName[4];
 		TH2F *h[4];
 
+		TString drawRange[4];
+
 	protected:
 		TString trigger;
 		TString csiHit;
@@ -53,8 +55,8 @@ class PPScattering{
 			//gate = trigger+"&&"+protonGate+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea+"&&"+dssdFB+"&&"+csiHit+"&&"+lrSelect;
 			//gate = trigger+"&&"+protonGate+"&&"+hodGate+"&&"+targetArea;
 			//gate = trigger+"&&"+alphaGate+"&&"+hodGate+"&&"+targetArea;
-			//gate = trigger+"&&"+hodGate+"&&"+targetArea;
-			gate = hodGate+"&&"+targetArea;
+			gate = trigger+"&&"+hodGate+"&&"+targetArea;
+			//gate = hodGate+"&&"+targetArea;
 			printGate();
 
 		}
@@ -83,7 +85,7 @@ class PPScattering{
 		void defineHodGate(){};
 		void defineBeamGate(){};
 		void defineTargetArea(){
-			targetArea = "sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.6)*(Target_Y+1.6))<13";
+			targetArea = "sqrt((Target_X+2.0)*(Target_X+2.0)+(Target_Y+1.1)*(Target_Y+1.1))<13";
 		}
 		void defineName(){
 			hName[0] = "hEspriEvsA";
@@ -103,7 +105,8 @@ class PPScattering{
 			outputFile = new TFile(outputName,"recreate");
 		}
 
-		void assignOutputName(){};
+		void assignOutputName(){}
+		virtual setDrawRange(){}
 		void draw(){
 			TCanvas *c = new TCanvas("ppET","ppET",1500,900);
 			c->Divide(2,2);
@@ -113,11 +116,7 @@ class PPScattering{
 			drawVar[2] = "espriAngle:teleAngle>>";
 			drawVar[3] = "espriEnergy:teleEnergy>>";
 
-			TString drawRange[4];
-			drawRange[0] = "(200,40,80,200,0,150)";
-			drawRange[1] = "(200,0,18,200,200,700)";
-			drawRange[2] = "(200,0,18,200,40,80)";
-			drawRange[3] = "(200,200,700,200,0,150)";
+			setDrawRange();
 			
 			for (int i = 0; i < 4; ++i) {
 				c->cd(i+1);	
@@ -155,6 +154,13 @@ class PPBe10:public PPScattering {
 
 		}
 
+		void setDrawRange(){
+			drawRange[0] = "(200,40,80,200,0,150)";
+			drawRange[1] = "(200,0,18,200,200,700)";
+			drawRange[2] = "(200,0,18,200,40,80)";
+			drawRange[3] = "(200,200,700,200,0,150)";
+		}
+
 		void assignOutputName(){
 			outputName = "ppaBe10Histo.root";
 			//cout<<outputName<<endl;
@@ -190,6 +196,13 @@ class PPBe12:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutBe12Bar36He8.C");
 
 		}
+		void setDrawRange(){
+			drawRange[0] = "(200,40,80,200,0,150)";
+			drawRange[1] = "(200,0,18,200,200,700)";
+			drawRange[2] = "(200,0,18,200,40,80)";
+			drawRange[3] = "(200,200,700,200,0,150)";
+		}
+
 
 		void assignOutputName(){
 			outputName = "ppaBe12Histo.root";
@@ -236,12 +249,41 @@ class PPBe14:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutBe14Bar16He4.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe14Bar17He4.C");
 
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar11He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar12He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar13He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar14He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar15He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar16He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar17He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar18He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar19He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar20He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar21He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar22He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar23He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar24He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar26He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar27He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar28He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar29He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar30He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar31He6.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar32He6.C");
+
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar33He8.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar34He8.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar35He8.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar36He8.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar37He8.C");
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar38He8.C");
+
 
 		}
 
 		void assignOutputName(){
 			//outputName = "ppSmallBe14HistoBe10Bar19-23.root";
-			outputName = "ppaBe14HistoHe4Bar3-17.root";
+			outputName = "ppaBe14HistoHe4He6He8.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
@@ -254,8 +296,21 @@ class PPBe14:public PPScattering {
 			//hodGate = "(Be14Bar23Be11||Be14Bar22Be11||Be14Bar21Be11||Be14Bar20Be11||Be14Bar19Be11)";
 			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
 			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
-			hodGate = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+			TString hodGateHe4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+			TString hodGateHe6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
+			TString hodGateHe8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
+			//hodGate = hodGateHe4;
+			//hodGate = hodGateHe6;
+			//hodGate = hodGateHe8;
+			hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
 		}
+		void setDrawRange(){
+			drawRange[0] = "(200,40,80,200,0,150)";
+			drawRange[1] = "(200,0,18,200,50,700)";
+			drawRange[2] = "(200,0,18,200,40,80)";
+			drawRange[3] = "(200,50,700,200,0,150)";
+		}
+
 		void defineBeamGate(){
 			//beamGate = "BeamBe14";
 			//beamGate = "SmallBeamBe14";
