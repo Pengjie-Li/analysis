@@ -2568,3 +2568,26 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/run0474_analysed.root_3
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 62e1cb8] v1.0
+ 29 files changed, 236 insertions(+), 32 deletions(-)
+ create mode 100644 analysis/ppAlpha/checkGate.C
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe4.root_Bar3-17
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe4.root_OnlyTrig+Target+HodHe4
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe4Bar3-17.root_HodHe4AndTargetArea
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe6.root_Bar11-32
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe6.root_OnlyTrig+Target+HodHe6
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe8.root_Bar33_38
+ create mode 100644 analysis/ppAlpha/v3_ppaBe14HistoHe8.root_OnlyTrig+Target+HodHe8
+ create mode 100644 espri/convert/rootfiles/run0310_ESPRI.root_new
+ create mode 100644 merger/rootfiles/drawAlpha.C
+ create mode 100644 merger/rootfiles/drawAlphaBe14.C
+ create mode 100644 merger/rootfiles/drawBeam.C
+ rewrite merger/rootfiles/run0442_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0443_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0444_analysed.root_3 (69%)
+ rewrite merger/rootfiles/run0446_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0447_analysed.root_3 (68%)
+ create mode 100644 merger/rootfiles/run0586_analysed.root_3
+ rewrite merger/rootfiles/run0593_analysed.root_3 (68%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
