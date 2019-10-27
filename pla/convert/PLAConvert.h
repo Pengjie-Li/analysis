@@ -42,7 +42,7 @@ class PlasticHit{
 		PlasticHit(){}
 		~PlasticHit(){}
 		void setBranch(TTree *tree){
-			tree->Branch(detectorName+"TSlew",TSlew,detectorName+"TSlew[2]/D");
+			tree->Branch(detectorName+"TSlew",&TSlew,detectorName+"TSlew[2]/D");
 			tree->Branch(detectorName+"T",&T,detectorName+"T/D");
 			tree->Branch(detectorName+"Q",&Q,detectorName+"Q/D");
 		}
