@@ -484,6 +484,7 @@ class ESPRIPlasCal{
 			return plasRaw->getPlasTimeRef();
 		}
 		double getTCalOffset(int i){
+			// Checked offset between 2 PMT is 0 for left and right plas
 			return 0;
 		}
 		void setPlasTL(){
@@ -493,11 +494,11 @@ class ESPRIPlasCal{
 			setPlasT(1);
 		}
 		void setPlasT(int side){
-			if(getTRaw(2*side)!=0 && getTRaw(2*side+1)!=0 ){
+			if(getTRaw(2*side)!=-9999 && getTRaw(2*side+1)!=-9999 ){
 				plasT[side] = 0.5*(plasTCal[2*side]+plasTCal[2*side+1]);
-			}else if(getTRaw(2*side)==0 && getTRaw(2*side+1)!=0 ){
+			}else if(getTRaw(2*side)==-9999 && getTRaw(2*side+1)!=-9999 ){
 				plasT[side] = plasTCal[2*side+1];
-			}else if(getTRaw(2*side+1)==0 && getTRaw(2*side)!=0 ){
+			}else if(getTRaw(2*side+1)==-9999 && getTRaw(2*side)!=-9999 ){
 				plasT[side] = plasTCal[2*side];
 			}else{
 			}
@@ -554,6 +555,12 @@ class ESPRIPlasCal{
 			cout<<endl;
 			cout<<"Plastic TL/R: "<<plasT[0]<<":"<<plasT[1]<<endl;
 		}
+		void print(){
+			if(plasQ[0]>5||plasQ[1]>5){
+				printQ();
+				printT();
+			}
+		}
 		void setBranch(TTree *tree){
 			tree->Branch("plasQCal",plasQCal,"plasQCal[4]/D");
 			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
@@ -594,5 +601,8 @@ class ESPRIConvertCal{
 			rdcCal->setBranch(tree);
 			naiCal->setBranch(tree); 
 			plasCal->setBranch(tree);
+		}
+		void printPlas(){
+			plasCal->print();
 		}
 };

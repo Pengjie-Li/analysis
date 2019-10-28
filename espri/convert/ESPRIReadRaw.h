@@ -194,7 +194,7 @@ class ESPRIPlasRaw{
 	public:
 		ESPRIPlasRaw(){}
 		void init(){
-			plasTimeRef = 0;
+			plasTimeRef = -9999;
 			for(int i=0;i<4;i++){
 				plasQRaw[i] = -9999;
 				plasTRaw[i] = -9999;

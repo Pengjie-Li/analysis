@@ -126,14 +126,15 @@ class ConvertESPRI{
 				convertRawData();
 				tree->Fill();
 
-				//if(maxEventNumber<100) print();
-				 print();
+				if(maxEventNumber<100) print();
+				//print();
 			}
 		}
 		void print(){
 			cout<<"EventNumber = "<<EventNumber<<endl;
-			espriReadRaw->printTDC();
-			espriReadRaw->printPlas();
+			//espriReadRaw->printTDC();
+			//espriReadRaw->printPlas();
+			espriConvertCal->printPlas();
 
 		}
 		void getRawData(){

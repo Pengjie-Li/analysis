@@ -13,6 +13,7 @@
 	tree->SetAlias("MassH","1.007276*1");
 
 
+	tree->SetAlias("TOFSbtTarget","flightLengthBeamTarget/(Beta713*SOL-0.911)");
 	tree->SetAlias("F3TSlew0","F3TCal[0]+0.0015*F3QRaw[0]");
 	tree->SetAlias("F3TSlew1","F3TCal[1]+0.0014*F3QRaw[1]");
 	tree->SetAlias("F7TSlew0","F7TCal[0]+0.00092*F7QRaw[0]");
@@ -29,7 +30,7 @@
 
 
 
-	tree->SetAlias("beta","(flightLengthTargetESPRI+200)/(SOL*((plasTCal[3]-F13T+873+40.51)-20.67))");
+	tree->SetAlias("beta","(flightLengthTargetESPRI+200)/(SOL*((plasTCal[3]-F13T+873+40.51)-TOFSbtTarget))");
 	tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
 	tree->SetAlias("KEproton","(gamma-1)*AMU*MassH");
 
