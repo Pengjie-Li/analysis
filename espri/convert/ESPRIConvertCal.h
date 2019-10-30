@@ -266,8 +266,10 @@ class ESPRINaiCal{
 		void calibrateQ(){
 			for(int i=0;i<4;i++){
 				for(int j=0;j<7;j++){
-					naiQPed[i][j] = getQRaw(i,j) - getPedestal(i,j);
-					naiQCal[i][j] = getCalibPar(i,j)*naiQPed[i][j];
+					if(getQRaw(i,j)!=-9999){
+						naiQPed[i][j] = getQRaw(i,j) - getPedestal(i,j);
+						naiQCal[i][j] = getCalibPar(i,j)*naiQPed[i][j];
+					}
 				}
 			}
 
@@ -464,7 +466,7 @@ class ESPRIPlasCal{
 		}
 		void calibrateT(){
 			for(int i=0;i<4;i++){
-				if(getTRaw(i) == 0 ||getTRaw(i) == -1) continue;
+				if(getTRaw(i) == 0 ||getTRaw(i) == -1||getTRaw(i) == -9999) continue;
 				plasTCal[i] = getTRaw(i) - getPlasTimeRef();
 				plasTCal[i] = getTCalSlope(i)*plasTCal[i] - getTCalOffset(i);
 			}

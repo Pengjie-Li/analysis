@@ -30,6 +30,17 @@
 
 
 
+	//tree->SetAlias("espriLTOF","((plasT[0]-F13T+874.5+40.51)-TOFSbtTarget)");
+	tree->SetAlias("espriLTOF","((plasT[0]-F13T+874.5+40.51)-TOFSbtTarget)");
+	tree->SetAlias("betaL","(flightLengthTargetESPRI+200)/(SOL*espriLTOF)");
+	tree->SetAlias("gammaL","1/sqrt(1-betaL*betaL)");
+	tree->SetAlias("espriL_Ep","(gammaL-1)*AMU*MassH");
+
+	tree->SetAlias("espriRTOF","((plasT[1]-F13T+873+40.51)-TOFSbtTarget)");
+	tree->SetAlias("betaR","(flightLengthTargetESPRI+200)/(SOL*espriRTOF)");
+	tree->SetAlias("gammaR","1/sqrt(1-betaR*betaR)");
+	tree->SetAlias("espriR_Ep","(gammaR-1)*AMU*MassH");
+
 	tree->SetAlias("beta","(flightLengthTargetESPRI+200)/(SOL*((plasTCal[3]-F13T+873+40.51)-TOFSbtTarget))");
 	tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
 	tree->SetAlias("KEproton","(gamma-1)*AMU*MassH");

@@ -7,6 +7,7 @@ class EspriEvent{
 		int naiId;
 
 		MergeESPRI *calibData;
+		double espriPlasT;
 		double espriPlasE;
 		double espriNaiE;
 		double espriEnergy;
@@ -20,6 +21,7 @@ class EspriEvent{
 			if(naiId !=-1){
 				cout<<"ESPRI Event:"<<endl;
 				cout<<"naiNHit = "<<naiNHit<<" naiId = "<<endl;
+				cout<<"T = "<<espriPlasT<<endl;
 				cout<<"dE = "<<espriPlasE<<" E ="<<espriNaiE<<" TotalE = "<<espriEnergy<<endl;
 				cout<<"Angle = "<<espriAngle<<endl;
 				espriPosition->Print();
@@ -49,6 +51,7 @@ class EspriEvent{
 			}
 			naiId = -1;
 
+			espriPlasT= NAN;
 			espriPlasE= NAN;
 			espriNaiE= NAN;
 			espriEnergy = NAN;
@@ -64,18 +67,23 @@ class EspriEvent{
 			tree->Branch("naiId",&naiId,"naiId/I");
 
 			tree->Branch("espriPlasE",&espriPlasE,"espriPlasE/D");
+			tree->Branch("espriPlasT",&espriPlasT,"espriPlasT/D");
 			tree->Branch("espriNaiE",&espriNaiE,"espriNaiE/D");
 			tree->Branch("espriEnergy",&espriEnergy,"espriEnergy/D");
 			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
 			tree->Branch("espriPosition","TVector3",&espriPosition);
+
+
 		}
 		void setESPRIEvent(){
 			init();
 			selectGoodEvent();
-			if(naiId!=-1){
+			if(naiId!=-1){ // don't consider loew energy proton
 				setESPRIEnergy();
 				setESPRIAngle();
 			}
+			setESPRITime();
+
 		}
 		void selectGoodEvent(){
 			findNaiMultHit();
@@ -85,6 +93,9 @@ class EspriEvent{
 			espriPlasE = getPlasBarQCal((int)naiId/7);
 			espriNaiE = getNaiBarQCal(naiId);
 			espriEnergy = espriPlasE + espriNaiE;
+		}
+		void setESPRITime(){
+			espriPlasT = calibData->getESPRIPlasTime();
 		}
 		void setESPRIAngle(){
 			//loadPos

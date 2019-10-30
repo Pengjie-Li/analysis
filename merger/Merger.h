@@ -80,7 +80,7 @@ class Merger{
 
 
 		double espriNaiEnergy;
-		double espriPlasTime;
+		//double espriPlasTime;
 		double espriPlasDeltaE;
 		double protonTheta;
 

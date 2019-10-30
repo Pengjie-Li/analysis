@@ -12,7 +12,7 @@ void Merger::analysingESPRI(){
 void Merger::initAnalysedESPRI(){
 	/************* ESPRI *****************/
 	espriNaiEnergy = NAN;
-	espriPlasTime = NAN;
+	//espriPlasTime = NAN;
 	espriPlasDeltaE = NAN;
 	protonTheta = NAN;
 	flightLengthTargetESPRI = NAN;
@@ -31,7 +31,7 @@ void Merger::setESPRIOutputBranch(){
 	tree->Branch("vProton","TVector3",&vProton);
 
 	tree->Branch("espriNaiEnergy",&espriNaiEnergy,"espriNaiEnergy/D");
-	tree->Branch("espriPlasTime",&espriPlasTime,"espriPlasTime/D");
+	//tree->Branch("espriPlasTime",&espriPlasTime,"espriPlasTime/D");
 	tree->Branch("espriPlasDeltaE",&espriPlasDeltaE,"espriPlasDeltaE/D");
 	tree->Branch("protonTheta",&protonTheta,"protonTheta/D");
 	tree->Branch("flightLengthTargetESPRI",&flightLengthTargetESPRI,"flightLengthTargetESPRI/D");
@@ -41,7 +41,7 @@ void Merger::setESPRIEvent(){
 	(*vESPRI) = getESPRIPosition();
 	//setESPRITime();
 	espriNaiEnergy = getESPRINaiEnergy();
-	espriPlasTime = getESPRIPlasTime();
+	//espriPlasTime = getESPRIPlasTime();
 	espriPlasDeltaE = getESPRIPlasDeltaE();
 	setProtonAngle();
 }
@@ -60,9 +60,9 @@ TVector3 Merger::getESPRIPosition(){
 double Merger::getESPRINaiEnergy(){
 	return mergeESPRI->getESPRINaiEnergy();
 }
-double Merger::getESPRIPlasTime(){
-	return mergeESPRI->getESPRIPlasTime();
-}
+//double Merger::getESPRIPlasTime(){
+//	return mergeESPRI->getESPRIPlasTime();
+//}
 double Merger::getESPRIPlasDeltaE(){
 	return mergeESPRI->getESPRIPlasDeltaE();
 }

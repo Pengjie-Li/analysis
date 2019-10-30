@@ -3,7 +3,7 @@
 	c1->Divide(2,2);
 	int nBin = 1000;
 	//int tMax = 8000;
-	int tMax = -600;
+	int tMax = -500;
 	//int tMin = -1000;
 	int tMin = -700;
 	for(int i=0;i<4;i++){

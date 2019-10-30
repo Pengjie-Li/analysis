@@ -6,7 +6,7 @@ void Merger::analysingTELE(){
 	teleEvent->loadTargetPosition(vTarget);
 	teleEvent->loadBeamVector(vBeam);
 	teleEvent->setTELEEvent();
-	if(maxEventNumber <1000) teleEvent->print();	
+	//if(maxEventNumber <1000) teleEvent->print();	
 	
 }
 void Merger::setTELEOutputBranch(){

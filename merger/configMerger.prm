@@ -32,7 +32,7 @@ ESPRIRunSuffix:_ESPRI.root
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_analysed.root_3
+outputSuffix:_analysed.root_test
 
 
 siliconHitThreshold:0.5
