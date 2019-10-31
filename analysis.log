@@ -2631,3 +2631,24 @@ Branch master set up to track remote branch master from origin.
  11 files changed, 27 insertions(+), 1 deletion(-)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7ed0c35] v1.0
+ 27 files changed, 118 insertions(+), 56 deletions(-)
+ create mode 100644 espri/calib/alignQPed/.leftNaiArray.txt.swp
+ create mode 100644 espri/calib/alignQPed/leftNaiArray.txt
+ create mode 120000 espri/calib/alignQPed/rootfiles
+ rewrite espri/convert/ConvertESPRI (60%)
+ rewrite merger/Merger (87%)
+ rewrite merger/rootfiles/cut1.C (81%)
+ rewrite merger/rootfiles/cut2.C (82%)
+ create mode 100644 merger/rootfiles/drawEspriNaiAlign.C
+ create mode 100644 merger/rootfiles/run0442_analysed.root_test
+ create mode 100644 merger/rootfiles/run0443_analysed.root_test
+ create mode 100644 merger/rootfiles/run0444_analysed.root_test
+ create mode 100644 merger/rootfiles/run0445_analysed.root_test
+ create mode 100644 merger/rootfiles/run0446_analysed.root_test
+ create mode 100644 merger/rootfiles/run0447_analysed.root_test
+ create mode 100644 merger/rootfiles/run0474_analysed.root_test
+ create mode 100644 merger/rootfiles/run0586_analysed.root_test
+ create mode 100644 merger/rootfiles/run0593_analysed.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
