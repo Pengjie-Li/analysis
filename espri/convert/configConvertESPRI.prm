@@ -17,3 +17,5 @@ inputSuffix:.ridf.gz
 outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_ESPRI.root_new
+
+plasSyncPara:1.5

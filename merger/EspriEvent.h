@@ -11,10 +11,7 @@ class EspriEvent{
 		double espriPlasE;
 		double espriNaiE;
 		double espriEnergy;
-		double espriAngle;
-		TVector3 *espriPosition;
-		TVector3 *targetPosition;
-		TVector3 *vBeam;
+
 		PositionESPRI *positionESPRI;
 	public:
 		void print(){
@@ -23,8 +20,7 @@ class EspriEvent{
 				cout<<"naiNHit = "<<naiNHit<<" naiId = "<<endl;
 				cout<<"T = "<<espriPlasT<<endl;
 				cout<<"dE = "<<espriPlasE<<" E ="<<espriNaiE<<" TotalE = "<<espriEnergy<<endl;
-				cout<<"Angle = "<<espriAngle<<endl;
-				espriPosition->Print();
+				positionESPRI->print();
 			}
 
 		}
@@ -36,12 +32,6 @@ class EspriEvent{
 		}
 		void loadData(MergeESPRI *mergeESPRI){
 			calibData = mergeESPRI;
-		}
-		void loadTargetPosition(TVector3 *target){
-			targetPosition = target;
-		}
-		void loadBeamVector(TVector3 *beam){
-			vBeam = beam;
 		}
 		void init(){
 
@@ -55,13 +45,11 @@ class EspriEvent{
 			espriPlasE= NAN;
 			espriNaiE= NAN;
 			espriEnergy = NAN;
-			espriAngle = NAN;
-			espriPosition->SetXYZ(NAN,NAN,NAN);
 		}
 		void setOutputBranch(TTree *tree){
 
-			espriPosition = new TVector3;
 
+			positionESPRI->setBranch(tree);
 			tree->Branch("naiNHit",&naiNHit,"naiNHit/I");
 			tree->Branch("naiHitIdArray",&hitIdArray,"hitIdArray[naiNHit]/I");
 			tree->Branch("naiId",&naiId,"naiId/I");
@@ -70,18 +58,16 @@ class EspriEvent{
 			tree->Branch("espriPlasT",&espriPlasT,"espriPlasT/D");
 			tree->Branch("espriNaiE",&espriNaiE,"espriNaiE/D");
 			tree->Branch("espriEnergy",&espriEnergy,"espriEnergy/D");
-			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
-			tree->Branch("espriPosition","TVector3",&espriPosition);
 
 
 		}
 		void setESPRIEvent(){
 			init();
 			selectGoodEvent();
-			if(naiId!=-1){ // don't consider loew energy proton
-				setESPRIEnergy();
-				setESPRIAngle();
-			}
+			//if(naiId!=-1){ // don't consider loew energy proton
+			//}
+			setESPRIEnergy();
+			setESPRIPosition();
 			setESPRITime();
 
 		}
@@ -97,11 +83,10 @@ class EspriEvent{
 		void setESPRITime(){
 			espriPlasT = calibData->getESPRIPlasTime();
 		}
-		void setESPRIAngle(){
-			//loadPos
-			setESPRIPosition();
-			espriAngle = ((*espriPosition)-(*targetPosition)).Angle((*vBeam))*TMath::RadToDeg();
-			//cout<<espriAngle<<endl;
+		void setESPRIPosition(){
+			positionESPRI->loadTargetPosition();
+			positionESPRI->loadBeamVector();
+			positionESPRI->analysis();
 		}
 		void findNaiMultHit(){
 			for (int i = 0; i < 14; ++i) {
@@ -137,17 +122,6 @@ class EspriEvent{
 			if(getRdcX(barId)>0&&getRdcY(barId)>0) return true;
 			else return false;
 		}
-		void setESPRIPosition(){
-			double dcX = getRdcX(naiId);
-			double dcY = getRdcY(naiId);
-			int sideLR = (naiId > 6)? 1: 0;
-			//cout<<sideLR<<":"<<dcX<<":"<<dcY<<endl;
-			if(dcX>0&&dcY>0){
-				(*espriPosition) = positionESPRI->getESPRIPosition(sideLR,dcX,dcY);
-				//espriPosition->Print();
-			}
-		}
-
 		double getNaiBarQCal(int i){
 			int side = i/7;
 			int id = i%7;
@@ -163,5 +137,10 @@ class EspriEvent{
 			return calibData->getRdcY((int)i/7);
 		}
 
+			double dcX = getRdcX(naiId);
+			double dcY = getRdcY(naiId);
+			int sideLR = (naiId > 6)? 1: 0;
+			//cout<<sideLR<<":"<<dcX<<":"<<dcY<<endl;
+	
 };
 

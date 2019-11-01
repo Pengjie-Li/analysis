@@ -60,7 +60,7 @@ class Merger{
 		Double_t	Target_ThetaX ;
 		Double_t	Target_ThetaY ;
 		Double_t 	flightLengthBeamTarget;
-		Double_t 	flightLengthTargetESPRI;
+		//Double_t 	flightLengthTargetESPRI;
 
 		
 

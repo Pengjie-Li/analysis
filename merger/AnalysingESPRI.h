@@ -15,7 +15,7 @@ void Merger::initAnalysedESPRI(){
 	//espriPlasTime = NAN;
 	espriPlasDeltaE = NAN;
 	protonTheta = NAN;
-	flightLengthTargetESPRI = NAN;
+	//flightLengthTargetESPRI = NAN;
 //	vESPRI->SetXYZ(0,0,0);
 //	vProton->SetXYZ(0,0,0);
 	vESPRI->SetXYZ(NAN,NAN,NAN);
@@ -34,7 +34,7 @@ void Merger::setESPRIOutputBranch(){
 	//tree->Branch("espriPlasTime",&espriPlasTime,"espriPlasTime/D");
 	tree->Branch("espriPlasDeltaE",&espriPlasDeltaE,"espriPlasDeltaE/D");
 	tree->Branch("protonTheta",&protonTheta,"protonTheta/D");
-	tree->Branch("flightLengthTargetESPRI",&flightLengthTargetESPRI,"flightLengthTargetESPRI/D");
+	//tree->Branch("flightLengthTargetESPRI",&flightLengthTargetESPRI,"flightLengthTargetESPRI/D");
 }
 void Merger::setESPRIEvent(){
 	mergeESPRI->selfAnalysis();
@@ -47,7 +47,7 @@ void Merger::setESPRIEvent(){
 }
 void Merger::setProtonAngle(){
 	(*vProton) = (*vESPRI)-(*vTarget);
-	flightLengthTargetESPRI = (*vProton).Mag();
+	//flightLengthTargetESPRI = (*vProton).Mag();
 	//vBeam->Print();
 	//vTarget->Print();
 	//vProton->Print();

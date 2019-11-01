@@ -1,4 +1,4 @@
-class PositionESPRI{
+class ESPRI3DPosition{
 	private:
 		TVector3 leftPedal;
 		TVector3 leftBaseX;
@@ -10,7 +10,7 @@ class PositionESPRI{
 		double centerY;
 
 	public:
-		PositionESPRI(){
+		ESPRI3DPosition(){
 			leftPedal.SetXYZ(-878.501926,-4.057746,-3715.121798);
 			leftBaseX.SetXYZ(0.500011,0.000000,0.866019);
 			leftBaseY.SetXYZ(-0.003464,0.999992,0.002000);
@@ -38,5 +38,52 @@ class PositionESPRI{
 			}
 			return (pedal + X*baseX + Y*baseY);
 		}
+		~ESPRI3DPosition(){}
+};
+class PositionESPRI{
+	private:
+
+		double espriAngle;
+		TVector3 *espriPosition;
+
+		TVector3 *targetPosition;
+		TVector3 *vBeam;
+
+		ESPRI3DPosition *espri3DPosition;
+
+		void setESPRIPosition(int sideLR,double dcX,dcY){
+			(*espriPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
+				//espriPosition->Print();
+			}
+		}
+
+		void setESPRIAngle(){
+			espriAngle = ((*espriPosition)-(*targetPosition)).Angle((*vBeam))*TMath::RadToDeg();
+		}
+	public:
+		PositionESPRI(){
+			espri3DPosition = new ESPRI3DPosition();
+		}
 		~PositionESPRI(){}
+		void init(){
+			espriAngle = NAN;
+			espriPosition->SetXYZ(NAN,NAN,NAN);
+		}
+		void setBranch(TTree *tree){
+			espriPosition = new TVector3;
+			tree->Branch();
+			tree->Branch("espriPosition","TVector3",&espriPosition);
+			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
+		}
+		void print(){
+			cout<<"Angle = "<<espriAngle<<endl;
+			espriPosition->Print();
+		}
+		void loadTargetPosition(TVector3 *target){
+			targetPosition = target;
+		}
+		void loadBeamVector(TVector3 *beam){
+			vBeam = beam;
+		}
+
 };

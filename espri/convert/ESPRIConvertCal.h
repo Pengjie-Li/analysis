@@ -441,54 +441,14 @@ class ESPRIPlasCal{
 	//	double plasTL;
 	//	double plasTR;
 
-	public:
 
-		ESPRIPlasCal(){
-			plasPara = new ESPRIPlasCalPara();
-		}
-		void init(){
-			plasQ[0] = -9999;
-			plasQ[1] = -9999;
-			plasT[0] = 0;
-			plasT[1] = 0;
-
-			for(int i=0;i<4;i++){
-				plasQCal[i] = -9999;
-				plasQPed[i] = -9999;
-				plasTCal[i] = 0;
-			}
-		}
-		void convertCal(ESPRIPlasRaw *raw){
-			init();
-			plasRaw = raw;
-			calibrateQ();
-			calibrateT();
-		}
-		void calibrateT(){
-			for(int i=0;i<4;i++){
-				if(getTRaw(i) == 0 ||getTRaw(i) == -1||getTRaw(i) == -9999) continue;
-				plasTCal[i] = getTRaw(i) - getPlasTimeRef();
-				plasTCal[i] = getTCalSlope(i)*plasTCal[i] - getTCalOffset(i);
-			}
+		void setPlasT(){
 			setPlasTL();
 			setPlasTR();
+			syncLRPlasT();
 			//plasRaw->printT();
-			//printT();
-
-		}
-		double getTCalSlope(int i){
-			return 0.025;
-		}
-		int getTRaw(int i){
-			return plasRaw->getTRaw(i);
-		}
-		double getPlasTimeRef(){
-			return plasRaw->getPlasTimeRef();
-		}
-		double getTCalOffset(int i){
-			// Checked offset between 2 PMT is 0 for left and right plas
-			return 0;
-		}
+			printT();
+			}
 		void setPlasTL(){
 			setPlasT(0);
 		}
@@ -504,6 +464,55 @@ class ESPRIPlasCal{
 				plasT[side] = plasTCal[2*side];
 			}else{
 			}
+		}
+		void syncLRPlasT(){
+			double plasSyncPara = env->GetValue("plasSyncPara",100.0);
+			if(plasT[0]!=-9999) plasT[0] = plasT[0] + plasSyncPara;	
+		}
+	public:
+
+		ESPRIPlasCal(){
+			plasPara = new ESPRIPlasCalPara();
+		}
+		void init(){
+			plasQ[0] = -9999;
+			plasQ[1] = -9999;
+			plasT[0] = -9999;
+			plasT[1] = -9999;
+
+			for(int i=0;i<4;i++){
+				plasQCal[i] = -9999;
+				plasQPed[i] = -9999;
+				plasTCal[i] = -9999;
+			}
+		}
+		void convertCal(ESPRIPlasRaw *raw){
+			init();
+			plasRaw = raw;
+			calibrateQ();
+			calibrateT();
+		}
+		void calibrateT(){
+			for(int i=0;i<4;i++){
+				if(getTRaw(i) == 0 ||getTRaw(i) == -1||getTRaw(i) == -9999) continue;
+				plasTCal[i] = getTRaw(i) - getPlasTimeRef();
+				plasTCal[i] = getTCalSlope(i)*plasTCal[i] - getTCalOffset(i);
+			}
+			setPlasT();
+
+		}
+		double getTCalSlope(int i){
+			return 0.025;
+		}
+		int getTRaw(int i){
+			return plasRaw->getTRaw(i);
+		}
+		double getPlasTimeRef(){
+			return plasRaw->getPlasTimeRef();
+		}
+		double getTCalOffset(int i){
+			// Checked offset between 2 PMT is 0 for left and right plas
+			return 0;
 		}
 		void calibrateQ(){
 			//plasRaw->printQ();

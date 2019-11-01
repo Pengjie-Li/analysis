@@ -226,7 +226,7 @@ class MergeESPRI:public Convert{
 			return isLR>0?naiQ[1]:naiQ[0];
 		}
 		double getESPRIPlasTime(){
-			return isLR>0?(plasT[1]-1.2):plasT[0]; // 1.2 is used for sync both plas Time
+			return isLR>0?plasT[1]:plasT[0]; 
 		}
 		double getESPRIPlasDeltaE(){
 			return isLR>0?plasQ[1]:plasQ[0];
