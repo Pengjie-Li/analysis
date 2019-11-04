@@ -9,9 +9,9 @@
 #include "AnalysingESPRI.h"
 
 
-Merger::Merger(int runNumber):runNumber(runNumber){
+Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNumber(maxEventNumber){
 	env = new TEnv("configMerger.prm");
-	maxEventNumber = env->GetValue("maxEventNumber",5000);
+	//maxEventNumber = env->GetValue("maxEventNumber",5000);
 	inputTree = new TTree("tree","tree");
 	if(kMAIN) mergeMAIN =new MergeMAIN(runNumber);
 	if(kPLA){
@@ -36,10 +36,6 @@ void Merger::eventLoop(){
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
 	for(Long64_t ientry = 0; ientry<nentries;ientry++){
-		if(nentries<1000) {
-			cout<<endl;
-			cout<<ientry<<endl;
-		}
 
 		//inputTree->GetEntry(ientry);
 		getEntry(ientry);
@@ -54,8 +50,19 @@ void Merger::eventLoop(){
 		if(kHOD)	 analysingHOD();
 		if(kESPRI)	 analysingESPRI();
 
+		if(nentries<1000) {
+			cout<<endl;
+			cout<<"Event Number = "<<ientry<<endl;
+
+			print();
+		}
+
 		tree->Fill();
 	}
+}
+void Merger::print(){
+	//printPLA();	
+	printESPRI();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){

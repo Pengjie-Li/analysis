@@ -3,11 +3,14 @@ void Merger::analysingESPRI(){
 	//analysisESPRI->input(mergeESPRI);
 	setESPRIEvent();
 
-	espriEvent->loadData(mergeESPRI);
-	espriEvent->loadTargetPosition(vTarget);
-	espriEvent->loadBeamVector(vBeam);
+	espriEvent->checkData(mergeESPRI);
 	espriEvent->setESPRIEvent();
-	if(maxEventNumber <1000) espriEvent->print();	
+	//espriEvent->loadTargetPosition(vTarget);
+	//espriEvent->loadBeamVector(vBeam);
+}
+void Merger::printESPRI(){
+		mergeESPRI->print();
+		espriEvent->print();	
 }
 void Merger::initAnalysedESPRI(){
 	/************* ESPRI *****************/
@@ -27,42 +30,21 @@ void Merger::setESPRIOutputBranch(){
 	vProton = new TVector3;
 	mergeESPRI->setOutputBranch(tree);
 	espriEvent->setOutputBranch(tree);
-	tree->Branch("vESPRI","TVector3",&vESPRI);
-	tree->Branch("vProton","TVector3",&vProton);
-
-	tree->Branch("espriNaiEnergy",&espriNaiEnergy,"espriNaiEnergy/D");
-	//tree->Branch("espriPlasTime",&espriPlasTime,"espriPlasTime/D");
-	tree->Branch("espriPlasDeltaE",&espriPlasDeltaE,"espriPlasDeltaE/D");
-	tree->Branch("protonTheta",&protonTheta,"protonTheta/D");
+//	tree->Branch("vESPRI","TVector3",&vESPRI);
+//	tree->Branch("vProton","TVector3",&vProton);
+//
+//	tree->Branch("espriNaiEnergy",&espriNaiEnergy,"espriNaiEnergy/D");
+//	//tree->Branch("espriPlasTime",&espriPlasTime,"espriPlasTime/D");
+//	tree->Branch("espriPlasDeltaE",&espriPlasDeltaE,"espriPlasDeltaE/D");
+//	tree->Branch("protonTheta",&protonTheta,"protonTheta/D");
 	//tree->Branch("flightLengthTargetESPRI",&flightLengthTargetESPRI,"flightLengthTargetESPRI/D");
 }
 void Merger::setESPRIEvent(){
-	mergeESPRI->selfAnalysis();
-	(*vESPRI) = getESPRIPosition();
-	//setESPRITime();
-	espriNaiEnergy = getESPRINaiEnergy();
-	//espriPlasTime = getESPRIPlasTime();
-	espriPlasDeltaE = getESPRIPlasDeltaE();
-	setProtonAngle();
-}
-void Merger::setProtonAngle(){
-	(*vProton) = (*vESPRI)-(*vTarget);
-	//flightLengthTargetESPRI = (*vProton).Mag();
-	//vBeam->Print();
-	//vTarget->Print();
-	//vProton->Print();
-	protonTheta = vProton->Angle((*vBeam))*TMath::RadToDeg();
-	//cout<<"FL Target ESPRI="<<flightLengthTargetESPRI<<":protonTheta="<<protonTheta<<endl;
-}
-TVector3 Merger::getESPRIPosition(){
-	return mergeESPRI->getESPRIPosition();
-}
-double Merger::getESPRINaiEnergy(){
-	return mergeESPRI->getESPRINaiEnergy();
-}
-//double Merger::getESPRIPlasTime(){
-//	return mergeESPRI->getESPRIPlasTime();
-//}
-double Merger::getESPRIPlasDeltaE(){
-	return mergeESPRI->getESPRIPlasDeltaE();
+//	//mergeESPRI->selfAnalysis();
+//	(*vESPRI) = getESPRIPosition();
+//	//setESPRITime();
+//	espriNaiEnergy = getESPRINaiEnergy();
+//	//espriPlasTime = getESPRIPlasTime();
+//	espriPlasDeltaE = getESPRIPlasDeltaE();
+//	setProtonAngle();
 }

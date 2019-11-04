@@ -103,8 +103,9 @@ class Merger{
 		MergeHOD  *mergeHOD;
 		MergeESPRI  *mergeESPRI;
 
-		Merger(int runNumber);
+		Merger(int runNumber,int maxEventNumber);
 
+		void print();
 		void eventLoop();
 		void getEntry(Long64_t ientry);
 
@@ -144,6 +145,7 @@ class Merger{
 
 		void analysingESPRI();
 		EspriEvent *espriEvent;
+		void printESPRI();
 		void initAnalysedESPRI();
 		void setESPRIEvent();
 		TVector3 getESPRIPosition();

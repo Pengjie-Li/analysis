@@ -1,6 +1,6 @@
 void Merger::analysingPLA(){
 	plaEvent->analysing(mergePLA);		
-	if(maxEventNumber<100) printPLA();
+	//if(maxEventNumber<100) printPLA();
 }
 void Merger::printPLA(){
 	mergePLA->print();

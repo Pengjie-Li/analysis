@@ -4,11 +4,13 @@
 
 int main(int argc, char** argv){
 	int runNumber = -1;
+	int maxEventNumber = 10000000;
 
 	if(argc == 2) runNumber = atoi(argv[1]);
-	else cout<<" Usage: ./Merger runNumber"<<endl;
+	else if(argc == 3) { runNumber = atoi(argv[1]); maxEventNumber = atoi(argv[2]);}
+	else cout<<" Usage: ./Merger runNumber maxEventNumber"<<endl;
 
-	Merger *merger = new Merger(runNumber);
+	Merger *merger = new Merger(runNumber,maxEventNumber);
 	//cout<<"Now:runNumber="<<runNumber<<endl;
 	if(merger->isFilesExist()){
 		merger->loadInputFiles();

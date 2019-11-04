@@ -1,17 +1,6 @@
 #include "PositionESPRI.h"
 class MergeESPRI:public Convert{
 	private:
-		// Analysis of ESPRI 
-		int isLR;
-		int isESPRIL;
-		int isRdcL;
-		int isNaiL;
-		int isPlasL;
-
-		int isESPRIR;
-		int isRdcR;
-		int isNaiR;
-		int isPlasR;
 		PositionESPRI *positionESPRI;
 
 
@@ -126,9 +115,6 @@ class MergeESPRI:public Convert{
 
 		}
 		void setOutputBranch(TTree *tree){
-			tree->Branch("isLR",&isLR,"isLR/I");
-			tree->Branch("isESPRIL",&isESPRIL,"isESPRIL/I");
-			tree->Branch("isESPRIR",&isESPRIR,"isESPRIR/I");
 			// Set branch addresses.
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
@@ -169,66 +155,13 @@ class MergeESPRI:public Convert{
 			tree->Branch("plasT",&plasT,"plasT[2]/D");
 
 		}
-		void selfAnalysis(){
-			isESPRILR();
-		}
-		void isESPRILR(){
-			isLR=isRdcL=isRdcR=isPlasL=isPlasR=isNaiL=isNaiR = -1;
-			isESPRIL=isESPRIR=-1;
-			if(rdcX[0]>0&&rdcY[0]>0) isRdcL = 1;
-			if(rdcX[1]>0&&rdcY[1]>0) isRdcR = 1;
-			if(plasQ[0]>0&&plasT[0]!=0) isPlasL = 1;
-			if(plasQ[1]>0&&plasT[1]!=0) isPlasR = 1;
-			if(naiQ[0]>0) isNaiL = 1;
-			if(naiQ[1]>0) isNaiR = 1;
-
-			if(isRdcL==1){
-				if(isNaiL ==1||isPlasL ==1){
-					isESPRIL =1;
-				}else{
-					isESPRIL = -1;
-				}
-			}
-			if(isRdcR==1){
-				if(isNaiR ==1||isPlasR ==1){
-					isESPRIR =1;
-				}else{
-					isESPRIR = -1;
-				}
-			}
-			
-			if(isESPRIL==1 &&isESPRIR ==-1) isLR = 0;
-			else if(isESPRIL==-1 &&isESPRIR ==1) isLR = 1;
-			else if(isESPRIL==1 &&isESPRIR ==1) isLR = largerEnergySide();
-			else isLR = -1;
-
-		}
-		int largerEnergySide(){
-			// compare E total
-			if(naiQ[0]>naiQ[1]) return 0;
-			else return 1;
-		}
-		TVector3 getESPRIPosition(){
-			if(isLR>=0){
-				//cout<<"isLR="<<isLR<<":"<<rdcX[isLR]<<":"<<rdcY[isLR]<<endl;
-				TVector3 result = getESPRIPosition(isLR,rdcX[isLR],rdcY[isLR]);
-				//result.Print();
-				return getESPRIPosition(isLR,rdcX[isLR],rdcY[isLR]);
-			}else{
-				TVector3 result; result.SetXYZ(NAN,NAN,NAN);
-				return result;
-			}
-		}
-		TVector3 getESPRIPosition(int lr,double X,double Y){
-			return positionESPRI->getESPRIPosition(lr,X,Y);
-		}
-		double getESPRINaiEnergy(){
+		double getESPRINaiEnergy(int isLR){
 			return isLR>0?naiQ[1]:naiQ[0];
 		}
-		double getESPRIPlasTime(){
+		double getESPRIPlasTime(int isLR){
 			return isLR>0?plasT[1]:plasT[0]; 
 		}
-		double getESPRIPlasDeltaE(){
+		double getESPRIPlasDeltaE(int isLR){
 			return isLR>0?plasQ[1]:plasQ[0];
 		}
 		~MergeESPRI(){
@@ -247,5 +180,33 @@ class MergeESPRI:public Convert{
 		double getRdcY(int side){
 			return rdcY[side];
 		}
-
+		double getPlasQ(int side){
+			return plasQ[side];
+		}
+		double getPlasT(int side){
+			return plasT[side];
+		}
+		void print(){
+			printRdc();
+			printPlas();
+			printNai();
+		}
+		void printRdc(){
+			cout<<"RDC Position:"<<endl;
+			cout<<"Left :"<<rdcX[0]<<":"<<rdcY[0]<<endl;
+			cout<<"Right:"<<rdcX[1]<<":"<<rdcY[1]<<endl;
+		}
+		void printPlas(){
+			cout<<"Plas Q and T"<<endl;
+			cout<<"Left :"<< plasQ[0]<<":"<<plasT[0]<<endl; 
+			cout<<"Right:"<< plasQ[1]<<":"<<plasT[1]<<endl; 
+		}
+		void printNai(){
+			cout<<"Nai Bar QCal:"<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					if(naiBarQCal[i][j]>1) cout<<"side = "<<i<<" barId = "<<j<<" naiQ = "<<naiBarQCal[i][j]<<endl;
+				}
+			}
+		}
 };

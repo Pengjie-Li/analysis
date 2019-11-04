@@ -46,16 +46,19 @@ class PositionESPRI{
 		double espriAngle;
 		TVector3 *espriPosition;
 
+		// intermediate var
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
+		int sideLR;
+		double dcX;
+		double dcY;
 
 		ESPRI3DPosition *espri3DPosition;
 
-		void setESPRIPosition(int sideLR,double dcX,dcY){
+		void setESPRIPosition(int sideLR,double dcX,double dcY){
 			(*espriPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
 				//espriPosition->Print();
 			}
-		}
 
 		void setESPRIAngle(){
 			espriAngle = ((*espriPosition)-(*targetPosition)).Angle((*vBeam))*TMath::RadToDeg();
@@ -69,9 +72,13 @@ class PositionESPRI{
 			espriAngle = NAN;
 			espriPosition->SetXYZ(NAN,NAN,NAN);
 		}
+		void analysis(){
+			init();
+			//setESPRIPosition();
+			//setESPRIAngle();
+		}
 		void setBranch(TTree *tree){
 			espriPosition = new TVector3;
-			tree->Branch();
 			tree->Branch("espriPosition","TVector3",&espriPosition);
 			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
 		}
