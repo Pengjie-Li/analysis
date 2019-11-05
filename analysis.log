@@ -2684,3 +2684,11 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master df08358] v1.0
+ 13 files changed, 332 insertions(+), 299 deletions(-)
+ rewrite merger/AnalysingESPRI.h (64%)
+ rewrite merger/EspriEvent.h (66%)
+ rewrite merger/Merger (91%)
+ create mode 100644 merger/rootfiles/run0310_analysed.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

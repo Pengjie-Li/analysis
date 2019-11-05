@@ -1,9 +1,5 @@
-#include "PositionESPRI.h"
 class MergeESPRI:public Convert{
 	private:
-		PositionESPRI *positionESPRI;
-
-
 
 		//Declaration of leaves types
 		Int_t           EventNumber;
@@ -54,7 +50,6 @@ class MergeESPRI:public Convert{
 			detector = "ESPRI";
 			treeName = "CalTreeESPRI";
 			runNumber = run;
-			positionESPRI = new PositionESPRI();
 		}
 		void init(){
 		}
@@ -165,7 +160,6 @@ class MergeESPRI:public Convert{
 			return isLR>0?plasQ[1]:plasQ[0];
 		}
 		~MergeESPRI(){
-			delete positionESPRI;
 		}
 
 		double getNaiBarQCal(int side,int id){

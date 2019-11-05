@@ -120,7 +120,9 @@ class Merger{
 		Double_t getF3Time();
 		Double_t getF7Time();
 		Double_t getF13Time();
-
+	
+		void printBDC();
+		void printTarget();
 		void analysingBDC();
 		void initAnalysedBDC();
 		Double_t getBDC1TargetRatio();

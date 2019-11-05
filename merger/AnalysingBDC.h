@@ -19,6 +19,16 @@ void Merger::analysingBDC(){
 		//vBDC1->Print();
 		//vSBT->Print();
 }
+void Merger::printBDC(){
+	//cout<<"BDC 3D Position"<<endl;
+	//vBDC1->Print();
+	//vBDC2->Print();
+}
+void Merger::printTarget(){
+	//cout<<"Target_X = "<<Target_X<<" Target_Y = "<<Target_Y<<endl;
+	vBeam->Print();
+	vTarget->Print();
+}
 void Merger::initAnalysedBDC(){
 
 		/********* BDC ***************/

@@ -1,0 +1,233 @@
+#include <math.h>
+#include <fstream>
+#include <TFile.h>
+#include <TH3D.h>
+#include <TTree.h>
+#include <TVector3.h>
+#include <Math/Functor.h>
+#include <TMath.h>
+#include <Math/Vector3D.h>
+#include <TRandom2.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+#include <TF2.h>
+#include <TH2D.h>
+#include <TView.h>
+#include <TH1.h>
+#include <Math/Functor.h>
+#include <TPolyLine3D.h>
+#include <TPolyMarker3D.h>
+#include <Math/Vector3D.h>
+#include <Fit/Fitter.h>
+class Plane{
+	public:
+		double A;
+		double B;
+		double C;
+		double D;
+		TVector3 e1;
+		TVector3 e2;
+		TVector3 e3;
+
+		Plane(){};
+		Plane(double a,double b,double c,double d){
+			A=a;
+			B=b;
+			C=c;
+			D=d;
+		}
+		double getX(double y,double z){
+			return (-B*y-C*z-D)/A;
+		}
+		double getY(double x,double z){
+			return (-A*x-C*z-D)/B;
+		}
+		double getZ(double x,double y){
+			return (-A*x-B*y-D)/C;
+		}
+		TVector3 getNormalVector(){
+			TVector3 normalVector;
+			normalVector.SetXYZ(A,B,C);
+			return normalVector;
+		}
+		//TVector3* getNormalVector(){
+		//	return new TVector3(A,B,C);
+		//}
+
+		void calBaseVector(){
+			e3.SetXYZ(A,B,C);
+			e3=e3.Unit();
+
+			double x3= e3.X();
+			double z3= e3.Z();
+			double x1 = abs(z3)/sqrt(z3*z3+x3*x3);
+			double z1 = -x3*x1/z3;
+			e1.SetXYZ(x1,0,z1);
+			e1=e1.Unit();
+			e2 = e1.Cross(e3);
+			if(e2.Y()<0) e2=-e2;
+			cout<<"X Direction:"<<endl;
+			e1.Print();
+			cout<<"Y Direction:"<<endl;
+			e2.Print();
+		}
+
+
+};
+class LeftPlane: public Plane{
+	public:
+		LeftPlane(){
+			A=-TMath::Sqrt(3)/2;
+			B=-0.0;
+			C=0.5;
+			//D=1071;
+			D=1146;
+			calBaseVector();
+		}
+
+};
+class RightPlane: public Plane{
+	public:
+		RightPlane(){
+			A=TMath::Sqrt(3)/2;
+			B=0;
+			C=0.5;
+			//D=1071;
+			D=1146;
+			calBaseVector();
+		}
+
+};
+
+class GeneratePosition{
+	public: 
+		Plane *detectorPlane;
+		TVector3 vTargetCenter;
+		TVector3 vNormalVector;
+		TVector3 vPedal;
+		TVector3 vESPRI;
+
+		double pedalX;
+		double pedalY;
+		double pedalZ;
+
+		GeneratePosition(int lr){
+			vTargetCenter.SetXYZ(0,0,-4222.34);
+			if(lr ==0) detectorPlane = new LeftPlane();
+			else if(lr ==1) detectorPlane = new RightPlane();
+			else cout<<"ERROR!"<<endl;
+			vNormalVector = detectorPlane->getNormalVector();
+			calculateCrossPosition();
+			vPedal.SetXYZ(pedalX,pedalY,pedalZ);
+			vPedal.Print();
+			TVector3 zAxis; zAxis.SetXYZ(0,0,1);
+			double RadToDeg = 5.72957795130823229e+01; 
+			cout<<"Angle to Z Axis:";
+			cout<<(vPedal-vTargetCenter).Angle(zAxis)*RadToDeg<<endl;;
+			double distanceSqrt = (vPedal.X()-vTargetCenter.X())*(vPedal.X()-vTargetCenter.X())+ (vPedal.Y()-vTargetCenter.Y())*(vPedal.Y()-vTargetCenter.Y()) + (vPedal.Z()-vTargetCenter.Z())*(vPedal.Z()-vTargetCenter.Z());	
+			cout<<"Distant from Target to Pedal Point:"<<sqrt( distanceSqrt )<<endl;
+		}
+		void calculateCrossPosition(){
+
+			double planeVector[3];
+			double planePoint[3];
+			setPlaneVP(planeVector,planePoint);
+
+			double lineVector[3];
+			double linePoint[3];
+			setLineVP(lineVector,linePoint);
+
+			double vVirtualPoint[3];
+			calPlaneLineIntersectPoint(vVirtualPoint,planeVector,planePoint,lineVector,linePoint);
+			setX(vVirtualPoint[0]);
+			setY(vVirtualPoint[1]);
+			setZ(vVirtualPoint[2]);
+		}
+		void calPlaneLineIntersectPoint(double *returnResult,double *planeVector, double *planePoint, double *lineVector, double *linePoint){  
+			double vp1, vp2, vp3, n1, n2, n3, v1, v2, v3, m1, m2, m3, t,vpt;  
+			vp1 = planeVector[0];  
+			vp2 = planeVector[1];  
+			vp3 = planeVector[2];  
+			n1 = planePoint[0];  
+			n2 = planePoint[1];  
+			n3 = planePoint[2];  
+			v1 = lineVector[0];  
+			v2 = lineVector[1];  
+			v3 = lineVector[2];  
+			m1 = linePoint[0];  
+			m2 = linePoint[1];  
+			m3 = linePoint[2];  
+			vpt = v1 * vp1 + v2 * vp2 + v3 * vp3;  
+			//首先判断直线是否与平面平行  
+			if (vpt == 0)  
+			{  
+				cout<<"Plane Parallel, not good!"<<endl;
+			}  
+			else  
+			{  
+				t = ((n1 - m1) * vp1 + (n2 - m2) * vp2 + (n3 - m3) * vp3) / vpt;  
+				returnResult[0] = m1 + v1 * t;  
+				returnResult[1] = m2 + v2 * t;  
+				returnResult[2] = m3 + v3 * t;  
+			}  
+		}  
+		void setX(double inX){
+			pedalX = inX;
+		}
+		void setY(double inY){
+			pedalY = inY;
+		}
+		void setZ(double inZ){
+			pedalZ = inZ;
+		}
+
+		void setLineVP(double *lineVector,double *linePoint){
+
+			lineVector[0]=detectorPlane->A;
+			lineVector[1]=detectorPlane->B;
+			lineVector[2]=detectorPlane->C;
+			linePoint[0]=vTargetCenter.X();
+			linePoint[1]=vTargetCenter.Y();
+			linePoint[2]=vTargetCenter.Z();
+		}
+
+
+		void setPlaneVP(double *planeVector, double *planePoint){
+
+			planePoint[0]=0;
+			planePoint[1]=0;
+			planePoint[2]=detectorPlane->getZ(0,0);
+
+			planeVector[0]=detectorPlane->A;
+			planeVector[1]=detectorPlane->B;
+			planeVector[2]=detectorPlane->C;
+
+		}
+
+
+
+
+};
+void expectFrontSurface(){
+	// Here input pixel (isLR,fid,bid, x,y)
+	//	new GeneratePosition(1,16,31,24,-1,-3866.51);	
+	//	new GeneratePosition(0,16,31,-24,-1,-3866.31);	
+	cout<<"left ESPRI Pedal:"<<endl;
+	GeneratePosition *left = new GeneratePosition(0);	
+	cout<<"right ESPRI Pedal:"<<endl;
+	GeneratePosition *right = new GeneratePosition(1);	
+	//	new GeneratePosition(1,16,27,32.17,-1.75);	
+
+
+	//	LeftPlane *lp=new LeftPlane();
+	//	RightPlane *rp=new RightPlane();
+
+	// C++ 多态
+	//	Plane *lp=new LeftPlane();
+	//	cout<<lp->getZ(-24,-1)<<endl;;
+	//	Plane *rp=new RightPlane();
+	//	cout<<rp->getZ(24,-1)<<endl;;
+
+	return 1;
+
+}
