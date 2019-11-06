@@ -50,7 +50,8 @@ void Merger::eventLoop(){
 		if(kHOD)	 analysingHOD();
 		if(kESPRI)	 analysingESPRI();
 
-		cout<<"Event Number = "<<ientry<<endl;
+		//cout<<"Event Number = "<<ientry<<endl;
+		//print();
 		if(nentries<1000) {
 			cout<<endl;
 			cout<<"Event Number = "<<ientry<<endl;
@@ -65,7 +66,7 @@ void Merger::print(){
 	//printPLA();	
 	printBDC();	
 	printTarget();	
-	printESPRI();
+	//printESPRI();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){

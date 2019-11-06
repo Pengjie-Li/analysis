@@ -3,8 +3,8 @@
 //========= by ROOT version5.34/20
    
    TCutG *cutg = new TCutG("Proton",26);
-   cutg->SetVarX("espriNaiEnergy");
-   cutg->SetVarY("espriPlasDeltaE");
+   cutg->SetVarX("espriNaiE");
+   cutg->SetVarY("espriPlasE");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
    cutg->SetPoint(0,1.00732,21.6935);

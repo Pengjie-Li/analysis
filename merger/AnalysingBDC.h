@@ -2,10 +2,10 @@ void Merger::analysingBDC(){
 
 		initAnalysedBDC();
 
-		Target_X = getBDC1X() + Dist_BDC1Target / Dist_BDC1BDC2 * (getBDC2X() - getBDC1X());
-		Target_Y = getBDC1Y() + Dist_BDC1Target / Dist_BDC1BDC2 * (getBDC2Y() - getBDC1Y());
-		Target_ThetaX = TMath::ATan( (getBDC2X() - getBDC1X()) / Dist_BDC1BDC2 );
-		Target_ThetaY = TMath::ATan( (getBDC2Y() - getBDC1Y()) / Dist_BDC1BDC2 );
+		//Target_X = getBDC1X() + Dist_BDC1Target / Dist_BDC1BDC2 * (getBDC2X() - getBDC1X());
+		//Target_Y = getBDC1Y() + Dist_BDC1Target / Dist_BDC1BDC2 * (getBDC2Y() - getBDC1Y());
+		//Target_ThetaX = TMath::ATan( (getBDC2X() - getBDC1X()) / Dist_BDC1BDC2 );
+		//Target_ThetaY = TMath::ATan( (getBDC2Y() - getBDC1Y()) / Dist_BDC1BDC2 );
 
 		vBDC1->SetXYZ(-getBDC1X(),getBDC1Y(),getBDC1Z());
 		vBDC2->SetXYZ(-getBDC2X(),getBDC2Y(),getBDC2Z());
@@ -14,7 +14,7 @@ void Merger::analysingBDC(){
 		(*vBeam)=(*vBeam).Unit();
 		(*vTarget) =(*vBDC1) + getBDC1TargetRatio()*(*vBeam);
 		(*vSBT) =(*vBDC1) + getBDC1SBTRatio()*(*vBeam);
-		flightLengthBeamTarget =((*vTarget)-(*vSBT)).Mag();
+		beamFL =((*vTarget)-(*vSBT)).Mag();
 		//cout<<"FL Beam Target:"<<flightLengthBeamTarget<<endl;
 		//vBDC1->Print();
 		//vSBT->Print();
@@ -25,18 +25,19 @@ void Merger::printBDC(){
 	//vBDC2->Print();
 }
 void Merger::printTarget(){
-	//cout<<"Target_X = "<<Target_X<<" Target_Y = "<<Target_Y<<endl;
+	cout<<"Beam FL from SBT to Target:"<<beamFL<<endl;
+	cout<<"Target_X = "<<vTarget->X()<<" Target_Y = "<<vTarget->Y()<<endl;
 	vBeam->Print();
 	vTarget->Print();
 }
 void Merger::initAnalysedBDC(){
 
 		/********* BDC ***************/
-		Target_X = NAN;
-		Target_Y = NAN;
-		Target_ThetaX = NAN;
-		Target_ThetaY = NAN;
-		flightLengthBeamTarget = NAN;
+		//Target_X = NAN;
+		//Target_Y = NAN;
+		//Target_ThetaX = NAN;
+		//Target_ThetaY = NAN;
+		beamFL = NAN;
 		
 		vBDC1->SetXYZ(NAN,NAN,NAN);
 		vBDC2->SetXYZ(NAN,NAN,NAN);
@@ -58,11 +59,11 @@ void Merger::setBDCOutputBranch(){
 	//raw and cal
 	mergeBDC->setOutputBranch(tree);
 
-	tree->Branch("flightLengthBeamTarget",&flightLengthBeamTarget);
-	tree->Branch("Target_X",&Target_X);
-	tree->Branch("Target_Y",&Target_Y);
-	tree->Branch("Target_ThetaX",&Target_ThetaX);
-	tree->Branch("Target_ThetaY",&Target_ThetaY);
+	tree->Branch("beamFL",&beamFL);
+	//tree->Branch("Target_X",&Target_X);
+	//tree->Branch("Target_Y",&Target_Y);
+	//tree->Branch("Target_ThetaX",&Target_ThetaX);
+	//tree->Branch("Target_ThetaY",&Target_ThetaY);
 
 	tree->Branch("vBeam","TVector3",&vBeam);
 	tree->Branch("vBDC1","TVector3",&vBDC1);

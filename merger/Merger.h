@@ -54,12 +54,12 @@ class Merger{
 		TVector3* vESPRI;	
 		TVector3* vDSSD;	
 		TVector3* vProton;
+		Double_t  beamFL;
 
-		Double_t	Target_X ;
-		Double_t	Target_Y ;
-		Double_t	Target_ThetaX ;
-		Double_t	Target_ThetaY ;
-		Double_t 	flightLengthBeamTarget;
+		//Double_t	Target_X ;
+		//Double_t	Target_Y ;
+		//Double_t	Target_ThetaX ;
+		//Double_t	Target_ThetaY ;
 		//Double_t 	flightLengthTargetESPRI;
 
 		

@@ -1,14 +1,14 @@
 {
-        double targetx=-2.0;
+        double targetx=2.0;
         double targety=-1.10;
         //double targety=-1.50;
         //double targety=-1.60;
 	double selectRadius = 16;
         TEllipse *Si1 = new TEllipse(targetx,targety,selectRadius,selectRadius);
-        Si1->SetLineStyle(1);
         Si1->SetLineColor(2);
         Si1->SetLineWidth(2);
         Si1->SetFillStyle(0);
+        Si1->SetLineStyle(2);
         Si1->Draw("same");
 //        Si1->Draw();
 
@@ -17,8 +17,18 @@
         Si2->SetLineColor(2);
         Si2->SetLineWidth(2);
         Si2->SetFillStyle(0);
-        Si2->SetLineStyle(2);
+        Si2->SetLineStyle(1);
         Si2->Draw("same");
+
+        Double_t targetRadius=13;
+        TEllipse *Si3 = new TEllipse(targetx,targety,targetRadius,targetRadius);
+        Si3->SetLineColor(2);
+        Si3->SetLineWidth(2);
+        Si3->SetFillStyle(0);
+        Si3->SetLineStyle(2);
+        Si3->Draw("same");
+
+
 
 
 	TBox *b=new TBox(targetx-30,targety-35,targetx+30,targety+25);

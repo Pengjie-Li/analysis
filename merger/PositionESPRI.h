@@ -26,6 +26,7 @@ class CheckEspriEvent{
 			return calibData->getPlasT(side);
 		}
 		bool isRdc(int side){
+		        //cout<<getRdcX(side)<<":"<<getRdcY(side)<<endl;
 			if(getRdcX(side)>0&&getRdcY(side)>0) return true;
 			else return false;
 		}
@@ -63,9 +64,9 @@ class CheckEspriEvent{
 				isEspriPlas = isPlas(isEspriLR);
 			}
 			
-		//	cout<<"isRdcL:"<<isRdcL<<" isPlasL:"<<isPlasL<<" isESPRIL:"<<isESPRIL<<endl;
-		//	cout<<"isRdcR:"<<isRdcR<<" isPlasR:"<<isPlasR<<" isESPRIR:"<<isESPRIR<<endl;
-		//	cout<<"isEspriLR:"<<isEspriLR<<endl;
+			//cout<<"isRdcL:"<<isRdcL<<" isPlasL:"<<isPlasL<<" isESPRIL:"<<isESPRIL<<endl;
+			//cout<<"isRdcR:"<<isRdcR<<" isPlasR:"<<isPlasR<<" isESPRIR:"<<isESPRIR<<endl;
+			//cout<<"isEspriLR:"<<isEspriLR<<endl;
 		}
 		double getNaiBarQCal(int side,int id){
 			return calibData->getNaiBarQCal(side,id);

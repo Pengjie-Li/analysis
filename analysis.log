@@ -2692,3 +2692,16 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/run0310_analysed.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 85b221b] v1.0
+ 16 files changed, 1603 insertions(+), 245 deletions(-)
+ create mode 100644 espri/calib/espri3DPosition/Generate_Poisition.C
+ create mode 100644 espri/calib/espri3DPosition/expectFrontSurface.C
+ create mode 100644 espri/calib/espri3DPosition/expectPlasCenter.C
+ create mode 100644 espri/calib/espri3DPosition/expectRdcCenter.C
+ create mode 100644 espri/calib/espri3DPosition/frontSurfacePGS.C
+ create mode 100644 espri/calib/espri3DPosition/offset
+ rewrite merger/EspriEvent.h (63%)
+ rewrite merger/Merger (90%)
+ rewrite merger/rootfiles/run0310_analysed.root_test (61%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
