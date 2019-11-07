@@ -2705,3 +2705,30 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/run0310_analysed.root_test (61%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4876c2f] v1.0
+ 55 files changed, 410 insertions(+), 83 deletions(-)
+ create mode 100644 analysis/ppScattering/ppBe.C_backup
+ create mode 100644 espri/convert/rootfiles/run0373_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0441_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0442_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0443_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0444_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0445_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0446_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0447_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0474_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0491_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0492_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0580_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0581_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0582_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0583_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0584_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0586_ESPRI.root_new
+ create mode 100644 espri/convert/rootfiles/run0593_ESPRI.root_new
+ rewrite merger/Merger (86%)
+ rewrite merger/rootfiles/cutHodBe10.C (99%)
+ rewrite merger/rootfiles/cutTargetArea.C (99%)
+ create mode 100644 merger/rootfiles/run0300_analysed.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
