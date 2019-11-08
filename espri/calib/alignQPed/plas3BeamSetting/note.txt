@@ -1,0 +1,5 @@
+
+Plastic Gain was slightly affected by Magnet, only when Be12, Magnet 2.7 T
+	Be10	Be12	Be14
+L	1.0	1.1	1.0
+R	1.0	1.1	1.0
