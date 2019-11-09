@@ -2749,3 +2749,29 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/tchain.C (60%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 751c93f] v1.0
+ 25 files changed, 276 insertions(+), 3 deletions(-)
+ create mode 100644 espri/calib/alignQPed/nai3BeamSetting/drawNaiQPed.C
+ create mode 100644 espri/calib/alignQPed/nai3BeamSetting/generateHistogram.C
+ create mode 100644 espri/calib/alignQPed/nai3BeamSetting/oneRunGenerate.C
+ create mode 120000 espri/calib/alignQPed/nai3BeamSetting/rootfiles
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/left/conclusion.txt
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/left/drawPlasQPedTof.C
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/left/generateHistogram.C
+ create mode 120000 espri/calib/alignQPed/plas3BeamSetting/left/rootfiles
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/note.txt
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/right/conclusion.txt
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/right/drawPlasQPedTof.C
+ create mode 100644 espri/calib/alignQPed/plas3BeamSetting/right/generateHistogram.C
+ create mode 120000 espri/calib/alignQPed/plas3BeamSetting/right/rootfiles
+ rewrite merger/rootfiles/run0442_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0443_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0444_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0445_analysed.root_3 (69%)
+ rewrite merger/rootfiles/run0446_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0447_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0474_analysed.root_3 (61%)
+ rewrite merger/rootfiles/run0586_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0593_analysed.root_3 (68%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
