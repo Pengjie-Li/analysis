@@ -4,16 +4,16 @@ void oneRunGenerate(){
 	TChain *tree = new TChain("tree");
 
 	int side = 1;
-	int barId = 6;
-	int runStart = 340;
-	int runStop = runStart+2;
+	int barId = 3;
+	int runStart = 445;
+	int runStop = runStart+5;
 
 	for (int i = runStart; i < runStop; ++i) {
 		
 		tree->Add(Form("rootfiles/run0%d_analysed.root_3",i));
 	}
 
-	double gain = 2.3;
+	double gain = 1.7;
 	gROOT->ProcessLine(".x rootfiles/setAlias.C");
 	TString targetArea="sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<13";
 

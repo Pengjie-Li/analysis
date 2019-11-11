@@ -627,6 +627,7 @@ class ESPRIPlasCal{
 
 		void setPlasQ(int side){
 			if(plasQPed[2*side]>0&&plasQPed[2*side+1]>0){
+				cout<<getMagnetPara()<<endl;
 				plasBarMQPed[side] = getMagnetPara()*sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
 				plasQ[side] = sqrt(plasQPed[2*side]*plasQPed[2*side+1])/(getBirksParA(side)+getBirksParB(side)*sqrt(plasQPed[2*side]*plasQPed[2*side+1]));
 				plasMQ[side] = plasBarMQPed[side]/(getBirksBe10ParA(side)+getBirksBe10ParB(side)*plasBarMQPed[side]);

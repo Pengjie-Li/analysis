@@ -126,8 +126,8 @@ class ConvertESPRI{
 				convertRawData();
 				tree->Fill();
 
-				if(maxEventNumber<100) print();
-				//print();
+				//if(maxEventNumber<100) print();
+				print();
 			}
 		}
 		void print(){
