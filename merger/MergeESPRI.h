@@ -31,16 +31,23 @@ class MergeESPRI:public Convert{
 		Double_t        rdcTch[2][7];
 		Double_t        rdcRes[2][7];
 
-		Double_t	naiQCal[4][7];
                 Double_t	naiQPed[4][7];
-                Double_t	naiBarQCal[2][7];
+		Double_t	naiBarMQPed[2][7];  // Magnet Correction for each beam setting
+		Double_t	naiBarMQSync[2][7]; // Sync QPed in each Bar to ref Bar00 and Bar10
+		Double_t	naiBarMQCal[2][7];  // Cal Parameter from each bar under Be10 setting
+		Double_t	naiBarMSQCal[2][7]; // Cal Parameter from Bar00 and Bar10 
+
+                Double_t	naiBarQCal[2][7];   // Old calib, Be14 using Be10 parameter, from pp Scattering
                 Double_t	naiQ[2];
                 Int_t		naiQId[2];
 
 		Double_t        plasQCal[4];
 		Double_t        plasQPed[4];
-		Double_t        plasTCal[4];
+		Double_t	plasBarMQPed[2];// plasMQPed -> M Magnet
+		Double_t	plasMQ[2];      // plasMQ  Magnet correction
 		Double_t	plasQ[2];
+
+		Double_t        plasTCal[4];
 		Double_t	plasT[2];
 
 	public:
@@ -93,20 +100,21 @@ class MergeESPRI:public Convert{
 			inputTree->SetBranchAddress("rdcRes",rdcRes);
 
                         inputTree->SetBranchAddress("naiQPed", naiQPed);
+                        inputTree->SetBranchAddress("naiBarMQPed", naiBarMQPed);
+                        inputTree->SetBranchAddress("naiBarMQSync", naiBarMQSync);
+                        inputTree->SetBranchAddress("naiBarMQCal", naiBarMQCal);
+                        inputTree->SetBranchAddress("naiBarMSQCal", naiBarMSQCal);
                         inputTree->SetBranchAddress("naiBarQCal", naiBarQCal);
                         inputTree->SetBranchAddress("naiQId", &naiQId);
-			inputTree->SetBranchAddress("naiQCal",naiQCal);
 			inputTree->SetBranchAddress("naiQ",naiQ);
 
 			inputTree->SetBranchAddress("plasQCal",plasQCal);
 			inputTree->SetBranchAddress("plasQPed",plasQPed);
+			inputTree->SetBranchAddress("plasBarMQPed",plasBarMQPed);
 			inputTree->SetBranchAddress("plasTCal",plasTCal);
+			inputTree->SetBranchAddress("plasMQ",&plasMQ);
 			inputTree->SetBranchAddress("plasQ",&plasQ);
 			inputTree->SetBranchAddress("plasT",&plasT);
-		//	inputTree->SetBranchAddress("plasQL",&plasQL);
-		//	inputTree->SetBranchAddress("plasQR",&plasQR);
-		//	inputTree->SetBranchAddress("plasTL",&plasTL);
-		//	inputTree->SetBranchAddress("plasTR",&plasTR);
 
 		}
 		void setOutputBranch(TTree *tree){
@@ -137,7 +145,6 @@ class MergeESPRI:public Convert{
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 
-                        tree->Branch("naiQCal", naiQCal, "naiQCal[4][7]/D");
                         tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
                         tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
                         tree->Branch("naiQ", &naiQ, "naiQ[2]/D");

@@ -2783,3 +2783,28 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 726faa9] v1.0
+ 27 files changed, 4678 insertions(+), 141 deletions(-)
+ rewrite espri/calib/alignQPed/nai3BeamSetting/drawNaiQPed.C (67%)
+ rewrite espri/convert/ConvertESPRI (89%)
+ create mode 100644 espri/convert/rootfiles/run0370_ESPRI.root_test
+ create mode 100644 espri/convert/txt/naiMagnetPara.txt
+ create mode 100755 espri/convert/v5_updateBeamSetting/ConvertESPRI
+ create mode 100644 espri/convert/v5_updateBeamSetting/ConvertESPRI.C
+ create mode 100644 espri/convert/v5_updateBeamSetting/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v5_updateBeamSetting/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v5_updateBeamSetting/Makefile
+ create mode 100755 espri/convert/v5_updateBeamSetting/caltree.C
+ create mode 100644 espri/convert/v5_updateBeamSetting/configCalibESPRI.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/configConvertESPRI.prm
+ create mode 100644 espri/convert/v5_updateBeamSetting/convert.sh
+ create mode 100755 espri/convert/v5_updateBeamSetting/header.h
+ create mode 100644 espri/convert/v5_updateBeamSetting/loop.sh
+ create mode 100644 espri/convert/v5_updateBeamSetting/looprun.sh
+ create mode 100644 espri/convert/v5_updateBeamSetting/v1_ConvertESPRI.C_Sample
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

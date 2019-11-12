@@ -94,6 +94,8 @@ class ESPRINaiCalPara{
 		double naiMagBe12[2][7];
 		double naiMagBe14[2][7];
 		double naiMagBe142[2][7];
+
+		double naiBarSync[2][7];
 	public:
 		ESPRINaiCalPara(){
 			init();
@@ -106,6 +108,23 @@ class ESPRINaiCalPara{
 			loadPol3Be10Gain();
 			loadPol3Gain();
 			loadMagnetAlign();
+			loadBarSync();
+		}
+		void loadBarSync(){
+			ifstream in;
+			TString inputName = env->GetValue("naiBarSyncPara","txt/naiBarSyncPara.txt");
+			cout<<inputName<<endl;
+			in.open(inputName);
+			int side;
+			int barId;
+			double s0;
+			while(1){
+				in>>side>>barId>>s0;
+				//cout<<side<<":"<<barId<<":"<<s0<<":"<<s1<<":"<<s2<<":"<<s3<<endl;
+				if(!in.good()) break;
+				naiBarSync[side][barId] = s0;
+			}
+			in.close();
 		}
 		void loadMagnetAlign(){
 			ifstream in;
@@ -240,6 +259,15 @@ class ESPRINaiCalPara{
 				}
 			}	
 
+			cout<<" Nai Bar Sync Parameters:"<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					cout<<i<<":"<<j<<":"<<naiBarSync[i][j]<<endl;
+				}
+			}
+
+
+
 
 
 		}
@@ -263,7 +291,7 @@ class ESPRINaiCalPara{
 						naiMagBe12[i][j]  = 1;
 						naiMagBe14[i][j]  = 1;
 						naiMagBe142[i][j] = 1;
-
+						naiBarSync[i][j]  = 1;
 					}
 				}
 			}
@@ -300,6 +328,9 @@ class ESPRINaiCalPara{
 			else if(runNumber>432&&runNumber<457) return naiMagBe142[side][barId];
 			else return 1.0;
 		}
+		double getBarSyncPara(int side,int barId){
+			return naiBarSync[side][barId];
+		}
 };
 class ESPRINaiCal{
 	private:
@@ -309,6 +340,8 @@ class ESPRINaiCal{
 
 		double naiQPed[4][7];
 		double naiBarMQPed[2][7]; // Magnet
+		double naiBarMQSync[2][7]; // Sync Bars in Be10 setting
+		double naiBarMSQCal[2][7]; // Mag and Sync Cal under Bar00 and Bar10 
 		double naiBarMQCal[2][7];
 		double naiBarQCal[2][7];
 		//double naiBarQPed[2][7];
@@ -330,10 +363,14 @@ class ESPRINaiCal{
 				for (int j = 0; j < 7; ++j) {
 					if(naiQPed[2*i][j]>0&&naiQPed[2*i+1][j]>0){
 						naiBarMQPed[i][j] = getMagnetPara(runNumber,i,j)*sqrt(naiQPed[2*i][j]*naiQPed[2*i+1][j]);
+						naiBarMQSync[i][j] = getBarSyncPara(i,j)*naiBarMQPed[i][j];
 					}
 				}
 				
 			}
+		}
+		double getBarSyncPara(int side,int barId){
+			return naiPara->getBarSyncPara(side,barId);
 		}
 		double getMagnetPara(int run,int side,int barId){
 			return naiPara->getMagnetPara(run,side,barId);
@@ -405,6 +442,8 @@ class ESPRINaiCal{
 					naiQPed[i][j] = -9999;
 					if(i%2==0){
 						naiBarMQPed[i/2][j] = -9999;
+						naiBarMQSync[i/2][j] = -9999;
+						naiBarMSQCal[i/2][j] = -9999;
 						naiBarMQCal[i/2][j] = -9999;
 						naiBarQCal[i/2][j] = -9999;
 					}
@@ -449,6 +488,7 @@ class ESPRINaiCal{
 					//if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = linearCalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
 					if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = pol3CalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
 					if(naiBarMQPed[i][j]>0)  naiBarMQCal[i][j] = pol3CalibNaiBarMagnet(i,j,naiBarMQPed[i][j]);
+					if(naiBarMQSync[i][j]>0)  naiBarMSQCal[i][j] = pol3CalibNaiBarMagnet(i,0,naiBarMQSync[i][j]);
 				}
 			}
 		}
@@ -473,6 +513,9 @@ class ESPRINaiCal{
 		void setBranch(TTree *tree){
 			tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
 			tree->Branch("naiBarMQPed", naiBarMQPed, "naiBarMQPed[2][7]/D");
+			tree->Branch("naiBarMQSync", naiBarMQSync, "naiBarMQSync[2][7]/D");
+			tree->Branch("naiBarMSQCal", naiBarMSQCal, "naiBarMSQCal[2][7]/D");
+			tree->Branch("naiBarMQCal", naiBarMQCal, "naiBarMQCal[2][7]/D");
 			tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
 			tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
 			tree->Branch("naiQId", &naiQId, "naiQId[2]/I");

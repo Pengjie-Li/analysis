@@ -21,3 +21,4 @@ outputSuffix:_ESPRI.root_test
 plasSyncPara:1.5
 naiMagnetPara:./txt/naiMagnetPara.txt
 naiPol3Be10Calib:txt/naiPol3Be10.txt
+naiBarSyncPara:txt/naiBarSyncPara.txt

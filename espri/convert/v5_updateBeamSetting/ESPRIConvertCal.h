@@ -473,6 +473,7 @@ class ESPRINaiCal{
 		void setBranch(TTree *tree){
 			tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
 			tree->Branch("naiBarMQPed", naiBarMQPed, "naiBarMQPed[2][7]/D");
+			tree->Branch("naiBarMQCal", naiBarMQCal, "naiBarMQCal[2][7]/D");
 			tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
 			tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
 			tree->Branch("naiQId", &naiQId, "naiQId[2]/I");
@@ -627,7 +628,6 @@ class ESPRIPlasCal{
 
 		void setPlasQ(int side){
 			if(plasQPed[2*side]>0&&plasQPed[2*side+1]>0){
-				cout<<getMagnetPara()<<endl;
 				plasBarMQPed[side] = getMagnetPara()*sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
 				plasQ[side] = sqrt(plasQPed[2*side]*plasQPed[2*side+1])/(getBirksParA(side)+getBirksParB(side)*sqrt(plasQPed[2*side]*plasQPed[2*side+1]));
 				plasMQ[side] = plasBarMQPed[side]/(getBirksBe10ParA(side)+getBirksBe10ParB(side)*plasBarMQPed[side]);
