@@ -2808,3 +2808,36 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/v5_updateBeamSetting/v1_ConvertESPRI.C_Sample
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e788c84] v1.0
+ 37 files changed, 227 insertions(+), 14 deletions(-)
+ create mode 100644 espri/calib/alignQPed/naiBarsSync/alignBar.C
+ create mode 100644 espri/calib/alignQPed/naiBarsSync/barSync.txt
+ create mode 100644 espri/calib/alignQPed/naiBarsSync/drawNaiQPed.C
+ create mode 100644 espri/calib/alignQPed/naiBarsSync/oneRunGenerate.C
+ create mode 120000 espri/calib/alignQPed/naiBarsSync/rootfiles
+ rewrite espri/convert/ConvertESPRI (82%)
+ create mode 100644 espri/convert/rootfiles/run0118_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0178_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0193_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0194_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0195_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0196_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0197_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0198_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0199_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0200_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0201_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0202_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0203_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0204_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0205_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0206_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0227_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0228_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0229_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0373_ESPRI.root_test
+ create mode 120000 espri/convert/txt/naiBarQPedSync.txt
+ create mode 120000 espri/convert/txt/naiBarSyncPara.txt
+ rewrite merger/Merger (63%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
