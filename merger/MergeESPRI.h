@@ -146,13 +146,19 @@ class MergeESPRI:public Convert{
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 
                         tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
+                        tree->Branch("naiBarMQPed", naiBarMQPed, "naiBarMQPed[2][7]/D");
+                        tree->Branch("naiBarMQSync", naiBarMQSync, "naiBarMQSync[2][7]/D");
+                        tree->Branch("naiBarMQCal", naiBarMQCal, "naiBarMQCal[2][7]/D");
+                        tree->Branch("naiBarMSQCal", naiBarMSQCal, "naiBarMSQCal[2][7]/D");
                         tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
                         tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
                         tree->Branch("naiQId", &naiQId, "naiQId[2]/I");
 
 			tree->Branch("plasQCal",plasQCal,"plasQCal[4]/D");
 			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
+			tree->Branch("plasBarMQPed",plasBarMQPed,"plasBarMQPed[4]/D");
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
+			tree->Branch("plasMQ",&plasMQ,"plasMQ[2]/D");
 			tree->Branch("plasQ",&plasQ,"plasQ[2]/D");
 			tree->Branch("plasT",&plasT,"plasT[2]/D");
 
