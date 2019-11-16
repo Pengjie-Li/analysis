@@ -2858,3 +2858,24 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 13 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 2c5c3fb] v1.0
+ 24 files changed, 496 insertions(+), 1 deletion(-)
+ create mode 100644 merger/rootfiles/branch.C
+ rename merger/rootfiles/{run0442_analysed.root_test => run0442_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (68%)
+ rename merger/rootfiles/{run0443_analysed.root_test => run0443_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (68%)
+ rename merger/rootfiles/{run0444_analysed.root_test => run0444_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (68%)
+ rename merger/rootfiles/{run0445_analysed.root_test => run0445_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (68%)
+ rename merger/rootfiles/{run0446_analysed.root_test => run0446_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (68%)
+ rename merger/rootfiles/{run0447_analysed.root_test => run0447_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (68%)
+ rename merger/rootfiles/{run0586_analysed.root_test => run0586_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (68%)
+ rename merger/rootfiles/{run0593_analysed.root_test => run0593_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (68%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
