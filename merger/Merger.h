@@ -12,6 +12,7 @@
 
 #include "PlaEvent.h"
 #include "EspriEvent.h"
+#include "Fdc0Event.h"
 #include "TeleEvent.h"
 
 
@@ -79,11 +80,6 @@ class Merger{
 		Double_t CsIRRB_CAL;
 
 
-		double espriNaiEnergy;
-		//double espriPlasTime;
-		double espriPlasDeltaE;
-		double protonTheta;
-
 
 
 		TEnv *env;
@@ -135,7 +131,10 @@ class Merger{
 		Double_t getBDC2Z();
 
 
+		Fdc0Event *fdc0Event;
 		void analysingFDC0();
+		void printFDC0();
+
 		void analysingTELE();
 		TeleEvent *teleEvent;
 		void  getMultiplicity();
@@ -145,16 +144,9 @@ class Merger{
 
 		void analysingHOD();
 
-		void analysingESPRI();
 		EspriEvent *espriEvent;
+		void analysingESPRI();
 		void printESPRI();
-		void initAnalysedESPRI();
-		void setESPRIEvent();
-		TVector3 getESPRIPosition();
-		double getESPRINaiEnergy();
-		double getESPRIPlasTime();
-		double getESPRIPlasDeltaE();
-		void setProtonAngle();
 
 
 		void createOutput();

@@ -137,6 +137,9 @@ class CheckEspriEvent{
 
 class ESPRI3DPosition{
 	private:
+
+		TVector3 leftPlaneNorm;
+		TVector3 rightPlaneNorm;
 		TVector3 leftPedal;
 		TVector3 leftBaseX;
 		TVector3 leftBaseY;
@@ -156,9 +159,12 @@ class ESPRI3DPosition{
 			//rightBaseX.SetXYZ(0.494954,0.000000,-0.868919);
 			//rightBaseY.SetXYZ(0.000000,1.000000,-0.000000);
 			// Expected position
+			leftPlaneNorm.SetXYZ(-TMath::Sqrt(3)/2,0,0.5);
 			leftPedal.SetXYZ(-900.813644,0.000000,-3702.255000);
 			leftBaseX.SetXYZ(0.500000,0.000000,0.866025);
 			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
+
+			rightPlaneNorm.SetXYZ(TMath::Sqrt(3)/2,0,0.5);
 			rightPedal.SetXYZ(900.813644,0.000000,-3702.255000);
 			rightBaseX.SetXYZ(0.500000,0.000000,-0.866025);
 			rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
@@ -183,6 +189,10 @@ class ESPRI3DPosition{
 				baseY = rightBaseY;
 			}
 			return (pedal + X*baseX + Y*baseY);
+		}
+		TVector3 getESPRIPlaneNorm(int lr){
+			if(lr == 0) return leftPlaneNorm;
+			else return rightPlaneNorm;
 		}
 		~ESPRI3DPosition(){}
 };
@@ -313,8 +323,10 @@ class PositionESPRI{
 
 		double espriFL;
 		double espriAngle;
+		double espriLocusAngle;
 		TVector3 *espriRdcPosition;
 		TVector3 *espriPlasPosition;
+		TVector3 *vESPRI;
 
 		// intermediate var
 		TVector3 *targetPosition;
@@ -335,7 +347,11 @@ class PositionESPRI{
 		}
 
 		void setESPRIAngle(){
-			espriAngle = ((*espriRdcPosition)-(*targetPosition)).Angle((*vBeam))*TMath::RadToDeg();
+			(*vESPRI)	= (*espriRdcPosition)-(*targetPosition);
+			(*vESPRI)	= (*vESPRI).Unit();
+			espriAngle      = (*vESPRI).Angle((*vBeam))*TMath::RadToDeg();
+			TVector3 espriPlaneNorm = espri3DPosition->getESPRIPlaneNorm(checkData->getSideLR());
+			espriLocusAngle = (*vESPRI).Angle(espriPlaneNorm)*TMath::RadToDeg();
 		}
 		void setESPRIFL(){
 			espriFL = ((*espriPlasPosition)-(*targetPosition)).Mag();
@@ -355,6 +371,8 @@ class PositionESPRI{
 		void init(){
 			espriFL = NAN;
 			espriAngle = NAN;
+			espriLocusAngle = NAN;
+			vESPRI->SetXYZ(NAN,NAN,NAN);
 			espriRdcPosition->SetXYZ(NAN,NAN,NAN);
 			espriPlasPosition->SetXYZ(NAN,NAN,NAN);
 		}
@@ -365,16 +383,20 @@ class PositionESPRI{
 			setESPRIFL();//FL Flight Length
 		}
 		void setBranch(TTree *tree){
+			vESPRI = new TVector3;
 			espriRdcPosition = new TVector3;
 			espriPlasPosition = new TVector3;
+			tree->Branch("vESPRI","TVector3",&vESPRI);
 			tree->Branch("espriRdcPosition","TVector3",&espriRdcPosition);
 			tree->Branch("espriPlasPosition","TVector3",&espriPlasPosition);
 			tree->Branch("espriFL",&espriFL,"espriFL/D");
 			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
+			tree->Branch("espriLocusAngle",&espriLocusAngle,"espriLocusAngle/D");
 		}
 		void print(){
-			cout<<"Angle = "<<espriAngle<<endl;
+			cout<<"Angle = "<<espriAngle<<"  Locus Angle = "<<espriLocusAngle<<endl;
 			cout<<"FL = "<<espriFL<<endl;
+			vESPRI->Print();
 			espriRdcPosition->Print();
 			espriPlasPosition->Print();
 		}

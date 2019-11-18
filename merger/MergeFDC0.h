@@ -87,12 +87,14 @@ class MergeFDC0:public Convert{
 		}
 		void init(){
 		}
-		Double_t getFDC0X(){
+		double getFDC0X(){
 			return FDC0_X;
 		}
-		Double_t getFDC0Y(){
+		double getFDC0Y(){
 			return FDC0_Y;
+		}
+		void print(){
+			cout<<"FDC0_X = "<<FDC0_X<<"	FDC0_Y = "<<FDC0_Y<<endl;
 		}
 
 };
-

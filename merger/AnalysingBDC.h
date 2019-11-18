@@ -33,10 +33,6 @@ void Merger::printTarget(){
 void Merger::initAnalysedBDC(){
 
 		/********* BDC ***************/
-		//Target_X = NAN;
-		//Target_Y = NAN;
-		//Target_ThetaX = NAN;
-		//Target_ThetaY = NAN;
 		beamFL = NAN;
 		
 		vBDC1->SetXYZ(NAN,NAN,NAN);
