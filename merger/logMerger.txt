@@ -1,1 +1,6 @@
-2019-11-18 1. add espri local angle 2. add vector direction for residue
+2019-11-18
+	1. add espri local angle 
+	2. add vector direction for residue
+2019-11-19 
+	1. find a mistake in FDC0 Z position which should be negative
+	2. change Analying BDC into BdcEvent mode

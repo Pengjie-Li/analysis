@@ -3,8 +3,8 @@ void Merger::analysingTELE(){
 	getMultiplicity();
 
 	teleEvent->loadData(mergeTELE);
-	teleEvent->loadTargetPosition(vTarget);
-	teleEvent->loadBeamVector(vBeam);
+	teleEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
+	teleEvent->loadBeamVector(bdcEvent->getBeamVector());
 	teleEvent->setTELEEvent();
 	//if(maxEventNumber <1000) teleEvent->print();	
 	

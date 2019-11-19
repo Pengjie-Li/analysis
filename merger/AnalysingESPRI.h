@@ -4,8 +4,10 @@ void Merger::analysingESPRI(){
 	espriEvent->checkData(mergeESPRI);
 
 	// load Target and beam to check Flight Length and Proton angle
-	espriEvent->loadTargetPosition(vTarget);
-	espriEvent->loadBeamVector(vBeam);
+	
+	espriEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
+	espriEvent->loadBeamVector(bdcEvent->getBeamVector());
+	
 	espriEvent->setESPRIEvent();
 }
 void Merger::printESPRI(){

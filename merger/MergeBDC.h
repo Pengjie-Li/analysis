@@ -166,5 +166,10 @@ class MergeBDC:public Convert{
 		Double_t getBDC2Y(){
 			return BDC2_Y;
 		}
+		void print(){
+			cout<<"BDC1&2 Calib Data::"<<endl;
+			cout<<"BDC1_X = "<<BDC1_X<<"BDC1_Y = "<<BDC1_Y<<endl;
+			cout<<"BDC2_X = "<<BDC2_X<<"BDC2_Y = "<<BDC2_Y<<endl;
+		}
 
 };

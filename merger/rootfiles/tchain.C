@@ -26,14 +26,16 @@
 
 
 
+	int runStart = 366;
+	int runStop = 376;
+	
 //	int runStart = 366;
 //	int runStop = 445;
-	
 //	int runStart = 435;
 //	int runStop = 440;
 	for (int i = runStart; i < runStop; ++i) {
 		
-		tree->Add(Form("run0%d_analysed.root_3",i));
+		tree->Add(Form("run0%d_analysed.root_test",i));
 		//tree->Add(Form("run0%d_analysed.root",i));
 	}
 

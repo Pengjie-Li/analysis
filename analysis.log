@@ -2887,3 +2887,25 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4356ac5] v1.0
+ 25 files changed, 134 insertions(+), 75 deletions(-)
+ rewrite merger/AnalysingESPRI.h (79%)
+ create mode 100644 merger/FDC0Event.h
+ create mode 100644 merger/Fdc0Event.h
+ rewrite merger/Merger (90%)
+ create mode 100644 merger/logMerger.txt
+ rename merger/rootfiles/{run0442_analysed.root_test => run0442_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (69%)
+ rewrite merger/rootfiles/run0443_analysed.root_3 (68%)
+ rename merger/rootfiles/{run0444_analysed.root_test => run0444_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (69%)
+ rename merger/rootfiles/{run0445_analysed.root_test => run0445_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (69%)
+ rewrite merger/rootfiles/run0446_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0447_analysed.root_3 (68%)
+ rename merger/rootfiles/{run0474_analysed.root_test => run0474_analysed.root_3} (100%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (61%)
+ rewrite merger/rootfiles/run0586_analysed.root_3 (68%)
+ rewrite merger/rootfiles/run0593_analysed.root_3 (68%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

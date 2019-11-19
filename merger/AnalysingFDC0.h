@@ -5,8 +5,8 @@ void Merger::printFDC0(){
 void Merger::analysingFDC0(){
 
 	fdc0Event->loadFDC0(mergeFDC0);
-	fdc0Event->loadTargetPosition(vTarget);
-	fdc0Event->loadBeamVector(vBeam);
+	fdc0Event->loadTargetPosition(bdcEvent->getTargetPosotion());
+	fdc0Event->loadBeamVector(bdcEvent->getBeamVector());
 	fdc0Event->setFDC0Event();
 }
 void Merger::setFDC0OutputBranch(){

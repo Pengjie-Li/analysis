@@ -8,11 +8,11 @@
 #include "MergeHOD.h"
 #include "MergeESPRI.h"
 
-//#include "constant.h"
 
 #include "PlaEvent.h"
 #include "EspriEvent.h"
 #include "Fdc0Event.h"
+#include "BdcEvent.h"
 #include "TeleEvent.h"
 
 
@@ -46,16 +46,11 @@ class Merger{
 		Double_t Gamma37;
 		Double_t Ek37;
 
-
-		TVector3* vBeam;	
-		TVector3* vBDC1;	
-		TVector3* vBDC2;	
-		TVector3* vTarget;	
-		TVector3* vSBT;	
 		TVector3* vESPRI;	
 		TVector3* vDSSD;	
 		TVector3* vProton;
-		Double_t  beamFL;
+
+
 
 		//Double_t	Target_X ;
 		//Double_t	Target_Y ;
@@ -117,19 +112,9 @@ class Merger{
 		Double_t getF7Time();
 		Double_t getF13Time();
 	
-		void printBDC();
-		void printTarget();
+		BdcEvent *bdcEvent;
 		void analysingBDC();
-		void initAnalysedBDC();
-		Double_t getBDC1TargetRatio();
-		Double_t getBDC1SBTRatio();
-		Double_t getBDC1X();
-		Double_t getBDC1Y();
-		Double_t getBDC1Z();
-		Double_t getBDC2X();
-		Double_t getBDC2Y();
-		Double_t getBDC2Z();
-
+		void printBDC();
 
 		Fdc0Event *fdc0Event;
 		void analysingFDC0();

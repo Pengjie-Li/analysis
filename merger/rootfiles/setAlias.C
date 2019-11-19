@@ -1,16 +1,46 @@
 {
 
 
-	TString hodBe10He6 = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
-	TString	hodBe12He8 = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
+	TString hodBe10Be10 = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
+        TString hodBe10Be9  = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
+	TString hodBe10He6  = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+	TString	hodBe12He8  = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
+
+	TString hodBe14Bar29_27Be14 = "(Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+	TString hodBe14Bar23_19Be14 = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
+	TString hodBe14Bar32_27Be14 = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+	TString hodBe14Be14 = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14||Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
+
+	TString hodBe14Be12 = "(Be14Bar26Be12||Be14Bar25Be12||Be14Bar24Be12||Be14Bar23Be12||Be14Bar22Be12||Be14Bar21Be12||Be14Bar20Be12||Be14Bar19Be12)";
+	TString hodBe14Be11 = "(Be14Bar23Be11||Be14Bar22Be11||Be14Bar21Be11||Be14Bar20Be11||Be14Bar19Be11)";
+	TString hodBe14Be10 = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
+
 	TString dssdFB = "((abs(dssdSideQ[0]-dssdSideQ[1])<1)||(abs(dssdSideQ[0]-dssdSideQ[1])<1))";
 	TString lrSelect = "((plasQ[0]>2&&dssdSideQ[2]>2)||(plasQ[1]>2&&dssdSideQ[0]>2))";
+
 
 
 	tree->SetAlias("SOL","299.792458*1");
 	tree->SetAlias("AMU","931.49410242*1");
 	tree->SetAlias("MassBe10","10.0113*1");
 	tree->SetAlias("MassH","1.007276*1");
+
+	tree->SetAlias("xB","vBeam.X()");
+	tree->SetAlias("yB","vBeam.Y()");
+	tree->SetAlias("zB","vBeam.Z()");
+
+	tree->SetAlias("xP","vESPRI.X()");
+	tree->SetAlias("yP","vESPRI.Y()");
+	tree->SetAlias("zP","vESPRI.Z()");
+
+	tree->SetAlias("xR","vFDC0.X()");
+	tree->SetAlias("yR","vFDC0.Y()");
+	tree->SetAlias("zR","vFDC0.Z()");
+
+	TString planeOfBPR = "(xB*(yR*zP-yP*zR)+yB*(zR*xP-zP*xR)+zB*(xR*yP-xP*yR))";
+	TString planeOfTest1 = "(TMath::Sqrt(1/3.)*(yR*zP-yP*zR)+TMath::Sqrt(1/3.)*(zR*xP-zP*xR)+TMath::Sqrt(1/3.)*(xR*yP-xP*yR))";
+	TString planeOfTest2 = "(TMath::Sqrt(1/2.)*(yR*zP-yP*zR)+0.5*(zR*xP-zP*xR)+0.5*(xR*yP-xP*yR))";
+
 
 
 	//tree->SetAlias("TOFSbtTarget","flightLengthBeamTarget/(Beta713*SOL-0.911)");
@@ -34,17 +64,20 @@
 	//tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225)+0.000013*(rdcY[0]-225)*(rdcY[0]-225))");
 	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
 	//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
-	tree->SetAlias("espriLTOF","1.4*(plasT0-F13T-TOFSbtTarget+895.2)+20.27");
+	tree->SetAlias("espriLTOF","(plasT0-F13T-TOFSbtTarget+895.2)+20.27-2.47");
+	//tree->SetAlias("espriLTOF","1.4*(plasT0-F13T-TOFSbtTarget+895.2)+20.27");
 	//tree->SetAlias("betaL","(flightLengthTargetESPRI+200)/(SOL*espriLTOF)");
-	tree->SetAlias("betaL","espriFL/(SOL*espriLTOF)");
+	tree->SetAlias("betaL","(espriFL-150)/(SOL*espriLTOF)");
 	tree->SetAlias("gammaL","1/sqrt(1-betaL*betaL)");
 	tree->SetAlias("espriL_Ep","(gammaL-1)*AMU*MassH");
 
 	tree->SetAlias("plasT1","plasT[1]-0.0115*(rdcY[1]-225)");
-	tree->SetAlias("espriRTOF","(plasT1-F13T-TOFSbtTarget+895.2+20.27)");
+	//tree->SetAlias("espriRTOF","(plasT1-F13T-TOFSbtTarget+895)+20.27");
+	tree->SetAlias("espriRTOF","(plasT1-F13T-TOFSbtTarget+895)+20.27-2.47");
+	//tree->SetAlias("espriRTOF","1.4*(plasT1-F13T-TOFSbtTarget+895)+20.27");
 	//tree->SetAlias("espriRTOF","((plasT[1]-F13T+895.2+19.84)-TOFSbtTarget)");
 	//tree->SetAlias("betaR","(flightLengthTargetESPRI+200)/(SOL*espriRTOF)");
-	tree->SetAlias("betaR","espriFL/(SOL*espriRTOF)");
+	tree->SetAlias("betaR","(espriFL-150)/(SOL*espriRTOF)");
 	tree->SetAlias("gammaR","1/sqrt(1-betaR*betaR)");
 	tree->SetAlias("espriR_Ep","(gammaR-1)*AMU*MassH");
 

@@ -18,7 +18,10 @@ Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNu
 		mergePLA =new MergePLA(runNumber);
 		plaEvent = new PlaEvent();
 	}
-	if(kBDC) mergeBDC =new MergeBDC(runNumber);
+	if(kBDC) {
+		mergeBDC =new MergeBDC(runNumber);
+		bdcEvent = new BdcEvent();
+	}
 	if(kFDC0){
 		mergeFDC0 =new MergeFDC0(runNumber);
 		fdc0Event = new Fdc0Event();
@@ -67,10 +70,9 @@ void Merger::eventLoop(){
 }
 void Merger::print(){
 	//printPLA();	
-	//printBDC();	
-	printTarget();	
-	printESPRI();
-	//printFDC0();
+	printBDC();	
+	//printESPRI();
+	printFDC0();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){
