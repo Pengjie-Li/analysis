@@ -4,10 +4,13 @@
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
 	TGraph *sn = (TGraph *)gDirectory->Get("s2n");
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
+	gs->SetLineColor(1);
+	gs->SetLineWidth(1);
+	gs->SetLineStyle(2);
 	gs->Draw("l");
-	fex->Draw("l");
-	sn->Draw("l");
-	mex->Draw("l");
+//	fex->Draw("l");
+//	sn->Draw("l");
+//	mex->Draw("l");
 	_file0->cd();
 
 

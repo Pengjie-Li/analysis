@@ -295,7 +295,7 @@ class PPBe14:public PPScattering {
 		}
 };
 
-void ppBe(){
+void ppTest(){
 
 	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
@@ -305,8 +305,8 @@ void ppBe(){
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(334,363);
 	PPBe14 *ppBe = new PPBe14();
-	//ppBe->loadTChain(436,437);
-	ppBe->loadTChain(366,456);
+	ppBe->loadTChain(436,437);
+	//ppBe->loadTChain(366,456);
 
 	//ppBe->loadTChain();
 	ppBe->defineHodGate();
