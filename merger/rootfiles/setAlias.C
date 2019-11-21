@@ -5,6 +5,7 @@
         TString hodBe10Be9  = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 	TString hodBe10He6  = "(Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 	TString	hodBe12He8  = "(Be12Bar30He8||Be12Bar31He8||Be12Bar32He8||Be12Bar33He8||Be12Bar34He8||Be12Bar35He8||Be12Bar36He8)";
+	TString	hodBe12Be12 = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
 
 	TString hodBe14Bar29_27Be14 = "(Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 	TString hodBe14Bar23_19Be14 = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";

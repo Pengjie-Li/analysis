@@ -1,6 +1,8 @@
 2019-11-18
 	1. add espri local angle 
-	2. add vector direction for residue
+	2. add vector direction for residue, resAngle which is most likely the residue Theta
 2019-11-19 
 	1. find a mistake in FDC0 Z position which should be negative
 	2. change Analying BDC into BdcEvent mode
+2019-11-21
+	1. add Theta for FDC0, then use it Theta_proton vs Theta_Residue
