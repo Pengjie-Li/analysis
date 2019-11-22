@@ -17,7 +17,6 @@ class PPScattering{
 		TString phiGate;
 		TString thetaGate;
 		TString hodGate ;
-		TString protonEAGate;
 
 		TFile *outputFile;
 		TString outputName;
@@ -47,7 +46,6 @@ class PPScattering{
 			definePhiGate();
 			defineThetaGate();
 			defineTriggerGate();
-			defineProtonEAGate();
 
 			gate = triggerGate;
 
@@ -63,9 +61,6 @@ class PPScattering{
 		}
 		void addPhiGate(){
 			gate = gate +"&&"+ phiGate;
-		}
-		void addProtonEAGate(){
-			gate = gate +"&&"+ protonEAGate;
 		}
 		void addThetaGate(){
 			gate = gate +"&&"+ thetaGate;
@@ -83,9 +78,6 @@ class PPScattering{
 		void defineProtonGate(){
 			protonGate = "(Proton)";
 			//protonGate = "espriNaiEnergy>5&&espriPlasDeltaE>1";
-		}
-		void defineProtonEAGate(){
-			protonEAGate = "PPEA";
 		}
 		void definePhiGate(){
 			tree->SetAlias("xB","vBeam.X()");
@@ -156,7 +148,6 @@ class PPBe10:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutProtonBe10.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutPRAngleBe10.C");
-			gROOT->ProcessLine(".x rootfiles/cutPPEABe10.C");
 
 			gROOT->ProcessLine(".x rootfiles/cutBe10Bar23Be10.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe10Bar22Be10.C");
@@ -270,9 +261,7 @@ class PPBe14:public PPScattering {
 		}
 		void defineHodGate(){
 			//hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
-			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
-			hodGate = "(Be14Bar30Be14)";
-			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14)";
+			hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 			//hodGate = "(Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14||Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
 			//
@@ -288,30 +277,27 @@ class PPBe14:public PPScattering {
 
 void ppBe(){
 
-	//PPBe10 *ppBe = new PPBe10();
-	//ppBe->loadTChain(310,311);
+	PPBe10 *ppBe = new PPBe10();
+	ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
 	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(334,363);
-	PPBe14 *ppBe = new PPBe14();
+	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(436,446);
-	ppBe->loadTChain(366,456);
+	//ppBe->loadTChain(366,456);
 
 
 	// Proton dE vs E
-	//ppBe->defineDrawVar("espriPlasE","espriNaiE");
-	//ppBe->defineDrawRange(200,0,200,200,0,40);
+	ppBe->defineDrawVar("espriPlasE","espriNaiE");
+	ppBe->defineDrawRange(200,0,200,200,0,40);
 
-	// Proton Angle vs Residue Angle
-	//ppBe->defineDrawVar("espriAngle","resAngle");
-	//ppBe->defineDrawRange(500,1,5,500,55,75);
 
 	// Proton E vs A
-	ppBe->defineDrawVar("espriEnergy","espriAngle");
-	ppBe->defineDrawRange(200,40,80,200,0,200);
+	//ppBe->defineDrawVar("espriEnergy","espriAngle");
+	//ppBe->defineDrawRange(200,40,80,200,0,200);
 
 
 	ppBe->defineHodGate();
@@ -324,10 +310,9 @@ void ppBe(){
 	ppBe->addBeamGate();
 	ppBe->addProtonGate();
 	ppBe->addTargetArea();
-	//ppBe->addPhiGate();
-	//ppBe->addProtonEAGate();
+	ppBe->addPhiGate();
 	ppBe->addThetaGate();
-	ppBe->addHodGate();
+	//ppBe->addHodGate();
 
 	ppBe->assignOutputName();
 	ppBe->createOutputFile();
