@@ -288,17 +288,17 @@ class PPBe14:public PPScattering {
 
 void ppBe(){
 
-	//PPBe10 *ppBe = new PPBe10();
+	PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
-	//ppBe->loadTChain(298,330);
+	ppBe->loadTChain(298,330);
 	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
 	//ppBe->loadTChain(334,363);
-	PPBe14 *ppBe = new PPBe14();
+	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
 	//ppBe->loadTChain(436,446);
-	ppBe->loadTChain(366,456);
+	//ppBe->loadTChain(366,456);
 
 
 	// Proton dE vs E
@@ -306,12 +306,12 @@ void ppBe(){
 	//ppBe->defineDrawRange(200,0,200,200,0,40);
 
 	// Proton Angle vs Residue Angle
-	//ppBe->defineDrawVar("espriAngle","resAngle");
-	//ppBe->defineDrawRange(500,1,5,500,55,75);
+	ppBe->defineDrawVar("espriAngle","resAngle");
+	ppBe->defineDrawRange(500,1,5,500,55,75);
 
 	// Proton E vs A
-	ppBe->defineDrawVar("espriEnergy","espriAngle");
-	ppBe->defineDrawRange(200,40,80,200,0,200);
+	//ppBe->defineDrawVar("espriEnergy","espriAngle");
+	//ppBe->defineDrawRange(200,40,80,200,0,200);
 
 
 	ppBe->defineHodGate();
@@ -324,10 +324,10 @@ void ppBe(){
 	ppBe->addBeamGate();
 	ppBe->addProtonGate();
 	ppBe->addTargetArea();
-	//ppBe->addPhiGate();
-	//ppBe->addProtonEAGate();
-	ppBe->addThetaGate();
-	ppBe->addHodGate();
+	ppBe->addPhiGate();
+	ppBe->addProtonEAGate();
+	//ppBe->addThetaGate();
+	//ppBe->addHodGate();
 
 	ppBe->assignOutputName();
 	ppBe->createOutputFile();
