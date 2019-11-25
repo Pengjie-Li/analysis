@@ -1,8 +1,8 @@
 #include <TFile.h>
+
 class PPScattering{
 	private:
 
-		TChain *tree;
 		TString gate;
 		TString hName;
 		TH2F *h;
@@ -10,6 +10,7 @@ class PPScattering{
 		TString drawRange;
 
 	protected:
+		TChain *tree;
 		TString triggerGate;
 		TString targetArea ;
 		TString beamGate;
@@ -117,6 +118,25 @@ class PPScattering{
 		}
 		void loadCut(){
 		}
+                void defineAlias(){
+			
+                        tree->SetAlias("AMU","931.49410242*1");
+                        tree->SetAlias("MassH","1.007276*1");
+
+                        tree->SetAlias("beamMass","MassBe*AMU");
+                        tree->SetAlias("protonMass","MassH*AMU");
+                        tree->SetAlias("beamEk","Ek713*MassBe");
+
+                        tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
+                        tree->SetAlias("protonEk","espriEnergy");
+                        tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
+
+                        tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(espriAngle*TMath::DegToRad()))");
+                        tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
+                        tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
+                        tree->SetAlias("excitationEnergy","residueMass-beamMass");
+
+                }
 		void createOutputFile(){
 			cout<<outputName<<endl;
 			outputFile = new TFile(outputName,"recreate");
@@ -133,14 +153,30 @@ class PPScattering{
 		void defineDrawRange(int xBin,int xMin,int xMax,int yBin,int yMin,int yMax){
 			drawRange = Form("(%d,%d,%d,%d,%d,%d)",xBin,xMin,xMax,yBin,yMin,yMax);
 		}
+		void defineDrawVar(TString var){
+			drawVar = var+">>";
+		}
+		void defineDrawRange(int xBin,int xMin,int xMax){
+			drawRange = Form("(%d,%d,%d)",xBin,xMin,xMax);
+		}
+
 		void draw(){
 
 			printGate();
 			TCanvas *c = new TCanvas("ppET","ppET",1300,900);
 
+			//TString draw = drawVar;
 			TString draw = drawVar + hName + drawRange;
+			cout<<draw<<endl;
 			tree->Draw(draw,gate,"colz");
+			//tree->Scan(draw,gate);
 			h = (TH2F*)gDirectory->Get(hName);
+			TH1D *hpx = h->ProjectionX();
+			hpx->SetName("hpx");
+			hpx->Write();
+			TH1D *hpy = h->ProjectionY();
+			hpy->SetName("hpy");
+			hpy->Write();
 			h->Write();
 			c->Write();
 		}
@@ -150,6 +186,7 @@ class PPBe10:public PPScattering {
 	private:
 	public:
 		PPBe10(){
+			tree->SetAlias("MassBe","10.0113*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe10.C");
@@ -188,12 +225,14 @@ class PPBe12:public PPScattering {
 	private:
 	public:
 		PPBe12(){
+			tree->SetAlias("MassBe","12.0247*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe12.C");
 			gROOT->ProcessLine(".x rootfiles/cutProtonBe12.C");
 			gROOT->ProcessLine(".x rootfiles/cutTargetArea.C");
 			gROOT->ProcessLine(".x rootfiles/cutPRAngleBe10.C");
+			gROOT->ProcessLine(".x rootfiles/cutPPEABe12.C");
 
 			gROOT->ProcessLine(".x rootfiles/cutBe12Bar23Be12.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe12Bar22Be12.C");
@@ -218,6 +257,7 @@ class PPBe14:public PPScattering {
 	private:
 	public:
 		PPBe14(){
+			tree->SetAlias("MassBe","14.0407*1");
 		}
 		void loadCut(){
 			gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");
@@ -288,16 +328,14 @@ class PPBe14:public PPScattering {
 
 void ppBe(){
 
-	PPBe10 *ppBe = new PPBe10();
+	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
-	ppBe->loadTChain(298,330);
-	//PPBe12 *ppBe = new PPBe12();
-	//ppBe->loadTChain(341,342);
+	//ppBe->loadTChain(298,330);
+	PPBe12 *ppBe = new PPBe12();
+	ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
-	//ppBe->loadTChain(334,363);
 	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	//ppBe->loadTChain(436,446);
 	//ppBe->loadTChain(366,456);
 
 
@@ -306,14 +344,20 @@ void ppBe(){
 	//ppBe->defineDrawRange(200,0,200,200,0,40);
 
 	// Proton Angle vs Residue Angle
-	ppBe->defineDrawVar("espriAngle","resAngle");
-	ppBe->defineDrawRange(500,1,5,500,55,75);
+	//ppBe->defineDrawVar("espriAngle","resAngle");
+	//ppBe->defineDrawRange(500,1,5,500,55,75);
 
 	// Proton E vs A
 	//ppBe->defineDrawVar("espriEnergy","espriAngle");
-	//ppBe->defineDrawRange(200,40,80,200,0,200);
+	//ppBe->defineDrawRange(500,40,80,500,0,200);
+
+	// Excitation spectrum 
+	ppBe->defineDrawVar("excitationEnergy","espriAngle");
+	ppBe->defineDrawRange(500,40,80,1000,-20,80);
 
 
+	ppBe->defineAlias();
+	
 	ppBe->defineHodGate();
 	ppBe->defineBeamGate();
 	ppBe->defineGate();
@@ -325,8 +369,8 @@ void ppBe(){
 	ppBe->addProtonGate();
 	ppBe->addTargetArea();
 	ppBe->addPhiGate();
-	ppBe->addProtonEAGate();
-	//ppBe->addThetaGate();
+	//ppBe->addProtonEAGate();
+	ppBe->addThetaGate();
 	//ppBe->addHodGate();
 
 	ppBe->assignOutputName();

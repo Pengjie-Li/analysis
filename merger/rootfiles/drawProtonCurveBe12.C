@@ -6,11 +6,19 @@
 	TGraph *mex = (TGraph *)gDirectory->Get("mex");
 	gs->SetLineColor(1);
 	gs->SetLineWidth(1);
-	gs->SetLineStyle(2);
+	gs->SetLineStyle(1);
 	
 	gs->Draw("l");
-	//fex->Draw("l");
-	//sn->Draw("l");
+
+	fex->SetLineColor(1);
+	fex->SetLineWidth(1);
+	fex->SetLineStyle(1);
+	fex->Draw("l");
+
+	sn->SetLineColor(1);
+	sn->SetLineWidth(1);
+	sn->SetLineStyle(1);
+	sn->Draw("l");
 	//mex->Draw("l");
 	_file0->cd();
 
