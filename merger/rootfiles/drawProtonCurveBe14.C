@@ -7,19 +7,19 @@
 	gs->SetLineColor(1);
 	gs->SetLineWidth(1);
 	gs->SetLineStyle(2);
-	gs->Draw("l");
+	gs->Draw("lsame");
 
-	fex->SetLineColor(1);
-	fex->SetLineWidth(1);
-	fex->SetLineStyle(2);
-	
-	fex->Draw("l");
-
-	sn->SetLineColor(1);
-	sn->SetLineWidth(1);
-	sn->SetLineStyle(2);
-	
-	sn->Draw("l");
+//	fex->SetLineColor(1);
+//	fex->SetLineWidth(1);
+//	fex->SetLineStyle(2);
+//	
+//	fex->Draw("l");
+//
+//	sn->SetLineColor(1);
+//	sn->SetLineWidth(1);
+//	sn->SetLineStyle(2);
+//	
+//	sn->Draw("l");
 //	mex->Draw("l");
 	_file0->cd();
 

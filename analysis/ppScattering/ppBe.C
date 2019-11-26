@@ -305,15 +305,15 @@ class PPBe14:public PPScattering {
 		}
 
 		void assignOutputName(){
-			outputName = "ppBe14HistoBe10Bar27-29.root";
+			outputName = "ppBe14Histo.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
 			//hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
-			hodGate = "(Be14Bar30Be14)";
+			//hodGate = "(Be14Bar30Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14)";
-			//hodGate = "(Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+			hodGate = "(Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14||Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
 			//
 			//hodGate = "(Be14Bar26Be12||Be14Bar25Be12||Be14Bar24Be12||Be14Bar23Be12||Be14Bar22Be12||Be14Bar21Be12||Be14Bar20Be12||Be14Bar19Be12)";
@@ -331,12 +331,12 @@ void ppBe(){
 	//PPBe10 *ppBe = new PPBe10();
 	//ppBe->loadTChain(310,311);
 	//ppBe->loadTChain(298,330);
-	PPBe12 *ppBe = new PPBe12();
-	ppBe->loadTChain(341,342);
+	//PPBe12 *ppBe = new PPBe12();
+	//ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
-	//PPBe14 *ppBe = new PPBe14();
+	PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	//ppBe->loadTChain(366,456);
+	ppBe->loadTChain(366,456);
 
 
 	// Proton dE vs E

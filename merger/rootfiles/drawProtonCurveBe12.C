@@ -10,15 +10,15 @@
 	
 	gs->Draw("l");
 
-	fex->SetLineColor(1);
-	fex->SetLineWidth(1);
-	fex->SetLineStyle(1);
-	fex->Draw("l");
-
-	sn->SetLineColor(1);
-	sn->SetLineWidth(1);
-	sn->SetLineStyle(1);
-	sn->Draw("l");
+//	fex->SetLineColor(1);
+//	fex->SetLineWidth(1);
+//	fex->SetLineStyle(1);
+//	fex->Draw("l");
+//
+//	sn->SetLineColor(1);
+//	sn->SetLineWidth(1);
+//	sn->SetLineStyle(1);
+//	sn->Draw("l");
 	//mex->Draw("l");
 	_file0->cd();
 
