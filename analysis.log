@@ -2982,3 +2982,18 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawCurveEspriEtotEplas.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e27f028] v1.0
+ 20 files changed, 80 insertions(+), 65 deletions(-)
+ create mode 100644 analysis/ppScattering/v11_ppBe10_Ex.root_TriBPTPhiTheta
+ create mode 100644 analysis/ppScattering/v11_ppBe10_Ex.root_TriBPTPhiThetaBar19-23_Be10
+ rewrite analysis/ppScattering/v11_ppBe12_EA.root_TriBPTPhiTheta (97%)
+ rewrite analysis/ppScattering/v11_ppBe12_EA.root_TriBPTPhiThetaHodBar19-23 (99%)
+ create mode 100644 analysis/ppScattering/v11_ppBe12_Ex.root_TriBPTPhiThetaBar19-23_Be10
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar27-30
+ create mode 100644 analysis/ppScattering/v11_ppBe14_Ex_TriBPTPhiTheta
+ create mode 100644 analysis/ppScattering/v11_ppBe14_Ex_TriBPTPhiThetaHodBar27-30
+ rewrite merger/rootfiles/cutBe14Bar28Be14.C (71%)
+ rename merger/rootfiles/{cutBe14Bar28Be14.C => cutBe14Bar28Be14.C_smallArea} (100%)
+ rewrite merger/rootfiles/drawHodBarQT.C (86%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
