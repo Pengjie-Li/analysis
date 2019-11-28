@@ -3,8 +3,8 @@
         double targety=-1.10;
         //double targety=-1.50;
         //double targety=-1.60;
-	double selectRadius = 16;
-        TEllipse *Si1 = new TEllipse(targetx,targety,selectRadius,selectRadius);
+	double outerRadius = 16;
+        TEllipse *Si1 = new TEllipse(targetx,targety,outerRadius,outerRadius);
         Si1->SetLineColor(2);
         Si1->SetLineWidth(2);
         Si1->SetFillStyle(0);
@@ -20,8 +20,8 @@
         Si2->SetLineStyle(1);
         Si2->Draw("same");
 
-        Double_t targetRadius=13;
-        TEllipse *Si3 = new TEllipse(targetx,targety,targetRadius,targetRadius);
+        Double_t selectRadius=13;
+        TEllipse *Si3 = new TEllipse(targetx,targety,selectRadius,selectRadius);
         Si3->SetLineColor(2);
         Si3->SetLineWidth(2);
         Si3->SetFillStyle(0);
@@ -44,6 +44,15 @@
         bneck->SetFillStyle(0);
         bneck->SetLineColor(2);
 	bneck->Draw("same");
- 
-}
 
+	// draw text
+	TLatex l;
+	l.SetTextSize(0.025);
+	//l.SetTextAngle(30.);
+	l.SetTextAngle(0.);
+	//DrawLatex: xPos, yPos, Content
+	l.DrawLatex(0,-30,Form("(r1 = %g)",selectRadius));
+	l.DrawLatex(0,-33,Form("(r2 = %g)",targetRadius));
+	l.DrawLatex(0,-36,Form("(r3 = %g)",outerRadius));
+
+}

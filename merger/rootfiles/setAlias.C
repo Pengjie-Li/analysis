@@ -117,6 +117,8 @@
 	tree->SetAlias("lrbE","0.297221*lrbQSync/(1-0.000182688*lrbQSync)");
 
 
+	tree->SetAlias("Target_X","vTarget.X()");
+	tree->SetAlias("Target_Y","vTarget.Y()");
 
 
 

@@ -267,6 +267,7 @@ class PPBe14:public PPScattering {
 			gROOT->ProcessLine(".x rootfiles/cutPRAngleBe14.C");
 			
 
+			gROOT->ProcessLine(".x rootfiles/cutBe14Bar33Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe14Bar32Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe14Bar31Be14.C");
 			gROOT->ProcessLine(".x rootfiles/cutBe14Bar30Be14.C");
@@ -305,15 +306,16 @@ class PPBe14:public PPScattering {
 		}
 
 		void assignOutputName(){
-			outputName = "ppBe14Histo.root";
+			outputName = "ppBe14HistoBar28.root";
 			//cout<<outputName<<endl;
 		}
 		void defineHodGate(){
 			//hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
-			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+			hodGate = "(Be14Bar33Be14||Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14)";
+			//hodGate = "(Be14Bar28Be14)";
 			//hodGate = "(Be14Bar30Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14)";
-			hodGate = "(Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+			//hodGate = "(Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14||Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
 			//
 			//hodGate = "(Be14Bar26Be12||Be14Bar25Be12||Be14Bar24Be12||Be14Bar23Be12||Be14Bar22Be12||Be14Bar21Be12||Be14Bar20Be12||Be14Bar19Be12)";
@@ -344,16 +346,16 @@ void ppBe(){
 	//ppBe->defineDrawRange(200,0,200,200,0,40);
 
 	// Proton Angle vs Residue Angle
-	//ppBe->defineDrawVar("espriAngle","resAngle");
-	//ppBe->defineDrawRange(500,1,5,500,55,75);
+	ppBe->defineDrawVar("espriAngle","resAngle");
+	ppBe->defineDrawRange(500,1,5,500,55,75);
 
 	// Proton E vs A
 	//ppBe->defineDrawVar("espriEnergy","espriAngle");
 	//ppBe->defineDrawRange(500,40,80,500,0,200);
 
 	// Excitation spectrum 
-	ppBe->defineDrawVar("excitationEnergy","espriAngle");
-	ppBe->defineDrawRange(500,40,80,1000,-20,80);
+	//ppBe->defineDrawVar("excitationEnergy","espriAngle");
+	//ppBe->defineDrawRange(500,40,80,1000,-20,80);
 
 
 	ppBe->defineAlias();
@@ -370,8 +372,8 @@ void ppBe(){
 	ppBe->addTargetArea();
 	ppBe->addPhiGate();
 	//ppBe->addProtonEAGate();
-	ppBe->addThetaGate();
-	//ppBe->addHodGate();
+	//ppBe->addThetaGate();
+	ppBe->addHodGate();
 
 	ppBe->assignOutputName();
 	ppBe->createOutputFile();
