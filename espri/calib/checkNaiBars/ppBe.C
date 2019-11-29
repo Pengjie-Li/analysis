@@ -4,9 +4,9 @@ class PPScattering{
 	private:
 
 		TString gate;
-		TString hName;
-		TH2F *h;
-		TString drawVar;
+		TString hName[2][7];
+		TH2F *h[2][7];
+		TString drawVar[2][7];
 		TString drawRange;
 
 	protected:
@@ -114,7 +114,13 @@ class PPScattering{
 			targetArea="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<13)";
 		}
 		void defineName(){
-			hName = "hBPTH";
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+
+					hName[i][j] = Form("h%d%d",i,j);
+				}
+
+			}
 		}
 		void loadCut(){
 		}
@@ -148,7 +154,12 @@ class PPScattering{
 
 		virtual void assignOutputName();
 		void defineDrawVar(TString var1,TString var2){
-			drawVar = var1+":"+var2+">>";
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					TString var11 = var1 + Form("[%d][%d]",i,j);
+					drawVar[i][j] = var11+":"+var2+">>";
+				}
+			}
 		}
 		void defineDrawRange(int xBin,int xMin,int xMax,int yBin,int yMin,int yMax){
 			drawRange = Form("(%d,%d,%d,%d,%d,%d)",xBin,xMin,xMax,yBin,yMin,yMax);
@@ -164,20 +175,24 @@ class PPScattering{
 
 			printGate();
 			TCanvas *c = new TCanvas("ppET","ppET",1300,900);
+			c->Divide(7,2);
 
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+
+					c->cd(i*7+j+1);
+					TString draw = drawVar[i][j] + hName[i][j] + drawRange;
+					cout<<draw<<endl;
+					tree->Draw(draw,gate,"colz");
+					//tree->Scan(draw,gate);
+					h[i][j] = (TH2F*)gDirectory->Get(hName[i][j]);
+					h[i][j]->Write();
+					c->Modified();
+					c->Update();
+				}
+
+			}
 			//TString draw = drawVar;
-			TString draw = drawVar + hName + drawRange;
-			cout<<draw<<endl;
-			tree->Draw(draw,gate,"colz");
-			//tree->Scan(draw,gate);
-			h = (TH2F*)gDirectory->Get(hName);
-			TH1D *hpx = h->ProjectionX();
-			hpx->SetName("hpx");
-			hpx->Write();
-			TH1D *hpy = h->ProjectionY();
-			hpy->SetName("hpy");
-			hpy->Write();
-			h->Write();
 			c->Write();
 		}
 
@@ -311,9 +326,7 @@ class PPBe14:public PPScattering {
 		}
 		void defineHodGate(){
 			//hodGate = "(Be14Bar23Be14||Be14Bar22Be14||Be14Bar21Be14||Be14Bar20Be14||Be14Bar19Be14)";
-			hodGate = "(Be14Bar29Be14||Be14Bar28Be14)";
-			//hodGate = "(Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14)";
-			//hodGate = "(Be14Bar33Be14||Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14)";
+			hodGate = "(Be14Bar33Be14||Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14)";
 			//hodGate = "(Be14Bar28Be14)";
 			//hodGate = "(Be14Bar30Be14)";
 			//hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14)";
@@ -352,7 +365,7 @@ void ppBe(){
 	//ppBe->defineDrawRange(500,1,5,500,55,75);
 
 	// Proton E vs A
-	ppBe->defineDrawVar("espriEnergy","espriAngle");
+	ppBe->defineDrawVar("naiBarMSQCal","espriAngle");
 	ppBe->defineDrawRange(500,40,80,500,0,200);
 
 	// Excitation spectrum 
@@ -369,10 +382,10 @@ void ppBe(){
 
 	
 	//Gate select
-	ppBe->addBeamGate();
-	ppBe->addProtonGate();
+	//ppBe->addBeamGate();
+	//ppBe->addProtonGate();
 	ppBe->addTargetArea();
-	ppBe->addPhiGate();
+	//ppBe->addPhiGate();
 	//ppBe->addProtonEAGate();
 	ppBe->addThetaGate();
 	ppBe->addHodGate();

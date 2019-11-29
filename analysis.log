@@ -3001,3 +3001,32 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 15 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0baff1f] v1.0
+ 32 files changed, 318 insertions(+), 142 deletions(-)
+ create mode 100644 analysis/ppScattering/cutPRAngleBe14.C
+ create mode 100644 analysis/ppScattering/v11_ppBe14_AA_TriBPTPhiHodBe14Be12Bar19-26
+ create mode 100644 analysis/ppScattering/v11_ppBe14_AA_TriBPTPhiHodBe14Be14Bar28-33
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar28
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar28-33
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar29
+ rewrite analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar30 (97%)
+ rewrite analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar31 (97%)
+ rewrite analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar32 (95%)
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaHodBar33
+ rewrite merger/rootfiles/cutBe14Bar24Be12.C (74%)
+ create mode 100644 merger/rootfiles/cutBe14Bar24Be14.C
+ create mode 100644 merger/rootfiles/cutBe14Bar28Be14.C_v1
+ rewrite merger/rootfiles/cutBe14Bar29Be14.C (81%)
+ rename merger/rootfiles/{cutBe14Bar29Be14.C => cutBe14Bar29Be14.C_v1} (100%)
+ rewrite merger/rootfiles/cutBe14Bar30Be14.C (75%)
+ rename merger/rootfiles/{cutBe14Bar30Be14.C => cutBe14Bar30Be14.C_v1} (100%)
+ rewrite merger/rootfiles/cutBe14Bar31Be14.C (75%)
+ rename merger/rootfiles/{cutBe14Bar31Be14.C => cutBe14Bar31Be14.C_v1} (100%)
+ rewrite merger/rootfiles/cutBe14Bar32Be14.C (76%)
+ rename merger/rootfiles/{cutBe14Bar32Be14.C => cutBe14Bar32Be14.C_v1} (100%)
+ create mode 100644 merger/rootfiles/cutBe14Bar33Be14.C
+ create mode 100644 merger/rootfiles/drawCurveProtonBe10.C
+ create mode 100644 merger/rootfiles/drawCurveProtonBe12.C
+ create mode 100644 merger/rootfiles/drawCurveProtonBe14.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
