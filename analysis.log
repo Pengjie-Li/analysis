@@ -3030,3 +3030,19 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawCurveProtonBe14.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 011332e] v1.0
+ 15 files changed, 491 insertions(+), 76 deletions(-)
+ create mode 100644 analysis/ppScattering/v11_ppBe14_AA_TriBPTPhiHodBe10Bar19-23
+ create mode 100644 analysis/ppScattering/v11_ppBe14_AA_TriBPTPhiHodBe12Bar19-26
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaBe10Bar19-23
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaBe12Bar19-26
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaBe14Bar28-29
+ create mode 100644 analysis/ppScattering/v11_ppBe14_EA.root_TriBPTPhiThetaBe14Bar28-30
+ create mode 100644 espri/calib/checkNaiBars/ppBe.C
+ create mode 100644 espri/calib/checkNaiBars/ppBe14.root_TrigTargetPRAngleBe14Bar28-33
+ create mode 120000 espri/calib/checkNaiBars/rootfiles
+ rewrite merger/rootfiles/cutPRAngleBe10.C (64%)
+ rewrite merger/rootfiles/cutPRAngleBe12.C (72%)
+ rewrite merger/rootfiles/cutPRAngleBe14.C (69%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
