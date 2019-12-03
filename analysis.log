@@ -3054,3 +3054,21 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master aba7c96] v1.0
+ 18 files changed, 1595 insertions(+)
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/Event.h
+ create mode 100755 espri/calib/generatePPScattering/ppBe14/Makefile
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/ReadFile.h
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/configPPBe.prm
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/convert.sh
+ create mode 100755 espri/calib/generatePPScattering/ppBe14/header.h
+ create mode 120000 espri/calib/generatePPScattering/ppBe14/inputRootfiles
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/loop.sh
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/main.cpp
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/ppBe.cpp
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/ppBe.h
+ create mode 100755 espri/calib/generatePPScattering/ppBe14/ppBe14
+ create mode 100644 merger/rootfiles/drawCurveNaiEvsAngle.C
+ create mode 100644 merger/rootfiles/merger.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -130,7 +130,8 @@ class Event{
 			delete gc;
 		}
 		bool selectEvent(){
-			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
+			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
+			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
 			//return isBeam();
 			//return isProton();
 			//return isTargetArea();

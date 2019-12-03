@@ -339,12 +339,12 @@ class ESPRINaiCal{
 		ESPRINaiCalPara *naiPara;
 
 		double naiQPed[4][7];
+		double naiBarQPed[2][7]; // Magnet
 		double naiBarMQPed[2][7]; // Magnet
 		double naiBarMQSync[2][7]; // Sync Bars in Be10 setting
 		double naiBarMSQCal[2][7]; // Mag and Sync Cal under Bar00 and Bar10 
 		double naiBarMQCal[2][7];
 		double naiBarQCal[2][7];
-		//double naiBarQPed[2][7];
 		double naiQ[2];
 		int    naiQId[2];
 
@@ -362,7 +362,8 @@ class ESPRINaiCal{
 			for (int i = 0; i < 2; ++i) {
 				for (int j = 0; j < 7; ++j) {
 					if(naiQPed[2*i][j]>0&&naiQPed[2*i+1][j]>0){
-						naiBarMQPed[i][j] = getMagnetPara(runNumber,i,j)*sqrt(naiQPed[2*i][j]*naiQPed[2*i+1][j]);
+						naiBarQPed[i][j] = sqrt(naiQPed[2*i][j]*naiQPed[2*i+1][j]);
+						naiBarMQPed[i][j] = getMagnetPara(runNumber,i,j)* naiBarQPed[i][j];
 						naiBarMQSync[i][j] = getBarSyncPara(i,j)*naiBarMQPed[i][j];
 					}
 				}
@@ -441,6 +442,7 @@ class ESPRINaiCal{
 				for(int j=0;j<7;j++){
 					naiQPed[i][j] = -9999;
 					if(i%2==0){
+						naiBarQPed[i/2][j] = -9999;
 						naiBarMQPed[i/2][j] = -9999;
 						naiBarMQSync[i/2][j] = -9999;
 						naiBarMSQCal[i/2][j] = -9999;
@@ -486,7 +488,7 @@ class ESPRINaiCal{
 
 					//if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = getBarGain(i,j)*sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]);
 					//if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = linearCalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
-					if(naiQPed[i*2][j]>0&&naiQPed[i*2+1][j]>0)  naiBarQCal[i][j] = pol3CalibNaiBar(i,j,sqrt(naiQPed[i*2][j]*naiQPed[i*2+1][j]));
+					if(naiBarQPed[i][j]>0)  naiBarQCal[i][j] = pol3CalibNaiBar(i,j,naiBarQPed[i][j]);
 					if(naiBarMQPed[i][j]>0)  naiBarMQCal[i][j] = pol3CalibNaiBarMagnet(i,j,naiBarMQPed[i][j]);
 					if(naiBarMQSync[i][j]>0)  naiBarMSQCal[i][j] = pol3CalibNaiBarMagnet(i,0,naiBarMQSync[i][j]);
 				}
@@ -503,7 +505,7 @@ class ESPRINaiCal{
 			}
 			for (int i = 0; i < 2; ++i) {
 				for (int j = 0; j < 7; ++j) {
-					cout<<i<<" "<<j<<" "<<naiBarMQPed[i][j]<<" "<<naiBarMQCal[i][j]<<" "<<naiBarQCal[i][j]<<endl;
+					cout<<i<<" "<<j<<" "<<naiBarQPed[i][j]<<" "<<naiBarMQPed[i][j]<<" "<<naiBarMQCal[i][j]<<" "<<naiBarQCal[i][j]<<endl;
 				}	
 			}
 
@@ -512,6 +514,7 @@ class ESPRINaiCal{
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
+			tree->Branch("naiBarQPed", naiBarQPed, "naiBarQPed[2][7]/D");
 			tree->Branch("naiBarMQPed", naiBarMQPed, "naiBarMQPed[2][7]/D");
 			tree->Branch("naiBarMQSync", naiBarMQSync, "naiBarMQSync[2][7]/D");
 			tree->Branch("naiBarMSQCal", naiBarMSQCal, "naiBarMSQCal[2][7]/D");
@@ -615,6 +618,7 @@ class ESPRIPlasCal{
 		ESPRIPlasCalPara *plasPara;
 		
 		double plasQPed[4];
+		double plasBarQPed[4];
 		double plasTCal[4];	
 		double plasBarMQPed[2];// plasMQPed -> M Magnet
 		double plasQ[2];
@@ -670,8 +674,9 @@ class ESPRIPlasCal{
 
 		void setPlasQ(int side){
 			if(plasQPed[2*side]>0&&plasQPed[2*side+1]>0){
-				plasBarMQPed[side] = getMagnetPara()*sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
-				plasQ[side] = sqrt(plasQPed[2*side]*plasQPed[2*side+1])/(getBirksParA(side)+getBirksParB(side)*sqrt(plasQPed[2*side]*plasQPed[2*side+1]));
+				plasBarQPed[side] = sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
+				plasBarMQPed[side] = getMagnetPara()* plasBarQPed[side];
+				plasQ[side] = plasBarQPed[side]/(getBirksParA(side)+getBirksParB(side)*plasBarQPed[side]);
 				plasMQ[side] = plasBarMQPed[side]/(getBirksBe10ParA(side)+getBirksBe10ParB(side)*plasBarMQPed[side]);
 			}
 		}
@@ -730,6 +735,8 @@ class ESPRIPlasCal{
 
 			plasMQ[0] = -9999;
 			plasMQ[1] = -9999;
+			plasBarQPed[0] = -9999;
+			plasBarQPed[1] = -9999;
 			plasBarMQPed[0] = -9999;
 			plasBarMQPed[1] = -9999;
 			plasQ[0] = -9999;
@@ -795,6 +802,7 @@ class ESPRIPlasCal{
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
+			tree->Branch("plasBarQPed",plasBarQPed,"plasBarQPed[2]/D");
 			tree->Branch("plasBarMQPed",plasBarMQPed,"plasBarMQPed[2]/D");
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
 			tree->Branch("plasMQ",plasMQ,"plasMQ[2]/D");
