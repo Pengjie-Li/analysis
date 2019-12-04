@@ -27,5 +27,4 @@
         tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
         tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
         tree->SetAlias("excitationEnergy","residueMass-beamMass");
-
 }

@@ -88,7 +88,7 @@ class CheckEx{
 			tree->SetAlias("AMU","931.49410242*1");
 			tree->SetAlias("MassBe10","10.0113*1");
 			tree->SetAlias("MassH","1.007276*1");
-			tree->SetAlias("beamMass","MassBe10*AMU");
+			tree->SetAlias("beamMass","MassBe14*AMU");
 			tree->SetAlias("protonMass","MassH*AMU");
 
 			// Could be better	
