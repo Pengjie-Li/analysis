@@ -218,7 +218,7 @@ class PPBe10:public PPScattering {
 			//hodGate = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
 		}
 		void defineBeamGate(){
-			beamGate = "(BeamBe10)";
+			beamGate = "(Beam)";
 		}
 };
 class PPBe12:public PPScattering {
@@ -249,7 +249,7 @@ class PPBe12:public PPScattering {
 			hodGate = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
 		}
 		void defineBeamGate(){
-			beamGate = "(BeamBe12)";
+			beamGate = "(Beam)";
 		}
 };
 
@@ -325,7 +325,7 @@ class PPBe14:public PPScattering {
 			//hodGate = "(Be14Bar23Be10||Be14Bar22Be10||Be14Bar21Be10||Be14Bar20Be11||Be14Bar19Be10)";
 		}
 		void defineBeamGate(){
-			beamGate = "(BeamBe14)";
+			beamGate = "(Beam)";
 			//beamGate = "SmallBeamBe14";
 		}
 };
@@ -338,9 +338,9 @@ void ppBe(){
 	//PPBe12 *ppBe = new PPBe12();
 	//ppBe->loadTChain(341,342);
 	//ppBe->loadTChain(334,365);
-	PPBe14 *ppBe = new PPBe14();
+	//PPBe14 *ppBe = new PPBe14();
 	//ppBe->loadTChain(436,437);
-	ppBe->loadTChain(366,456);
+	//ppBe->loadTChain(366,456);
 
 
 	// Proton dE vs E

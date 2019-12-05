@@ -86,16 +86,21 @@ class CheckEx{
 
 			tree->SetAlias("SOL","299.792458*1");
 			tree->SetAlias("AMU","931.49410242*1");
-			tree->SetAlias("MassBe10","10.0113*1");
-			tree->SetAlias("MassH","1.007276*1");
-			tree->SetAlias("beamMass","MassBe14*AMU");
+			
+			tree->SetAlias("MassBe10","10.0113404*1");
+			tree->SetAlias("MassBe12","12.02472781*1");
+			tree->SetAlias("MassBe14","14.04069708*1");
+
+			tree->SetAlias("MassBe","MassBe14*1");
+			tree->SetAlias("MassH","1.007276452*1");
+			tree->SetAlias("beamMass","MassBe*AMU");
 			tree->SetAlias("protonMass","MassH*AMU");
 
 			// Could be better	
-			tree->SetAlias("beamEk","(Ek713-3.765)*MassBe10");
+			tree->SetAlias("beamEk","(Ek713-3.765)*MassBe");
 
 
-			tree->SetAlias("dEplas",Form("%4f*plasBarQPed%d+%4f",gPlas,side,dPlas));
+			tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
 			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
 			tree->SetAlias("protonEk","dEplas+Enai");
 
@@ -158,19 +163,20 @@ void checkExEnergy(){
 
 	//int side = 0; int barId = 0;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 3; 
 	//int side = 0; int barId = 1;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 3; 
-	//int side = 0; int barId = 2;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 3; 
+	//int side = 0; int barId = 2;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 2.5; 
 	//int side = 0; int barId = 3;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 7; 
 
+	int side = 0; int barId = 4;double gPlas = 0.0037500;double dPlas = -0.0001; double gNai = 0.033; double dNai = 10; 
 	//int side = 0; int barId = 4;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.033; double dNai = 10; 
 	//int side = 0; int barId = 5;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 3; 
 	//int side = 0; int barId = 6;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 3; 
-	//int side = 1; int barId = 0;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 12.5; 
+	//int side = 1; int barId = 0;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 11.5; 
 	//int side = 1; int barId = 1;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 12.5; 
 	//int side = 1; int barId = 2;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 16; 
 	//int side = 1; int barId = 3;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
 	//int side = 1; int barId = 4;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
-	//int side = 1; int barId = 5;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 21; 
-	int side = 1; int barId = 6;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 11; 
+	//int side = 1; int barId = 5;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
+	//int side = 1; int barId = 6;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 10; 
 
 	CheckEx *ce = new CheckEx();
 	ce->setBar(side,barId);
@@ -180,3 +186,21 @@ void checkExEnergy(){
 	ce->drawCurve();
 	ce->output();
 }
+
+	//int side = 0; int barId = 0;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 3; 
+	//int side = 0; int barId = 1;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 3; 
+	//int side = 0; int barId = 2;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 2.5; 
+	//int side = 0; int barId = 3;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.04; double dNai = 7; 
+
+	//int side = 0; int barId = 4;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.033; double dNai = 10; 
+	//int side = 0; int barId = 5;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 3; 
+	//int side = 0; int barId = 6;double gPlas = 0.0037500;double dPlas = 0; double gNai = 0.040; double dNai = 3; 
+	//int side = 1; int barId = 0;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 11.5; 
+	//int side = 1; int barId = 1;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 12.5; 
+	//int side = 1; int barId = 2;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 16; 
+	//int side = 1; int barId = 3;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
+	//int side = 1; int barId = 4;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
+	//int side = 1; int barId = 5;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 20; 
+	//int side = 1; int barId = 6;double gPlas = 0.0035000;double dPlas = 1; double gNai = 0.037; double dNai = 10; 
+
+

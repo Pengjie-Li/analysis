@@ -2,7 +2,7 @@
 //========= Macro generated from object: BeamBe10/Graph
 //========= by ROOT version5.34/20
    
-   TCutG *cutg = new TCutG("BeamBe10",15);
+   TCutG *cutg = new TCutG("Beam",15);
    cutg->SetVarX("TOF713");
    cutg->SetVarY("F13Q");
    cutg->SetTitle("Graph");
