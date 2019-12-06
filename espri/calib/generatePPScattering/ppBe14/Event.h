@@ -73,7 +73,7 @@ class GateCut{
 
 		}
 		void getCut(){
-			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("BeamBe14");
+			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Beam");
 			protonCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Proton");
 			prAngleCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("PRAngle");
 		}
@@ -131,7 +131,9 @@ class Event{
 		}
 		bool selectEvent(){
 			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
-			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
+			//return isBeam()&&isProton()&&isTargetArea()&&isHodPid();
+			return isBeam()&&isProton()&&isTargetArea();
+			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
 			//return isBeam();
 			//return isProton();
 			//return isTargetArea();

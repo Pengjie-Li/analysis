@@ -3124,3 +3124,46 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/calib/alignQPed/naiBarCalib/.checkExEnergy.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 3a4c791] v1.0
+ 47 files changed, 1849 insertions(+), 488 deletions(-)
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/calibPara.txt
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/checkDEE.C
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar00.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar01.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar02.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar03.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar05.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar06.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar10.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar11.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar12.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar13.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar14.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar15.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar16.png (99%)
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/Event.h
+ create mode 100755 espri/calib/generatePPScattering/ppBe10/Makefile
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/ReadFile.h
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/configPPBe.prm
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/convert.sh
+ create mode 100755 espri/calib/generatePPScattering/ppBe10/header.h
+ create mode 120000 espri/calib/generatePPScattering/ppBe10/inputRootfiles
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/loop.sh
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/main.cpp
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/ppBe.cpp
+ create mode 100644 espri/calib/generatePPScattering/ppBe10/ppBe.h
+ rename espri/calib/generatePPScattering/{ppBe14/ppBe14 => ppBe10/ppBe10} (52%)
+ rewrite espri/calib/generatePPScattering/ppBe14/ppBe14 (96%)
+ create mode 100644 merger/rootfiles/cutBeamB15.C
+ rewrite merger/rootfiles/cutBeamBe12.C (77%)
+ create mode 100644 merger/rootfiles/cutBeamH3.C
+ create mode 100644 merger/rootfiles/cutBeamHe6.C
+ create mode 100644 merger/rootfiles/cutBeamLi9.C
+ create mode 100644 merger/rootfiles/cutBeamMixed1Be10.C
+ create mode 100644 merger/rootfiles/cutBeamMixed2Be10.C
+ create mode 100644 merger/rootfiles/drawEspriDEE.C
+ rewrite pla/slewEffect/slewEffect.C (81%)
+ rename pla/slewEffect/{slewEffect.C => slewEffect.C_v1} (96%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

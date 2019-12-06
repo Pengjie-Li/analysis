@@ -126,8 +126,11 @@ class SBT1Hit:public PlasticHit{
 			detectorName = "SBT1";
 			slewPara[0] = 0.0;
 			slewPara[1] = 0.0;
-			positionPara[0] = 0.39;
-			positionPara[1] = 1.24;
+			positionPara[0] = 0.38;
+			positionPara[1] = 1.3;
+	
+			//positionPara[0] = 0.39;
+			//positionPara[1] = 1.24;
 	
 		}
 		~SBT1Hit(){}

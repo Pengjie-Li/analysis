@@ -114,6 +114,7 @@ class CheckEx{
 	private:
 		TChain *tree;
 		TCanvas *cPad;
+		int markerStyle;
 
 		TCalibPara *calibPara;
 		int side;
@@ -127,6 +128,7 @@ class CheckEx{
 		TH2F *hNai;
 		TH2F *hPlas;
 		TH2F *hDEE;
+		TH2F *hTOF;
 		TH1F *hEx;
 		TString gate;
 		TGraph *tot;
@@ -134,52 +136,6 @@ class CheckEx{
 		TGraph *plas;
 		TGraph *dEE;
 
-		void drawTot(){
-
-			cPad->cd(1);
-			tree->Draw(Form("protonEk:espriAngle>>hTot%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hTot = (TH2F *)gDirectory->Get(Form("hTot%d%d",side,barId));
-			hTot->SetMarkerColor(2);
-			//hTot->SetMarkerSize(30);
-			hTot->SetMarkerStyle(1);
-			hTot->Draw();
-		}
-		void drawEx(){
-			cPad->cd(2);
-			tree->Draw(Form("excitationEnergy>>hEx%d%d(200,-10,10)",side,barId),gate);
-			hEx = (TH1F *)gDirectory->Get(Form("hEx%d%d",side,barId));
-			hEx->Draw();
-		}
-
-		void drawDEE(){
-			cPad->cd(2);
-			tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
-			hDEE = (TH2F *)gDirectory->Get(Form("hDEE%d%d",side,barId));
-			hDEE->SetMarkerColor(2);
-			hDEE->SetMarkerStyle(1);
-			hDEE->Draw();
-		}
-		void drawNai(){
-			cPad->cd(3);
-			tree->Draw(Form("Enai:espriAngle>>hNai%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hNai = (TH2F *)gDirectory->Get(Form("hNai%d%d",side,barId));
-			hNai->SetMarkerColor(2);
-			//hNai->SetMarkerSize(30);
-			hNai->SetMarkerStyle(1);
-			hNai->Draw();
-		}
-		void drawPlas(){
-			cPad->cd(4);
-			tree->Draw(Form("dEplas:espriAngle>>hPlas%d%d(1000,55,75,1000,0,20)",side,barId),gate);
-
-			hPlas = (TH2F *)gDirectory->Get(Form("hPlas%d%d",side,barId));
-			hPlas->SetMarkerColor(2);
-			//hPlas->SetMarkerSize(30);
-			hPlas->SetMarkerStyle(1);
-			hPlas->Draw();
-		}
 
 		double getNaiGain(){
 			return calibPara->getNaiGain(side,barId);
@@ -201,21 +157,28 @@ class CheckEx{
 		CheckEx(){
 
 			tree = new TChain("tree");
+			//tree->Add("ppBe14.root_BeamProtonPRAngleHodBar28-33");
 			tree->Add("ppBe14.root");
 			cPad = new TCanvas("cPad","cPad",1200,700);
 			cPad->Divide(2,2);
 			calibPara = new TCalibPara();
+			markerStyle = 1;
 		}
 		CheckEx(int side,int barId):side(side),barId(barId){
 
 			tree = new TChain("tree");
 			tree->Add("ppBe14.root");
+			//tree->Add("ppBe14.root_BeamProtonPRAngleHodBar28-33");
 			cPad = new TCanvas("cPad","cPad",1200,700);
 			cPad->Divide(2,2);
 			calibPara = new TCalibPara();
 			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 			setAlias();
-			draw();
+			setGate();
+			drawTOF();
+			drawDEE();
+			drawNai();
+			drawPlas();
 		}
 
 		void setBar(int s, int b){
@@ -252,11 +215,19 @@ class CheckEx{
 			tree->SetAlias("protonMass","MassH*AMU");
 
 			// Could be better	
-			tree->SetAlias("beamEk","(Ek713-3.765)*MassBe");
+			tree->SetAlias("beamEk","(Ek713-3.776)*MassBe");
 
+			tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654)");
 
 			tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
 			//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
+			tree->SetAlias("Tof",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
+			tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
+			tree->SetAlias("plasT1","plasT[1]-0.0115*(rdcY[1]-225)");
+			//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
+			tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
+
+        
 			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
 			tree->SetAlias("protonEk","dEplas+Enai");
 
@@ -270,14 +241,72 @@ class CheckEx{
 
 		}
 
-		void draw(){
+		void setGate(){
 			gate = Form("isEspriLR==%d&&naiBarId==%d",side,barId);
+		}
+		void draw(){
 			drawTot();
-			//drawEx();
-			drawDEE();
+			drawEx();
+			//drawDEE();
 			drawNai();
 			drawPlas();
 		}
+		void drawTot(){
+
+			cPad->cd(1);
+			tree->Draw(Form("protonEk:espriAngle>>hTot%d%d(1000,55,75,1000,0,200)",side,barId),gate);
+
+			hTot = (TH2F *)gDirectory->Get(Form("hTot%d%d",side,barId));
+			hTot->SetMarkerColor(2);
+			//hTot->SetMarkerSize(30);
+			hTot->SetMarkerStyle(markerStyle);
+			hTot->Draw();
+		}
+		void drawEx(){
+			cPad->cd(2);
+			tree->Draw(Form("excitationEnergy>>hEx%d%d(200,-10,10)",side,barId),gate);
+			hEx = (TH1F *)gDirectory->Get(Form("hEx%d%d",side,barId));
+			hEx->Draw();
+		}
+
+		void drawTOF(){
+			cPad->cd(1);
+			tree->Draw(Form("dEplas:TOF>>hTOF%d(1000,0,40,1000,0,30)",side),gate);
+			hTOF = (TH2F *)gDirectory->Get(Form("hTOF%d",side));
+			hTOF->SetMarkerColor(2);
+			hTOF->SetMarkerStyle(markerStyle);
+			hTOF->Draw();
+		}
+
+		void drawDEE(){
+			cPad->cd(2);
+			tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
+			hDEE = (TH2F *)gDirectory->Get(Form("hDEE%d%d",side,barId));
+			hDEE->SetMarkerColor(2);
+			hDEE->SetMarkerStyle(markerStyle);
+			hDEE->Draw();
+		}
+		void drawNai(){
+			cPad->cd(3);
+			tree->Draw(Form("Enai:espriAngle>>hNai%d%d(1000,55,75,1000,0,200)",side,barId),gate);
+
+			hNai = (TH2F *)gDirectory->Get(Form("hNai%d%d",side,barId));
+			hNai->SetMarkerColor(2);
+			//hNai->SetMarkerSize(30);
+			hNai->SetMarkerStyle(markerStyle);
+			hNai->Draw();
+		}
+		void drawPlas(){
+			cPad->cd(4);
+			tree->Draw(Form("dEplas:espriAngle>>hPlas%d%d(1000,55,75,1000,0,20)",side,barId),gate);
+
+			hPlas = (TH2F *)gDirectory->Get(Form("hPlas%d%d",side,barId));
+			hPlas->SetMarkerColor(2);
+			//hPlas->SetMarkerSize(30);
+			hPlas->SetMarkerStyle(markerStyle);
+			hPlas->Draw();
+		}
+
 
 		void drawCurve(){
 
@@ -314,6 +343,10 @@ class CheckEx{
 		TH2F * getDEE(){
 			return hDEE;
 		}
+		TH2F * getTOF(){
+			return hTOF;
+		}
+
 		TH2F * getNai(){
 			return hNai;
 		}
@@ -337,10 +370,15 @@ void checkDEE(int side,int barId){
 	ce->setBar(side,barId);
 	//ce->setCalibParas(gNai,dNai,gPlas,dPlas);
 	ce->setAlias();
-	ce->draw();
+	ce->setGate();
+	ce->drawTOF();
+	ce->drawDEE();
+	ce->drawNai();
+	ce->drawPlas();
+	//ce->draw();
 	ce->drawCurve();
 	ce->output();
-	delete ce;
+	//delete ce;
 }
 void checkDEE(){
 
@@ -350,11 +388,12 @@ void checkDEE(){
 			checkDEE(i,j);
 		}
 	}
-	//int side = 0;
-	//int barId = 4;
-		//checkDEE(side,barId);
+//	int side = 0;
+//	int barId = 4;
+//	checkDEE(side,barId);
 
 //	TH2F *hTot;
+//	TH2F *hTOF;
 //	TH2F *hDEE;
 //	TH2F *hNai;
 //	TH2F *hPlas;
@@ -366,25 +405,33 @@ void checkDEE(){
 //		for (int j = 0; j< 7; ++j) {
 //			ce[i][j] = new CheckEx(i,j);
 //			if(firstDraw == 0){
-//				hTot	 = ce[i][j]->getTot();
-//				hEx	 = ce[i][j]->getEx();
+//				hTOF	 = ce[i][j]->getTOF();
+//				//hTot	 = ce[i][j]->getTot();
+//				//hEx	 = ce[i][j]->getEx();
+//				hDEE	 = ce[i][j]->getDEE();
 //				hNai	 = ce[i][j]->getNai();
 //				hPlas	 = ce[i][j]->getPlas();
 //
 //
-//				hTot	->SetName("hTot");
-//				hEx	->SetName("hEx");
+//				//hTot	->SetName("hTot");
+//				//hEx	->SetName("hEx");
+//				hTOF	->SetName("hTOF");
+//				hDEE	->SetName("hDEE");
 //				hNai	->SetName("hNai");
 //				hPlas	->SetName("hPlas");
 //
-//				hTot	->SetTitle("protonEk:Angle");
-//				hEx	->SetTitle("Excitation Energy in g.s.");
+//				//hTot	->SetTitle("protonEk:Angle");
+//				//hEx	->SetTitle("Excitation Energy in g.s.");
+//				hTOF	->SetTitle("dEplas:TOF");
+//				hDEE	->SetTitle("dEplas:Enai");
 //				hNai	->SetTitle("Enai:Angle");
 //				hPlas	->SetTitle("Eplas:Angle");
 //	
 //			}else{
-//				hTot ->Add(ce[i][j]->getTot());
-//				hEx  ->Add(ce[i][j]->getEx());
+//				//hTot ->Add(ce[i][j]->getTot());
+//				//hEx  ->Add(ce[i][j]->getEx());
+//				hTOF	->Add(ce[i][j]->getTOF());
+//				hDEE	->Add(ce[i][j]->getDEE());
 //				hNai ->Add(ce[i][j]->getNai());
 //				hPlas->Add(ce[i][j]->getPlas());
 //			}
@@ -396,12 +443,14 @@ void checkDEE(){
 //	newPad->Divide(2,2);
 //
 //	newPad->cd(1);
-//	hTot->Draw("colz");
-//	dc->drawTot();
+//	//hTot->Draw("colz");
+//	hTOF->Draw("colz");
+//	//dc->drawTot();
 //
 //	newPad->cd(2);
-//	hEx->Draw();
-//	//dc->drawDEE();
+//	//hEx->Draw();
+//	hDEE->Draw("colz");
+//	dc->drawDEE();
 //	//
 //	newPad->cd(3);
 //	hNai->Draw("colz");

@@ -1,0 +1,354 @@
+// define a function with 2 parameters
+Double_t fitfunc(Double_t *x,Double_t *par) {
+
+	//cout<<par[0]<<":"<<par[1]<<":"<<par[2]<<endl;
+	Double_t fitval = par[0]/TMath::Sqrt(x[0]+400)+par[1];
+
+	return fitval;
+}
+
+class SlewCorrection{
+	private:
+		TChain *tree;
+		TString timeVar;
+		TString energyVar;
+		TString drawVar;
+		TString hName;
+		TString drawRange;
+		TString draw;
+		TString gate;
+
+		TH2F *hDraw;
+		TH2F *hDrawCorr;
+		TF1 *fitFunction;
+		double fitPara[2];
+	public:
+		SlewCorrection(){
+			tree = new TChain("tree");
+		}
+		~SlewCorrection(){}
+		void loadChain(int runStart,int runStop){
+			for (int i = runStart; i < runStop; ++i) {
+				//tree->Add(Form("rootfiles/run0%d_analysed.root_1",i));
+				tree->Add(Form("rootfiles/run0%d_analysed.root",i));
+			}
+		}
+		void loadRun(int run){
+			loadChain(run,run+1);
+		}
+		void loadRuns(int runStart,int runStop){
+			loadChain(runStart,runStop+1);
+		}
+		void setVar(TString t,TString q, TString h){
+			timeVar = t;
+			energyVar = q;
+			hName = h;
+			drawVar = timeVar+ ":"+ energyVar + ">>" + hName;
+		}
+		void setRange(int x1, int x2, int x3, int y1, int y2, int y3){
+			int xBin = x1;
+			int xMin = x2;
+			int xMax = x3;
+			int yBin = y1;
+			int yMin = y2;
+			int yMax = y3;
+			drawRange = Form("(%d,%d,%d,%d,%d,%d)",xBin,xMin,xMax,yBin,yMin,yMax);
+		}
+		void setGate(TString g){
+			gate = g;
+		}
+		void drawBeforeCorrection(){
+			draw = drawVar + drawRange;
+			TString color = "colz";
+			tree->Draw(draw,gate,color);
+			hDraw = (TH2F*)gDirectory->Get(hName);
+			hDraw->Write();
+		}
+
+		void profileX(){
+			fitFunction = new TF1("fit","pol1",0,4000);
+			//TCanvas *cProfile = new TCanvas("cProfile","cProfile",700,700);
+			TProfile *hPDEE = hDraw->ProfileX();
+			//hPDEE->SetMarkerColor(2);
+			hPDEE->Draw("same");
+			//TF1 *fit = new TF1("fit",fitfunc,0,4000,2);	
+			//fit->SetParameters(-50,550);
+
+			//fit->Draw("same");
+			//hPDEE->Fit(fit);
+			//hPDEE->Fit("pol1");
+			hPDEE->Fit(fitFunction,"Q");
+
+		}
+		void getFitPara(){
+			fitFunction->GetParameters(fitPara);
+			cout<<"Fit Parameters: "<<fitPara[0]<<":"<<fitPara[1]<<endl;
+		}
+		void drawAfterCorrection(){
+			getFitPara();	
+			timeVar = timeVar + Form("+ %f*",fitPara[1])+energyVar;
+			TString hNameCorr = hName  + "After";
+			drawVar = timeVar+ ":"+ energyVar + ">>" + hNameCorr ;
+			draw = drawVar + drawRange;
+			TString color = "colz";
+			tree->Draw(draw,gate,color);
+			hDrawCorr = (TH2F*)gDirectory->Get(hNameCorr);
+			hDrawCorr->Write();
+	
+		}
+};
+class F3Slew0:public SlewCorrection{
+	private:
+	public:
+		F3Slew0(){
+			TCanvas *F30Pad = new TCanvas("F30Pad","F30Pad",700,700);
+			setCanvas("F30Pad");
+			setVar("F3TCal[0]","F3QRaw[0]", "hF3Slew0");
+			setRange(500,100,1300,500,540,580);
+			//gROOT->ProcessLine(".x rootfiles/cutBe10.C");
+			//setGate("Trig_DSB&&Be10");
+
+		}
+		~F3Slew0(){}
+};
+
+class F3Slew1:public SlewCorrection{
+	private:
+	public:
+		F3Slew1(){
+			TCanvas *F31Pad = new TCanvas("F31Pad","F31Pad",700,700);
+			setVar("F3TCal[1]","F3QRaw[1]", "hF3Slew1");
+			setRange(500,100,1300,500,540,580);
+			//gROOT->ProcessLine(".x rootfiles/cutBe10.C");
+			setGate("Trig_DSB");
+
+
+		}
+		~F3Slew1(){}
+};
+
+class F7Slew0:public SlewCorrection{
+	private:
+	public:
+		F7Slew0(){
+			TCanvas *F70Pad = new TCanvas("F70Pad","F70Pad",700,700);
+			setVar("F7TCal[0]","F7QRaw[0]", "hF7Slew0");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~F7Slew0(){}
+};
+
+class F7Slew1:public SlewCorrection{
+	private:
+	public:
+		F7Slew1(){
+			TCanvas *F71Pad = new TCanvas("F71Pad","F71Pad",700,700);
+			setVar("F7TCal[1]","F7QRaw[1]", "hF7Slew1");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~F7Slew1(){}
+};
+
+class SBT1Slew0:public SlewCorrection{
+	private:
+	public:
+		SBT1Slew0(){
+			TCanvas *SBT10Pad = new TCanvas("SBT10Pad","SBT10Pad",700,700);
+			setVar("SBT1TCal[0]","SBT1QRaw[0]", "hSBT1Slew0");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~SBT1Slew0(){}
+};
+
+class SBT1Slew1:public SlewCorrection{
+	private:
+	public:
+		SBT1Slew1(){
+			TCanvas *SBT11Pad = new TCanvas("SBT11Pad","SBT11Pad",700,700);
+			setVar("SBT1TCal[1]","SBT1QRaw[1]", "hSBT1Slew1");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~SBT1Slew1(){}
+};
+class SBT2Slew0:public SlewCorrection{
+	private:
+	public:
+		SBT2Slew0(){
+			TCanvas *SBT20Pad = new TCanvas("SBT20Pad","SBT20Pad",700,700);
+			setVar("SBT2TCal[0]","SBT2QRaw[0]", "hSBT2Slew0");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~SBT2Slew0(){}
+};
+
+class SBT2Slew1:public SlewCorrection{
+	private:
+	public:
+		SBT2Slew1(){
+			TCanvas *SBT21Pad = new TCanvas("SBT21Pad","SBT21Pad",700,700);
+			setVar("SBT2TCal[1]","SBT2QRaw[1]", "hSBT2Slew1");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~SBT2Slew1(){}
+};
+class SBVSlew1:public SlewCorrection{
+	private:
+	public:
+		SBVSlew1(){
+			TCanvas *SBV1Pad = new TCanvas("SBV1Pad","SBV1Pad",700,700);
+			setVar("SBVTCal[1]","SBVQRaw[1]", "hSBVSlew1");
+			setRange(500,0,1500,500,540,580);
+			setGate("Trig_DSB");
+		}
+		~SBVSlew1(){}
+};
+
+class BeamPlas{
+	private:
+		int runNumber;
+		Double_t tof37Mean;
+		Double_t tof37Width;
+		Double_t tof713Mean;
+		Double_t tof713Width;
+		TString gate;
+	public:
+		BeamPlas(int run){ runNumber = run;}
+		~BeamPlas(){}
+		void loadGate(Double_t tof37M,Double_t tof37W,Double_t tof713M,Double_t tof713W){
+			tof37Mean = tof37M;
+			tof37Width = tof37W;
+			tof713Mean = tof713M;
+			tof713Width = tof713W;
+			gate = Form("Trig_DSB&&abs(TOF37-%f)<%f&&abs(TOF713-%f)<%f",tof37Mean,tof37Width,tof713Mean,tof713Width);
+		}
+
+		void checkF3Slew(){
+
+
+			F3Slew0 *F30 = new F3Slew0();
+			F30->loadRun(runNumber);
+			F30->setGate(gate);
+			F30->setRange(2000,0,4000,1000,540,580);
+			F30->drawBeforeCorrection();
+			F30->profileX();
+
+			F3Slew1 *F31 = new F3Slew1();
+			F31->loadRun(runNumber);
+			F31->setGate(gate);
+			F31->setRange(2000,0,4000,1000,540,580);
+			F31->drawBeforeCorrection();
+			F31->profileX();
+		}
+		void checkF7Slew(){
+
+			F7Slew0 *F70 = new F7Slew0();
+			F70->loadRun(runNumber);
+			F70->setGate(gate);
+			F70->setRange(2000,0,4000,1000,540,580);
+			F70->drawBeforeCorrection();
+			F70->profileX();
+
+			F7Slew1 *F71 = new F7Slew1();
+			F71->loadRun(runNumber);
+			F71->setGate(gate);
+			F71->setRange(2000,0,4000,1000,540,580);
+			F71->drawBeforeCorrection();
+			F71->profileX();
+		}
+		void checkSBT1Slew(){
+
+			SBT1Slew0 *SBT10 = new SBT1Slew0();
+			SBT10->loadRun(runNumber);
+			SBT10->setGate(gate);
+			SBT10->setRange(2000,0,4000,1000,200,240);
+			SBT10->drawBeforeCorrection();
+			SBT10->profileX();
+
+			SBT1Slew1 *SBT11 = new SBT1Slew1();
+			SBT11->loadRun(runNumber);
+			SBT11->setGate(gate);
+			SBT11->setRange(2000,0,4000,1000,200,240);
+			SBT11->drawBeforeCorrection();
+			SBT11->profileX();
+		}
+		void checkSBT2Slew(){
+
+			SBT2Slew0 *SBT20 = new SBT2Slew0();
+			SBT20->loadRun(runNumber);
+			SBT20->setGate(gate);
+			SBT20->setRange(2000,0,4000,1000,200,240);
+			SBT20->drawBeforeCorrection();
+			SBT20->profileX();
+
+			SBT2Slew1 *SBT21 = new SBT2Slew1();
+			SBT21->loadRun(runNumber);
+			SBT21->setGate(gate);
+			SBT21->setRange(2000,0,4000,1000,200,240);
+			SBT21->drawBeforeCorrection();
+			SBT21->profileX();
+		}
+	
+		void checkSBVSlew(){
+
+			SBVSlew1 *SBV1 = new SBVSlew1();
+			SBV1->loadRun(runNumber);
+			SBV1->setGate(gate);
+			SBV1->setRange(2000,0,4000,1000,210,250);
+			SBV1->drawBeforeCorrection();
+			SBV1->profileX();
+		}
+
+};
+void slewEffect(){
+
+	//int runNumber = 310;
+	//int runNumber = 320;
+	//double tof37Mean = 299.2;
+	//double tof37Width = 0.5;
+	//double tof713Mean = 236.6;
+	//double tof713Width = 0.5;
+	//int runNumber = 340;
+	int runNumber = 360;
+	double tof37Mean = 300.6;
+	double tof37Width = 0.5;
+	double tof713Mean = 236.1;
+	double tof713Width = 0.5;
+	
+	//int runNumber = 380;
+	//int runNumber = 595;
+	TString fileName = Form("correctSlewEffect%d.root",runNumber);
+
+
+	TFile *outputFile = new TFile(fileName,"RECREATE");
+
+	BeamPlas *bp = new BeamPlas(runNumber);
+	bp->loadGate(tof37Mean,tof37Width,tof713Mean,tof713Width);
+	bp->checkF3Slew();
+//	bp->checkF7Slew();
+//	bp->checkSBT1Slew();
+//	bp->checkSBT2Slew();
+//	bp->checkSBVSlew();
+	//checkF3Slew(runNumber,tof37Mean,tof37Width,tof713Mean,tof713Width);
+	//checkF7Slew(runNumber);
+	//	checkSBT1Slew(runNumber);
+	//	checkSBT2Slew(runNumber);
+	//	checkSBVSlew(runNumber);
+
+	//Test
+	//	SlewCorrection *sc = new SlewCorrection();
+	//	//sc->loadRuns(runStart,runStop);
+	//	sc->loadRun(runNumber);
+	//	sc->setVar("F3TCal[0]","F3QRaw[0]", "hF3Slew0");
+	//	sc->setRange(500,0,1500,500,540,580);
+	//	//sc->setRange(350,250,600,500,540,580);//320
+	//	//sc->setRange(250,250,500,500,540,580);//360
+	//	sc->setGate("Trig_DSB");
+	//	sc->drawBeforeCorrection();
+	//	sc->profileX();
+}
