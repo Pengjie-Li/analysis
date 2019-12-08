@@ -3243,3 +3243,21 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/positionDependency/txt/SlewParaRun360.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7302d30] v1.0
+ 17 files changed, 191 insertions(+), 114 deletions(-)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar00.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar01.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar02.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar03.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar05.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar06.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar10.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar11.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar12.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar13.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar14.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar15.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar16.png (99%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
