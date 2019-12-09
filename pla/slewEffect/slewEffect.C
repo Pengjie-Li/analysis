@@ -77,10 +77,12 @@ class SlewCorrection{
 			hBefore->Write();
 		}
 
+		void setAlias(TString var1,TString var2){
+			tree->SetAlias(var1,var2);
+		}
 		void drawAfter(double corrPara){
 			cPad->cd(2);
 			gPad->SetLogz();
-			timeVar = timeVar + Form("+ (%f/sqrt(sqrt(",corrPara)+energyVar+")))";
 			TString hNameAfter = hName  + "After";
 			drawVar = timeVar+ ":"+ energyVar + ">>" + hNameAfter;
 			draw = drawVar + drawRange;
@@ -110,7 +112,8 @@ void slewEffect(){
 	gROOT->ProcessLine(".x rootfiles/cutBeamH3.C");
 	//int runNumber = 360;
 
-	//int runNumber = 380;
+	//int runNumber = 436;
+	//gROOT->ProcessLine(".x rootfiles/cutBeamBe14.C");
 	//int runNumber = 595;
 	TString fileName = Form("correctSlewEffect%d.root",runNumber);
 
@@ -131,37 +134,41 @@ void slewEffect(){
 //	scSBT2->drawAfter(0);
 
 
-	SlewCorrection *scSBT1 = new SlewCorrection();
-	scSBT1->loadRun(runNumber);
-	//scSBT1->loadGate("Trig_DSB&&(Beam)");
-	scSBT1->loadGate("Trig_DSB&&(BeamH3||BeamHe6||BeamLi9||BeamB15||Beam)");
-	scSBT1->setCanvas("SBT1Corr");
-	//scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])+0.0005*SBT1QRaw[0]+0.0004*SBT1QRaw[1]-5/sqrt(sqrt(SBT1QRaw[1]))","SBT1QRaw[0]", "hSBT11");
-	//scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])+0.0008*SBT1QRaw[0]","SBT1QRaw[1]", "hSBT11");
-	scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])","SBT1QRaw[0]", "hSBT10");
-	scSBT1->setRange(1000,0,2000,1000,210,230);
-	scSBT1->drawBefore();
-	scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])","SBT1QRaw[1]", "hSBT10");
-	scSBT1->drawAfter(0);
+//	SlewCorrection *scSBT1 = new SlewCorrection();
+//	scSBT1->loadRun(runNumber);
+//	//scSBT1->loadGate("Trig_DSB&&(Beam)");
+//	scSBT1->loadGate("Trig_DSB&&(BeamH3||BeamHe6||BeamLi9||BeamB15||Beam)");
+//	scSBT1->setCanvas("SBT1Corr");
+//	//scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])+0.0005*SBT1QRaw[0]+0.0004*SBT1QRaw[1]-5/sqrt(sqrt(SBT1QRaw[1]))","SBT1QRaw[0]", "hSBT11");
+//	//scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])+0.0008*SBT1QRaw[0]","SBT1QRaw[1]", "hSBT11");
+//	scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])","SBT1QRaw[0]", "hSBT10");
+//	scSBT1->setRange(1000,0,2000,1000,210,230);
+//	scSBT1->drawBefore();
+//	scSBT1->setVar("0.5*(SBT1TCal[0]+SBT1TCal[1])","SBT1QRaw[1]", "hSBT10");
+//	scSBT1->drawAfter(0);
 
 
 
-//	SlewCorrection *scF7 = new SlewCorrection();
-//	scF7->loadRun(runNumber);
-//	//scF7->loadGate("Trig_DSB&&(BeamMixed1||BeamMixed2||Beam)");
-//	scF7->loadGate("Trig_DSB&&(BeamH3||BeamHe6||BeamLi9||BeamB15||Beam)");
-//	scF7->setCanvas("F7Corr");
-//	scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]-5/sqrt(sqrt(F7QRaw[1]))","F7QRaw[0]", "hF71");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]-5/sqrt(sqrt(F7QRaw[0]))","F7QRaw[1]", "hF71");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
-//	//Linear scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]","F7QRaw[1]", "hF71");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0003*F7QRaw[1]","F7QRaw[0]", "hF70");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0008*F7QRaw[0]","F7QRaw[1]", "hF71");
-//	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])","F7QRaw[0]", "hF70");
-//	scF7->setRange(1000,0,4000,1000,550,570);
-//	scF7->drawBefore();
-//	scF7->drawAfter(-5);
+	SlewCorrection *scF7 = new SlewCorrection();
+	scF7->loadRun(runNumber);
+	//scF7->loadGate("Trig_DSB&&(Beam)");
+	scF7->loadGate("Trig_DSB&&(BeamH3||BeamHe6||BeamLi9||BeamB15||Beam)");
+	scF7->setCanvas("F7Corr");
 
+	scF7->setVar("F13T-0.5*(F7TCal[0]+F7TCal[1])+570","F7Q", Form("hF7_%d",runNumber));
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]-5/sqrt(sqrt(F7QRaw[1]))","F7QRaw[0]", "hF71");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]-5/sqrt(sqrt(F7QRaw[0]))","F7QRaw[1]", "hF71");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
+	//Linear scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0004*F7QRaw[1]","F7QRaw[0]", "hF70");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0005*F7QRaw[0]","F7QRaw[1]", "hF71");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0003*F7QRaw[1]","F7QRaw[0]", "hF70");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])+0.0008*F7QRaw[0]","F7QRaw[1]", "hF71");
+	//scF7->setVar("0.5*(F7TCal[0]+F7TCal[1])","F7QRaw[0]", "hF70");
+	scF7->setRange(1000,0,4000,1000,225,245);
+	scF7->drawBefore();
+	//scF7->setAlias("f7t","(0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5))))+1.1*(F7TCal[0]-F7TCal[1]-2.8))");
+	scF7->setAlias("f7t","(0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5)))))");
+	scF7->setVar("F13T-f7t+570","F7Q", Form("hF7_%d",runNumber));
+	scF7->drawAfter(0);
 }

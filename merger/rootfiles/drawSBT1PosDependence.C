@@ -1,7 +1,8 @@
 {
 
-	double offset = 1.3;
+	double offset = 1.24;
 	//double gain = 0.39;
+	//double gain = 0.5;
 	double gain = 0.38;
         gROOT->ProcessLine(".x cutBeamBe10.C");
 

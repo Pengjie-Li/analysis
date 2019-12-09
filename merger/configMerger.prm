@@ -5,7 +5,7 @@ MAINRunSuffix:_MAIN.root
 
 PLAInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/pla/convert/rootfiles/
 PLARunPrefix:run
-PLARunSuffix:_PLA.root
+PLARunSuffix:_PLA.root_test2
 
 BDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles/
 BDCRunPrefix:run

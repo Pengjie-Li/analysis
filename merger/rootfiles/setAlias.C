@@ -61,7 +61,10 @@
 	tree->SetAlias("SBT1TSlew","0.5*(SBT1TSlew0+SBT1TSlew1)");
 	tree->SetAlias("SBT2TSlew","0.5*(SBT2TSlew0+SBT2TSlew1)");
 
+	tree->SetAlias("SBT2TSlew","0.5*(SBT2TSlew0+SBT2TSlew1)");
 
+	
+	tree->SetAlias("F7TDiff","(F7TCal[0]-F7TCal[1])");
 
 	//tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225)+0.000013*(rdcY[0]-225)*(rdcY[0]-225))");
 	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");

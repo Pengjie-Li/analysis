@@ -1,7 +1,12 @@
 {
 
-			gROOT->ProcessLine(".x cutBeamBe14.C");
-                        gROOT->ProcessLine(".x cutBeamBe10.C");
+                        //gROOT->ProcessLine(".x cutBeamBe10.C");
+                        //gROOT->ProcessLine(".x cutBeamBe12.C");
+			//gROOT->ProcessLine(".x cutBeamBe14.C");
+
+                        gROOT->ProcessLine(".x cutBeamLi9.C");
+                        gROOT->ProcessLine(".x cutBeamHe6.C");
+                        gROOT->ProcessLine(".x cutBeamH3.C");
 
                         gROOT->ProcessLine(".x cutProtonBe10.C");
                         gROOT->ProcessLine(".x cutTargetArea.C");

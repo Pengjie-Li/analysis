@@ -1,48 +1,21 @@
 class PlasticHit{
 	private:
-		
-		double TCal[2];
-		double QCal[2];
 
-		double TSlew[2];
-		double T;
-		double Q;
-		void saveOneHitTime(){}
-		void saveOneHitEnergy(){}
-		void setTime(){
-				T = 0.5*(TSlew[0]+TSlew[1]);
-		}
-		void convertEnergy(double q0,double q1){
-			if(q0!= -9999 && q1!= -9999){
-				Q = sqrt(q0*q1);
-			}else{
-				saveOneHitEnergy();
-			}
-		}
-		void corrSlewEffect(){
-			if(TCal[0]!=-9999) TSlew[0] = TCal[0] + slewPara[0]*QCal[0];
-			if(TCal[1]!=-9999) TSlew[1] = TCal[1] + slewPara[1]*QCal[1];
-		}
-		void corrPositionDependence(){
-			if(TCal[0]!=-9999 && TCal[1]!=-9999){
-				setTime();
-				T = T+ 0.5*positionPara[1];
-				T = T+ positionPara[0]*(TSlew[0] - (TSlew[1]+positionPara[1]));
-				//cout<<positionPara[0]<<":"<<positionPara[1]<<endl;
-				//cout<<TSlew[0]<<":"<<TSlew[1]+positionPara[1]<<endl;
-			}else{
-				saveOneHitTime();
-			}
-		}
 
 	public:
+		double QCal[2]; // = QRaw
+		double TCal[2]; // Raw to Cal with constant slope
+		double TCorr[2];// Slew; Position correction
+		double T;
+		double Q;
+
 		TString detectorName;
 		double slewPara[2];
 		double positionPara[2];
 		PlasticHit(){}
 		~PlasticHit(){}
 		void setBranch(TTree *tree){
-			tree->Branch(detectorName+"TSlew",&TSlew,detectorName+"TSlew[2]/D");
+			tree->Branch(detectorName+"TCorr",&TCorr,detectorName+"TCorr[2]/D");
 			tree->Branch(detectorName+"T",&T,detectorName+"T/D");
 			tree->Branch(detectorName+"Q",&Q,detectorName+"Q/D");
 		}
@@ -53,8 +26,8 @@ class PlasticHit{
 			QCal[0] = NAN;
 			QCal[1] = NAN;
 	
-			TSlew[0] = NAN;
-			TSlew[1] = NAN;
+			TCorr[0] = NAN;
+			TCorr[1] = NAN;
 
 			T = NAN;
 			Q = NAN;
@@ -67,13 +40,12 @@ class PlasticHit{
 			QCal[0] = q0;
 			QCal[1] = q1;
 
-			corrSlewEffect();
-			corrPositionDependence();
+			setTime();
+			setEnergy();
 
-			convertEnergy(q0,q1);
 		}
 		void print(){
-			cout<<detectorName<<"TSlew[0] = "<<TSlew[0]<<" "<<detectorName<<"TSlew[1] = "<<TSlew[1]<<endl;
+			cout<<detectorName<<"TCorr[0] = "<<TCorr[0]<<" "<<detectorName<<"TCorr[1] = "<<TCorr[1]<<endl;
 			cout<<detectorName<<"T = "<<T<<" "<<detectorName<<"Q = "<<Q<<endl;
 		}
 		double getT(){
@@ -88,10 +60,40 @@ class PlasticHit{
 		void setQ(double q){
 			Q = q;
 		}
+		void saveOneHitTime(){}
+		void saveOneHitEnergy(){}
+		void convertEnergy(){
+			if(QCal[0]!= -9999 && QCal[1]!= -9999){
+				Q = sqrt(QCal[0]*QCal[1]);
+			}else{
+				saveOneHitEnergy();
+			}
+		}
+		virtual void setTime(){
+			corrSlewEffect();
+			if(TCal[0]!=-9999 && TCal[1]!=-9999){
+				T = 0.5*(TCorr[0]+TCorr[1]);
+			}
+			corrPositionDependence();
+		}
+		virtual void setEnergy(){
+			convertEnergy();
+		}
 
-
-
-
+		virtual void corrSlewEffect(){
+			if(TCal[0]!=-9999) TCorr[0] = TCal[0] + slewPara[0]*QCal[0];
+			if(TCal[1]!=-9999) TCorr[1] = TCal[1] + slewPara[1]*QCal[1];
+		}
+		virtual void corrPositionDependence(){
+			if(TCal[0]!=-9999 && TCal[1]!=-9999){
+				T = T+ 0.5*positionPara[1];
+				T = T+ positionPara[0]*(TCorr[0] - (TCorr[1]+positionPara[1]));
+				//cout<<positionPara[0]<<":"<<positionPara[1]<<endl;
+				//cout<<TCorr[0]<<":"<<TCorr[1]+positionPara[1]<<endl;
+			}else{
+				saveOneHitTime();
+			}
+		}
 
 };
 class F3Hit:public PlasticHit{
@@ -117,6 +119,13 @@ class F7Hit:public PlasticHit{
 			positionPara[0] = 0;
 			positionPara[1] = 0;
 		}
+	//	void corrSlewEffect(){
+	//		if(TCal[0]!=-9999&&QCal[0]!=-9999) TCorr[0] = TCal[0] + 0.0010*QCal[0]-10/sqrt(sqrt(QCal[0]));
+	//		if(TCal[1]!=-9999&&QCal[1]!=-9999) TCorr[1] = TCal[1] + 0.0008*QCal[1]-10/sqrt(sqrt(QCal[1]));
+	//	}
+	//	void corrPositionDependence(){
+	//	}
+
 		~F7Hit(){}
 };
 class SBT1Hit:public PlasticHit{
@@ -126,11 +135,11 @@ class SBT1Hit:public PlasticHit{
 			detectorName = "SBT1";
 			slewPara[0] = 0.0;
 			slewPara[1] = 0.0;
-			positionPara[0] = 0.38;
-			positionPara[1] = 1.3;
+			//positionPara[0] = 0.38;
+			//positionPara[1] = 1.3;
 	
-			//positionPara[0] = 0.39;
-			//positionPara[1] = 1.24;
+			positionPara[0] = 0.39;
+			positionPara[1] = 1.24;
 	
 		}
 		~SBT1Hit(){}
@@ -168,6 +177,45 @@ class SBVHit:public PlasticHit{
 
 		
 };
+class F13Hit:public PlasticHit{
+	private:
+		double sbtPara[2]; // Align SBT1 and SBT2, in order to make 1 Detector to represent F13T
+		// TCal[0] = SBT1T;TCal[1] = SBT2T;
+		// QCal[0] = SBT1Q;QCal[1] = SBT2Q;
+	public:
+		F13Hit(){
+			detectorName = "F13";
+			sbtPara[0] = 2.7;
+			sbtPara[1] = 1.2;
+	
+		}
+		~F13Hit(){}
+
+		void setTime(){
+
+			if(!isnan(TCal[0])) TCorr[0] = TCal[0] + 0; //	Align to SBT1 as reference
+			if(!isnan(TCal[1])) TCorr[1] = TCal[1] + sbtPara[0]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
+			if(!isnan(TCorr[0]) && !isnan(TCorr[1])){
+				T = 0.5*(TCorr[0]+TCorr[1]);
+			}else{
+				if(!isnan(TCorr[0])) T = TCorr[0];
+				if(!isnan(TCorr[1])) T = TCorr[1];
+			}
+		}
+		void setEnergy(){
+
+			if(!isnan(QCal[1])) QCal[1] = QCal[1]*sbtPara[1]; // Align SBT1 and SBT2 make even 1 detector could represent 	
+			if(!isnan(QCal[0]) && !isnan(QCal[1])){
+				Q = 0.5*(QCal[0]+QCal[1]);
+			}else{
+				if(!isnan(QCal[0])) Q = QCal[0];
+				if(!isnan(QCal[1])) Q = QCal[1];
+			}
+
+		}
+		
+};
+
 
 class PLAConvert{
 	private:
@@ -176,36 +224,9 @@ class PLAConvert{
 		PlasticHit *hitSBT1;
 		PlasticHit *hitSBT2;
 		PlasticHit *hitSBV;
-		double F13T;
-		double F13Q;
+		PlasticHit *hitF13; // take SBT1 and SBT2 as 2 PMT signal
 
 		PLARead *rawData;
-
-
-		void finalizeF13(){
-			double SBT1T = hitSBT1->getT();
-			double SBT2T = hitSBT2->getT();
-			double SBT1Q = hitSBT1->getQ();
-			double SBT2Q = hitSBT2->getQ();
-	
-
-			if(!isnan(SBT2T)) SBT2T = SBT2T + sbtPara[0]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
-			if(!isnan(SBT2Q)) SBT2Q = SBT2Q*sbtPara[1]; // Align SBT1 and SBT2 make even 1 detector could represent F13	
-
-			if(!isnan(SBT1T) && !isnan(SBT2T)){
-				F13T = 0.5*(SBT1T+SBT2T);
-			}else{
-				if(!isnan(SBT1T)) F13T = SBT1T;
-				if(!isnan(SBT2T)) F13T = SBT2T;
-			}
-			if(!isnan(SBT1Q) && !isnan(SBT2Q)){
-				F13Q = 0.5*(SBT1Q+SBT2Q);
-			}else{
-				if(!isnan(SBT1Q)) F13Q = SBT1Q;
-				if(!isnan(SBT2Q)) F13Q = SBT2Q;
-			}
-
-		}
 
 		double getF3TCal(int id){
 			return rawData->getF3TCal(id);
@@ -213,6 +234,15 @@ class PLAConvert{
 		double getF3QCal(int id){
 			return rawData->getF3QCal(id);
 		}
+		double getF13TCal(int id){
+			if(id == 0) return hitSBT1->getT(); 
+			else return hitSBT2->getT(); 
+		}
+		double getF13QCal(int id){
+			if(id == 0) return hitSBT1->getQ(); 
+			else return hitSBT2->getQ(); 
+		}
+
 		double getF7TCal(int id){
 			return rawData->getF7TCal(id);
 		}
@@ -237,22 +267,16 @@ class PLAConvert{
 		double getSBVQCal(int id){
 			return rawData->getSBVQCal(id);
 		}
-		void init(){
-			F13T = NAN;
-			F13Q = NAN;
-		}
 
 	
 	public:
-		double sbtPara[2];
 		PLAConvert(){
-			sbtPara[0] = 2.7;
-			sbtPara[1] = 1.2;
 			hitF3 = new F3Hit();
 			hitF7 = new F7Hit();
 			hitSBT1 = new SBT1Hit();
 			hitSBT2 = new SBT2Hit();
 			hitSBV = new SBVHit();
+			hitF13 = new F13Hit();
 		}
 		~PLAConvert(){}
 		void setBranch(TTree *tree){
@@ -261,24 +285,22 @@ class PLAConvert{
 			hitSBT1->setBranch(tree);
 			hitSBT2->setBranch(tree);
 			hitSBV->setBranch(tree);
-			tree->Branch("F13T",&F13T,"F13T/D");
-			tree->Branch("F13Q",&F13Q,"F13Q/D");
-	
+			hitF13->setBranch(tree);
+
 		}
 		void convert(PLARead *pla){
-			init();
 			rawData = pla;	
 			hitF3->convert(getF3TCal(0),getF3TCal(1),getF3QCal(0),getF3QCal(1));
 			hitF7->convert(getF7TCal(0),getF7TCal(1),getF7QCal(0),getF7QCal(1));
 			hitSBT1->convert(getSBT1TCal(0),getSBT1TCal(1),getSBT1QCal(0),getSBT1QCal(1));
 			hitSBT2->convert(getSBT2TCal(0),getSBT2TCal(1),getSBT2QCal(0),getSBT2QCal(1));
 			hitSBV->convert(getSBVTCal(0),getSBVTCal(1),getSBVQCal(0),getSBVQCal(1));
-			finalizeF13();
+			hitF13->convert(getF13TCal(0),getF13TCal(1),getF13QCal(0),getF13QCal(1));
 		}
 		void print(){
 		}
 		void printF13(){
-			cout<<"F13T = "<<F13T<<" F13Q = "<<F13Q<<endl;
+			hitF13->print();
 		}
 		void printF3(){
 			hitF3->print();
