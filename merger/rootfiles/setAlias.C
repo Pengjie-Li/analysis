@@ -65,6 +65,7 @@
 
 	
 	tree->SetAlias("F7TDiff","(F7TCal[0]-F7TCal[1])");
+	tree->SetAlias("f7t_slew","(0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5)))))");
 
 	//tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225)+0.000013*(rdcY[0]-225)*(rdcY[0]-225))");
 	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
