@@ -159,12 +159,15 @@ class CheckEx{
 			tree = new TChain("tree");
 			//tree->Add("ppBe14.root_BeamProtonPRAngleHodBar28-33");
 			//tree->Add("ppBe14.root");
-			tree->Add("ppBe14.root_BeamTargetProtonPRAngle");
+			//tree->Add("ppBe14.root_BeamTargetProtonPRAngle");
 			//tree->Add("run0383_ppBe14.root");
 			//tree->Add("run0383_ppBe14.root");
 			dc = new DrawCurve();
 			calibPara = new TCalibPara();
 			markerStyle = 1;
+		}
+		void addFile(TString fileName){
+			tree->Add(fileName);
 		}
 		CheckEx(int side,int barId):side(side),barId(barId){
 
@@ -223,7 +226,7 @@ class CheckEx{
 			//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
 			tree->SetAlias("Tof",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
 			tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
-			tree->SetAlias("plasT1","plasT[1]-0.0115*(rdcY[1]-225)");
+			tree->SetAlias("plasT1","(plasT[1]-0.0115*(rdcY[1]-225))");
 			//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
 			tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
 
@@ -428,6 +431,7 @@ CheckEx* checkDEE(int side,int barId){
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(3,2);
 	CheckEx *ce = new CheckEx();
+	ce->addFile("ppBe14.root_BeamTargetProtonPRAngleHodBar28-33");
 	ce->setBar(side,barId);
 	//ce->setCalibParas(gNai,dNai,gPlas,dPlas);
 	ce->setAlias();
@@ -456,9 +460,9 @@ void checkDEE(){
 //			checkDEE(i,j);
 //		}
 //	}
-//	int side = 0;
-//	int barId = 4;
-//	checkDEE(side,barId);
-	drawAllBar();
+	int side = 0;
+	int barId = 4;
+	checkDEE(side,barId);
+//	drawAllBar();
 }
 

@@ -56,16 +56,22 @@
 	tree->SetAlias("SBT2TSlew0","SBT2TCal[0]");
 	tree->SetAlias("SBT2TSlew1","SBT2TCal[1]-2.8");
 
-	tree->SetAlias("F3TSlew","0.5*(F3TSlew0+F3TSlew1)");
-	tree->SetAlias("F7TSlew","0.5*(F7TSlew0+F7TSlew1)");
-	tree->SetAlias("SBT1TSlew","0.5*(SBT1TSlew0+SBT1TSlew1)");
-	tree->SetAlias("SBT2TSlew","0.5*(SBT2TSlew0+SBT2TSlew1)");
+//	tree->SetAlias("F3TSlew","0.5*(F3TSlew0+F3TSlew1)");
+//	tree->SetAlias("F7TSlew","0.5*(F7TSlew0+F7TSlew1)");
+//	tree->SetAlias("SBT1TSlew","0.5*(SBT1TSlew0+SBT1TSlew1)");
+//	tree->SetAlias("SBT2TSlew","0.5*(SBT2TSlew0+SBT2TSlew1)");
 
 	tree->SetAlias("SBT2TSlew","0.5*(SBT2TSlew0+SBT2TSlew1)");
 
 	
-	tree->SetAlias("F7TDiff","(F7TCal[0]-F7TCal[1])");
-	tree->SetAlias("f7t_slew","(0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5)))))");
+	tree->SetAlias("F7TDiff","(F7TCal[0]-F7TCal[1]-2.8)");
+	tree->SetAlias("F7TSlew","(0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5)))))");
+	tree->SetAlias("f7t","F7TSlew + 1.1*F7TDiff");
+	tree->SetAlias("f7tBe10","F7TSlew");
+
+	tree->SetAlias("tof713","F13T-f7t+570");
+	tree->SetAlias("tof713Be10","F13T-f7tBe10+570");
+	
 
 	//tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225)+0.000013*(rdcY[0]-225)*(rdcY[0]-225))");
 	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");

@@ -37,7 +37,12 @@ class PlaEvent{
 
 			Double_t C_light = 299.792458; // mm/ns
 
-			Double_t AMU = 931.494; // Atomic Mass Unit (MeV/c²)
+			Double_t AMU = 931.4941024; // Atomic Mass Unit (MeV/c²)
+
+			//correctF3();
+			//correctF7();
+			//correctF13();
+
 			if(getF13Time()!=-9999&&getF7Time()!=-9999){
 				TOF713=getF13Time() - getF7Time() + 570.387; // 20191016  570.619; // ns //20181025
 				Beta713=Dist_F7F13/TOF713/C_light;

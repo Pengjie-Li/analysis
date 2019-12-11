@@ -1,0 +1,13 @@
+
+dbFolder:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/db/
+plasXml:SAMURAIPlastic.xml
+
+
+inputPath:/media/Rawdata/RIKEN_Cluster_2018/
+inputPrefix:run0
+inputSuffix:.ridf.gz
+
+
+outputPath:./rootfiles/
+outputPrefix:run0
+outputSuffix:_PLA.root_test2

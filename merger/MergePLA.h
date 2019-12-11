@@ -191,6 +191,11 @@ class MergePLA:public Convert{
 		}
 		Double_t getF7Time(){
 			return F7T;
+
+		//	double f7t_slew = (0.5*(F7TCal[0]+F7TCal[1])-(-1.06072e-03*F7Q+1.15839e+00/sqrt(sqrt(sqrt(F7Q+92.5)))));
+		//	double f7tdiff =  F7TCal[0]-(F7TCal[1]+2.8);
+		//	
+		//	return f7t_slew+1.1*f7tdiff;
 		}
 		Double_t getF13Time(){
 			return F13T;
