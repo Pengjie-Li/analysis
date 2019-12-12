@@ -3279,3 +3279,96 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawTOF713Be12.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master da9f640] v1.0
+ 101 files changed, 8443 insertions(+), 78 deletions(-)
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/checkCalibTOF.C
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ create mode 100644 merger/rootfiles/checkF13T.C
+ create mode 100644 merger/rootfiles/cutBeamAlpha120.C
+ create mode 100644 merger/rootfiles/cutBeamAlpha150.C
+ create mode 100644 merger/rootfiles/drawF7PosDependence.C
+ rewrite merger/rootfiles/drawSBT1PosDependence.C (64%)
+ rewrite merger/rootfiles/drawSBT2PosDependence.C (67%)
+ create mode 100644 merger/rootfiles/drawTOF713Be14.C
+ rewrite pla/convert/ConvertPLA (89%)
+ create mode 100644 pla/convert/rootfiles/run0118_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0178_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0193_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0194_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0195_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0196_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0197_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0198_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0199_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0200_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0201_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0202_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0203_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0204_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0205_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0206_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0227_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0228_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0229_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0279_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0280_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0281_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0282_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0283_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0284_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0285_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0286_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0287_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0288_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0289_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0290_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0291_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0292_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0373_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0441_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0442_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0443_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0444_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0445_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0446_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0447_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0474_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0491_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0492_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0493_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0520_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0580_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0581_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0582_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0583_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0584_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0585_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0586_PLA.root_test2
+ create mode 100644 pla/convert/rootfiles/run0593_PLA.root_test2
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/ConvertPLA.C
+ create mode 100755 pla/convert/v3_beforeRemoveCorrection/Makefile
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/PLAConvert.h
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/PLARead.h
+ create mode 100755 pla/convert/v3_beforeRemoveCorrection/caltree.C
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/configConvertPLA.prm
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/convert.sh
+ create mode 100755 pla/convert/v3_beforeRemoveCorrection/header.h
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/loop.sh
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/looprun.sh
+ create mode 100755 pla/convert/v3_beforeRemoveCorrection/plastic.C
+ create mode 100644 pla/convert/v3_beforeRemoveCorrection/v1_Sample.C
+ create mode 100755 pla/convert/v4_clean/ConvertPLA
+ create mode 100644 pla/convert/v4_clean/ConvertPLA.C
+ create mode 100755 pla/convert/v4_clean/Makefile
+ create mode 100644 pla/convert/v4_clean/PLAConvert.h
+ create mode 100644 pla/convert/v4_clean/PLARead.h
+ create mode 100755 pla/convert/v4_clean/caltree.C
+ create mode 100644 pla/convert/v4_clean/configConvertPLA.prm
+ create mode 100644 pla/convert/v4_clean/convert.sh
+ create mode 100755 pla/convert/v4_clean/header.h
+ create mode 100644 pla/convert/v4_clean/loop.sh
+ create mode 100644 pla/convert/v4_clean/looprun.sh
+ create mode 100755 pla/convert/v4_clean/plastic.C
+ create mode 100644 pla/convert/v4_clean/v1_Sample.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

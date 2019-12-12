@@ -130,12 +130,20 @@ class CheckEx{
 		TH2F *hDEE;
 		TH2F *hTOF;
 		TH2F *hEkTOF;
+		TH2F *hVTOF;
+		TH2F *hVTOFRaw;
+		TH2F *hVVCorr;
+		TH2F *hFLCorr;
+		TH2F *hFLTOF;
 		TH1F *hEx;
 		TString gate;
 		TGraph *tot;
 		TGraph *nai;
 		TGraph *plas;
 		TGraph *dEE;
+
+		double flOffset ;
+		double tofOffset;
 
 
 		double getNaiGain(){
@@ -192,6 +200,10 @@ class CheckEx{
 		void setCalibParas(double gN,double dN,double gP,double dP){
 			gNai = gN; dNai = dN;gPlas = gP; dPlas = dP;
 		}
+		void setOffset(double fl,double tof){
+			flOffset = fl;
+			tofOffset = tof;
+		}
 		void setAlias(){
 
 			tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
@@ -234,6 +246,9 @@ class CheckEx{
         
 			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
 			tree->SetAlias("protonEk","dEplas+Enai");
+			tree->SetAlias("protonGamma","(protonEk/protonMass+1)");
+			tree->SetAlias("protonBeta","sqrt(1-1/(protonGamma*protonGamma))");
+			tree->SetAlias("protonVelocity","protonBeta*SOL");
 
 			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
 			tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
@@ -280,12 +295,57 @@ class CheckEx{
 			hTOF->Draw();
 		}
 		void drawTOFTot(){
-			tree->Draw(Form("protonEk:TOF>>hEkTOF%d(1000,0,40,1000,0,200)",side),gate);
+			//tree->Draw(Form("protonEk:TOF>>hEkTOF%d(1000,0,40,1000,0,200)",side),gate);
+			tree->Draw(Form("espriFL:TOF>>hEkTOF%d(1000,0,40,1000,1200,1300)",side),gate);
 			hEkTOF = (TH2F *)gDirectory->Get(Form("hEkTOF%d",side));
 			hEkTOF->SetMarkerColor(2);
 			hEkTOF->SetMarkerStyle(markerStyle);
 			hEkTOF->Draw();
 		}
+		void drawVelocityTOF(){
+			tree->Draw(Form("protonVelocity:TOF>>hVTOF%d(1000,0,40,1000,50,150)",side),gate);
+			hVTOF = (TH2F *)gDirectory->Get(Form("hVTOF%d",side));
+			hVTOF->SetMarkerColor(2);
+			hVTOF->SetMarkerStyle(markerStyle);
+			hVTOF->Draw();
+		}
+		void drawVelocityTOFRaw(){
+			tree->Draw(Form("protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hVTOFRaw%d(1000,0,40,1000,50,150)",side,tofOffset,side),gate);
+			hVTOFRaw = (TH2F *)gDirectory->Get(Form("hVTOFRaw%d",side));
+			hVTOFRaw->SetMarkerColor(2);
+			hVTOFRaw->SetMarkerStyle(markerStyle);
+			hVTOFRaw->Draw();
+		}
+		void drawVVCorr(){
+			tree->Draw(Form("protonVelocity:(espriFL+%f)/(plasT%d-TOFSbtTarget+%f)>>hVVCorr%d(1000,50,150,1000,50,150)",flOffset,side,tofOffset,side),gate);
+			hVVCorr = (TH2F *)gDirectory->Get(Form("hVVCorr%d",side));
+			hVVCorr->SetMarkerColor(2);
+			hVVCorr->SetMarkerStyle(markerStyle);
+			hVVCorr->Draw();
+		}
+		void drawFLCorr(){
+			tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(espriFL+%f)>>hFLCorr%d(1000,1150,1500,1000,1150,1500)",side,tofOffset,flOffset,side),gate);
+			hFLCorr = (TH2F *)gDirectory->Get(Form("hFLCorr%d",side));
+			hFLCorr->SetMarkerColor(2);
+			hFLCorr->SetMarkerStyle(markerStyle);
+			hFLCorr->Draw();
+		}
+		void drawFLTOF(){
+			tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(plasT%d-TOFSbtTarget+%f)>>hFLTOF%d(1000,0,20,1000,1150,1500)",side,tofOffset,side,tofOffset,side),gate);
+			hFLTOF = (TH2F *)gDirectory->Get(Form("hFLTOF%d",side));
+			hFLTOF->SetMarkerColor(2);
+			hFLTOF->SetMarkerStyle(markerStyle);
+			hFLTOF->Draw();
+		}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -448,18 +508,24 @@ CheckEx* checkTOF(int side,int barId){
 	ce->setBar(side,barId);
 	//ce->setCalibParas(gNai,dNai,gPlas,dPlas);
 	ce->setAlias();
+	ce->setOffset(100,693);
 	ce->setGate();
 	cPad->cd(1);
-	ce->drawTOF();
+	ce->drawTot();
 	cPad->cd(2);
-	ce->drawTOFTot();
-	cPad->cd(3);
-	cPad->cd(4);
-	//ce->drawRightTOF();
-	cPad->cd(5);
-	//ce->drawRightPlasT();
-	cPad->cd(6);
 	ce->drawDEE();
+	cPad->cd(3);
+	ce->drawTOFTot();
+	cPad->cd(4);
+	//ce->drawTOF();
+	//ce->drawVelocityTOF();
+	ce->drawVelocityTOFRaw();
+	cPad->cd(5);
+	ce->drawFLCorr();
+	//ce->drawVelocityTOFRaw();
+	cPad->cd(6);
+	//ce->drawVVCorr();
+	ce->drawFLTOF();
 	ce->output();
 	return ce;
 	//delete ce;
@@ -472,7 +538,7 @@ void checkCalibTOF(){
 //			checkDEE(i,j);
 //		}
 //	}
-	int side = 0;
+	int side = 1;
 	int barId = 4;
 	checkTOF(side,barId);
 //	drawAllBar();
