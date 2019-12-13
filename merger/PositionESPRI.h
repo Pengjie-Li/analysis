@@ -298,8 +298,11 @@ class ESPRIPlasPosition{
 
 	public:
 		ESPRIPlasPosition(){
-			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,896);
-			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,896);
+			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,896);
+			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,896);
+			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,676);
+			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,676);
+
 		}
 		~ESPRIPlasPosition(){}
 		TVector3 getPlasPosition(int sideLR,TVector3 *espriPos,TVector3 *target){

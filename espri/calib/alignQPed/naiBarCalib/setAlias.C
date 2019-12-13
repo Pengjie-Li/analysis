@@ -23,8 +23,8 @@
 
 	//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
 	//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
-	tree->SetAlias("plasT0","1.6*(plasT[0]-0.01*(rdcY[0]-225))");
-	tree->SetAlias("plasT1","1.6*(plasT[1]-0.0115*(rdcY[1]-225))");
+	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
+	tree->SetAlias("plasT1","(plasT[1]-0.0115*(rdcY[1]-225))");
 	//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
 	//tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
 

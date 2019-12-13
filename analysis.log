@@ -3372,3 +3372,10 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/convert/v4_clean/v1_Sample.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 574dbfb] v1.0
+ 6 files changed, 211 insertions(+), 37 deletions(-)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar14.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/setAlias.C (99%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

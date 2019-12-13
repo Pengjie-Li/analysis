@@ -241,7 +241,8 @@ class CheckEx{
 			tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
 			tree->SetAlias("plasT1","(plasT[1]-0.0115*(rdcY[1]-225))");
 			//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
-			tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
+			//tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
+			tree->SetAlias("TOF",Form("(plasT%d-TOFSbtTarget+674.2)+20.27-2.47",side));
 
         
 			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
@@ -324,14 +325,16 @@ class CheckEx{
 			hVVCorr->Draw();
 		}
 		void drawFLCorr(){
-			tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(espriFL+%f)>>hFLCorr%d(1000,1150,1500,1000,1150,1500)",side,tofOffset,flOffset,side),gate);
+			//tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(espriFL+%f)>>hFLCorr%d(1000,1150,2200,1000,1150,2200)",side,tofOffset,flOffset,side),gate);
+			tree->Draw(Form("(espriFL+%f)/protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hFLCorr%d(1000,0,20,1000,0,20)",flOffset,side,tofOffset,side),gate);
 			hFLCorr = (TH2F *)gDirectory->Get(Form("hFLCorr%d",side));
 			hFLCorr->SetMarkerColor(2);
 			hFLCorr->SetMarkerStyle(markerStyle);
 			hFLCorr->Draw();
 		}
 		void drawFLTOF(){
-			tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(plasT%d-TOFSbtTarget+%f)>>hFLTOF%d(1000,0,20,1000,1150,1500)",side,tofOffset,side,tofOffset,side),gate);
+			tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(plasT%d-TOFSbtTarget+%f)>>hFLTOF%d(1000,0,20,1000,1150,2200)",side,tofOffset,side,tofOffset,side),gate);
+			//tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):TOF>>hFLTOF%d(1000,0,40,1000,1150,1500)",side,tofOffset,side),gate);
 			hFLTOF = (TH2F *)gDirectory->Get(Form("hFLTOF%d",side));
 			hFLTOF->SetMarkerColor(2);
 			hFLTOF->SetMarkerStyle(markerStyle);
@@ -508,7 +511,8 @@ CheckEx* checkTOF(int side,int barId){
 	ce->setBar(side,barId);
 	//ce->setCalibParas(gNai,dNai,gPlas,dPlas);
 	ce->setAlias();
-	ce->setOffset(100,693);
+	//ce->setOffset(220,693.5); // side1
+	ce->setOffset(220,694); // side0
 	ce->setGate();
 	cPad->cd(1);
 	ce->drawTot();
@@ -538,7 +542,7 @@ void checkCalibTOF(){
 //			checkDEE(i,j);
 //		}
 //	}
-	int side = 1;
+	int side = 0;
 	int barId = 4;
 	checkTOF(side,barId);
 //	drawAllBar();
