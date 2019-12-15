@@ -76,10 +76,11 @@
 	//tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225)+0.000013*(rdcY[0]-225)*(rdcY[0]-225))");
 	tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
 	//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
-	tree->SetAlias("espriLTOF","(plasT0-F13T-TOFSbtTarget+895.2)+20.27-2.47");
+	tree->SetAlias("espriLTOF","plasT0-TOFSbtTarget+693.3");
+	//tree->SetAlias("espriLTOF","(plasT0-F13T-TOFSbtTarget+895.2)+20.27-2.47");
 	//tree->SetAlias("espriLTOF","1.4*(plasT0-F13T-TOFSbtTarget+895.2)+20.27");
 	//tree->SetAlias("betaL","(flightLengthTargetESPRI+200)/(SOL*espriLTOF)");
-	tree->SetAlias("betaL","(espriFL-150)/(SOL*espriLTOF)");
+	tree->SetAlias("betaL","(espriFL+150)/(SOL*espriLTOF)");
 	tree->SetAlias("gammaL","1/sqrt(1-betaL*betaL)");
 	tree->SetAlias("espriL_Ep","(gammaL-1)*AMU*MassH");
 
