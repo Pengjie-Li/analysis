@@ -68,7 +68,8 @@ class GateCut{
 		HodCut *hodCut;
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe14.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutProtonBe14.C");
+                        //gROOT->ProcessLine(".x inputRootfiles/cutProtonBe14.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutProtonPPBe14.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe14.C");
 
 		}
@@ -130,9 +131,9 @@ class Event{
 			delete gc;
 		}
 		bool selectEvent(){
-			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
+			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
 			//return isBeam()&&isProton()&&isTargetArea()&&isHodPid();
-			return isBeam()&&isProton()&&isTargetArea();
+			//return isBeam()&&isProton()&&isTargetArea();
 			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
 			//return isBeam();
 			//return isProton();

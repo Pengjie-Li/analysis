@@ -3401,3 +3401,13 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 18 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b3731e8] v1.0
+ 9 files changed, 64 insertions(+), 9 deletions(-)
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/drawC0D0.C
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar00.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar01.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar05.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar06.png (99%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

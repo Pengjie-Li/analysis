@@ -81,7 +81,8 @@ class LeftPlane: public Plane{
 			B=-0.0;
 			C=0.5;
 			//D=896; // Distance = 1215.17
-			D=676; // Distance = 1215.17
+			//D=676; // Distance = 1435.17
+			D=966; // Distance = 1435.17
 			calBaseVector();
 		}
 
@@ -92,8 +93,9 @@ class RightPlane: public Plane{
 			A=TMath::Sqrt(3)/2;
 			B=0;
 			C=0.5;
-			D=676;
+			//D=676; // 1435.17
 			//D=896; // Distance = 1215.17
+			D=956; // Distance = 1215.17
 			calBaseVector();
 		}
 

@@ -18,12 +18,13 @@ class EspriEvent{
 		
 	public:
 		void print(){
-			if(goodEvent()){
 			cout<<"ESPRI Event:"<<endl;
-			//checkESPRI->print();
-			//cout<<"espriPlasT = "<<espriPlasT<<endl;
-			//cout<<"espriPlasE = "<<espriPlasE<<" espriNaiE = "<<espriNaiE<<" espriEnergy = "<<espriEnergy<<endl;
-			positionESPRI->print();
+			if(goodEvent()){
+
+				checkESPRI->print();
+				cout<<"espriPlasT = "<<espriPlasT<<" ns"<<endl;
+				cout<<"espriPlasE = "<<espriPlasE<<" MeV espriNaiE = "<<espriNaiE<<" MeV  espriEnergy = "<<espriEnergy<<" MeV "<<endl;
+				//positionESPRI->print();
 			}
 
 		}
@@ -76,14 +77,16 @@ class EspriEvent{
 		}
 		void setESPRIEnergy(){
 			espriPlasE = calibData->getPlasQ(checkESPRI->getSideLR());
-			if(checkESPRI->getNaiId()!=-1){ espriNaiE  = calibData->getNaiBarQCal(checkESPRI->getSideLR(),checkESPRI->getNaiId());
+			if(checkESPRI->getNaiId()!=-1){ espriNaiE  = calibData->getNaiQ(checkESPRI->getSideLR(),checkESPRI->getNaiId());
 				espriEnergy = espriPlasE + espriNaiE;
 			}else{
 				espriEnergy = espriPlasE;
 			}
 		}
 		void setESPRITime(){
-			espriPlasT = calibData->getESPRIPlasTime(checkESPRI->getSideLR());
+			//espriPlasT = calibData->getESPRIPlasTime(checkESPRI->getSideLR());
+			espriPlasT = calibData->getPlasT(checkESPRI->getSideLR());
+			//cout<<"espriTime: "<<espriPlasT<<endl;
 		}
 		void loadTargetPosition(TVector3 *target){
 			targetPosition = target;

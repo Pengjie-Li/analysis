@@ -1,6 +1,6 @@
 inputPath:inputRootfiles/
 runPrefix:run
-runSuffix:_analysed.root_3
+runSuffix:_analysed.root_4
 
 outputPath:./rootfiles/
 outputPrefix:run0

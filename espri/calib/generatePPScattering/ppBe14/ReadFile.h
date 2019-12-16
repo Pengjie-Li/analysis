@@ -178,6 +178,7 @@ class ReadFile{
 		Double_t        plasMQ[2];
 		Double_t        plasQ[2];
 		Double_t        plasT[2];
+		Double_t        plasTCorr[2];
 
 		Double_t        espriFL;
 		Double_t        espriAngle;
@@ -431,6 +432,7 @@ class ReadFile{
 			inputTree->SetBranchAddress("plasMQ",plasMQ);
 			inputTree->SetBranchAddress("plasQ",plasQ);
 			inputTree->SetBranchAddress("plasT",plasT);
+			inputTree->SetBranchAddress("plasTCorr",plasTCorr);
 			inputTree->SetBranchAddress("vESPRI",&vESPRI);
 			inputTree->SetBranchAddress("espriRdcPosition",&espriRdcPosition);
 			inputTree->SetBranchAddress("espriPlasPosition",&espriPlasPosition);
@@ -662,6 +664,7 @@ class ReadFile{
                         tree->Branch("plasMQ",&plasMQ,"plasMQ[2]/D");
                         tree->Branch("plasQ",&plasQ,"plasQ[2]/D");
                         tree->Branch("plasT",&plasT,"plasT[2]/D");
+                        tree->Branch("plasTCorr",&plasTCorr,"plasTCorr[2]/D");
 
 			tree->Branch("vESPRI",&vESPRI);
 			tree->Branch("espriRdcPosition",&espriRdcPosition);

@@ -43,6 +43,7 @@ class DrawCurve{
 		}
 		~DrawCurve(){}
 };
+
 class TCalibPara{
 	private:
 		double plasGain[2][7];
@@ -233,7 +234,7 @@ class CheckEx{
 			// Could be better	
 			tree->SetAlias("beamEk","(Ek713-3.776)*MassBe");
 
-			tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654)");
+			tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654-0.626)"); // 0.654 diff F713 and F13-TGT, 0.626 diff Data to Theoretical point
 
 			tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
 			//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
@@ -317,13 +318,19 @@ class CheckEx{
 			hVTOFRaw = (TH2F *)gDirectory->Get(Form("hVTOFRaw%d",side));
 			hVTOFRaw->SetMarkerColor(2);
 			hVTOFRaw->SetMarkerStyle(7);
+			TF1 *fit = new TF1("fit","[0]/(x)+[1]",90,115);
+			fit->SetParLimits(0,1030,1430);
+			fit->SetParLimits(1,-5,5);
+			fit->SetLineColor(3);
+			hVTOFRaw->Fit(fit,"R","");
 
-			tree->Draw(Form("(plasT0-TOFSbtTarget+%f):(espriFL+%f)/(plasT0-TOFSbtTarget+%f)>>hVTOFData%d(1000,50,150,1000,0,40)",tofOffset,flOffset,tofOffset,side),gate);
+			tree->Draw(Form("(plasT%d-TOFSbtTarget+%f):(espriFL+%f)/(plasT%d-TOFSbtTarget+%f)>>hVTOFData%d(1000,50,150,1000,0,40)",side,tofOffset,flOffset,side,tofOffset,side),gate);
 			//tree->Draw(Form("(espriFL+%f)/(plasT0-TOFSbtTarget+%f):(plasT0-TOFSbtTarget+%f)>>hVTOFData%d(1000,0,40,1000,50,150)",flOffset,tofOffset,tofOffset,side),gate);
 			TH2F *hVTOFData = (TH2F *)gDirectory->Get(Form("hVTOFData%d",side));
 			hVTOFData->SetMarkerColor(1);
 			hVTOFData->SetMarkerStyle(markerStyle);
 			hVTOFRaw->Draw();
+			fit->Draw("same");
 			hVTOFData->Draw("same");
 
 
@@ -521,9 +528,9 @@ CheckEx* checkTOF(int side,int barId){
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(3,2);
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe14.root_BeamTargetProtonPRAngle");
+	//ce->addFile("ppBe14.root_BeamTargetProtonPRAngle");
 	//ce->addFile("ppBe14.root_BeamTargetProtonHodBar28-33");
-	//ce->addFile("ppBe14.root_BeamTargetProtonPRAngleHodBar28-33");
+	ce->addFile("ppBe14.root_BeamTargetProtonPRAngleHodBar28-33");
 	ce->setBar(side,barId);
 	//ce->setCalibParas(gNai,dNai,gPlas,dPlas);
 	ce->setAlias();
@@ -554,9 +561,10 @@ CheckEx* checkTOF(int side,int barId){
 //	ce->setOffset(-10,691.7); // side0
 //	ce->setOffset(-20,691.6); // side0
 //	ce->setOffset(-30,691.5); // side0
-	ce->setOffset(300,697); // side0
-	//ce->setOffset(0,692); // side0
-	//ce->setOffset(0,694); // side0
+	//ce->setOffset(300,697); // side0
+	//
+	ce->setOffset(-70,691.3); // side0
+	//ce->setOffset(-60,691); // side1
 	ce->setGate();
 	cPad->cd(1);
 	ce->drawTot();
@@ -587,7 +595,7 @@ void checkCalibTOF(){
 //		}
 //	}
 	int side = 0;
-	int barId = 1;
+	int barId = 3;
 	checkTOF(side,barId);
 //	drawAllBar();
 }

@@ -34,6 +34,11 @@ outputPrefix:run0
 outputSuffix:_analysed.root_test
 
 
+plasQThreshold:0.1
+plasTMin:0
+plasTMax:40
+naiQPedThreshold:100
+
 siliconHitThreshold:0.5
 csiHitThreshold:2
 dssdLeftPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/scattering_angle/OnePixelGenerateAllPixelPosition/LeftDSSDPixelPosition.txt

@@ -1,5 +1,10 @@
 void Merger::analysingESPRI(){
 	
+
+
+	mergeESPRI->corrPlasTime(); // posidition dependency, time offset
+	mergeESPRI->corrEnergy(); // posidition dependency, time offset
+
 	// Analysing ESPRI data and select ESPRI LR side
 	espriEvent->checkData(mergeESPRI);
 

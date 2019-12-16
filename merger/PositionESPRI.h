@@ -1,5 +1,11 @@
 class CheckEspriEvent{
 	private:
+		TEnv *env;
+		double plasTMin;
+		double plasTMax;
+		double plasQThreshold;
+		double naiQPedThreshold;
+
 		MergeESPRI *calibData;
 
 		int isEspriLR;
@@ -31,8 +37,9 @@ class CheckEspriEvent{
 			else return false;
 		}
 		bool isPlas(int side){
-			if(getPlasQ(side)>0.1) return true; // set PlasQ>100KeV
-			if(getPlasT(side)>-700&&getPlasT(side)<-500) return true;
+			if(getPlasQ(side)>plasQThreshold) return true; // set PlasQ>100KeV
+			// 0 < plasT < 40
+			if(getPlasT(side)>plasTMin&&getPlasT(side)<plasTMax) return true;
 			return false;
 		}
 		int checkLR(bool isESPRIL,bool isESPRIR){
@@ -68,13 +75,13 @@ class CheckEspriEvent{
 			//cout<<"isRdcR:"<<isRdcR<<" isPlasR:"<<isPlasR<<" isESPRIR:"<<isESPRIR<<endl;
 			//cout<<"isEspriLR:"<<isEspriLR<<endl;
 		}
-		double getNaiBarQCal(int side,int id){
-			return calibData->getNaiBarQCal(side,id);
+		double getNaiQPed(int side,int id){
+			return calibData->getNaiQPed(side,id);
 		}
 		void findNaiBarId(){
 
 			for (int i = 0; i < 7; ++i) {
-				if(getNaiBarQCal(isEspriLR,i)>1.0){
+				if(getNaiQPed(isEspriLR,i)>naiQPedThreshold){
 					naiNHit++;
 					naiBarId = i;
 				}
@@ -93,7 +100,13 @@ class CheckEspriEvent{
 
 
 	public:
-		CheckEspriEvent(){}
+		CheckEspriEvent(){
+			env = new TEnv("configMerger.prm");
+			plasTMin = env->GetValue("plasTMin",0);	
+			plasTMax = env->GetValue("plasTMax",0);	
+			plasQThreshold = env->GetValue("plasQThreshold",0);	
+			naiQPedThreshold = env->GetValue("naiQPedThreshold",0);	
+		}
 		~CheckEspriEvent(){}
 		void setBranch(TTree *tree){
 
@@ -130,11 +143,14 @@ class CheckEspriEvent{
 			return getRdcY(isEspriLR);
 		}
 
-
-
-
 };
 
+class EspriTimeEvent{
+	private:
+	public:
+		EspriTimeEvent(){}
+		~EspriTimeEvent(){}
+};
 class ESPRI3DPosition{
 	private:
 
@@ -298,10 +314,13 @@ class ESPRIPlasPosition{
 
 	public:
 		ESPRIPlasPosition(){
+			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,966);
+			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,956);
+			
 			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,896);
 			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,896);
-			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,676);
-			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,676);
+			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,676);
+			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,676);
 
 		}
 		~ESPRIPlasPosition(){}

@@ -70,9 +70,9 @@ void Merger::eventLoop(){
 }
 void Merger::print(){
 	//printPLA();	
-	printBDC();	
-	//printESPRI();
-	printFDC0();
+	//printBDC();	
+	printESPRI();
+	//printFDC0();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){

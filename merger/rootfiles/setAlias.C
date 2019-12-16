@@ -46,7 +46,9 @@
 
 
 	//tree->SetAlias("TOFSbtTarget","flightLengthBeamTarget/(Beta713*SOL-0.911)");
-	tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.911)");
+	//tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.911)");
+	tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654)"); // 0.654 diff F713 and F13-TGT, 0.626 diff Data to Theoretical point
+	//tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654-0.626)"); // 0.654 diff F713 and F13-TGT, 0.626 diff Data to Theoretical point
 	tree->SetAlias("F3TSlew0","F3TCal[0]+0.0015*F3QRaw[0]");
 	tree->SetAlias("F3TSlew1","F3TCal[1]+0.0014*F3QRaw[1]");
 	tree->SetAlias("F7TSlew0","F7TCal[0]+0.00092*F7QRaw[0]");
@@ -94,9 +96,10 @@
 	tree->SetAlias("gammaR","1/sqrt(1-betaR*betaR)");
 	tree->SetAlias("espriR_Ep","(gammaR-1)*AMU*MassH");
 
-	tree->SetAlias("beta","espriFL/(SOL*((plasTCal[3]-F13T+873+40.51)-TOFSbtTarget))");
+	tree->SetAlias("espriTOF","(espriPlasT-TOFSbtTarget)");
+	tree->SetAlias("beta","espriFL/(SOL*espriTOF)");
 	tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
-	tree->SetAlias("KEproton","(gamma-1)*AMU*MassH");
+	tree->SetAlias("espriEk","(gamma-1)*AMU*MassH");
 
 
 
