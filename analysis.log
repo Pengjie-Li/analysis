@@ -3411,3 +3411,39 @@ Branch master set up to track remote branch master from origin.
  rewrite espri/calib/alignQPed/naiBarCalib/png/Bar06.png (99%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 39ee6e2] v1.0
+ 48 files changed, 350 insertions(+), 57 deletions(-)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar00.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar01.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar02.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar03.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar05.png (98%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar06.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar10.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar11.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar12.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar14.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar15.png (99%)
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar16.png (99%)
+ rewrite espri/calib/generatePPScattering/ppBe14/ppBe14 (78%)
+ create mode 100644 espri/calib/generatePPScattering/ppBe14/rootfiles/drawCurveEspriEvsA.C
+ rewrite merger/Merger (88%)
+ create mode 100644 merger/rootfiles/cutProtonPPBe14.C
+ create mode 100644 merger/rootfiles/run0442_analysed.root_4
+ rewrite merger/rootfiles/run0442_analysed.root_test (69%)
+ create mode 100644 merger/rootfiles/run0443_analysed.root_4
+ create mode 100644 merger/rootfiles/run0444_analysed.root_4
+ rewrite merger/rootfiles/run0444_analysed.root_test (69%)
+ create mode 100644 merger/rootfiles/run0445_analysed.root_4
+ rewrite merger/rootfiles/run0445_analysed.root_test (70%)
+ create mode 100644 merger/rootfiles/run0446_analysed.root_4
+ create mode 100644 merger/rootfiles/run0447_analysed.root_4
+ create mode 100644 merger/rootfiles/run0474_analysed.root_4
+ create mode 100644 merger/rootfiles/run0531_analysed.root_test
+ create mode 100644 merger/rootfiles/run0586_analysed.root_4
+ rewrite merger/rootfiles/run0593_analysed.root_test (69%)
+ create mode 120000 merger/txt/espriEnergyCalibPara.txt
+ create mode 120000 merger/txt/espriEnergyCalibParaBe14.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -125,9 +125,7 @@ class CheckEx{
 		double dNai;
 
 		DrawCurve *dc;
-		
-		TH2F *hEA;
-		TH2F *hEkAngle;
+		TH2F *hTot;
 		TH2F *hNai;
 		TH2F *hPlas;
 		TH2F *hDEE;
@@ -245,18 +243,12 @@ class CheckEx{
 			tree->SetAlias("plasT1","(plasT[1]-0.0115*(rdcY[1]-225))");
 			//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
 			//tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
-			//tree->SetAlias("TOF",Form("(plasT%d-TOFSbtTarget+674.2)+20.27-2.47",side));
+			tree->SetAlias("TOF",Form("(plasT%d-TOFSbtTarget+674.2)+20.27-2.47",side));
 
-			tree->SetAlias("espriTOF","(espriPlasT-TOFSbtTarget)");
-			tree->SetAlias("beta","espriFL/(SOL*espriTOF)");
-			tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
-			tree->SetAlias("espriEk","(gamma-1)*AMU*MassH");
-
-
+        
 			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
 			tree->SetAlias("protonEk","dEplas+Enai");
-			//tree->SetAlias("protonGamma","(protonEk/protonMass+1)");
-			tree->SetAlias("protonGamma","(espriEnergy/protonMass+1)");
+			tree->SetAlias("protonGamma","(protonEk/protonMass+1)");
 			tree->SetAlias("protonBeta","sqrt(1-1/(protonGamma*protonGamma))");
 			tree->SetAlias("protonVelocity","protonBeta*SOL");
 
@@ -271,10 +263,7 @@ class CheckEx{
 		}
 
 		void setGate(){
-			if(side !=-1&&barId != -1) gate = Form("isEspriLR==%d&&naiBarId==%d",side,barId);
-			if(side ==-1&&barId == -1) gate ="1";
-			if(side ==0&&barId == -1) gate ="isEspriLR==0";
-			if(side ==1&&barId == -1) gate ="isEspriLR==1";
+			gate = Form("isEspriLR==%d&&naiBarId==%d",side,barId);
 		}
 		void draw(){
 			drawTot();
@@ -284,40 +273,16 @@ class CheckEx{
 			drawPlas();
 		}
 		void drawTot(){
-			
-			drawEA();
-			drawEkAngle();
 
-			hEA->Draw();
-			hEkAngle->Draw("same");
+			tree->Draw(Form("protonEk:espriAngle>>hTot%d%d(1000,55,75,1000,0,200)",side,barId),gate);
+
+			hTot = (TH2F *)gDirectory->Get(Form("hTot%d%d",side,barId));
+			hTot->SetMarkerColor(2);
+			//hTot->SetMarkerSize(30);
+			hTot->SetMarkerStyle(markerStyle);
+			hTot->Draw();
 			dc->drawTot();
 		}
-		void drawEA(){
-
-			tree->Draw(Form("espriEnergy:espriAngle>>hEA%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hEA = (TH2F *)gDirectory->Get(Form("hEA%d%d",side,barId));
-			hEA->SetMarkerColor(2);
-			//hEA->SetMarkerSize(30);
-			hEA->SetMarkerStyle(markerStyle);
-
-			hEA->Draw();
-			dc->drawTot();
-		}
-		void drawEkAngle(){
-
-			tree->Draw(Form("espriEk:espriAngle>>hEkAngle%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hEkAngle = (TH2F *)gDirectory->Get(Form("hEkAngle%d%d",side,barId));
-			hEkAngle->SetMarkerColor(2);
-			//hEkAngle->SetMarkerSize(30);
-			hEkAngle->SetMarkerStyle(markerStyle);
-	
-			hEkAngle->Draw("");
-			dc->drawTot();
-		}
-	
-	
 		void drawEx(){
 			tree->Draw(Form("excitationEnergy>>hEx%d%d(200,-10,10)",side,barId),gate);
 			hEx = (TH1F *)gDirectory->Get(Form("hEx%d%d",side,barId));
@@ -332,44 +297,19 @@ class CheckEx{
 			hTOF->Draw();
 		}
 		void drawTOFTot(){
-			tree->Draw(Form("espriEnergy:espriEk>>hEkTOF%d(1000,0,200,1000,0,200)",side),gate);
-			//tree->Draw(Form("espriEnergy:espriTOF>>hEkTOF%d(1000,0,40,1000,0,200)",side),gate);
-			//tree->Draw(Form("espriFL:TOF>>hEkTOF%d(1000,0,20,1000,1200,1300)",side),gate);
+			//tree->Draw(Form("protonEk:TOF>>hEkTOF%d(1000,0,40,1000,0,200)",side),gate);
+			tree->Draw(Form("espriFL:TOF>>hEkTOF%d(1000,0,20,1000,1200,1300)",side),gate);
 			hEkTOF = (TH2F *)gDirectory->Get(Form("hEkTOF%d",side));
 			hEkTOF->SetMarkerColor(2);
 			hEkTOF->SetMarkerStyle(markerStyle);
 			hEkTOF->Draw();
-
-			TF1 *xyEq = new TF1("xyEq","x",0,200);
-			xyEq->SetLineColor(3);
-			xyEq->Draw("same");
-	
 		}
 		void drawVelocityTOF(){
-
-			tree->Draw(Form("espriTOF:protonVelocity>>hVTOF%d(1000,50,150,1000,0,40)",side),gate);
-			//tree->Draw(Form("protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hVTOF%d(1000,0,40,1000,50,150)",side,tofOffset,side),gate);
+			tree->Draw(Form("protonVelocity:TOF>>hVTOF%d(1000,0,40,1000,50,150)",side),gate);
 			hVTOF = (TH2F *)gDirectory->Get(Form("hVTOF%d",side));
 			hVTOF->SetMarkerColor(2);
-			hVTOF->SetMarkerStyle(7);
-
-			TF1 *fit = new TF1("fit","[0]/(x)+[1]",90,115);
-			fit->SetParLimits(0,1030,1330);
-			fit->SetParLimits(1,-3,3);
-			fit->SetLineColor(3);
-			hVTOF->Fit(fit,"R","");
-
-
-			tree->Draw(Form("espriTOF:espriFL/espriTOF>>hVTOFData%d(1000,50,150,1000,0,40)",side),gate);
-			//tree->Draw(Form("(espriFL+%f)/(plasT0-TOFSbtTarget+%f):(plasT0-TOFSbtTarget+%f)>>hVTOFData%d(1000,0,40,1000,50,150)",flOffset,tofOffset,tofOffset,side),gate);
-			TH2F *hVTOFData = (TH2F *)gDirectory->Get(Form("hVTOFData%d",side));
-			hVTOFData->SetMarkerColor(1);
-			hVTOFData->SetMarkerStyle(markerStyle);
-
+			hVTOF->SetMarkerStyle(markerStyle);
 			hVTOF->Draw();
-			fit->Draw("same");
-			hVTOFData->Draw("same");
-
 		}
 		void drawVelocityTOFRaw(){
 
@@ -434,8 +374,7 @@ class CheckEx{
 
 
 		void drawDEE(){
-			tree->Draw(Form("espriPlasE:espriNaiE>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
-			//tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
+			tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
 			hDEE = (TH2F *)gDirectory->Get(Form("hDEE%d%d",side,barId));
 			hDEE->SetMarkerColor(2);
 			hDEE->SetMarkerStyle(markerStyle);
@@ -473,8 +412,8 @@ class CheckEx{
 			//hDEE->Write();
 			//outputFile->Close();
 		}
-		TH2F * getEA(){
-			return hEA;
+		TH2F * getTot(){
+			return hTot;
 		}
 		TH1F * getEx(){
 			return hEx;
@@ -512,23 +451,20 @@ void drawAllBar(){
 	//ce->addFile("ppBe14.root_BeamTargetProtonHodBar28-33");
 	ce->addFile("ppBe14.root_BeamTargetProtonPRAngleHodBar28-33");
 	ce->setAlias();
-	ce->setBar(1,-1);
-	//ce->setBar(0,-1);
-
-	//ce->setBar(-1,-1);
+	ce->setBar(-1,-1);
 	ce->setGate();
 
 	cPad->cd(1);
-	//ce->drawTot();
-	ce->drawEA();
+	ce->drawTot();
 	cPad->cd(2);
-	ce->drawEkAngle();
-	//ce->drawDEE();
+	ce->drawDEE();
 	cPad->cd(3);
 	ce->drawTOFTot();
 	cPad->cd(4);
-	ce->drawVelocityTOF();
+	ce->drawVelocityTOFRaw();
 	ce->output();
+	return ce;
+	//delete ce;
 
 }
 CheckEx* checkTOF(int side,int barId){
@@ -547,11 +483,9 @@ CheckEx* checkTOF(int side,int barId){
 	//ce->setOffset(-60,691); // side1
 	ce->setGate();
 	cPad->cd(1);
-	//ce->drawTot();
-	ce->drawEA();
+	ce->drawTot();
 	cPad->cd(2);
-	ce->drawEkAngle();
-	//ce->drawDEE();
+	ce->drawDEE();
 	cPad->cd(3);
 	ce->drawTOFTot();
 	cPad->cd(4);
