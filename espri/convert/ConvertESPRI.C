@@ -132,10 +132,11 @@ class ConvertESPRI{
 		}
 		void print(){
 			cout<<"EventNumber = "<<EventNumber<<endl;
-			//espriReadRaw->printTDC();
+			espriReadRaw->printTDC();
 			//espriReadRaw->printPlas();
+			espriConvertCal->printRdc();
 			//espriConvertCal->printPlas();
-			espriConvertCal->printNai();
+			//espriConvertCal->printNai();
 
 		}
 		void getRawData(){

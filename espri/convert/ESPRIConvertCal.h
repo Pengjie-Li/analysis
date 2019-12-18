@@ -34,6 +34,7 @@ class ESPRIRdcCal{
 		}
 		void readReconstructedData(TClonesArray *rdcArray){
 			init();
+			cout<<"rdc Entries = "<<rdcArray->GetEntries()<<endl;
 			for(int i=0;i<rdcArray->GetEntries();i++){
 				TArtRDC *rdc = (TArtRDC*)rdcArray->At(i);
 				setCalibratedRdc(rdc);
@@ -41,12 +42,14 @@ class ESPRIRdcCal{
 			}
 		}
 		void setTrackCheck(TArtRDC *rdc){
-			rdcChi2[rdc->GetLayer()-1]= rdc->GetCHI2();
-			rdc->GetRes(rdcRes[rdc->GetLayer()-1]);
-			rdc->GetDrf(rdcDL[rdc->GetLayer()-1]);
-			rdc->GetTch(rdcTch[rdc->GetLayer()-1]);
-			//cout<<"Chi2="<<rdc->GetCHI2()<<" Res1="<<rdcRes[rdc->GetLayer()-1][1]<<" Drf1="<<rdcDL[rdc->GetLayer()-1][1]<<endl;
-			
+
+			if(rdc->GetRDCX()>-1&&rdc->GetRDCY()>-1){
+				rdcChi2[rdc->GetLayer()-1]= rdc->GetCHI2();
+				rdc->GetRes(rdcRes[rdc->GetLayer()-1]);
+				rdc->GetDrf(rdcDL[rdc->GetLayer()-1]);
+				rdc->GetTch(rdcTch[rdc->GetLayer()-1]);
+				//cout<<"Chi2="<<rdc->GetCHI2()<<" Res1="<<rdcRes[rdc->GetLayer()-1][1]<<" Drf1="<<rdcDL[rdc->GetLayer()-1][1]<<endl;
+			}	
 		}
 		void setCalibratedRdc(TArtRDC *rdc){
 			if(rdc){
@@ -58,7 +61,6 @@ class ESPRIRdcCal{
 					rdcB[rdc->GetLayer()-1]=rdc->GetRDCB();
 					rdcMult++;
 					
-					//cout<<"Calibrated: Layer ="<<rdc->GetLayer()<<" x="<<rdc->GetRDCX()<<" Y="<<rdc->GetRDCY()<<endl;
 				}
 			}
 
@@ -75,6 +77,16 @@ class ESPRIRdcCal{
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 			
+		}
+		void print(){
+
+			cout<<"Left RDC: "<<rdcX[0]<<" "<<rdcY[0]<<endl;
+			cout<<"Right RDC:"<<rdcX[1]<<" "<<rdcY[1]<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					cout<<"i = "<<i<<" j = "<<j<<" ch = "<<rdcTch[i][j]<<endl;
+				}
+			}
 		}
 };
 class ESPRINaiCalPara{
@@ -852,6 +864,10 @@ class ESPRIConvertCal{
 			naiCal->setBranch(tree); 
 			plasCal->setBranch(tree);
 		}
+		void printRdc(){
+			rdcCal->print();
+		}
+	
 		void printPlas(){
 			plasCal->print();
 		}

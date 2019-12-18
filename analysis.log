@@ -3447,3 +3447,20 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 merger/txt/espriEnergyCalibParaBe14.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 91cbd5c] v1.0
+ 16 files changed, 671 insertions(+), 127 deletions(-)
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/checkCalibTOF.C_v1
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/png/Bar-1-1.png
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/png/Bar0-1.png
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/png/Bar1-1.png
+ create mode 100644 espri/calib/stcCalib/drawSTC.C
+ rewrite merger/rootfiles/run0442_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0443_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0444_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0445_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0446_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0447_analysed.root_4 (69%)
+ rewrite merger/rootfiles/run0586_analysed.root_4 (69%)
+ create mode 100644 merger/rootfiles/run0593_analysed.root_4
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
