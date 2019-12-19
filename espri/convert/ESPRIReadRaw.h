@@ -103,13 +103,8 @@ class ESPRITdcRaw{
 			}
 		}
 		void print(){
-			//cout<<" TDC Raw Data:"<<endl;
-			//for (int i = 0; i < tdc.size(); ++i) {
-
-			//	cout<<"\t"<<tdcPlaneId[i]<<"\t"<<tdcLayerId[i]<<"\t"<<tdcWireId[i]<<"\t"<<tdc[i]<<endl;
-			//}
-			//printRDC();
-			printPlas();
+			printRDC();
+			//printPlas();
 		}
 		
 		void setBranch(TTree *tree){

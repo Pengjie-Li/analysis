@@ -34,7 +34,6 @@ class ESPRIRdcCal{
 		}
 		void readReconstructedData(TClonesArray *rdcArray){
 			init();
-			cout<<"rdc Entries = "<<rdcArray->GetEntries()<<endl;
 			for(int i=0;i<rdcArray->GetEntries();i++){
 				TArtRDC *rdc = (TArtRDC*)rdcArray->At(i);
 				setCalibratedRdc(rdc);
@@ -84,7 +83,7 @@ class ESPRIRdcCal{
 			cout<<"Right RDC:"<<rdcX[1]<<" "<<rdcY[1]<<endl;
 			for (int i = 0; i < 2; ++i) {
 				for (int j = 0; j < 7; ++j) {
-					cout<<"i = "<<i<<" j = "<<j<<" ch = "<<rdcTch[i][j]<<endl;
+					cout<<"i = "<<i<<" j = "<<j<<"\t"<<" ch = "<<"\t"<<rdcTch[i][j]<<"\t"<<" dl = "<<"\t"<<rdcDL[i][j]<<endl;
 				}
 			}
 		}
