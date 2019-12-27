@@ -80,7 +80,7 @@ class LeftPlane: public Plane{
 			A=-TMath::Sqrt(3)/2;
 			B=-0.0;
 			C=0.5;
-			D=1071;
+			D=1099.98;
 			calBaseVector();
 		}
 
@@ -91,7 +91,7 @@ class RightPlane: public Plane{
 			A=TMath::Sqrt(3)/2;
 			B=0;
 			C=0.5;
-			D=1071;
+			D=1100.73;
 			calBaseVector();
 		}
 

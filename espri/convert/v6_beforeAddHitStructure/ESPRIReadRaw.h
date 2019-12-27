@@ -125,16 +125,11 @@ class ESPRINaiRaw{
 	 * NaI time =-1, s12 don't use TDC for NaI
 	 */
 	private:
-		TRandom3 *r3;
-		double naiQRaw[4][7];// 0:LL, 1:LR, 2:RL,3:RR no need to save ID
-		double getDigitalRandom(){
-			return r3->Uniform(-0.5,0.5);
-		}
+		int naiQRaw[4][7];// 0:LL, 1:LR, 2:RL,3:RR no need to save ID
+		int naiMult[4];
 		
 	public:
-		ESPRINaiRaw(){
-			r3 = new TRandom3();
-		}
+		ESPRINaiRaw(){}
 		void init(){
 			for(int i=0;i<4;i++)
 				for(int j=0;j<7;j++){
@@ -161,42 +156,38 @@ class ESPRINaiRaw{
 					int layer=nai->GetLayer();
 					int ADC=nai->GetRawADC();
 
-					double newADC = ADC + getDigitalRandom();
-
 					if(layer==1&&ID%2==0){
-						naiQRaw[0][(ID-2)/2]=newADC;
+						naiQRaw[0][(ID-2)/2]=ADC;
+						naiMult[0]++;
 					}else if(layer==1&&ID%2==1){
-						naiQRaw[1][(ID-1)/2]=newADC;
+						naiQRaw[1][(ID-1)/2]=ADC;
+						naiMult[1]++;
 					}else if(layer==2&&ID%2==0){
-						naiQRaw[2][(ID-16)/2]=newADC;
+						naiQRaw[2][(ID-16)/2]=ADC;
+						naiMult[2]++;
 					}else{
-						naiQRaw[3][(ID-15)/2]=newADC;
+						naiQRaw[3][(ID-15)/2]=ADC;
+						naiMult[3]++;
 					}
 				}
 			}
 			//print();
 		}
-		double getQRaw(int i,int j){
+		int getQRaw(int i,int j){
 			return naiQRaw[i][j];
 		}
 		void setBranch(TTree *tree){
-			tree->Branch("naiQRaw",naiQRaw,"naiQRaw[4][7]/D");
+			tree->Branch("naiQRaw",naiQRaw,"naiQRaw[4][7]/I");
 		}
 };
 class ESPRIPlasRaw{
 	private:
-		double plasQRaw[4];// 0:LU, 1:LD, 2:RU, 3:RD
-		double plasTRaw[4];
-		double plasTimeRef;
-		TRandom3 *r3;
-		double getDigitalRandom(){
-			return r3->Uniform(-0.5,0.5);
-		}
+		int plasQRaw[4];// 0:LU, 1:LD, 2:RU, 3:RD
+		int plasTRaw[4];
+		int plasTimeRef;
 
 	public:
-		ESPRIPlasRaw(){
-			r3 = new TRandom3();
-		}
+		ESPRIPlasRaw(){}
 		void init(){
 			plasTimeRef = -9999;
 			for(int i=0;i<4;i++){
@@ -233,39 +224,40 @@ class ESPRIPlasRaw{
 				int ID= plas->GetID();
 				int layer = plas->GetLayer();
 				int ADC = plas->GetRawADC();
-				double newADC = ADC + getDigitalRandom();
-				plasQRaw[ID-1]=newADC;
+				//int TDC = plas->GetTime();
+				plasQRaw[ID-1]=ADC;
+				//plasTRaw[ID-1]=TDC;
 			}
-			plasTimeRef = tdcRaw->getPlasTimeRef() + getDigitalRandom();
+			plasTimeRef = tdcRaw->getPlasTimeRef();
 			vector<vector<int> > tdcPlasRaw = tdcRaw->getPlasRaw();	
 			for (int i = 0; i < tdcPlasRaw.size(); ++i) {
 				for (int j = 0; j < tdcPlasRaw[i].size(); ++j) {
 					//cout<<i<<":"<<j<<":"<<tdcPlasRaw[i][j]<<endl;	
-					if(tdcPlasRaw[i].size() ==1) plasTRaw[i] = tdcPlasRaw[i][j]+getDigitalRandom();
-					else if((tdcPlasRaw[i][j]-plasTimeRef)<-25600){ // Multi Hit TDC select interested range
-						plasTRaw[i] = tdcPlasRaw[i][j] + getDigitalRandom();
+					if(tdcPlasRaw[i].size() ==1) plasTRaw[i] = tdcPlasRaw[i][j];
+					else if((tdcPlasRaw[i][j]-plasTimeRef)<-25600){
+						plasTRaw[i] = tdcPlasRaw[i][j];
 					}else {}
 				}
 				//cout<<"plasTRaw "<<i<<":"<<plasTRaw[i]<<endl;
 			}
 		}
-//		void setPlasTimeRef(int ref){
-//			plasTimeRef = ref;
-//		}
-		double getPlasTimeRef(){
+		void setPlasTimeRef(int ref){
+			plasTimeRef = ref;
+		}
+		int getPlasTimeRef(){
 			return plasTimeRef;
 		}
-		double getQRaw(int i){
+		int getQRaw(int i){
 			return plasQRaw[i];
 		}
-		double getTRaw(int i){
+		int getTRaw(int i){
 			return plasTRaw[i];
 		}
 
 		void setBranch(TTree *tree){
-			tree->Branch("plasQRaw",plasQRaw,"plasQRaw[4]/D");
-			tree->Branch("plasTRaw",plasTRaw,"plasTRaw[4]/D");
-			tree->Branch("plasTimeRef",&plasTimeRef,"plasTimeRef/D");
+			tree->Branch("plasQRaw",plasQRaw,"plasQRaw[4]/I");
+			tree->Branch("plasTRaw",plasTRaw,"plasTRaw[4]/I");
+			tree->Branch("plasTimeRef",&plasTimeRef,"plasTimeRef/I");
 		}
 };
 

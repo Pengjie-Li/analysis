@@ -6,3 +6,10 @@
 	2. change Analying BDC into BdcEvent mode
 2019-11-21
 	1. add Theta for FDC0, then use it Theta_proton vs Theta_Residue
+2019-12-16
+	1. v3 naiCalib under each Beam
+	2. v4 naiCalib using linear calib from ppBe14
+2019-12-27
+	1. revise RDC Plane and Plas Plane
+	Left:965.69:1011.19:1188.19
+	Right:964.93:1010.43:1187.43

@@ -176,12 +176,14 @@ class ESPRI3DPosition{
 			//rightBaseY.SetXYZ(0.000000,1.000000,-0.000000);
 			// Expected position
 			leftPlaneNorm.SetXYZ(-TMath::Sqrt(3)/2,0,0.5);
-			leftPedal.SetXYZ(-900.813644,0.000000,-3702.255000);
+			//leftPedal.SetXYZ(-900.813644,0.000000,-3702.255000);
+			leftPedal.SetXYZ(-875.716228,0.000000,-3716.745000);
 			leftBaseX.SetXYZ(0.500000,0.000000,0.866025);
 			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
 
 			rightPlaneNorm.SetXYZ(TMath::Sqrt(3)/2,0,0.5);
-			rightPedal.SetXYZ(900.813644,0.000000,-3702.255000);
+			//rightPedal.SetXYZ(900.813644,0.000000,-3702.255000);
+			rightPedal.SetXYZ(875.066709,0.000000,-3717.120000);
 			rightBaseX.SetXYZ(0.500000,0.000000,-0.866025);
 			rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
 	
@@ -314,14 +316,10 @@ class ESPRIPlasPosition{
 
 	public:
 		ESPRIPlasPosition(){
-			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,966);
-			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,956);
+			// Distance: 1188.17, 1187.47
+			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,923);
+			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,923.7);
 			
-			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,896);
-			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,896);
-			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,676);
-			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,676);
-
 		}
 		~ESPRIPlasPosition(){}
 		TVector3 getPlasPosition(int sideLR,TVector3 *espriPos,TVector3 *target){

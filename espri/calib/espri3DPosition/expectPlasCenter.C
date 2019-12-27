@@ -82,7 +82,8 @@ class LeftPlane: public Plane{
 			C=0.5;
 			//D=896; // Distance = 1215.17
 			//D=676; // Distance = 1435.17
-			D=966; // Distance = 1435.17
+			//D=966; // Distance = 1435.17
+			D=923; // Distance = 1435.17
 			calBaseVector();
 		}
 
@@ -95,7 +96,8 @@ class RightPlane: public Plane{
 			C=0.5;
 			//D=676; // 1435.17
 			//D=896; // Distance = 1215.17
-			D=956; // Distance = 1215.17
+			//D=956; // Distance = 1215.17
+			D=923.7; // Distance = 1215.17
 			calBaseVector();
 		}
 
