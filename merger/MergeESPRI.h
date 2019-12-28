@@ -161,10 +161,6 @@ class EspriPlasTime{
 class MergeESPRI:public Convert{
 	private:
 
-		// Second analysis on calibration
-		EspriPlasTime *plasTime;
-		EspriEnergy *espriEnergy;
-		EspriEnergyCorr *saveEspriEnergy;
 
 		//Declaration of leaves types
 		Int_t           EventNumber;
@@ -196,25 +192,6 @@ class MergeESPRI:public Convert{
 		Double_t        rdcTch[2][7];
 		Double_t        rdcRes[2][7];
 
-                Double_t	naiQPed[4][7];
-		Double_t	naiBarMQPed[2][7];  // Magnet Correction for each beam setting
-		Double_t	naiBarMQSync[2][7]; // Sync QPed in each Bar to ref Bar00 and Bar10
-		Double_t	naiBarMQCal[2][7];  // Cal Parameter from each bar under Be10 setting
-		Double_t	naiBarMSQCal[2][7]; // Cal Parameter from Bar00 and Bar10 
-
-                Double_t	naiBarQCal[2][7];   // Old calib, Be14 using Be10 parameter, from pp Scattering
-                Double_t	naiQ[2];
-                Int_t		naiQId[2];
-
-		Double_t        plasQCal[4];
-		Double_t        plasQPed[4];
-		Double_t	plasBarMQPed[2];// plasMQPed -> M Magnet
-		Double_t	plasMQ[2];      // plasMQ  Magnet correction
-		Double_t	plasQ[2];
-
-		Double_t        plasTCal[4];
-		Double_t	plasT[2];
-
 	public:
 
 		MergeESPRI(int run){
@@ -222,9 +199,6 @@ class MergeESPRI:public Convert{
 			detector = "ESPRI";
 			treeName = "CalTreeESPRI";
 			runNumber = run;
-			plasTime = new EspriPlasTime();
-			espriEnergy = new EspriEnergy();
-			saveEspriEnergy = new EspriEnergyCorr();
 		}
 		void init(){
 		}
@@ -267,23 +241,6 @@ class MergeESPRI:public Convert{
 			inputTree->SetBranchAddress("rdcTch",rdcTch);
 			inputTree->SetBranchAddress("rdcRes",rdcRes);
 
-                        inputTree->SetBranchAddress("naiQPed", naiQPed);
-                        inputTree->SetBranchAddress("naiBarMQPed", naiBarMQPed);
-                        inputTree->SetBranchAddress("naiBarMQSync", naiBarMQSync);
-                        inputTree->SetBranchAddress("naiBarMQCal", naiBarMQCal);
-                        inputTree->SetBranchAddress("naiBarMSQCal", naiBarMSQCal);
-                        inputTree->SetBranchAddress("naiBarQCal", naiBarQCal);
-                        inputTree->SetBranchAddress("naiQId", &naiQId);
-			inputTree->SetBranchAddress("naiQ",naiQ);
-
-			inputTree->SetBranchAddress("plasQCal",plasQCal);
-			inputTree->SetBranchAddress("plasQPed",plasQPed);
-			inputTree->SetBranchAddress("plasBarMQPed",plasBarMQPed);
-			inputTree->SetBranchAddress("plasTCal",plasTCal);
-			inputTree->SetBranchAddress("plasMQ",&plasMQ);
-			inputTree->SetBranchAddress("plasQ",&plasQ);
-			inputTree->SetBranchAddress("plasT",&plasT);
-
 		}
 		void setOutputBranch(TTree *tree){
 			// Set branch addresses.
@@ -313,86 +270,7 @@ class MergeESPRI:public Convert{
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 
-                        tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
-                        tree->Branch("naiBarMQPed", naiBarMQPed, "naiBarMQPed[2][7]/D");
-                        tree->Branch("naiBarMQSync", naiBarMQSync, "naiBarMQSync[2][7]/D");
-                        tree->Branch("naiBarMQCal", naiBarMQCal, "naiBarMQCal[2][7]/D");
-                        tree->Branch("naiBarMSQCal", naiBarMSQCal, "naiBarMSQCal[2][7]/D");
-                        tree->Branch("naiBarQCal", naiBarQCal, "naiBarQCal[2][7]/D");
-                        tree->Branch("naiQ", &naiQ, "naiQ[2]/D");
-                        tree->Branch("naiQId", &naiQId, "naiQId[2]/I");
-
-			tree->Branch("plasQCal",plasQCal,"plasQCal[4]/D");
-			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
-			tree->Branch("plasBarMQPed",plasBarMQPed,"plasBarMQPed[4]/D");
-			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
-			tree->Branch("plasMQ",&plasMQ,"plasMQ[2]/D");
-			tree->Branch("plasQ",&plasQ,"plasQ[2]/D");
-			tree->Branch("plasT",&plasT,"plasT[2]/D");
-			plasTime->setBranch(tree);
-			saveEspriEnergy->setBranch(tree);
 		}
 		~MergeESPRI(){
 		}
-
-
-		double getRdcX(int side){
-			return rdcX[side];
-		}
-		double getRdcY(int side){
-			return rdcY[side];
-		}
-		double getPlasQ(int side){
-			//return plasQ[side];
-			//cout<<side<<":"<<sqrt(plasQPed[2*side]*plasQPed[2*side+1])<<endl;
-			return espriEnergy->getPlasEnergy(side,sqrt(plasQPed[2*side]*plasQPed[2*side+1]));
-		}
-		double getPlasT(int side){
-			//return plasT[side];
-			return plasTime->getPlasT(side);
-		}
-		double getNaiQ(int side,int id){
-			//return naiBarQCal[side][id];
-			return espriEnergy->getNaiEnergy(side,id,getNaiQPed(side,id));
-		}
-		double getNaiQPed(int side,int id){
-			return sqrt(naiQPed[2*side][id]*naiQPed[2*side+1][id]);
-		}
-		void print(){
-			printRdc();
-			printPlas();
-			printNai();
-		}
-		void printRdc(){
-			cout<<"RDC Position:"<<endl;
-			cout<<"Left :"<<rdcX[0]<<":"<<rdcY[0]<<endl;
-			cout<<"Right:"<<rdcX[1]<<":"<<rdcY[1]<<endl;
-		}
-		void printPlas(){
-			cout<<"Plas Q and T"<<endl;
-			cout<<"Left :"<< plasQ[0]<<":"<<plasT[0]<<endl; 
-			cout<<"Right:"<< plasQ[1]<<":"<<plasT[1]<<endl; 
-		}
-		void printNai(){
-			cout<<"Nai Bar QCal:"<<endl;
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j < 7; ++j) {
-					if(naiBarQCal[i][j]>1) cout<<"side = "<<i<<" barId = "<<j<<" naiQ = "<<naiBarQCal[i][j]<<endl;
-				}
-			}
-		}
-
-		void corrPlasTime(){
-			plasTime->corrPlasTime(plasT,rdcY);
-		}
-		void corrEnergy(){
-			saveEspriEnergy->init();
-			for (int i = 0; i < 2; ++i) {
-				saveEspriEnergy->setPlasQCorr(i,getPlasQ(i));
-				for (int j = 0; j < 7; ++j) {
-					saveEspriEnergy->setNaiQCorr(i,j,getNaiQ(i,j));
-				}
-			}
-		}
-
 };

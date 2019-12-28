@@ -3534,3 +3534,45 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 883bd43] v1.0
+ 57 files changed, 5993 insertions(+), 48 deletions(-)
+ create mode 100644 analysis/ppBe14/Event.h
+ create mode 100755 analysis/ppBe14/Makefile
+ create mode 100644 analysis/ppBe14/ReadFile.h
+ create mode 100644 analysis/ppBe14/configPPBe.prm
+ create mode 100755 analysis/ppBe14/header.h
+ create mode 120000 analysis/ppBe14/inputRootfiles
+ create mode 100644 analysis/ppBe14/loop.sh
+ create mode 100644 analysis/ppBe14/main.cpp
+ create mode 100644 analysis/ppBe14/ppBe.cpp
+ create mode 100644 analysis/ppBe14/ppBe.h
+ create mode 100755 analysis/ppBe14/ppBe14
+ create mode 100644 analysis/ppBe14/rootfiles/drawCurveEspriEvsA.C
+ create mode 100644 analysis/ppBe14/rootfiles_BeamTargetProtonThetaHodBe14Bar28-33/drawCurveNaiEvsAngle.C
+ create mode 100644 analysis/ppBe14/rootfiles_BeamTargetProtonThetaHodBe14Bar28-33/ppBe.C
+ create mode 120000 espri/calib/pedestal/rootfiles
+ rewrite espri/convert/ConvertESPRI (95%)
+ create mode 100644 espri/convert/logEspri
+ create mode 100644 espri/convert/rootfiles/drawPedestal.C
+ rewrite espri/convert/rootfiles/run0300_ESPRI.root_test (71%)
+ rename espri/convert/{ => v6_beforeAddHitStructure}/ConvertESPRI (100%)
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/ConvertESPRI.C
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v6_beforeAddHitStructure/Makefile
+ create mode 100755 espri/convert/v6_beforeAddHitStructure/caltree.C
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configCalibESPRI.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/configConvertESPRI.prm
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/convert.sh
+ create mode 100755 espri/convert/v6_beforeAddHitStructure/header.h
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/logEspri
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/loop.sh
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/looprun.sh
+ create mode 100644 espri/convert/v6_beforeAddHitStructure/v1_ConvertESPRI.C_Sample
+ create mode 100644 merger/rootfiles/drawPRAngleBe14.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

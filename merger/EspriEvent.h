@@ -2,7 +2,6 @@
 class EspriEvent{
 	private:
 
-
 		MergeESPRI *calibData;
 		double espriPlasT;
 		double espriPlasE;
