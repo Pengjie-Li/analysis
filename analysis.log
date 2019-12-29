@@ -3576,3 +3576,87 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawPRAngleBe14.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b1da92e] v1.0
+ 117 files changed, 9562 insertions(+), 1053 deletions(-)
+ rewrite espri/convert/ConvertESPRI (93%)
+ rewrite espri/convert/ESPRIConvertCal.h (86%)
+ create mode 100644 espri/convert/rootfiles/run0224_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0230_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0236_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0280_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0281_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0282_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0373_ESPRI.root_test (62%)
+ create mode 100644 espri/convert/rootfiles/run0490_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0492_ESPRI.root_test (61%)
+ create mode 100644 espri/convert/rootfiles/run0493_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0520_ESPRI.root_test
+ create mode 100755 espri/convert/v7_beforeMoveCalib2Merger/ConvertESPRI
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/ConvertESPRI.C
+ rename espri/convert/{ => v7_beforeMoveCalib2Merger}/ESPRIConvertCal.h (100%)
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v7_beforeMoveCalib2Merger/Makefile
+ create mode 100755 espri/convert/v7_beforeMoveCalib2Merger/caltree.C
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configCalibESPRI.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/configConvertESPRI.prm
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/convert.sh
+ create mode 100755 espri/convert/v7_beforeMoveCalib2Merger/header.h
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/logEspri
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/loop.sh
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/looprun.sh
+ create mode 100644 espri/convert/v7_beforeMoveCalib2Merger/v1_ConvertESPRI.C_Sample
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/'
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingBDC.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingESPRI.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingFDC0.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingHOD.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingMAIN.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingPLA.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/AnalysingTELE.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/BdcEvent.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/Convert.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/Detector.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/EspriEvent.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/FDC0Event.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/Fdc0Event.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/FindPixel.h
+ create mode 100755 merger/v1_beforeMoveESPRICalib2Here/Makefile
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeBDC.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeESPRI.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeFDC0.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeHOD.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeMAIN.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergePLA.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeSample.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/MergeTELE.h
+ create mode 100755 merger/v1_beforeMoveESPRICalib2Here/Merger
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/Merger.cpp
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/Merger.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/PlaEvent.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/PositionESPRI.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/PositionTELE.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/TeleEvent.h
+ create mode 100755 merger/v1_beforeMoveESPRICalib2Here/analysis.C
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/backup_1st_Merger.C
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/configMerger.prm
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/constant.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/convert.sh
+ create mode 100755 merger/v1_beforeMoveESPRICalib2Here/distance.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/env
+ create mode 100755 merger/v1_beforeMoveESPRICalib2Here/header.h
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/logMerger.txt
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/loop.sh
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/looprun.sh
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/main.cpp
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/mvRootVersion.sh
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/read.me
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/sampleESPRI.C
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/t1.txt
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/t2.txt
+ create mode 100644 merger/v1_beforeMoveESPRICalib2Here/tele.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
