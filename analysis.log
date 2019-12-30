@@ -3660,3 +3660,23 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v1_beforeMoveESPRICalib2Here/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0a26ec3] v1.0
+ 20 files changed, 938 insertions(+)
+ rewrite espri/convert/rootfiles/run0580_ESPRI.root_test (63%)
+ rewrite espri/convert/rootfiles/run0581_ESPRI.root_test (64%)
+ rewrite espri/convert/rootfiles/run0584_ESPRI.root_test (62%)
+ rewrite espri/convert/rootfiles/run0585_ESPRI.root_test (60%)
+ create mode 100644 sim/excitationEnergy/Detector.h
+ create mode 100644 sim/excitationEnergy/EventBuilder.h
+ create mode 100644 sim/excitationEnergy/EventSimulator.h
+ create mode 100644 sim/excitationEnergy/ExcitationEnergy.h
+ create mode 100755 sim/excitationEnergy/Makefile
+ create mode 100644 sim/excitationEnergy/Particle.h
+ create mode 100644 sim/excitationEnergy/ProtonGenerator.h
+ create mode 100755 sim/excitationEnergy/SimulateExEnergy
+ create mode 100644 sim/excitationEnergy/SimulateExEnergy.C
+ create mode 100644 sim/excitationEnergy/configDetector.prm
+ create mode 100755 sim/excitationEnergy/header.h
+ create mode 100644 sim/excitationEnergy/test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -41,6 +41,10 @@ class ProtonGenerator{
 		void print(){
 			cout<<"Proton Angle = "<<theta<<":"<<detTheta<<" Proton Energy = "<<T<<":"<<detT<<endl;
 		}
+		void setBranch(TTree *tree){
+			tree->Branch("detTheta",&detTheta,"detTheta/D");
+			tree->Branch("detT",&detT,"detT/D");
+		}
 
 		
 };

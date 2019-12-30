@@ -2,21 +2,15 @@ class HodCut{
 	private:
 		TCutG *hodBarCut[40];
 		void loadCut(){
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar23Be10.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar22Be10.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar21Be10.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar20Be10.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar19Be10.C");
-
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar23Be9.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar22Be9.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar21Be9.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar20Be9.C");
-			gROOT->ProcessLine(".x inputRootfiles/cutBe10Bar19Be9.C");
-       		}
+                        gROOT->ProcessLine(".x inputRootfiles/cutBe12Bar23Be12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBe12Bar22Be12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBe12Bar21Be12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBe12Bar20Be12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBe12Bar19Be12.C");
+		}
 		void getCut(){
 			for (int i = 0; i < 40; ++i) {
-				hodBarCut[i] = (TCutG*)gROOT->GetListOfSpecials()->FindObject(Form("Be10Bar%dBe10",i));
+				hodBarCut[i] = (TCutG*)gROOT->GetListOfSpecials()->FindObject(Form("Be12Bar%dBe12",i));
 			}
 		}
 
@@ -43,10 +37,9 @@ class GateCut{
 		TCutG *prAngleCut;
 		HodCut *hodCut;
 		void loadCut(){
-                        gROOT->ProcessLine(".x inputRootfiles/cutBeamBe10.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutProtonBe10.C");
-                        //gROOT->ProcessLine(".x inputRootfiles/cutProtonBe10Bar00.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe10.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBeamBe12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutProtonBe12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe12.C");
 		}
 		void getCut(){
 			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Beam");
@@ -85,8 +78,8 @@ class Event{
 			return gc->isBeam(rf->getTof713(),rf->getF13Q());
 		}
 		bool isProton(){
-			return gc->isProton(rf->getNaiQ(0,0),rf->getPlasQ(0));
-			//return gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE());
+			//return gc->isProton(rf->getNaiQ(0,0),rf->getPlasQ(0));
+			return gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE());
 		}
 		bool isTargetArea(){
 			return gc->isInsideTargetArea(rf->getTargetX(),rf->getTargetY());
