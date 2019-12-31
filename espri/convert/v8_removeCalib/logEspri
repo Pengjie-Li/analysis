@@ -1,0 +1,2 @@
+2019-12-19 : remove Parameter 0.7 for stc and add Tch Offset 27 in src
+2019-12-28: remove all calibration for plastic and nai, move it to Merger

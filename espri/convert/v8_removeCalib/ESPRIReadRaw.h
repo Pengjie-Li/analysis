@@ -181,14 +181,8 @@ class ESPRIPlasRaw{
 		int plasTRaw[4];
 		int plasTimeRef;
 
-
-		double plasOverflow;
-		double plasUnderflow;
 	public:
-		ESPRIPlasRaw(){
-			plasOverflow = 2000;
-			plasUnderflow = 0;
-		}
+		ESPRIPlasRaw(){}
 		void init(){
 			plasTimeRef = -9999;
 			for(int i=0;i<4;i++){
@@ -230,16 +224,14 @@ class ESPRIPlasRaw{
 				//plasTRaw[ID-1]=TDC;
 			}
 			plasTimeRef = tdcRaw->getPlasTimeRef();
-
 			vector<vector<int> > tdcPlasRaw = tdcRaw->getPlasRaw();	
-			
-
 			for (int i = 0; i < tdcPlasRaw.size(); ++i) {
 				for (int j = 0; j < tdcPlasRaw[i].size(); ++j) {
 					//cout<<i<<":"<<j<<":"<<tdcPlasRaw[i][j]<<endl;	
-					if(tdcPlasRaw[i][j]<plasOverflow&&tdcPlasRaw[i][j]>plasUnderflow){
+					if(tdcPlasRaw[i].size() ==1) plasTRaw[i] = tdcPlasRaw[i][j];
+					else if((tdcPlasRaw[i][j]-plasTimeRef)<-25600){
 						plasTRaw[i] = tdcPlasRaw[i][j];
-					}
+					}else {}
 				}
 				//cout<<"plasTRaw "<<i<<":"<<plasTRaw[i]<<endl;
 			}

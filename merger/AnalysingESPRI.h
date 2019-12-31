@@ -1,6 +1,4 @@
 void Merger::analysingESPRI(){
-	
-
 
 	mergeESPRI->corrPlasTime(); // posidition dependency, time offset
 	mergeESPRI->corrEnergy(); // posidition dependency, time offset

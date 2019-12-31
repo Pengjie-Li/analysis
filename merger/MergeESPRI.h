@@ -158,7 +158,7 @@ class EspriPlasTime{
 		}
 };
 
-class MergeESPRI:public Convert{
+class ReadESPRI:public Convert{
 	private:
 
 
@@ -194,7 +194,7 @@ class MergeESPRI:public Convert{
 
 	public:
 
-		MergeESPRI(int run){
+		ReadESPRI(int run){
 			env = new TEnv("configMerger.prm");
 			detector = "ESPRI";
 			treeName = "CalTreeESPRI";
@@ -271,6 +271,23 @@ class MergeESPRI:public Convert{
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 
 		}
-		~MergeESPRI(){
+		~ReadESPRI(){
 		}
+};
+class MergeESPRI{
+	private:
+		bool checkRawData;
+		ReadESPRI *espriRawData;
+		//HitESPRI *espriHitData;
+		//CalibESPRI *espriCalibData;
+		//EventESPRI *espriEventData;
+	public:
+		MergeESPRI(int run){
+			checkRawData = 1;
+			espriRawData = new ReadESPRI(run);
+		}
+		void setBranch(TTree *tree){
+			if(checkRawData == 1) espriRawData->setOutputBranch(tree);
+		}
+		~MergeESPRI(){}
 };

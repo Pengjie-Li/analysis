@@ -1,2 +1,3 @@
 2019-12-19 : remove Parameter 0.7 for stc and add Tch Offset 27 in src
-2019-12-28: remove all calibration for plastic and nai, move it to Merger
+2019-12-31: 1. add plasHit and plasSide,
+		2. for plasTRaw add Overflow = 2000, underflow = 0 , no cut raw to check plasTdcRaw0-3 vector
