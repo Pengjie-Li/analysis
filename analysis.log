@@ -3701,3 +3701,22 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 sim/excitationEnergy/rootfiles/drawCurveProtonEvsA.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master d21a45d] v1.0
+ 66 files changed, 4035 insertions(+), 31 deletions(-)
+ rewrite espri/convert/ConvertESPRI (92%)
+ create mode 100644 espri/convert/txt/plasPedestal.txt
+ rename espri/convert/{ => v8_removeCalib}/ConvertESPRI (100%)
+ create mode 100644 espri/convert/v8_removeCalib/ConvertESPRI.C
+ create mode 100644 espri/convert/v8_removeCalib/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v8_removeCalib/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v8_removeCalib/Makefile
+ create mode 100755 espri/convert/v8_removeCalib/caltree.C
+ create mode 100644 espri/convert/v8_removeCalib/configConvertESPRI.prm
+ create mode 100644 espri/convert/v8_removeCalib/convert.sh
+ create mode 100755 espri/convert/v8_removeCalib/header.h
+ create mode 100644 espri/convert/v8_removeCalib/logEspri
+ create mode 100644 espri/convert/v8_removeCalib/loop.sh
+ create mode 100644 espri/convert/v8_removeCalib/looprun.sh
+ create mode 100644 espri/convert/v8_removeCalib/v1_ConvertESPRI.C_Sample
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

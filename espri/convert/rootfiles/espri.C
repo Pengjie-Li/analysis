@@ -1,7 +1,7 @@
 {
 //////////////////////////////////////////////////////////
 //   This file has been automatically generated 
-//     (Thu Oct 24 13:55:11 2019 by ROOT version5.34/20)
+//     (Wed Jan  1 16:39:24 2020 by ROOT version5.34/20)
 //   from TTree CalTreeESPRI/Convert Raw Cal Sync
 //   found on file: run0300_ESPRI.root_test
 //////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@
    vector<int>     plasTdcRaw1;
    vector<int>     plasTdcRaw2;
    vector<int>     plasTdcRaw3;
-   vector<int>     rdc;
+   vector<int>     rdcTdc;
    vector<int>     rdcPlaneId;
    vector<int>     rdcWireId;
    vector<int>     rdcLayerId;
@@ -31,7 +31,11 @@
    Int_t           plasQRaw[4];
    Int_t           plasTRaw[4];
    Int_t           plasTimeRef;
-   Int_t           rdcMult;
+   Int_t           rdcHit;
+   Int_t           rdcHitSide[2];
+   Double_t        rdcHitX[2];
+   Double_t        rdcHitY[2];
+   Double_t        rdcHitChi2[2];
    Double_t        rdcX[2];
    Double_t        rdcY[2];
    Double_t        rdcA[2];
@@ -40,16 +44,20 @@
    Double_t        rdcDL[2][7];
    Double_t        rdcTch[2][7];
    Double_t        rdcRes[2][7];
-   Double_t        naiQCal[4][7];
+   Int_t           naiHit;
+   Int_t           naiSide[1];
+   Int_t           naiBarId[1];
+   Int_t           naiHitQPed[1];
    Double_t        naiQPed[4][7];
-   Double_t        naiBarQCal[2][7];
-   Double_t        naiQ[2];
-   Int_t           naiQId[2];
-   Double_t        plasQCal[4];
+   Double_t        naiBarQPed[2][7];
+   Int_t           plasHit;
+   Int_t           plasSide[1];
    Double_t        plasQPed[4];
+   Double_t        plasBarQPed[2];
    Double_t        plasTCal[4];
-   Double_t        plasQ[2];
-   Double_t        plasT[2];
+   Double_t        plasTRef[4];
+   Int_t           espriHit;
+   Int_t           espriSide[1];
 
    // Set branch addresses.
    CalTreeESPRI->SetBranchAddress("EventNumber",&EventNumber);
@@ -58,7 +66,7 @@
    CalTreeESPRI->SetBranchAddress("plasTdcRaw1",&plasTdcRaw1);
    CalTreeESPRI->SetBranchAddress("plasTdcRaw2",&plasTdcRaw2);
    CalTreeESPRI->SetBranchAddress("plasTdcRaw3",&plasTdcRaw3);
-   CalTreeESPRI->SetBranchAddress("rdc",&rdc);
+   CalTreeESPRI->SetBranchAddress("rdcTdc",&rdcTdc);
    CalTreeESPRI->SetBranchAddress("rdcPlaneId",&rdcPlaneId);
    CalTreeESPRI->SetBranchAddress("rdcWireId",&rdcWireId);
    CalTreeESPRI->SetBranchAddress("rdcLayerId",&rdcLayerId);
@@ -67,7 +75,11 @@
    CalTreeESPRI->SetBranchAddress("plasQRaw",plasQRaw);
    CalTreeESPRI->SetBranchAddress("plasTRaw",plasTRaw);
    CalTreeESPRI->SetBranchAddress("plasTimeRef",&plasTimeRef);
-   CalTreeESPRI->SetBranchAddress("rdcMult",&rdcMult);
+   CalTreeESPRI->SetBranchAddress("rdcHit",&rdcHit);
+   CalTreeESPRI->SetBranchAddress("rdcHitSide",rdcHitSide);
+   CalTreeESPRI->SetBranchAddress("rdcHitX",rdcHitX);
+   CalTreeESPRI->SetBranchAddress("rdcHitY",rdcHitY);
+   CalTreeESPRI->SetBranchAddress("rdcHitChi2",rdcHitChi2);
    CalTreeESPRI->SetBranchAddress("rdcX",rdcX);
    CalTreeESPRI->SetBranchAddress("rdcY",rdcY);
    CalTreeESPRI->SetBranchAddress("rdcA",rdcA);
@@ -76,16 +88,20 @@
    CalTreeESPRI->SetBranchAddress("rdcDL",rdcDL);
    CalTreeESPRI->SetBranchAddress("rdcTch",rdcTch);
    CalTreeESPRI->SetBranchAddress("rdcRes",rdcRes);
-   CalTreeESPRI->SetBranchAddress("naiQCal",naiQCal);
+   CalTreeESPRI->SetBranchAddress("naiHit",&naiHit);
+   CalTreeESPRI->SetBranchAddress("naiSide",naiSide);
+   CalTreeESPRI->SetBranchAddress("naiBarId",naiBarId);
+   CalTreeESPRI->SetBranchAddress("naiHitQPed",naiHitQPed);
    CalTreeESPRI->SetBranchAddress("naiQPed",naiQPed);
-   CalTreeESPRI->SetBranchAddress("naiBarQCal",naiBarQCal);
-   CalTreeESPRI->SetBranchAddress("naiQ",naiQ);
-   CalTreeESPRI->SetBranchAddress("naiQId",naiQId);
-   CalTreeESPRI->SetBranchAddress("plasQCal",plasQCal);
+   CalTreeESPRI->SetBranchAddress("naiBarQPed",naiBarQPed);
+   CalTreeESPRI->SetBranchAddress("plasHit",&plasHit);
+   CalTreeESPRI->SetBranchAddress("plasSide",plasSide);
    CalTreeESPRI->SetBranchAddress("plasQPed",plasQPed);
+   CalTreeESPRI->SetBranchAddress("plasBarQPed",plasBarQPed);
    CalTreeESPRI->SetBranchAddress("plasTCal",plasTCal);
-   CalTreeESPRI->SetBranchAddress("plasQ",plasQ);
-   CalTreeESPRI->SetBranchAddress("plasT",plasT);
+   CalTreeESPRI->SetBranchAddress("plasTRef",plasTRef);
+   CalTreeESPRI->SetBranchAddress("espriHit",&espriHit);
+   CalTreeESPRI->SetBranchAddress("espriSide",espriSide);
 
 //     This is the loop skeleton
 //       To read only selected branches, Insert statements like:

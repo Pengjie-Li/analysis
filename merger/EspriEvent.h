@@ -1,91 +1,80 @@
 #include "PositionESPRI.h"
+#include "CalibESPRI.h"
 class EspriEvent{
 	private:
 
-		MergeESPRI *calibData;
-		double espriPlasT;
-		double espriPlasE;
-		double espriNaiE;
 		double espriEnergy;
+		double espriAngle;
+		TVector3 *espriPosition;
 
-		PositionESPRI *positionESPRI;
-		CheckEspriEvent *checkESPRI;
-
-		// intermediate var
+		MergeESPRI *mergeData;
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
+
+		CalibESPRI *calibESPRI;
+		PositionESPRI *positionESPRI;
 		
 	public:
 		void print(){
-			cout<<"ESPRI Event:"<<endl;
-			if(goodEvent()){
-
-				checkESPRI->print();
-				cout<<"espriPlasT = "<<espriPlasT<<" ns"<<endl;
-				cout<<"espriPlasE = "<<espriPlasE<<" MeV espriNaiE = "<<espriNaiE<<" MeV  espriEnergy = "<<espriEnergy<<" MeV "<<endl;
-				//positionESPRI->print();
-			}
-
+			cout<<"espriEnergy = "<<espriEnergy<<" MeV  espriAngle = "<<espriAngle<<endl;
 		}
 		EspriEvent(){
-			checkESPRI = new CheckEspriEvent();
 			positionESPRI = new PositionESPRI();
+			calibESPRI = new CalibESPRI();
 		}
+
 		~EspriEvent(){
 			delete positionESPRI;
 		}
-		void checkData(MergeESPRI *mergeESPRI){
-			calibData = NULL;
-			calibData = mergeESPRI;
-			checkESPRI->checkData(mergeESPRI);
+		void loadData(MergeESPRI *mergeESPRI){
+			mergeData = NULL;
+			mergeData = mergeESPRI;
 		}
+
 		void init(){
 
-			espriPlasT= NAN;
-			espriPlasE= NAN;
-			espriNaiE= NAN;
+			espriAngle = NAN;
 			espriEnergy = NAN;
-			positionESPRI->init();
+			espriPosition->SetXYZ(NAN,NAN,NAN);
 		}
 		void setOutputBranch(TTree *tree){
 
+			espriPosition = new TVector3;
 
 			positionESPRI->setBranch(tree);
-			checkESPRI->setBranch(tree);
-			//tree->Branch("naiNHit",&naiNHit,"naiNHit/I");
-			//tree->Branch("naiHitIdArray",&hitIdArray,"hitIdArray[naiNHit]/I");
-			//tree->Branch("naiId",&naiId,"naiId/I");
 
-			tree->Branch("espriPlasE",&espriPlasE,"espriPlasE/D");
-			tree->Branch("espriPlasT",&espriPlasT,"espriPlasT/D");
-			tree->Branch("espriNaiE",&espriNaiE,"espriNaiE/D");
 			tree->Branch("espriEnergy",&espriEnergy,"espriEnergy/D");
+			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
 
+			tree->Branch("espriPosition","TVector3",&espriPosition);
 
 		}
 		void setESPRIEvent(){
 			init();
 			if(goodEvent()){
-				setESPRITime();
 				setESPRIEnergy();
 				setESPRIPosition();
 			}
 		}
 		bool goodEvent(){
-			return checkESPRI->isGoodEvent();
+			return mergeData->isGoodEvent();// Good Event->roughly good, real good event selected by TCut
+		}
+		void setESPRIPosition(){
+			positionESPRI->loadTargetPosition(targetPosition);
+			positionESPRI->loadBeamVector(vBeam);
+			
+			positionESPRI->loadData(mergeData);
+			positionESPRI->analysis();
+
+			espriAngle = positionESPRI->getAngle();
+			espriPosition = positionESPRI->getPosition();
 		}
 		void setESPRIEnergy(){
-			espriPlasE = calibData->getPlasQ(checkESPRI->getSideLR());
-			if(checkESPRI->getNaiId()!=-1){ espriNaiE  = calibData->getNaiQ(checkESPRI->getSideLR(),checkESPRI->getNaiId());
-				espriEnergy = espriPlasE + espriNaiE;
-			}else{
-				espriEnergy = espriPlasE;
-			}
-		}
-		void setESPRITime(){
-			//espriPlasT = calibData->getESPRIPlasTime(checkESPRI->getSideLR());
-			espriPlasT = calibData->getPlasT(checkESPRI->getSideLR());
-			//cout<<"espriTime: "<<espriPlasT<<endl;
+
+			calibESPRI->loadData(mergeData);
+			calibESPRI->calibrate();
+			
+			espriEnergy = calibESPRI->getEnergy();
 		}
 		void loadTargetPosition(TVector3 *target){
 			targetPosition = target;
@@ -93,14 +82,5 @@ class EspriEvent{
 		void loadBeamVector(TVector3 *beam){
 			vBeam = beam;
 		}
-		void setESPRIPosition(){
-			positionESPRI->loadTargetPosition(targetPosition);
-			positionESPRI->loadBeamVector(vBeam);
-			
-			positionESPRI->loadEvent(checkESPRI);
-			//positionESPRI->loadData(calibData);
-			positionESPRI->analysis();
-		}
 
 };
-

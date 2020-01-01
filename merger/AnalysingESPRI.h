@@ -1,13 +1,14 @@
 void Merger::analysingESPRI(){
+	
 
-	mergeESPRI->corrPlasTime(); // posidition dependency, time offset
-	mergeESPRI->corrEnergy(); // posidition dependency, time offset
+
 
 	// Analysing ESPRI data and select ESPRI LR side
-	espriEvent->checkData(mergeESPRI);
+	//espriEvent->checkData(mergeESPRI);
 
 	// load Target and beam to check Flight Length and Proton angle
 	
+	espriEvent->loadData(mergeESPRI);
 	espriEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
 	espriEvent->loadBeamVector(bdcEvent->getBeamVector());
 	

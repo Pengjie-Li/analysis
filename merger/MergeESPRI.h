@@ -1,167 +1,7 @@
-class EspriEnergyPara{
-	private:
-		double plasGain[2][7];
-		double plasDead[2][7];
-		double naiGain[2][7];
-		double naiDead[2][7];
-
-		void init(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					plasGain[i][j]= 0;
-					plasDead[i][j]= 0;
-					naiGain[i][j]= 0;
-					naiDead[i][j]= 0;
-				}
-
-			}
-
-		}
-		void loadCalibPara(){
-			init();
-			ifstream in;
-			TString inputName = "txt/espriEnergyCalibParaBe14.txt";
-			cout<<inputName<<endl;
-			in.open(inputName);
-			int side;
-			int barId;
-			double gPlas;
-			double dPlas;
-			double gNai;
-			double dNai;
-			while(1){
-				if(!in.good()) break;
-				in>>side>>barId>>gPlas>>dPlas>>gNai>>dNai;
-				naiGain[side][barId] = gNai;
-				naiDead[side][barId] = dNai;
-				plasGain[side][barId] = gPlas;
-				plasDead[side][barId] = dPlas;
-			}
-		}
-		void print(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					cout<<i<<"\t"<<j<<"\t"<<plasGain[i][j]<<"\t"<<plasDead[i][j]<<"\t"<<naiGain[i][j]<<"\t"<<naiDead[i][j]<<endl;
-				}
-
-			}
-		}
-	public:
-		EspriEnergyPara(){
-			loadCalibPara();
-			print();
-		}
-		~EspriEnergyPara(){}
-		double getNaiGain(int side,int barId){
-			return naiGain[side][barId];
-		}
-		double getNaiDead(int side,int barId){
-			return naiDead[side][barId];
-		}
-		double getPlasGain(int side){
-			return plasGain[side][0];
-		}
-		double getPlasDead(int side){
-			return plasDead[side][0];
-		}
-};
-class EspriEnergy{
-	private:
-		EspriEnergyPara *calibPara;
-		double getPlasGain(int side){
-			return calibPara->getPlasGain(side);
-		}
-		double getPlasDead(int side){
-			return calibPara->getPlasDead(side);
-		}
-		double getNaiGain(int side,int barId){
-			return calibPara->getNaiGain(side,barId);
-		}
-		double getNaiDead(int side,int barId){
-			return calibPara->getNaiDead(side,barId);
-		}
-	public:
-		EspriEnergy(){
-			calibPara = new EspriEnergyPara();
-		}
-		~EspriEnergy(){}
-		double getPlasEnergy(int side,double plasBarQPed){
-			return getPlasGain(side)*plasBarQPed+getPlasDead(side);
-		}
-		double getNaiEnergy(int side, int barId,double naiBarQPed){
-			return getNaiGain(side,barId)*naiBarQPed+getNaiDead(side,barId);
-		}
-
-};
-class EspriEnergyCorr{
-	private:
-		double naiQCorr[2][7];
-		double plasQCorr[2];
-	public:
-		EspriEnergyCorr(){}
-		~EspriEnergyCorr(){}
-
-		void init(){
-			for (int i = 0; i < 2; ++i) {
-				plasQCorr[i] = NAN;
-				for (int j = 0; j < 7; ++j) {
-					naiQCorr[i][j] = NAN;
-				}	
-			}
-		}
-
-		void setPlasQCorr(int side,double plasQ){
-			plasQCorr[side] = plasQ;	
-		}
-		void setNaiQCorr(int side,int barId,double naiQ){
-			naiQCorr[side][barId] = naiQ;	
-		}
-		void setBranch(TTree *tree){
-			tree->Branch("plasQCorr",plasQCorr,"plasQCorr[2]/D");
-			tree->Branch("naiQCorr",naiQCorr,"naiQCorr[2][7]/D");
-		}
-};
-class EspriPlasTime{
+class MergeESPRI:public Convert{
 	private:
 
-		double posPara[2];	
-		double timeOffset[2];
-		double plasTCorr[2];
-		void init(){
-			plasTCorr[0] = -9999;
-			plasTCorr[1] = -9999;
-		}
-	public:
-		EspriPlasTime(){
-			timeOffset[0] = 691.382;
-			timeOffset[1] = 691.082;
-			posPara[0] = -0.01;
-			posPara[1] = -0.0115;
-		}
-		~EspriPlasTime(){}
-		void setBranch(TTree *tree){
-			tree->Branch("plasTCorr",plasTCorr,"plasTCorr[2]/D");
-		}
-
-		void corrPlasTime(double *plasT,double *rdcY){
-			init();
-			if(plasT[0]!=-9999) plasTCorr[0] = plasT[0]+timeOffset[0]+posPara[0]*(rdcY[0]-225);
-			if(plasT[1]!=-9999) plasTCorr[1] = plasT[1]+timeOffset[1]+posPara[1]*(rdcY[1]-225);
-			//print();
-
-		}
-		double getPlasT(int side){
-			return plasTCorr[side];
-		}
-		void print(){
-			cout<<"plasTCorr[0] = "<<plasTCorr[0]<<"plasTCorr[1] = "<<plasTCorr[1]<<endl;
-		}
-};
-
-class ReadESPRI:public Convert{
-	private:
-
-
+		bool isStoreRawData;
 		//Declaration of leaves types
 		Int_t           EventNumber;
 		Int_t           RunNumber;
@@ -181,25 +21,52 @@ class ReadESPRI:public Convert{
 		Int_t           plasQRaw[4];
 		Int_t           plasTRaw[4];
 		Int_t           plasTimeRef;
-		Int_t           rdcMult;
+
+		Int_t           rdcHit;
+		Int_t           rdcHitSide[2];
+		Double_t        rdcHitX[2];
+		Double_t        rdcHitY[2];
+		Double_t        rdcHitChi2[2];
+
 		Double_t        rdcX[2];
 		Double_t        rdcY[2];
 		Double_t        rdcA[2];
 		Double_t        rdcB[2];
-
 		Double_t        rdcChi2[2];
 		Double_t        rdcDL[2][7];
 		Double_t        rdcTch[2][7];
 		Double_t        rdcRes[2][7];
 
+		Int_t           naiHit;
+		Int_t           naiHitSide[2];
+		Int_t           naiHitBarId[2];
+		Double_t        naiHitQPed[2];
+		Double_t        naiQPed[4][7];
+		Double_t        naiBarQPed[2][7];
+
+		Int_t           plasHit;
+		Int_t           plasHitSide[2];
+		Double_t        plasHitQPed[2];
+
+		Double_t        plasQPed[4];
+		Double_t        plasBarQPed[2];
+		Double_t        plasTCal[4];
+		Double_t        plasTRef[4];
+
+		Int_t           espriHit;
+		Int_t           espriHitSide[2];
+
+
 	public:
 
-		ReadESPRI(int run){
+		MergeESPRI(int run){
+			isStoreRawData = false;
 			env = new TEnv("configMerger.prm");
 			detector = "ESPRI";
 			treeName = "CalTreeESPRI";
 			runNumber = run;
 		}
+		~MergeESPRI(){}
 		void init(){
 		}
 		void setBranch(){
@@ -216,22 +83,30 @@ class ReadESPRI:public Convert{
 			plasTdcRaw2 = 0;
 			plasTdcRaw3 = 0;
 
-			// Set branch addresses.
 			inputTree->SetBranchAddress("EventNumber",&EventNumber);
 			inputTree->SetBranchAddress("RunNumber",&RunNumber);
 			inputTree->SetBranchAddress("plasTdcRaw0",&plasTdcRaw0);
 			inputTree->SetBranchAddress("plasTdcRaw1",&plasTdcRaw1);
 			inputTree->SetBranchAddress("plasTdcRaw2",&plasTdcRaw2);
 			inputTree->SetBranchAddress("plasTdcRaw3",&plasTdcRaw3);
+
 			inputTree->SetBranchAddress("rdcTdc",&rdcTdc);
 			inputTree->SetBranchAddress("rdcPlaneId",&rdcPlaneId);
 			inputTree->SetBranchAddress("rdcWireId",&rdcWireId);
+			inputTree->SetBranchAddress("rdcLayerId",&rdcLayerId);
 			inputTree->SetBranchAddress("rdcPlaneNHit",&rdcPlaneNHit);
+
 			inputTree->SetBranchAddress("naiQRaw",naiQRaw);
 			inputTree->SetBranchAddress("plasQRaw",plasQRaw);
 			inputTree->SetBranchAddress("plasTRaw",plasTRaw);
 			inputTree->SetBranchAddress("plasTimeRef",&plasTimeRef);
-			inputTree->SetBranchAddress("rdcMult",&rdcMult);
+
+			inputTree->SetBranchAddress("rdcHit",&rdcHit);
+			inputTree->SetBranchAddress("rdcHitSide",rdcHitSide);
+			inputTree->SetBranchAddress("rdcHitX",rdcHitX);
+			inputTree->SetBranchAddress("rdcHitY",rdcHitY);
+			inputTree->SetBranchAddress("rdcHitChi2",rdcHitChi2);
+
 			inputTree->SetBranchAddress("rdcX",rdcX);
 			inputTree->SetBranchAddress("rdcY",rdcY);
 			inputTree->SetBranchAddress("rdcA",rdcA);
@@ -241,9 +116,52 @@ class ReadESPRI:public Convert{
 			inputTree->SetBranchAddress("rdcTch",rdcTch);
 			inputTree->SetBranchAddress("rdcRes",rdcRes);
 
+			inputTree->SetBranchAddress("naiHit",&naiHit);
+			inputTree->SetBranchAddress("naiHitSide",naiHitSide);
+			inputTree->SetBranchAddress("naiHitBarId",naiHitBarId);
+			inputTree->SetBranchAddress("naiHitQPed",naiHitQPed);
+			inputTree->SetBranchAddress("naiQPed",naiQPed);
+			inputTree->SetBranchAddress("naiBarQPed",naiBarQPed);
+			inputTree->SetBranchAddress("plasHit",&plasHit);
+			inputTree->SetBranchAddress("plasHitSide",plasHitSide);
+			inputTree->SetBranchAddress("plasHitQPed",plasHitQPed);
+			inputTree->SetBranchAddress("plasQPed",plasQPed);
+			inputTree->SetBranchAddress("plasBarQPed",plasBarQPed);
+			inputTree->SetBranchAddress("plasTCal",plasTCal);
+			inputTree->SetBranchAddress("plasTRef",plasTRef);
+
+			inputTree->SetBranchAddress("espriHit",&espriHit);
+			inputTree->SetBranchAddress("espriHitSide",espriHitSide);
+
+
 		}
 		void setOutputBranch(TTree *tree){
 			// Set branch addresses.
+
+			if(isStoreRawData == true) setOutputBranchRaw(tree);
+
+			tree->Branch("rdcHit",&rdcHit,"rdcHit/I");
+			tree->Branch("rdcHitSide",rdcHitSide,"rdcHitSide[rdcHit]/I");
+			tree->Branch("rdcHitX",rdcHitX,"rdcHitX[rdcHit]/D");
+			tree->Branch("rdcHitY",rdcHitY,"rdcHitY[rdcHit]/D");
+			tree->Branch("rdcHitChi2",rdcHitChi2,"rdcHitChi2[rdcHit]/D");
+
+			tree->Branch("naiHit",&naiHit,"naiHit/I");
+			tree->Branch("naiHitSide",naiHitSide,"naiHitSide[naiHit]/I");
+			tree->Branch("naiHitBarId",naiHitBarId,"naiHitBarId[naiHit]/I");
+			tree->Branch("naiHitQPed",naiHitQPed,"naiHitQPed[naiHit]/D");
+
+			tree->Branch("plasHit",&plasHit,"plasHit/I");
+			tree->Branch("plasHitSide",plasHitSide,"plasHitSide[plasHit]/I");
+			tree->Branch("plasHitQPed",plasHitQPed,"plasHitQPed[plasHit]/I");
+
+			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
+
+			tree->Branch("espriHit",&espriHit,"espriHit/I");
+			tree->Branch("espriHitSide",espriHitSide,"espriHitSide[espriHit]/I");
+	
+		}
+		void setOutputBranchRaw(TTree *tree){
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
 
@@ -251,7 +169,7 @@ class ReadESPRI:public Convert{
 			tree->Branch("plasTdcRaw1",&plasTdcRaw1);
 			tree->Branch("plasTdcRaw2",&plasTdcRaw2);
 			tree->Branch("plasTdcRaw3",&plasTdcRaw3);
-	
+
 			tree->Branch("rdcTdc",&rdcTdc);
 			tree->Branch("rdcPlaneId",&rdcPlaneId);
 			tree->Branch("rdcWireId",&rdcWireId);
@@ -260,7 +178,7 @@ class ReadESPRI:public Convert{
 			tree->Branch("plasQRaw",plasQRaw,"plasQRaw[4]/I");
 			tree->Branch("plasTRaw",plasTRaw,"plasTRaw[4]/I");
 			tree->Branch("plasTimeRef",&plasTimeRef);
-			tree->Branch("rdcMult",&rdcMult);
+
 			tree->Branch("rdcX",rdcX,"rdcX[2]/D");
 			tree->Branch("rdcY",rdcY,"rdcY[2]/D");
 			tree->Branch("rdcA",rdcA,"rdcA[2]/D");
@@ -270,24 +188,83 @@ class ReadESPRI:public Convert{
 			tree->Branch("rdcTch",rdcTch,"rdcTch[2][7]/D");
 			tree->Branch("rdcRes",rdcRes,"rdcRes[2][7]/D");
 
+			tree->Branch("naiQPed", naiQPed, "naiQPed[4][7]/D");
+			tree->Branch("naiBarQPed",naiBarQPed,"naiBarQPed[2][7]/D");
+
+			tree->Branch("plasQPed",plasQPed,"plasQPed[4]/D");
+			tree->Branch("plasTRef",plasTRef,"plasTRef[4]/D");
 		}
-		~ReadESPRI(){
+
+		double getRdcX(int side){
+			return rdcX[side];
 		}
-};
-class MergeESPRI{
-	private:
-		bool checkRawData;
-		ReadESPRI *espriRawData;
-		//HitESPRI *espriHitData;
-		//CalibESPRI *espriCalibData;
-		//EventESPRI *espriEventData;
-	public:
-		MergeESPRI(int run){
-			checkRawData = 1;
-			espriRawData = new ReadESPRI(run);
+		double getRdcY(int side){
+			return rdcY[side];
 		}
-		void setBranch(TTree *tree){
-			if(checkRawData == 1) espriRawData->setOutputBranch(tree);
+		int getHit(){
+			return espriHit;
 		}
-		~MergeESPRI(){}
+		double getPlasT(int ud){
+			int side = getSide();
+			return plasTCal[2*side+ud];
+		}
+		double getRdcX(){
+			return rdcHitX[0];
+		}
+		double getRdcY(){
+			return rdcHitY[0];
+		}
+		double getPlasQPed(){
+			return plasBarQPed[plasHitSide[0]];
+		}
+		double getNaiQPed(){
+			return naiHitQPed[0];
+		}
+		double getSide(){
+			return espriHitSide[0];
+		}
+		double getNaiId(){
+			return naiHitBarId[0];
+		}
+		double getPlasQPed(int side){
+			return plasBarQPed[side];
+		}
+		double getNaiQPed(int side,int id){
+			//return sqrt(naiQPed[2*side][id]*naiQPed[2*side+1][id]);
+			return naiBarQPed[side][id];
+		}
+		int getNaiHit(){
+			return naiHit;
+		}
+		bool isGoodEvent(){
+			if(getHit()==1) return true;
+			else return false;
+		}
+
+
+		void print(){
+                        for (int i = 0; i < espriHit; ++i) {
+                                cout<<"ESPI Hit"<<i<<" Side = "<<espriHitSide[i]<<endl;
+                        }
+			printRdc();
+			printPlas();
+			printNai();
+		}
+		
+		void printRdc(){
+                        for (int i = 0; i < rdcHit; ++i) {
+                                cout<<" rdc Hit"<<i<<" Side = "<<rdcHitSide[i]<< " X ="<<rdcHitX[i]<<" Y = "<<rdcHitY[i]<<" Chi2 = "<<rdcHitChi2[i]<<endl;
+                        }
+		}
+		void printPlas(){
+			for (int i = 0; i < plasHit; ++i) {
+				int side = plasHitSide[i];
+				cout<<"Plas Hit"<<i<<" Side = "<<side<<" QPed = "<<plasBarQPed[side]<<" TCal = "<<plasTCal[2*side]<<" : "<<plasTCal[2*side+1]<<endl;
+			}
+		}
+		void printNai(){
+                        for (int i = 0; i < naiHit; ++i) {
+                                cout<<" nai Hit"<<i<<" Side = "<<naiHitSide[i]<<" BarId = "<<naiHitBarId[i]<<" QPed = "<<naiHitQPed[i]<<endl;
+                        }
+		}
 };

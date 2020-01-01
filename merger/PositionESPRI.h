@@ -1,150 +1,3 @@
-class CheckEspriEvent{
-	private:
-		TEnv *env;
-		double plasTMin;
-		double plasTMax;
-		double plasQThreshold;
-		double naiQPedThreshold;
-
-		MergeESPRI *calibData;
-
-		int isEspriLR;
-		int isEspriPlas;
-		int isEspriRdc;
-
-		double dcX;
-		double dcY;
-		double plasE;
-		int naiNHit;
-		int naiBarId;
-		double naiE; // no considering multiHit on Nai
-
-		double getRdcX(int side){
-			return calibData->getRdcX(side);
-		}
-		double getRdcY(int side){
-			return calibData->getRdcY(side);
-		}
-		double getPlasQ(int side){
-			return calibData->getPlasQ(side);
-		}
-		double getPlasT(int side){
-			return calibData->getPlasT(side);
-		}
-		bool isRdc(int side){
-		        //cout<<getRdcX(side)<<":"<<getRdcY(side)<<endl;
-			if(getRdcX(side)>0&&getRdcY(side)>0) return true;
-			else return false;
-		}
-		bool isPlas(int side){
-			if(getPlasQ(side)>plasQThreshold) return true; // set PlasQ>100KeV
-			// 0 < plasT < 40
-			if(getPlasT(side)>plasTMin&&getPlasT(side)<plasTMax) return true;
-			return false;
-		}
-		int checkLR(bool isESPRIL,bool isESPRIR){
-			if(isESPRIL &&!isESPRIR) return 0; 
-			else if(!isESPRIL&&isESPRIR) return 1;
-			else if(isESPRIL&&isESPRIR){
-				cout<<"Left and Right both give effective Hit, check this event"<<endl;
-				return 2;
-			}
-			else return -1;
-		}
-		void isESPRILR(){
-			bool	isESPRIL=false;
-			bool	isESPRIR=false;
-			bool isRdcL = isRdc(0);
-			bool isRdcR = isRdc(1);
-			bool isPlasL = isPlas(0);
-			bool isPlasR = isPlas(1);
-
-			if(isRdcL&&isPlasL){
-				isESPRIL = true;
-			}
-			if(isRdcR&&isPlasR){
-				isESPRIR = true;
-			}
-			isEspriLR = checkLR(isESPRIL,isESPRIR);
-			if(isEspriLR !=-1){
-				isEspriRdc = isRdc(isEspriLR);
-				isEspriPlas = isPlas(isEspriLR);
-			}
-			
-			//cout<<"isRdcL:"<<isRdcL<<" isPlasL:"<<isPlasL<<" isESPRIL:"<<isESPRIL<<endl;
-			//cout<<"isRdcR:"<<isRdcR<<" isPlasR:"<<isPlasR<<" isESPRIR:"<<isESPRIR<<endl;
-			//cout<<"isEspriLR:"<<isEspriLR<<endl;
-		}
-		double getNaiQPed(int side,int id){
-			return calibData->getNaiQPed(side,id);
-		}
-		void findNaiBarId(){
-
-			for (int i = 0; i < 7; ++i) {
-				if(getNaiQPed(isEspriLR,i)>naiQPedThreshold){
-					naiNHit++;
-					naiBarId = i;
-				}
-			}
-		}
-
-		void init(){
-
-			calibData = NULL;
-			isEspriLR = -1;
-			isEspriRdc = -1;
-			isEspriPlas = -1;
-			naiNHit = 0;
-			naiBarId = -1;
-		}
-
-
-	public:
-		CheckEspriEvent(){
-			env = new TEnv("configMerger.prm");
-			plasTMin = env->GetValue("plasTMin",0);	
-			plasTMax = env->GetValue("plasTMax",0);	
-			plasQThreshold = env->GetValue("plasQThreshold",0);	
-			naiQPedThreshold = env->GetValue("naiQPedThreshold",0);	
-		}
-		~CheckEspriEvent(){}
-		void setBranch(TTree *tree){
-
-			tree->Branch("isEspriLR",&isEspriLR,"isEspriLR/I");
-			tree->Branch("isEspriRdc",&isEspriRdc,"isEspriRdc/I");
-			tree->Branch("isEspriPlas",&isEspriPlas,"isEspriPlas/I");
-			tree->Branch("naiBarId",&naiBarId,"naiBarId/I");
-			tree->Branch("naiNHit",&naiNHit,"naiNHit/I");
-		}
-		void checkData(MergeESPRI *mergeData){
-			init();
-			calibData = mergeData;
-			isESPRILR();	
-			findNaiBarId();
-		}
-		bool isGoodEvent(){
-			if(isEspriLR ==0||isEspriLR ==1) return true;
-			else return false;
-		}
-		int getNaiId(){
-			return naiBarId;
-		}
-		int getSideLR(){
-			return isEspriLR;
-		}
-		void print(){
-			cout<<"isEspriRdc = "<<isEspriRdc<<" isEspriPlas = "<<isEspriPlas<<" isEspriLR = "<<isEspriLR<<endl;
-			cout<<"naiNHit = "<<naiNHit<<" naiBarId = "<<naiBarId<<endl;
-		}
-		double getDcX(){
-			return getRdcX(isEspriLR);
-		}
-		double getDcY(){
-			return getRdcY(isEspriLR);
-		}
-
-};
-
 class EspriTimeEvent{
 	private:
 	public:
@@ -338,8 +191,7 @@ class ESPRIPlasPosition{
 class PositionESPRI{
 	private:
 
-		MergeESPRI *calibData;
-		CheckEspriEvent *checkData;
+		MergeESPRI *mergeData;
 
 		double espriFL;
 		double espriAngle;
@@ -356,21 +208,21 @@ class PositionESPRI{
 		ESPRIPlasPosition *plasPosition;
 
 		void setESPRIPosition(){
-			setRdcPosition(checkData->getSideLR(),checkData->getDcX(),checkData->getDcY());
+			setRdcPosition(mergeData->getSide(),mergeData->getRdcX(),mergeData->getRdcY());
 			setPlasPosition();
 		}
 		void setRdcPosition(int sideLR,double dcX,double dcY){
 			(*espriRdcPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
 		}
 		void setPlasPosition(){
-			(*espriPlasPosition) = plasPosition->getPlasPosition(checkData->getSideLR(),espriRdcPosition,targetPosition);
+			(*espriPlasPosition) = plasPosition->getPlasPosition(mergeData->getSide(),espriRdcPosition,targetPosition);
 		}
 
 		void setESPRIAngle(){
 			(*vESPRI)	= (*espriRdcPosition)-(*targetPosition);
 			(*vESPRI)	= (*vESPRI).Unit();
 			espriAngle      = (*vESPRI).Angle((*vBeam))*TMath::RadToDeg();
-			TVector3 espriPlaneNorm = espri3DPosition->getESPRIPlaneNorm(checkData->getSideLR());
+			TVector3 espriPlaneNorm = espri3DPosition->getESPRIPlaneNorm(mergeData->getSide());
 			espriLocusAngle = (*vESPRI).Angle(espriPlaneNorm)*TMath::RadToDeg();
 		}
 		void setESPRIFL(){
@@ -382,11 +234,8 @@ class PositionESPRI{
 			plasPosition = new ESPRIPlasPosition();
 		}
 		~PositionESPRI(){}
-		void loadEvent(CheckEspriEvent *checkESPRI){
-			checkData = checkESPRI;
-		}
-		void loadData(MergeESPRI *mergeData){
-			calibData = mergeData;
+		void loadData(MergeESPRI *mergeESPRI){
+			mergeData = mergeESPRI;
 		}
 		void init(){
 			espriFL = NAN;
@@ -410,7 +259,6 @@ class PositionESPRI{
 			tree->Branch("espriRdcPosition","TVector3",&espriRdcPosition);
 			tree->Branch("espriPlasPosition","TVector3",&espriPlasPosition);
 			tree->Branch("espriFL",&espriFL,"espriFL/D");
-			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
 			tree->Branch("espriLocusAngle",&espriLocusAngle,"espriLocusAngle/D");
 		}
 		void print(){
@@ -425,6 +273,12 @@ class PositionESPRI{
 		}
 		void loadBeamVector(TVector3 *beam){
 			vBeam = beam;
+		}
+		double getAngle(){
+			return espriAngle;
+		}
+		TVector3 * getPosition(){
+			return espriRdcPosition;
 		}
 
 };

@@ -25,7 +25,7 @@ HODRunSuffix:_HOD.root
 
 ESPRIInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/espri/convert/rootfiles/
 ESPRIRunPrefix:run
-ESPRIRunSuffix:_ESPRI.root
+ESPRIRunSuffix:_ESPRI.root_test
 
 
 
@@ -37,7 +37,7 @@ outputSuffix:_analysed.root_test
 plasQThreshold:0.1
 plasTMin:0
 plasTMax:40
-naiQPedThreshold:100
+naiQPedThreshold:50
 
 siliconHitThreshold:0.5
 csiHitThreshold:2

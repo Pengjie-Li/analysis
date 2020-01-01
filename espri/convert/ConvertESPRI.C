@@ -1,9 +1,11 @@
 #include "header.h"
 
 TEnv *env = new TEnv("configConvertESPRI.prm");
+TEnv *calib;
 TString calibFileName;
 #include "ESPRIReadRaw.h"
 #include "ESPRIConvertCal.h"
+#include "ESPRIHit.h"
 
 class ConvertESPRI{
 	private:
@@ -35,6 +37,7 @@ class ConvertESPRI{
 		int RunNumber;
 		ESPRIReadRaw *espriReadRaw;
 		ESPRIConvertCal *espriConvertCal;
+		ESPRIHit *espriHit;
 
 
 		//////// Load anaroot decode class ////////
@@ -92,6 +95,7 @@ class ConvertESPRI{
 			tree->Branch("RunNumber",&RunNumber);
 			espriReadRaw->setBranch(tree);
 			espriConvertCal->setBranch(tree);
+			espriHit->setBranch(tree);
 		}
 
 		void preSetting(){
@@ -124,6 +128,7 @@ class ConvertESPRI{
 				getRawData();
 				readRawData();
 				convertRawData();
+				extractHit();
 				tree->Fill();
 
 				if(maxEventNumber<100) print();
@@ -134,9 +139,10 @@ class ConvertESPRI{
 			cout<<"EventNumber = "<<EventNumber<<endl;
 			//espriReadRaw->printTDC();
 			//espriReadRaw->printPlas();
-			//espriConvertCal->printRdc();
+			espriConvertCal->printRdc();
 			espriConvertCal->printPlas();
 			espriConvertCal->printNai();
+			espriHit->print();
 
 		}
 		void getRawData(){
@@ -178,6 +184,9 @@ class ConvertESPRI{
 			espriConvertCal->updateRunNumber(runNumber);
 			espriConvertCal->convertCal(espriReadRaw);
 			espriConvertCal->readReconstructedData(rdcDataContainer);
+		}
+		void extractHit(){
+			espriHit->hitEvent(espriConvertCal);
 		}
 		void showAnalysisProgress(){
 			if (EventNumber%DISPLAY_EVERY_EVENT == 0)
@@ -229,6 +238,7 @@ class ConvertESPRI{
 
 			espriReadRaw = new ESPRIReadRaw();
 			espriConvertCal = new ESPRIConvertCal();
+			espriHit = new ESPRIHit();
 
 			setOutputBranch();
 
