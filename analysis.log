@@ -3720,3 +3720,75 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/v8_removeCalib/v1_ConvertESPRI.C_Sample
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 384d490] v1.0
+ 115 files changed, 6897 insertions(+), 951 deletions(-)
+ rewrite espri/convert/ConvertESPRI (90%)
+ rewrite espri/convert/ESPRIConvertCal.h (89%)
+ create mode 100644 espri/convert/ESPRIHit.h
+ create mode 100644 espri/convert/ESPRINaiCal.h
+ create mode 100644 espri/convert/ESPRIPlasCal.h
+ create mode 100644 espri/convert/ESPRIRdcCal.h
+ create mode 100644 espri/convert/rootfiles/run0518_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0538_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0539_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0542_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0557_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0561_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0572_ESPRI.root_test
+ create mode 100644 merger/CalibESPRI.h
+ rewrite merger/EspriEvent.h (63%)
+ rewrite merger/Merger (91%)
+ create mode 100644 merger/espri.C
+ create mode 100644 merger/rootfiles/run0302_analysed.root_test
+ create mode 100644 merger/rootfiles/run0436_analysed.root_test
+ create mode 100644 merger/v2_random/'
+ create mode 100644 merger/v2_random/AnalysingBDC.h
+ create mode 100644 merger/v2_random/AnalysingESPRI.h
+ create mode 100644 merger/v2_random/AnalysingFDC0.h
+ create mode 100644 merger/v2_random/AnalysingHOD.h
+ create mode 100644 merger/v2_random/AnalysingMAIN.h
+ create mode 100644 merger/v2_random/AnalysingPLA.h
+ create mode 100644 merger/v2_random/AnalysingTELE.h
+ create mode 100644 merger/v2_random/BdcEvent.h
+ create mode 100644 merger/v2_random/Convert.h
+ create mode 100644 merger/v2_random/Detector.h
+ rename merger/{ => v2_random}/EspriEvent.h (100%)
+ create mode 100644 merger/v2_random/FDC0Event.h
+ create mode 100644 merger/v2_random/Fdc0Event.h
+ create mode 100644 merger/v2_random/FindPixel.h
+ create mode 100755 merger/v2_random/Makefile
+ create mode 100644 merger/v2_random/MergeBDC.h
+ create mode 100644 merger/v2_random/MergeESPRI.h
+ create mode 100644 merger/v2_random/MergeFDC0.h
+ create mode 100644 merger/v2_random/MergeHOD.h
+ create mode 100644 merger/v2_random/MergeMAIN.h
+ create mode 100644 merger/v2_random/MergePLA.h
+ create mode 100644 merger/v2_random/MergeSample.h
+ create mode 100644 merger/v2_random/MergeTELE.h
+ rename merger/{ => v2_random}/Merger (100%)
+ create mode 100644 merger/v2_random/Merger.cpp
+ create mode 100644 merger/v2_random/Merger.h
+ create mode 100644 merger/v2_random/PlaEvent.h
+ create mode 100644 merger/v2_random/PositionESPRI.h
+ create mode 100644 merger/v2_random/PositionTELE.h
+ create mode 100644 merger/v2_random/TeleEvent.h
+ create mode 100755 merger/v2_random/analysis.C
+ create mode 100644 merger/v2_random/backup_1st_Merger.C
+ create mode 100644 merger/v2_random/configMerger.prm
+ create mode 100644 merger/v2_random/constant.h
+ create mode 100644 merger/v2_random/convert.sh
+ create mode 100755 merger/v2_random/distance.h
+ create mode 100644 merger/v2_random/env
+ create mode 100755 merger/v2_random/header.h
+ create mode 100644 merger/v2_random/logMerger.txt
+ create mode 100644 merger/v2_random/loop.sh
+ create mode 100644 merger/v2_random/looprun.sh
+ create mode 100644 merger/v2_random/main.cpp
+ create mode 100644 merger/v2_random/mvRootVersion.sh
+ create mode 100644 merger/v2_random/read.me
+ create mode 100644 merger/v2_random/sampleESPRI.C
+ create mode 100644 merger/v2_random/t1.txt
+ create mode 100644 merger/v2_random/t2.txt
+ create mode 100644 merger/v2_random/tele.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

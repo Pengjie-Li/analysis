@@ -37,7 +37,15 @@ class ESPRIConvertCal{
 		void readReconstructedData(TClonesArray *rdcArray){
 			rdcCal->readReconstructedData(rdcArray);
 		}
-
+		void keepRdcSide(int side){
+			rdcCal->keepRdcSide(side);
+		}
+		void keepPlasSide(int side){
+			plasCal->keepPlasSide(side);
+		}
+		void swapPlasSide(){
+			plasCal->swapPlasSide();
+		}
 		void setBranch(TTree *tree){
 			rdcCal->setBranch(tree);
 			naiCal->setBranch(tree); 

@@ -8,6 +8,7 @@ dbESPRIUser:USERPARAMETER_New.xml
 
 
 naiPedestal:./txt/naiPedestal.txt
+plasPedestal:./txt/plasPedestal.txt
 
 inputPath:/media/Rawdata/RIKEN_Cluster_2018/
 inputPrefix:run0
@@ -18,7 +19,3 @@ outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_ESPRI.root_test
 
-plasSyncPara:1.5
-naiMagnetPara:./txt/naiMagnetPara.txt
-naiPol3Be10Calib:txt/naiPol3Be10.txt
-naiBarSyncPara:txt/naiBarSyncPara.txt

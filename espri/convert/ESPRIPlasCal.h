@@ -20,7 +20,7 @@ class ESPRIPlasCalPara{
 		}
 		void load(){
 			ifstream in;
-			TString inputName = calib->GetValue("plasPedestal","plasPedestal.txt");
+			TString inputName = env->GetValue("plasPedestal","plasPedestal.txt");
 			in.open(inputName);
 			int side;
 			double ped;
@@ -169,6 +169,25 @@ class ESPRIPlasCal{
 		int getSide(int hitId){
 			return plasHitSide[hitId];
 		}
+		void keepPlasSide(int side){
+			if(plasHitSide[0] == side){
+				plasHit = 1;
+			}else{
+				plasHitSide[0] = plasHitSide[1];
+				plasHitQPed[0] = plasHitQPed[1];
+			}
+		}
+		void swapPlasSide(){
+				int tempSide    = plasHitSide[0];
+				double tempQPed = plasHitQPed[0];
+	
+				plasHitSide[0] = plasHitSide[1];
+				plasHitQPed[0] = plasHitQPed[1];
+
+				plasHitSide[1] = tempSide;
+				plasHitQPed[1] = tempQPed;
+		}
+	
 		void setBranch(TTree *tree){
 			tree->Branch("plasHit",&plasHit,"plasHit/I");
 			tree->Branch("plasHitSide",plasHitSide,"plasHitSide[plasHit]/I");

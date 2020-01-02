@@ -24,13 +24,23 @@ class ESPRIHit{
 			}else if(espriCal->getRdcHit()==2&&espriCal->getPlasHit()==1){
 				espriHitSide[espriHit] = espriCal->getPlasSide(0);
 				espriHit++;
+
+				espriCal->keepRdcSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
 			}else if(espriCal->getRdcHit()==1&&espriCal->getPlasHit()==2){
 				espriHitSide[espriHit] = espriCal->getRdcSide(0);
 				espriHit++;
+
+				espriCal->keepPlasSide(espriCal->getRdcSide(0)); // remove bad Hit on RDC
 			}else if(espriCal->getRdcHit()==2&&espriCal->getPlasHit()==2){
 				espriHitSide[0] = espriCal->getRdcSide(0);
 				espriHitSide[1] = espriCal->getRdcSide(1);
 				espriHit == 2;
+
+				if(espriCal->getRdcSide(0) == espriCal->getPlasSide(0)) {}
+				else{
+					espriCal->swapPlasSide();
+				}
+
 			}else{
 				espriHit = 0;
 			}
@@ -44,6 +54,17 @@ class ESPRIHit{
 				cout<<"ESPI Hit"<<i<<" Side = "<<espriHitSide[i]<<endl;
 			}
 		}
+		int getHit(){
+			return espriHit;
+		}
+		int getSide(){
+			return espriHitSide[0];
+		}
+		int getSide(int hitId){
+			return espriHitSide[hitId];
+		}
+
+
 
 		
 };

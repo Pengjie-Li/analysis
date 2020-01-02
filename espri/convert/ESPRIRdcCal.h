@@ -110,7 +110,16 @@ class ESPRIRdcCal{
 		int getSide(int hitId){
 			return rdcHitSide[hitId];
 		}
-
+		void keepRdcSide(int side){
+			if(rdcHitSide[0] == side){
+				rdcHit = 1;
+			}else{
+				rdcHitSide[0] = rdcHitSide[1];
+				rdcHitX[0] = rdcHitX[1];
+				rdcHitY[0] = rdcHitY[1];
+				rdcHitChi2[0] = rdcHitChi2[1];
+			}
+		}
 		void print(){
 
 			for (int i = 0; i < rdcHit; ++i) {

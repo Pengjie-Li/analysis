@@ -12,8 +12,7 @@ class ESPRINaiCalPara{
 		}
 		void loadPedestal(){
 			ifstream in;
-			TString inputName = calib->GetValue("naiPedestal","naiPedestal.txt");
-			cout<<calibFileName<<endl;
+			TString inputName = env->GetValue("naiPedestal","naiPedestal.txt");
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
