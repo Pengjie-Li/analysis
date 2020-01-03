@@ -15,7 +15,6 @@ int main(int argc, char** argv){
 		merger->loadInputFiles();
 		merger->checkTotalEventNumber();
 		merger->setBranch();
-		merger->addFriend();
 		merger->createOutput();
 		merger->eventLoop();
 		merger->saveOutput();

@@ -3792,3 +3792,110 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v2_random/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 1fba18e] v1.0
+ 150 files changed, 12397 insertions(+), 84 deletions(-)
+ create mode 100644 analysis/generateChannels/ppBe10/.ReadFile.h.swp
+ create mode 100644 analysis/generateChannels/ppBe10/Event.h
+ create mode 100755 analysis/generateChannels/ppBe10/Makefile
+ create mode 100644 analysis/generateChannels/ppBe10/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppBe10/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppBe10/convert.sh
+ create mode 100755 analysis/generateChannels/ppBe10/header.h
+ create mode 100644 analysis/generateChannels/ppBe10/loop.sh
+ create mode 100644 analysis/generateChannels/ppBe10/main.cpp
+ create mode 100644 analysis/generateChannels/ppBe10/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppBe10/ppBe.h
+ create mode 100755 analysis/generateChannels/ppBe10/ppBe10
+ create mode 100644 analysis/generateChannels/ppBe10/test.C
+ create mode 100644 espri/calib/alignQPed/naiBarCalib/.calibPara.txt.swp
+ rewrite espri/convert/ConvertESPRI (88%)
+ rewrite espri/convert/rootfiles/run0300_ESPRI.root_test (67%)
+ rename espri/convert/{ => v8_HitStructure_QPed}/ConvertESPRI (100%)
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ConvertESPRI.C
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRIHit.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRINaiCal.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRIPlasCal.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRIRdcCal.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v8_HitStructure_QPed/Makefile
+ create mode 100755 espri/convert/v8_HitStructure_QPed/caltree.C
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configCalibESPRI.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configCalibESPRI_Be10.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configCalibESPRI_Be12.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configCalibESPRI_Be14.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configCalibESPRI_Be14_2.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/configConvertESPRI.prm
+ create mode 100644 espri/convert/v8_HitStructure_QPed/convert.sh
+ create mode 100755 espri/convert/v8_HitStructure_QPed/header.h
+ create mode 100644 espri/convert/v8_HitStructure_QPed/logEspri
+ create mode 100644 espri/convert/v8_HitStructure_QPed/loop.sh
+ create mode 100644 espri/convert/v8_HitStructure_QPed/looprun.sh
+ create mode 100644 espri/convert/v8_HitStructure_QPed/v1_ConvertESPRI.C_Sample
+ rewrite merger/Merger (90%)
+ create mode 100644 merger/config/configCalib_Be10.prm
+ create mode 100644 merger/config/configCalib_Be12.prm
+ create mode 100644 merger/config/configCalib_Be14.prm
+ create mode 100644 merger/config/configCalib_Be14_2.prm
+ create mode 100644 merger/config/configMerger.prm
+ rewrite merger/rootfiles/test.C (99%)
+ create mode 120000 merger/txt/naiPol3Be10.txt
+ create mode 120000 merger/txt/naiPol3Be12.txt
+ create mode 120000 merger/txt/naiPol3Be14.txt
+ create mode 100644 merger/txt/plasBirksBe10.txt
+ create mode 100644 merger/txt/plasBirksBe12.txt
+ create mode 120000 merger/txt/plasBirksBe14.txt
+ create mode 100644 merger/txt/plasCalib_Be10.txt
+ create mode 100644 merger/txt/plasCalib_Be12.txt
+ create mode 100644 merger/txt/plasCalib_Be14.txt
+ create mode 100644 merger/v3_ESPRI_GoodStructure/'
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingBDC.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingESPRI.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingFDC0.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingHOD.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingMAIN.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingPLA.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/AnalysingTELE.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/BdcEvent.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/CalibESPRI.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/Convert.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/Detector.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/EspriEvent.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/FDC0Event.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/Fdc0Event.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/FindPixel.h
+ create mode 100755 merger/v3_ESPRI_GoodStructure/Makefile
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeBDC.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeESPRI.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeFDC0.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeHOD.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeMAIN.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergePLA.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeSample.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/MergeTELE.h
+ create mode 100755 merger/v3_ESPRI_GoodStructure/Merger
+ create mode 100644 merger/v3_ESPRI_GoodStructure/Merger.cpp
+ create mode 100644 merger/v3_ESPRI_GoodStructure/Merger.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/PlaEvent.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/PositionESPRI.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/PositionTELE.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/TeleEvent.h
+ create mode 100755 merger/v3_ESPRI_GoodStructure/analysis.C
+ create mode 100644 merger/v3_ESPRI_GoodStructure/backup_1st_Merger.C
+ create mode 100644 merger/v3_ESPRI_GoodStructure/constant.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/convert.sh
+ create mode 100755 merger/v3_ESPRI_GoodStructure/distance.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/env
+ create mode 100755 merger/v3_ESPRI_GoodStructure/header.h
+ create mode 100644 merger/v3_ESPRI_GoodStructure/logMerger.txt
+ create mode 100644 merger/v3_ESPRI_GoodStructure/loop.sh
+ create mode 100644 merger/v3_ESPRI_GoodStructure/looprun.sh
+ create mode 100644 merger/v3_ESPRI_GoodStructure/main.cpp
+ create mode 100644 merger/v3_ESPRI_GoodStructure/mvRootVersion.sh
+ create mode 100644 merger/v3_ESPRI_GoodStructure/read.me
+ create mode 100644 merger/v3_ESPRI_GoodStructure/sampleESPRI.C
+ create mode 100644 merger/v3_ESPRI_GoodStructure/t1.txt
+ create mode 100644 merger/v3_ESPRI_GoodStructure/t2.txt
+ create mode 100644 merger/v3_ESPRI_GoodStructure/tele.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

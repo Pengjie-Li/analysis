@@ -152,7 +152,7 @@ class MergeESPRI:public Convert{
 
 			tree->Branch("plasHit",&plasHit,"plasHit/I");
 			tree->Branch("plasHitSide",plasHitSide,"plasHitSide[plasHit]/I");
-			tree->Branch("plasHitQPed",plasHitQPed,"plasHitQPed[plasHit]/I");
+			tree->Branch("plasHitQPed",plasHitQPed,"plasHitQPed[plasHit]/D");
 
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
 

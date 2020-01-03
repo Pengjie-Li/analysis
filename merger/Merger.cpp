@@ -13,6 +13,8 @@ TEnv *env;
 #include "AnalysingHOD.h"
 #include "AnalysingESPRI.h"
 
+#include "AnalysingBeam.h"
+
 TString calibParaName(int runNumber){
 	TString calibFileName;
 	if(runNumber<331&&runNumber>290)      calibFileName = "config/configCalib_Be10.prm";
@@ -53,6 +55,8 @@ Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNu
 		mergeESPRI =new MergeESPRI(runNumber);
 		espriEvent = new EspriEvent();
 	}
+
+	beamEvent = new BeamEvent();
 }
 void Merger::eventLoop(){
 	nentries = mergeMAIN->inputTree->GetEntries();
@@ -73,6 +77,7 @@ void Merger::eventLoop(){
 		if(kHOD)	 analysingHOD();
 		if(kESPRI)	 analysingESPRI();
 
+		setBeamEvent();
 		//cout<<"Event Number = "<<ientry<<endl;
 		//print();
 		if(nentries<1000) {
@@ -86,10 +91,12 @@ void Merger::eventLoop(){
 	}
 }
 void Merger::print(){
-	//printPLA();	
+	
+	printPLA();	
 	//printBDC();	
-	printESPRI();
+	//printESPRI();
 	//printFDC0();
+	printBeam();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){
@@ -143,12 +150,6 @@ void Merger::saveOutput(){
 	outputFile->Close();
 }
 
-void Merger::addFriend(){
-	if(kPLA){
-		//inputTree->AddFriend(mergePLA->inputTree);
-		//mergePLA->inputTree->Print();
-	}
-}
 
 void Merger::setBranch(){
 	if(kMAIN) mergeMAIN->setBranch();
@@ -195,4 +196,5 @@ void Merger::setOutputBranch(){
 	if(kTELE)	 setTELEOutputBranch();
 	if(kHOD)	 setHODOutputBranch();
 	if(kESPRI)	 setESPRIOutputBranch();
+	setBeamOutputBranch();
 }

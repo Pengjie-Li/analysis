@@ -111,5 +111,8 @@ class BdcEvent{
 		TVector3 * getBeamVector(){
 			return vBeam;
 		}
+		double getBeamFL(){
+			return beamFL;
+		}
 
 };

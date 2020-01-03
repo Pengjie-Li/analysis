@@ -132,6 +132,53 @@ class ESPRINaiCal{
 			//printRawQ();
 			//printQ();
 		}
+		void removeHit(int iHit){
+			cout<<"Remove "<<iHit<<"th Hit"<<endl;
+			naiHit--;
+			for (int i = iHit; i < naiHit; ++i) {
+				naiHitSide[i] = naiHitSide[i+1];	
+				naiHitQPed[i] = naiHitQPed[i+1];	
+				naiHitBarId[i] = naiHitBarId[i+1];	
+			}
+			print();
+		}
+		void keepNaiSide(int side){
+			cout<<"Keep Nai Side"<<endl;
+			if(naiHit ==1&&naiHitSide[0]!=side) naiHit = 0; 
+			print();
+			if(naiHit >=2){
+				int nBadHit =0;
+				int nBadHitId[5] = {-1,-1,-1,-1,-1}; // assume maximum bad Hit <5
+				for (int i = 0; i < naiHit; ++i) {
+					if(naiHitSide[i]!=side){
+						nBadHitId[nBadHit] = i;
+						nBadHit++;
+					}
+				}
+				for (int i = 0; i < nBadHit; ++i) {
+					removeHit(nBadHitId[i]);	
+				}
+			}
+
+		}
+		void swapNaiSide(){
+				int tempSide    = naiHitSide[0];
+				double tempQPed = naiHitQPed[0];
+	
+				naiHitSide[0] = naiHitSide[1];
+				naiHitQPed[0] = naiHitQPed[1];
+
+				naiHitSide[1] = tempSide;
+				naiHitQPed[1] = tempQPed;
+		}
+	
+		int getSide(int hitId){
+			return naiHitSide[hitId];
+		}
+		int getHit(){
+			return naiHit;
+		}
+
 		void print(){
 
 			//naiRaw->printQ();

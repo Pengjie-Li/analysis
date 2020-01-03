@@ -130,17 +130,19 @@ class ConvertESPRI{
 				tree->Fill();
 
 				if(maxEventNumber<100) print();
-				//print();
+				print();
 			}
 		}
 		void print(){
-			cout<<"EventNumber = "<<EventNumber<<endl;
-			//espriReadRaw->printTDC();
-			//espriReadRaw->printPlas();
-			espriConvertCal->printRdc();
-			espriConvertCal->printPlas();
-			espriConvertCal->printNai();
-			espriHit->print();
+			if(espriConvertCal->getNaiHit()>=1){
+				cout<<"EventNumber = "<<EventNumber<<endl;
+				//espriReadRaw->printTDC();
+				//espriReadRaw->printPlas();
+				espriConvertCal->printRdc();
+				espriConvertCal->printPlas();
+				espriConvertCal->printNai();
+				espriHit->print();
+			}
 
 		}
 		void getRawData(){

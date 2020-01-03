@@ -80,6 +80,13 @@ class PlaEvent{
 		Double_t getF13Time(){
 			return plaData->getF13Time();
 		}
+		double getF713Beta(){
+			return Beta713;
+		}
+		double getF713Ek(){
+			return Ek713;
+		}
+
 		void print(){
 			cout<<"PLA Analysed Event:"<<endl;
 			cout<<"TOF37  = "<<setw(8)<<TOF37<<" Beta37  = "<<setw(8)<<Beta37<<" Gamma37  = "<<setw(8)<<Gamma37<<" Ek37  = "<<setw(8)<<Ek37<<endl;

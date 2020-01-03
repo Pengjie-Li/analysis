@@ -3,8 +3,8 @@
 //========= by ROOT version5.34/20
    
    cutg = new TCutG("Deutron",21);
-   cutg->SetVarX("espriNaiE");
-   cutg->SetVarY("espriPlasE");
+   cutg->SetVarX("espriNaiE_Pol3");
+   cutg->SetVarY("espriPlasE_Birks");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
    cutg->SetPoint(0,2.65568,31.4524);

@@ -153,7 +153,7 @@ class ReadFile{
 		Double_t        naiHitQPed[7];
 		Int_t           plasHit;
 		Int_t           plasHitSide[2];
-		Int_t           plasHitQPed[2];
+		Double_t        plasHitQPed[2];
 		Double_t        plasTCal[4];
 		Int_t           espriHit;
 		Int_t           espriHitSide[1];
@@ -195,14 +195,6 @@ class ReadFile{
 		}
 		void setReadBranch(){
 
-			plasTdcRaw0	= 0;
-			plasTdcRaw1	= 0;
-			plasTdcRaw2	= 0;
-			plasTdcRaw3	= 0;
-			rdcTdc		= 0;
-			rdcPlaneId	= 0;
-			rdcWireId	= 0;
-			rdcPlaneNHit	= 0;
 
 			BDC1_TDC	= 0;
 			BDC1_layerid	= 0;
@@ -642,10 +634,11 @@ class ReadFile{
 			return espriPlasE_Birks;
 		}
 		double getNaiQ(){
-			return naiHitQPed[0];
+			return espriNaiE;
 		}
 		double getPlasQ(){
-			return plasHitQPed[0];
+			//return plasHitQPed[0];
+			return espriPlasE;
 		}
 		double getTargetX(){
 			return vTarget->X();

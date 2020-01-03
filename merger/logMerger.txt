@@ -13,3 +13,13 @@
 	1. revise RDC Plane and Plas Plane
 	Left:965.69:1011.19:1188.19
 	Right:964.93:1010.43:1187.43
+2020-01-02
+	restructureed EspriEvent
+	1. everything goes to espriEnergy, espriAngle, espriPosition
+	2. CalibESPRI gives calibrated plas Energy and Time, nai Energy
+		i. by add branch, we have different version calibration
+		ii. easy to compare
+	3. PositionESPRI gives position and angle info
+2020-01-03
+	1. add BeamEvent,make beamEnergy to be energy before Target, tofSBTTarget
+	2. determine beamEnergy offset , beta Offset compared to Lise++

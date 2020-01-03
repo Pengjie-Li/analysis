@@ -85,7 +85,7 @@ class Event{
 			return gc->isBeam(rf->getTof713(),rf->getF13Q());
 		}
 		bool isProton(){
-			return gc->isProton(rf->getNaiQ(0,0),rf->getPlasQ(0));
+			return gc->isProton(rf->getNaiQ(),rf->getPlasQ());
 			//return gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE());
 		}
 		bool isTargetArea(){

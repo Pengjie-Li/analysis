@@ -17,7 +17,7 @@ class ESPRIHit{
 				if(espriCal->getRdcSide(0) == espriCal->getPlasSide(0)){
 					espriHitSide[espriHit] = espriCal->getRdcSide(0);
 					espriHit++; // espriHit = 1;
-					
+					if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
 				}else{
 					espriHit = 0;
 				}
@@ -26,11 +26,13 @@ class ESPRIHit{
 				espriHit++;
 
 				espriCal->keepRdcSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
+				if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
 			}else if(espriCal->getRdcHit()==1&&espriCal->getPlasHit()==2){
 				espriHitSide[espriHit] = espriCal->getRdcSide(0);
 				espriHit++;
 
 				espriCal->keepPlasSide(espriCal->getRdcSide(0)); // remove bad Hit on RDC
+				if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
 			}else if(espriCal->getRdcHit()==2&&espriCal->getPlasHit()==2){
 				espriHitSide[0] = espriCal->getRdcSide(0);
 				espriHitSide[1] = espriCal->getRdcSide(1);
@@ -39,6 +41,10 @@ class ESPRIHit{
 				if(espriCal->getRdcSide(0) == espriCal->getPlasSide(0)) {}
 				else{
 					espriCal->swapPlasSide();
+				}
+				if(espriCal->getRdcSide(0) == espriCal->getNaiSide(0)) {}
+				else{
+					espriCal->swapNaiSide();
 				}
 
 			}else{

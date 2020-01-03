@@ -1,3 +1,7 @@
+
+beamBetaOffset:0.784
+beamEnergyOffset:2.868
+
 plasCalib:txt/plasCalib_Be12.txt
 plasBirksCalib:txt/plasBirksBe12.txt
 naiPol3Calib:txt/naiPol3Be12.txt

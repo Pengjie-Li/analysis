@@ -43,6 +43,12 @@ class ESPRIConvertCal{
 		void keepPlasSide(int side){
 			plasCal->keepPlasSide(side);
 		}
+		void keepNaiSide(int side){
+			naiCal->keepNaiSide(side);
+		}
+		void swapNaiSide(){
+			naiCal->swapNaiSide();
+		}
 		void swapPlasSide(){
 			plasCal->swapPlasSide();
 		}
@@ -77,6 +83,12 @@ class ESPRIConvertCal{
 
 		int getPlasSide(int hitId){
 			return plasCal->getSide(hitId);
+		}
+		int getNaiHit(){
+			return naiCal->getHit();
+		}
+		int getNaiSide(int hitId){
+			return naiCal->getSide(hitId);
 		}
 
 
