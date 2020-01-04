@@ -136,7 +136,8 @@ class EspriEnergyPara{
 		void loadCalibPara(){
 			init();
 			ifstream in;
-			TString inputName = "txt/espriEnergyCalibParaBe14.txt";
+			TString inputName = calib->GetValue("espriCalib","txt/espriEnergyCalibPara.txt");;
+			//TString inputName = "txt/espriEnergyCalibParaBe14.txt";
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;

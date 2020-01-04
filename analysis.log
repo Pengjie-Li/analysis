@@ -3899,3 +3899,16 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v3_ESPRI_GoodStructure/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4b8d1b3] v1.0
+ 74 files changed, 372 insertions(+), 50 deletions(-)
+ create mode 120000 analysis/generateChannels/ppBe10/inputRootfiles
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (96%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/bar10.C
+ rewrite espri/convert/ConvertESPRI (85%)
+ create mode 100644 merger/AnalysingBeam.h
+ create mode 100644 merger/BeamEvent.h
+ rewrite merger/Merger (89%)
+ create mode 100644 merger/rootfiles/bar10.C
+ rewrite merger/rootfiles/run0593_analysed.root_test (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
