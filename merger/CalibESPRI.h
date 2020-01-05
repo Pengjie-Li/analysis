@@ -340,6 +340,9 @@ class CalibESPRI{
 		double getEnergy(){
 			return espriDeeEnergy;
 		}
+		double getNaiEnergy(){
+			return espriNaiE;
+		}
 		void setBranch(TTree *tree){
 
 			tree->Branch("espriPlasE_Birks",&espriPlasE_Birks,"espriPlasE_Birks/D");

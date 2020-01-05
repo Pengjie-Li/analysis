@@ -21,5 +21,9 @@
 		ii. easy to compare
 	3. PositionESPRI gives position and angle info
 2020-01-03
-	1. add BeamEvent,make beamEnergy to be energy before Target, tofSBTTarget
+	1. add BeamEvent,
+	2. add beamEnergy branch; make beamEnergy to be energy before Target, tofSBTTarget
 	2. determine beamEnergy offset , beta Offset compared to Lise++
+2020-01-05
+	1. add proton Event, 
+	2. calculate ProtonEnergy from NaiEnergy

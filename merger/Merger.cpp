@@ -14,6 +14,7 @@ TEnv *env;
 #include "AnalysingESPRI.h"
 
 #include "AnalysingBeam.h"
+#include "AnalysingProton.h"
 
 TString calibParaName(int runNumber){
 	TString calibFileName;
@@ -57,6 +58,7 @@ Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNu
 	}
 
 	beamEvent = new BeamEvent();
+	protonEvent = new ProtonEvent();
 }
 void Merger::eventLoop(){
 	nentries = mergeMAIN->inputTree->GetEntries();
@@ -72,12 +74,14 @@ void Merger::eventLoop(){
 		if(kMAIN)	 analysingMAIN();
 		if(kPLA)	 analysingPLA();
 		if(kBDC)	 analysingBDC();
+
 		if(kFDC0)	 analysingFDC0();
 		if(kTELE)	 analysingTELE();
 		if(kHOD)	 analysingHOD();
 		if(kESPRI)	 analysingESPRI();
 
 		setBeamEvent();
+		setProtonEvent();
 		//cout<<"Event Number = "<<ientry<<endl;
 		//print();
 		if(nentries<1000) {
@@ -92,11 +96,12 @@ void Merger::eventLoop(){
 }
 void Merger::print(){
 	
-	printPLA();	
+	//printPLA();	
 	//printBDC();	
-	//printESPRI();
+	printESPRI();
+	printProton();
 	//printFDC0();
-	printBeam();
+	//printBeam();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){
@@ -197,4 +202,5 @@ void Merger::setOutputBranch(){
 	if(kHOD)	 setHODOutputBranch();
 	if(kESPRI)	 setESPRIOutputBranch();
 	setBeamOutputBranch();
+	setProtonOutputBranch();
 }

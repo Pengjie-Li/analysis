@@ -1,22 +1,23 @@
 void Merger::analysingESPRI(){
 	
-
-
-
 	// Analysing ESPRI data and select ESPRI LR side
 	//espriEvent->checkData(mergeESPRI);
 
 	// load Target and beam to check Flight Length and Proton angle
 	
+	espriEvent->init();
 	espriEvent->loadData(mergeESPRI);
 	espriEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
 	espriEvent->loadBeamVector(bdcEvent->getBeamVector());
 	
 	espriEvent->setESPRIEvent();
+
 }
 void Merger::printESPRI(){
-	mergeESPRI->print();
-	if(mergeESPRI->isGoodEvent()) espriEvent->print();	
+	if(mergeESPRI->isGoodEvent()){
+		mergeESPRI->print();
+		espriEvent->print();	
+	}
 }
 void Merger::setESPRIOutputBranch(){
 	mergeESPRI->setOutputBranch(tree);

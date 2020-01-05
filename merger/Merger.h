@@ -18,6 +18,7 @@ extern TEnv *env;
 #include "BdcEvent.h"
 #include "TeleEvent.h"
 #include "BeamEvent.h"
+#include "ProtonEvent.h"
 
 
 class Merger{
@@ -140,7 +141,13 @@ class Merger{
 		BeamEvent 	*beamEvent;
 		void printBeam();
 		void setBeamEvent();
-//		ProtonEvent 	*protonEvent;
+		void setBeamOutputBranch();
+
+		ProtonEvent 	*protonEvent;
+		void printProton();
+		void setProtonEvent();
+		void setProtonOutputBranch();
+
 //		AlphaEvent 	*alphaEvent;
 
 		void createOutput();
@@ -157,7 +164,6 @@ class Merger{
 		void setHODOutputBranch();
 		void setESPRIOutputBranch();
 
-		void setBeamOutputBranch();
 
 
 		void checkTotalEventNumber();

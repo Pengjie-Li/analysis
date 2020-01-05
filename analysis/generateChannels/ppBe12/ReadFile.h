@@ -157,7 +157,6 @@ class ReadFile{
 		Double_t        plasTCal[4];
 		Int_t           espriHit;
 		Int_t           espriHitSide[1];
-		Double_t        espriPlasE_singleGain;
 		Double_t        espriPlasE_Birks;
 		Double_t        espriNaiE_Pol3;
 		Double_t        espriPlasE;
@@ -381,7 +380,6 @@ class ReadFile{
 			inputTree->SetBranchAddress("plasTCal",plasTCal);
 			inputTree->SetBranchAddress("espriHit",&espriHit);
 			inputTree->SetBranchAddress("espriHitSide",espriHitSide);
-			inputTree->SetBranchAddress("espriPlasE_singleGain",&espriPlasE_singleGain);
 			inputTree->SetBranchAddress("espriPlasE_Birks",&espriPlasE_Birks);
 			inputTree->SetBranchAddress("espriNaiE_Pol3",&espriNaiE_Pol3);
 			inputTree->SetBranchAddress("espriPlasE",&espriPlasE);
@@ -596,7 +594,6 @@ class ReadFile{
 			tree->Branch("espriHit",&espriHit,"espriHit/I");
 			tree->Branch("espriHitSide",espriHitSide,"espriHitSide[espriHit]/I");
 
-			tree->Branch("espriPlasE_singleGain",&espriPlasE_singleGain);
 			tree->Branch("espriPlasE_Birks",&espriPlasE_Birks);
 			tree->Branch("espriNaiE_Pol3",&espriNaiE_Pol3);
 			tree->Branch("espriPlasE",&espriPlasE);

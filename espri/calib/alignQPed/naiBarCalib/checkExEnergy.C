@@ -59,7 +59,8 @@ class CheckEx{
 		CheckEx(){
 
 			tree = new TChain("tree");
-			tree->Add("ppBe14.root");
+			tree->Add("ppBe14.root_BeamTargetProtonPRAngleHodBar28-33");
+			//tree->Add("ppBe14.root");
 			cPad = new TCanvas("cPad","cPad",1200,700);
 			cPad->Divide(2,2);
 

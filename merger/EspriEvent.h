@@ -28,12 +28,12 @@ class EspriEvent{
 			delete positionESPRI;
 		}
 		void loadData(MergeESPRI *mergeESPRI){
-			mergeData = NULL;
 			mergeData = mergeESPRI;
 		}
 
 		void init(){
 
+			mergeData = NULL;
 			espriAngle = NAN;
 			espriEnergy = NAN;
 			espriPosition->SetXYZ(NAN,NAN,NAN);
@@ -55,13 +55,12 @@ class EspriEvent{
 
 		}
 		void setESPRIEvent(){
-			init();
-			if(goodEvent()){
+			if(isGoodEvent()){
 				setESPRIEnergy();
 				setESPRIPosition();
 			}
 		}
-		bool goodEvent(){
+		bool isGoodEvent(){
 			return mergeData->isGoodEvent();// Good Event->roughly good, real good event selected by TCut
 		}
 		void setESPRIPosition(){
@@ -86,6 +85,12 @@ class EspriEvent{
 		}
 		void loadBeamVector(TVector3 *beam){
 			vBeam = beam;
+		}
+		double getNaiEnergy(){
+			return calibESPRI->getNaiEnergy();
+		}
+		bool isNaiHit(){
+			return (mergeData->getNaiHit()==1);
 		}
 
 };
