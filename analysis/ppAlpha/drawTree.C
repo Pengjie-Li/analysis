@@ -305,10 +305,7 @@ class CheckEx{
 		}
 
 		void setGate(){
-			if(side !=-1&&barId != -1) gate = Form("espriHit==1&&espriHitSide[0]==%d&&naiHit==1&&naiHitBarId[0]==%d",side,barId);
-			if(side ==-1&&barId == -1) gate ="1";
-			if(side ==0&&barId == -1) gate ="espriHit==1&&espriHitSide[0]==0";
-			if(side ==1&&barId == -1) gate ="espriHit==1&&espriHitSide[0]==1";
+			gate = "espriHit==1";
 		}
 		void drawTot(){
 			
@@ -507,6 +504,22 @@ class CheckEx{
 			hPlas->Draw();
 			dc->drawPlas();
 		}
+		void drawEspriEA(){
+			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,50,80,200,0,200)",gate,"colz");
+		}
+		void drawTeleEA(){
+			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,200,700)",gate,"colz");
+		}
+
+		void drawAA(){
+			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
+		}
+		void drawEE(){
+			tree->Draw("espriEnergy:teleEnergy>>hEE(200,200,700,200,0,200)",gate,"colz");
+		}
+
+
+
 
 
 		void output(){
@@ -578,14 +591,29 @@ void drawBar(int side,int barId){
 
 }
 
-void checkExEnergy(){
-	
-	//drawBar(-1,-1); // draw all bars, left and right
-	//drawBar(0,-1); // draw all left bars
-	//drawBar(1,-1); // draw all right bars
-	//drawBar(1,1); // draw bar side + barId
-	//drawBar(0,-1); // draw bar side + barId
-	//drawBar(1,-1); // draw bar side + barId
-	drawBar(-1,-1); // draw bar side + barId
+void drawPACorrelation(){
+
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	cPad->Divide(2,2);
+	CheckEx *ce = new CheckEx();
+	ce->addFile("ppaBe10.root");
+	ce->setAlias();
+	ce->setGate();
+
+	cPad->cd(1);
+	ce->drawEspriEA();
+	cPad->cd(2);
+	ce->drawTeleEA();
+	cPad->cd(3);
+	ce->drawAA();
+	cPad->cd(4);
+	ce->drawEE();
+	ce->output();
+
+}
+
+
+void drawTree(){
+	drawPACorrelation();	
 }
 

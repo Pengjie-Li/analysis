@@ -1,0 +1,7 @@
+inputPath:inputRootfiles/
+runPrefix:run
+runSuffix:_analysed.root
+
+outputPath:./rootfiles/
+outputPrefix:run0
+outputSuffix:_ppaBe10.root

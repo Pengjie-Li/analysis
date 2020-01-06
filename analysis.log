@@ -3929,3 +3929,45 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/txt/espriEnergyCalibParaBe10.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 05175b6] v1.0
+ 52 files changed, 2394 insertions(+), 77 deletions(-)
+ create mode 100644 analysis/calibNai/checkExEnergy.C
+ create mode 100644 analysis/generateChannels/ppBe10/draw/draw.C
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar00.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar01.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar02.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar03.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar04.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar05.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar06.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar10.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar11.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar12.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar13.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar14.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar15.png
+ create mode 100644 analysis/generateChannels/ppBe10/draw/png/Bar16.png
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (96%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles_beforeCalib/bar10.C
+ create mode 100644 analysis/generateChannels/ppBe12/Event.h
+ create mode 100755 analysis/generateChannels/ppBe12/Makefile
+ create mode 100644 analysis/generateChannels/ppBe12/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppBe12/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppBe12/convert.sh
+ create mode 100755 analysis/generateChannels/ppBe12/header.h
+ create mode 120000 analysis/generateChannels/ppBe12/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppBe12/loop.sh
+ create mode 100644 analysis/generateChannels/ppBe12/main.cpp
+ create mode 100644 analysis/generateChannels/ppBe12/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppBe12/ppBe.h
+ create mode 100755 analysis/generateChannels/ppBe12/ppBe12
+ create mode 100644 analysis/generateChannels/ppBe12/test.C
+ rewrite espri/calib/alignQPed/naiBarCalib/png/Bar04.png (99%)
+ create mode 100644 merger/AnalysingProton.h
+ rewrite merger/Merger (89%)
+ create mode 100644 merger/ProtonEvent.h
+ rewrite merger/rootfiles/cutProtonBe10.C (86%)
+ rename merger/rootfiles/{cutProtonBe10.C => cutcutProtonBe10_BirksPol3.C} (100%)
+ create mode 100644 merger/rootfiles/drawPRAngleBe12.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
