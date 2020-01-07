@@ -30,10 +30,6 @@ class TELEConvertCal{
 			dssdCal->calibration(rawData);
 			csiCal->calibration(rawData);
 		}
-		void print(){
-			dssdCal->print();
-			csiCal->print();
-		}
 
 		~TELEConvertCal(){
 			delete dssdCal;

@@ -95,20 +95,13 @@ class ConvertTELE{
 				showAnalysisProgress();
 
 				EventNumber++;
+				if(maxEventNumber<100) cout<<EventNumber<<endl;
 				getRawData();
 				readTELERawData();
 				convertTELECalData();
 				tree->Fill();
 
-				if(maxEventNumber<100){
-					cout<<EventNumber<<endl;
-					print();
-				}
 			}
-		}
-		void print(){
-			//teleReadRaw->print();	
-			teleConvertCal->print();
 		}
 		void showAnalysisProgress(){
 			if (EventNumber%DISPLAY_EVERY_EVENT == 0)

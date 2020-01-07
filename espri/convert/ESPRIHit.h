@@ -70,7 +70,4 @@ class ESPRIHit{
 			return espriHitSide[hitId];
 		}
 
-
-
-		
 };

@@ -3971,3 +3971,77 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawPRAngleBe12.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4cbe4a2] v1.0
+ 79 files changed, 7023 insertions(+), 76 deletions(-)
+ create mode 100644 analysis/calibNai/calibNai_Be12.C
+ create mode 100644 analysis/calibNai/calibNai_Be14.C
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/Event.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe10/Makefile
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/convert.sh
+ create mode 100755 analysis/generateChannels/ppAlphaBe10/header.h
+ create mode 120000 analysis/generateChannels/ppAlphaBe10/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/loop.sh
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/main.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/ppBe.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe10/ppaBe10
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/test.C
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/Event.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe12/Makefile
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/convert.sh
+ create mode 100755 analysis/generateChannels/ppAlphaBe12/header.h
+ create mode 120000 analysis/generateChannels/ppAlphaBe12/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/loop.sh
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/main.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/ppBe.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe12/ppaBe12
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/test.C
+ rewrite analysis/generateChannels/ppBe12/ppBe12 (96%)
+ create mode 100644 analysis/generateChannels/ppBe14/Event.h
+ create mode 100755 analysis/generateChannels/ppBe14/Makefile
+ create mode 100644 analysis/generateChannels/ppBe14/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppBe14/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppBe14/convert.sh
+ create mode 100755 analysis/generateChannels/ppBe14/header.h
+ create mode 120000 analysis/generateChannels/ppBe14/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppBe14/loop.sh
+ create mode 100644 analysis/generateChannels/ppBe14/main.cpp
+ create mode 100644 analysis/generateChannels/ppBe14/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppBe14/ppBe.h
+ create mode 100755 analysis/generateChannels/ppBe14/ppBe14
+ create mode 100644 analysis/generateChannels/ppBe14/rootfiles_BeamTargetProtonTheta/drawCurveEspriEvsA.C
+ create mode 100644 analysis/generateChannels/ppBe14/rootfiles_BeamTargetProtonThetaHodBe14Bar28-33/drawCurveNaiEvsAngle.C
+ create mode 100644 analysis/generateChannels/ppBe14/rootfiles_BeamTargetProtonThetaHodBe14Bar28-33/ppBe.C
+ create mode 100644 analysis/ppAlpha/drawChain/checkGate.C
+ create mode 100644 analysis/ppAlpha/drawChain/drawHistoLine.C
+ create mode 100644 analysis/ppAlpha/drawChain/ppaBe.C
+ create mode 100644 analysis/ppAlpha/drawChain/ppaBe10Histo.root_run310
+ create mode 120000 analysis/ppAlpha/drawChain/rootfiles
+ create mode 100644 analysis/ppAlpha/drawChain/rootlogon.C
+ create mode 100644 analysis/ppAlpha/drawChain/v2_ppaBe10Histo.root_TargetXReversed
+ create mode 100644 analysis/ppAlpha/drawChain/v2_ppaBe12Histo.root_GateHe8Only
+ create mode 100644 analysis/ppAlpha/drawChain/v2_ppaBe12Histo.root_TargetXReversed
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe10Histo.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe12Histo.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe12Histo.root_GateOnlyHe8
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe4.root_Bar3-17
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe4.root_OnlyTrig+Target+HodHe4
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe4Bar3-17.root_BeamGateSBT1AndSBT2
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe4Bar3-17.root_HodHe4AndTargetArea
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe6.root_Bar11-32
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe6.root_OnlyTrig+Target+HodHe6
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe8.root_Bar33_38
+ create mode 100644 analysis/ppAlpha/drawChain/v3_ppaBe14HistoHe8.root_OnlyTrig+Target+HodHe8
+ create mode 100644 analysis/ppAlpha/drawTree.C
+ rewrite merger/rootfiles/cutProtonBe12.C (77%)
+ rename merger/rootfiles/{cutProtonBe12.C => cutProtonBe12_BirksPol3.C} (100%)
+ create mode 100644 merger/txt/espriEnergyCalibParaBe12.txt
+ rewrite merger/txt/espriEnergyCalibParaBe14.txt (100%)
+ mode change 120000 => 100644
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

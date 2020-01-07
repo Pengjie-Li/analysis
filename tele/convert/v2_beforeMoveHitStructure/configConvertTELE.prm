@@ -7,11 +7,10 @@ inputSuffix:.ridf.gz
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_TELE.root_test
+outputSuffix:_TELE.root
 
 dssdScmPara:./txt/DSSD_Fit_Whole.txt
-csiPedestal:./txt/csiPedestal.txt
-dssdPedestal:./txt/dssdPedestal.txt
+csiPedestal:./txt/PedestalCsI.txt
 
 csiSyncPara:./txt/csiSyncPara.txt
 csiCalibPara:./txt/csiCalibPara.txt

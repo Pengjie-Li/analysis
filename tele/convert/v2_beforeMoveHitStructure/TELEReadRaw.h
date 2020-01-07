@@ -5,7 +5,7 @@ class DSSDRaw{
 		 *******************************/
 		
 		int dssdQRaw[4][32];	
-		int dssdTRaw[2][32];	
+		int dssdTRaw[4][32];	
 		int RefTime1;// TDC 1
 		int RefTime2;// TDC 2 corresponding to 2 moudle
 
@@ -13,7 +13,7 @@ class DSSDRaw{
 			for(int i = 0; i<4;i++){
 				for(int j = 0; j<32;j++){
 					dssdQRaw[i][j] = -1;
-					dssdTRaw[i/2][j] = -1;
+					dssdTRaw[i][j] = -1;
 				}
 			}
 			RefTime1 = -1;
@@ -27,13 +27,15 @@ class DSSDRaw{
 
 			if(teleId>32&&teleId<65){ 
 				dssdQRaw[1][teleId-33]= adc;
+				dssdTRaw[1][teleId-33]= tdc;
 			}
 			if(teleId>64&&teleId<97){
 				dssdQRaw[2][teleId-65]= adc;
-				dssdTRaw[1][teleId-65]= tdc;
+				dssdTRaw[2][teleId-65]= tdc;
 			}
 			if(teleId>96&&teleId<129) {
 				dssdQRaw[3][teleId-97]= adc;
+				dssdTRaw[3][teleId-97]= tdc;
 			}
 			if(teleId==136) { RefTime1 = tdc;}
 			if(teleId==137) { RefTime2 = tdc;}
@@ -54,28 +56,17 @@ class DSSDRaw{
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("dssdQRaw",dssdQRaw,"dssdQRaw[4][32]/I");
-			tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[2][32]/I");
+			tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[4][32]/I");
 			tree->Branch("RefTime1",&RefTime1,"RefTime1/I");
 			tree->Branch("RefTime2",&RefTime2,"RefTime2/I");
 
 		}
-		int getDssdQRaw(int side,int id){
+		double getDssdQRaw(int side,int id){
 			return dssdQRaw[side][id];
 		}
-		int getDssdTRaw(int side,int id){
-			return dssdTRaw[side][id];
-		}
-		int getDssdTRef(int side){
-			if(side ==0 ) return RefTime1;
-			if(side ==1 ) return RefTime2;
-		}
-		void print(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j < 32; ++j) {
-					cout<<i<<" "<<j<<"\t"<<dssdQRaw[2*i][j]<<"\t"<<dssdQRaw[2*i+1][j]<<"\t"<<dssdTRaw[i][j]<<endl;
-				}
-			}
-		}
+
+
+
 };
 class CsIRaw{
 	private:
@@ -116,23 +107,8 @@ class CsIRaw{
 			tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
 		}
 
-		int getCsIQRaw(int id){
+		double getCsIQRaw(int id){
 			return csiQRaw[id];
-		}
-		int getCsITRaw(int id){
-			return csiTRaw[id];
-		}
-
-		void print(){
-			cout<<"CsI Raw data"<<endl;
-			for (int i = 0; i < 7; ++i) {
-				cout<<csiQRaw[i]<<"	";	
-			}
-			cout<<endl;
-			for (int i = 0; i < 7; ++i) {
-				cout<<csiTRaw[i]<<"	";	
-			}
-			cout<<endl;
 		}
 };
 
@@ -164,25 +140,13 @@ class TELEReadRaw{
 			dssdRaw->readRaw(rawDataArray);
 			csiRaw->readRaw(rawDataArray);
 		}
-		int getDssdQRaw(int side,int id){
+		double getDssdQRaw(int side,int id){
 			return dssdRaw->getDssdQRaw(side,id);
 		}
-		int getDssdTRaw(int side,int id){
-			return dssdRaw->getDssdTRaw(side,id);
-		}
-		int getDssdTRef(int side){
-			return dssdRaw->getDssdTRef(side);
-		}
 
-		int getCsIQRaw(int id){
+
+		double getCsIQRaw(int id){
 			return csiRaw->getCsIQRaw(id);
-		}
-		int getCsITRaw(int id){
-			return csiRaw->getCsITRaw(id);
-		}
-		void print(){
-			dssdRaw->print();
-			csiRaw->print();
 		}
 };
 

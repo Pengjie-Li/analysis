@@ -14,11 +14,11 @@ void drawCsiEnergyVsId(){
 	//int runnum=340;
 	//int runnum=596;
 	//int runnum=597;
-	//int runnum=598;
+	int runnum=598;
 	//int runnum=595;
 
-	//TString inputname=Form("rootfiles/run0%d_analysed.root_1",runnum);
-	TString inputname=Form("rootfiles/run0%d_analysed.root_2",runnum);
+	TString inputname=Form("rootfiles/run0%d_analysed.root",runnum);
+	//TString inputname=Form("rootfiles/run0%d_analysed.root_2",runnum);
 	TFile *f = new TFile(inputname,"READ");
 	TTree *AnalysisTree=(TTree*)f->Get("tree");
 

@@ -79,6 +79,7 @@ class CsiFit{
 			
 			TGraph *gr = new TGraph(3,b,a);
 			fitFunction->SetParameters(csiInput->getQPedAlign(csiId),0);
+			gr->Draw("ap*");
 			gr->Fit(fitFunction,"Q");
 			cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
 		}
@@ -93,7 +94,10 @@ class CsiAlign{
 
 		}
 		void analysing(){
+			TCanvas *cPad = new TCanvas("cPad","cPad",1500,900);
+			cPad->Divide(4,2);
 			for (int i = 0; i < 7; ++i) {
+				cPad->cd(i+1);
 				csiFit->fit(i);	
 			}
 		}
