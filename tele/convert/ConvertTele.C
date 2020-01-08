@@ -57,11 +57,12 @@ class ConvertTELE{
 		TString getOutputName(){
 			TString outputPath=env->GetValue("outputPath","./rootfile/");
 			TString outputPrefix = env->GetValue("outputPrefix","run0");
-			TString outputSuffix = env->GetValue("outputSufffix","_TELE.root");
+			TString outputSuffix = env->GetValue("outputSuffix","_TELE.root__");
 			return outputPath+outputPrefix+Form("%d",runNumber)+outputSuffix;
 		}
 
 		void createOutput(){
+			cout<<getOutputName()<<endl;
 			outputFile = new TFile(getOutputName(),"recreate");
 			tree = new TTree("CalTreeTELE","Convert Raw Cal Sync");
 

@@ -79,7 +79,7 @@ class PositionTELE{
 			}
 
 		}
-		TVector3 getTELEPosition(int isLR, int fid, int bid){
+		TVector3 getPosition(int isLR, int fid, int bid){
 			TVector3 result;
 			if(isLR == 0) result.SetXYZ(leftXPosition[fid][bid],leftYPosition[fid][bid],leftZPosition[fid][bid]);
 			else result.SetXYZ(rightXPosition[fid][bid],rightYPosition[fid][bid],rightZPosition[fid][bid]);

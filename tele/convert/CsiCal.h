@@ -50,9 +50,9 @@ class CsIEnergyCal{
 
 		TELEReadRaw *rawData;
 		CsIEnergyCalPara *csiQCalPara;
-		int csiHit;
-		int csiHitId[7];
-		double csiHitQPed[7];
+		int csiQHit;
+		int csiQHitId[7];
+		double csiQHitQPed[7];
 		double csiQPed[7];
 
 		int getCsIQRaw(int id){
@@ -82,41 +82,51 @@ class CsIEnergyCal{
 				csiQPed[k] = getCsIQRaw(k) - getCsIPedestal(k);
 				
 				if(csiQPed[k]>5*getCsIPedSigma(k)){
-					csiHitId[csiHit] = k;
-					csiHitQPed[csiHit] = csiQPed[k];
-					csiHit++;
+					csiQHitId[csiQHit] = k;
+					csiQHitQPed[csiQHit] = csiQPed[k];
+					csiQHit++;
 				}
 			}
 		}
 	
 		void init(){
 			rawData = NULL;
-			csiHit = 0;
+			csiQHit = 0;
 			for(int k = 0;k<7;k++){
-				csiHitId[k] = -1;
-				csiHitQPed[k] = NAN;
+				csiQHitId[k] = -1;
+				csiQHitQPed[k] = NAN;
 				csiQPed[k] = NAN;
 			}
 		}
 
 		void setBranch(TTree *tree){
 
-			tree->Branch("csiHit",&csiHit,"csiHit/I");
-			tree->Branch("csiHitId",csiHitId,"csiHitId[csiHit]/I");
-			tree->Branch("csiHitQPed",csiHitQPed,"csiHitQPed[csiHit]/D");
+			tree->Branch("csiQHit",&csiQHit,"csiQHit/I");
+			tree->Branch("csiQHitId",csiQHitId,"csiQHitId[csiQHit]/I");
+			tree->Branch("csiQHitQPed",csiQHitQPed,"csiQHitQPed[csiQHit]/D");
 			tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
 		}
 		void print(){
 			cout<<" Csi QPed Hit :"<<endl;
-			for (int i = 0; i < csiHit; ++i) {
-				cout<<i<<" "<<csiHitId[i]<<" "<<csiHitQPed[i]<<endl;	
+			for (int i = 0; i < csiQHit; ++i) {
+				cout<<i<<" "<<csiQHitId[i]<<" "<<csiQHitQPed[i]<<endl;	
 			}
 			//for (int i = 0; i < 7; ++i) {
 			//	cout<<csiQPed[i]<<endl;	
 			//}
 		}
-};
+		int getQHit(){
+			return csiQHit;
+		}
+		int getQHitId(int iHit){
+			return csiQHitId[iHit];
+		}
+		double getQHitQPed(int iHit){
+			return csiQHitQPed[iHit];
+		}
 
+
+};
 class CsITimeCal{
 
 		TELEReadRaw *rawData;
@@ -133,7 +143,7 @@ class CsITimeCal{
 			csiTHit = 0;
 			for(int k = 0;k<7;k++){
 				csiTHitId[k] = -1;
-				csiTHitTCal[k] = NAN;
+				csiTHitTCal[k] = -9999;
 			}
 		}
 
@@ -148,7 +158,7 @@ class CsITimeCal{
 			}
 		}
 		void setBranch(TTree *tree){
-			tree->Branch("csiTHit",&csiTHit,"csiTHit[csiTHit]/I");
+			tree->Branch("csiTHit",&csiTHit,"csiTHit/I");
 			tree->Branch("csiTHitId",csiTHitId,"csiTHitId[csiTHit]/I");
 			tree->Branch("csiTHitTCal",csiTHitTCal,"csiTHitTCal[csiTHit]/D");
 		}
@@ -158,41 +168,154 @@ class CsITimeCal{
 				cout<<i<<" "<<csiTHitId[i]<<" "<<csiTHitTCal[i]<<endl;	
 			}
 		}
+		int getTHit(){
+			return csiTHit;
+		}
+		int getTHitId(int iHit){
+			return csiTHitId[iHit];
+		}
+		double getTHitTCal(int iHit){
+			return csiTHitTCal[iHit];
+		}
 
 
 };
 
+class CsIHit{
+	private:
+		CsIEnergyCal *csiEnergy;
+		CsITimeCal *csiTime;
 
+		int csiHit;	
+		int csiHitId[3];// csi maximum pixel effective hit	
+		double csiHitQPed[3];
+		double csiHitTCal[3];
+
+		int getQHit(){
+			return csiEnergy->getQHit();
+		}
+		int getTHit(){
+			return csiTime->getTHit();
+		}
+		int getQHitId(int iHit){
+			return csiEnergy->getQHitId(iHit);
+		}
+		int getTHitId(int iHit){
+			return csiTime->getTHitId(iHit);
+		}
+		double getTHitTCal(int iHit){
+			return csiTime->getTHitTCal(iHit);
+		}
+		double getQHitQPed(int iHit){
+			return csiEnergy->getQHitQPed(iHit);
+		}
+
+
+
+	public:
+		CsIHit(){}
+		~CsIHit(){}
+		void init(){
+			csiEnergy = NULL;
+			csiTime = NULL;
+			csiHit = 0;
+			for (int i = 0; i < 3; ++i) {
+				csiHitId[i] = -1;	
+				csiHitQPed[i] = -9999;
+				csiHitTCal[i] = -9999;
+			}
+		}
+		void hitEvent(CsIEnergyCal *csiE,CsITimeCal *csiT){
+
+			csiEnergy = csiE;
+			csiTime   = csiT;
+			hitEvent();
+		}
+		void hitEvent(){
+			for (int i = 0; i < getTHit(); ++i) {
+				for (int j = 0; j < getQHit(); ++j) {
+					if(getTHitId(i)==getQHitId(j)){
+						csiHitTCal[csiHit] = getTHitTCal(i);
+						csiHitQPed[csiHit] = getQHitQPed(j);
+						csiHitId[csiHit]= getTHitId(i);
+						csiHit++;
+					}
+				}
+			}
+		}
+		void setBranch(TTree *tree){
+			tree->Branch("csiHit",&csiHit,"csiHit/I");
+			tree->Branch("csiHitId",&csiHitId,"csiHitId[csiHit]/I");
+			tree->Branch("csiHitQPed",&csiHitQPed,"csiHitQPed[csiHit]/D");
+			tree->Branch("csiHitTCal",&csiHitTCal,"csiHitTCal[csiHit]/D");
+		}
+		void print(){
+			cout<<"Csi Hit Event:"<<endl;
+			for (int i = 0; i < csiHit; ++i) {
+				cout<<" "<<i<<" "<<csiHitId[i]<<" "<<csiHitQPed[i]<<" "<<csiHitTCal[i]<<endl;	
+			}
+		}
+		int getHit(){
+			return csiHit;
+		}
+		int getHitId(int iHit){
+			return csiHitId[iHit];
+		}
+		double getHitQPed(int iHit){
+			return csiHitQPed[iHit];
+		}
+		double getHitTCal(int iHit){
+			return csiHitTCal[iHit];
+		}
+};
 class CsiCal{
 	private:
 		TELEReadRaw 	*teleReadRaw;
 		CsIEnergyCal	*csiEnergy;
 		CsITimeCal 	*csiTime;
+		CsIHit 		*csiHit;
 
 
 	public:
 		CsiCal(){
 			csiEnergy  = new CsIEnergyCal();
 			csiTime    = new CsITimeCal();
+			csiHit = new CsIHit();
 		}
 		~CsiCal(){}
 		void setBranch(TTree *tree){
 			csiEnergy->setBranch(tree);
 			csiTime->setBranch(tree);
+			csiHit->setBranch(tree);
 
 		}
 		void init(){
 			csiEnergy->init();
 			csiTime->init();
+			csiHit->init();
 		}
 		void calibration(TELEReadRaw *rawData){
 			teleReadRaw = rawData;
 			csiEnergy->calibrate(rawData);
 			csiTime->calibrate(rawData);
+			csiHit->hitEvent(csiEnergy,csiTime);
 		}
 		void print(){
 			csiEnergy->print();
 			csiTime->print();
+			csiHit->print();
+		}
+		int getHit(){
+			return csiHit->getHit();
+		}
+		int getHitId(int iHit){
+			return csiHit->getHitId(iHit);
+		}
+		double getHitQPed(int iHit){
+			return csiHit->getHitQPed(iHit);
+		}
+		double getHitTCal(int iHit){
+			return csiHit->getHitTCal(iHit);
 		}
 
 };

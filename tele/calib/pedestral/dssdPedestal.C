@@ -115,7 +115,8 @@ class DssdPed{
 };
 
 //int runNumber = 310;
-int runNumber = 320;
+//int runNumber = 320;
+int runNumber = 340;
 //int runNumber = 597;
 //int runNumber = 596;
 void generatePedestal(){
@@ -147,6 +148,6 @@ void fitPedestal(){
 }
 void dssdPedestal(){
 
-	generatePedestal();
-	//fitPedestal();
+	//generatePedestal();
+	fitPedestal();
 }

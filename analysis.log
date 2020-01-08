@@ -4045,3 +4045,89 @@ Branch master set up to track remote branch master from origin.
  mode change 120000 => 100644
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f0691a3] v1.0
+ 90 files changed, 8676 insertions(+), 199 deletions(-)
+ rewrite merger/AnalysingTELE.h (63%)
+ create mode 100644 merger/MergeTELE.h_expected
+ rewrite merger/Merger (86%)
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/'
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingBDC.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingBeam.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingESPRI.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingFDC0.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingHOD.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingMAIN.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingPLA.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingProton.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/AnalysingTELE.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/BdcEvent.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/BeamEvent.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/CalibESPRI.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/Convert.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/Detector.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/EspriEvent.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/FDC0Event.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/Fdc0Event.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/FindPixel.h
+ create mode 100755 merger/v4_beforeAddTeleHitStructure/Makefile
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeBDC.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeESPRI.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeFDC0.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeHOD.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeMAIN.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergePLA.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeSample.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/MergeTELE.h
+ create mode 100755 merger/v4_beforeAddTeleHitStructure/Merger
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/Merger.cpp
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/Merger.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/PlaEvent.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/PositionESPRI.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/PositionTELE.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/ProtonEvent.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/TeleEvent.h
+ create mode 100755 merger/v4_beforeAddTeleHitStructure/analysis.C
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/backup_1st_Merger.C
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/constant.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/convert.sh
+ create mode 100755 merger/v4_beforeAddTeleHitStructure/distance.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/env
+ create mode 100755 merger/v4_beforeAddTeleHitStructure/header.h
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/logMerger.txt
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/loop.sh
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/looprun.sh
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/main.cpp
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/mvRootVersion.sh
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/read.me
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/sampleESPRI.C
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/t1.txt
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/t2.txt
+ create mode 100644 merger/v4_beforeAddTeleHitStructure/tele.C
+ create mode 100644 tele/calib/pedestral/dssdPedestal.C
+ create mode 100644 tele/calib/pedestral/strip_ped.C_backup
+ create mode 100644 tele/calib/pedestral/txt/csiPedestal.txt
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal310.txt
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal596.txt
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal597.txt
+ rewrite tele/convert/ConvertTele (97%)
+ create mode 100644 tele/convert/CsiCal.h
+ create mode 100644 tele/convert/DssdCal.h
+ rewrite tele/convert/TELEConvertCal.h (81%)
+ create mode 120000 tele/convert/txt/csiPedestal.txt
+ create mode 120000 tele/convert/txt/dssdPedestal.txt
+ rename tele/convert/{ => v2_beforeMoveHitStructure}/ConvertTele (100%)
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/ConvertTele.C
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/CsiCal.h
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/DSSDEnergyCal.h
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/DssdCal.h
+ create mode 100755 tele/convert/v2_beforeMoveHitStructure/Makefile
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/TELEConvertCal.h
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/TELEReadRaw.h
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/configConvertTELE.prm
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/convert.sh
+ create mode 100755 tele/convert/v2_beforeMoveHitStructure/header.h
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/loop.sh
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/looprun.sh
+ create mode 100644 tele/convert/v2_beforeMoveHitStructure/tele.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
