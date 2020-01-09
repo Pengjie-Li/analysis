@@ -13,13 +13,13 @@ class DrawCurve{
 		
 	public:
 		DrawCurve(){
-			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_gs.root","READ");
+			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe14Excitation/espriDetectorEnergy_gs.root","READ");
 			tot_gs = (TGraph *)gDirectory->Get("tot");
 			nai_gs = (TGraph *)gDirectory->Get("nai");
 			plas_gs = (TGraph *)gDirectory->Get("plas");
 			fCurve1->Close();
 
-			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_fex.root","READ");
+			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe10Excitation/espriDetectorEnergy_fex.root","READ");
 			tot_fex = (TGraph *)gDirectory->Get("tot");
 			nai_fex = (TGraph *)gDirectory->Get("nai");
 			plas_fex = (TGraph *)gDirectory->Get("plas");
@@ -39,7 +39,7 @@ class DrawCurve{
 			tot_gs->SetLineColor(4);
 			tot_fex->SetLineColor(4);
 			tot_gs->Draw("lsame");
-			tot_fex->Draw("lsame");
+			//tot_fex->Draw("lsame");
 
 		}
 		void drawDEE(){
@@ -214,7 +214,7 @@ class CheckEx{
 			calibPara = new TCalibPara();
 			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 			setAlias();
-			setGate();
+			//setGate();
 			drawTOF();
 			drawDEE();
 			drawNai();
@@ -253,9 +253,9 @@ class CheckEx{
 			tree->SetAlias("MassBe12","12.02472781*1");
 			tree->SetAlias("MassBe14","14.04069708*1");
 
-			tree->SetAlias("MassBe","MassBe12*1");
+			//tree->SetAlias("MassBe","MassBe12*1");
 			//tree->SetAlias("MassBe","MassBe10*1");
-			//tree->SetAlias("MassBe","MassBe14*1");
+			tree->SetAlias("MassBe","MassBe14*1");
 			tree->SetAlias("MassH","1.007276452*1");
 			tree->SetAlias("beamMass","MassBe*AMU");
 			tree->SetAlias("protonMass","MassH*AMU");
@@ -293,22 +293,43 @@ class CheckEx{
 			tree->SetAlias("protonBeta","sqrt(1-1/(protonGamma*protonGamma))");
 			tree->SetAlias("protonVelocity","protonBeta*SOL");
 
-			tree->SetAlias("protonGamma","(espriEnergy/protonMass+1)");
-			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
-			tree->SetAlias("protonMomentum","sqrt(espriEnergy*espriEnergy+2*espriEnergy*protonMass)");
+			//tree->SetAlias("protonGamma","(espriEnergy/protonMass+1)");
+			//tree->SetAlias("protonMomentum","sqrt(espriEnergy*espriEnergy+2*espriEnergy*protonMass)");
+			//tree->SetAlias("residueEnergy","beamEk + beamMass - espriEnergy");
 
+			tree->SetAlias("protonGamma","(protonEnergy/protonMass+1)");
+			tree->SetAlias("protonMomentum","sqrt(protonEnergy*protonEnergy+2*protonEnergy*protonMass)");
+			tree->SetAlias("residueEnergy","beamEk + beamMass - protonEnergy");
+
+
+			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
 			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(espriAngle*TMath::DegToRad()))");
-			tree->SetAlias("residueEnergy","beamEk + beamMass - espriEnergy");
 			tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
 			tree->SetAlias("excitationEnergy","residueMass-beamMass");
 
 		}
+		void loadCut(){
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar23Be10.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar22Be10.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar21Be10.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar20Be10.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar19Be10.C");
 
-		void setGate(){
-			if(side !=-1&&barId != -1) gate = Form("espriHit==1&&espriHitSide[0]==%d&&naiHit==1&&naiHitBarId[0]==%d",side,barId);
-			if(side ==-1&&barId == -1) gate ="1";
-			if(side ==0&&barId == -1) gate ="espriHit==1&&espriHitSide[0]==0";
-			if(side ==1&&barId == -1) gate ="espriHit==1&&espriHitSide[0]==1";
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar23Be9.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar22Be9.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar21Be9.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar20Be9.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar19Be9.C");
+
+                        gROOT->ProcessLine(".x rootfiles/cutBe12Bar23Be12.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe12Bar22Be12.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe12Bar21Be12.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe12Bar20Be12.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe12Bar19Be12.C");
+		}
+
+		void setGate(TString g){
+			gate = g;
 		}
 		void drawTot(){
 			
@@ -331,6 +352,19 @@ class CheckEx{
 			hEA->Draw();
 			dc->drawTot();
 		}
+		void drawProtonEA(){
+
+			tree->Draw(Form("protonEnergy:espriAngle>>hProtonEA%d%d(1000,55,75,1000,0,200)",side,barId),gate);
+
+			TH2F *hProtonEA = (TH2F *)gDirectory->Get(Form("hProtonEA%d%d",side,barId));
+			hProtonEA->SetMarkerColor(2);
+			//hProtonEA->SetMarkerSize(30);
+			hProtonEA->SetMarkerStyle(markerStyle);
+
+			hProtonEA->Draw();
+			dc->drawTot();
+		}
+	
 		void drawEkAngle(){
 
 			tree->Draw(Form("espriEk:espriAngle>>hEkAngle%d%d(1000,55,75,1000,0,200)",side,barId),gate);
@@ -355,8 +389,8 @@ class CheckEx{
 			tree->Draw(Form("excitationEnergy>>hExDee%d%d(200,-10,10)",side,barId),gate);
 			hExDee = (TH1F *)gDirectory->Get(Form("hExDee%d%d",side,barId));
 			hExDee->Draw();
-			hExDee->Fit("gaus");
-			gStyle->SetOptFit(1);
+			//hExDee->Fit("gaus");
+			//gStyle->SetOptFit(1);
 		}
 
 		void drawExTof(){
@@ -547,23 +581,49 @@ class CheckEx{
 			delete calibPara;
 		}
 };
+TString getEspriGate(int side,int barId){
+	TString gate;
+	if(side !=-1&&barId != -1) gate = Form("(espriHit==1&&espriHitSide[0]==%d&&naiHit==1&&naiHitBarId[0]==%d)",side,barId);
+	if(side ==-1&&barId == -1) gate ="(1)";
+	if(side ==0&&barId == -1) gate ="(espriHit==1&&espriHitSide[0]==0)";
+	if(side ==1&&barId == -1) gate ="(espriHit==1&&espriHitSide[0]==1)";
+	return gate;
+
+}
+TString getHodGate(){
+	TString hodGate;
+	 //hodGate = "(Be10Bar23Be10)";
+	 //hodGate = "(Be10Bar22Be10)";
+	 //hodGate = "(Be10Bar21Be10)";
+	// hodGate = "(Be12Bar19Be12)";
+	// hodGate = "(Be12Bar20Be12)";
+	// hodGate = "(Be12Bar21Be12)";
+	// hodGate = "(Be12Bar22Be12)";
+	// hodGate = "(Be12Bar23Be12)";
+	// hodGate = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
+	return hodGate;
+}
 void drawBar(int side,int barId){
 
 	int markerStyle = 1;
 	if(side!=-1&&barId!=-1) markerStyle = 6;
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-	cPad->Divide(2,1);
-	//cPad->Divide(2,2);
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe12.root");
+	ce->addFile("ppBe14.root");
 	ce->setAlias();
+	ce->loadCut();
 	ce->setBar(side,barId);
 	ce->setMarkerStyle(markerStyle);
-	ce->setGate();
+	ce->setGate(getEspriGate(side,barId));
+	//ce->setGate(getHodGate());
+
+	TCanvas *cPad = new TCanvas("cPad","cPad",1500,600);
+	cPad->Divide(2,1);
+	//cPad->Divide(2,2);
 
 	cPad->cd(1);
 	//ce->drawTot();
-	ce->drawEA();
+	//ce->drawEA();
+	ce->drawProtonEA();
 	cPad->cd(2);
 	ce->drawExDee();
 	//ce->drawEkAngle();

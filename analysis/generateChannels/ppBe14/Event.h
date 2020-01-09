@@ -132,7 +132,8 @@ class Event{
 		}
 		bool selectEvent(){
 			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
-			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
+			return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();
+			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle()&&isHodPid();
 			//return isBeam()&&isProton()&&isTargetArea()&&isHodPid();
 			//return isBeam()&&isProton()&&isTargetArea();
 			//return isBeam()&&isProton()&&isTargetArea()&&isPRAngle();

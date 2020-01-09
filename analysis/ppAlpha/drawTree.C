@@ -1,66 +1,34 @@
 class DrawCurve{
 	private:
-		TGraph *tot_gs;
-		TGraph *nai_gs;
-		TGraph *plas_gs;
-
-		TGraph *tot_fex;
-		TGraph *nai_fex;
-		TGraph *plas_fex;
-
-		TGraph *dEE;
-
+        TGraph *gCurve[4];
 		
 	public:
 		DrawCurve(){
-			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_gs.root","READ");
-			tot_gs = (TGraph *)gDirectory->Get("tot");
-			nai_gs = (TGraph *)gDirectory->Get("nai");
-			plas_gs = (TGraph *)gDirectory->Get("plas");
-			fCurve1->Close();
 
-			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_fex.root","READ");
-			tot_fex = (TGraph *)gDirectory->Get("tot");
-			nai_fex = (TGraph *)gDirectory->Get("nai");
-			plas_fex = (TGraph *)gDirectory->Get("plas");
-			fCurve2->Close();
+			TFile *fCurve;
 
+			fCurve = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/ppaKinematic/ppAlphaCurve.root","READ");
+			gCurve[0] = (TGraph *)gDirectory->Get("ProtonEnergyAngle");
+			gCurve[1] = (TGraph *)gDirectory->Get("AlphaEnergyAngle");
+			gCurve[2] = (TGraph *)gDirectory->Get("angle");
+			gCurve[3] = (TGraph *)gDirectory->Get("energy");
 
-
-			TFile *fCurve3 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/protonDEE/dEECurve.root","READ");
-			dEE = (TGraph *)gDirectory->Get("dEE");
-			fCurve3->Close();
-
-
-
+			fCurve->Close();
 		}
-		void drawTot(){
-			//tot->SetMarkerColor(1);
-			tot_gs->SetLineColor(4);
-			tot_fex->SetLineColor(4);
-			tot_gs->Draw("lsame");
-			tot_fex->Draw("lsame");
+		void drawProtonEA(){
+			
+			gCurve[0]->Draw("plsame");
+		}
+		void drawAlphaEA(){
+			gCurve[1]->Draw("plsame");
+		}
+		void drawAA(){
+			gCurve[2]->Draw("plsame");
+		}
+		void drawEE(){
+			gCurve[3]->Draw("plsame");
+		}
 
-		}
-		void drawDEE(){
-			dEE->SetMarkerColor(1);
-			dEE->SetLineColor(1);
-			dEE->Draw("psame");
-		}
-		void drawPlas(){
-			plas_gs->SetMarkerColor(1);
-			plas_gs->SetLineColor(1);
-			plas_fex->SetLineColor(1);
-			plas_gs->Draw("lsame");
-			plas_fex->Draw("lsame");
-		}
-		void drawNai(){
-			//nai_gs->SetMarkerColor(1);
-			//nai_gs->SetLineColor(1);
-			nai_gs->Draw("lsame");
-			nai_fex->Draw("lsame");
-
-		}
 		~DrawCurve(){}
 };
 
@@ -214,11 +182,6 @@ class CheckEx{
 			calibPara = new TCalibPara();
 			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 			setAlias();
-			setGate();
-			drawTOF();
-			drawDEE();
-			drawNai();
-			drawPlas();
 		}
 
 		void setBar(int s, int b){
@@ -231,6 +194,54 @@ class CheckEx{
 		void setOffset(double fl,double tof){
 			flOffset = fl;
 			tofOffset = tof;
+		}
+		void loadCut(){
+
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar3He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar4He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar5He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar6He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar7He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar8He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar9He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar10He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar11He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar12He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar13He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar14He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar15He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar16He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar17He4.C");
+
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar11He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar12He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar13He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar14He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar15He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar16He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar17He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar18He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar19He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar20He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar21He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar22He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar23He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar24He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar26He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar27He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar28He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar29He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar30He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar31He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar32He6.C");
+
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar33He8.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar34He8.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar35He8.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar36He8.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar37He8.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar38He8.C");
+
 		}
 		void setAlias(){
 
@@ -304,177 +315,10 @@ class CheckEx{
 
 		}
 
-		void setGate(){
-			gate = "espriHit==1";
+		void setGate(TString g){
+			gate = g;
+			//gate = "espriHit==1";
 		}
-		void drawTot(){
-			
-			drawEA();
-			drawEkAngle();
-
-			hEA->Draw();
-			hEkAngle->Draw("same");
-			dc->drawTot();
-		}
-		void drawEA(){
-
-			tree->Draw(Form("espriEnergy:espriAngle>>hEA%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hEA = (TH2F *)gDirectory->Get(Form("hEA%d%d",side,barId));
-			hEA->SetMarkerColor(2);
-			//hEA->SetMarkerSize(30);
-			hEA->SetMarkerStyle(markerStyle);
-
-			hEA->Draw();
-			dc->drawTot();
-		}
-		void drawEkAngle(){
-
-			tree->Draw(Form("espriEk:espriAngle>>hEkAngle%d%d(1000,55,75,1000,0,200)",side,barId),gate);
-
-			hEkAngle = (TH2F *)gDirectory->Get(Form("hEkAngle%d%d",side,barId));
-			hEkAngle->SetMarkerColor(2);
-			//hEkAngle->SetMarkerSize(30);
-			hEkAngle->SetMarkerStyle(markerStyle);
-	
-			hEkAngle->Draw("");
-			dc->drawTot();
-		}
-	
-	
-		void drawEx(){
-			tree->Draw(Form("excitationEnergy>>hEx%d%d(200,-10,10)",side,barId),gate);
-			hEx = (TH1F *)gDirectory->Get(Form("hEx%d%d",side,barId));
-			hEx->Draw();
-		}
-
-		void drawExDee(){
-			tree->Draw(Form("excitationEnergy>>hExDee%d%d(200,-10,10)",side,barId),gate);
-			hExDee = (TH1F *)gDirectory->Get(Form("hExDee%d%d",side,barId));
-			hExDee->Draw();
-			hExDee->Fit("gaus");
-			gStyle->SetOptFit(1);
-		}
-
-		void drawExTof(){
-			tree->Draw(Form("exEnergy>>hExTof%d%d(200,-10,10)",side,barId),gate);
-			hExTof = (TH1F *)gDirectory->Get(Form("hExTof%d%d",side,barId));
-			hExTof->Draw();
-			hExTof->Fit("gaus");
-			gStyle->SetOptFit(1);
-		}
-
-
-
-		void drawTOF(){
-			tree->Draw(Form("dEplas:TOF>>hTOF%d(1000,0,40,1000,0,30)",side),gate);
-			hTOF = (TH2F *)gDirectory->Get(Form("hTOF%d",side));
-			hTOF->SetMarkerColor(2);
-			hTOF->SetMarkerStyle(markerStyle);
-			hTOF->Draw();
-		}
-		void drawTOFTot(){
-			tree->Draw(Form("espriEnergy:espriEk>>hEkTOF%d(1000,0,200,1000,0,200)",side),gate);
-			//tree->Draw(Form("espriEnergy:espriTOF>>hEkTOF%d(1000,0,40,1000,0,200)",side),gate);
-			//tree->Draw(Form("espriFL:TOF>>hEkTOF%d(1000,0,20,1000,1200,1300)",side),gate);
-			hEkTOF = (TH2F *)gDirectory->Get(Form("hEkTOF%d",side));
-			hEkTOF->SetMarkerColor(2);
-			hEkTOF->SetMarkerStyle(markerStyle);
-			hEkTOF->Draw();
-
-			TF1 *xyEq = new TF1("xyEq","x",0,200);
-			xyEq->SetLineColor(3);
-			xyEq->Draw("same");
-	
-		}
-		void drawVelocityTOF(){
-
-			tree->Draw(Form("espriTOF:protonVelocity>>hVTOF%d(1000,50,150,1000,0,40)",side),gate);
-			//tree->Draw(Form("protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hVTOF%d(1000,0,40,1000,50,150)",side,tofOffset,side),gate);
-			hVTOF = (TH2F *)gDirectory->Get(Form("hVTOF%d",side));
-			hVTOF->SetMarkerColor(2);
-			hVTOF->SetMarkerStyle(7);
-
-			TF1 *fit = new TF1("fit","[0]/(x)+[1]",90,115);
-			fit->SetParLimits(0,1030,1330);
-			fit->SetParLimits(1,-3,3);
-			fit->SetLineColor(3);
-			hVTOF->Fit(fit,"R","");
-
-
-			tree->Draw(Form("espriTOF:espriFL/espriTOF>>hVTOFData%d(1000,50,150,1000,0,40)",side),gate);
-			//tree->Draw(Form("(espriFL+%f)/(plasT0-TOFSbtTarget+%f):(plasT0-TOFSbtTarget+%f)>>hVTOFData%d(1000,0,40,1000,50,150)",flOffset,tofOffset,tofOffset,side),gate);
-			TH2F *hVTOFData = (TH2F *)gDirectory->Get(Form("hVTOFData%d",side));
-			hVTOFData->SetMarkerColor(1);
-			hVTOFData->SetMarkerStyle(markerStyle);
-
-			hVTOF->Draw();
-			fit->Draw("same");
-			hVTOFData->Draw("same");
-
-		}
-		void drawVelocityTOFRaw(){
-
-			tree->Draw(Form("(plasT%d-TOFSbtTarget+%f):protonVelocity>>hVTOFRaw%d(1000,50,150,1000,0,40)",side,tofOffset,side),gate);
-			//tree->Draw(Form("protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hVTOFRaw%d(1000,0,40,1000,50,150)",side,tofOffset,side),gate);
-			hVTOFRaw = (TH2F *)gDirectory->Get(Form("hVTOFRaw%d",side));
-			hVTOFRaw->SetMarkerColor(2);
-			hVTOFRaw->SetMarkerStyle(7);
-			TF1 *fit = new TF1("fit","[0]/(x)+[1]",90,115);
-			fit->SetParLimits(0,1030,1430);
-			fit->SetParLimits(1,-5,5);
-			fit->SetLineColor(3);
-			hVTOFRaw->Fit(fit,"R","");
-
-			tree->Draw(Form("(plasT%d-TOFSbtTarget+%f):(espriFL+%f)/(plasT%d-TOFSbtTarget+%f)>>hVTOFData%d(1000,50,150,1000,0,40)",side,tofOffset,flOffset,side,tofOffset,side),gate);
-			//tree->Draw(Form("(espriFL+%f)/(plasT0-TOFSbtTarget+%f):(plasT0-TOFSbtTarget+%f)>>hVTOFData%d(1000,0,40,1000,50,150)",flOffset,tofOffset,tofOffset,side),gate);
-			TH2F *hVTOFData = (TH2F *)gDirectory->Get(Form("hVTOFData%d",side));
-			hVTOFData->SetMarkerColor(1);
-			hVTOFData->SetMarkerStyle(markerStyle);
-			hVTOFRaw->Draw();
-			fit->Draw("same");
-			hVTOFData->Draw("same");
-
-
-		}
-		void drawVVCorr(){
-			tree->Draw(Form("protonVelocity:(espriFL+%f)/(plasT%d-TOFSbtTarget+%f)>>hVVCorr%d(1000,50,150,1000,50,150)",flOffset,side,tofOffset,side),gate);
-			hVVCorr = (TH2F *)gDirectory->Get(Form("hVVCorr%d",side));
-			hVVCorr->SetMarkerColor(2);
-			hVVCorr->SetMarkerStyle(markerStyle);
-			hVVCorr->Draw();
-		}
-		void drawFLCorr(){
-			//tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(espriFL+%f)>>hFLCorr%d(1000,1150,2200,1000,1150,2200)",side,tofOffset,flOffset,side),gate);
-			tree->Draw(Form("(espriFL+%f)/protonVelocity:(plasT%d-TOFSbtTarget+%f)>>hFLCorr%d(1000,0,20,1000,0,20)",flOffset,side,tofOffset,side),gate);
-			hFLCorr = (TH2F *)gDirectory->Get(Form("hFLCorr%d",side));
-			hFLCorr->SetMarkerColor(2);
-			hFLCorr->SetMarkerStyle(markerStyle);
-			hFLCorr->Draw();
-			gPad->SetGridx();
-			gPad->SetGridy();
-		}
-		void drawFLTOF(){
-			tree->Draw(Form("plasQ[%d]:(plasT%d-TOFSbtTarget+%f)>>hFLTOF%d(1000,0,40,1000,0,40)",side,side,tofOffset,side),gate);
-			//tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):(plasT%d-TOFSbtTarget+%f)>>hFLTOF%d(1000,0,20,1000,1000,1500)",side,tofOffset,side,tofOffset,side),gate);
-			//tree->Draw(Form("protonVelocity*(plasT%d-TOFSbtTarget+%f):TOF>>hFLTOF%d(1000,0,40,1000,1150,1500)",side,tofOffset,side),gate);
-			hFLTOF = (TH2F *)gDirectory->Get(Form("hFLTOF%d",side));
-			hFLTOF->SetMarkerColor(2);
-			hFLTOF->SetMarkerStyle(markerStyle);
-			hFLTOF->Draw();
-		}
-
-
-
-
-
-
-
-
-
-
-
-
 		void drawDEE(){
 			tree->Draw(Form("espriPlasE:espriNaiE>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
 			//tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
@@ -482,7 +326,6 @@ class CheckEx{
 			hDEE->SetMarkerColor(2);
 			hDEE->SetMarkerStyle(markerStyle);
 			hDEE->Draw();
-			dc->drawDEE();
 		}
 		void drawNai(){
 			tree->Draw(Form("Enai:espriAngle>>hNai%d%d(1000,55,75,1000,0,200)",side,barId),gate);
@@ -492,7 +335,6 @@ class CheckEx{
 			//hNai->SetMarkerSize(30);
 			hNai->SetMarkerStyle(markerStyle);
 			hNai->Draw();
-			dc->drawNai();
 		}
 		void drawPlas(){
 			tree->Draw(Form("dEplas:espriAngle>>hPlas%d%d(1000,55,75,1000,0,20)",side,barId),gate);
@@ -502,20 +344,23 @@ class CheckEx{
 			//hPlas->SetMarkerSize(30);
 			hPlas->SetMarkerStyle(markerStyle);
 			hPlas->Draw();
-			dc->drawPlas();
 		}
 		void drawEspriEA(){
-			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,50,80,200,0,200)",gate,"colz");
+			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,40,80,150,0,150)",gate,"colz");
+			dc->drawProtonEA();
 		}
 		void drawTeleEA(){
-			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,200,700)",gate,"colz");
+			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,0,700)",gate,"colz");
+			dc->drawAlphaEA();
 		}
 
 		void drawAA(){
-			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
+			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,40,80)",gate,"colz");
+			dc->drawAA();
 		}
 		void drawEE(){
-			tree->Draw("espriEnergy:teleEnergy>>hEE(200,200,700,200,0,200)",gate,"colz");
+			tree->Draw("espriEnergy:teleEnergy>>hEE(200,0,700,200,0,150)",gate,"colz");
+			dc->drawEE();
 		}
 
 
@@ -560,46 +405,30 @@ class CheckEx{
 			delete calibPara;
 		}
 };
-void drawBar(int side,int barId){
+TString getGate(){
+	TString hodGate;
+	TString hodGateHe4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+	TString hodGateHe6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
+	TString hodGateHe8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
+	//hodGate = hodGateHe4;
+	//hodGate = hodGateHe6;
+	hodGate = hodGateHe8;
+	//hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
 
-	int markerStyle = 1;
-	if(side!=-1&&barId!=-1) markerStyle = 6;
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-	cPad->Divide(2,1);
-	//cPad->Divide(2,2);
-	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe12.root");
-	ce->setAlias();
-	ce->setBar(side,barId);
-	ce->setMarkerStyle(markerStyle);
-	ce->setGate();
-
-	cPad->cd(1);
-	//ce->drawTot();
-	ce->drawEA();
-	cPad->cd(2);
-	ce->drawExDee();
-	//ce->drawEkAngle();
-	//ce->drawDEE();
-	//cPad->cd(3);
-	////ce->drawExDee();
-	////ce->drawTOFTot();
-	//cPad->cd(4);
-	//ce->drawExTof();
-	//ce->drawVelocityTOF();
-	ce->output();
-
+	return hodGate;
 }
-
 void drawPACorrelation(){
+
+	CheckEx *ce = new CheckEx();
+	//ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe12.root");
+	ce->addFile("ppaBe14.root");
+	ce->setAlias();
+	ce->loadCut();
+	ce->setGate(getGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(2,2);
-	CheckEx *ce = new CheckEx();
-	ce->addFile("ppaBe10.root");
-	ce->setAlias();
-	ce->setGate();
-
 	cPad->cd(1);
 	ce->drawEspriEA();
 	cPad->cd(2);
@@ -609,7 +438,6 @@ void drawPACorrelation(){
 	cPad->cd(4);
 	ce->drawEE();
 	ce->output();
-
 }
 
 

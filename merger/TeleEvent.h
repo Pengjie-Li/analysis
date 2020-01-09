@@ -3,77 +3,104 @@
 class TeleEvent{
 	private:
 
-		double teleEnergy;
-		double teleAngle;
-
 		MergeTELE *mergeData;
 
-		TVector3 *telePosition;
-		TVector3 *targetPosition;
-		TVector3 *vBeam;
-		
-		CalibTELE *calibTELE;
+		TeleEnergy *calibEnergy;
+		TeleTime *calibTime;
 		PositionTELE *positionTELE;
+		
+		double teleCsiE[3];
+		double teleDssdFE[3];
+		double teleDssdBE[3];
+		double teleCsiT[3];
+		double teleDssdT[3];
+		double teleEnergy[3];
+		TVector3 *telePosition[3];
+
+		TVector3* getPosition(int i){
+			return positionTELE->getPosition(mergeData->getHitSide(i),mergeData->getHitFid(i),mergeData->getHitBid(i));
+		}
+		double getCsiE(int i){
+			return calibEnergy->getCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+		} 
+		double getCsiT(int i){
+			return calibEnergy->getCsiE(mergeData->getHitCid(i),mergeData->getHitCsiTCal(i));
+		} 
+		double getDssdFrontE(int i){
+			return calibEnergy->getDssdE(mergeData->getHitSide(i),mergeData->getHitFid(i),mergeData->getHitDssdFQPed(i));
+		}
+
+		double getDssdBackE(int i){
+			return calibEnergy->getDssdE(mergeData->getHitSide(i),mergeData->getHitBid(i),mergeData->getHitDssdBQPed(i));
+		}
+
+		double getDssdT(int i){
+			return calibTime->getDssdT(mergeData->getHitSide(i),mergeData->getHitBid(i));
+		}
+
+
 
 	public:
 		void print(){
 			cout<<"TELE Event:"<<endl;
-			calibTELE->print();
-			positionTELE->print();
-			cout<<"teleEnergy = "<<teleEnergy<<" teleAngle = "<<teleAngle<<endl;
+
+			cout<<"Tele Energy: dssdE = "<<teleDssdE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<endl;	
+			cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
+	
 		}
 		
 		TeleEvent(){
+			calibEnergy = new TeleEnergy();
+			calibTime = new TeleTime();
 			positionTELE = new PositionTELE();
-			calibTELE = new CalibTELE();
 		}
 		~TeleEvent(){
 			delete positionTELE;
-			delete calibTELE;
+			delete calibEnergy;
+			delete calibTime;
 		}
 		void loadData(MergeTELE *mergeTELE){
 			mergeData = mergeTELE;
 		}
-		void loadTargetPosition(TVector3 *target){
-			targetPosition = target;
-		}
-		void loadBeamVector(TVector3 *beam){
-			vBeam = beam;
-		}
 		void init(){
 			mergeData = NULL;
-			teleEnergy = NAN;
-			teleAngle = NAN;
-			telePosition->SetXYZ(NAN,NAN,NAN);
-			calibTELE->init();
-			positionTELE->init();
-		}
-		void setOutputBranch(TTree *tree){
-			telePosition = new TVector3;
+			for (int i = 0; i < 3; ++i) {
 
-			calibTELE->setBranch(tree);
-			positionTELE->setBranch(tree);
-
-			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
-			tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
-			tree->Branch("telePosition","TVector3",&telePosition);
-		}
-		void setTELEEvent(){
-			if(isGoodEvent()){
-				setTELEEnergy();
-				setTELEPosition();
+				teleCsiE[i]=NAN;
+				teleDssdFE[i]=NAN;
+				teleDssdBE[i]=NAN;
+				teleCsiT[i]=NAN;
+				teleDssdT[i]=NAN;
+				teleEnergy[i]=NAN;
+				telePosition->SetXYZ(NAN,NAN,NAN);
+				
 			}
 		}
-		bool isGoodEvent(){
-			return mergeData->isGoodEvent();
-		}
+		void setOutputBranch(TTree *tree){
 
-		void setTELEPosition(){
-			telePosition = positionTELE->getPosition(mergeData->getHitSide(),mergeData->getHitFid(),mergeData->getHitBid());
+			telePosition[0] = new TVector3();
+			telePosition[1] = new TVector3();
+			telePosition[2] = new TVector3();
+
+			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE[teleHit]/D");
+			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE[teleHit]/D");
+			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE[teleHit]/D");
+			tree->Branch("teleCsiT",&teleCsiT,"teleCsiT[teleHit]/D");
+			tree->Branch("teleDssdT",&teleDssdT,"teleDssdT[teleHit]/D");
+			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy[teleHit]/D");
+			tree->Branch("telePosition",&telePosition,"telePosition[teleHit]/D");
+	
 		}
-		void setTELEEnergy(){
-			calibTELE->loadData(mergeData);
-			calibTELE->calibrate();
-			teleEnergy = calibTELE->getEnergy();
+		void setTELEEvent(){
+			for (int i = 0; i < getTeleHit(); ++i) {
+
+				teleCsiE[i]	 = getCsiE(i);
+				teleDssdFE[i]	 = getDssdFrontE(i);
+				teleDssdBE[i]	 = getDssdBackE(i);
+				teleCsiT[i]	 = getCsiT(i);
+				teleDssdT[i]	 = getDssdT(i);
+				teleEnergy[i]	 = 0.5*(teleDssdFE[i]+teleDssdBE[i])+teleCsiE[i];
+				telePosition[i]	 = getPosition(i);
+			}
 		}
 };

@@ -305,6 +305,7 @@ class CalibESPRI{
 		~CalibESPRI(){}
 		void init(){
 
+			mergeData = NULL;
 			espriPlasE_Birks = NAN;
 			espriNaiE_Pol3 = NAN;
 
@@ -316,11 +317,9 @@ class CalibESPRI{
 		}
 
 		void loadData(MergeESPRI *mergeESPRI){
-			mergeData = NULL;
 			mergeData = mergeESPRI;
 		}
 		void calibrate(){
-			init();
 
 			espriPlasE_Birks = getPlasQ_Birks();
 			espriPlasE = getPlasQ();

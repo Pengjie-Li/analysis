@@ -4131,3 +4131,14 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/convert/v2_beforeMoveHitStructure/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 09f5041] v1.0
+ 18 files changed, 1272 insertions(+), 421 deletions(-)
+ rewrite merger/MergeTELE.h (60%)
+ rewrite merger/TeleEvent.h (80%)
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal320.txt
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal340.txt
+ rewrite tele/convert/ConvertTele (95%)
+ create mode 100644 tele/convert/rootfiles/run0596_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0597_TELE.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

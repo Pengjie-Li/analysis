@@ -649,7 +649,12 @@ class ReadFile{
 			//return plasHitQPed[0];
 			return espriPlasE_Birks;
 		}
-	
+		double getTeleCsiE(){
+			return teleCsiE;
+		}
+		double getTeleDssdE(){
+			return teleDssdE;
+		}
 		double getTargetX(){
 			return vTarget->X();
 		}
@@ -667,6 +672,10 @@ class ReadFile{
 		}
 		double getHodBarQRaw(int id){
 			return hodBarQCal[id];
+		}
+		bool isPALR(){
+			if(((espriHit==1&&espriHitSide[0]==0&&dssdSideQ[2]>2)||(espriHit==1&&espriHitSide[0]==1&&dssdSideQ[0]>2))) return true;
+			else return false;
 		}
 
 };
