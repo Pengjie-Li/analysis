@@ -4142,3 +4142,37 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/convert/rootfiles/run0597_TELE.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 309ed60] v1.0
+ 39 files changed, 1856 insertions(+), 378 deletions(-)
+ create mode 120000 analysis/calibNai/rootfiles
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/Event.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe14/Makefile
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/convert.sh
+ create mode 100755 analysis/generateChannels/ppAlphaBe14/header.h
+ create mode 120000 analysis/generateChannels/ppAlphaBe14/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/loop.sh
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/main.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/ppBe.h
+ create mode 100755 analysis/generateChannels/ppAlphaBe14/ppaBe14
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/test.C
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (96%)
+ rewrite analysis/generateChannels/ppBe14/ppBe14 (62%)
+ create mode 100644 analysis/ppAlpha/drawChain/.ppaBe.C.swp
+ create mode 100644 merger/CalibTELE.h
+ rewrite merger/TeleEvent.h (70%)
+ create mode 100644 tele/convert/rootfiles/run0441_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0442_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0443_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0444_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0445_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0446_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0447_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0474_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0582_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0586_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0593_TELE.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

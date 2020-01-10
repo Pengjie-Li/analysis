@@ -2,8 +2,7 @@
 #include "Merger.h"
 
 TEnv *calib;
-TEnv *env;
-
+TEnv *env; 
 #include "constant.h"
 #include "AnalysingMAIN.h"
 #include "AnalysingPLA.h"
@@ -29,8 +28,6 @@ Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNu
 
         calib = new TEnv(calibParaName(runNumber));
 	env = new TEnv("./config/configMerger.prm");
-	
-	//env = new TEnv("configMerger.prm");
 	//maxEventNumber = env->GetValue("maxEventNumber",5000);
 	inputTree = new TTree("tree","tree");
 	if(kMAIN) mergeMAIN =new MergeMAIN(runNumber);
@@ -98,8 +95,9 @@ void Merger::print(){
 	
 	//printPLA();	
 	//printBDC();	
-	printESPRI();
-	printProton();
+	//printESPRI();
+	//printProton();
+	printTELE();
 	//printFDC0();
 	//printBeam();
 }

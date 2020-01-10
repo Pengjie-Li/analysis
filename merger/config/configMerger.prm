@@ -43,3 +43,7 @@ siliconHitThreshold:0.5
 csiHitThreshold:2
 dssdLeftPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/scattering_angle/OnePixelGenerateAllPixelPosition/LeftDSSDPixelPosition.txt
 dssdRightPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/scattering_angle/OnePixelGenerateAllPixelPosition/RightDSSDPixelPosition.txt
+
+dssdScmPara:./txt/DSSD_Fit_Whole.txt
+csiSyncPara:./txt/csiSyncPara.txt
+csiCalibPara:./txt/csiCalibPara.txt

@@ -10,7 +10,7 @@ class PositionTELE{
 		double rightZPosition[32][32];
 
 		PositionTELE(){
-			//env = new TEnv("configMerger.prm");
+			env = new TEnv("./config/configMerger.prm");
 			loadLeftPosition();
 			loadRightPosition();
 			//print();

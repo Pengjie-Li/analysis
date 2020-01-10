@@ -1,6 +1,6 @@
 class MergeTELE:public Convert{
 	private:
-		const int kWriteStatus = 1;
+		bool kWriteStatus;
 	public:
 		//Declaration of leaves types
 
@@ -22,7 +22,7 @@ class MergeTELE:public Convert{
 		Int_t           dssdTHitStripId[10];
 		Double_t        dssdTHitTCal[10];
 
-		Float_t         dssdHit;
+		Int_t         dssdHit;
 		Int_t           dssdHitSide[0];
 		Int_t           dssdHitFid[0];
 		Int_t           dssdHitBid[0];
@@ -124,7 +124,7 @@ class MergeTELE:public Convert{
 
 		void setOutputBranch(TTree *tree){
 
-			if(kWriteStatus == 1) setOutputBranchRaw();
+			if(kWriteStatus) setOutputBranchRaw(tree);
                         tree->Branch("dssdQHit",&dssdQHit,"dssdQHit/I");
                         tree->Branch("dssdQHitSide",dssdQHitSide,"dssdQHitSide[dssdQHit]/I");
                         tree->Branch("dssdQHitStripId",dssdQHitStripId,"dssdQHitStripId[dssdQHit]/I");
@@ -173,6 +173,7 @@ class MergeTELE:public Convert{
 
 		MergeTELE(){}
 		MergeTELE(int run){
+			kWriteStatus  = true;
 			detector = "TELE";
 			treeName = "CalTreeTELE";
 			runNumber = run;
@@ -194,4 +195,35 @@ class MergeTELE:public Convert{
 				cout<<" Hit"<<i<<" Side= "<<teleHitSide[i]<<" fid="<<"\t"<<teleHitFid[i]<<" bid="<<"\t"<<teleHitBid[i]<<"\t"<<teleHitDssdFQPed[i]<<"\t"<<teleHitDssdBQPed[i]<<"\t"<<teleHitDssdTCal[i]<<"\t"<<teleHitCid[i]<<"\t"<<teleHitCsiQPed[i]<<"\t"<<teleHitCsiTCal[i]<<endl;
 			}
 		}
+		int getHit(){
+			return teleHit;
+		}
+		int getHitSide(int i){
+			return teleHitSide[i];
+		}
+		int getHitFid(int i){
+			return teleHitFid[i];
+		}
+		int getHitBid(int i){
+			return teleHitBid[i];
+		}
+		int getHitCid(int i){
+			return teleHitCid[i];
+		}
+		double getHitCsiQPed(int i){
+			return teleHitCsiQPed[i];
+		}
+		double getHitCsiTCal(int i){
+			return teleHitCsiTCal[i];
+		}
+		double getHitDssdTCal(int i){
+			return teleHitDssdTCal[i];
+		}
+		double getHitDssdFQPed(int i){
+			return teleHitDssdFQPed[i];
+		}
+		double getHitDssdBQPed(int i){
+			return teleHitDssdBQPed[i];
+		}
+
 };
