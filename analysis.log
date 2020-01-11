@@ -4176,3 +4176,35 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/convert/rootfiles/run0593_TELE.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 776bcde] v1.0
+ 39 files changed, 711 insertions(+), 36 deletions(-)
+ create mode 100644 merger/CsiCal.h
+ create mode 100644 merger/DSSDEnergyCal.h
+ rewrite merger/Merger (90%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (82%)
+ create mode 120000 merger/txt/DSSD_Fit_Whole.txt
+ create mode 120000 merger/txt/csiCalibPara.txt
+ create mode 120000 merger/txt/csiSyncPara.txt
+ create mode 100644 tele/convert/rootfiles/run0118_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0178_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0193_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0194_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0195_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0196_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0197_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0198_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0199_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0200_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0201_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0202_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0203_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0204_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0205_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0206_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0227_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0228_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0229_TELE.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
