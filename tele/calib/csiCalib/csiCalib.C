@@ -1,53 +1,56 @@
 class CsiInput{
 	private:
-		double csiQPed[2][2];
-		double csiQPedSigma[2][2];
-		double csiQPedEnergy[2][2];
+		vector<vector<double>> csiQPed;
+		vector<vector<double>> csiQPedSigma;
+		vector<vector<double>> csiQPedEnergy;
 		
 	public:
 		CsiInput(){
+			csiQPed.resize(7);	
+			csiQPedSigma.resize(7);	
+			csiQPedEnergy.resize(7);	
+
 			TString inputName = "teleCsiCalibInput.txt";
 			ifstream in;
 			in.open(inputName);
-			int csiId;
-			double hQPed;
-			double hQPedSigma;
+			int caseId;
+			double hQPed[7];
+			double hQPedSigma[7];
 			double hQPedEnergy;
-			double lQPed;
-			double lQPedSigma;
-			double lQPedEnergy;
 	
 			while (1){
-				in>>csiId>>hQPed>>hQPedSigma>>hQPedEnergy>>lQPed>>lQPedSigma>>lQPedEnergy;
 				if(!in.good()) break;
-				csiQPed[csiId][0] = hQPed;
-				csiQPed[csiId][1] = lQPed;
+				in>>caseId>>hQPedEnergy;
+				for (int i = 0; i < 7; ++i) {
+					in>>hQPed[i]>>hQPedSigma[i];
+				}
 
-				csiQPedSigma[csiId][0] = hQPedSigma;
-				csiQPedSigma[csiId][1] = lQPedSigma;
-				csiQPedEnergy[csiId][0] = hQPedEnergy;
-				csiQPedEnergy[csiId][1] = lQPedEnergy;
+				for (int i = 0; i < 7; ++i){
 
+					if(hQPed[i]!=-9999){
+						csiQPed[i].push_back(hQPed[i]);
+						csiQPedSigma[i].push_back(hQPedSigma[i]);
+						csiQPedEnergy[i].push_back(hQPedEnergy);
+					}
+				}
 			}
 		}
 		~CsiInput(){}
 		void print(){
-			for (int i = 0; i < 2; ++i) {
-				cout<<i<<"\t"<<csiQPed[0][i]<<"\t"<<csiQPed[1][i]<<"\t"<<csiQPedSigma[0][i]<<"\t"<<csiQPedSigma[1][i]<<"\t"<<csiQPedEnergy[0][i]<<"\t"<<csiQPedEnergy[1][i]<<endl;
+			for (int i = 0; i < csiQPed.size(); ++i) {
+				for (int j = 0; j < csiQPed[i].size(); ++j) {
+
+					cout<<i<<"\t"<<csiQPedEnergy[i][j]<<"\t"<<csiQPed[i][j]<<"\t"<<csiQPedSigma[i][j]<<"\t"<<endl;
+				}
 			}
 		}
-		double getHQPed(int teleSide){
-			return csiQPed[teleSide][0];
+		vector<double> getQPed(int csiId){
+			return csiQPed[csiId];
 		}
-		double getLQPed(int teleSide){
-			return csiQPed[teleSide][1];
+		vector<double> getEnergy(int csiId){
+			return csiQPedEnergy[csiId];
 		}
-		double getHEnergy(int teleSide){
-			return csiQPedEnergy[teleSide][0];
-		}
-		double getLEnergy(int teleSide){
-			return csiQPedEnergy[teleSide][1];
-		}
+
 
 
 
@@ -65,23 +68,23 @@ class CsiFit{
 
 		}
 		~CsiFit(){}
-		void fit(int teleSide){
-			double a[3] = {0};
-			double b[3] = {0};
-			a[0] = b[0] = 0;
-			a[1] = csiInput->getHEnergy(teleSide);
-			a[2] = csiInput->getLEnergy(teleSide);
-			b[1] = csiInput->getHQPed(teleSide);
-			b[2] = csiInput->getLQPed(teleSide);
+		void fit(int csiId){
 			
-			cout<<a[0]<<":"<<a[1]<<":"<<a[2]<<endl;
-			cout<<b[0]<<":"<<b[1]<<":"<<b[2]<<endl;
-			TGraph *gr = new TGraph(3,b,a);
+			vector<double> qPed;
+			vector<double> energy;
+			qPed = csiInput->getQPed(csiId);
+			energy = csiInput->getEnergy(csiId);
+			
+			qPed.push_back(0);
+			energy.push_back(0);
+			TGraph *gr = new TGraph(qPed.size(),&qPed[0],&energy[0]);
 			//fitFunction->SetParameters(csiInput->getQPedAlign(teleSide),0);
 			//gr->Fit(fitFunction,"Q");
-			gr->Draw("apl*");
-			gr->Fit(fitFunction);
+			fitFunction->SetParameters(0.29,0.01);
+			gr->Draw("ap*");
+			gr->Fit(fitFunction,"Q");
 			cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
+			//fitFunction->Draw("same");
 		}
 		
 };
@@ -93,8 +96,12 @@ class CsiCalib{
 			csiFit = new CsiFit();
 		}
 		void calib(){
-			csiFit->fit(0);// Left
-			csiFit->fit(1);// Right
+			TCanvas *cPad = new TCanvas("cPad","cPad",1500,900);
+			cPad->Divide(4,2);
+			for (int i = 0; i < 7; ++i) {
+				cPad->cd(i+1);
+				csiFit->fit(i);// Left
+			}
 		}
 		~CsiCalib(){}
 };

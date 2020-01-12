@@ -319,48 +319,25 @@ class CheckEx{
 			gate = g;
 			//gate = "espriHit==1";
 		}
-		void drawDEE(){
-			tree->Draw(Form("espriPlasE:espriNaiE>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
-			//tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
-			hDEE = (TH2F *)gDirectory->Get(Form("hDEE%d%d",side,barId));
-			hDEE->SetMarkerColor(2);
-			hDEE->SetMarkerStyle(markerStyle);
-			hDEE->Draw();
-		}
-		void drawNai(){
-			tree->Draw(Form("Enai:espriAngle>>hNai%d%d(1000,55,75,1000,0,200)",side,barId),gate);
 
-			hNai = (TH2F *)gDirectory->Get(Form("hNai%d%d",side,barId));
-			hNai->SetMarkerColor(2);
-			//hNai->SetMarkerSize(30);
-			hNai->SetMarkerStyle(markerStyle);
-			hNai->Draw();
-		}
-		void drawPlas(){
-			tree->Draw(Form("dEplas:espriAngle>>hPlas%d%d(1000,55,75,1000,0,20)",side,barId),gate);
-
-			hPlas = (TH2F *)gDirectory->Get(Form("hPlas%d%d",side,barId));
-			hPlas->SetMarkerColor(2);
-			//hPlas->SetMarkerSize(30);
-			hPlas->SetMarkerStyle(markerStyle);
-			hPlas->Draw();
-		}
-		void drawEspriEA(){
-			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,40,80,150,0,150)",gate,"colz");
-			dc->drawProtonEA();
-		}
-		void drawTeleEA(){
-			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,0,700)",gate,"colz");
-			dc->drawAlphaEA();
+		TH1F *hCsiQPed[7];
+		void drawCsiQPed(int peakId,int i){
+			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(1000,0,1000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			hCsiQPed[i] = (TH1F *)gDirectory->Get(Form("hPeak%d_%d",peakId,i));
+			//hCsiQPed[i]->SetLineColor(i+1);
+			hCsiQPed[i]->Draw();
+			hCsiQPed[i]->Write();
 		}
 
-		void drawAA(){
-			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,40,80)",gate,"colz");
-			dc->drawAA();
-		}
-		void drawEE(){
-			tree->Draw("espriEnergy:teleEnergy>>hEE(200,0,700,200,0,150)",gate,"colz");
-			dc->drawEE();
+		TH2F *hTargetArea[5];
+		void drawTargetArea(int peakId){
+			tree->Draw(Form("vTarget.Y():vTarget.X()>>hPeak%d(1000,-50,50,1000,-50,50)",peakId),gate,"colz");
+			hTargetArea[peakId] = (TH2F *)gDirectory->Get(Form("hPeak%d",peakId));
+			//hTargetArea[peakId]->SetLpeakIdneColor(peakId+1);
+			hTargetArea[peakId]->Draw("colz");
+			hTargetArea[peakId]->Write();
 		}
 
 
@@ -405,31 +382,76 @@ class CheckEx{
 			delete calibPara;
 		}
 };
-TString getGate(){
-	TString hodGate;
-	TString hodGateHe4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
-	TString hodGateHe6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
-	TString hodGateHe8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
-	//hodGate = hodGateHe4;
-	//hodGate = hodGateHe6;
-	hodGate = hodGateHe8;
-	//hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
+TString getGate(int peakId){
+	TString gate;
+	TString targetArea="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<13)";
+	TString Frame="((vTarget.X()-2.0)<30&&(vTarget.X()-2.0)>-30&&(vTarget.Y()+1.1)<25&&(vTarget.Y()+1.1)>-35)";
+	TString Neck="((vTarget.X()-2.0)<4&&(vTarget.X()-2.0)>-4&&(vTarget.Y()+1.1)>15&&(vTarget.Y()+1.1)<25)";
 
-	return hodGate;
+	TString R5="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<14)";
+	TString R4="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<17)";
+	TString R3="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<20)";
+	TString R2="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<21)";
+	TString R1="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<15)";
+
+	TString peak[5];
+	 TString peak3_1="(!"+R5+"&&"+R4+"&&!"+Neck+")";
+	 TString peak3_2="("+Neck+"&&!"+R2+")";
+
+	 peak[0]=targetArea;
+	 peak[1]="("+Neck+"&&"+R2+")";
+	 peak[2]="("+peak3_1+"||"+peak3_2+")";
+	 peak[3]="(!"+R1+"&&"+R2+"&&!"+Neck+")";
+	 peak[4]="("+Frame+"&&!"+R3+"&&!"+Neck+")";
+
+
+	return peak[peakId];
+}
+void checkTargetGate(){
+
+	TString fileName = "targetAreaPeak5.root";
+	CheckEx *ce = new CheckEx();
+	ce->addFile("rootfiles/run0596_analysed.root");
+//	ce->addFile("rootfiles/run0597_analysed.root");
+//	ce->addFile("rootfiles/run0599_analysed.root");
+//	ce->addFile("rootfiles/run0600_analysed.root");
+	ce->setAlias();
+	ce->loadCut();
+
+	//TFile *outputFile = new TFile(fileName,"RECREATE");
+	TFile *outputFile = new TFile(fileName,"UPDATE");
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	cPad->Divide(3,2);
+	for (int i = 0; i < 5; ++i) {
+		cPad->cd(i+1);
+		ce->setGate(getGate(i));
+		ce->drawTargetArea(i);
+	}
+	ce->output();
+
 }
 void drawCsiQPed(){
 
+	int peakId = 1;
+	TString fileName = "calibCsiQPedPeak5.root";
 	CheckEx *ce = new CheckEx();
 	ce->addFile("rootfiles/run0596_analysed.root");
+	ce->addFile("rootfiles/run0597_analysed.root");
+	ce->addFile("rootfiles/run0598_analysed.root");
+	ce->addFile("rootfiles/run0599_analysed.root");
+	ce->addFile("rootfiles/run0600_analysed.root");
 	ce->setAlias();
 	ce->loadCut();
-	ce->setGate(getGate());
+	ce->setGate(getGate(peakId));
+	cout<<getGate(peakId)<<endl;
 
+	//TFile *outputFile = new TFile(fileName,"RECREATE");
+	TFile *outputFile = new TFile(fileName,"UPDATE");
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(4,2);
 	for (int i = 0; i < 7; ++i) {
 		cPad->cd(i+1);
-		ce->drawCsiQPed(i);
+		ce->drawCsiQPed(peakId,i);
 	}
 	ce->output();
 }
@@ -437,5 +459,6 @@ void drawCsiQPed(){
 
 void drawTree(){
 	drawCsiQPed();	
+	//checkTargetGate();
 }
 
