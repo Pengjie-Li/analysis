@@ -27,3 +27,6 @@
 2020-01-05
 	1. add proton Event, 
 	2. calculate ProtonEnergy from NaiEnergy
+2020-01-13
+	1. add TeleEvent and Alpha Event
+	2. add Hit Structure for alpha

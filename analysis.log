@@ -4216,3 +4216,17 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 tele/calib/peak5Calib/rootfiles
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 20f7d9d] v1.0
+ 12 files changed, 288 insertions(+), 217 deletions(-)
+ rewrite merger/rootfiles/drawTargetEllipse.C (64%)
+ create mode 120000 merger/txt/csiCalib.C
+ rewrite tele/calib/csiCalib/csiCalib.C (61%)
+ rename tele/calib/csiCalib/{ => syncCalib}/csiCalib.C (100%)
+ rename tele/calib/csiCalib/{ => syncCalib}/teleCsiCalibInput.txt (100%)
+ create mode 100644 tele/calib/csiCalib/syncCalib/txt/csiCalibPara.txt
+ rewrite tele/calib/csiCalib/teleCsiCalibInput.txt (100%)
+ create mode 100644 tele/calib/csiCalib/txt/peak5QPedEnergy.txt
+ create mode 100644 tele/calib/peak5Calib/png/Bar00.png
+ create mode 100644 tele/calib/peak5Calib/png/Bar13040.png
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

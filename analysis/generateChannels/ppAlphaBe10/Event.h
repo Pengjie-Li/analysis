@@ -44,7 +44,7 @@ class GateCut{
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe10.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutProtonBe10.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutAlphaBe10.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutAlpha.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe10.C");
 		}
 		void getCut(){
@@ -70,6 +70,7 @@ class GateCut{
 			return protonCut->IsInside(E,dE);
 		}
 		bool isAlpha(double E,double dE){
+			//cout<<"E ="<<E<<" dE ="<<dE<<endl;
 			return alphaCut->IsInside(E,dE);
 		}
 
@@ -123,7 +124,10 @@ class Event{
 			//return isBeam()&&isTargetArea()&&isPRAngle();
 			//return isBeam()&&isTargetArea()&&isPRAngle();
 			//return isBeam()&&isProton();
-			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
+			//return isBeam()&&isProton()&&isTargetArea()&&isHodPid()&&isPALR();
+			//return isAlpha();
+			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
+			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
 			//return isBeam();
 			//return isProton();
 			//return isTargetArea();

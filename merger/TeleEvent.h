@@ -1,24 +1,45 @@
 #include "PositionTELE.h"
 #include "CalibTELE.h"
+class DEECurve{
+	private:
+		TGraph *dEE;
+	public:
+		DEECurve(){
+			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/alphaDEE/dEECurve.root","READ");
+                        dEE = (TGraph *)gDirectory->Get("dEEReverse");
+                        fCalib->Close();	
+
+		}
+		~DEECurve(){}
+		double getDEECsiE(double dssd){
+			return dEE->Eval(dssd);
+		}
+};
 class TeleEvent{
 	private:
 
 		MergeTELE *mergeData;
+		DEECurve *deePara;
 
 		EnergyTELE *calibEnergy;
 		TimeTELE *calibTime;
 		PositionTELE *positionTELE;
 		
-		double teleCsiE[3];
-		double teleDssdFE[3];
-		double teleDssdBE[3];
-		double teleCsiT[3];
-		double teleDssdT[3];
-		double teleEnergy[3];
-		double teleX[3];
-		double teleY[3];
-		double teleZ[3];
-		TVector3 *telePosition[3];
+		int iHit;
+		int 	goodTeleHit[3];
+		double teleCsiE;
+		double teleCsiE_sync;
+		double teleDssdFE;
+		double teleDssdBE;
+		double teleDssdE;
+		double teleCsiT;
+		double teleDssdT;
+		double teleEnergy;
+
+		double teleX;
+		double teleY;
+		double teleZ;
+		TVector3 *telePosition;
 
 		TVector3 getPosition(int i){
 			return positionTELE->getPosition(mergeData->getHitSide(i),mergeData->getHitFid(i),mergeData->getHitBid(i));
@@ -29,6 +50,10 @@ class TeleEvent{
 		double getCsiE(int i){
 			return calibEnergy->getCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
 		} 
+		double getCsiE_sync(int i){
+			return calibEnergy->getSyncCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+		} 
+
 		double getCsiT(int i){
 			return calibTime->getCsiT(mergeData->getHitCid(i),mergeData->getHitCsiTCal(i));
 		} 
@@ -48,11 +73,9 @@ class TeleEvent{
 		void print(){
 			cout<<"TELE Event:"<<endl;
 
-			for (int i = 0; i < getHit(); ++i) {
 				
-				cout<<" dssdE = "<<teleDssdFE[i]<<" "<<teleDssdBE[i]<<" csiE ="<<teleCsiE[i]<<" totE = "<<teleEnergy[i]<<endl;	
-				cout<<" dssdPosition : "<<teleX[i]<<" "<<teleY[i]<<" "<<teleZ[i]<<endl;
-			}
+			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdBE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
+			
 			//cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
 	
 		}
@@ -61,11 +84,13 @@ class TeleEvent{
 			calibEnergy = new EnergyTELE();
 			calibTime = new TimeTELE();
 			positionTELE = new PositionTELE();
+			deePara = new DEECurve();
 		}
 		~TeleEvent(){
 			delete positionTELE;
 			delete calibEnergy;
 			delete calibTime;
+			delete deePara;
 		}
 		void loadData(MergeTELE *mergeTELE){
 			mergeData = mergeTELE;
@@ -74,50 +99,89 @@ class TeleEvent{
 			mergeData = NULL;
 			for (int i = 0; i < 3; ++i) {
 
-				teleCsiE[i]=NAN;
-				teleDssdFE[i]=NAN;
-				teleDssdBE[i]=NAN;
-				teleCsiT[i]=NAN;
-				teleDssdT[i]=NAN;
-				teleEnergy[i]=NAN;
-				teleX[i] = NAN;
-				teleY[i] = NAN;
-				teleZ[i] = NAN;
-				telePosition[i]->SetXYZ(NAN,NAN,NAN);
-				
+				goodTeleHit[i]=1;
+							
 			}
+			iHit = -1;
+			teleCsiE=NAN;
+			teleCsiE_sync=NAN;
+			teleDssdFE=NAN;
+			teleDssdBE=NAN;
+			teleDssdE=NAN;
+			teleCsiT=NAN;
+			teleDssdT=NAN;
+			teleEnergy=NAN;
+			teleX = NAN;
+			teleY = NAN;
+			teleZ = NAN;
+			telePosition->SetXYZ(NAN,NAN,NAN);
+
 		}
 		void setOutputBranch(TTree *tree){
 
-			telePosition[0] = new TVector3();
-			telePosition[1] = new TVector3();
-			telePosition[2] = new TVector3();
+			telePosition = new TVector3();
 
-			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE[teleHit]/D");
-			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE[teleHit]/D");
-			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE[teleHit]/D");
-			tree->Branch("teleCsiT",&teleCsiT,"teleCsiT[teleHit]/D");
-			tree->Branch("teleDssdT",&teleDssdT,"teleDssdT[teleHit]/D");
-			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy[teleHit]/D");
-			tree->Branch("teleX",&teleX,"teleX[teleHit]/D");
-			tree->Branch("teleY",&teleY,"teleY[teleHit]/D");
-			tree->Branch("teleZ",&teleZ,"teleZ[teleHit]/D");
-			//tree->Branch("telePosition","TVector3","telePosition[teleHit]/D");
+			tree->Branch("goodTeleHit",&goodTeleHit,"goodTeleHit[teleHit]/I");
+			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
+			tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
+			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
+			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
+			tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
+			tree->Branch("teleCsiT",&teleCsiT,"teleCsiT/D");
+			tree->Branch("teleDssdT",&teleDssdT,"teleDssdT/D");
+			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
+			tree->Branch("telePosition","TVector3",&telePosition);
 	
 		}
 		void setEvent(){
-			for (int i = 0; i < getHit(); ++i) {
-
-				teleCsiE[i]	 = getCsiE(i);
-				teleDssdFE[i]	 = getDssdFrontE(i);
-				teleDssdBE[i]	 = getDssdBackE(i);
-				teleCsiT[i]	 = getCsiT(i);
-				teleDssdT[i]	 = getDssdT(i);
-				teleEnergy[i]	 = 0.5*(teleDssdFE[i]+teleDssdBE[i])+teleCsiE[i];
-				(*telePosition[i])	 = getPosition(i);
-				teleX[i] = telePosition[i]->X();
-				teleY[i] = telePosition[i]->Y();
-				teleZ[i] = telePosition[i]->Z();
+			iHit = getGoodHit();
+			if(isGoodEvent()){
+				teleCsiE	 = getCsiE(iHit);
+				teleCsiE_sync	 = getCsiE_sync(iHit);
+				teleDssdFE	 = getDssdFrontE(iHit);
+				teleDssdBE	 = getDssdBackE(iHit);
+				teleCsiT	 = getCsiT(iHit);
+				teleDssdT	 = getDssdT(iHit);
+				teleDssdE	 = 0.5*(teleDssdFE+teleDssdBE);
+				teleEnergy	 = teleDssdE+teleCsiE;
+				(*telePosition)	 = getPosition(iHit);
+				teleX = telePosition->X();
+				teleY = telePosition->Y();
+				teleZ = telePosition->Z();
 			}
+		}
+		double getDEECsiE(double dssdE){
+			return deePara->getDEECsiE(dssdE);
+		}
+		double getDEEResidue(int i){
+			return abs(getDEECsiE(0.5*(getDssdFrontE(i)+getDssdBackE(i)))- getCsiE(i));
+		}
+		int getGoodHit(){
+			if(getHit()==1) return 0;
+			if(getHit()>1){
+				for (int i = 0; i < getHit()-1; ++i) {
+					if(getDEEResidue(i)>getDEEResidue(i+1)) goodTeleHit[i] = -1;
+					else goodTeleHit[i+1] = -1;
+				}
+				for (int i = 0; i < getHit(); ++i) {
+					if(abs(getDssdFrontE(i)-getDssdBackE(i))<2){
+						if(goodTeleHit[i]==1) return i;
+					}
+				}
+			}
+			return -1;
+		}
+		bool isGoodEvent(){
+			if(iHit!=-1) return true;
+			else return false;
+		}
+		TVector3 getDssdPlaneNorm(){
+			return positionTELE->getDssdPlaneNorm(mergeData->getHitSide(iHit));
+		}
+		TVector3 *getTelePosition(){
+			return telePosition;
+		}
+		double getCsiEnergy(){
+			return teleCsiE;
 		}
 };
