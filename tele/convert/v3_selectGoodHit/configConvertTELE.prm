@@ -1,0 +1,17 @@
+dataBaseFile:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SILICONS.xml
+
+inputPath:/media/Rawdata/RIKEN_Cluster_2018/
+inputPrefix:run0
+inputSuffix:.ridf.gz
+
+
+outputPath:./rootfiles/
+outputPrefix:run0
+outputSuffix:_TELE.root_test
+
+dssdScmPara:./txt/DSSD_Fit_Whole.txt
+csiPedestal:./txt/csiPedestal.txt
+dssdPedestal:./txt/dssdPedestal.txt
+
+csiSyncPara:./txt/csiSyncPara.txt
+csiCalibPara:./txt/csiCalibPara.txt

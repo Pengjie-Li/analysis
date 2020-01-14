@@ -18,6 +18,7 @@ class DEECurve{
 class TeleEvent{
 	private:
 
+		
 		MergeTELE *mergeData;
 		DEECurve *deePara;
 
@@ -48,10 +49,16 @@ class TeleEvent{
 			return mergeData->getHit();
 		}
 		double getCsiE(int i){
-			return calibEnergy->getCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+
+			double csiE = calibEnergy->getCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+
+			if(mergeData->getRunNumber()<305&&mergeData->getHitCid(i)==4) csiE = 1.8*csiE;  
+			return csiE;
 		} 
 		double getCsiE_sync(int i){
-			return calibEnergy->getSyncCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+			double csiE =  calibEnergy->getSyncCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
+			if(mergeData->getRunNumber()<305&&mergeData->getHitCid(i)==4) csiE = 1.8*csiE;  
+			return csiE;
 		} 
 
 		double getCsiT(int i){

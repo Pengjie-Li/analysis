@@ -179,6 +179,9 @@ class MergeTELE:public Convert{
 			runNumber = run;
 		}
 
+		int getRunNumber(){
+			return runNumber;
+		}
 		//using Convert::isFileExists;
 		bool isFileExists(){
 			return Convert::isFileExists(detector);

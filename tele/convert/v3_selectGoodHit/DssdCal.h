@@ -122,9 +122,6 @@ class DSSDEnergyCal{
 		double getDssdQRaw(int side,int id){
 			return rawData->getDssdQRaw(side,id);
 		}
-		void setHit(int nHit){
-			dssdQHit = nHit;
-		}
 		int getQHit(){
 			return dssdQHit;
 		}
@@ -191,10 +188,6 @@ class DSSDTimeCal{
 		int getTHit(){
 			return dssdTHit;
 		}
-		void setHit(int nHit){
-			dssdTHit = nHit;
-		}
-
 		int getTHitSide(int iHit){
 			return dssdTHitSide[iHit];
 		}
@@ -281,19 +274,14 @@ class DSSDHit{
 			dssdEnergy = dssdE;
 			dssdTime   = dssdT;
 			hitEvent();
-			if(dssdHit == 0){
-				dssdEnergy->setHit(0);
-				dssdTime->setHit(0);
-			}
 		}
 		void hitEvent(){
 			for (int i = 0; i < getTHit(); ++i) {
 				for (int j = 0; j < getQHit(); ++j) {
-					if((2*getTHitSide(i) == getQHitSide(j))&&(getTHitStripId(i)==getQHitStripId(j))){ // find T and FQ have same side and strip Id
+					if((2*getTHitSide(i) == getQHitSide(j))&&(getTHitStripId(i)==getQHitStripId(j))){ // find T and Q have same side and strip Id
 						for (int k = 0; k < getQHit(); ++k) { // loop all Q to find back Q
 							if(getQHitSide(k) == 2*getTHitSide(i)+1&&dssdHit<10){
 								if(abs(getQHitQPed(j)/getQHitQPed(k))>2||abs(getQHitQPed(j)/getQHitQPed(k))<0.5) continue; // remove event unrelevent
-								//if(abs(getQHitQPed(j)/getQHitQPed(k))>2||abs(getQHitQPed(j)/getQHitQPed(k))<0.5) continue; // remove event unrelevent
 								dssdHitTCal[dssdHit]= getTHitTCal(i);
 								dssdHitFQPed[dssdHit]= getQHitQPed(j);
 								dssdHitBQPed[dssdHit]= getQHitQPed(k);

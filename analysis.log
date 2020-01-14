@@ -4230,3 +4230,76 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/calib/peak5Calib/png/Bar13040.png
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ed88ef1] v1.0
+ 85 files changed, 8453 insertions(+), 136 deletions(-)
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (90%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/tele.C
+ create mode 100644 merger/AlphaEvent.h
+ create mode 100644 merger/AnalysingAlpha.h
+ rewrite merger/Merger (90%)
+ create mode 100644 merger/rootfiles/cutAlpha.C
+ rewrite merger/rootfiles/run0442_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/tele.C
+ create mode 120000 merger/txt/csiSyncCalibPara.txt
+ create mode 120000 merger/txt/peak5CsiQPedEnergy.txt
+ create mode 100644 merger/v5_TeleHitStructure/'
+ create mode 100644 merger/v5_TeleHitStructure/AlphaEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingAlpha.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingBDC.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingBeam.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingESPRI.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingFDC0.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingHOD.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingMAIN.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingPLA.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingProton.h
+ create mode 100644 merger/v5_TeleHitStructure/AnalysingTELE.h
+ create mode 100644 merger/v5_TeleHitStructure/BdcEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/BeamEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/CalibESPRI.h
+ create mode 100644 merger/v5_TeleHitStructure/CalibTELE.h
+ create mode 100644 merger/v5_TeleHitStructure/Convert.h
+ create mode 100644 merger/v5_TeleHitStructure/CsiCal.h
+ create mode 100644 merger/v5_TeleHitStructure/DSSDEnergyCal.h
+ create mode 100644 merger/v5_TeleHitStructure/Detector.h
+ create mode 100644 merger/v5_TeleHitStructure/EspriEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/FDC0Event.h
+ create mode 100644 merger/v5_TeleHitStructure/Fdc0Event.h
+ create mode 100644 merger/v5_TeleHitStructure/FindPixel.h
+ create mode 100755 merger/v5_TeleHitStructure/Makefile
+ create mode 100644 merger/v5_TeleHitStructure/MergeBDC.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeESPRI.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeFDC0.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeHOD.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeMAIN.h
+ create mode 100644 merger/v5_TeleHitStructure/MergePLA.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeSample.h
+ create mode 100644 merger/v5_TeleHitStructure/MergeTELE.h
+ create mode 100755 merger/v5_TeleHitStructure/Merger
+ create mode 100644 merger/v5_TeleHitStructure/Merger.cpp
+ create mode 100644 merger/v5_TeleHitStructure/Merger.h
+ create mode 100644 merger/v5_TeleHitStructure/PlaEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/PositionESPRI.h
+ create mode 100644 merger/v5_TeleHitStructure/PositionTELE.h
+ create mode 100644 merger/v5_TeleHitStructure/ProtonEvent.h
+ create mode 100644 merger/v5_TeleHitStructure/TeleEvent.h
+ create mode 100755 merger/v5_TeleHitStructure/analysis.C
+ create mode 100644 merger/v5_TeleHitStructure/backup_1st_Merger.C
+ create mode 100644 merger/v5_TeleHitStructure/constant.h
+ create mode 100644 merger/v5_TeleHitStructure/convert.sh
+ create mode 100755 merger/v5_TeleHitStructure/distance.h
+ create mode 100644 merger/v5_TeleHitStructure/env
+ create mode 100755 merger/v5_TeleHitStructure/header.h
+ create mode 100644 merger/v5_TeleHitStructure/logMerger.txt
+ create mode 100644 merger/v5_TeleHitStructure/loop.sh
+ create mode 100644 merger/v5_TeleHitStructure/looprun.sh
+ create mode 100644 merger/v5_TeleHitStructure/main.cpp
+ create mode 100644 merger/v5_TeleHitStructure/mvRootVersion.sh
+ create mode 100644 merger/v5_TeleHitStructure/read.me
+ create mode 100644 merger/v5_TeleHitStructure/sampleESPRI.C
+ create mode 100644 merger/v5_TeleHitStructure/t1.txt
+ create mode 100644 merger/v5_TeleHitStructure/t2.txt
+ create mode 100644 tele/calib/csiCalib/syncCalib/txt/csiSyncCalibPara.txt
+ create mode 100644 tele/calib/csiCalib/txt/peak5CsiQPedEnergy.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

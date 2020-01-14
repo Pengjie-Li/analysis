@@ -8,24 +8,13 @@
 #run2=365
 
 # Be14
-#run1=366
-#run2=455
-#run1=366
-#run2=432
-
-
-
-# Be14 Empty
 #run1=587
 #run2=594
 
-# Alpha
-#run1=595
-#run2=600
-
 run1=1
-run2=304
-n=15
+run2=350
+
+n=10
 
 
 for (( i=1; i<=$n; i++ )); do
@@ -37,3 +26,4 @@ for (( i=1; i<=$n; i++ )); do
 }&
 done
 wait
+

@@ -245,18 +245,6 @@ class CheckEx{
 		}
 		void setAlias(){
 
-			tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
-			tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j < 7; ++j) {
-
-					tree->SetAlias(Form("naiBarQPed%d%d",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
-					tree->SetAlias(Form("naiBarQRaw%d%d",i,j),Form("sqrt(naiQRaw[%d][%d]*naiQRaw[%d][%d])",2*i,j,2*i+1,j));
-				}
-
-			}
-
-
 			tree->SetAlias("SOL","299.792458*1");
 			tree->SetAlias("AMU","931.49410242*1");
 
@@ -264,54 +252,90 @@ class CheckEx{
 			tree->SetAlias("MassBe12","12.02472781*1");
 			tree->SetAlias("MassBe14","14.04069708*1");
 
-			tree->SetAlias("MassBe","MassBe12*1");
-			//tree->SetAlias("MassBe","MassBe10*1");
+			//tree->SetAlias("MassBe","MassBe12*1");
 			//tree->SetAlias("MassBe","MassBe14*1");
 			tree->SetAlias("MassH","1.007276452*1");
+			tree->SetAlias("MassHe4","4.001506105*1");
+			tree->SetAlias("MassHe6","6.017788744*1");
+			tree->SetAlias("MassHe8","8.032837245*1");
+			tree->SetAlias("MassHe10","10.05171959*1");
+
+
+
+			//tree->SetAlias("MassBe","MassBe10*1");
+			//tree->SetAlias("residueRestMass","MassHe6*AMU");
+
+			//tree->SetAlias("MassBe","MassBe12*1");
+			//tree->SetAlias("residueRestMass","MassHe8*AMU");
+
+			tree->SetAlias("MassBe","MassBe14*1");
+			tree->SetAlias("residueRestMass","MassHe10*AMU");
+
+
+
 			tree->SetAlias("beamMass","MassBe*AMU");
+			tree->SetAlias("targetMass","MassH*AMU");
 			tree->SetAlias("protonMass","MassH*AMU");
-
-			// Could be better	
-			tree->SetAlias("beamEk","(Ek713-3.776)*MassBe");
-
-			tree->SetAlias("TOFSbtTarget","beamFL/(Beta713*SOL-0.654-0.626)"); // 0.654 diff F713 and F13-TGT, 0.626 diff Data to Theoretical point
-
-			tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
-			//tree->SetAlias("dEplas",Form("(%4f*plasBarQPed%d/(1+%4f*plasBarQPed%d))",gPlas,side,dPlas,side));
-			tree->SetAlias("Tof",Form("(%4f*plasBarQPed%d+%4f)",gPlas,side,dPlas));
-			tree->SetAlias("plasT0","(plasT[0]-0.01*(rdcY[0]-225))");
-			tree->SetAlias("plasT1","(plasT[1]-0.0115*(rdcY[1]-225))");
-			//tree->SetAlias("espriLTOF","((plasT[0]-F13T+895.2+19.84)-TOFSbtTarget)");
-			//tree->SetAlias("TOF",Form("(plasT%d-F13T-TOFSbtTarget+895.2)+20.27-2.47",side));
-			//tree->SetAlias("TOF",Form("(plasT%d-TOFSbtTarget+674.2)+20.27-2.47",side));
-
-			tree->SetAlias("espriTOF","(espriPlasT-TOFSbtTarget)");
-			tree->SetAlias("beta","espriFL/(SOL*espriTOF)");
-			tree->SetAlias("gamma","1/sqrt(1-beta*beta)");
-			tree->SetAlias("espriEk","(gamma-1)*AMU*MassH");
+			tree->SetAlias("alphaMass","MassHe4*AMU");
 
 
-			tree->SetAlias("pGamma","(espriEk/protonMass+1)");
-			tree->SetAlias("pMomentum","sqrt(espriEk*espriEk+2*espriEk*protonMass)");
+			// 	
+			tree->SetAlias("beamEk","beamEnergy*MassBe");
+			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
 
-			tree->SetAlias("rMomentum","sqrt(beamMomentum*beamMomentum + pMomentum*pMomentum - 2*beamMomentum*pMomentum*cos(espriAngle*TMath::DegToRad()))");
-			tree->SetAlias("rEnergy","beamEk + beamMass - espriEk");
-			tree->SetAlias("rMass","sqrt(rEnergy*rEnergy - rMomentum*rMomentum)");
-			tree->SetAlias("exEnergy","rMass-beamMass");
+			tree->SetAlias("xB","vBeam.X()");
+			tree->SetAlias("yB","vBeam.Y()");
+			tree->SetAlias("zB","vBeam.Z()");
+			tree->SetAlias("xP","vESPRI.X()");
+			tree->SetAlias("yP","vESPRI.Y()");
+			tree->SetAlias("zP","vESPRI.Z()");
+			tree->SetAlias("xA","vAlpha.X()");
+			tree->SetAlias("yA","vAlpha.Y()");
+			tree->SetAlias("zA","vAlpha.Z()");
+	
+	
+			tree->SetAlias("A1","yP*zB-zP*yB");
+			tree->SetAlias("B1","zP*xB-xP*zB");
+			tree->SetAlias("C1","xP*yB-yP*xB");
+                                                      
+			tree->SetAlias("A2","yA*zB-zA*yB");
+			tree->SetAlias("B2","zA*xB-xA*zB");
+			tree->SetAlias("C2","xA*yB-yA*xB");
+	
+			tree->SetAlias("cosPhi12","(A1*A2+B1*B2+C1*C2)/(sqrt(A1*A1+B1*B1+C1*C1)*sqrt(A2*A2+B2*B2+C2*C2))");
 
+			tree->SetAlias("cosTheta12","cos(theta1)*cos(theta2)+sin(theta1)*sin(theta2)*cosPhi12");
 
-			//tree->SetAlias("protonGamma","(protonEk/protonMass+1)");
+			tree->SetAlias("protonGamma","(protonEnergy/protonMass+1)");
 			tree->SetAlias("protonBeta","sqrt(1-1/(protonGamma*protonGamma))");
 			tree->SetAlias("protonVelocity","protonBeta*SOL");
+			tree->SetAlias("protonMomentum","sqrt(protonEnergy*protonEnergy+2*protonEnergy*protonMass)");
 
-			tree->SetAlias("protonGamma","(espriEnergy/protonMass+1)");
-			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
-			tree->SetAlias("protonMomentum","sqrt(espriEnergy*espriEnergy+2*espriEnergy*protonMass)");
+			tree->SetAlias("alphaGamma","(alphaEnergy/alphaMass+1)");
+			tree->SetAlias("alphaBeta","sqrt(1-1/(alphaGamma*alphaGamma))");
+			tree->SetAlias("alphaVelocity","alphaBeta*SOL");
+			tree->SetAlias("alphaMomentum","sqrt(alphaEnergy*alphaEnergy+2*alphaEnergy*alphaMass)");
 
-			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(espriAngle*TMath::DegToRad()))");
-			tree->SetAlias("residueEnergy","beamEk + beamMass - espriEnergy");
+
+			tree->SetAlias("E0","beamEk+beamMass+targetMass");
+			tree->SetAlias("P0","beamMomentum");
+
+			tree->SetAlias("E1","protonEnergy+protonMass");
+			tree->SetAlias("P1","protonMomentum");
+			tree->SetAlias("theta1","espriAngle*TMath::DegToRad()");
+
+			tree->SetAlias("E2","alphaEnergy+alphaMass");
+			tree->SetAlias("P2","alphaMomentum");
+			tree->SetAlias("theta2","alphaAngle*TMath::DegToRad()");
+			
+
+
+			tree->SetAlias("residueMomentum","sqrt(P0*P0 + P1*P1+ P2*P2 - 2*P0*P1*cos(theta1) - 2*P0*P2*cos(theta2) + 2*P1*P2*cosTheta12)");
+
+			tree->SetAlias("residueEnergy","E0-E1-E2");
+
 			tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
-			tree->SetAlias("excitationEnergy","residueMass-beamMass");
+			tree->SetAlias("exEnergy","residueMass-residueRestMass");
 
 		}
 
@@ -349,19 +373,36 @@ class CheckEx{
 			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,40,80,150,0,150)",gate,"colz");
 			dc->drawProtonEA();
 		}
+		void drawProtonEA(){
+			tree->Draw("protonEnergy:espriAngle>>hProtonEA(200,50,80,150,0,150)",gate,"colz");
+			dc->drawProtonEA();
+		}
+
 		void drawTeleEA(){
 			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,0,700)",gate,"colz");
 			dc->drawAlphaEA();
 		}
+		void drawAlphaEA(){
+			tree->Draw("alphaEnergy:alphaAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
+			dc->drawAlphaEA();
+		}
+
+
 
 		void drawAA(){
-			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,40,80)",gate,"colz");
+			tree->Draw("espriAngle:alphaAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
 			dc->drawAA();
 		}
 		void drawEE(){
-			tree->Draw("espriEnergy:teleEnergy>>hEE(200,0,700,200,0,150)",gate,"colz");
+			tree->Draw("protonEnergy:alphaEnergy>>hEE(200,300,700,200,0,150)",gate,"colz");
 			dc->drawEE();
 		}
+
+		void drawEx(){
+			tree->Draw("exEnergy>>hEx(200,-20,20)",gate,"colz");
+		}
+
+
 
 
 
@@ -417,6 +458,23 @@ TString getGate(){
 
 	return hodGate;
 }
+void drawExEnergy(){
+	CheckEx *ce = new CheckEx();
+	//ce->addFile("ppaBe12.root");
+	//ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe12.root");
+	ce->addFile("ppaBe14.root");
+	ce->setAlias();
+	ce->loadCut();
+	//ce->setGate(getGate());
+
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+//	cPad->Divide(2,2);
+//	cPad->cd(1);
+	ce->drawEx();
+	ce->output();
+
+}
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
@@ -425,14 +483,14 @@ void drawPACorrelation(){
 	ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
-	ce->setGate(getGate());
+	//ce->setGate(getGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(2,2);
 	cPad->cd(1);
-	ce->drawEspriEA();
+	ce->drawProtonEA();
 	cPad->cd(2);
-	ce->drawTeleEA();
+	ce->drawAlphaEA();
 	cPad->cd(3);
 	ce->drawAA();
 	cPad->cd(4);
@@ -442,6 +500,7 @@ void drawPACorrelation(){
 
 
 void drawTree(){
-	drawPACorrelation();	
+	//drawPACorrelation();	
+	drawExEnergy();
 }
 

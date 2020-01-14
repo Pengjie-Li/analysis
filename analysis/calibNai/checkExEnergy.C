@@ -326,6 +326,15 @@ class CheckEx{
                         gROOT->ProcessLine(".x rootfiles/cutBe12Bar21Be12.C");
                         gROOT->ProcessLine(".x rootfiles/cutBe12Bar20Be12.C");
                         gROOT->ProcessLine(".x rootfiles/cutBe12Bar19Be12.C");
+
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar33Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar32Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar31Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar30Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar29Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar28Be14.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe14Bar27Be14.C");
+
 		}
 
 		void setGate(TString g){
@@ -505,13 +514,6 @@ class CheckEx{
 
 
 
-
-
-
-
-
-
-
 		void drawDEE(){
 			tree->Draw(Form("espriPlasE:espriNaiE>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
 			//tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
@@ -601,6 +603,10 @@ TString getHodGate(){
 	// hodGate = "(Be12Bar22Be12)";
 	// hodGate = "(Be12Bar23Be12)";
 	// hodGate = "(Be12Bar23Be12||Be12Bar22Be12||Be12Bar21Be12||Be12Bar20Be12||Be12Bar19Be12)";
+	//
+	 //hodGate = "(Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14)";
+	 hodGate = "RunNumber<457&&RunNumber>=425&&(Be14Bar33Be14||Be14Bar32Be14||Be14Bar31Be14||Be14Bar30Be14||Be14Bar29Be14||Be14Bar28Be14||Be14Bar27Be14)";
+	
 	return hodGate;
 }
 void drawBar(int side,int barId){
@@ -613,8 +619,8 @@ void drawBar(int side,int barId){
 	ce->loadCut();
 	ce->setBar(side,barId);
 	ce->setMarkerStyle(markerStyle);
-	ce->setGate(getEspriGate(side,barId));
-	//ce->setGate(getHodGate());
+	//ce->setGate(getEspriGate(side,barId));
+	ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1500,600);
 	cPad->Divide(2,1);

@@ -27,6 +27,11 @@
 2020-01-05
 	1. add proton Event, 
 	2. calculate ProtonEnergy from NaiEnergy
+	3. proton gate now can apply for all beam setting
 2020-01-13
 	1. add TeleEvent and Alpha Event
 	2. add Hit Structure for alpha
+	3. alpha gate can apply for all beam setting
+	3. new calibration for Csi with Peak5
+2020-01-14
+	1. problem: Csi Id ==4 before run 305, has a small gain, need para "1.8" to gain back

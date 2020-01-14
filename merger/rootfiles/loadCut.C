@@ -31,6 +31,14 @@
                         gROOT->ProcessLine(".x cutBe10Bar19Be9.C");
 
 
+                        gROOT->ProcessLine(".x cutBe10Bar29He6.C");
+                        gROOT->ProcessLine(".x cutBe10Bar30He6.C");
+                        gROOT->ProcessLine(".x cutBe10Bar31He6.C");
+                        gROOT->ProcessLine(".x cutBe10Bar32He6.C");
+                        gROOT->ProcessLine(".x cutBe10Bar33He6.C");
+                        gROOT->ProcessLine(".x cutBe10Bar34He6.C");
+
+
 
 			gROOT->ProcessLine(".x cutBe14Bar33Be14.C");
 			gROOT->ProcessLine(".x cutBe14Bar32Be14.C");
