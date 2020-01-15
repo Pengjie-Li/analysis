@@ -31,29 +31,29 @@ class MergeTELE:public Convert{
 		Double_t        dssdHitTCal[0];
 
 		Int_t           csiQHit;
-		Int_t           csiQHitId[5];
-		Double_t        csiQHitQPed[5];
+		Int_t           csiQHitId[7];
+		Double_t        csiQHitQPed[7];
 		Double_t        csiQPed[7];
 
 		Int_t           csiTHit;
-		Int_t           csiTHitId[4];
-		Double_t        csiTHitTCal[4];
+		Int_t           csiTHitId[7];
+		Double_t        csiTHitTCal[7];
 
 		Int_t	        csiHit;
-		Int_t           csiHitId[3];
-		Double_t        csiHitQPed[3];
-		Double_t        csiHitTCal[3];
+		Int_t           csiHitId[7];
+		Double_t        csiHitQPed[7];
+		Double_t        csiHitTCal[7];
 
 		Int_t           teleHit;
-		Int_t           teleHitSide[3];
-		Int_t           teleHitFid[3];
-		Int_t           teleHitBid[3];
-		Double_t        teleHitDssdFQPed[3];
-		Double_t        teleHitDssdBQPed[3];
-		Double_t        teleHitDssdTCal[3];
-		Int_t           teleHitCid[3];
-		Double_t        teleHitCsiQPed[3];
-		Double_t        teleHitCsiTCal[3];
+		Int_t           teleHitSide[10];
+		Int_t           teleHitFid[10];
+		Int_t           teleHitBid[10];
+		Double_t        teleHitDssdFQPed[10];
+		Double_t        teleHitDssdBQPed[10];
+		Double_t        teleHitDssdTCal[10];
+		Int_t           teleHitCid[10];
+		Double_t        teleHitCsiQPed[10];
+		Double_t        teleHitCsiTCal[10];
 
 
 		void setBranch(){
@@ -156,20 +156,7 @@ class MergeTELE:public Convert{
                         tree->Branch("csiHitQPed",&csiHitQPed,"csiHitQPed[csiHit]/D");
                         tree->Branch("csiHitTCal",&csiHitTCal,"csiHitTCal[csiHit]/D");
 
-                        tree->Branch("teleHit",&teleHit,"teleHit/I");
-                        tree->Branch("teleHitSide",&teleHitSide,"teleHitSide[teleHit]/I");
-                        tree->Branch("teleHitFid",&teleHitFid,"teleHitFid[teleHit]/I");
-                        tree->Branch("teleHitBid",&teleHitBid,"teleHitBid[teleHit]/I");
-
-                        tree->Branch("teleHitDssdFQPed",&teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/D");
-                        tree->Branch("teleHitDssdBQPed",&teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/D");
-                        tree->Branch("teleHitDssdTCal",&teleHitDssdTCal,"teleHitDssdTCal[teleHit]/D");
-
-                        tree->Branch("teleHitCid",&teleHitCid,"teleHitCid[teleHit]/I");
-                        tree->Branch("teleHitCsiQPed",&teleHitCsiQPed,"teleHitCsiQPed[teleHit]/D");
-                        tree->Branch("teleHitCsiTCal",&teleHitCsiTCal,"teleHitCsiTCal[teleHit]/D");
-
-		}
+              		}
 
 		MergeTELE(){}
 		MergeTELE(int run){

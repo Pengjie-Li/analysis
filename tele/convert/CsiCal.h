@@ -187,9 +187,9 @@ class CsIHit{
 		CsITimeCal *csiTime;
 
 		int csiHit;	
-		int csiHitId[3];// csi maximum pixel effective hit	
-		double csiHitQPed[3];
-		double csiHitTCal[3];
+		int csiHitId[7];// csi maximum pixel effective hit	
+		double csiHitQPed[7];
+		double csiHitTCal[7];
 
 		int getQHit(){
 			return csiEnergy->getQHit();
@@ -219,7 +219,7 @@ class CsIHit{
 			csiEnergy = NULL;
 			csiTime = NULL;
 			csiHit = 0;
-			for (int i = 0; i < 3; ++i) {
+			for (int i = 0; i < 7; ++i) {
 				csiHitId[i] = -1;	
 				csiHitQPed[i] = -9999;
 				csiHitTCal[i] = -9999;
@@ -232,16 +232,18 @@ class CsIHit{
 			hitEvent();
 		}
 		void hitEvent(){
-			for (int i = 0; i < getTHit(); ++i) {
-				for (int j = 0; j < getQHit(); ++j) {
+			for (int j = 0; j < getQHit(); ++j) {
+				csiHitQPed[csiHit] = getQHitQPed(j);
+				csiHitId[csiHit] = getQHitId(j);
+
+				for (int i = 0; i < getTHit(); ++i) {
 					if(getTHitId(i)==getQHitId(j)){
 						csiHitTCal[csiHit] = getTHitTCal(i);
-						csiHitQPed[csiHit] = getQHitQPed(j);
-						csiHitId[csiHit]= getTHitId(i);
-						csiHit++;
 					}
 				}
+				csiHit++;
 			}
+
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("csiHit",&csiHit,"csiHit/I");

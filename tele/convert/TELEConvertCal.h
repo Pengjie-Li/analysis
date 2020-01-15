@@ -7,16 +7,16 @@ class TELEHit{
 		CsiCal *csiCal;
 
 		int teleHit;
-		int teleHitSide[3];
-		int teleHitFid[3];
-		int teleHitBid[3];
-		double teleHitDssdFQPed[3];
-		double teleHitDssdBQPed[3];
-		double teleHitDssdTCal[3];
+		int teleHitSide[10];
+		int teleHitFid[10];
+		int teleHitBid[10];
+		double teleHitDssdFQPed[10];
+		double teleHitDssdBQPed[10];
+		double teleHitDssdTCal[10];
 
-		int teleHitCid[3];
-		double teleHitCsiQPed[3];
-		double teleHitCsiTCal[3];
+		int teleHitCid[10];
+		double teleHitCsiQPed[10];
+		double teleHitCsiTCal[10];
 		int getDssdHit(){
 			return dssdCal->getHit();
 		}
@@ -53,15 +53,17 @@ class TELEHit{
 
 		bool isPixelInSide(int dssdSide,int fid,int bid,int csiId){
 			if(dssdSide==0&&csiId>3){
-				if(csiId==4&&bid<17) return true;
-				if(csiId==5&&fid<17&&bid>14) return true;
-				if(csiId==6&&fid>14&&bid>14) return true;
+			//	if(csiId==4&&bid<17) return true;
+			//	if(csiId==5&&fid<17&&bid>14) return true;
+			//	if(csiId==6&&fid>14&&bid>14) return true;
+				return true;
 			}
 			if(dssdSide==1&&csiId<4){
-				if(csiId==0&&fid<18&&bid>15) return true;
-				if(csiId==1&&fid<18&&bid<19) return true;
-				if(csiId==2&&fid>14&&bid>15) return true;
-				if(csiId==3&&fid>14&&bid<19) return true;
+				//if(csiId==0&&fid<18&&bid>15) return true;
+				//if(csiId==1&&fid<18&&bid<19) return true;
+				//if(csiId==2&&fid>14&&bid>15) return true;
+				//if(csiId==3&&fid>14&&bid<19) return true;
+				return true;
 			}
 			return false;
 		}
@@ -72,7 +74,7 @@ class TELEHit{
 		dssdCal = NULL;
 		csiCal = NULL;
 		 teleHit = 0;
-		 for (int i = 0; i < 3; ++i) {
+		 for (int i = 0; i < 10; ++i) {
 			 teleHitSide[i]	=-1;
 			 teleHitFid[i]	=-1;
 			 teleHitBid[i]	=-1;
@@ -108,7 +110,7 @@ class TELEHit{
 			if(dssdCal->getHit()>0&&csiCal->getHit()>0){
 				for (int i = 0; i < getDssdHit(); ++i) {
 					for (int j = 0; j < getCsiHit(); ++j) {
-						if(isPixelInSide(getDssdHitSide(i),getDssdHitFid(i),getDssdHitBid(i),getCsiHitId(j))&&teleHit<3){
+						if(isPixelInSide(getDssdHitSide(i),getDssdHitFid(i),getDssdHitBid(i),getCsiHitId(j))&&teleHit<10){
 							teleHitSide[teleHit] = getDssdHitSide(i);
 							teleHitFid[teleHit] = getDssdHitFid(i);
 							teleHitBid[teleHit] = getDssdHitBid(i);
@@ -163,9 +165,15 @@ class TELEConvertCal{
 
 		void calibration(TELEReadRaw *rawData){
 			teleReadRaw = rawData;
+			// dssd Must have hit, then csi have Hit, then Tele has Hit
 			dssdCal->calibration(rawData);
-			csiCal->calibration(rawData);
-			teleHit->hitEvent(dssdCal,csiCal);
+			if(dssdCal->getHit()>0){
+				csiCal->calibration(rawData);
+				if(csiCal->getHit()>0){
+					teleHit->hitEvent(dssdCal,csiCal);
+				}
+			}
+			
 		}
 		void print(){
 			dssdCal->print();

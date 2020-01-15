@@ -4303,3 +4303,29 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/calib/csiCalib/txt/peak5CsiQPedEnergy.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f80b9a8] v1.0
+ 42 files changed, 2307 insertions(+), 273 deletions(-)
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (64%)
+ rewrite analysis/generateChannels/ppAlphaBe12/ppaBe12 (87%)
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (87%)
+ rewrite merger/Merger (82%)
+ rewrite merger/rootfiles/cutProton.C (80%)
+ create mode 100644 merger/rootfiles/drawCurvePPA_Alpha.C
+ create mode 100644 merger/rootfiles/drawCurveTeleDee.C
+ rewrite tele/convert/ConvertTele (96%)
+ create mode 100644 tele/convert/rootfiles/run0300_TELE.root_test
+ rename tele/convert/{ => v3_selectGoodHit}/ConvertTele (100%)
+ create mode 100644 tele/convert/v3_selectGoodHit/ConvertTele.C
+ create mode 100644 tele/convert/v3_selectGoodHit/CsiCal.h
+ create mode 100644 tele/convert/v3_selectGoodHit/DssdCal.h
+ create mode 100755 tele/convert/v3_selectGoodHit/Makefile
+ create mode 100644 tele/convert/v3_selectGoodHit/TELEConvertCal.h
+ create mode 100644 tele/convert/v3_selectGoodHit/TELEReadRaw.h
+ create mode 100644 tele/convert/v3_selectGoodHit/configConvertTELE.prm
+ create mode 100644 tele/convert/v3_selectGoodHit/convert.sh
+ create mode 100755 tele/convert/v3_selectGoodHit/header.h
+ create mode 100644 tele/convert/v3_selectGoodHit/loop.sh
+ create mode 100644 tele/convert/v3_selectGoodHit/looprun.sh
+ create mode 100644 tele/convert/v3_selectGoodHit/tele.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

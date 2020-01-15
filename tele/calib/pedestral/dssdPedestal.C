@@ -4,6 +4,8 @@ class DssdPed{
 		TChain *tree;
 		double fitPara[7][3];
 		TH1F *hTemp[7];
+		double fitPara0[4][32];
+		double fitPara1[4][32];
 
 		TString draw;
 		TString gate;
@@ -57,8 +59,11 @@ class DssdPed{
 		void outputText(){
 			TString outputName = Form("./txt/dssdPedestal%d.txt",runNumber);
 			ofstream fout(outputName,ios_base::out);
-			for (int i = 0; i < 7; ++i) {
-			fout<<i<<"\t"<<fitPara[i][1]<<"\t"<<fitPara[i][2]<<endl;
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 32; ++j) {
+
+					fout<<i<<"	"<<j<<"\t"<<fitPara0[i][j]<<"\t"<<fitPara1[i][j]<<endl;
+				}
 			}
 			fout.close();
 		}
@@ -74,6 +79,8 @@ class DssdPed{
 			hTemp->Fit(fitFunction,"Q","R",xBin-30,xBin+30);
 			double par[3];
 			fitFunction->GetParameters(par);
+			fitPara0[i][j] = par[1];
+			fitPara1[i][j] = par[2];
 			cout<<i<<"	"<<j<<"	"<<par[1]<<"	"<<par[2]<<endl;
 		}
 		void drawHist(int i,int j){
@@ -142,12 +149,11 @@ void fitPedestal(){
 
 	DssdPed *dssdPed = new DssdPed();
 	dssdPed->fitHist();
-	//dssdPed->outputText();
+	dssdPed->outputText();
 
 
 }
 void dssdPedestal(){
-
 	//generatePedestal();
 	fitPedestal();
 }

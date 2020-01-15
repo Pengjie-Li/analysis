@@ -292,8 +292,8 @@ class DSSDHit{
 					if((2*getTHitSide(i) == getQHitSide(j))&&(getTHitStripId(i)==getQHitStripId(j))){ // find T and FQ have same side and strip Id
 						for (int k = 0; k < getQHit(); ++k) { // loop all Q to find back Q
 							if(getQHitSide(k) == 2*getTHitSide(i)+1&&dssdHit<10){
-								if(abs(getQHitQPed(j)/getQHitQPed(k))>2||abs(getQHitQPed(j)/getQHitQPed(k))<0.5) continue; // remove event unrelevent
-								//if(abs(getQHitQPed(j)/getQHitQPed(k))>2||abs(getQHitQPed(j)/getQHitQPed(k))<0.5) continue; // remove event unrelevent
+								if(abs(getQHitQPed(j)/getQHitQPed(k))>3||abs(getQHitQPed(j)/getQHitQPed(k))<0.3) continue; // remove event unrelevent
+								if(abs(getQHitQPed(j)-getQHitQPed(k))>500) continue; // remove event unrelevent
 								dssdHitTCal[dssdHit]= getTHitTCal(i);
 								dssdHitFQPed[dssdHit]= getQHitQPed(j);
 								dssdHitBQPed[dssdHit]= getQHitQPed(k);

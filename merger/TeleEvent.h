@@ -15,36 +15,32 @@ class DEECurve{
 			return dEE->Eval(dssd);
 		}
 };
-class TeleEvent{
+class TeleHit{
 	private:
-
-		
 		MergeTELE *mergeData;
 		DEECurve *deePara;
 
 		EnergyTELE *calibEnergy;
 		TimeTELE *calibTime;
-		PositionTELE *positionTELE;
-		
-		int iHit;
-		int 	goodTeleHit[3];
-		double teleCsiE;
-		double teleCsiE_sync;
-		double teleDssdFE;
-		double teleDssdBE;
-		double teleDssdE;
-		double teleCsiT;
-		double teleDssdT;
-		double teleEnergy;
 
-		double teleX;
-		double teleY;
-		double teleZ;
-		TVector3 *telePosition;
+		Int_t           teleHit;
+		Int_t           teleHitSide[10];
+		Int_t           teleHitFid[10];
+		Int_t           teleHitBid[10];
+		Double_t        teleHitDssdFQPed[10];
+		Double_t        teleHitDssdBQPed[10];
+		Double_t        teleHitDssdTCal[10];
+		Int_t           teleHitCid[10];
+		Double_t        teleHitCsiQPed[10];
+		Double_t        teleHitCsiTCal[10];
 
-		TVector3 getPosition(int i){
-			return positionTELE->getPosition(mergeData->getHitSide(i),mergeData->getHitFid(i),mergeData->getHitBid(i));
-		}
+		Double_t        teleHitDssdFE[10];
+		Double_t        teleHitDssdBE[10];
+		Double_t        teleHitCsiE[10];
+
+		int 		bestHit;
+
+
 		int getHit(){
 			return mergeData->getHit();
 		}
@@ -56,8 +52,8 @@ class TeleEvent{
 			return csiE;
 		} 
 		double getCsiE_sync(int i){
-			double csiE =  calibEnergy->getSyncCsiE(mergeData->getHitCid(i),mergeData->getHitCsiQPed(i));
-			if(mergeData->getRunNumber()<305&&mergeData->getHitCid(i)==4) csiE = 1.8*csiE;  
+			double csiE =  calibEnergy->getSyncCsiE(teleHitCid[i],teleHitCsiQPed[i]);
+			if(mergeData->getRunNumber()<305&&teleHitCid[i]==4) csiE = 1.8*csiE;  
 			return csiE;
 		} 
 
@@ -76,45 +72,210 @@ class TeleEvent{
 		}
 
 
+
+	public:
+		TeleHit(){
+			deePara = new DEECurve();
+			calibEnergy = new EnergyTELE();
+			calibTime = new TimeTELE();
+
+		}
+		~TeleHit(){
+			delete calibEnergy;
+			delete calibTime;
+			delete deePara;
+		}
+		void loadData(MergeTELE *mergeTELE){
+			
+			mergeData = mergeTELE;
+		}
+
+		void init(){
+
+			mergeData = NULL;
+			bestHit = -1;
+			teleHit = 0;
+			for (int i = 0; i < 10; ++i) {
+				teleHitSide[i] =-1;
+				teleHitFid[i]  =-1;
+				teleHitBid[i]  =-1;
+				teleHitCid[i]  =-1;
+
+				teleHitDssdFQPed[i]    =-9999;
+				teleHitDssdBQPed[i]    =-9999;
+				teleHitDssdTCal[i]     =-9999;
+				teleHitCsiQPed[i]      =-9999;
+				teleHitCsiTCal[i]      =-9999;
+
+				teleHitDssdFE[i] = -9999;
+				teleHitDssdBE[i] = -9999;
+				teleHitCsiE[i] = -9999;
+			}
+		}
+		void setBranch(TTree *tree){
+
+			tree->Branch("teleHit",&teleHit,"teleHit/I");
+			tree->Branch("teleHitSide",&teleHitSide,"teleHitSide[teleHit]/I");
+			tree->Branch("teleHitFid",&teleHitFid,"teleHitFid[teleHit]/I");
+			tree->Branch("teleHitBid",&teleHitBid,"teleHitBid[teleHit]/I");
+
+			tree->Branch("teleHitDssdFQPed",&teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/D");
+			tree->Branch("teleHitDssdBQPed",&teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/D");
+			tree->Branch("teleHitDssdTCal",&teleHitDssdTCal,"teleHitDssdTCal[teleHit]/D");
+
+			tree->Branch("teleHitCid",&teleHitCid,"teleHitCid[teleHit]/I");
+			tree->Branch("teleHitCsiQPed",&teleHitCsiQPed,"teleHitCsiQPed[teleHit]/D");
+			tree->Branch("teleHitCsiTCal",&teleHitCsiTCal,"teleHitCsiTCal[teleHit]/D");
+
+			tree->Branch("teleHitDssdFE",&teleHitDssdFE,"teleHitDssdFE[teleHit]/D");
+			tree->Branch("teleHitDssdBE",&teleHitDssdBE,"teleHitDssdBE[teleHit]/D");
+			tree->Branch("teleHitCsiE",&teleHitCsiE,"teleHitCsiE[teleHit]/D");
+	
+			tree->Branch("bestHit",&bestHit,"bestHit/I");
+		}
+		double getDEECsiE(double dssdE){
+			return deePara->getDEECsiE(dssdE);
+		}
+		double getDEEResidue(int i){
+			return abs(getDEECsiE(0.5*(teleHitDssdFE[i]+teleHitDssdBE[i]))- teleHitCsiE[i]);
+		}
+		void removeBadHit(){
+			for (int i = 0; i < getHit(); ++i) {
+				if(abs(getDssdFrontE(i)-getDssdBackE(i))>5) continue;
+				if((getDssdFrontE(i)/getDssdBackE(i))>2||(getDssdFrontE(i)/getDssdBackE(i))<0.5) continue;
+				reFillHit(i);
+			}
+		}
+		void reFillHit(int i){
+
+			teleHitSide[teleHit]	 = mergeData->getHitSide(i);
+			teleHitFid[teleHit]	 = mergeData->getHitFid(i);
+			teleHitBid[teleHit]	 = mergeData->getHitBid(i);
+			teleHitDssdFQPed[teleHit]= mergeData->getHitDssdFQPed(i);
+			teleHitDssdBQPed[teleHit]= mergeData->getHitDssdBQPed(i);
+			teleHitDssdTCal[teleHit] = mergeData->getHitDssdTCal(i);
+
+			teleHitCid[teleHit]	 = mergeData->getHitCid(i);
+			teleHitCsiQPed[teleHit]	 = mergeData->getHitCsiQPed(i);
+			teleHitCsiTCal[teleHit]	 = mergeData->getHitCsiTCal(i);
+
+			teleHitDssdFE[teleHit]	 = getDssdFrontE(i);
+			teleHitDssdBE[teleHit]	 = getDssdBackE(i);
+			teleHitCsiE[teleHit]	 = getCsiE(i);
+			
+			teleHit++;
+
+		}
+		void findBestHit(){
+			double deeResidue = 10000;
+			for (int i = 0; i < teleHit; ++i) {
+				//cout<<getDEEResidue(i)<<endl;
+				if(getDEEResidue(i)<deeResidue){
+					bestHit = i;
+					deeResidue = getDEEResidue(i);
+				}
+			}
+		}
+		bool isGoodEvent(){
+			if(bestHit!=-1) return true;
+			else return false;
+		}
+		int getSide(){
+			return teleHitSide[bestHit];
+		}
+		int getFid(){
+			return teleHitFid[bestHit];
+		}
+		int getBid(){
+			return teleHitBid[bestHit];
+		}
+		int getCid(){
+			return teleHitCid[bestHit];
+		}
+
+
+		double getCsiE(){
+			return teleHitCsiE[bestHit];
+		}
+		double getCsiE_sync(){
+			return getCsiE_sync(bestHit);
+		}
+		double getDssdFrontE(){
+			return teleHitDssdFE[bestHit];
+		}
+		double getDssdBackE(){
+			return teleHitDssdBE[bestHit];
+		}
+		double getCsiT(){
+			return teleHitCsiTCal[bestHit];
+		}
+		double getDssdT(){
+			return teleHitDssdTCal[bestHit];
+		}
+		void print(){
+			for (int i = 0; i < teleHit; ++i) {
+				cout<<" teleHit"<<i<<" dssd Fid="<<teleHitFid[i]<<" Bid="<<teleHitBid[i]<<" "<<teleHitDssdFE[i]<<" "<<teleHitDssdBE[i]<<" Cid ="<<teleHitCid[i]<<" "<<teleHitCsiE[i]<<endl;	
+			}
+		}
+	
+};
+class TeleEvent{
+	private:
+
+
+		PositionTELE *positionTELE;
+		TeleHit *teleHit;
+		
+		double teleCsiE;
+		double teleCsiE_sync; // sync First then calib 1 cyrsatal
+		double teleDssdFE;
+		double teleDssdBE;
+		double teleDssdE; // save 0.5(FE+BE)
+		double teleDssdMaxE; // save max(FE,BE)
+		double teleCsiT;
+		double teleDssdT;
+		double teleEnergy;
+
+		double teleX;
+		double teleY;
+		double teleZ;
+		TVector3 *telePosition;
+
+		TVector3 getPosition(){
+			return positionTELE->getPosition(teleHit->getSide(),teleHit->getFid(),teleHit->getBid());
+		}
+
 	public:
 		void print(){
+			teleHit->print();
 			cout<<"TELE Event:"<<endl;
 
 				
-			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdBE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
+			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdBE<<" "<<teleDssdE<<" "<<teleDssdMaxE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
 			
 			//cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
 	
 		}
 		
 		TeleEvent(){
-			calibEnergy = new EnergyTELE();
-			calibTime = new TimeTELE();
 			positionTELE = new PositionTELE();
-			deePara = new DEECurve();
+			teleHit = new TeleHit();
 		}
 		~TeleEvent(){
+			delete teleHit;
 			delete positionTELE;
-			delete calibEnergy;
-			delete calibTime;
-			delete deePara;
 		}
 		void loadData(MergeTELE *mergeTELE){
-			mergeData = mergeTELE;
+			teleHit->loadData(mergeTELE);
 		}
 		void init(){
-			mergeData = NULL;
-			for (int i = 0; i < 3; ++i) {
-
-				goodTeleHit[i]=1;
-							
-			}
-			iHit = -1;
+			teleHit->init();
 			teleCsiE=NAN;
 			teleCsiE_sync=NAN;
 			teleDssdFE=NAN;
 			teleDssdBE=NAN;
 			teleDssdE=NAN;
+			teleDssdMaxE=NAN;
 			teleCsiT=NAN;
 			teleDssdT=NAN;
 			teleEnergy=NAN;
@@ -128,67 +289,52 @@ class TeleEvent{
 
 			telePosition = new TVector3();
 
-			tree->Branch("goodTeleHit",&goodTeleHit,"goodTeleHit[teleHit]/I");
+			teleHit->setBranch(tree);
 			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
 			tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
 			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
 			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
 			tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
+			tree->Branch("teleDssdMaxE",&teleDssdMaxE,"teleDssdMaxE/D");
 			tree->Branch("teleCsiT",&teleCsiT,"teleCsiT/D");
 			tree->Branch("teleDssdT",&teleDssdT,"teleDssdT/D");
 			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
 			tree->Branch("telePosition","TVector3",&telePosition);
 	
 		}
+		void setHit(){
+
+			teleHit->removeBadHit();
+			teleHit->findBestHit();
+		}
 		void setEvent(){
-			iHit = getGoodHit();
-			if(isGoodEvent()){
-				teleCsiE	 = getCsiE(iHit);
-				teleCsiE_sync	 = getCsiE_sync(iHit);
-				teleDssdFE	 = getDssdFrontE(iHit);
-				teleDssdBE	 = getDssdBackE(iHit);
-				teleCsiT	 = getCsiT(iHit);
-				teleDssdT	 = getDssdT(iHit);
+			setHit();
+			if(teleHit->isGoodEvent()){
+				teleCsiE	 =teleHit->getCsiE();
+				teleCsiE_sync	 =teleHit->getCsiE_sync();
+				teleDssdFE	 =teleHit->getDssdFrontE();
+				teleDssdBE	 =teleHit->getDssdBackE();
+				teleCsiT	 =teleHit->getCsiT();
+				teleDssdT	 =teleHit->getDssdT();
 				teleDssdE	 = 0.5*(teleDssdFE+teleDssdBE);
+				teleDssdMaxE	 = (teleDssdFE>teleDssdBE)?teleDssdFE:teleDssdBE;
 				teleEnergy	 = teleDssdE+teleCsiE;
-				(*telePosition)	 = getPosition(iHit);
+				(*telePosition)	 = getPosition();
 				teleX = telePosition->X();
 				teleY = telePosition->Y();
 				teleZ = telePosition->Z();
 			}
 		}
-		double getDEECsiE(double dssdE){
-			return deePara->getDEECsiE(dssdE);
-		}
-		double getDEEResidue(int i){
-			return abs(getDEECsiE(0.5*(getDssdFrontE(i)+getDssdBackE(i)))- getCsiE(i));
-		}
-		int getGoodHit(){
-			if(getHit()==1) return 0;
-			if(getHit()>1){
-				for (int i = 0; i < getHit()-1; ++i) {
-					if(getDEEResidue(i)>getDEEResidue(i+1)) goodTeleHit[i] = -1;
-					else goodTeleHit[i+1] = -1;
-				}
-				for (int i = 0; i < getHit(); ++i) {
-					if(abs(getDssdFrontE(i)-getDssdBackE(i))<2){
-						if(goodTeleHit[i]==1) return i;
-					}
-				}
-			}
-			return -1;
-		}
-		bool isGoodEvent(){
-			if(iHit!=-1) return true;
-			else return false;
-		}
 		TVector3 getDssdPlaneNorm(){
-			return positionTELE->getDssdPlaneNorm(mergeData->getHitSide(iHit));
+			return positionTELE->getDssdPlaneNorm(teleHit->getSide());
 		}
 		TVector3 *getTelePosition(){
 			return telePosition;
 		}
 		double getCsiEnergy(){
 			return teleCsiE;
+		}
+		bool isGoodEvent(){
+			return teleHit->isGoodEvent();
 		}
 };
