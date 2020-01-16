@@ -4329,3 +4329,67 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/convert/v3_selectGoodHit/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0da97bc] v1.0
+ 90 files changed, 6202 insertions(+), 271 deletions(-)
+ rewrite merger/Merger (93%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (71%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (75%)
+ create mode 100644 merger/rootfiles/run0582_analysed.root_test
+ rewrite merger/rootfiles/run0586_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (67%)
+ create mode 100644 tele/calib/pedestral/txt/dssdPedestal.txt
+ rewrite tele/calib/pedestral/txt/dssdPedestal340.txt (100%)
+ create mode 100644 tele/calib/scm/fit/fitTGraph.C
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmPara.txt
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v1
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v2
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v3
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v4
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v5
+ create mode 100644 tele/calib/scm/generate/Event.h
+ create mode 100755 tele/calib/scm/generate/Makefile
+ create mode 100644 tele/calib/scm/generate/ReadFile.h
+ create mode 100644 tele/calib/scm/generate/configScmGenerator.prm
+ create mode 100644 tele/calib/scm/generate/convert.sh
+ create mode 100755 tele/calib/scm/generate/header.h
+ create mode 120000 tele/calib/scm/generate/inputRootfiles
+ create mode 100644 tele/calib/scm/generate/loop.sh
+ create mode 100644 tele/calib/scm/generate/looprun.sh
+ create mode 100644 tele/calib/scm/generate/main.cpp
+ create mode 100755 tele/calib/scm/generate/scmGenerator
+ create mode 100644 tele/calib/scm/generate/scmGenerator.cpp
+ create mode 100644 tele/calib/scm/generate/scmGenerator.h
+ create mode 100644 tele/calib/scm/generate/v1_scm/Makefile
+ create mode 100644 tele/calib/scm/generate/v1_scm/fit_calibration_parameters.txt
+ create mode 100755 tele/calib/scm/generate/v1_scm/header.h
+ create mode 100755 tele/calib/scm/generate/v1_scm/ldp
+ create mode 100644 tele/calib/scm/generate/v1_scm/ldp.cpp
+ create mode 100644 tele/calib/scm/generate/v1_scm/ldp.h
+ create mode 100644 tele/calib/scm/generate/v1_scm/main.cpp
+ create mode 100644 tele/calib/scm/graph/Event.h
+ create mode 100755 tele/calib/scm/graph/Makefile
+ create mode 100644 tele/calib/scm/graph/ReadFile.h
+ create mode 100644 tele/calib/scm/graph/configScmGenerator.prm
+ create mode 100644 tele/calib/scm/graph/convert.sh
+ create mode 100755 tele/calib/scm/graph/header.h
+ create mode 120000 tele/calib/scm/graph/inputRootfiles
+ create mode 100644 tele/calib/scm/graph/loop.sh
+ create mode 100644 tele/calib/scm/graph/looprun.sh
+ create mode 100644 tele/calib/scm/graph/main.cpp
+ create mode 100755 tele/calib/scm/graph/scmGenerator
+ create mode 100644 tele/calib/scm/graph/scmGenerator.cpp
+ create mode 100644 tele/calib/scm/graph/scmGenerator.h
+ rewrite tele/convert/ConvertTele (97%)
+ create mode 100644 tele/convert/logConverter
+ create mode 100644 tele/convert/rootfiles/run0380_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0381_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0437_TELE.root_test
+ create mode 100644 tele/plot/Draw2D/drawDssdEnergyVsId.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

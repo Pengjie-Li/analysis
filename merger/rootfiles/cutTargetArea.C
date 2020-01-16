@@ -14,4 +14,23 @@
 	//TString smallTargetArea="sqrt((Target_X+2.0)*(Target_X+2.0)+(Target_Y+1.1)*(Target_Y+1.1))<10";
 	TString targetArea="sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<13";
 
+        TString Frame="((vTarget.X()-2.0)<30&&(vTarget.X()-2.0)>-30&&(vTarget.Y()+1.1)<25&&(vTarget.Y()+1.1)>-35)";
+        TString Neck="((vTarget.X()-2.0)<4&&(vTarget.X()-2.0)>-4&&(vTarget.Y()+1.1)>15&&(vTarget.Y()+1.1)<25)";
+
+        TString R5="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<14)";
+        TString R4="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<17)";
+        TString R3="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<20)";
+        TString R2="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<21)";
+        TString R1="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<15)";
+
+        TString peak[5];
+         TString peak3_1="(!"+R5+"&&"+R4+"&&!"+Neck+")";
+         TString peak3_2="("+Neck+"&&!"+R2+")";
+
+         peak[0]=targetArea;
+         peak[1]="("+Neck+"&&"+R2+")";
+         peak[2]="("+peak3_1+"||"+peak3_2+")";
+         peak[3]="(!"+R1+"&&"+R2+"&&!"+Neck+")";
+         peak[4]="("+Frame+"&&!"+R3+"&&!"+Neck+")";
+
 }

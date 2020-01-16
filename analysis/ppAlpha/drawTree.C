@@ -258,18 +258,19 @@ class CheckEx{
 			tree->SetAlias("MassHe4","4.001506105*1");
 			tree->SetAlias("MassHe6","6.017788744*1");
 			tree->SetAlias("MassHe8","8.032837245*1");
-			tree->SetAlias("MassHe10","10.05171959*1");
+			tree->SetAlias("MassHe10","10.050167077*1");
+			//tree->SetAlias("MassHe10","10.05171959*1");
 
 
 
-			//tree->SetAlias("MassBe","MassBe10*1");
-			//tree->SetAlias("residueRestMass","MassHe6*AMU");
+			tree->SetAlias("MassBe","MassBe10*1");
+			tree->SetAlias("residueRestMass","MassHe6*AMU");
 
 			//tree->SetAlias("MassBe","MassBe12*1");
 			//tree->SetAlias("residueRestMass","MassHe8*AMU");
 
-			tree->SetAlias("MassBe","MassBe14*1");
-			tree->SetAlias("residueRestMass","MassHe10*AMU");
+			//tree->SetAlias("MassBe","MassBe14*1");
+			//tree->SetAlias("residueRestMass","MassHe10*AMU");
 
 
 
@@ -292,7 +293,13 @@ class CheckEx{
 			tree->SetAlias("xA","vAlpha.X()");
 			tree->SetAlias("yA","vAlpha.Y()");
 			tree->SetAlias("zA","vAlpha.Z()");
-	
+			tree->SetAlias("xR","vFDC0.X()");
+			tree->SetAlias("yR","vFDC0.Y()");
+			tree->SetAlias("zR","vFDC0.Z()");
+
+			TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
+
+
 	
 			tree->SetAlias("A1","yP*zB-zP*yB");
 			tree->SetAlias("B1","zP*xB-xP*zB");
@@ -401,6 +408,15 @@ class CheckEx{
 		void drawEx(){
 			tree->Draw("exEnergy>>hEx(200,-20,20)",gate,"colz");
 		}
+		void drawEp(){
+			tree->Draw("protonEnergy>>hEp(200,0,100)",gate);
+		}
+
+		void drawPlaneBPA(){
+
+			TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
+			tree->Draw(planeOfBPA+">>hPlane(400,-0.4,0.4)",gate);
+		}
 
 
 
@@ -446,31 +462,44 @@ class CheckEx{
 			delete calibPara;
 		}
 };
-TString getGate(){
+TString getHodGate(){
 	TString hodGate;
 	TString hodGateHe4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
 	TString hodGateHe6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
 	TString hodGateHe8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
-	//hodGate = hodGateHe4;
+	hodGate = hodGateHe4;
 	//hodGate = hodGateHe6;
-	hodGate = hodGateHe8;
+	//hodGate = hodGateHe8;
 	//hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
 
 	return hodGate;
 }
+TString getGate(){
+	//return "(espriAngle>66.5)";
+	//return "(espriAngle>67.5)";
+	//return "(espriAngle>66.5&&espriAngle<67.5)";
+	//return "(espriAngle>65.5&&espriAngle<66.5)";
+	//return "(espriAngle>64.5&&espriAngle<65.5)";
+	//return "(espriAngle<66.5&&espriAngle>63.5)";
+	return "(espriAngle<67&&espriAngle>65&&alphaAngle>6&&alphaAngle<8)";
+	//return "(espriAngle<63.5)";
+	//return "(espriHitSide==0)";
+}
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
 	//ce->addFile("ppaBe12.root");
-	//ce->addFile("ppaBe10.root");
+	ce->addFile("ppaBe10.root");
 	//ce->addFile("ppaBe12.root");
-	ce->addFile("ppaBe14.root");
+	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
-	//ce->setGate(getGate());
+	ce->setGate(getGate());
+	//ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 //	cPad->Divide(2,2);
 //	cPad->cd(1);
+	//ce->drawEp();
 	ce->drawEx();
 	ce->output();
 
@@ -478,12 +507,12 @@ void drawExEnergy(){
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
-	//ce->addFile("ppaBe10.root");
+	ce->addFile("ppaBe10.root");
 	//ce->addFile("ppaBe12.root");
-	ce->addFile("ppaBe14.root");
+	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
-	//ce->setGate(getGate());
+	ce->setGate(getGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(2,2);
@@ -498,9 +527,24 @@ void drawPACorrelation(){
 	ce->output();
 }
 
+void drawPlaneBPA(){
+
+	CheckEx *ce = new CheckEx();
+	ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe12.root");
+	//ce->addFile("ppaBe14.root");
+	ce->setAlias();
+	ce->loadCut();
+	//ce->setGate(getGate());
+
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	ce->drawPlaneBPA();
+	ce->output();
+}
 
 void drawTree(){
 	//drawPACorrelation();	
 	drawExEnergy();
+	//drawPlaneBPA();
 }
 

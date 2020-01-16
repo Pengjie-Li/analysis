@@ -8,6 +8,52 @@ class DssdEnergyPara{
 		double kCalSlope[2];
 		double bCalOffset[2];
 
+		double kScmGain[4][32]; // new Para
+		double kRefA[4]; // Ref LF,LB,RF,RB
+		double kRefB[4]; // 
+
+
+		void loadNewScmPara(){
+			ifstream in;
+			TString inputName;
+
+			inputName = env->GetValue("dssdScmNewPara","le.txt");
+			cout<<inputName<<endl;
+			in.open(inputName);
+			int side;
+			int strip;
+			int refId;
+			double offset;
+			double gain;
+			while (1)
+			{
+				in >>side>>strip>>refId>>offset>>gain;
+				cout<<side<<"\t"<<strip<<"\t"<<offset<<"\t"<<gain<<endl;
+				if (!in.good()) break;
+				kScmGain[side][strip]=gain;
+			}
+			in.close();
+		}
+		void loadCalibPeak5(){
+			ifstream in;
+			TString inputName;
+
+			inputName = env->GetValue("dssdPeak5CalibPara","le.txt");
+			cout<<inputName<<endl;
+			in.open(inputName);
+			int side;
+			double A;
+			double B;
+			while (1)
+			{
+				in >>side>>A>>B;
+				cout<<side<<"\t"<<A<<"\t"<<B<<endl;
+				if (!in.good()) break;
+				kRefA[side] = A;
+				kRefB[side] = B;
+			}
+			in.close();
+		}
 		void loadSiliconCalibrationParas(double k[4][32],double b[4][32],double ek[4][32],double eb[4][32]){
 			ifstream in;
 			TString inputName;
@@ -52,47 +98,79 @@ class DssdEnergyPara{
 
 			kCalSlope[1] = 0.00683802;
 			bCalOffset[1] = -0.612683;
+
+			loadNewScmPara();
+			loadCalibPeak5();
 	
 		}
-		double getScmSlope(int side, int id){
+		double getScmSlope_old(int side, int id){
 			return kScmSlope[side][id];
 		}
-		double getScmOffset(int side, int id){
+		double getScmOffset_old(int side, int id){
 			return bScmOffset[side][id];
 		}
-		double getCalSlope(int side){ // side dssd Left right
+		double getCalSlope_old(int side){ // side dssd Left right
 			return kCalSlope[side];
 		}
-		double getCalOffset(int side){ // side dssd Left right
+		double getCalOffset_old(int side){ // side dssd Left right
 
 			return bCalOffset[side];
 		}
+		double getScmGain(int side,int id){
+			return kScmGain[side][id];
+		}
+		double getRefParaA(int side){
+			return kRefA[side];
+		}
+		double getRefParaB(int side){
+			return kRefB[side];
+		}
+
 
 };
 class DssdEnergy{
 	private:
 		DssdEnergyPara *dssdPara;
+		double getScm_old(int side,int id,double qPed){
+			return dssdPara->getScmSlope_old(side,id)*qPed + dssdPara->getScmOffset_old(side,id);
+		}
+		double getQCal_old(int side,double scm){
+			return dssdPara->getCalSlope_old(side)*scm + dssdPara->getCalOffset_old(side);
+		}
+
 		double getScm(int side,int id,double qPed){
-			return dssdPara->getScmSlope(side,id)*qPed + dssdPara->getScmOffset(side,id);
+			return qPed/dssdPara->getScmGain(side,id);
 		}
 		double getQCal(int side,double scm){
-			return dssdPara->getCalSlope(side)*scm + dssdPara->getCalOffset(side);
+			//cout<<side<<" scm="<<scm<<" "<<dssdPara->getRefParaA(side)<<" "<<dssdPara->getRefParaB(side)<<endl;	
+			return dssdPara->getRefParaA(side)*scm/(1+dssdPara->getRefParaB(side)*scm);
 		}
+
+
 
 	public:
 		DssdEnergy(){
 			dssdPara = new DssdEnergyPara();
 		}
 		~DssdEnergy(){}
+		double getFront_old(int side,int fid,double fQPed){
+			double scm = getScm_old(2*side,fid,fQPed);
+			return getQCal_old(side,scm);
+		}
+		double getBack_old(int side,int bid,double bQPed){
+			double scm = getScm_old(2*side+1,bid,bQPed);
+			return getQCal_old(side,scm);
+		}
+
 		double getFront(int side,int fid,double fQPed){
 			double scm = getScm(2*side,fid,fQPed);
-			return getQCal(side,scm);
+			//cout<<2*side<<" scm="<<scm<<endl;
+			return getQCal(2*side,scm);
 		}
 		double getBack(int side,int bid,double bQPed){
 			double scm = getScm(2*side+1,bid,bQPed);
-			return getQCal(side,scm);
+			return getQCal(2*side+1,scm);
 		}
-
 	
 };
 class CsiEnergyPara{
@@ -249,6 +327,15 @@ class EnergyTELE{
 		double getDssdBackE(int side, int bid,double bQPed){
 			return dssdEnergy->getBack(side,bid,bQPed);
 		}
+
+		double getDssdFrontE_old(int side,int fid,double fQPed){
+			return dssdEnergy->getFront_old(side,fid,fQPed);
+		}
+
+		double getDssdBackE_old(int side, int bid,double bQPed){
+			return dssdEnergy->getBack_old(side,bid,bQPed);
+		}
+
 
 };
 class TimeTELE{

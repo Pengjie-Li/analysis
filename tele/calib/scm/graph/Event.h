@@ -9,7 +9,7 @@ class RemovePara{
 		~RemovePara(){}
 		void load(){
 			ifstream in;
-			TString inputName = "../fit/txt/dssdScmParaRaw.txt_v5";
+			TString inputName = "../fit/txt/dssdScmParaRaw.txt_v6";
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
@@ -25,7 +25,7 @@ class RemovePara{
 			}
 		}
 		bool isInArea(int side, int stripId, int refId,double x,double y){
-			return (abs(y-(offsetPara[side][stripId]+gainPara[side][stripId]*x))<30)?true:false;
+			return (abs(y-(offsetPara[side][stripId]+gainPara[side][stripId]*x))<10)?true:false;
 		}
 
 

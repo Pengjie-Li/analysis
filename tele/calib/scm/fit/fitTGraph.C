@@ -10,9 +10,10 @@ class FitTGraph{
 
 	public:
 		FitTGraph(){
-			fitFunction = new TF1("fitFunction","pol1",0,4000);
-			fitFunction->SetParameter(0,0);
-			fitFunction->SetParameter(1,1);
+			fitFunction = new TF1("fitFunction","[0]*x",0,4000);
+			//fitFunction = new TF1("fitFunction","pol1",0,4000);
+			fitFunction->SetParameter(0,1);
+			//fitFunction->SetParameter(1,1);
 		}
 		void addFile(TString fileName){
 			inputFile = new TFile(fileName,"READ");
@@ -36,7 +37,8 @@ class FitTGraph{
 		void output(){
                         TString outputName = "./txt/dssdScmParaRaw.txt";
                         ofstream fout(outputName,ios_base::app | ios_base::out);
-			fout<<side<<"\t"<<stripId<<"\t"<<refId<<"\t"<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
+			fout<<side<<"\t"<<stripId<<"\t"<<refId<<"\t"<<0<<"\t"<<fitFunction->GetParameter(0)<<endl;
+			//fout<<side<<"\t"<<stripId<<"\t"<<refId<<"\t"<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
 			fout.close();
 
 		}
@@ -73,13 +75,13 @@ void fitStrip(int side,int refId,int stripId){
 }
 
 void fitTGraph(){
-	//int side = 3;	
-	//int stripId = 6;	
-	//int refId = 15;	
-	//fitStrip(side,refId,stripId);
-	for (int i = 0; i < 4; ++i) {
-		for (int j = 0; j <32; ++j) {
-			fitStrip(i,15,j);
-		}
-	}
+	int side = 0;	
+	int stripId = 30;	
+	int refId = 15;	
+	fitStrip(side,refId,stripId);
+//	for (int i = 0; i < 4; ++i) {
+//		for (int j = 0; j <32; ++j) {
+//			fitStrip(i,15,j);
+//		}
+//	}
 }

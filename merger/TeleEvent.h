@@ -67,6 +67,14 @@ class TeleHit{
 		double getDssdBackE(int i){
 			return calibEnergy->getDssdBackE(mergeData->getHitSide(i),mergeData->getHitBid(i),mergeData->getHitDssdBQPed(i));
 		}
+		double getDssdFrontE_old(int i){
+			return calibEnergy->getDssdFrontE_old(teleHitSide[i],teleHitFid[i],teleHitDssdFQPed[i]);
+		}
+
+		double getDssdBackE_old(int i){
+			return calibEnergy->getDssdBackE_old(teleHitSide[i],teleHitBid[i],teleHitDssdBQPed[i]);
+		}
+	
 		double getDssdT(int i){
 			return calibTime->getDssdT(mergeData->getHitSide(i),mergeData->getHitFid(i),mergeData->getHitDssdTCal(i));
 		}
@@ -206,6 +214,13 @@ class TeleHit{
 		double getDssdBackE(){
 			return teleHitDssdBE[bestHit];
 		}
+		double getDssdFrontE_old(){
+			return getDssdFrontE_old(bestHit);
+		}
+		double getDssdBackE_old(){
+			return getDssdBackE_old(bestHit);
+		}
+	
 		double getCsiT(){
 			return teleHitCsiTCal[bestHit];
 		}
@@ -230,6 +245,9 @@ class TeleEvent{
 		double teleCsiE_sync; // sync First then calib 1 cyrsatal
 		double teleDssdFE;
 		double teleDssdBE;
+		double teleDssdFE_old;
+		double teleDssdBE_old;
+	
 		double teleDssdE; // save 0.5(FE+BE)
 		double teleDssdMaxE; // save max(FE,BE)
 		double teleCsiT;
@@ -251,7 +269,7 @@ class TeleEvent{
 			cout<<"TELE Event:"<<endl;
 
 				
-			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdBE<<" "<<teleDssdE<<" "<<teleDssdMaxE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
+			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdFE_old<<" "<<teleDssdBE<<" "<<teleDssdBE_old<<" "<<teleDssdE<<" "<<teleDssdMaxE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
 			
 			//cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
 	
@@ -274,7 +292,11 @@ class TeleEvent{
 			teleCsiE_sync=NAN;
 			teleDssdFE=NAN;
 			teleDssdBE=NAN;
+			teleDssdFE_old=NAN;
+			teleDssdBE_old=NAN;
+	
 			teleDssdE=NAN;
+
 			teleDssdMaxE=NAN;
 			teleCsiT=NAN;
 			teleDssdT=NAN;
@@ -294,6 +316,9 @@ class TeleEvent{
 			tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
 			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
 			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
+			tree->Branch("teleDssdFE_old",&teleDssdFE_old,"teleDssdFE_old/D");
+			tree->Branch("teleDssdBE_old",&teleDssdBE_old,"teleDssdBE_old/D");
+	
 			tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
 			tree->Branch("teleDssdMaxE",&teleDssdMaxE,"teleDssdMaxE/D");
 			tree->Branch("teleCsiT",&teleCsiT,"teleCsiT/D");
@@ -314,6 +339,9 @@ class TeleEvent{
 				teleCsiE_sync	 =teleHit->getCsiE_sync();
 				teleDssdFE	 =teleHit->getDssdFrontE();
 				teleDssdBE	 =teleHit->getDssdBackE();
+				teleDssdFE_old	 =teleHit->getDssdFrontE_old();
+				teleDssdBE_old	 =teleHit->getDssdBackE_old();
+	
 				teleCsiT	 =teleHit->getCsiT();
 				teleDssdT	 =teleHit->getDssdT();
 				teleDssdE	 = 0.5*(teleDssdFE+teleDssdBE);

@@ -320,6 +320,20 @@ class CheckEx{
 			//gate = "espriHit==1";
 		}
 
+		TH1F *hDssdQPed[4];
+		void drawDssdQPed(int peakId,int side,int isFB){
+			if(isFB==0) tree->Draw(Form("teleHitDssdFQPed[0]>>hPeak%d_%d_%d(1000,0,4000)",peakId,side,isFB),"teleHit==1&&teleHitFid[0]==15&&"+gate);
+			else tree->Draw(Form("teleHitDssdBQPed[0]>>hPeak%d_%d_%d(1000,0,4000)",peakId,side,isFB),"teleHit==1&&teleHitBid[0]==15&&"+gate);
+
+			//tree->Draw(Form("teleDssdE>>hPeak%d_%d(1000,0,1000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			//tree->Draw(Form("teleHitDssdQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			int i = 2*side+isFB;
+			hDssdQPed[i] = (TH1F *)gDirectory->Get(Form("hPeak%d_%d_%d",peakId,side,isFB));
+			//hDssdQPed[i]->SetLineColor(i+1);
+			hDssdQPed[i]->Draw();
+			hDssdQPed[i]->Write();
+		}
+
 		TH1F *hCsiQPed[7];
 		void drawCsiQPed(int peakId,int i){
 			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
@@ -330,6 +344,7 @@ class CheckEx{
 			hCsiQPed[i]->Draw();
 			hCsiQPed[i]->Write();
 		}
+
 
 		TH2F *hTargetArea[5];
 		void drawTargetArea(int peakId){
@@ -404,6 +419,15 @@ TString getGate(int peakId){
 	 peak[3]="(!"+R1+"&&"+R2+"&&!"+Neck+")";
 	 peak[4]="("+Frame+"&&!"+R3+"&&!"+Neck+")";
 
+	 peak[0]+="&&(abs(teleCsiE-500.22)<15||abs(teleCsiE-318.27)<10)";
+	 peak[1]+="&&(abs(teleCsiE-485.28)<10||abs(teleCsiE-297.24)<10)";
+	 peak[2]+="&&(abs(teleCsiE-469.97)<10||abs(teleCsiE-275.030)<10)";
+	 peak[3]+="&&(abs(teleCsiE-454.34)<10||abs(teleCsiE-251.38)<10)";
+	 peak[4]+="&&(abs(teleCsiE-438.3)<10||abs(teleCsiE-225.87)<10)";
+	 //peak[3]+="(!"+R1+"&&"+R2+"&&!"+Neck+")";
+	 //peak[4]+="("+Frame+"&&!"+R3+"&&!"+Neck+")";
+
+
 
 	return peak[peakId];
 }
@@ -455,10 +479,39 @@ void drawCsiQPed(){
 	}
 	ce->output();
 }
+void drawDssdQPed(){
+
+	int peakId = 4;
+	TString fileName = "calibDssdQPedPeak5.root";
+	CheckEx *ce = new CheckEx();
+	ce->addFile("rootfiles/run0596_analysed.root");
+	ce->addFile("rootfiles/run0597_analysed.root");
+	ce->addFile("rootfiles/run0598_analysed.root");
+	ce->addFile("rootfiles/run0599_analysed.root");
+	ce->addFile("rootfiles/run0600_analysed.root");
+	ce->setAlias();
+	ce->loadCut();
+	ce->setGate(getGate(peakId));
+	cout<<getGate(peakId)<<endl;
+
+	//TFile *outputFile = new TFile(fileName,"RECREATE");
+	TFile *outputFile = new TFile(fileName,"UPDATE");
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	cPad->Divide(2,2);
+	for (int i = 0; i < 2; ++i) {
+		for (int j = 0; j< 2; ++j) {
+			cPad->cd(2*i+j+1);
+			ce->drawDssdQPed(peakId,i,j);
+		}
+	}
+	ce->output();
+}
+
 
 
 void drawTree(){
-	drawCsiQPed();	
+	drawDssdQPed();	
+	//drawCsiQPed();	
 	//checkTargetGate();
 }
 
