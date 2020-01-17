@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # Be14
-#run1=366
-#run2=455
+run1=366
+run2=455
 
-run1=331
-run2=365
 
 ##run1=298
 ##run2=330

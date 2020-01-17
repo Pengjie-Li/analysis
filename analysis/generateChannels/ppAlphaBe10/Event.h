@@ -39,19 +39,16 @@ class GateCut{
 		TCutG *beamCut;
 		TCutG *protonCut;
 		TCutG *alphaCut;
-		TCutG *prAngleCut;
 		HodCut *hodCut;
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe10.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutProtonBe10.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutProton.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutAlpha.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe10.C");
 		}
 		void getCut(){
 			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Beam");
 			protonCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Proton");
 			alphaCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Alpha");
-			prAngleCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("PRAngle");
 		}
 	public:
 		GateCut(){
@@ -72,10 +69,6 @@ class GateCut{
 		bool isAlpha(double E,double dE){
 			//cout<<"E ="<<E<<" dE ="<<dE<<endl;
 			return alphaCut->IsInside(E,dE);
-		}
-
-		bool isInsidePRAngle(double resAngle,double protonAngle){
-			return prAngleCut->IsInside(resAngle,protonAngle);
 		}
 		bool isHodPid(ReadFile *rf){
 			return hodCut->isInside(rf);
@@ -103,9 +96,6 @@ class Event{
 		bool isTargetArea(){
 			return gc->isInsideTargetArea(rf->getTargetX(),rf->getTargetY());
 		}
-		bool isPRAngle(){
-			return gc->isInsidePRAngle(rf->getResAngle(),rf->getEspriAngle());
-		}
 		bool isHodPid(){
 			return gc->isHodPid(rf);
 		}
@@ -127,7 +117,8 @@ class Event{
 			//return isBeam()&&isProton()&&isTargetArea()&&isHodPid()&&isPALR();
 			//return isAlpha();
 			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
-			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
+			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
+			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
 			//return isBeam();
 			//return isProton();
 			//return isTargetArea();

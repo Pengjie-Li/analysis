@@ -60,7 +60,8 @@ class DssdFit{
 		DssdFit(){
 			dssdInput = new DssdInput();
 			dssdInput->print();
-			fitFunction = new TF1("fit","[0]*x/(1+[1]*x)",0,3000);
+			fitFunction = new TF1("fit","[0]*x",0,3000);
+			//fitFunction = new TF1("fit","[0]*x/(1+[1]*x)",0,3000);
 
 		}
 		~DssdFit(){}
@@ -79,7 +80,8 @@ class DssdFit{
 			//fitFunction->SetParameters(0.29,0.01);
 			gr->Draw("ap*");
 			gr->Fit(fitFunction,"Q");
-			cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
+			//cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
+			cout<<fitFunction->GetParameter(0)<<endl;
 			//fitFunction->Draw("same");
 		}
 		

@@ -4393,3 +4393,38 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/plot/Draw2D/drawDssdEnergyVsId.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0a5b781] v1.0
+ 52 files changed, 1257 insertions(+), 363 deletions(-)
+ rewrite merger/Merger (80%)
+ create mode 100644 merger/rootfiles/run0300_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0301_analysed.root_test_test
+ rewrite merger/rootfiles/run0442_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (65%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (72%)
+ create mode 100644 merger/rootfiles/run0596_analysed.root_test_test
+ create mode 120000 merger/txt/dssdScmPara.txt
+ create mode 120000 merger/txt/peak5DssdCalib.txt
+ create mode 100644 tele/calib/peak5Calib/csiCalib.C
+ create mode 100644 tele/calib/peak5Calib/dssdCalib.C
+ rewrite tele/calib/peak5Calib/png/Bar00.png (99%)
+ rewrite tele/calib/peak5Calib/png/Bar13040.png (99%)
+ create mode 100644 tele/calib/peak5Calib/txt/peak5CsiCalib.txt
+ create mode 100644 tele/calib/peak5Calib/txt/peak5CsiCalibInput.txt
+ create mode 100644 tele/calib/peak5Calib/txt/peak5DssdCalib.txt
+ create mode 100644 tele/calib/peak5Calib/txt/peak5DssdCalibInput.txt
+ create mode 100644 tele/calib/scm/fit/txt/.dssdScmPara.txt.swp
+ rewrite tele/calib/scm/fit/txt/dssdScmPara.txt (99%)
+ rename tele/calib/scm/fit/txt/{dssdScmPara.txt => dssdScmPara.txt_offset} (79%)
+ rewrite tele/calib/scm/fit/txt/dssdScmParaRaw.txt (100%)
+ create mode 100644 tele/calib/scm/fit/txt/dssdScmParaRaw.txt_v6
+ rewrite tele/convert/rootfiles/run0441_TELE.root_test (69%)
+ rewrite tele/convert/rootfiles/run0474_TELE.root_test (61%)
+ rewrite tele/convert/rootfiles/run0582_TELE.root_test (68%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

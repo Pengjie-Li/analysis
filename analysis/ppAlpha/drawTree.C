@@ -197,6 +197,32 @@ class CheckEx{
 		}
 		void loadCut(){
 
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar27He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar28He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar29He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar30He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar31He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar32He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar33He6.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar34He6.C");
+
+			gROOT->ProcessLine(".x rootfiles/cutBe10Bar9He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar10He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar11He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar12He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar13He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar14He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar15He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar16He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar17He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar18He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar19He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar20He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar21He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar22He4.C");
+                        gROOT->ProcessLine(".x rootfiles/cutBe10Bar23He4.C");
+
+
                         gROOT->ProcessLine(".x rootfiles/cutBe14Bar3He4.C");
                         gROOT->ProcessLine(".x rootfiles/cutBe14Bar4He4.C");
                         gROOT->ProcessLine(".x rootfiles/cutBe14Bar5He4.C");
@@ -350,6 +376,11 @@ class CheckEx{
 			gate = g;
 			//gate = "espriHit==1";
 		}
+		void addGate(TString g){
+			gate = gate+"&&"+g;
+			//gate = "espriHit==1";
+		}
+
 		void drawDEE(){
 			tree->Draw(Form("espriPlasE:espriNaiE>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
 			//tree->Draw(Form("dEplas:Enai>>hDEE%d%d(1000,0,200,1000,0,30)",side,barId),gate);
@@ -380,21 +411,19 @@ class CheckEx{
 			tree->Draw("espriEnergy:espriAngle>>hEspriEA(200,40,80,150,0,150)",gate,"colz");
 			dc->drawProtonEA();
 		}
-		void drawProtonEA(){
-			tree->Draw("protonEnergy:espriAngle>>hProtonEA(200,50,80,150,0,150)",gate,"colz");
-			dc->drawProtonEA();
+		void drawTeleEA(){
+			tree->Draw("teleEnergy:teleAngle>>hTeleEA(100,0,18,100,0,700)",gate,"colz");
+			dc->drawAlphaEA();
 		}
 
-		void drawTeleEA(){
-			tree->Draw("teleEnergy:teleAngle>>hTeleEA(200,0,18,200,0,700)",gate,"colz");
-			dc->drawAlphaEA();
+		void drawProtonEA(){
+			tree->Draw("protonEnergy:espriAngle>>hProtonEA(200,50,80,200,0,150)",gate,"colz");
+			dc->drawProtonEA();
 		}
 		void drawAlphaEA(){
 			tree->Draw("alphaEnergy:alphaAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
 			dc->drawAlphaEA();
 		}
-
-
 
 		void drawAA(){
 			tree->Draw("espriAngle:alphaAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
@@ -407,6 +436,7 @@ class CheckEx{
 
 		void drawEx(){
 			tree->Draw("exEnergy>>hEx(200,-20,20)",gate,"colz");
+			
 		}
 		void drawEp(){
 			tree->Draw("protonEnergy>>hEp(200,0,100)",gate);
@@ -417,6 +447,10 @@ class CheckEx{
 			TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 			tree->Draw(planeOfBPA+">>hPlane(400,-0.4,0.4)",gate);
 		}
+		void drawProtonResAA(){
+			tree->Draw("espriAngle:resAngle>>hProtonResAA(500,0,5,500,50,80)",gate,"colz");
+		}
+	
 
 
 
@@ -464,10 +498,19 @@ class CheckEx{
 };
 TString getHodGate(){
 	TString hodGate;
-	TString hodGateHe4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
-	TString hodGateHe6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
-	TString hodGateHe8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
-	hodGate = hodGateHe4;
+	TString hodGateBe14He4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+	TString hodGateBe14He6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
+	TString hodGateBe14He8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
+	//TString hodGateBe10He4 = "(Be10Bar9He4||Be10Bar10He4||Be10Bar11He4||Be10Bar12He4||Be10Bar13He4||Be10Bar10He4||Be10Bar15He4||Be10Bar16He4||Be10Bar17He4||Be10Bar18He4||Be10Bar19He4||Be10Bar20He4||Be10Bar21He4||Be10Bar22He4||Be10Bar23He4)";
+	//TString hodGateBe10He4 = "(Be10Bar20He4||Be10Bar21He4||Be10Bar22He4||Be10Bar23He4)";
+	//TString hodGateBe10He4 = "(Be10Bar21He4||Be10Bar22He4||Be10Bar23He4)";
+	//TString hodGateBe10He4 = "(Be10Bar22He4||Be10Bar23He4)";
+	TString hodGateBe10He4 = "(Be10Bar17He4)";
+	//TString hodGateBe10He4 = "(Be10Bar21He4)";
+	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6)";
+	//TString hodGateBe10He6 = "(Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+	hodGate = hodGateBe10He4;
 	//hodGate = hodGateHe6;
 	//hodGate = hodGateHe8;
 	//hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
@@ -481,9 +524,13 @@ TString getGate(){
 	//return "(espriAngle>65.5&&espriAngle<66.5)";
 	//return "(espriAngle>64.5&&espriAngle<65.5)";
 	//return "(espriAngle<66.5&&espriAngle>63.5)";
-	return "(espriAngle<67&&espriAngle>65&&alphaAngle>6&&alphaAngle<8)";
+	///return "(espriAngle<67&&espriAngle>65&&alphaAngle>6&&alphaAngle<8)";
 	//return "(espriAngle<63.5)";
-	//return "(espriHitSide==0)";
+	
+	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
+	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
+	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	//return "(abs(exEnergy-5.5)<0.15)";
 }
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
@@ -495,11 +542,13 @@ void drawExEnergy(){
 	ce->loadCut();
 	ce->setGate(getGate());
 	//ce->setGate(getHodGate());
+	ce->addGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 //	cPad->Divide(2,2);
 //	cPad->cd(1);
 	//ce->drawEp();
+	//ce->drawProtonResAA();
 	ce->drawEx();
 	ce->output();
 
@@ -513,6 +562,8 @@ void drawPACorrelation(){
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
+	//ce->setGate(getHodGate());
+	ce->addGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(2,2);
@@ -543,8 +594,8 @@ void drawPlaneBPA(){
 }
 
 void drawTree(){
-	//drawPACorrelation();	
-	drawExEnergy();
+	drawPACorrelation();	
+	//drawExEnergy();
 	//drawPlaneBPA();
 }
 

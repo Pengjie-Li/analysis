@@ -2,8 +2,12 @@
 
 	TChain *tree = new TChain("tree");
 
-//	tree->Add("run0361_analysed.root");
-//	tree->Add("run0361_analysed.root");
+//	tree->Add("run0596_analysed.root");
+//	tree->Add("run0599_analysed.root");
+
+//	tree->Add("run0597_analysed.root");
+//	tree->Add("run0598_analysed.root");
+
 
 //	int runStart = 294;
 //	int runStop = 329;

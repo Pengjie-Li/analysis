@@ -151,7 +151,6 @@ class ReadFile{
 		Double_t        teleHitCsiQPed[3];
 		Double_t        teleHitCsiTCal[3];
 
-		Int_t        	goodTeleHit[3];
 
 		Double_t        teleCsiE;
 		Double_t        teleCsiE_sync;
@@ -465,7 +464,6 @@ class ReadFile{
 			inputTree->SetBranchAddress("teleHitCid",teleHitCid);
 			inputTree->SetBranchAddress("teleHitCsiQPed",teleHitCsiQPed);
 			inputTree->SetBranchAddress("teleHitCsiTCal",teleHitCsiTCal);
-			inputTree->SetBranchAddress("goodTeleHit",goodTeleHit);
 			inputTree->SetBranchAddress("teleCsiE",&teleCsiE);
 			inputTree->SetBranchAddress("teleCsiE_sync",&teleCsiE_sync);
 			inputTree->SetBranchAddress("teleDssdFE",&teleDssdFE);
@@ -692,7 +690,6 @@ class ReadFile{
 			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/I");
 	
 
-                        tree->Branch("goodTeleHit",&goodTeleHit,"goodTeleHit[teleHit]/I");
                         tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
                         tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
                         tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
@@ -773,8 +770,7 @@ class ReadFile{
 			return hodBarQCal[id];
 		}
 		bool isPALR(){
-			if(((espriHit==1&&espriHitSide[0]==0&&csiHit==1)||(espriHit==1&&espriHitSide[0]==1&&csiHit==1))) return true;
-			//if(((espriHit==1&&espriHitSide[0]==0&&teleHit==1)||(espriHit==1&&espriHitSide[0]==1&&teleHit==1))) return true;
+			if((espriHit==1&&espriHitSide[0]==0&&teleHit==1&&teleHitSide[0]==1)||(espriHit==1&&espriHitSide[0]==1&&teleHit==1&&teleHitSide[0]==0)) return true;
 			else return false;
 		}
 

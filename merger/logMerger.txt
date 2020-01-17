@@ -39,3 +39,6 @@
 	1. move teleHit into TeleEvent.h
 	2. give teleDssdE = 0.5(FE+BE) or teleDssdMax = max(FE,BE)
 	3. remove abs(FE-BE)>5MeV and FE/BE>2 or FE/BE<0.5 in TeleHit
+2020-01-17
+	1. dssd Calib must use linear equation, no-linear like ax/(1+bx) makes distortion in highest and lowest region
+	2. linear calib for DSSD, LF,LB,RF,RB all take 15 stripId as ref, txt/peak5DssdCalib.txt

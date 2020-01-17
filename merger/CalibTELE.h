@@ -9,8 +9,9 @@ class DssdEnergyPara{
 		double bCalOffset[2];
 
 		double kScmGain[4][32]; // new Para
-		double kRefA[4]; // Ref LF,LB,RF,RB
-		double kRefB[4]; // 
+		double kCalibGain[4]; // new Para
+		//double kRefA[4]; // Ref LF,LB,RF,RB
+		//double kRefB[4]; // 
 
 
 		void loadNewScmPara(){
@@ -42,15 +43,13 @@ class DssdEnergyPara{
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
-			double A;
-			double B;
+			double gain;
 			while (1)
 			{
-				in >>side>>A>>B;
-				cout<<side<<"\t"<<A<<"\t"<<B<<endl;
+				in >>side>>gain;
+				cout<<side<<"\t"<<gain<<endl;
 				if (!in.good()) break;
-				kRefA[side] = A;
-				kRefB[side] = B;
+				kCalibGain[side] = gain;
 			}
 			in.close();
 		}
@@ -119,11 +118,8 @@ class DssdEnergyPara{
 		double getScmGain(int side,int id){
 			return kScmGain[side][id];
 		}
-		double getRefParaA(int side){
-			return kRefA[side];
-		}
-		double getRefParaB(int side){
-			return kRefB[side];
+		double getCalibGain(int side){
+			return kCalibGain[side];
 		}
 
 
@@ -143,7 +139,8 @@ class DssdEnergy{
 		}
 		double getQCal(int side,double scm){
 			//cout<<side<<" scm="<<scm<<" "<<dssdPara->getRefParaA(side)<<" "<<dssdPara->getRefParaB(side)<<endl;	
-			return dssdPara->getRefParaA(side)*scm/(1+dssdPara->getRefParaB(side)*scm);
+			//return dssdPara->getRefParaA(side)*scm/(1+dssdPara->getRefParaB(side)*scm);
+			return dssdPara->getCalibGain(side)*scm;
 		}
 
 

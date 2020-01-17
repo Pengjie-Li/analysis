@@ -90,6 +90,7 @@ void Merger::eventLoop(){
 
 			print();
 		}
+		if(ientry%100000==0) cout<<(double)ientry/nentries*100<<"%"<<endl;
 
 		tree->Fill();
 	}
