@@ -4428,3 +4428,39 @@ Branch master set up to track remote branch master from origin.
  rewrite tele/convert/rootfiles/run0582_TELE.root_test (68%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b842d4e] v1.0
+ 54 files changed, 756 insertions(+), 154 deletions(-)
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (88%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/rootfiles/run0301_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/rootfiles/run0302_ppaBe10.root_test
+ rewrite analysis/generateChannels/ppAlphaBe12/ppaBe12 (88%)
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (85%)
+ create mode 100644 analysis/ppAlpha/cutPPAEA.C
+ create mode 100644 merger/.constant.h.swp
+ rewrite merger/Merger (83%)
+ rewrite merger/rootfiles/cutAlpha.C (73%)
+ create mode 100644 merger/rootfiles/cutBe10Bar10Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar10He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar11He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar12Be10.c
+ create mode 100644 merger/rootfiles/cutBe10Bar12He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar13Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar13He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar14He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar15He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar16He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar17He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar18He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar19He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar20He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar21He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar22He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar23He4.C
+ create mode 100644 merger/rootfiles/cutBe10Bar27He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar28He6.C
+ create mode 100644 merger/rootfiles/cutBe10Bar9Be10.C
+ create mode 100644 merger/rootfiles/cutBe10Bar9He4.C
+ create mode 100644 merger/rootfiles/cutTeleProton.C
+ create mode 100644 tele/calib/peak5Calib/txt/peak5DssdCalib.txt_noLinear
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

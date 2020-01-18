@@ -113,7 +113,8 @@ class Event{
 			//return isBeam()&&isTargetArea()&&isPRAngle();
 			//return isBeam()&&isProton();
 			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
-			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
+			return isBeam()&&isProton()&&isAlpha()&&isTargetArea();
+			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
 			//return isBeam();
 			//return isProton();
 			//return isTargetArea();

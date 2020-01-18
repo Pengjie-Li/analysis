@@ -589,7 +589,7 @@ void drawBar(int side,int barId,double gain,double offset){
 
 void calibNai(){
 	
-	//drawBar(-1,-1); // draw all bars, left and right
+	drawBar(-1,-1); // draw all bars, left and right
 	//drawBar(0,-1); // draw all left bars
 	//drawBar(1,-1); // draw all right bars
 	//drawBar(1,1); // draw bar side + barId
