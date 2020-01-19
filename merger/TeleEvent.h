@@ -5,7 +5,7 @@ class DEECurve{
 		TGraph *dEE;
 	public:
 		DEECurve(){
-			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/alphaDEE/dEECurve.root","READ");
+			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/teleDEE/dEECurve.root","READ");
                         dEE = (TGraph *)gDirectory->Get("dEEReverse");
                         fCalib->Close();	
 
@@ -259,8 +259,25 @@ class TeleEvent{
 		double teleZ;
 		TVector3 *telePosition;
 
+		double teleAngle;
+		double teleLocusAngle;
+		TVector3 *vTele;
+
+		TVector3 *targetPosition;
+		TVector3 *vBeam;
+
+
+
 		TVector3 getPosition(){
 			return positionTELE->getPosition(teleHit->getSide(),teleHit->getFid(),teleHit->getBid());
+		}
+
+		void setAngle(){
+			(*vTele)	= (*telePosition)-(*targetPosition);
+			(*vTele)	= (*vTele).Unit();
+			teleAngle      = (*vTele).Angle((*vBeam))*TMath::RadToDeg();
+			TVector3 dssdPlaneNorm = teleEvent->getDssdPlaneNorm();
+			teleLocusAngle = (*vTele).Angle(dssdPlaneNorm)*TMath::RadToDeg();
 		}
 
 	public:
@@ -271,6 +288,7 @@ class TeleEvent{
 				
 			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdFE_old<<" "<<teleDssdBE<<" "<<teleDssdBE_old<<" "<<teleDssdE<<" "<<teleDssdMaxE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
 			
+		cout<<" Tele Angle = "<<teleAngle<<" Locus Angle ="<<teleLocusAngle<<endl;
 			//cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
 	
 		}
@@ -305,8 +323,19 @@ class TeleEvent{
 			teleY = NAN;
 			teleZ = NAN;
 			telePosition->SetXYZ(NAN,NAN,NAN);
+			teleAngle = NAN;
+			teleLocusAngle = NAN;
+			vTele->SetXYZ(NAN,NAN,NAN);
+
 
 		}
+		void loadTargetPosition(TVector3 *target){
+			targetPosition = target;
+		}
+		void loadBeamVector(TVector3 *beam){
+			vBeam = beam;
+		}
+
 		void setOutputBranch(TTree *tree){
 
 			telePosition = new TVector3();
@@ -325,6 +354,11 @@ class TeleEvent{
 			tree->Branch("teleDssdT",&teleDssdT,"teleDssdT/D");
 			tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
 			tree->Branch("telePosition","TVector3",&telePosition);
+
+			vTele = new TVector3;
+			tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
+			tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
+			tree->Branch("vTele","TVector3",&vTele);
 	
 		}
 		void setHit(){
@@ -335,6 +369,8 @@ class TeleEvent{
 		void setEvent(){
 			setHit();
 			if(teleHit->isGoodEvent()){
+
+
 				teleCsiE	 =teleHit->getCsiE();
 				teleCsiE_sync	 =teleHit->getCsiE_sync();
 				teleDssdFE	 =teleHit->getDssdFrontE();
@@ -351,6 +387,8 @@ class TeleEvent{
 				teleX = telePosition->X();
 				teleY = telePosition->Y();
 				teleZ = telePosition->Z();
+
+				setAngle();
 			}
 		}
 		TVector3 getDssdPlaneNorm(){

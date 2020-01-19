@@ -4,6 +4,9 @@ void Merger::analysingTELE(){
 	//teleEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
 	//teleEvent->loadBeamVector(bdcEvent->getBeamVector());
 	teleEvent->init();
+	teleEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
+	teleEvent->loadBeamVector(bdcEvent->getBeamVector());
+
 	teleEvent->loadData(mergeTELE);
 	teleEvent->setEvent();
 	

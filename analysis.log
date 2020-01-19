@@ -4464,3 +4464,31 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/calib/peak5Calib/txt/peak5DssdCalib.txt_noLinear
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9ac3083] v1.0
+ 33 files changed, 539 insertions(+), 20 deletions(-)
+ create mode 100644 analysis/calibNai/.calibNai_Be10.C.swp
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (60%)
+ rewrite analysis/generateChannels/ppAlphaBe12/ppaBe12 (97%)
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (97%)
+ create mode 100644 analysis/ppAlpha/cutAABe10.C
+ create mode 100644 merger/rootfiles/cutBe12Bar10He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar11He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar12He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar13He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar14He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar15He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar16He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar17He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar18He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar19He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar20He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar21He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar22He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar23He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar24He6.C
+ create mode 100644 merger/rootfiles/cutBe12Bar27He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar28He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar29He8.C
+ create mode 100644 merger/rootfiles/cutBe12Bar9He6.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
