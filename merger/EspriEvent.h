@@ -57,13 +57,13 @@ class EspriEvent{
 
 		}
 		void setESPRIEvent(){
-			if(isGoodEvent()){
+			if(mergeData->isGoodEvent()){
 				setESPRIEnergy();
 				setESPRIPosition();
 			}
 		}
 		bool isGoodEvent(){
-			return mergeData->isGoodEvent();// Good Event->roughly good, real good event selected by TCut
+			return mergeData->isGoodEvent()&&(getAngle()>0);// Good Event->roughly good, real good event selected by TCut
 		}
 		void setESPRIPosition(){
 			positionESPRI->loadTargetPosition(targetPosition);

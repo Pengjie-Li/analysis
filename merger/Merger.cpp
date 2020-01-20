@@ -22,6 +22,8 @@ TString calibParaName(int runNumber){
 	else if(runNumber<366&&runNumber>330) calibFileName = "config/configCalib_Be12.prm";
 	else if(runNumber>365&&runNumber<433) calibFileName = "config/configCalib_Be14.prm";
 	else if(runNumber>432&&runNumber<457) calibFileName = "config/configCalib_Be14_2.prm";
+	else if(runNumber>594&&runNumber<598) calibFileName = "config/configCalib_He4_1.prm";
+	else if(runNumber>597&&runNumber<601) calibFileName = "config/configCalib_He4_2.prm";
 	else                                  calibFileName = "config/configCalib_Be10.prm";
 	return calibFileName;
 }
@@ -101,8 +103,8 @@ void Merger::print(){
 	//printBDC();	
 	printESPRI();
 	printProton();
-	//printTELE();
-	//printAlpha();
+	printTELE();
+	printAlpha();
 	//printFDC0();
 	//printBeam();
 }

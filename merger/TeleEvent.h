@@ -5,7 +5,7 @@ class DEECurve{
 		TGraph *dEE;
 	public:
 		DEECurve(){
-			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/teleDEE/dEECurve.root","READ");
+			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/alphaDEE/dEECurve.root","READ");
                         dEE = (TGraph *)gDirectory->Get("dEEReverse");
                         fCalib->Close();	
 
@@ -276,7 +276,7 @@ class TeleEvent{
 			(*vTele)	= (*telePosition)-(*targetPosition);
 			(*vTele)	= (*vTele).Unit();
 			teleAngle      = (*vTele).Angle((*vBeam))*TMath::RadToDeg();
-			TVector3 dssdPlaneNorm = teleEvent->getDssdPlaneNorm();
+			TVector3 dssdPlaneNorm = getDssdPlaneNorm();
 			teleLocusAngle = (*vTele).Angle(dssdPlaneNorm)*TMath::RadToDeg();
 		}
 
@@ -400,7 +400,10 @@ class TeleEvent{
 		double getCsiEnergy(){
 			return teleCsiE;
 		}
+		double getLocusAngle(){
+			return teleLocusAngle;
+		}
 		bool isGoodEvent(){
-			return teleHit->isGoodEvent();
+			return teleHit->isGoodEvent()&&(getLocusAngle()>0);
 		}
 };

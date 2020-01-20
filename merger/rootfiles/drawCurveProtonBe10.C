@@ -1,5 +1,5 @@
 {
-	TFile *fCurve = new TFile("../../../plot/esBe10Excitation/protonCurveBe10.root","READ");
+	TFile *fCurve = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe10Excitation/protonCurve.root","READ");
 	TGraph *gs = (TGraph *)gDirectory->Get("gs");
 	TGraph *fex = (TGraph *)gDirectory->Get("fex");
 	TGraph *sn = (TGraph *)gDirectory->Get("sn");

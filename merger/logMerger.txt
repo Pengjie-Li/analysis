@@ -44,3 +44,6 @@
 	2. linear calib for DSSD, LF,LB,RF,RB all take 15 stripId as ref, txt/peak5DssdCalib.txt
 2020-01-19
 	1. add Proton Eloss depend on angle
+	2. move alpha Angle into teleAngle, telePosition, vTele
+2020-01-20
+	1. add Alpha Eloss depend on angle

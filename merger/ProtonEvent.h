@@ -1,5 +1,9 @@
 class ProtonPara{
 	private:
+		double ppPlasE;
+		double ppWinE;
+		double ppShtE;
+
 		TGraph *plasEnergyToRange;
 		TGraph *plasRangeToEnergy;
 
@@ -44,7 +48,7 @@ class ProtonPara{
 			plasEnergyToRange = (TGraph *)gDirectory->Get("protonPlasER");
                         plasRangeToEnergy = (TGraph *)gDirectory->Get("protonPlasRE");
                         fEloss->Close();	
-			TFile *fWinEloss = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/energyLossInMaterial/output/windowEloss.root","READ");
+			TFile *fWinEloss = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/energyLossInMaterial/output/protonWindowEloss.root","READ");
 			winEloss = (TGraph *)gDirectory->Get("windowEloss");
 			fWinEloss->Close();
 		}
@@ -53,12 +57,24 @@ class ProtonPara{
 			return naiToProton->Eval(naiE);
 		}
 		double getProtonEnergy(double naiE,double locusAngle,double angle){
-			double plasE = getPlasE(locusAngle,naiE);
-			double winE = getWindowE(naiE+plasE);
-			double shtE = getSHTE(angle,naiE+plasE+winE);
+			ppPlasE = getPlasE(locusAngle,naiE);
+			ppWinE = getWindowE(naiE+ppPlasE);
+			ppShtE = getSHTE(angle,naiE+ppPlasE+ppWinE);
 		
-			//cout<<"locusAngle = "<<locusAngle<<" angle="<<angle<<" shtE = "<<shtE<<" winE ="<<winE<<" plasE = "<<plasE<<" naiE = "<<naiE<<endl;
-			return naiE+plasE+winE+shtE;
+			return naiE+ppPlasE+ppWinE+ppShtE;
+		}
+		void init(){
+			ppPlasE = NAN;
+			ppWinE = NAN;
+			ppShtE = NAN;
+		}
+		void setOutputBranch(TTree *tree){
+			tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
+			tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
+			tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
+		}
+		void print(){
+			cout<<" shtE = "<<ppShtE<<" winE ="<<ppWinE<<" plasE = "<<ppPlasE<<endl;
 		}
 
 };
@@ -85,6 +101,7 @@ class ProtonEvent{
 		}
 
 		void init(){
+			protonPara->init();
 			espriEvent = NULL;
 			protonEnergy_nai = NAN;
 			protonEnergy = NAN;
@@ -98,9 +115,11 @@ class ProtonEvent{
 			}
 		}
 		void print(){
+			protonPara->print();
 			cout<<"Proton Energy = "<<protonEnergy<<" "<<protonEnergy_nai<<endl;
 		}
 		void setOutputBranch(TTree *tree){
+			protonPara->setOutputBranch(tree);
 			tree->Branch("protonEnergy_nai",&protonEnergy_nai,"protonEnergy_nai/D");
 			tree->Branch("protonEnergy",&protonEnergy,"protonEnergy/D");
 		}
