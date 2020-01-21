@@ -111,10 +111,10 @@ class ReadFile{
 		Int_t           dssdTRaw[2][32];
 		Int_t           csiQRaw[7];
 		Int_t           csiTRaw[7];
-		Double_t        csiQPed[7];
 		Int_t           RefTime1;
 		Int_t           RefTime2;
 		Double_t        dssdQPed[4][32];
+		Double_t        csiQPed[7];
 		Int_t           dssdQHit;
 		Int_t           dssdQHitSide[10];
 		Int_t           dssdQHitStripId[10];
@@ -141,21 +141,27 @@ class ReadFile{
 		Double_t        csiHitQPed[7];
 		Double_t        csiHitTCal[7];
 		Int_t           teleHit;
-		Int_t           teleHitSide[3];
-		Int_t           teleHitFid[3];
-		Int_t           teleHitBid[3];
-		Double_t        teleHitDssdFQPed[3];
-		Double_t        teleHitDssdBQPed[3];
-		Double_t        teleHitDssdTCal[3];
-		Int_t           teleHitCid[3];
-		Double_t        teleHitCsiQPed[3];
-		Double_t        teleHitCsiTCal[3];
-
-
+   Int_t           teleHitSide[10];
+   Int_t           teleHitFid[10];
+   Int_t           teleHitBid[10];
+   Double_t        teleHitDssdFQPed[10];
+   Double_t        teleHitDssdBQPed[10];
+   Double_t        teleHitDssdTCal[10];
+   Int_t           teleHitCid[10];
+   Double_t        teleHitCsiQPed[10];
+   Double_t        teleHitCsiTCal[10];
+   Double_t        teleHitDssdFE[10];
+   Double_t        teleHitDssdBE[10];
+   Double_t        teleHitCsiE[10];
+   Int_t           bestHit;
 		Double_t        teleCsiE;
 		Double_t        teleCsiE_sync;
 		Double_t        teleDssdFE;
 		Double_t        teleDssdBE;
+   Double_t        teleDssdFE_old;
+   Double_t        teleDssdBE_old;
+   Double_t        teleDssdE;
+   Double_t        teleDssdMaxE;
 		Double_t        teleCsiT;
 		Double_t        teleDssdT;
 		Double_t        teleEnergy;
@@ -163,6 +169,8 @@ class ReadFile{
 		Double_t        teleY;
 		Double_t        teleZ;
 
+   Double_t        teleAngle;
+   Double_t        teleLocusAngle;
 		Int_t           hodNHit;
 		Int_t           hodID[40];
 		Int_t           hodTRaw[2][40];
@@ -203,18 +211,24 @@ class ReadFile{
 
 
 		Double_t        protonEnergy;
+		Double_t        protonEnergy_nai;
 
 		Double_t        alphaEnergy;
-		Double_t        alphaAngle;
-		Double_t        alphaLocusAngle;
+		Double_t        alphaEnergy_old;
 
 		Double_t        beamEnergy;
 		Double_t        beamBeta;
 		Double_t        tofSBTTarget;
 
+		Double_t        ppPlasE;
+		Double_t        ppWinE;
+		Double_t        ppShtE;
+		Double_t        apDssdE;
+		Double_t        apDegraderE;
+		Double_t        apWinE;
 
 		TVector3* vBeam;
-		TVector3* vAlpha;
+		TVector3* vTele;
 
 		TVector3* vBDC1;
 		TVector3* vBDC2;
@@ -464,13 +478,24 @@ class ReadFile{
 			inputTree->SetBranchAddress("teleHitCid",teleHitCid);
 			inputTree->SetBranchAddress("teleHitCsiQPed",teleHitCsiQPed);
 			inputTree->SetBranchAddress("teleHitCsiTCal",teleHitCsiTCal);
+			inputTree->SetBranchAddress("teleHitDssdFE",teleHitDssdFE);
+			inputTree->SetBranchAddress("teleHitDssdBE",teleHitDssdBE);
+			inputTree->SetBranchAddress("teleHitCsiE",teleHitCsiE);
+			inputTree->SetBranchAddress("bestHit",&bestHit);
+
 			inputTree->SetBranchAddress("teleCsiE",&teleCsiE);
 			inputTree->SetBranchAddress("teleCsiE_sync",&teleCsiE_sync);
 			inputTree->SetBranchAddress("teleDssdFE",&teleDssdFE);
 			inputTree->SetBranchAddress("teleDssdBE",&teleDssdBE);
+			inputTree->SetBranchAddress("teleDssdFE_old",&teleDssdFE_old);
+			inputTree->SetBranchAddress("teleDssdBE_old",&teleDssdBE_old);
+			inputTree->SetBranchAddress("teleDssdE",&teleDssdE);
+			inputTree->SetBranchAddress("teleDssdMaxE",&teleDssdMaxE);
 			inputTree->SetBranchAddress("teleCsiT",&teleCsiT);
 			inputTree->SetBranchAddress("teleDssdT",&teleDssdT);
 			inputTree->SetBranchAddress("teleEnergy",&teleEnergy);
+			inputTree->SetBranchAddress("teleAngle",&teleAngle);
+			inputTree->SetBranchAddress("teleLocusAngle",&teleLocusAngle);
 
 
 			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
@@ -478,8 +503,15 @@ class ReadFile{
 			inputTree->SetBranchAddress("beamBeta",&beamBeta);
 
 			inputTree->SetBranchAddress("alphaEnergy",&alphaEnergy);
-			inputTree->SetBranchAddress("alphaAngle",&alphaAngle);
-			inputTree->SetBranchAddress("vAlpha",&vAlpha);
+			inputTree->SetBranchAddress("vTele",&vTele);
+
+
+			inputTree->SetBranchAddress("ppPlasE",&ppPlasE);
+			inputTree->SetBranchAddress("ppWinE",&ppWinE);
+			inputTree->SetBranchAddress("ppShtE",&ppShtE);
+			inputTree->SetBranchAddress("apWinE",&apWinE);
+			inputTree->SetBranchAddress("apDssdE",&apDssdE);
+			inputTree->SetBranchAddress("apDegraderE",&apDegraderE);
 		}
 
 	public:
@@ -694,9 +726,16 @@ class ReadFile{
                         tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
                         tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
                         tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
+			tree->Branch("teleDssdFE_old",&teleDssdFE_old,"teleDssdFE_old/D");
+                        tree->Branch("teleDssdBE_old",&teleDssdBE_old,"teleDssdBE_old/D");
+                        tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
+                        tree->Branch("teleDssdMaxE",&teleDssdMaxE,"teleDssdMaxE/D");
+         
                         tree->Branch("teleCsiT",&teleCsiT,"teleCsiT/D");
                         tree->Branch("teleDssdT",&teleDssdT,"teleDssdT/D");
                         tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
+                        tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
+                        tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
                         tree->Branch("telePosition","TVector3",&telePosition);
 
 			tree->Branch("protonEnergy",&protonEnergy);
@@ -704,10 +743,16 @@ class ReadFile{
 			tree->Branch("beamBeta",&beamBeta);
 
 
+                        tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
+                        tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
+                        tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
+                        tree->Branch("apWinE",&apWinE,"apWinE/D");
+                        tree->Branch("apDssdE",&apDssdE,"apDssdE/D");
+                        tree->Branch("apDegraderE",&apDegraderE,"apDegraderE/D");
+
                         tree->Branch("alphaEnergy",&alphaEnergy,"alphaEnergy/D");
-                        tree->Branch("alphaAngle",&alphaAngle,"alphaAngle/D");
-                        tree->Branch("alphaLocusAngle",&alphaLocusAngle,"alphaLocusAngle/D");
-                        tree->Branch("vAlpha","TVector3",&vAlpha);
+                        tree->Branch("vTele","TVector3",&vTele);
+
 
 
 

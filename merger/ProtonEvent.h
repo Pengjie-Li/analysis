@@ -18,15 +18,15 @@ class ProtonPara{
 
 		double getSHTE(double angle,double energyOut){
 			double realThickness = shtThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + shtEnergyToRange->Eval(energyOut);
-			double energyIn = shtRangeToEnergy->Eval(rangeIn);
+			double rangeIn = realThickness + shtEnergyToRange->Eval(energyOut,0,"S");
+			double energyIn = shtRangeToEnergy->Eval(rangeIn,0,"S");
 			//cout<<"SHT "<<realThickness<<" "<<energyIn<<energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getPlasE(double angle,double energyOut){
 			double realThickness = plasThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + plasEnergyToRange->Eval(energyOut);
-			double energyIn = plasRangeToEnergy->Eval(rangeIn);
+			double rangeIn = realThickness + plasEnergyToRange->Eval(energyOut,0,"S");
+			double energyIn = plasRangeToEnergy->Eval(rangeIn,0,"S");
 			//cout<<"Plas "<<realThickness<<" "<<energyIn<<energyOut<<endl;
 			return (energyIn-energyOut);
 		}

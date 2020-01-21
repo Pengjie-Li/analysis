@@ -103,8 +103,8 @@ void Merger::print(){
 	//printBDC();	
 	printESPRI();
 	printProton();
-	printTELE();
-	printAlpha();
+	//printTELE();
+	//printAlpha();
 	//printFDC0();
 	//printBeam();
 }

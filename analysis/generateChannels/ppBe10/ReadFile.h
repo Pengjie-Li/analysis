@@ -108,29 +108,69 @@ class ReadFile{
 		Double_t        resAngle;
 
 		Int_t           dssdQRaw[4][32];
-		Int_t           dssdTRaw[4][32];
-		Double_t        dssdQScm[4][32];
-		Double_t        dssdQCal[4][32];
-		Double_t        dssdTCal[4][32];
+		Int_t           dssdTRaw[2][32];
 		Int_t           csiQRaw[7];
 		Int_t           csiTRaw[7];
+		Int_t           RefTime1;
+		Int_t           RefTime2;
+		Double_t        dssdQPed[4][32];
 		Double_t        csiQPed[7];
-		Double_t        csiQSync[7];
-		Double_t        csiQCal[7];
-		Double_t        csiTCal[7];
-		Int_t           dssdNHit[4];
-		Double_t        dssdSideQ[4];
-		Int_t           dssdId[4];
-		Int_t           csiNHit;
-		Int_t           csiHitIdArray[7];
-		Int_t           csiId;
-		Int_t           dssdFid;
-		Int_t           dssdBid;
-		Double_t        teleDssdE;
+		Int_t           dssdQHit;
+		Int_t           dssdQHitSide[10];
+		Int_t           dssdQHitStripId[10];
+		Double_t        dssdQHitQPed[10];
+		Int_t           dssdTHit;
+		Int_t           dssdTHitSide[10];
+		Int_t           dssdTHitStripId[10];
+		Double_t        dssdTHitTCal[10];
+		Int_t           dssdHit;
+		Int_t           dssdHitSide[10];
+		Int_t           dssdHitFid[10];
+		Int_t           dssdHitBid[10];
+		Double_t        dssdHitFQPed[10];
+		Double_t        dssdHitBQPed[10];
+		Double_t        dssdHitTCal[10];
+		Int_t           csiQHit;
+		Int_t           csiQHitId[7];
+		Double_t        csiQHitQPed[7];
+		Int_t           csiTHit;
+		Int_t           csiTHitId[7];
+		Double_t        csiTHitTCal[7];
+		Int_t           csiHit;
+		Int_t           csiHitId[7];
+		Double_t        csiHitQPed[7];
+		Double_t        csiHitTCal[7];
+		Int_t           teleHit;
+   Int_t           teleHitSide[10];
+   Int_t           teleHitFid[10];
+   Int_t           teleHitBid[10];
+   Double_t        teleHitDssdFQPed[10];
+   Double_t        teleHitDssdBQPed[10];
+   Double_t        teleHitDssdTCal[10];
+   Int_t           teleHitCid[10];
+   Double_t        teleHitCsiQPed[10];
+   Double_t        teleHitCsiTCal[10];
+   Double_t        teleHitDssdFE[10];
+   Double_t        teleHitDssdBE[10];
+   Double_t        teleHitCsiE[10];
+   Int_t           bestHit;
 		Double_t        teleCsiE;
+		Double_t        teleCsiE_sync;
+		Double_t        teleDssdFE;
+		Double_t        teleDssdBE;
+   Double_t        teleDssdFE_old;
+   Double_t        teleDssdBE_old;
+   Double_t        teleDssdE;
+   Double_t        teleDssdMaxE;
+		Double_t        teleCsiT;
+		Double_t        teleDssdT;
 		Double_t        teleEnergy;
-		Double_t        teleAngle;
+		Double_t        teleX;
+		Double_t        teleY;
+		Double_t        teleZ;
 
+   Double_t        teleAngle;
+   Double_t        teleLocusAngle;
 		Int_t           hodNHit;
 		Int_t           hodID[40];
 		Int_t           hodTRaw[2][40];
@@ -169,9 +209,27 @@ class ReadFile{
 		Double_t        espriEnergy;
 		Double_t        espriAngle;
 
-		double 		protonEnergy;
+
+		Double_t        protonEnergy;
+		Double_t        protonEnergy_nai;
+
+		Double_t        alphaEnergy;
+		Double_t        alphaEnergy_old;
+
+		Double_t        beamEnergy;
+		Double_t        beamBeta;
+		Double_t        tofSBTTarget;
+
+		Double_t        ppPlasE;
+		Double_t        ppWinE;
+		Double_t        ppShtE;
+		Double_t        apDssdE;
+		Double_t        apDegraderE;
+		Double_t        apWinE;
 
 		TVector3* vBeam;
+		TVector3* vTele;
+
 		TVector3* vBDC1;
 		TVector3* vBDC2;
 		TVector3* vTarget;
@@ -331,30 +389,7 @@ class ReadFile{
 			inputTree->SetBranchAddress("resAngle",&resAngle);
 			inputTree->SetBranchAddress("fdc0Position",&fdc0Position);
 			inputTree->SetBranchAddress("vFDC0",&vFDC0);
-			inputTree->SetBranchAddress("dssdQRaw",dssdQRaw);
-			inputTree->SetBranchAddress("dssdTRaw",dssdTRaw);
-			inputTree->SetBranchAddress("dssdQScm",dssdQScm);
-			inputTree->SetBranchAddress("dssdQCal",dssdQCal);
-			inputTree->SetBranchAddress("dssdTCal",dssdTCal);
-			inputTree->SetBranchAddress("csiQRaw",csiQRaw);
-			inputTree->SetBranchAddress("csiTRaw",csiTRaw);
-			inputTree->SetBranchAddress("csiQPed",csiQPed);
-			inputTree->SetBranchAddress("csiQSync",csiQSync);
-			inputTree->SetBranchAddress("csiQCal",csiQCal);
-			inputTree->SetBranchAddress("csiTCal",csiTCal);
-			inputTree->SetBranchAddress("dssdNHit",dssdNHit);
-			inputTree->SetBranchAddress("dssdSideQ",dssdSideQ);
-			inputTree->SetBranchAddress("dssdId",dssdId);
-			inputTree->SetBranchAddress("csiNHit",&csiNHit);
-			inputTree->SetBranchAddress("csiHitIdArray",csiHitIdArray);
-			inputTree->SetBranchAddress("csiId",&csiId);
-			inputTree->SetBranchAddress("dssdFid",&dssdFid);
-			inputTree->SetBranchAddress("dssdBid",&dssdBid);
-			inputTree->SetBranchAddress("teleDssdE",&teleDssdE);
-			inputTree->SetBranchAddress("teleCsiE",&teleCsiE);
-			inputTree->SetBranchAddress("teleEnergy",&teleEnergy);
-			inputTree->SetBranchAddress("teleAngle",&teleAngle);
-			inputTree->SetBranchAddress("telePosition",&telePosition);
+
 			inputTree->SetBranchAddress("hodNHit",&hodNHit);
 			inputTree->SetBranchAddress("hodID",hodID);
 			inputTree->SetBranchAddress("hodTRaw",hodTRaw);
@@ -400,6 +435,83 @@ class ReadFile{
 
 			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
 
+			inputTree->SetBranchAddress("dssdQRaw",dssdQRaw);
+			inputTree->SetBranchAddress("dssdTRaw",dssdTRaw);
+			inputTree->SetBranchAddress("csiQRaw",csiQRaw);
+			inputTree->SetBranchAddress("csiQPed",csiQPed);
+			inputTree->SetBranchAddress("RefTime1",&RefTime1);
+			inputTree->SetBranchAddress("RefTime2",&RefTime2);
+			inputTree->SetBranchAddress("dssdQPed",dssdQPed);
+			inputTree->SetBranchAddress("csiQPed",csiQPed);
+			inputTree->SetBranchAddress("dssdQHit",&dssdQHit);
+			inputTree->SetBranchAddress("dssdQHitSide",dssdQHitSide);
+			inputTree->SetBranchAddress("dssdQHitStripId",dssdQHitStripId);
+			inputTree->SetBranchAddress("dssdQHitQPed",dssdQHitQPed);
+			inputTree->SetBranchAddress("dssdTHit",&dssdTHit);
+			inputTree->SetBranchAddress("dssdTHitSide",dssdTHitSide);
+			inputTree->SetBranchAddress("dssdTHitStripId",dssdTHitStripId);
+			inputTree->SetBranchAddress("dssdTHitTCal",dssdTHitTCal);
+			inputTree->SetBranchAddress("dssdHit",&dssdHit);
+			inputTree->SetBranchAddress("dssdHitSide",dssdHitSide);
+			inputTree->SetBranchAddress("dssdHitFid",dssdHitFid);
+			inputTree->SetBranchAddress("dssdHitBid",dssdHitBid);
+			inputTree->SetBranchAddress("dssdHitFQPed",dssdHitFQPed);
+			inputTree->SetBranchAddress("dssdHitBQPed",dssdHitBQPed);
+			inputTree->SetBranchAddress("dssdHitTCal",dssdHitTCal);
+			inputTree->SetBranchAddress("csiQHit",&csiQHit);
+			inputTree->SetBranchAddress("csiQHitId",csiQHitId);
+			inputTree->SetBranchAddress("csiQHitQPed",csiQHitQPed);
+			inputTree->SetBranchAddress("csiTHit",&csiTHit);
+			inputTree->SetBranchAddress("csiTHitId",csiTHitId);
+			inputTree->SetBranchAddress("csiTHitTCal",csiTHitTCal);
+			inputTree->SetBranchAddress("csiHit",&csiHit);
+			inputTree->SetBranchAddress("csiHitId",csiHitId);
+			inputTree->SetBranchAddress("csiHitQPed",csiHitQPed);
+			inputTree->SetBranchAddress("csiHitTCal",csiHitTCal);
+			inputTree->SetBranchAddress("teleHit",&teleHit);
+			inputTree->SetBranchAddress("teleHitSide",teleHitSide);
+			inputTree->SetBranchAddress("teleHitFid",teleHitFid);
+			inputTree->SetBranchAddress("teleHitBid",teleHitBid);
+			inputTree->SetBranchAddress("teleHitDssdFQPed",teleHitDssdFQPed);
+			inputTree->SetBranchAddress("teleHitDssdBQPed",teleHitDssdBQPed);
+			inputTree->SetBranchAddress("teleHitDssdTCal",teleHitDssdTCal);
+			inputTree->SetBranchAddress("teleHitCid",teleHitCid);
+			inputTree->SetBranchAddress("teleHitCsiQPed",teleHitCsiQPed);
+			inputTree->SetBranchAddress("teleHitCsiTCal",teleHitCsiTCal);
+			inputTree->SetBranchAddress("teleHitDssdFE",teleHitDssdFE);
+			inputTree->SetBranchAddress("teleHitDssdBE",teleHitDssdBE);
+			inputTree->SetBranchAddress("teleHitCsiE",teleHitCsiE);
+			inputTree->SetBranchAddress("bestHit",&bestHit);
+
+			inputTree->SetBranchAddress("teleCsiE",&teleCsiE);
+			inputTree->SetBranchAddress("teleCsiE_sync",&teleCsiE_sync);
+			inputTree->SetBranchAddress("teleDssdFE",&teleDssdFE);
+			inputTree->SetBranchAddress("teleDssdBE",&teleDssdBE);
+			inputTree->SetBranchAddress("teleDssdFE_old",&teleDssdFE_old);
+			inputTree->SetBranchAddress("teleDssdBE_old",&teleDssdBE_old);
+			inputTree->SetBranchAddress("teleDssdE",&teleDssdE);
+			inputTree->SetBranchAddress("teleDssdMaxE",&teleDssdMaxE);
+			inputTree->SetBranchAddress("teleCsiT",&teleCsiT);
+			inputTree->SetBranchAddress("teleDssdT",&teleDssdT);
+			inputTree->SetBranchAddress("teleEnergy",&teleEnergy);
+			inputTree->SetBranchAddress("teleAngle",&teleAngle);
+			inputTree->SetBranchAddress("teleLocusAngle",&teleLocusAngle);
+
+
+			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
+			inputTree->SetBranchAddress("beamEnergy",&beamEnergy);
+			inputTree->SetBranchAddress("beamBeta",&beamBeta);
+
+			inputTree->SetBranchAddress("alphaEnergy",&alphaEnergy);
+			inputTree->SetBranchAddress("vTele",&vTele);
+
+
+			inputTree->SetBranchAddress("ppPlasE",&ppPlasE);
+			inputTree->SetBranchAddress("ppWinE",&ppWinE);
+			inputTree->SetBranchAddress("ppShtE",&ppShtE);
+			inputTree->SetBranchAddress("apWinE",&apWinE);
+			inputTree->SetBranchAddress("apDssdE",&apDssdE);
+			inputTree->SetBranchAddress("apDegraderE",&apDegraderE);
 		}
 
 	public:
@@ -538,31 +650,12 @@ class ReadFile{
 			tree->Branch("vFDC0",&vFDC0);
 
 			tree->Branch("dssdQRaw",dssdQRaw,"dssdQRaw[4][32]/I");
-                        tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[4][32]/I");
-                        tree->Branch("dssdQScm",dssdQScm,"dssdQScm[4][32]/D");
-                        tree->Branch("dssdQCal",dssdQCal,"dssdQCal[4][32]/D");
-                        tree->Branch("dssdTCal",dssdTCal,"dssdTCal[4][32]/D");
+                        tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[2][32]/I");
 
                         tree->Branch("csiQRaw",csiQRaw,"csiQRaw[7]/I");
                         tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
                         tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
-                        tree->Branch("csiQSync",csiQSync,"csiQSync[7]/D");
-                        tree->Branch("csiQCal",csiQCal,"csiQCal[7]/D");
-                        tree->Branch("csiTCal",csiTCal,"csiTCal[7]/D");
 
-			tree->Branch("dssdNHit",dssdNHit);
-			tree->Branch("dssdSideQ",dssdSideQ);
-			tree->Branch("dssdId",dssdId);
-			tree->Branch("csiNHit",&csiNHit);
-			tree->Branch("csiHitIdArray",csiHitIdArray);
-			tree->Branch("csiId",&csiId);
-			tree->Branch("dssdFid",&dssdFid);
-			tree->Branch("dssdBid",&dssdBid);
-			tree->Branch("teleDssdE",&teleDssdE);
-			tree->Branch("teleCsiE",&teleCsiE);
-			tree->Branch("teleEnergy",&teleEnergy);
-			tree->Branch("teleAngle",&teleAngle);
-			tree->Branch("telePosition",&telePosition);
 
                         tree->Branch("hodNHit",&hodNHit,"hodNHit/I");
                         tree->Branch("hodID",hodID,"hodID[40]/I");
@@ -612,7 +705,55 @@ class ReadFile{
 
 			tree->Branch("espriPosition",&espriPosition);
 
+			tree->Branch("csiHit",&csiHit,"csiHit/I");
+			tree->Branch("csiHitId",csiHitId,"csiHitId[csiHit]/I");
+			tree->Branch("csiHitQPed",csiHitQPed,"csiHitQPed[csiHit]/D");
+			tree->Branch("csiHitTCal",csiHitTCal,"csiHitTCal[csiHit]/D");
+	
+			tree->Branch("teleHit",&teleHit,"teleHit/I");
+			tree->Branch("teleHitSide",teleHitSide,"teleHitSide[teleHit]/I");
+			tree->Branch("teleHitFid",teleHitFid,"teleHitFid[teleHit]/I");
+			tree->Branch("teleHitBid",teleHitBid,"teleHitBid[teleHit]/I");
+			tree->Branch("teleHitDssdFQPed",teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/I");
+			tree->Branch("teleHitDssdBQPed",teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/I");
+			tree->Branch("teleHitDssdTCal",teleHitDssdTCal,"teleHitDssdTCal[teleHit]/I");
+			tree->Branch("teleHitCid",teleHitCid,"teleHitCid[teleHit]/I");
+			tree->Branch("teleHitCsiQPed",teleHitCsiQPed,"teleHitCsiQPed[teleHit]/I");
+			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/I");
+	
+
+                        tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
+                        tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
+                        tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
+                        tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
+			tree->Branch("teleDssdFE_old",&teleDssdFE_old,"teleDssdFE_old/D");
+                        tree->Branch("teleDssdBE_old",&teleDssdBE_old,"teleDssdBE_old/D");
+                        tree->Branch("teleDssdE",&teleDssdE,"teleDssdE/D");
+                        tree->Branch("teleDssdMaxE",&teleDssdMaxE,"teleDssdMaxE/D");
+         
+                        tree->Branch("teleCsiT",&teleCsiT,"teleCsiT/D");
+                        tree->Branch("teleDssdT",&teleDssdT,"teleDssdT/D");
+                        tree->Branch("teleEnergy",&teleEnergy,"teleEnergy/D");
+                        tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
+                        tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
+                        tree->Branch("telePosition","TVector3",&telePosition);
+
 			tree->Branch("protonEnergy",&protonEnergy);
+			tree->Branch("beamEnergy",&beamEnergy);
+			tree->Branch("beamBeta",&beamBeta);
+
+
+                        tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
+                        tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
+                        tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
+                        tree->Branch("apWinE",&apWinE,"apWinE/D");
+                        tree->Branch("apDssdE",&apDssdE,"apDssdE/D");
+                        tree->Branch("apDegraderE",&apDegraderE,"apDegraderE/D");
+
+                        tree->Branch("alphaEnergy",&alphaEnergy,"alphaEnergy/D");
+                        tree->Branch("vTele","TVector3",&vTele);
+
+
 
 
 		}
@@ -649,7 +790,12 @@ class ReadFile{
 			//return plasHitQPed[0];
 			return espriPlasE_Birks;
 		}
-	
+		double getTeleCsiE(){
+			return teleCsiE;
+		}
+		double getTeleDssdE(){
+			return teleDssdFE; 
+		}
 		double getTargetX(){
 			return vTarget->X();
 		}
@@ -667,6 +813,10 @@ class ReadFile{
 		}
 		double getHodBarQRaw(int id){
 			return hodBarQCal[id];
+		}
+		bool isPALR(){
+			if((espriHit==1&&espriHitSide[0]==0&&teleHit==1&&teleHitSide[0]==1)||(espriHit==1&&espriHitSide[0]==1&&teleHit==1&&teleHitSide[0]==0)) return true;
+			else return false;
 		}
 
 };

@@ -4613,3 +4613,11 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v7_beforeAddAlphaElossMaterials/t2.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7088b78] v1.0
+ 18 files changed, 258 insertions(+), 24 deletions(-)
+ rewrite merger/Merger (87%)
+ create mode 100644 merger/config/configCalib_He4_1.prm
+ create mode 100644 merger/config/configCalib_He4_2.prm
+ rewrite merger/rootfiles/run0442_analysed.root_test (99%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

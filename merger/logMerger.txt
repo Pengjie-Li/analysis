@@ -47,3 +47,6 @@
 	2. move alpha Angle into teleAngle, telePosition, vTele
 2020-01-20
 	1. add Alpha Eloss depend on angle
+	2. add ppPlasE, ppWinE, apDssdE,apDegraderE
+2020-01-21
+	1. Find Eval Function must use Eval(x,0,"S") mode

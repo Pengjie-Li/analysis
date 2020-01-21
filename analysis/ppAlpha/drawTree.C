@@ -319,14 +319,14 @@ class CheckEx{
 
 
 
-			tree->SetAlias("MassBe","MassBe10*1");
-			tree->SetAlias("residueRestMass","MassHe6*AMU");
+			//tree->SetAlias("MassBe","MassBe10*1");
+			//tree->SetAlias("residueRestMass","MassHe6*AMU");
 
 			//tree->SetAlias("MassBe","MassBe12*1");
 			//tree->SetAlias("residueRestMass","MassHe8*AMU");
 
-			//tree->SetAlias("MassBe","MassBe14*1");
-			//tree->SetAlias("residueRestMass","MassHe10*AMU");
+			tree->SetAlias("MassBe","MassBe14*1");
+			tree->SetAlias("residueRestMass","MassHe10*AMU");
 
 
 
@@ -346,9 +346,9 @@ class CheckEx{
 			tree->SetAlias("xP","vESPRI.X()");
 			tree->SetAlias("yP","vESPRI.Y()");
 			tree->SetAlias("zP","vESPRI.Z()");
-			tree->SetAlias("xA","vAlpha.X()");
-			tree->SetAlias("yA","vAlpha.Y()");
-			tree->SetAlias("zA","vAlpha.Z()");
+			tree->SetAlias("xA","vTele.X()");
+			tree->SetAlias("yA","vTele.Y()");
+			tree->SetAlias("zA","vTele.Z()");
 			tree->SetAlias("xR","vFDC0.X()");
 			tree->SetAlias("yR","vFDC0.Y()");
 			tree->SetAlias("zR","vFDC0.Z()");
@@ -389,7 +389,7 @@ class CheckEx{
 
 			tree->SetAlias("E2","alphaEnergy+alphaMass");
 			tree->SetAlias("P2","alphaMomentum");
-			tree->SetAlias("theta2","alphaAngle*TMath::DegToRad()");
+			tree->SetAlias("theta2","teleAngle*TMath::DegToRad()");
 			
 
 
@@ -451,12 +451,12 @@ class CheckEx{
 			dc->drawProtonEA();
 		}
 		void drawAlphaEA(){
-			tree->Draw("alphaEnergy:alphaAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
+			tree->Draw("alphaEnergy:teleAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
 			dc->drawAlphaEA();
 		}
 
 		void drawAA(){
-			tree->Draw("espriAngle:alphaAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
+			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
 			dc->drawAA();
 		}
 		void drawEE(){
@@ -528,7 +528,8 @@ class CheckEx{
 };
 TString getHodGate(){
 	TString hodGate;
-	TString hodGateBe14He4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+	//TString hodGateBe14He4 = "(Be14Bar3He4||Be14Bar4He4||Be14Bar5He4||Be14Bar6He4||Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
+	TString hodGateBe14He4 = "(Be14Bar7He4||Be14Bar8He4||Be14Bar9He4||Be14Bar10He4||Be14Bar11He4||Be14Bar12He4||Be14Bar13He4||Be14Bar14He4||Be14Bar15He4||Be14Bar16He4||Be14Bar17He4)";
 	TString hodGateBe14He6 = "(Be14Bar11He6||Be14Bar12He6||Be14Bar13He6||Be14Bar14He6||Be14Bar15He6||Be14Bar16He6||Be14Bar17He6||Be14Bar18He6||Be14Bar19He6||Be14Bar20He6||Be14Bar21He6||Be14Bar22He6||Be14Bar23He6||Be14Bar24He6||Be14Bar26He6||Be14Bar27He6||Be14Bar28He6||Be14Bar29He6||Be14Bar30He6||Be14Bar31He6||Be14Bar32He6)";
 	TString hodGateBe14He8 = "(Be14Bar33He8||Be14Bar34He8||Be14Bar35He8||Be14Bar36He8||Be14Bar37He8||Be14Bar38He8)";
 
@@ -549,10 +550,12 @@ TString getHodGate(){
 	TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 
 	//hodGate = hodGateBe10He4;
-	hodGate = hodGateBe10He6;
+	//hodGate = hodGateBe10He6;
 	//hodGate = hodGateHe6;
 	//hodGate = hodGateBe14He8;
-	//hodGate = "("+hodGateHe4+"||"+hodGateHe6+"||"+hodGateHe8+")";
+	//hodGate = hodGateBe14He6;
+	hodGate = hodGateBe14He4;
+	//hodGate = "("+hodGateBe14He4+"||"+hodGateBe14He6+"||"+hodGateBe14He8+")";
 
 	//hodGate = hodGateBe12He6;
 	return hodGate;
@@ -564,22 +567,22 @@ TString getGate(){
 	//return "(espriAngle>65.5&&espriAngle<66.5)";
 	//return "(espriAngle>64.5&&espriAngle<65.5)";
 	//return "(espriAngle<66.5&&espriAngle>63.5)";
-	//return "(espriAngle<67&&espriAngle>65&&alphaAngle>6&&alphaAngle<8)";
+	//return "(espriAngle<67&&espriAngle>65&&teleAngle>6&&teleAngle<8)";
 	//return "(espriAngle<63.5)";
 	gROOT->ProcessLine(".x cutAABe10.C");
 	//return "(AABe10)&&((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
-	return "((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
+	//return "((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
 	
 	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
-	//return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
 	//return "(abs(exEnergy-5.5)<0.15)";
 }
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe10.root");
 	//ce->addFile("ppaBe12.root");
-	//ce->addFile("ppaBe14.root");
+	ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
@@ -598,9 +601,9 @@ void drawExEnergy(){
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe10.root");
 	//ce->addFile("ppaBe12.root");
-	//ce->addFile("ppaBe14.root");
+	ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());

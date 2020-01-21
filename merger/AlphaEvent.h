@@ -20,19 +20,20 @@ class AlphaCalibPara{
 
 		double getDssdE(double angle,double energyOut){
 			double realThickness = dssdThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + dssdEnergyToRange->Eval(energyOut);
-			double energyIn = dssdRangeToEnergy->Eval(rangeIn);
+			double rangeIn = realThickness + dssdEnergyToRange->Eval(energyOut,0,"S");
+			double energyIn = dssdRangeToEnergy->Eval(rangeIn,0,"S");
 			//cout<<"DSSD "<<realThickness<<" "<<energyIn<<energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getDegraderE(double angle,double energyOut){
 			double realThickness = degraderThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut);
-			double energyIn = degraderRangeToEnergy->Eval(rangeIn);
+			double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
+			double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
 			//cout<<"Degrader "<<realThickness<<" "<<energyIn<<energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getWindowE(double energy){
+			//cout<<"in "<<energy<<" winE"<<winEloss->Eval(energy,0,"S")<<endl;
 			return winEloss->Eval(energy);
 		}
 

@@ -1,7 +1,7 @@
 inputPath:inputRootfiles/
 runPrefix:run
-runSuffix:_analysed.root
+runSuffix:_analysed.root_test
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_ppaBe12.root
+outputSuffix:_ppaBe12.root_test

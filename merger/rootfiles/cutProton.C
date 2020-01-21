@@ -2,7 +2,7 @@
 //========= Macro generated from object: Proton/Graph
 //========= by ROOT version5.34/20
    
-   TCutG *cutg = new TCutG("Proton",17);
+   cutg = new TCutG("Proton",17);
    cutg->SetVarX("espriNaiE");
    cutg->SetVarY("espriPlasE");
    cutg->SetTitle("Graph");
