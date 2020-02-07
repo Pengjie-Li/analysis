@@ -50,3 +50,5 @@
 	2. add ppPlasE, ppWinE, apDssdE,apDegraderE
 2020-01-21
 	1. Find Eval Function must use Eval(x,0,"S") mode
+2020-02-07
+	1. change beam offset sign into plus, put it minus is dangerous

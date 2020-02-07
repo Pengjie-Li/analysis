@@ -24,7 +24,7 @@ class CsiInput{
 				for (int i = 0; i < 7; ++i) {
 					in>>hQPed[i]>>hQPedSigma[i];
 				}
-
+				if(caseId != 0) continue;
 				for (int i = 0; i < 7; ++i){
 
 					if(hQPed[i]!=-9999){

@@ -47,6 +47,6 @@ dssdRightPosition:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/use
 dssdScmPara:./txt/DSSD_Fit_Whole.txt
 csiSyncPara:./txt/csiSyncPara.txt
 csiSyncCalibPara:./txt/csiSyncCalibPara.txt
-csiPeak5CalibPara:txt/peak5CsiQPedEnergy.txt
+csiPeak5CalibPara:txt/peak5CsiCalib.txt
 dssdScmNewPara:txt/dssdScmPara.txt
 dssdPeak5CalibPara:txt/peak5DssdCalib.txt

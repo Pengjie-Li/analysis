@@ -26,6 +26,7 @@
 	tree->SetAlias("AMU","931.49410242*1");
 	tree->SetAlias("MassBe10","10.0113*1");
 	tree->SetAlias("MassH","1.007276*1");
+	tree->SetAlias("MassHe4","4.001506105*1");
 
 	tree->SetAlias("xB","vBeam.X()");
 	tree->SetAlias("yB","vBeam.Y()");

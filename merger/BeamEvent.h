@@ -42,9 +42,9 @@ class BeamEvent{
 		void setEvent(){
 
 			double SOL = 299.792458;//mm/ns
-			beamBeta = getF713Beta() - beamBetaOffset/SOL;
+			beamBeta = getF713Beta() + beamBetaOffset/SOL;
 			tofSBTTarget = getBeamFL()/(beamBeta*SOL);
-			beamEnergy = getF713Ek() - beamEnergyOffset;
+			beamEnergy = getF713Ek() + beamEnergyOffset;
 
 		}
 		void setOutputBranch(TTree *tree){

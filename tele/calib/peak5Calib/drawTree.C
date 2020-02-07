@@ -336,13 +336,87 @@ class CheckEx{
 
 		TH1F *hCsiQPed[7];
 		void drawCsiQPed(int peakId,int i){
-			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
-			tree->Draw(Form("teleCsiE>>hPeak%d_%d(1000,0,1000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			//tree->Draw(Form("teleCsiE>>hPeak%d_%d(1000,0,1000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
 			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
 			hCsiQPed[i] = (TH1F *)gDirectory->Get(Form("hPeak%d_%d",peakId,i));
 			//hCsiQPed[i]->SetLineColor(i+1);
 			hCsiQPed[i]->Draw();
 			hCsiQPed[i]->Write();
+		}
+
+		TH1F *hCheck[5];
+		void drawRightCsiEnergy(int peakId){
+			tree->Draw(Form("teleCsiE>>hPeak%d(500,0,1000)",peakId),"teleHit==1&&"+gate);
+			hCheck[0] = (TH1F*)gDirectory->Get(Form("hPeak%d",peakId));
+			hCheck[0]->SetLineColor(1);
+
+			int cid =0;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[1] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[1]->SetLineColor(2);
+			hCheck[1]->Draw();
+
+			cid =1;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[2] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[2]->SetLineColor(3);
+
+			cid =2;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[3] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[3]->SetLineColor(4);
+
+			cid =3;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[4] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[4]->SetLineColor(5);
+	
+	
+			hCheck[0]->Draw();
+			hCheck[1]->Draw("same");
+			hCheck[2]->Draw("same");
+			hCheck[3]->Draw("same");
+			hCheck[4]->Draw("same");
+		}
+
+
+		void drawLeftCsiEnergy(int peakId){
+			tree->Draw(Form("teleCsiE>>hPeak%d(500,0,1000)",peakId),"teleHit==1&&"+gate);
+			hCheck[0] = (TH1F*)gDirectory->Get(Form("hPeak%d",peakId));
+			hCheck[0]->SetLineColor(1);
+
+			int cid =4;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[1] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[1]->SetLineColor(2);
+			hCheck[1]->Draw();
+
+			cid =5;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[2] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[2]->SetLineColor(3);
+
+			cid =6;
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,cid),Form("teleHit==1&&teleHitCid[0]==%d&&",cid)+gate);
+			hCheck[3] = (TH1F*)gDirectory->Get(Form("hPeak%d_%d",peakId,cid));
+			hCheck[3]->SetLineColor(4);
+	
+			hCheck[0]->Draw();
+			hCheck[1]->Draw("same");
+			hCheck[2]->Draw("same");
+			hCheck[3]->Draw("same");
+		}
+
+		TH1F *hCsiEnergy[7];
+		void drawCsiEnergy(int peakId,int i){
+			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			tree->Draw(Form("teleCsiE>>hPeak%d_%d(500,0,1000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			//tree->Draw(Form("teleHitCsiQPed[0]>>hPeak%d_%d(1000,0,4000)",peakId,i),Form("teleHit==1&&teleHitCid[0]==%d&&",i)+gate);
+			hCsiEnergy[i] = (TH1F *)gDirectory->Get(Form("hPeak%d_%d",peakId,i));
+			//hCsiEnergy[i]->SetLineColor(i+1);
+			hCsiEnergy[i]->Draw();
+			hCsiEnergy[i]->Write();
 		}
 
 
@@ -456,7 +530,7 @@ void checkTargetGate(){
 }
 void drawCsiQPed(){
 
-	int peakId = 1;
+	int peakId = 0;
 	TString fileName = "calibCsiQPedPeak5.root";
 	CheckEx *ce = new CheckEx();
 	ce->addFile("rootfiles/run0596_analysed.root");
@@ -476,6 +550,32 @@ void drawCsiQPed(){
 	for (int i = 0; i < 7; ++i) {
 		cPad->cd(i+1);
 		ce->drawCsiQPed(peakId,i);
+	}
+	ce->output();
+}
+
+void drawCsiEnergy(){
+
+	int peakId = 0;
+	TString fileName = "checkCsiQPedPeak5.root";
+	CheckEx *ce = new CheckEx();
+	ce->addFile("rootfiles/run0596_analysed.root");
+	ce->addFile("rootfiles/run0597_analysed.root");
+	ce->addFile("rootfiles/run0598_analysed.root");
+	ce->addFile("rootfiles/run0599_analysed.root");
+	ce->addFile("rootfiles/run0600_analysed.root");
+	ce->setAlias();
+	ce->loadCut();
+	ce->setGate(getGate(peakId));
+	cout<<getGate(peakId)<<endl;
+
+	//TFile *outputFile = new TFile(fileName,"RECREATE");
+	TFile *outputFile = new TFile(fileName,"UPDATE");
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	cPad->Divide(4,2);
+	for (int i = 0; i < 7; ++i) {
+		cPad->cd(i+1);
+		ce->drawCsiEnergy(peakId,i);
 	}
 	ce->output();
 }
@@ -507,10 +607,33 @@ void drawDssdQPed(){
 	ce->output();
 }
 
+void checkCsiEnergy(){
+
+	//int runNumber = 596;
+	int runNumber = 597;
+	int peakId = 0;
+	TString fileName = Form("checkCsiEnergy%d.root",runNumber);
+	CheckEx *ce = new CheckEx();
+	ce->addFile(Form("rootfiles/run0%d_analysed.root",runNumber));
+	ce->setAlias();
+	ce->loadCut();
+	ce->setGate(getGate(peakId));
+	cout<<getGate(peakId)<<endl;
+
+	//TFile *outputFile = new TFile(fileName,"RECREATE");
+	TFile *outputFile = new TFile(fileName,"UPDATE");
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+//	ce->drawLeftCsiEnergy(peakId);
+	ce->drawRightCsiEnergy(peakId);
+	ce->output();
+}
+
 
 
 void drawTree(){
-	drawDssdQPed();	
+	//drawDssdQPed();	
+	//drawCsiEnergy();	
+	checkCsiEnergy();	
 	//drawCsiQPed();	
 	//checkTargetGate();
 }

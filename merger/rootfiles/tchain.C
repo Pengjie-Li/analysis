@@ -37,15 +37,15 @@
 //	int runStop = 310;
 //	int runStart = 425;
 //	int runStop = 440;
-	for (int i = runStart; i < runStop; ++i) {
-		
-		//tree->Add(Form("run0%d_analysed.root_3",i));
-		tree->Add(Form("run0%d_analysed.root",i));
-	}
+//	for (int i = runStart; i < runStop; ++i) {
+//		
+//		//tree->Add(Form("run0%d_analysed.root_3",i));
+//		tree->Add(Form("run0%d_analysed.root",i));
+//	}
 
-	//tree->Add(Form("run0%d_analysed.root_2",596));
+	tree->Add(Form("run0%d_analysed.root_test",596));
 	//tree->Add(Form("run0%d_analysed.root_2",599));
-	//tree->Add(Form("run0%d_analysed.root_2",597));
+	tree->Add(Form("run0%d_analysed.root_test",597));
 	//tree->Add(Form("run0%d_analysed.root_2",598));
 	//tree->Add(Form("run0%d_analysed.root_test",310));
 	//tree->Add(Form("run0%d_analysed.root_test",311));
