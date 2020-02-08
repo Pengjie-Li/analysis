@@ -90,6 +90,7 @@ class AlphaEvent{
 		void setAlphaEnergy(){
 			alphaEnergy_old = alphaPara->getEnergy_old(teleEvent->getCsiEnergy());
 			alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),teleEvent->getLocusAngle());
+			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),0);
 		}
 	public:
 		AlphaEvent(){
