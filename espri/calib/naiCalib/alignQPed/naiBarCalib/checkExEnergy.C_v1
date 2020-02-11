@@ -1,0 +1,305 @@
+class CheckEx{
+	private:
+		TChain *tree;
+		TCanvas *cPad;
+		int side;
+		int barId;
+		double gPlas;
+		double gNai;
+		double dPlas;
+		double dNai;
+
+		TH2F *hTot;
+		TH2F *hNai;
+		TH2F *hPlas;
+		TH1F *hEx;
+
+		void setAlias(){
+
+			tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
+			tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+
+					tree->SetAlias(Form("naiBarQPed%d%d",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
+					tree->SetAlias(Form("naiBarQRaw%d%d",i,j),Form("sqrt(naiQRaw[%d][%d]*naiQRaw[%d][%d])",2*i,j,2*i+1,j));
+				}
+
+			}
+
+
+			tree->SetAlias("SOL","299.792458*1");
+			tree->SetAlias("AMU","931.49410242*1");
+			tree->SetAlias("MassBe10","10.0113*1");
+			tree->SetAlias("MassH","1.007276*1");
+			tree->SetAlias("beamMass","MassBe10*AMU");
+			tree->SetAlias("protonMass","MassH*AMU");
+
+			// Could be better	
+			tree->SetAlias("beamEk","Ek713*MassBe10");
+
+
+			tree->SetAlias("dEplas",Form("%4f*plasBarQPed%d+%4f",gPlas,side,dPlas));
+			tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gNai,side,barId,dNai));
+			tree->SetAlias("protonEk","dEplas+Enai");
+
+			tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
+			tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
+
+			tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(espriAngle*TMath::DegToRad()))");
+			tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
+			tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
+			tree->SetAlias("excitationEnergy","residueMass-beamMass");
+
+		}
+
+		void drawTot(){
+
+			cPad->cd(1);
+			tree->Draw(Form("protonEk:espriAngle>>hTot%d%d(1000,55,75,1000,0,200)",side,barId));
+
+			hTot = (TH2F *)gDirectory->Get(Form("hTot%d%d",side,barId));
+			hTot->SetMarkerColor(2);
+			//hTot->SetMarkerSize(30);
+			hTot->SetMarkerStyle(6);
+			hTot->Draw();
+		}
+	public:
+		CheckEx(){
+
+			tree = new TChain("tree");
+			tree->Add("ppBe14.root");
+			cPad = new TCanvas("cPad","cPad",1200,700);
+			cPad->Divide(2,2);
+
+		}
+		void setBar(int s, int b){
+			side = s; barId = b;
+		}
+		void setCalibParas(double gN,double dN,double gP,double dP){
+			gNai = gN; dNai = dN;gPlas = gP; dPlas = dP;
+		}
+		void draw(){
+			drawTot();
+		//	drawEx();
+		//	drawNai();
+		//	drawPlas();
+		}
+
+		void drawCurve(){
+			TFile *fCurve = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe14Excitation/espriDetectorEnergy.root","READ");
+			cPad->cd(1);
+			TGraph *tot = (TGraph *)gDirectory->Get("tot");
+			tot->SetMarkerColor(1);
+			tot->SetLineColor(1);
+			tot->Draw("plsame");
+
+			cPad->cd(3);
+			TGraph *nai = (TGraph *)gDirectory->Get("nai");
+			nai->SetMarkerColor(1);
+			nai->SetLineColor(1);
+			nai->Draw("plsame");
+
+			cPad->cd(4);
+			TGraph *plas = (TGraph *)gDirectory->Get("plas");
+			plas->SetMarkerColor(1);
+			plas->SetLineColor(1);
+			plas->Draw("plsame");
+
+			fCurve->Close();
+
+		}
+
+		~CheckEx(){}
+};
+void checkExEnergy(){
+
+
+	CheckEx *ce = new CheckEx();
+	ce->setBar(side,barId);
+	ce->setCalibParas(gNai,dNai,gPlas,dPlas);
+	ce->draw();
+	ce->drawCurve();
+//	int side = 1;
+//	int barId = 6;
+//	double gain = 0.037;
+//	double dead = 11.5;
+
+//	int side = 1;
+//	int barId = 5;
+//	double gain = 0.037;
+//	double dead = 21;
+
+
+
+//	int side = 1;
+//	int barId = 4;
+//	double gain = 0.037;
+//	double dead = 20;
+
+
+//	int side = 1;
+//	int barId = 3;
+//	double gain = 0.040;
+//	double dead = 14;
+
+
+//	int side = 1;
+//	int barId = 2;
+//	double gain = 0.040;
+//	double dead = 12;
+
+
+//	int side = 1;
+//	int barId = 1;
+//	double gain = 0.040;
+//	double dead = 10;
+
+
+//	int side = 1;
+//	int barId = 0;
+//	double gain = 0.037;
+//	double dead = 12.5;
+
+
+//	int side = 0;
+//	int barId = 6;
+//	double gain = 0.04;
+//	double dead = 5;
+
+
+//	int side = 0;
+//	int barId = 5;
+//	double gain = 0.04;
+//	double dead = 3;
+
+
+	int side = 0;
+	int barId = 4;
+	double gain = 0.033;
+	double dead = 11.5;
+
+//	int side = 0;
+//	int barId = 3;
+//	double gain = 0.04;
+//	double dead = 7;
+
+//	int side = 0;
+//	int barId = 2;
+//	double gain = 0.040;
+//	double dead = 3;
+
+//	int side = 0;
+//	int barId = 1;
+//	double gain = 0.040;
+//	double dead = 3;
+
+
+//	int side = 0;
+//	int barId = 0;
+//	double gain = 0.040;
+//	double dead = 3;
+
+
+
+//	int side = 1;
+//	double gain = 0.003500;
+//	double dead = 1;
+
+//	int side = 0;
+	double g = 0.0037500;
+	double d = 0;
+
+
+
+
+	draw(side,barId,gain,dead,g,d);
+}
+void draw(int side,int barId,double gain1,double dead1,double gain2,double dead2){
+
+	TChain *tree = new TChain("tree");
+	tree->Add("ppBe14.root");
+	TCanvas *cPad = new TCanvas("cPad","cPad",1200,700);
+	cPad->Divide(2,2);
+
+        tree->SetAlias("plasBarQPed0","sqrt(plasQPed[0]*plasQPed[1])");
+        tree->SetAlias("plasBarQPed1","sqrt(plasQPed[2]*plasQPed[3])");
+        for (int i = 0; i < 2; ++i) {
+                for (int j = 0; j < 7; ++j) {
+
+                        tree->SetAlias(Form("naiBarQPed%d%d",i,j),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*i,j,2*i+1,j));
+                        tree->SetAlias(Form("naiBarQRaw%d%d",i,j),Form("sqrt(naiQRaw[%d][%d]*naiQRaw[%d][%d])",2*i,j,2*i+1,j));
+                }
+
+        }
+
+
+        tree->SetAlias("SOL","299.792458*1");
+        tree->SetAlias("AMU","931.49410242*1");
+        tree->SetAlias("MassBe10","10.0113*1");
+        tree->SetAlias("MassH","1.007276*1");
+	tree->SetAlias("beamMass","MassBe10*AMU");
+        tree->SetAlias("protonMass","MassH*AMU");
+
+	// Could be better	
+        tree->SetAlias("beamEk","Ek713*MassBe10");
+
+	
+        tree->SetAlias("dEplas",Form("%4f*plasBarQPed%d+%4f",gain2,side,dead2));
+        tree->SetAlias("Enai",Form("%4f*naiBarQPed%d%d+%4f",gain1,side,barId,dead1));
+        tree->SetAlias("protonEk","dEplas+Enai");
+
+        tree->SetAlias("beamMomentum","sqrt(beamEk*beamEk+2*beamEk*beamMass)");
+        tree->SetAlias("protonMomentum","sqrt(protonEk*protonEk+2*protonEk*protonMass)");
+
+        tree->SetAlias("residueMomentum","sqrt(beamMomentum*beamMomentum + protonMomentum*protonMomentum - 2*beamMomentum*protonMomentum*cos(espriAngle*TMath::DegToRad()))");
+        tree->SetAlias("residueEnergy","beamEk + beamMass - protonEk");
+        tree->SetAlias("residueMass","sqrt(residueEnergy*residueEnergy - residueMomentum*residueMomentum)");
+        tree->SetAlias("excitationEnergy","residueMass-beamMass");
+
+
+	tree->Draw(Form("protonEk:espriAngle>>hQPed%d%d(1000,55,75,1000,0,200)",side,barId));
+	tree->Draw(Form("dEplas:espriAngle>>hEplas%d(1000,55,75,1000,0,200)",side));
+	tree->Draw(Form("Enai:espriAngle>>hEnai%d%d(1000,55,75,1000,0,200)",side,barId));
+
+	TH2F *hQPed = (TH2F *)gDirectory->Get(Form("hQPed%d%d",side,barId));
+        hQPed->SetMarkerColor(2);
+        //hQPed->SetMarkerSize(30);
+        hQPed->SetMarkerStyle(6);
+	cPad->cd(1);
+	hQPed->Draw();
+
+
+	cPad->cd(2);
+	tree->Draw(Form("excitationEnergy>>hEx%d%d(200,-10,10)",side,barId));
+	TH1F *hEx = (TH1F *)gDirectory->Get(Form("hEx%d%d",side,barId));
+
+	drawCurve(cPad);
+
+	TFile *outputFile = new TFile(Form("rootfiles/totBar%d%d.root",side,barId),"RECREATE");
+	tot->Write();
+	hQPed->Write();
+	outputFile->Close();
+}
+void drawCurve(TCanvas *cPad){
+	TFile *fCurve = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe14Excitation/espriDetectorEnergy.root","READ");
+	cPad->cd(1);
+	TGraph *tot = (TGraph *)gDirectory->Get("tot");
+	tot->SetMarkerColor(1);
+	tot->SetLineColor(1);
+	tot->Draw("plsame");
+
+	cPad->cd(3);
+	TGraph *nai = (TGraph *)gDirectory->Get("nai");
+	nai->SetMarkerColor(1);
+	nai->SetLineColor(1);
+	nai->Draw("plsame");
+
+	cPad->cd(4);
+	TGraph *plas = (TGraph *)gDirectory->Get("plas");
+	plas->SetMarkerColor(1);
+	plas->SetLineColor(1);
+	plas->Draw("plsame");
+
+}
+

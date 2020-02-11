@@ -1,0 +1,2 @@
+- Be10 and Be14 has the same setting
+- Be12 slightly smaller gain = 1.1

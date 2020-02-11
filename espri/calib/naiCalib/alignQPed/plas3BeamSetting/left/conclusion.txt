@@ -1,0 +1,2 @@
+- PlasGain in Be10 and Be14 are the same. i.e. Magnet doesn't affect Gain of Plastic
+- PlasGain in Be12 affected by magnet, 2.7T, So need to amplified to 1.1 of QPed

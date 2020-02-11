@@ -5,141 +5,68 @@ class DrawDE{
 		int barNo;
 		TChain *tree;
 
-		TCanvas *cDEE;
+
 		TString cName;
 		TString hName;
-		TString draw;
-		TString condition;
+		TString drawName;
+		TString drawVar;
+		TString drawRange;
+
+		TString gate;
+		TString targetArea;
+
+		int nBin; 
+		int xMin; 
+		int xMax; 
+		int yMin; 
+		int yMax; 
+
 
 		DrawDE(){}
 		~DrawDE(){
-			delete cDEE;
 		}
 		DrawDE(TChain *t,int s,int b){
 			tree = t;
 			side = s;
 			barNo = b;
-
-			nameAll();
-			drawBand();
 		}
-		void nameAll(){
-			int nBin = 400;
-			int xMin = 0;
-			int xMax = 150;
-			int yMin = 0;
-			int yMax = 40;
-
-			cName = Form("dEESide%dBar%d",side,barNo);
-			hName = Form("hSide%dBar%d",side,barNo);
-			draw = Form("plasQ[%d]:naiBarQCal[%d][%d]>>hSide%dBar%d(%d,%d,%d,%d,%d,%d)",side,side,barNo,side,barNo,nBin,xMin,xMax,nBin,yMin,yMax);
-			condition="";
-		}
-		void drawBand(){
-			cDEE = new TCanvas(cName,cName,800,700);
-			tree->Draw(draw,condition,"colz");
-		}
-};
-class DrawAll:public DrawDE{
-	private:
-	public:
-		DrawAll(TChain *t,int s){
+		DrawDE(TChain *t){
 			tree = t;
-			side = s;
-
-			nameAll();
-			drawBand();
+			gate="1>0";
 		}
-		void nameAll(){
-			int nBin = 400;
-			int xMin = 0;
-			int xMax = 150;
-			int yMin = 0;
-			int yMax = 40;
-
-			cName = Form("dEESide%d",side);
-			hName = Form("hSide%d",side);
-			draw = Form("plasQ[%d]:naiQ[%d]>>hSide%d(%d,%d,%d,%d,%d,%d)",side,side,side,nBin,xMin,xMax,nBin,yMin,yMax);
-			if(side ==0 ){
-				gROOT->ProcessLine(".x cut/leftPlastic.C");
-				condition="leftPlastic";
-			}else {
-				gROOT->ProcessLine(".x cut/rightPlastic.C");
-				condition="rightPlastic";
-			}
+		void loadTargetCut(){
+			targetArea = "sqrt((Target_X+2.13)*(Target_X+2.13)+(Target_Y+1.6)*(Target_Y+1.6))<13";
+			gate = gate+"&&"+targetArea;
 		}
-};
-class ExtractDE:public DrawDE{
-	private:
-	public:
-
-		TString outputName;
-		TString cutName;
-		TString fitName;
-		TF1 *fit;
-		TH2D *hDEE;
-
-		ExtractDE(TChain *t,int s,int b){
-			tree = t;
-			side = s;
-			barNo = b;
-
-			fit = new TF1(fitName,"pol3",-10,1500);
-
-			nameAll();
-			drawBand();
-			profileBand();
-			outputTXT();
+		void draw(){
+			drawName = drawVar+hName+drawRange;
+			cout<<"drawOption = "<<drawName<<endl;
+			tree->Draw(drawName,gate,"colz");
 		}
-		~ExtractDE(){
-			delete fit;
-			//gROOT->ProcessLine(".x cut/delete.C");
+		void setHistoName(TString name){
+			hName = name;
 		}
-		void nameAll(){
-
-			DrawDE::nameAll();
-			gROOT->ProcessLine(Form(".x cut/Be14_2/side%dBarNo%d.C",side,barNo));
-			cutName = Form("side%dBarNo%d",side,barNo);
-			condition=cutName;
-			fitName = Form("fitSide%dBar%d",side,barNo);
+		void setDrawVar(TString var1,TString var2){
+			drawVar = var1 +":"+var2+">>";
 		}
-
-		void drawBand(){
-			cDEE = new TCanvas(cName,cName,1600,700);
-			cDEE->Divide(2,1);
-			cDEE->cd(1);
-
-			//tree->Print();
-			tree->Draw(draw,condition,"colz");
-			//gROOT->ProcessLine(".x cut/draw.C");
-
+		void initGate(){
+			//gate="1>0";
+			gate="rdcY[0]>355&&rdcY[0]<375";
+			loadTargetCut();
 		}
-		void profileBand(){
-
-
-			cDEE->cd(2);
-			hDEE = (TH2D *)gDirectory->Get(hName);
-			TProfile *hPDEE = hDEE->ProfileX();
-			hPDEE->Draw();
-			hPDEE->Fit(fit,"R");
-
-			cout<<fit->GetParameter(0)<<"\t"<<fit->GetX(1500,100,800)<<"\t"<<fit->GetParameter(1)<<"\t"<<fit->GetParameter(2)<<"\t"<<"\t"<<fit->GetParameter(3)<<endl;
-
-
-			//hPDEE->SetLineColor(2);
-			//hPDEE->Fit("pol3");
+		void setGate(TString gateIn){
+			gate = gate + "&&" + gateIn;
 		}
-		void outputTXT(){
+		void setRange(int par1,int par2,int par3,int par4,int par5){
+			nBin = par1;
+			xMin = par2;
+			xMax = par3;
+			yMin = par4;
+			yMax = par5;
+			drawRange = Form("(%d,%d,%d,%d,%d,%d)",nBin,xMin,xMax,nBin,yMin,yMax);
 
-			cDEE->Write();
-			outputName=Form("dEERelation.txt");
-			ofstream fout(outputName,ios_base::app | ios_base::out);
-
-			fout <<side<<"\t"<<barNo<<"\t"<<fit->GetParameter(0)<<"\t"<<fit->GetParameter(0)<<"\t"<<fit->GetParameter(1)<<"\t"<<fit->GetParameter(2)<<"\t"<<"\t"<<fit->GetParameter(3)<<endl;
-			fout.close();
 		}
 };
-
 class PlasDE{
 	private :
 
@@ -151,7 +78,7 @@ class PlasDE{
 		TString outputSuffix;
 
 		void init(){
-			tree = new TChain("CalTreeESPRI");
+			tree = new TChain("tree");
 			outputPrefix = "dEEPlot";
 		}
 		PlasDE(){
@@ -173,9 +100,8 @@ class PlasDE{
 			cout<<outputPrefix<<":"<<outputSuffix<<endl;
 		}
 		void test(){
-			ExtractDE *extractDE = new ExtractDE(tree,0,1);
+			//ExtractDE *extractDE = new ExtractDE(tree,0,1);
 		}
-
 		~PlasDE(){delete tree;}
 		void loadRunChain(){
 			//cout<<"g1"<<endl;
@@ -190,46 +116,62 @@ class PlasDE{
 			//cout<<"g3"<<endl;
 			for(int i = runStart;i<runStop;i++)
 			{
-				tree->Add(Form("../convert/rootfiles/run0%d_ESPRI.root",i));
+				//tree->Add(Form("./rootfiles/run0%d_analysed.root_1",i));
+				tree->Add(Form("./rootfiles/run0%d_analysed.root",i));
 			}
 
 			tree->Print();
 		}
-		void analysingAllBars(){
-			for(int side = 0;side<2;side++){
-				for(int barNo = 0;barNo<7;barNo++){
-					ExtractDE *extractDE = new ExtractDE(tree,side,barNo);
-
-				}
-			}
-		}
 		void draw(){
+			TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+			cPad->Divide(2,1);
+			DrawDE *drawDE = new DrawDE(tree);
+			drawDE->loadTargetCut();
+			drawDE->setRange(500,0,200,0,4000);
 
-			for(int side = 0;side<2;side++){
-				DrawAll *drawAll =new DrawAll(tree,side);
-			}
+			cPad->cd(1);
+			drawDE->setHistoName("hLeft");
+			drawDE->setDrawVar("sqrt(plasQPed[0]*plasQPed[1])","naiQ[0]");
+			drawDE->draw();
+			cPad->cd(2);
+			drawDE->setHistoName("hRight");
+			drawDE->setDrawVar("sqrt(plasQPed[2]*plasQPed[3])","naiQ[1]");
+			drawDE->draw();
+
 		}
+		void drawBar(int side, int barNo){
+			DrawDE *drawDE = new DrawDE(tree);
+			drawDE->loadTargetCut();
+			drawDE->setRange(500,0,4000,0,4000);
+
+			drawDE->setHistoName(Form("hSide%dBar%d",side,barNo));
+			drawDE->setDrawVar(Form("sqrt(plasQPed[%d]*plasQPed[%d])",2*side,2*side+1),Form("sqrt(naiQPed[%d][%d]*naiQPed[%d][%d])",2*side,barNo,2*side+1,barNo));
+			drawDE->initGate();
+			drawDE->setGate(Form("(plasQPed[%d]>0&&plasQPed[%d]>0)&&(naiQPed[%d][%d]>0&&naiQPed[%d][%d]>0)",2*side,2*side+1,2*side,barNo,2*side+1,barNo));
+			drawDE->draw();
+		}
+
 		void drawAllBars(){
+			TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+			cPad->Divide(7,2);
+
 			for(int side = 0;side<2;side++){
 				for(int barNo = 0;barNo<7;barNo++){
-					DrawDE *drawDE = new DrawDE(tree,side,barNo);
-
+					cPad->cd(7*side+barNo+1);
+					drawBar(side,barNo);
+					cPad->Modified();
+					cPad->Update();
 				}
 			}
 		}
 		void drawAllBarsWithCut(){
 			for(int side = 0;side<2;side++){
 				for(int barNo = 0;barNo<7;barNo++){
-					ExtractDE *extractDE = new ExtractDE(tree,side,barNo);
+					//ExtractDE *extractDE = new ExtractDE(tree,side,barNo);
 					//delete extractDE;
 				}
 			}
 		}
-		void drawOneBarsWithCut(int side,int barNo){
-			ExtractDE *extractDE = new ExtractDE(tree,side,barNo);
-
-		}
-
 
 
 		void write(){
@@ -237,45 +179,34 @@ class PlasDE{
 		}
 
 };
-class PlasDECut : public PlasDE {
-	private:
-	public:
-		PlasDECut(){
-			//子类默认调用父类的默认构造函数
-		}
-		void init(){
-			tree = new TChain("CalTreeESPRI");
-			outputPrefix = "dEEPlotCut";
-		}
-};
-void drawDEEPlotWithCut(){
-	PlasDECut *plasGain = new PlasDECut();
-	//plasGain->loadRun(334,365);
-	plasGain->loadRun(433,455);
-	plasGain->createOutputFile();
-	plasGain->drawOneBarsWithCut(1,3);
-	//plasGain->drawAllBarsWithCut();
-	plasGain->write();
-}
-void drawDEEPlotBar(){
-	//PlasDE *plasGain = new PlasDE(361,365);
-	PlasDE *plasGain = new PlasDE();
-	//plasGain->loadRun(334,365);
-	plasGain->loadRun(360);
-	plasGain->createOutputFile();
-	plasGain->drawAllBars();
-	plasGain->write();
-}
 void drawDEEPlot(){
-	//PlasDE *plasGain = new PlasDE(361,365);
 	PlasDE *plasGain = new PlasDE();
-	plasGain->loadRun(334,365);
-	//plasGain->loadRun(360);
+	plasGain->loadRun(298,330);
+	//plasGain->loadRun(334,365);
+	//plasGain->loadRun(366,455);
+	//plasGain->loadRun(310);
 	plasGain->createOutputFile();
-	plasGain->draw();
+	//plasGain->loadCut();
+	//plasGain->draw();
+	plasGain->drawAllBars();
+	//plasGain->drawOneBarsWithCut(1,3);
+	plasGain->write();
+}
+void drawDEEWithRDCY(){
+	PlasDE *plasGain = new PlasDE();
+	plasGain->loadRun(298,330);
+	//plasGain->loadRun(334,365);
+	//plasGain->loadRun(366,455);
+	//plasGain->loadRun(310);
+	plasGain->createOutputFile();
+	//plasGain->loadCut();
+	plasGain->drawBar(0,0);
+	plasGain->drawBar(0,1);
+	//plasGain->drawAllBars();
 	plasGain->write();
 }
 void drawDEE(){
 	drawDEEPlot();
+	//drawDEEWithRDCY();
 	//drawDEEPlotWithCut();
 }
