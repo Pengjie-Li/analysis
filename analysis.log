@@ -4762,3 +4762,72 @@ Branch master set up to track remote branch master from origin.
  2 files changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ec5bc5a] v1.0
+ 66 files changed, 4060 insertions(+), 281 deletions(-)
+ create mode 100644 espri/calib/naiCalib/alignQPed/nai3BeamSetting/drawNaiQPed.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/nai3BeamSetting/generateHistogram.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/nai3BeamSetting/oneRunGenerate.C
+ create mode 120000 espri/calib/naiCalib/alignQPed/nai3BeamSetting/rootfiles
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/calibPara.txt
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkCalibTOF.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkCalibTOF.C_v1
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkDEE.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkExEnergy.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkExEnergy.C_v1
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkNaiBar.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/checkPlasBar.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/drawC0D0.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/drawCurveNaiEvsAngle.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar-1-1.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar0-1.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar00.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar01.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar02.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar03.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar04.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar05.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar06.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar1-1.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar10.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar11.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar12.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar13.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar14.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar15.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/png/Bar16.png
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarCalib/setAlias.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarsSync/alignBar.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarsSync/barSync.txt
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarsSync/drawNaiQPed.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/naiBarsSync/oneRunGenerate.C
+ create mode 120000 espri/calib/naiCalib/alignQPed/naiBarsSync/rootfiles
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/left/conclusion.txt
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/left/drawPlasQPedTof.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/left/generateHistogram.C
+ create mode 120000 espri/calib/naiCalib/alignQPed/plas3BeamSetting/left/rootfiles
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/note.txt
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/right/conclusion.txt
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/right/drawPlasQPedTof.C
+ create mode 100644 espri/calib/naiCalib/alignQPed/plas3BeamSetting/right/generateHistogram.C
+ create mode 120000 espri/calib/naiCalib/alignQPed/plas3BeamSetting/right/rootfiles
+ create mode 120000 espri/calib/naiCalib/alignQPed/rootfiles
+ create mode 100644 espri/calib/naiCalib/checkNaiBars/ppBe.C
+ create mode 100644 espri/calib/naiCalib/checkNaiBars/ppBe14.root_TrigTargetPRAngleBe14Bar28-33
+ create mode 120000 espri/calib/naiCalib/checkNaiBars/rootfiles
+ create mode 100755 espri/calib/naiCalib/naiGain/Makefile
+ create mode 100644 espri/calib/naiCalib/naiGain/calDEERelation.C
+ create mode 100644 espri/calib/naiCalib/naiGain/calDEERelation_C_ACLiC_dict_rdict.pcm
+ create mode 100755 espri/calib/naiCalib/naiGain/findNaiQvsPosition
+ create mode 100644 espri/calib/naiCalib/naiGain/findNaiQvsPosition.C
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/NaiGainRun.txt
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/NaiticGainRun.txt
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/naiBarGain_Be10.txt
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/naiBarGain_Be12.txt
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/naiBarGain_Be14.txt
+ create mode 100644 espri/calib/naiCalib/naiGain/txt/naiBarGain_Be14_2.txt
+ rewrite espri/dEE/drawDEE.C (66%)
+ create mode 100644 espri/dEE/fitDEE.C
+ create mode 120000 espri/dEE/rootfiles
+ rename espri/dEE/{drawDEE.C => v2_backup_drawDEE.C} (100%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
