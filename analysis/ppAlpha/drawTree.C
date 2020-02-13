@@ -448,20 +448,20 @@ class CheckEx{
 
 		void drawProtonEA(){
 			tree->Draw("protonEnergy:espriAngle>>hProtonEA(200,50,80,200,0,150)",gate,"colz");
-			dc->drawProtonEA();
+			//dc->drawProtonEA();
 		}
 		void drawAlphaEA(){
 			tree->Draw("alphaEnergy:teleAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
-			dc->drawAlphaEA();
+			//dc->drawAlphaEA();
 		}
 
 		void drawAA(){
 			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
-			dc->drawAA();
+			//dc->drawAA();
 		}
 		void drawEE(){
 			tree->Draw("protonEnergy:alphaEnergy>>hEE(200,300,700,200,0,150)",gate,"colz");
-			dc->drawEE();
+			//dc->drawEE();
 		}
 
 		void drawEx(){
@@ -547,11 +547,12 @@ TString getHodGate(){
 	//TString hodGateBe10He4 = "(Be10Bar21He4)";
 	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6)";
 	//TString hodGateBe10He6 = "(Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
-	TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 
 	//hodGate = hodGateBe10He4;
 	//hodGate = hodGateBe10He6;
-	//hodGate = hodGateHe6;
+	//hodGate = hodGateBe12He8;
+	//hodGate = hodGateBe12He6;
 	//hodGate = hodGateBe14He8;
 	//hodGate = hodGateBe14He6;
 	hodGate = hodGateBe14He4;
@@ -639,8 +640,8 @@ void drawPlaneBPA(){
 }
 
 void drawTree(){
-	drawPACorrelation();	
-	//drawExEnergy();
+	//drawPACorrelation();	
+	drawExEnergy();
 	//drawPlaneBPA();
 }
 

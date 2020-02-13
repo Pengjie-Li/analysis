@@ -13,17 +13,17 @@ class DrawCurve{
 		
 	public:
 		DrawCurve(){
-			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe14Excitation/espriDetectorEnergy_gs.root","READ");
+			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_gs.root","READ");
 			tot_gs = (TGraph *)gDirectory->Get("tot");
 			nai_gs = (TGraph *)gDirectory->Get("nai");
 			plas_gs = (TGraph *)gDirectory->Get("plas");
 			fCurve1->Close();
 
-//			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_fex.root","READ");
-//			tot_fex = (TGraph *)gDirectory->Get("tot");
-//			nai_fex = (TGraph *)gDirectory->Get("nai");
-//			plas_fex = (TGraph *)gDirectory->Get("plas");
-//			fCurve2->Close();
+			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_fex.root","READ");
+			tot_fex = (TGraph *)gDirectory->Get("tot");
+			nai_fex = (TGraph *)gDirectory->Get("nai");
+			plas_fex = (TGraph *)gDirectory->Get("plas");
+			fCurve2->Close();
 
 
 
@@ -49,15 +49,15 @@ class DrawCurve{
 		void drawPlas(){
 			plas_gs->SetMarkerColor(1);
 			plas_gs->SetLineColor(1);
-			//plas_fex->SetLineColor(1);
+			plas_fex->SetLineColor(1);
 			plas_gs->Draw("lsame");
-			//plas_fex->Draw("lsame");
+			plas_fex->Draw("lsame");
 		}
 		void drawNai(){
 			//nai_gs->SetMarkerColor(1);
 			//nai_gs->SetLineColor(1);
 			nai_gs->Draw("lsame");
-			//nai_fex->Draw("lsame");
+			nai_fex->Draw("lsame");
 
 		}
 		~DrawCurve(){}
@@ -610,7 +610,7 @@ void drawBar(int side,int barId,double gain,double offset){
 	//ce->addFile("ppBe14.root_BeamTargetProtonPRAngle");
 	//ce->addFile("ppBe14.root_BeamTargetProtonHodBar28-33");
 	//ce->addFile("ppBe10.root");
-	ce->addFile("ppBe14.root");
+	ce->addFile("ppBe12.root");
 	ce->setAlias();
 	ce->setBar(side,barId);
 	ce->setCalibPara(gain,offset);
@@ -635,27 +635,27 @@ void calibNai(){
 	//drawBar(0,-1); // draw all left bars
 	//drawBar(1,-1); // draw all right bars
 	//drawBar(1,1); // draw bar side + barId
-	//drawBar(0,0,0.0415,0); // draw bar side + barId
-	drawBar(0,1,0.0415,0); // draw bar side + barId
-	//drawBar(0,2,0.0415,0); // draw bar side + barId
-	//drawBar(0,3,0.044,0); // draw bar side + barId
-	//drawBar(0,4,0.034,7); // draw bar side + barId
-	//drawBar(0,5,0.040,1.5); // draw bar side + barId
-	//drawBar(0,6,0.04,3); // draw bar side + barId
+	//drawBar(0,0,0.075,-3.5); // draw bar side + barId
+	//drawBar(0,1,0.0475,-1.5); // draw bar side + barId
+	//drawBar(0,2,0.056,6.5); // draw bar side + barId
+	//drawBar(0,3,0.039,5); // draw bar side + barId
+	//drawBar(0,4,0.058,2.5); // draw bar side + barId
+	//drawBar(0,5,0.058,3); // draw bar side + barId
+	//drawBar(0,6,0.08,1.5); // draw bar side + barId
 	//
-	//drawBar(1,0,0.0435,1); // draw bar side + barId
-	//drawBar(1,1,0.0435,1); // draw bar side + barId
-	//drawBar(1,2,0.0435,6.5); // draw bar side + barId
-	//drawBar(1,3,0.045,6.5); // draw bar side + barId
-	//drawBar(1,4,0.0415,12); // draw bar side + barId
-	//drawBar(1,5,0.045,8); // draw bar side + barId
-	//drawBar(1,6,0.0415,2); // draw bar side + barId
+	drawBar(1,0,0.078,3.5); // draw bar side + barId
+	//drawBar(1,1,0.09,5.5); // draw bar side + barId
+	//drawBar(1,2,0.085,5); // draw bar side + barId
+	//drawBar(1,3,0.045,5); // draw bar side + barId
+	//drawBar(1,4,0.110,7); // draw bar side + barId
+	//drawBar(1,5,0.175,6.5); // draw bar side + barId
+	//drawBar(1,6,0.073,6.5); // draw bar side + barId
 	//drawBar(0,-1); // draw bar side + barId
 	//drawBar(1,-1); // draw bar side + barId
 	//drawBar(-1,-1); // draw bar side + barId
 	//drawBar(0,1); // draw bar side + barId
 	//drawBar(0,2); // draw bar side + barId
 	
-	//drawBar(0,-1,0.00385,0); // draw bar side + barId
-	//drawBar(1,-1,0.004600,0); // draw bar side + barId
+	//drawBar(0,-1,0.004100,0); // draw bar side + barId
+	//drawBar(1,-1,0.005000,0); // draw bar side + barId
 }

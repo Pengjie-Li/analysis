@@ -620,7 +620,7 @@ void drawCsiQPed(){
 void drawCsiEnergy(){
 
 	int peakId = 0;
-	TString fileName = "checkCsiQPedPeak5.root";
+	TString fileName = "checkCsiCalibPeak5.root";
 	CheckEx *ce = new CheckEx();
 	ce->addFile("rootfiles/run0596_analysed.root");
 	ce->addFile("rootfiles/run0597_analysed.root");
@@ -697,9 +697,9 @@ void checkCsiEnergy(){
 
 void drawTree(){
 	//drawDssdQPed();	
-	//drawCsiEnergy();	
-	checkCsiEnergy();	
+	//checkCsiEnergy();	
 	//drawCsiQPed();	
+	drawCsiEnergy();	
 	//checkTargetGate();
 }
 
