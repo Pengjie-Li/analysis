@@ -640,8 +640,8 @@ void drawPlaneBPA(){
 }
 
 void drawTree(){
-	//drawPACorrelation();	
-	drawExEnergy();
+	drawPACorrelation();	
+	//drawExEnergy();
 	//drawPlaneBPA();
 }
 

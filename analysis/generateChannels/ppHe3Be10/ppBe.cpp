@@ -4,6 +4,8 @@ PPBe::PPBe(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNumber
 	env= new TEnv("configPPBe.prm");
 	rf = new ReadFile(runNumber);
 	event = new Event(rf);
+
+	he3Event = new He3Event();
 }
 bool PPBe::isFilesExist(){
 	return rf->isFilesExist();
@@ -25,6 +27,7 @@ void PPBe::createOutput(){
 void PPBe::setOutputBranch(){
 	rf->setBranch(tree);
 	event->setBranch(tree);
+	he3Event->setOutputBranch(tree);
 }
 void PPBe::saveOutput(){
 	tree->Write();
@@ -40,11 +43,12 @@ void PPBe::eventLoop(){
 		rf->getEntry(ientry);
 
 		if(event->selectEvent()){
+			setHe3Event();
 			tree->Fill();
 
-			cout<<"Event Number = "<<ientry<<endl;
+			//cout<<"Event Number = "<<ientry<<endl;
 			//print();
-			//if(nentries<1000) {
+			//if(nentries<100000) {
 			//	cout<<endl;
 			//	cout<<"Event Number = "<<ientry<<endl;
 
@@ -54,5 +58,13 @@ void PPBe::eventLoop(){
 
 	}
 }
+void PPBe::setHe3Event(){
+        he3Event->init();
+
+        he3Event->load(rf);
+        he3Event->setEvent();
+}
+
 void PPBe::print(){
+	he3Event->print();
 }

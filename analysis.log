@@ -4856,3 +4856,59 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master c253dad] v1.0
+ 54 files changed, 2344 insertions(+), 1 deletion(-)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/Event.h
+ create mode 100644 analysis/generateChannels/ppHe3Be10/He3Event.h
+ create mode 100755 analysis/generateChannels/ppHe3Be10/Makefile
+ create mode 100644 analysis/generateChannels/ppHe3Be10/ReadFile.h
+ create mode 100644 analysis/generateChannels/ppHe3Be10/configPPBe.prm
+ create mode 100644 analysis/generateChannels/ppHe3Be10/convert.sh
+ create mode 100755 analysis/generateChannels/ppHe3Be10/header.h
+ create mode 120000 analysis/generateChannels/ppHe3Be10/inputRootfiles
+ create mode 100644 analysis/generateChannels/ppHe3Be10/loop.sh
+ create mode 100644 analysis/generateChannels/ppHe3Be10/main.cpp
+ create mode 100644 analysis/generateChannels/ppHe3Be10/ppBe.cpp
+ create mode 100644 analysis/generateChannels/ppHe3Be10/ppBe.h
+ create mode 100755 analysis/generateChannels/ppHe3Be10/ppHe3Be10
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0298_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0299_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0300_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0301_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0302_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0303_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0304_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0305_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0306_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0307_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0308_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0309_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0310_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0310_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0311_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0312_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0313_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0314_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0315_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0316_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0317_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0318_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0319_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0320_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0321_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0322_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0323_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0324_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0325_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0326_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0327_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0328_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0329_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/rootfiles/run0330_ppHe3Be10.root_test
+ create mode 100644 analysis/generateChannels/ppHe3Be10/tele.C
+ create mode 100644 analysis/generateChannels/ppHe3Be10/test.C
+ create mode 100644 merger/.AnalysingAlpha.h.swp
+ create mode 100644 merger/rootfiles/cutHe3.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

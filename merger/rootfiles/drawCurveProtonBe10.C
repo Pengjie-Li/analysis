@@ -13,7 +13,7 @@
 	fex->SetLineWidth(1);
 	//fex->SetLineStyle(3);
 	
-	gs->Draw("l");
+//	gs->Draw("l");
 	fex->Draw("l");
 //	sn->Draw("l");
 //	mex->Draw("l");
