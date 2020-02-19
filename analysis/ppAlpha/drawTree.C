@@ -319,8 +319,8 @@ class CheckEx{
 
 
 
-			//tree->SetAlias("MassBe","MassBe10*1");
-			//tree->SetAlias("residueRestMass","MassHe6*AMU");
+//			tree->SetAlias("MassBe","MassBe10*1");
+//			tree->SetAlias("residueRestMass","MassHe6*AMU");
 
 			//tree->SetAlias("MassBe","MassBe12*1");
 			//tree->SetAlias("residueRestMass","MassHe8*AMU");
@@ -547,15 +547,15 @@ TString getHodGate(){
 	//TString hodGateBe10He4 = "(Be10Bar21He4)";
 	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6)";
 	//TString hodGateBe10He6 = "(Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
-	//TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
+	TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 
 	//hodGate = hodGateBe10He4;
 	//hodGate = hodGateBe10He6;
 	//hodGate = hodGateBe12He8;
 	//hodGate = hodGateBe12He6;
-	//hodGate = hodGateBe14He8;
+	hodGate = hodGateBe14He8;
 	//hodGate = hodGateBe14He6;
-	hodGate = hodGateBe14He4;
+	//hodGate = hodGateBe14He4;
 	//hodGate = "("+hodGateBe14He4+"||"+hodGateBe14He6+"||"+hodGateBe14He8+")";
 
 	//hodGate = hodGateBe12He6;
@@ -576,6 +576,7 @@ TString getGate(){
 	
 	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
+	//return "(csiHit==1)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
 	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
 	//return "(abs(exEnergy-5.5)<0.15)";
 }
@@ -640,8 +641,8 @@ void drawPlaneBPA(){
 }
 
 void drawTree(){
-	drawPACorrelation();	
-	//drawExEnergy();
+	//drawPACorrelation();	
+	drawExEnergy();
 	//drawPlaneBPA();
 }
 

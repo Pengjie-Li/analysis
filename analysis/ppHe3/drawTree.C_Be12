@@ -318,7 +318,6 @@ class CheckEx{
 			tree->SetAlias("MassHe8","8.032837245*1");
 			tree->SetAlias("MassHe9","9.041502161*1");
 			tree->SetAlias("MassHe10","10.050167077*1");
-			tree->SetAlias("MassHe11","11.05883199*1");
 			//tree->SetAlias("MassHe10","10.05171959*1");
 
 
@@ -326,11 +325,11 @@ class CheckEx{
 		//	tree->SetAlias("MassBe","MassBe10*1");
 		//	tree->SetAlias("residueRestMass","MassHe7*AMU");
 
-		//	tree->SetAlias("MassBe","MassBe12*1");
-		//	tree->SetAlias("residueRestMass","MassHe9*AMU");
+			tree->SetAlias("MassBe","MassBe12*1");
+			tree->SetAlias("residueRestMass","MassHe9*AMU");
 
-			tree->SetAlias("MassBe","MassBe14*1");
-			tree->SetAlias("residueRestMass","MassHe11*AMU");
+			//tree->SetAlias("MassBe","MassBe14*1");
+			//tree->SetAlias("residueRestMass","MassHe10*AMU");
 
 
 
@@ -555,9 +554,9 @@ TString getHodGate(){
 
 	//hodGate = hodGateBe10He4;
 	//hodGate = hodGateBe10He6;
-	//hodGate = hodGateBe12He8;
+	hodGate = hodGateBe12He8;
 	//hodGate = hodGateBe12He6;
-	hodGate = hodGateBe14He8;
+	//hodGate = hodGateBe14He8;
 	//hodGate = hodGateBe14He6;
 	//hodGate = hodGateBe14He4;
 	//hodGate = "("+hodGateBe14He4+"||"+hodGateBe14He6+"||"+hodGateBe14He8+")";
@@ -587,8 +586,8 @@ TString getGate(){
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
 	//ce->addFile("ppHe3Be10.root");
-	//ce->addFile("ppHe3Be12.root");
-	ce->addFile("ppHe3Be14.root");
+	ce->addFile("ppHe3Be12.root");
+	//ce->addFile("ppHe3Be14.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
@@ -608,8 +607,7 @@ void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
 	//ce->addFile("ppHe3Be10.root");
-	//ce->addFile("ppHe3Be12.root");
-	ce->addFile("ppHe3Be14.root");
+	ce->addFile("ppHe3Be12.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());

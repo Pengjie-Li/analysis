@@ -316,21 +316,19 @@ class CheckEx{
 			tree->SetAlias("MassHe6","6.017788744*1");
 			tree->SetAlias("MassHe7","7.02645366*1");
 			tree->SetAlias("MassHe8","8.032837245*1");
-			tree->SetAlias("MassHe9","9.041502161*1");
 			tree->SetAlias("MassHe10","10.050167077*1");
-			tree->SetAlias("MassHe11","11.05883199*1");
 			//tree->SetAlias("MassHe10","10.05171959*1");
 
 
 
-		//	tree->SetAlias("MassBe","MassBe10*1");
-		//	tree->SetAlias("residueRestMass","MassHe7*AMU");
+			tree->SetAlias("MassBe","MassBe10*1");
+			tree->SetAlias("residueRestMass","MassHe7*AMU");
 
-		//	tree->SetAlias("MassBe","MassBe12*1");
-		//	tree->SetAlias("residueRestMass","MassHe9*AMU");
+			//tree->SetAlias("MassBe","MassBe12*1");
+			//tree->SetAlias("residueRestMass","MassHe8*AMU");
 
-			tree->SetAlias("MassBe","MassBe14*1");
-			tree->SetAlias("residueRestMass","MassHe11*AMU");
+			//tree->SetAlias("MassBe","MassBe14*1");
+			//tree->SetAlias("residueRestMass","MassHe10*AMU");
 
 
 
@@ -554,10 +552,10 @@ TString getHodGate(){
 	TString hodGateBe10He6 = "(Be10Bar27He6||Be10Bar28He6||Be10Bar29He6||Be10Bar30He6||Be10Bar31He6||Be10Bar32He6||Be10Bar33He6||Be10Bar34He6)";
 
 	//hodGate = hodGateBe10He4;
-	//hodGate = hodGateBe10He6;
+	hodGate = hodGateBe10He6;
 	//hodGate = hodGateBe12He8;
 	//hodGate = hodGateBe12He6;
-	hodGate = hodGateBe14He8;
+	//hodGate = hodGateBe14He8;
 	//hodGate = hodGateBe14He6;
 	//hodGate = hodGateBe14He4;
 	//hodGate = "("+hodGateBe14He4+"||"+hodGateBe14He6+"||"+hodGateBe14He8+")";
@@ -580,19 +578,17 @@ TString getGate(){
 	gROOT->ProcessLine(".x cutProtonEA.C");
 	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
-	//return "(protonEA)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
-	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	return "(protonEA)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	//return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
 	//return "(abs(exEnergy-5.5)<0.15)";
 }
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
-	//ce->addFile("ppHe3Be10.root");
-	//ce->addFile("ppHe3Be12.root");
-	ce->addFile("ppHe3Be14.root");
+	ce->addFile("ppHe3Be10.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
-	ce->addGate(getHodGate());
+	//ce->addGate(getHodGate());
 	//ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
@@ -607,28 +603,22 @@ void drawExEnergy(){
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
-	//ce->addFile("ppHe3Be10.root");
-	//ce->addFile("ppHe3Be12.root");
-	ce->addFile("ppHe3Be14.root");
+	ce->addFile("ppHe3Be10.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
-	ce->addGate(getHodGate());
+	//ce->addGate(getHodGate());
 	//ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
 	cPad->Divide(2,2);
 	cPad->cd(1);
-	gPad->SetLogz();
 	ce->drawProtonEA();
 	cPad->cd(2);
-	gPad->SetLogz();
 	ce->drawAlphaEA();
 	cPad->cd(3);
-	gPad->SetLogz();
 	ce->drawAA();
 	cPad->cd(4);
-	gPad->SetLogz();
 	ce->drawEE();
 	ce->output();
 }
