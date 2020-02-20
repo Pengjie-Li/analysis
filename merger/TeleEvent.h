@@ -263,6 +263,10 @@ class TeleEvent{
 		double teleLocusAngle;
 		TVector3 *vTele;
 
+		double teleAngle_rand;
+
+
+
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
 
@@ -278,6 +282,8 @@ class TeleEvent{
 			teleAngle      = (*vTele).Angle((*vBeam))*TMath::RadToDeg();
 			TVector3 dssdPlaneNorm = getDssdPlaneNorm();
 			teleLocusAngle = (*vTele).Angle(dssdPlaneNorm)*TMath::RadToDeg();
+
+			teleAngle_rand      = teleAngle+ gRandom->Uniform(-0.5,0.5);
 		}
 
 	public:
@@ -327,6 +333,7 @@ class TeleEvent{
 			teleLocusAngle = NAN;
 			vTele->SetXYZ(NAN,NAN,NAN);
 
+			teleAngle_rand = NAN;
 
 		}
 		void loadTargetPosition(TVector3 *target){
@@ -360,6 +367,7 @@ class TeleEvent{
 			tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
 			tree->Branch("vTele","TVector3",&vTele);
 	
+			tree->Branch("teleAngle_rand",&teleAngle_rand,"teleAngle_rand/D");
 		}
 		void setHit(){
 

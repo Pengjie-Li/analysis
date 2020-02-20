@@ -170,10 +170,8 @@ class ReadFile{
 		Double_t        teleZ;
 
    Double_t        teleAngle;
-   Double_t        teleLocusAngle;
-
    Double_t        teleAngle_rand;
-   Double_t        espriAngle_rand;
+   Double_t        teleLocusAngle;
 		Int_t           hodNHit;
 		Int_t           hodID[40];
 		Int_t           hodTRaw[2][40];
@@ -500,10 +498,6 @@ class ReadFile{
 			inputTree->SetBranchAddress("teleAngle",&teleAngle);
 			inputTree->SetBranchAddress("teleLocusAngle",&teleLocusAngle);
 
-			inputTree->SetBranchAddress("teleAngle_rand",&teleAngle_rand);
-			inputTree->SetBranchAddress("espriAngle_rand",&espriAngle_rand);
-
-
 
 			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
 			inputTree->SetBranchAddress("beamEnergy",&beamEnergy);
@@ -744,9 +738,6 @@ class ReadFile{
                         tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
                         tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
                         tree->Branch("telePosition","TVector3",&telePosition);
-
-                        tree->Branch("teleAngle_rand",&teleAngle_rand,"teleAngle_rand/D");
-                        tree->Branch("espriAngle_rand",&espriAngle_rand,"espriAngle_rand/D");
 
 			tree->Branch("protonEnergy",&protonEnergy);
 			tree->Branch("beamEnergy",&beamEnergy);

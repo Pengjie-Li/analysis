@@ -98,13 +98,6 @@ class ProtonEvent{
 			if(espriEvent->isNaiHit()){
 				protonEnergy_nai = protonPara->getProtonEnergy_nai(espriEvent->getNaiEnergy());
 				protonEnergy = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle());
-				protonEnergy_lm10_g0 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle()-1,espriEvent->getAngle());
-				protonEnergy_lm5_g0 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle()-0.5,espriEvent->getAngle());
-				protonEnergy_l5_g0 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle()+0.5,espriEvent->getAngle());
-				protonEnergy_l10_g0 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle()+1,espriEvent->getAngle());
-				protonEnergy_l0_g1 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle()+1);
-				protonEnergy_l0_g2 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle()+2);
-				protonEnergy_l0_g3 = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle()+3);
 			}
 		}
 	public:
@@ -121,15 +114,6 @@ class ProtonEvent{
 			espriEvent = NULL;
 			protonEnergy_nai = NAN;
 			protonEnergy = NAN;
-
-			protonEnergy_lm10_g0= NAN;
-			protonEnergy_lm5_g0= NAN;
-			protonEnergy_l5_g0= NAN;
-			protonEnergy_l10_g0= NAN;
-			protonEnergy_l0_g1= NAN;
-			protonEnergy_l0_g2= NAN;
-			protonEnergy_l0_g3= NAN;
-
 		}
 		void load(EspriEvent *ee){
 			espriEvent = ee;
@@ -147,12 +131,5 @@ class ProtonEvent{
 			protonPara->setOutputBranch(tree);
 			tree->Branch("protonEnergy_nai",&protonEnergy_nai,"protonEnergy_nai/D");
 			tree->Branch("protonEnergy",&protonEnergy,"protonEnergy/D");
-			tree->Branch("protonEnergy_lm10_g0",&protonEnergy_lm10_g0,"protonEnergy_lm10_g0/D");
-			tree->Branch("protonEnergy_lm5_g0",&protonEnergy_lm5_g0,"protonEnergy_lm5_g0/D");
-			tree->Branch("protonEnergy_l5_g0",&protonEnergy_l5_g0,"protonEnergy_l5_g0/D");
-			tree->Branch("protonEnergy_l10_g0",&protonEnergy_l10_g0,"protonEnergy_l10_g0/D");
-			tree->Branch("protonEnergy_l0_g1",&protonEnergy_l0_g1,"protonEnergy_l0_g1/D");
-			tree->Branch("protonEnergy_l0_g2",&protonEnergy_l0_g2,"protonEnergy_l0_g2/D");
-			tree->Branch("protonEnergy_l0_g3",&protonEnergy_l0_g3,"protonEnergy_l0_g3/D");
 		}
 };

@@ -6,6 +6,7 @@ class EspriEvent{
 		double espriEnergy;
 		double espriAngle;
 		TVector3 *espriPosition;
+		double espriAngle_rand;
 
 		MergeESPRI *mergeData;
 		TVector3 *targetPosition;
@@ -39,6 +40,7 @@ class EspriEvent{
 			espriAngle = NAN;
 			espriEnergy = NAN;
 			espriPosition->SetXYZ(NAN,NAN,NAN);
+			espriAngle_rand = NAN;
 		
 			calibESPRI->init();
 			positionESPRI->init();
@@ -53,6 +55,7 @@ class EspriEvent{
 			tree->Branch("espriEnergy",&espriEnergy,"espriEnergy/D");
 			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
 
+			tree->Branch("espriAngle_rand",&espriAngle_rand,"espriAngle_rand/D");
 			tree->Branch("espriPosition","TVector3",&espriPosition);
 
 		}
@@ -73,6 +76,7 @@ class EspriEvent{
 			positionESPRI->analysis();
 
 			espriAngle = positionESPRI->getAngle();
+			espriAngle_rand = espriAngle+gRandom->Uniform(-0.3,0.3);
 			espriPosition = positionESPRI->getPosition();
 		}
 		void setESPRIEnergy(){
