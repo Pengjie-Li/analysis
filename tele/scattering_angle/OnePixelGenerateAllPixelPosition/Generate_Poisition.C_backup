@@ -150,8 +150,6 @@ public:
 				double tempy=temp.Y();
 				double tempz=temp.Z();
 
-				temp.RotateY(0.5*TMath::DegToRad());
-
 				int tempfid;
 				int tempbid;
 

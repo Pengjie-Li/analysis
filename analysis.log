@@ -5084,3 +5084,15 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/ppHe3/drawTree.C_Be14
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e7c28db] v1.0
+ 17 files changed, 2382 insertions(+), 43 deletions(-)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/ReadFile.h_backup
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (95%)
+ create mode 100644 analysis/generateChannels/ppBe10/ReadFile.h_backup
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (67%)
+ create mode 100644 analysis/ppAlpha/cutBackground.C
+ create mode 100644 analysis/ppAlpha/drawTree.C_Be14
+ create mode 120000 analysis/ppAlpha/ppaBe10.root_ang
+ rewrite merger/Merger (85%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

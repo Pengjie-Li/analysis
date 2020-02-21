@@ -142,15 +142,19 @@ public:
 		ofstream out(outputName,ios_base::app | ios_base::out);
 		out.flags (ios::left);
 
-
+		TVector3 targetCenter(0,0,-4222.45);
 		for(int i=0;i<32;i++)
 			for(int j=0;j<32;j++){
 				TVector3 temp=corner+i*fInterval+j*bInterval;
+
+				temp = temp - targetCenter;
+				temp.RotateY(-0.5*TMath::DegToRad());
+				temp = temp + targetCenter;
+
 				double tempx=temp.X();
 				double tempy=temp.Y();
 				double tempz=temp.Z();
 
-				temp.RotateY(0.5*TMath::DegToRad());
 
 				int tempfid;
 				int tempbid;

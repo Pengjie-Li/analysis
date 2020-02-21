@@ -142,15 +142,19 @@ public:
 		ofstream out(outputName,ios_base::app | ios_base::out);
 		out.flags (ios::left);
 
-
+		TVector3 targetCenter(0,0,-4222.45);
 		for(int i=0;i<32;i++)
 			for(int j=0;j<32;j++){
 				TVector3 temp=corner+i*fInterval+j*bInterval;
+
+				temp = temp - targetCenter;
+				temp.RotateY(-1*TMath::DegToRad());
+				temp = temp + targetCenter;
+
 				double tempx=temp.X();
 				double tempy=temp.Y();
 				double tempz=temp.Z();
 
-				temp.RotateY(0.5*TMath::DegToRad());
 
 				int tempfid;
 				int tempbid;
@@ -173,8 +177,6 @@ public:
 };
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
-//	new GeneratePosition(1,16,31,24,-1,-3866.51);	
-//	new GeneratePosition(0,16,31,-24,-1,-3866.31);	
 	new GeneratePosition(0,16,26,-32.466,-1.40);	
 //	new GeneratePosition(1,16,27,32.17,-1.75);	
 
@@ -190,8 +192,4 @@ int Generate_Poisition(){
 
 	return 1;
 
-}
-int main(){
-	Generate_Poisition();
-	return 1;
 }
