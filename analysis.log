@@ -5096,3 +5096,28 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/Merger (85%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 957ec24] v1.0
+ 23 files changed, 16288 insertions(+)
+ create mode 100644 merger/config/.configMerger.prm.swp
+ create mode 100644 tele/dssd3DPosition/Draw_DSSD.C
+ create mode 100644 tele/dssd3DPosition/Generate_Poisition.C
+ create mode 100644 tele/dssd3DPosition/Generate_Poisition.C_backup
+ create mode 100644 tele/dssd3DPosition/Generate_Poisition.C_compile
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPosition-0.5.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPosition.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPositionR-0.3.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPositionR-1.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPositionR0.3.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPositionR0.5.txt
+ create mode 100644 tele/dssd3DPosition/output/LeftDSSDPixelPositionR1.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPosition-0.5.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPosition.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPositionR-0.3.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPositionR-1.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPositionR0.3.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPositionR0.5.txt
+ create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPositionR1.txt
+ create mode 100644 tele/scattering_angle/OnePixelGenerateAllPixelPosition/Generate_Poisition.C_backup
+ create mode 100644 tele/scattering_angle/OnePixelGenerateAllPixelPosition/Generate_Poisition_C_ACLiC_dict_rdict.pcm
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
