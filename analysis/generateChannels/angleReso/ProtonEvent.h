@@ -80,17 +80,17 @@ class ProtonPara{
 };
 class ProtonEvent{
 	private:
-		double protonEnergy_nai;
-		double protonEnergy;
+		double protonEnergy_sig3;
+		double protonAngle_sig3;
 
 
-		EspriEvent *espriEvent;
+		ReadFile *rf;
 		ProtonPara *protonPara;
 
 		void setProtonEnergy(){
-			if(espriEvent->isNaiHit()){
-				protonEnergy_nai = protonPara->getProtonEnergy_nai(espriEvent->getNaiEnergy());
-				protonEnergy = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle());
+			if(rf->isNaiHit()){
+				protonAngle_sig3 = rf->getEspriAngle() + gRandom->Gaus(0,0.3);
+				protonEnergy_sig3 = protonPara->getProtonEnergy(rf->getNaiEnergy(),rf->getEspriLocusAngle()+gRandom->Gaus(0,0.3),protonAngle_sig3);
 			}
 		}
 	public:
@@ -98,31 +98,26 @@ class ProtonEvent{
 			protonPara = new ProtonPara();
 		}
 		~ProtonEvent(){}
-		bool isGoodEvent(){
-			return espriEvent->isGoodEvent();
-		}
 
 		void init(){
 			protonPara->init();
-			espriEvent = NULL;
-			protonEnergy_nai = NAN;
-			protonEnergy = NAN;
+			rf = NULL;
+			protonEnergy_sig3 = NAN;
+			protonAngle_sig3 = NAN;
 		}
-		void load(EspriEvent *ee){
-			espriEvent = ee;
+		void load(ReadFile *ee){
+			rf = ee;
 		}
 		void setEvent(){
-			if(isGoodEvent()){
 				setProtonEnergy();
-			}
 		}
 		void print(){
 			protonPara->print();
-			cout<<"Proton Energy = "<<protonEnergy<<" "<<protonEnergy_nai<<endl;
+			cout<<"Proton Energy = "<<protonEnergy_sig3<<" "<<protonAngle_sig3<<endl;
 		}
 		void setOutputBranch(TTree *tree){
 			protonPara->setOutputBranch(tree);
-			tree->Branch("protonEnergy_nai",&protonEnergy_nai,"protonEnergy_nai/D");
-			tree->Branch("protonEnergy",&protonEnergy,"protonEnergy/D");
+			tree->Branch("protonEnergy_sig3",&protonEnergy_sig3,"protonEnergy_sig3/D");
+			tree->Branch("protonAngle_sig3",&protonAngle_sig3,"protonAngle_sig3/D");
 		}
 };

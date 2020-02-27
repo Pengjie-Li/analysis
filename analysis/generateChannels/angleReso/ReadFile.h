@@ -496,6 +496,7 @@ class ReadFile{
 			inputTree->SetBranchAddress("teleEnergy",&teleEnergy);
 			inputTree->SetBranchAddress("teleAngle",&teleAngle);
 			inputTree->SetBranchAddress("teleLocusAngle",&teleLocusAngle);
+			inputTree->SetBranchAddress("telePosition",&telePosition);
 
 
 			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
@@ -776,22 +777,30 @@ class ReadFile{
 		double getEspriPlasE(){
 			return espriPlasE;
 		}
-		double getNaiQ(){
+		double getNaiEnergy(){
 			return espriNaiE;
+		}
+		double getEspriLocusAngle(){
+			return espriLocusAngle;
+		}
+		double getEspriAngle(){
+			return espriAngle;
 		}
 		double getPlasQ(){
 			//return plasHitQPed[0];
 			return espriPlasE;
 		}
-		double getNaiQ_Pol3(){
-			return espriNaiE_Pol3;
+		int isNaiHit(){
+			return naiHit;
 		}
-		double getPlasQ_Birks(){
-			//return plasHitQPed[0];
-			return espriPlasE_Birks;
-		}
-		double getTeleCsiE(){
+		double getCsiEnergy(){
 			return teleCsiE;
+		}
+		double getTeleAngle(){
+			return teleAngle;
+		}
+		double getTeleLocusAngle(){
+			return teleLocusAngle;
 		}
 		double getTeleDssdE(){
 			return teleDssdFE; 
@@ -802,13 +811,19 @@ class ReadFile{
 		double getTargetY(){
 			return vTarget->Y();
 		}
+		TVector3 * getTargetPosition(){
+			return vTarget;
+		}
+		TVector3 * getTelePosition(){
+			return telePosition;
+		}
+		TVector3 * getBeamDirection(){
+			return vBeam;
+		}
 		double getResAngle(){
 			return resAngle;
 		}
-		double getEspriAngle(){
-			return espriAngle;
-		}
-		double getHodBarTRaw(int id){
+			double getHodBarTRaw(int id){
 			return 0.5*(hodTRaw[0][id]+hodTRaw[1][id]);
 		}
 		double getHodBarQRaw(int id){
