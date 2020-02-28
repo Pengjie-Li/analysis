@@ -178,7 +178,7 @@ public:
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
 	new GeneratePosition(0,16,26,-32.466,-1.40);	
-//	new GeneratePosition(1,16,27,32.17,-1.75);	
+	new GeneratePosition(1,16,26,32.17,-1.75);	
 
 
 //	LeftPlane *lp=new LeftPlane();

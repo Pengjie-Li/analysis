@@ -95,6 +95,12 @@ class AlphaEvent{
 		double teleAngle_left;
 		double teleAngle_right;
 
+
+		double teleAngle_right_1;
+		double teleAngle_right_2;
+		double teleAngle_up_4;
+		double teleAngle_up_6;
+
 		void shiftLR(double angle){
 			(*telePosition) = (*telePosition) - (*targetCenter);
 			(*telePosition).RotateY(angle*TMath::DegToRad());
@@ -127,6 +133,11 @@ class AlphaEvent{
 			teleAngle_down = NAN;
 			teleAngle_left = NAN;
 			teleAngle_right = NAN;
+
+			teleAngle_right_1 = NAN;
+			teleAngle_right_2 = NAN;
+			teleAngle_up_4 = NAN;
+			teleAngle_up_6 = NAN;
 		}
 		void load(ReadFile *te){
 			rf = te;
@@ -141,11 +152,30 @@ class AlphaEvent{
 			shiftUD(-1);
 			teleAngle_up = setAngle();
 			shiftUD(0.5);
+
 			shiftLR(0.5);
 			teleAngle_right = setAngle();
 			shiftLR(-1);
 			teleAngle_left = setAngle();
 			shiftLR(0.5);
+
+			telePosition->Print();
+			shiftLR(0.1);
+			telePosition->Print();
+			teleAngle_right_1 = setAngle();
+			shiftLR(0.1);
+			telePosition->Print();
+			teleAngle_right_2 = setAngle();
+			shiftLR(-0.2);
+			telePosition->Print();
+			
+			shiftUD(-0.4);
+			telePosition->Print();
+			teleAngle_up_4 = setAngle();
+			shiftUD(-0.2);
+			telePosition->Print();
+			teleAngle_up_6 = setAngle();
+			shiftUD(0.6);
 		}
 		void print(){
 			cout<<"Alpha Angle: "<<rf->getTeleAngle()<<"  "<<teleAngle_up<<"  "<<teleAngle_down<<"  "<<teleAngle_left<<"  "<<teleAngle_right<<endl;
@@ -155,5 +185,11 @@ class AlphaEvent{
 			tree->Branch("teleAngle_down",&teleAngle_down,"teleAngle_down/D");
 			tree->Branch("teleAngle_left",&teleAngle_left,"teleAngle_left/D");
 			tree->Branch("teleAngle_right",&teleAngle_right,"teleAngle_right/D");
+
+
+			tree->Branch("teleAngle_up_4",&teleAngle_up_4,"teleAngle_up_4/D");
+			tree->Branch("teleAngle_up_6",&teleAngle_up_6,"teleAngle_up_6/D");
+			tree->Branch("teleAngle_right_1",&teleAngle_right_1,"teleAngle_right_1/D");
+			tree->Branch("teleAngle_right_2",&teleAngle_right_2,"teleAngle_right_2/D");
 		}
 };

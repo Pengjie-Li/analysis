@@ -5141,3 +5141,31 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 41e8e94] v1.0
+ 29 files changed, 2511 insertions(+), 23 deletions(-)
+ create mode 100644 analysis/generateChannels/angleReso/AlphaEvent.h
+ create mode 100644 analysis/generateChannels/angleReso/Event.h
+ create mode 100755 analysis/generateChannels/angleReso/Makefile
+ create mode 100644 analysis/generateChannels/angleReso/ProtonEvent.h
+ create mode 100644 analysis/generateChannels/angleReso/ReadFile.h
+ create mode 100644 analysis/generateChannels/angleReso/configPPBe.prm
+ create mode 100644 analysis/generateChannels/angleReso/convert.sh
+ create mode 100755 analysis/generateChannels/angleReso/header.h
+ create mode 120000 analysis/generateChannels/angleReso/inputRootfiles
+ create mode 100644 analysis/generateChannels/angleReso/loop.sh
+ create mode 100644 analysis/generateChannels/angleReso/main.cpp
+ create mode 100644 analysis/generateChannels/angleReso/ppBe.cpp
+ create mode 100644 analysis/generateChannels/angleReso/ppBe.h
+ create mode 100755 analysis/generateChannels/angleReso/ppaBe10
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0298_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0299_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0301_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0316_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0317_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0324_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0328_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/tele.C
+ create mode 100644 analysis/generateChannels/angleReso/test.C
+ create mode 100644 tele/dssd3DPosition/.Generate_Poisition.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
