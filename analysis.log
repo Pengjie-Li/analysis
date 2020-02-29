@@ -5169,3 +5169,9 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/dssd3DPosition/.Generate_Poisition.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 88c895d] v1.0
+ 8 files changed, 774 insertions(+), 28 deletions(-)
+ rewrite analysis/generateChannels/angleReso/ppaBe10 (68%)
+ create mode 100644 analysis/ppAlpha/drawTree.C_ang
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
