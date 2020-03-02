@@ -1,3 +1,3 @@
 {
-	tree->Scan("beamMass:beamEk:beamMomentum:beamMass+beamEk");
+	//tree->Scan("beamMass:beamEk:beamMomentum:beamMass+beamEk");
 }

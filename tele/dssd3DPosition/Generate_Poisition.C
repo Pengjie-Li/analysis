@@ -147,9 +147,9 @@ public:
 			for(int j=0;j<32;j++){
 				TVector3 temp=corner+i*fInterval+j*bInterval;
 
-				temp = temp - targetCenter;
-				temp.RotateY(-1*TMath::DegToRad());
-				temp = temp + targetCenter;
+				//temp = temp - targetCenter;
+				//temp.RotateY(-1*TMath::DegToRad());
+				//temp = temp + targetCenter;
 
 				double tempx=temp.X();
 				double tempy=temp.Y();

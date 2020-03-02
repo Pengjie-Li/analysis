@@ -55,17 +55,10 @@ class BdcEvent{
 
 	public:
 		BdcEvent(){
-
-			//BDC1_Z	=-6666.11;
-			//BDC2_Z 	=-5666.67;
-			//Target_Z=-4222.34;
-			//SBT_Z	=-7377.93;
-
-			BDC1_Z	=-2443.77;
-			BDC2_Z 	=-1444.22;
-			Target_Z=0;
-			SBT_Z	=-3155.59;
-
+			BDC1_Z=-6666.11;
+			BDC2_Z=-5666.67;
+			Target_Z=-4222.34;
+			SBT_Z =-7377.93;
 		}
 		~BdcEvent(){}
 		void loadBDC(MergeBDC *calibData){

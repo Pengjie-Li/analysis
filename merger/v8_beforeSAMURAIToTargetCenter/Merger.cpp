@@ -100,13 +100,13 @@ void Merger::eventLoop(){
 void Merger::print(){
 	
 	//printPLA();	
-	printBDC();	
-	printBeam();
-	//printESPRI();
-	//printProton();
+	//printBDC();	
+	printESPRI();
+	printProton();
 	//printTELE();
 	//printAlpha();
 	//printFDC0();
+	//printBeam();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){
