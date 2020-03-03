@@ -14,7 +14,6 @@ class ProtonPara{
 		double plasThickness;
 		double shtThickness;
 
-		TGraph *naiToProton;
 
 		double getSHTE(double angle,double energyOut){
 			double realThickness = shtThickness/cos(angle*TMath::DegToRad()); 
@@ -38,9 +37,6 @@ class ProtonPara{
 		ProtonPara(){
 			plasThickness = 4; //mm
 			shtThickness = 1; //mm , assume reaction happened in the middle
-			TFile *fCalib = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/naiEToProtonE/naiProtonRelation.root","READ");
-                        naiToProton = (TGraph *)gDirectory->Get("naiProton");
-                        fCalib->Close();	
 
 			TFile *fEloss = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/energyLossInMaterial/output/protonInMaterials.root","READ");
                         shtEnergyToRange = (TGraph *)gDirectory->Get("protonTargetER");
@@ -53,9 +49,6 @@ class ProtonPara{
 			fWinEloss->Close();
 		}
 		~ProtonPara(){}
-		double getProtonEnergy_nai(double naiE){
-			return naiToProton->Eval(naiE);
-		}
 		double getProtonEnergy(double naiE,double locusAngle,double angle){
 			ppPlasE = getPlasE(locusAngle,naiE);
 			ppWinE = getWindowE(naiE+ppPlasE);
@@ -80,7 +73,6 @@ class ProtonPara{
 };
 class ProtonEvent{
 	private:
-		double protonEnergy_nai;
 		double protonEnergy;
 
 
@@ -89,7 +81,6 @@ class ProtonEvent{
 
 		void setProtonEnergy(){
 			if(espriEvent->isNaiHit()){
-				protonEnergy_nai = protonPara->getProtonEnergy_nai(espriEvent->getNaiEnergy());
 				protonEnergy = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle());
 			}
 		}
@@ -105,7 +96,6 @@ class ProtonEvent{
 		void init(){
 			protonPara->init();
 			espriEvent = NULL;
-			protonEnergy_nai = NAN;
 			protonEnergy = NAN;
 		}
 		void load(EspriEvent *ee){
@@ -118,11 +108,10 @@ class ProtonEvent{
 		}
 		void print(){
 			protonPara->print();
-			cout<<"Proton Energy = "<<protonEnergy<<" "<<protonEnergy_nai<<endl;
+			cout<<"Proton Energy = "<<protonEnergy<<" "<<endl;
 		}
 		void setOutputBranch(TTree *tree){
 			protonPara->setOutputBranch(tree);
-			tree->Branch("protonEnergy_nai",&protonEnergy_nai,"protonEnergy_nai/D");
 			tree->Branch("protonEnergy",&protonEnergy,"protonEnergy/D");
 		}
 };

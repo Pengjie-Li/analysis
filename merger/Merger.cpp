@@ -100,8 +100,8 @@ void Merger::eventLoop(){
 void Merger::print(){
 	
 	//printPLA();	
-	printBDC();	
-	printBeam();
+	//printBDC();	
+	//printBeam();
 	//printESPRI();
 	//printProton();
 	//printTELE();

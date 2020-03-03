@@ -8,10 +8,10 @@ class BdcEvent{
 
 		MergeBDC *mergeBDC;
 		TVector3* vBeam;	
-		TVector3* vBDC1;	
-		TVector3* vBDC2;	
-		TVector3* vTarget;	
-		TVector3* vSBT;	
+		TVector3* bdc1Position;	
+		TVector3* bdc2Position;	
+		TVector3* targetPosition;	
+		TVector3* sbtPosition;	
 		Double_t  beamFL;
 
 
@@ -20,18 +20,18 @@ class BdcEvent{
 			/********* BDC ***************/
 			beamFL = NAN;
 
-			vBDC1->SetXYZ(NAN,NAN,NAN);
-			vBDC2->SetXYZ(NAN,NAN,NAN);
-			vTarget->SetXYZ(NAN,NAN,NAN);
-			vSBT->SetXYZ(NAN,NAN,NAN);
+			bdc1Position->SetXYZ(NAN,NAN,NAN);
+			bdc2Position->SetXYZ(NAN,NAN,NAN);
+			targetPosition->SetXYZ(NAN,NAN,NAN);
+			sbtPosition->SetXYZ(NAN,NAN,NAN);
 			vBeam->SetXYZ(NAN,NAN,NAN);
 
 		}
 		Double_t getBDC1TargetRatio(){
-			return (Target_Z-(*vBDC1).Z())/(*vBeam).Z();
+			return (Target_Z-(*bdc1Position).Z())/(*vBeam).Z();
 		}
 		Double_t getBDC1SBTRatio(){
-			return (SBT_Z-(*vBDC1).Z())/(*vBeam).Z();
+			return (SBT_Z-(*bdc1Position).Z())/(*vBeam).Z();
 		}
 		Double_t getBDC1X(){
 			return mergeBDC->getBDC1X();
@@ -75,14 +75,14 @@ class BdcEvent{
 
 			init();
 
-			vBDC1->SetXYZ(-getBDC1X(),getBDC1Y(),getBDC1Z());
-			vBDC2->SetXYZ(-getBDC2X(),getBDC2Y(),getBDC2Z());
+			bdc1Position->SetXYZ(-getBDC1X(),getBDC1Y(),getBDC1Z());
+			bdc2Position->SetXYZ(-getBDC2X(),getBDC2Y(),getBDC2Z());
 
-			(*vBeam)=(*vBDC2)-(*vBDC1);
+			(*vBeam)=(*bdc2Position)-(*bdc1Position);
 			(*vBeam)=(*vBeam).Unit();
-			(*vTarget) =(*vBDC1) + getBDC1TargetRatio()*(*vBeam);
-			(*vSBT) =(*vBDC1) + getBDC1SBTRatio()*(*vBeam);
-			beamFL =((*vTarget)-(*vSBT)).Mag();
+			(*targetPosition) =(*bdc1Position) + getBDC1TargetRatio()*(*vBeam);
+			(*sbtPosition) =(*bdc1Position) + getBDC1SBTRatio()*(*vBeam);
+			beamFL =((*targetPosition)-(*sbtPosition)).Mag();
 		}
 		void print(){
 
@@ -91,29 +91,29 @@ class BdcEvent{
 			vBeam->Print();
 
 			cout<<"BDC1&2 3D Position"<<endl;
-			vBDC1->Print();
-			vBDC2->Print();
+			bdc1Position->Print();
+			bdc2Position->Print();
 			cout<<"Target Position::"<<endl;
-			vTarget->Print();
+			targetPosition->Print();
 		}
 
 		void setOutputBranch(TTree *tree){
 
 			vBeam = new TVector3;
-			vTarget = new TVector3;
-			vSBT = new TVector3;
-			vBDC1 = new TVector3;
-			vBDC2 = new TVector3;
+			targetPosition = new TVector3;
+			sbtPosition = new TVector3;
+			bdc1Position = new TVector3;
+			bdc2Position = new TVector3;
 
 			tree->Branch("beamFL",&beamFL);
 			tree->Branch("vBeam","TVector3",&vBeam);
-			tree->Branch("vBDC1","TVector3",&vBDC1);
-			tree->Branch("vBDC2","TVector3",&vBDC2);
-			tree->Branch("vTarget","TVector3",&vTarget);
-			tree->Branch("vSBT","TVector3",&vSBT);
+			tree->Branch("bdc1Position","TVector3",&bdc1Position);
+			tree->Branch("bdc2Position","TVector3",&bdc2Position);
+			tree->Branch("targetPosition","TVector3",&targetPosition);
+			tree->Branch("sbtPosition","TVector3",&sbtPosition);
 		}
 		TVector3 * getTargetPosotion(){
-			return vTarget;
+			return targetPosition;
 		}
 		TVector3 * getBeamVector(){
 			return vBeam;

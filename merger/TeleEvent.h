@@ -260,6 +260,7 @@ class TeleEvent{
 		TVector3 *telePosition;
 
 		double teleAngle;
+		double telePhi;
 		double teleLocusAngle;
 		TVector3 *vTele;
 
@@ -267,10 +268,15 @@ class TeleEvent{
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
 
+		PhiFunction *phiFuction;
 
 
 		TVector3 getPosition(){
 			return positionTELE->getPosition(teleHit->getSide(),teleHit->getFid(),teleHit->getBid());
+		}
+		void shiftCenter(){
+			double tempZ = (*telePosition).Z();
+			(*telePosition).SetZ(tempZ + 4222.34);
 		}
 
 		void setAngle(){
@@ -279,6 +285,7 @@ class TeleEvent{
 			teleAngle      = (*vTele).Angle((*vBeam))*TMath::RadToDeg();
 			TVector3 dssdPlaneNorm = getDssdPlaneNorm();
 			teleLocusAngle = (*vTele).Angle(dssdPlaneNorm)*TMath::RadToDeg();
+			telePhi 	= phiFuction->getPhi((*vBeam),(*vTele));
 
 		}
 
@@ -287,17 +294,20 @@ class TeleEvent{
 			teleHit->print();
 			cout<<"TELE Event:"<<endl;
 
-				
+
 			cout<<" dssdE = "<<teleDssdFE<<" "<<teleDssdFE_old<<" "<<teleDssdBE<<" "<<teleDssdBE_old<<" "<<teleDssdE<<" "<<teleDssdMaxE<<" csiE ="<<teleCsiE<<" totE = "<<teleEnergy<<" dssdPosition : "<<teleX<<" "<<teleY<<" "<<teleZ<<endl;
-			
-		cout<<" Tele Angle = "<<teleAngle<<" Locus Angle ="<<teleLocusAngle<<endl;
+
+			cout<<" Tele Angle = "<<teleAngle<<" Locus Angle ="<<teleLocusAngle<<endl;
+			cout<<" Tele Phi = "<<telePhi<<endl;
+			telePosition->Print();
 			//cout<<"Tele Time: dssdT = "<<teleDssdT<<" csiT ="<<teleCsiT<<endl;	
-	
+
 		}
-		
+
 		TeleEvent(){
 			positionTELE = new PositionTELE();
 			teleHit = new TeleHit();
+			phiFuction = new PhiFunction();
 		}
 		~TeleEvent(){
 			delete teleHit;
@@ -326,6 +336,7 @@ class TeleEvent{
 			teleZ = NAN;
 			telePosition->SetXYZ(NAN,NAN,NAN);
 			teleAngle = NAN;
+			telePhi = NAN;
 			teleLocusAngle = NAN;
 			vTele->SetXYZ(NAN,NAN,NAN);
 
@@ -359,6 +370,7 @@ class TeleEvent{
 
 			vTele = new TVector3;
 			tree->Branch("teleAngle",&teleAngle,"teleAngle/D");
+			tree->Branch("telePhi",&telePhi,"telePhi/D");
 			tree->Branch("teleLocusAngle",&teleLocusAngle,"teleLocusAngle/D");
 			tree->Branch("vTele","TVector3",&vTele);
 	
@@ -386,6 +398,7 @@ class TeleEvent{
 				teleDssdMaxE	 = (teleDssdFE>teleDssdBE)?teleDssdFE:teleDssdBE;
 				teleEnergy	 = teleDssdE+teleCsiE;
 				(*telePosition)	 = getPosition();
+				shiftCenter();
 				teleX = telePosition->X();
 				teleY = telePosition->Y();
 				teleZ = telePosition->Z();

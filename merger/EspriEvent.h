@@ -3,11 +3,6 @@
 class EspriEvent{
 	private:
 
-		double espriEnergy;
-		double espriAngle;
-		TVector3 *espriPosition;
-		double espriAngle_rand;
-
 		MergeESPRI *mergeData;
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
@@ -19,8 +14,6 @@ class EspriEvent{
 		void print(){
 			calibESPRI->print();
 			positionESPRI->print();
-			cout<<"espriEnergy = "<<espriEnergy<<" MeV  espriAngle = "<<espriAngle<<"  espriLocusAngle = "<<getLocusAngle()<<endl;
-			
 		}
 		EspriEvent(){
 			positionESPRI = new PositionESPRI();
@@ -37,26 +30,14 @@ class EspriEvent{
 		void init(){
 
 			mergeData = NULL;
-			espriAngle = NAN;
-			espriEnergy = NAN;
-			espriPosition->SetXYZ(NAN,NAN,NAN);
-			espriAngle_rand = NAN;
 		
 			calibESPRI->init();
 			positionESPRI->init();
 		}
 		void setOutputBranch(TTree *tree){
 
-			espriPosition = new TVector3;
-
 			calibESPRI->setBranch(tree);
 			positionESPRI->setBranch(tree);
-
-			tree->Branch("espriEnergy",&espriEnergy,"espriEnergy/D");
-			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
-
-			tree->Branch("espriAngle_rand",&espriAngle_rand,"espriAngle_rand/D");
-			tree->Branch("espriPosition","TVector3",&espriPosition);
 
 		}
 		void setESPRIEvent(){
@@ -74,17 +55,12 @@ class EspriEvent{
 			
 			positionESPRI->loadData(mergeData);
 			positionESPRI->analysis();
-
-			espriAngle = positionESPRI->getAngle();
-			espriAngle_rand = espriAngle+gRandom->Uniform(-0.3,0.3);
-			espriPosition = positionESPRI->getPosition();
 		}
 		void setESPRIEnergy(){
 
 			calibESPRI->loadData(mergeData);
 			calibESPRI->calibrate();
 			
-			espriEnergy = calibESPRI->getEnergy();
 		}
 		void loadTargetPosition(TVector3 *target){
 			targetPosition = target;

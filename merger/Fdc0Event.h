@@ -19,7 +19,8 @@ class Fdc0Event{
 		}
 		double getFDC0Z(){
 			// From PGS
-			return -3384.81;
+			//return -3384.81;
+			return 837.530;
 		}
 
 	public:

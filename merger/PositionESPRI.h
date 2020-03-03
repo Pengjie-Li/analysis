@@ -170,8 +170,11 @@ class ESPRIPlasPosition{
 	public:
 		ESPRIPlasPosition(){
 			// Distance: 1188.17, 1187.47
-			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,923);
-			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,923.7);
+			//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,923);
+			//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,923.7);
+			leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,-1188.17);
+			rightPlane = new Plane(sqrt(3)/2,0.0,0.5,-1187.47);
+	
 			
 		}
 		~ESPRIPlasPosition(){}
@@ -196,6 +199,8 @@ class PositionESPRI{
 		double espriFL;
 		double espriAngle;
 		double espriLocusAngle;
+		double espriPhi;
+
 		TVector3 *espriRdcPosition;
 		TVector3 *espriPlasPosition;
 		TVector3 *vESPRI;
@@ -206,6 +211,7 @@ class PositionESPRI{
 
 		ESPRI3DPosition *espri3DPosition;
 		ESPRIPlasPosition *plasPosition;
+		PhiFunction 	*phiFunction;
 
 		void setESPRIPosition(){
 			setRdcPosition(mergeData->getSide(),mergeData->getRdcX(),mergeData->getRdcY());
@@ -213,6 +219,12 @@ class PositionESPRI{
 		}
 		void setRdcPosition(int sideLR,double dcX,double dcY){
 			(*espriRdcPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
+			shiftCenter();
+		}
+
+		void shiftCenter(){
+			double tempZ = (*espriRdcPosition).Z();
+			(*espriRdcPosition).SetZ(tempZ + 4222.34);
 		}
 		void setPlasPosition(){
 			(*espriPlasPosition) = plasPosition->getPlasPosition(mergeData->getSide(),espriRdcPosition,targetPosition);
@@ -224,6 +236,7 @@ class PositionESPRI{
 			espriAngle      = (*vESPRI).Angle((*vBeam))*TMath::RadToDeg();
 			TVector3 espriPlaneNorm = espri3DPosition->getESPRIPlaneNorm(mergeData->getSide());
 			espriLocusAngle = (*vESPRI).Angle(espriPlaneNorm)*TMath::RadToDeg();
+			espriPhi 	= phiFunction->getPhi((*vBeam),(*vESPRI));
 		}
 		void setESPRIFL(){
 			espriFL = ((*espriPlasPosition)-(*targetPosition)).Mag();
@@ -232,6 +245,7 @@ class PositionESPRI{
 		PositionESPRI(){
 			espri3DPosition = new ESPRI3DPosition();
 			plasPosition = new ESPRIPlasPosition();
+			phiFunction = new PhiFunction();
 		}
 		~PositionESPRI(){}
 		void loadData(MergeESPRI *mergeESPRI){
@@ -240,6 +254,7 @@ class PositionESPRI{
 		void init(){
 			espriFL = NAN;
 			espriAngle = NAN;
+			espriPhi = NAN;
 			espriLocusAngle = NAN;
 			vESPRI->SetXYZ(NAN,NAN,NAN);
 			espriRdcPosition->SetXYZ(NAN,NAN,NAN);
@@ -256,17 +271,21 @@ class PositionESPRI{
 			espriRdcPosition = new TVector3;
 			espriPlasPosition = new TVector3;
 			tree->Branch("vESPRI","TVector3",&vESPRI);
+			tree->Branch("espriPosition","TVector3",&espriRdcPosition);
 			tree->Branch("espriRdcPosition","TVector3",&espriRdcPosition);
 			tree->Branch("espriPlasPosition","TVector3",&espriPlasPosition);
 			tree->Branch("espriFL",&espriFL,"espriFL/D");
 			tree->Branch("espriLocusAngle",&espriLocusAngle,"espriLocusAngle/D");
+			tree->Branch("espriAngle",&espriAngle,"espriAngle/D");
+			tree->Branch("espriPhi",&espriPhi,"espriPhi/D");
 		}
 		void print(){
 			cout<<"Angle = "<<espriAngle<<"  Locus Angle = "<<espriLocusAngle<<endl;
+			cout<<"Phi ="<<espriPhi<<endl;
 			cout<<"FL = "<<espriFL<<endl;
-			//vESPRI->Print();
-			//espriRdcPosition->Print();
-			//espriPlasPosition->Print();
+			vESPRI->Print();
+			espriRdcPosition->Print();
+			espriPlasPosition->Print();
 		}
 		void loadTargetPosition(TVector3 *target){
 			targetPosition = target;

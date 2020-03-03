@@ -5183,3 +5183,67 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 397d90b] v1.0
+ 65 files changed, 7082 insertions(+), 1036 deletions(-)
+ rewrite merger/Merger (76%)
+ create mode 100644 merger/rootfiles/.scanBeam.C.swp
+ rewrite merger/rootfiles/run0310_analysed.root_test (99%)
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/'
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AlphaEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingAlpha.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingBDC.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingBeam.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingESPRI.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingFDC0.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingHOD.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingMAIN.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingPLA.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingProton.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/AnalysingTELE.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/BdcEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/BeamEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/CalibESPRI.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/CalibTELE.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/Convert.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/CsiCal.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/DSSDEnergyCal.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/Detector.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/EspriEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/FDC0Event.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/Fdc0Event.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/FindPixel.h
+ create mode 100755 merger/v8_beforeSAMURAIToTargetCenter/Makefile
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeBDC.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeESPRI.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeFDC0.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeHOD.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeMAIN.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergePLA.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeSample.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/MergeTELE.h
+ rename merger/{ => v8_beforeSAMURAIToTargetCenter}/Merger (100%)
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/Merger.cpp
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/Merger.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/PlaEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/PositionESPRI.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/PositionTELE.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/ProtonEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/TeleEvent.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/backup_1st_Merger.C
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/constant.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/convert.sh
+ create mode 100755 merger/v8_beforeSAMURAIToTargetCenter/distance.h
+ create mode 100755 merger/v8_beforeSAMURAIToTargetCenter/header.h
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/logMerger.txt
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/loop.sh
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/looprun.sh
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/main.cpp
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/mvRootVersion.sh
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/read.me
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/sampleESPRI.C
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/t1.txt
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/t2.txt
+ create mode 100644 merger/v8_beforeSAMURAIToTargetCenter/tree.C
+ rewrite tele/dssd3DPosition/output/RightDSSDPixelPosition.txt (63%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

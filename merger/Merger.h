@@ -12,6 +12,7 @@ extern TEnv *env;
 #include "MergeHOD.h"
 #include "MergeESPRI.h"
 
+#include "PhiFunction.h"
 #include "PlaEvent.h"
 #include "EspriEvent.h"
 #include "Fdc0Event.h"
