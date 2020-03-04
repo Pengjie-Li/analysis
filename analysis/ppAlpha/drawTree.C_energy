@@ -335,6 +335,13 @@ class CheckEx{
 			tree->SetAlias("protonMass","MassH*AMU");
 			tree->SetAlias("alphaMass","MassHe4*AMU");
 
+			tree->SetAlias("alphaAngle","teleAngle");
+			tree->SetAlias("protonAngle","espriAngle");
+
+			//tree->SetAlias("protonE","protonEnergy");
+			tree->SetAlias("protonE","protonEnergy");
+			tree->SetAlias("alphaE","alphaEnergy");
+
 
 			// 	
 			tree->SetAlias("beamEk","beamEnergy*MassBe");
@@ -369,27 +376,27 @@ class CheckEx{
 
 			tree->SetAlias("cosTheta12","cos(theta1)*cos(theta2)+sin(theta1)*sin(theta2)*cosPhi12");
 
-			tree->SetAlias("protonGamma","(protonEnergy/protonMass+1)");
+			tree->SetAlias("protonGamma","(protonE/protonMass+1)");
 			tree->SetAlias("protonBeta","sqrt(1-1/(protonGamma*protonGamma))");
 			tree->SetAlias("protonVelocity","protonBeta*SOL");
-			tree->SetAlias("protonMomentum","sqrt(protonEnergy*protonEnergy+2*protonEnergy*protonMass)");
+			tree->SetAlias("protonMomentum","sqrt(protonE*protonE+2*protonE*protonMass)");
 
-			tree->SetAlias("alphaGamma","(alphaEnergy/alphaMass+1)");
+			tree->SetAlias("alphaGamma","(alphaE/alphaMass+1)");
 			tree->SetAlias("alphaBeta","sqrt(1-1/(alphaGamma*alphaGamma))");
 			tree->SetAlias("alphaVelocity","alphaBeta*SOL");
-			tree->SetAlias("alphaMomentum","sqrt(alphaEnergy*alphaEnergy+2*alphaEnergy*alphaMass)");
+			tree->SetAlias("alphaMomentum","sqrt(alphaE*alphaE+2*alphaE*alphaMass)");
 
 
 			tree->SetAlias("E0","beamEk+beamMass+targetMass");
 			tree->SetAlias("P0","beamMomentum");
 
-			tree->SetAlias("E1","protonEnergy+protonMass");
+			tree->SetAlias("E1","protonE+protonMass");
 			tree->SetAlias("P1","protonMomentum");
-			tree->SetAlias("theta1","espriAngle*TMath::DegToRad()");
+			tree->SetAlias("theta1","protonAngle*TMath::DegToRad()");
 
-			tree->SetAlias("E2","alphaEnergy+alphaMass");
+			tree->SetAlias("E2","alphaE+alphaMass");
 			tree->SetAlias("P2","alphaMomentum");
-			tree->SetAlias("theta2","teleAngle*TMath::DegToRad()");
+			tree->SetAlias("theta2","alphaAngle*TMath::DegToRad()");
 			
 
 
@@ -472,10 +479,6 @@ class CheckEx{
 			tree->Draw("protonEnergy>>hEp(200,0,100)",gate);
 		}
 
-		void drawPhi(){
-			//tree->Draw("abs(espriPhi-telePhi)>>hPlane(60,150,210)",gate);
-			tree->Draw("abs(espriPhi-fdc0Phi)>>hPlane(60,150,210)",gate);
-		}
 		void drawPlaneBPA(){
 
 			TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
@@ -575,20 +578,20 @@ TString getGate(){
 	//return "(espriAngle<67&&espriAngle>65&&teleAngle>6&&teleAngle<8)";
 	//return "(espriAngle<63.5)";
 	gROOT->ProcessLine(".x cutAABe10.C");
-	gROOT->ProcessLine(".x cutPPAEA.C");
 	//return "(AABe10)&&((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
 	//return "((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
 	
 	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
 	//return "(csiHit==1)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
-	//return "(PPEA)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
 	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	//return "(espriHitSide==0&&teleHitSide==1)";
+	//return "(espriHitSide==1&&teleHitSide==0)";
 	//return "(abs(exEnergy-5.5)<0.15)";
 }
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppaBe10.root");
+	ce->addFile("ppaBe10.root_energy");
 	//ce->addFile("ppaBe12.root");
 	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
@@ -609,13 +612,13 @@ void drawExEnergy(){
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe10.root");
+	ce->addFile("ppaBe10.root_energy");
 	//ce->addFile("ppaBe12.root");
 	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
-	//ce->addGate(getHodGate());
+	ce->addGate(getHodGate());
 	//ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
@@ -645,22 +648,10 @@ void drawPlaneBPA(){
 	ce->drawPlaneBPA();
 	ce->output();
 }
-void drawPhi(){
 
-	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe10.root");
-	ce->setAlias();
-	ce->loadCut();
-	ce->setGate(getGate());
-	//ce->addGate(getHodGate());
-
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-	ce->drawPhi();
-	ce->output();
-}
 void drawTree(){
-	drawPACorrelation();	
-	//drawExEnergy();
-	//drawPhi();
+	//drawPACorrelation();	
+	drawExEnergy();
+	//drawPlaneBPA();
 }
 

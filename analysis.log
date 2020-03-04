@@ -5247,3 +5247,17 @@ Branch master set up to track remote branch master from origin.
  rewrite tele/dssd3DPosition/output/RightDSSDPixelPosition.txt (63%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 1fc2c43] v1.0
+ 22 files changed, 188 insertions(+), 79 deletions(-)
+ create mode 100644 merger/.Fdc0Event.h.swp
+ rewrite merger/Merger (91%)
+ create mode 100644 merger/PhiFunction.h
+ create mode 100644 merger/rootfiles/scanEspri.C
+ create mode 100644 merger/rootfiles/scanEvent.C
+ create mode 100644 merger/rootfiles/scanFdc0.C
+ create mode 100644 merger/rootfiles/scanTarget.C
+ create mode 100644 merger/rootfiles/scanTele.C
+ create mode 120000 merger/txt/LeftDSSDPixelPosition.txt
+ create mode 120000 merger/txt/RightDSSDPixelPosition.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

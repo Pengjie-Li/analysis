@@ -3,7 +3,7 @@
 //========= by ROOT version5.34/36
    
    TCutG *cutg = new TCutG("PRAngle",6);
-   cutg->SetVarX("resAngle");
+   cutg->SetVarX("fdc0Angle");
    cutg->SetVarY("espriAngle");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);

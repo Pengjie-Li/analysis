@@ -57,3 +57,4 @@
 	2. clean espri structure 
 	3. shift plasPlane D from 923 into -1188.17
 	4. remove naiToProton calibration
+	5. add Phi function to ESPRI,Tele, FDC0

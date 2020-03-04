@@ -13,17 +13,17 @@ class DrawCurve{
 		
 	public:
 		DrawCurve(){
-			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe14Excitation/espriDetectorEnergy_gs.root","READ");
+			TFile *fCurve1 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe10Excitation/espriDetectorEnergy_gs.root","READ");
 			tot_gs = (TGraph *)gDirectory->Get("tot");
 			nai_gs = (TGraph *)gDirectory->Get("nai");
 			plas_gs = (TGraph *)gDirectory->Get("plas");
 			fCurve1->Close();
 
-//			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe12Excitation/espriDetectorEnergy_fex.root","READ");
-//			tot_fex = (TGraph *)gDirectory->Get("tot");
-//			nai_fex = (TGraph *)gDirectory->Get("nai");
-//			plas_fex = (TGraph *)gDirectory->Get("plas");
-//			fCurve2->Close();
+			TFile *fCurve2 = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/esBe10Excitation/espriDetectorEnergy_fex.root","READ");
+			tot_fex = (TGraph *)gDirectory->Get("tot");
+			nai_fex = (TGraph *)gDirectory->Get("nai");
+			plas_fex = (TGraph *)gDirectory->Get("plas");
+			fCurve2->Close();
 
 
 
@@ -49,15 +49,14 @@ class DrawCurve{
 		void drawPlas(){
 			plas_gs->SetMarkerColor(1);
 			plas_gs->SetLineColor(1);
-			//plas_fex->SetLineColor(1);
 			plas_gs->Draw("lsame");
-			//plas_fex->Draw("lsame");
+			plas_fex->Draw("lsame");
 		}
 		void drawNai(){
 			//nai_gs->SetMarkerColor(1);
 			//nai_gs->SetLineColor(1);
 			nai_gs->Draw("lsame");
-			//nai_fex->Draw("lsame");
+			nai_fex->Draw("lsame");
 
 		}
 		~DrawCurve(){}
@@ -305,7 +304,6 @@ class CheckEx{
 		}
 		void drawNaiEAngle(){
 			tree->Draw(Form("naiHitQPed*%4.4f+%4.3f:espriAngle>>hNaiEAng%d%d(1000,55,75,1000,0,150)",gain,offset,side,barId),gate);
-			//tree->Draw(Form("espriNaiE:espriAngle>>hNaiEAng%d%d(1000,55,75,1000,0,150)",side,barId),gate);
 			//tree->Draw(Form("espriNaiE_Pol3:espriAngle>>hNaiEAng%d%d(1000,55,75,1000,0,150)",side,barId),gate);
 			TH2F *hNaiEAng = (TH2F *)gDirectory->Get(Form("hNaiEAng%d%d",side,barId));
 			hNaiEAng->SetMarkerColor(2);
@@ -317,9 +315,7 @@ class CheckEx{
 			dc->drawNai();
 		}
 		void drawPlasEAngle(){
-			//tree->Draw(Form("espriPlasE:espriAngle>>hPlasEAng%d%d(1000,55,75,1000,0,20)",side,barId),gate);
-			tree->Draw(Form("plasHitQPed*%4.4f+%4.4f:espriAngle>>hPlasEAng%d%d(1000,55,75,1000,0,20)",gain,offset,side,barId),gate);
-
+			tree->Draw(Form("plasHitQPed*%4.4f+%4.3f:espriAngle>>hPlasEAng%d%d(1000,55,75,1000,0,20)",gain,offset,side,barId),gate);
 			TH2F *hPlasEAng = (TH2F *)gDirectory->Get(Form("hPlasEAng%d%d",side,barId));
 			hPlasEAng->SetMarkerColor(2);
 			//hEA->SetMarkerSize(30);
@@ -570,35 +566,6 @@ class CheckEx{
 			delete calibPara;
 		}
 };
-void drawBar(int side,int barId){
-
-	int markerStyle = 1;
-	if(side!=-1&&barId!=-1) markerStyle = 6;
-
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-	cPad->Divide(2,2);
-	CheckEx *ce = new CheckEx();
-	//ce->addFile("ppBe14.root_BeamTargetProtonPRAngle");
-	//ce->addFile("ppBe14.root_BeamTargetProtonHodBar28-33");
-	ce->addFile("ppBe12.root");
-	ce->setAlias();
-	ce->setBar(side,barId);
-	ce->setMarkerStyle(markerStyle);
-	ce->setGate();
-
-	cPad->cd(1);
-	ce->drawPlasQPedAngle();
-	cPad->cd(2);
-	ce->drawPlasEAngle();
-	cPad->cd(3);
-	ce->drawNaiQPedAngle();
-	cPad->cd(4);
-	ce->drawNaiEAngle();
-	//ce->drawPlasEAngle();
-	ce->output();
-}
-
-
 void drawBar(int side,int barId,double gain,double offset){
 
 	int markerStyle = 1;
@@ -609,23 +576,21 @@ void drawBar(int side,int barId,double gain,double offset){
 	CheckEx *ce = new CheckEx();
 	//ce->addFile("ppBe14.root_BeamTargetProtonPRAngle");
 	//ce->addFile("ppBe14.root_BeamTargetProtonHodBar28-33");
-	//ce->addFile("ppBe10.root");
-	ce->addFile("ppBe14.root");
+	ce->addFile("ppBe10.root");
 	ce->setAlias();
 	ce->setBar(side,barId);
 	ce->setCalibPara(gain,offset);
 	ce->setMarkerStyle(markerStyle);
 	ce->setGate();
 
-	//cPad->cd(1);
+///	cPad->cd(1);
+//	cPad->cd(2);
+//	cPad->cd(3);
+//	ce->drawNaiQPedAngle();
+//	cPad->cd(4);
 	//ce->drawPlasQPedAngle();
-	//cPad->cd(2);
-	//ce->drawPlasEAngle();
-	//cPad->cd(3);
-	//ce->drawNaiQPedAngle();
-	//cPad->cd(4);
-	ce->drawNaiEAngle();
-	//ce->drawPlasEAngle();
+	ce->drawPlasEAngle();
+	//ce->drawNaiEAngle();
 	ce->output();
 }
 
@@ -635,27 +600,24 @@ void calibNai(){
 	//drawBar(0,-1); // draw all left bars
 	//drawBar(1,-1); // draw all right bars
 	//drawBar(1,1); // draw bar side + barId
-	//drawBar(0,0,0.0415,0); // draw bar side + barId
-	drawBar(0,1,0.0415,0); // draw bar side + barId
-	//drawBar(0,2,0.0415,0); // draw bar side + barId
-	//drawBar(0,3,0.044,0); // draw bar side + barId
-	//drawBar(0,4,0.034,7); // draw bar side + barId
-	//drawBar(0,5,0.040,1.5); // draw bar side + barId
-	//drawBar(0,6,0.04,3); // draw bar side + barId
+	//drawBar(0,0,0.037,0); // draw bar side + barId
+	//drawBar(0,1,0.040,0); // draw bar side + barId
+	//drawBar(0,2,0.0375,0); // draw bar side + barId
+	//drawBar(0,3,0.039,2.5); // draw bar side + barId
+	//drawBar(0,4,0.035,2.0); // draw bar side + barId
+	//drawBar(0,5,0.035,2.0); // draw bar side + barId
+	//drawBar(0,6,0.039,2.0); // draw bar side + barId
 	//
-	//drawBar(1,0,0.0435,1); // draw bar side + barId
-	//drawBar(1,1,0.0435,1); // draw bar side + barId
-	//drawBar(1,2,0.0435,6.5); // draw bar side + barId
-	//drawBar(1,3,0.045,6.5); // draw bar side + barId
-	//drawBar(1,4,0.0415,12); // draw bar side + barId
-	//drawBar(1,5,0.045,8); // draw bar side + barId
-	//drawBar(1,6,0.0415,2); // draw bar side + barId
-	//drawBar(0,-1); // draw bar side + barId
-	//drawBar(1,-1); // draw bar side + barId
-	//drawBar(-1,-1); // draw bar side + barId
+	//drawBar(1,0,0.026,7.5); // draw bar side + barId
+	//drawBar(1,1,0.037,0.5); // draw bar side + barId
+	//drawBar(1,2,0.035,1.5); // draw bar side + barId
+	//drawBar(1,3,0.045,1.5); // draw bar side + barId
+	//drawBar(1,4,0.028,7.5); // draw bar side + barId
+	//drawBar(1,5,0.027,6.5); // draw bar side + barId
+	//drawBar(1,6,0.035,3.0); // draw bar side + barId
+	//
+	//drawBar(0,-1,0.0036,0.0); // draw bar side + barId
+	//drawBar(1,-1,0.0045,0.0); // draw bar side + barId
 	//drawBar(0,1); // draw bar side + barId
 	//drawBar(0,2); // draw bar side + barId
-	
-	//drawBar(0,-1,0.00385,0); // draw bar side + barId
-	//drawBar(1,-1,0.004600,0); // draw bar side + barId
 }
