@@ -5261,3 +5261,42 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 merger/txt/RightDSSDPixelPosition.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 019184d] v1.0
+ 44 files changed, 2266 insertions(+), 1802 deletions(-)
+ rename analysis/generateChannels/{ppBe10 => }/ReadFile.h (95%)
+ create mode 100644 analysis/generateChannels/energyShift/EnergyShift.h
+ create mode 100644 analysis/generateChannels/energyShift/Event.h
+ create mode 100755 analysis/generateChannels/energyShift/Makefile
+ create mode 120000 analysis/generateChannels/energyShift/ReadFile.h
+ create mode 100644 analysis/generateChannels/energyShift/configPPBe.prm
+ create mode 100644 analysis/generateChannels/energyShift/convert.sh
+ create mode 100755 analysis/generateChannels/energyShift/header.h
+ create mode 120000 analysis/generateChannels/energyShift/inputRootfiles
+ create mode 100644 analysis/generateChannels/energyShift/loop.sh
+ create mode 100644 analysis/generateChannels/energyShift/main.cpp
+ create mode 100644 analysis/generateChannels/energyShift/ppBe.cpp
+ create mode 100644 analysis/generateChannels/energyShift/ppBe.h
+ create mode 100755 analysis/generateChannels/energyShift/ppaBe10
+ create mode 100644 analysis/generateChannels/energyShift/tele.C
+ create mode 100644 analysis/generateChannels/energyShift/test.C
+ rewrite analysis/generateChannels/ppAlphaBe10/ReadFile.h (100%)
+ mode change 100644 => 120000
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (64%)
+ rewrite analysis/generateChannels/ppBe10/ReadFile.h (100%)
+ mode change 100644 => 120000
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (70%)
+ create mode 100644 analysis/ppAlpha/cutPPEA.C
+ create mode 100644 analysis/ppAlpha/drawTree.C_energy
+ create mode 120000 analysis/ppAlpha/ppaBe10.root_energy
+ rewrite merger/Merger (85%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (71%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (72%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
