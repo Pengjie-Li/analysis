@@ -1,3 +1,4 @@
+#include "../DrawTree.h"
 class DrawCurve{
 	private:
         TGraph *gCurve[4];
@@ -32,79 +33,11 @@ class DrawCurve{
 		~DrawCurve(){}
 };
 
-class TCalibPara{
-	private:
-		double plasGain[2][7];
-		double plasDead[2][7];
-		double naiGain[2][7];
-		double naiDead[2][7];
-
-		void init(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					plasGain[i][j]= 0;
-					plasDead[i][j]= 0;
-					naiGain[i][j]= 0;
-					naiDead[i][j]= 0;
-				}
-
-			}
-
-		}
-		void loadCalibPara(){
-			init();
-			ifstream in;
-			TString inputName = "calibPara.txt";
-			cout<<inputName<<endl;
-			in.open(inputName);
-			int side;
-			int barId;
-			double gPlas;
-			double dPlas;
-			double gNai;
-			double dNai;
-			while(1){
-				if(!in.good()) break;
-				in>>side>>barId>>gPlas>>dPlas>>gNai>>dNai;
-				naiGain[side][barId] = gNai;
-				naiDead[side][barId] = dNai;
-				plasGain[side][barId] = gPlas;
-				plasDead[side][barId] = dPlas;
-			}
-		}
-		void print(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					cout<<i<<"\t"<<j<<"\t"<<plasGain[i][j]<<"\t"<<plasDead[i][j]<<"\t"<<naiGain[i][j]<<"\t"<<naiDead[i][j]<<endl;
-				}
-
-			}
-		}
-	public:
-		TCalibPara(){
-			loadCalibPara();
-			//print();
-		}
-		~TCalibPara(){}
-		double getNaiGain(int side,int barId){
-			return naiGain[side][barId];
-		}
-		double getNaiDead(int side,int barId){
-			return naiDead[side][barId];
-		}
-		double getPlasGain(int side,int barId){
-			return plasGain[side][barId];
-		}
-		double getPlasDead(int side,int barId){
-			return plasDead[side][barId];
-		}
-};
 class CheckEx{
 	private:
 		TChain *tree;
 		int markerStyle;
 
-		TCalibPara *calibPara;
 		int side;
 		int barId;
 		double gPlas;
@@ -139,20 +72,6 @@ class CheckEx{
 		double tofOffset;
 
 
-		double getNaiGain(){
-			return calibPara->getNaiGain(side,barId);
-		}
-		double getNaiDead(){
-			return calibPara->getNaiDead(side,barId);
-		}
-
-		double getPlasGain(){
-			return calibPara->getPlasGain(side,barId);
-		}
-		double getPlasDead(){
-			return calibPara->getPlasDead(side,barId);
-		}
-
 
 
 	public:
@@ -165,7 +84,6 @@ class CheckEx{
 			//tree->Add("run0383_ppBe14.root");
 			//tree->Add("run0383_ppBe14.root");
 			dc = new DrawCurve();
-			calibPara = new TCalibPara();
 			markerStyle = 1;
 		}
 		void addFile(TString fileName){
@@ -179,14 +97,11 @@ class CheckEx{
 			tree = new TChain("tree");
 			//tree->Add("ppBe10.root");
 			//tree->Add("ppBe14.root_BeamProtonPRAngleHodBar28-33");
-			calibPara = new TCalibPara();
-			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 			setAlias();
 		}
 
 		void setBar(int s, int b){
 			side = s; barId = b;
-			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 		}
 		void setCalibParas(double gN,double dN,double gP,double dP){
 			gNai = gN; dNai = dN;gPlas = gP; dPlas = dP;
@@ -335,6 +250,11 @@ class CheckEx{
 			tree->SetAlias("protonMass","MassH*AMU");
 			tree->SetAlias("alphaMass","MassHe4*AMU");
 
+			tree->SetAlias("protonAngle","espriAngle");
+			tree->SetAlias("alphaAngle","teleAngle_down_1");
+			//tree->SetAlias("alphaAngle","teleAngle");
+
+
 
 			// 	
 			tree->SetAlias("beamEk","beamEnergy*MassBe");
@@ -385,11 +305,11 @@ class CheckEx{
 
 			tree->SetAlias("E1","protonEnergy+protonMass");
 			tree->SetAlias("P1","protonMomentum");
-			tree->SetAlias("theta1","espriAngle*TMath::DegToRad()");
+			tree->SetAlias("theta1","protonAngle*TMath::DegToRad()");
 
 			tree->SetAlias("E2","alphaEnergy+alphaMass");
 			tree->SetAlias("P2","alphaMomentum");
-			tree->SetAlias("theta2","teleAngle*TMath::DegToRad()");
+			tree->SetAlias("theta2","alphaAngle*TMath::DegToRad()");
 			
 
 
@@ -447,16 +367,18 @@ class CheckEx{
 		}
 
 		void drawProtonEA(){
-			tree->Draw("protonEnergy:espriAngle>>hProtonEA(200,50,80,200,0,150)",gate,"colz");
+			tree->Draw("protonEnergy:protonAngle>>hProtonEA(200,50,80,200,0,150)",gate,"colz");
+			//tree->Draw("protonEnergy:protonAngle>>hProtonEA(200,50,80,200,0,150)",gate,"colz");
 			//dc->drawProtonEA();
 		}
+
 		void drawAlphaEA(){
-			tree->Draw("alphaEnergy:teleAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
+			tree->Draw("alphaEnergy:alphaAngle>>hAlphaEA(200,0,18,200,300,700)",gate,"colz");
 			//dc->drawAlphaEA();
 		}
 
 		void drawAA(){
-			tree->Draw("espriAngle:teleAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
+			tree->Draw("protonAngle:alphaAngle>>hAA(200,0,18,200,50,80)",gate,"colz");
 			//dc->drawAA();
 		}
 		void drawEE(){
@@ -464,18 +386,39 @@ class CheckEx{
 			//dc->drawEE();
 		}
 
+		void drawCsiHit(){
+			tree->Draw("teleHit>>hEx(8,-0.5,7.5)",gate);
+		}
 		void drawEx(){
-			tree->Draw("exEnergy>>hEx(200,-20,20)",gate,"colz");
+			TH1F *hEx;
+			tree->Draw("exEnergy>>hEx(150,-20,20)",gate,"colz");
+			hEx = (TH1F*)gDirectory->Get("hEx");
+			hEx->Fit("gaus");
+		}
+	
+		void drawEx3(){
+			TH1F *h[3];
+			tree->Draw("exEnergy>>hEx(150,-20,20)",gate,"colz");
+			h[0] = (TH1F*)gDirectory->Get("hEx");
+			tree->Draw("exEnergy>>hExHit1(150,-20,20)","(teleHit==1)&&"+gate,"colz");
+			h[1] = (TH1F*)gDirectory->Get("hExHit1");
+			tree->Draw("exEnergy>>hExHit2(150,-20,20)","(teleHit==2)&&"+gate,"colz");
+			h[2] = (TH1F*)gDirectory->Get("hExHit2");
+			h[1]->SetLineColor(1);
+			h[2]->SetLineColor(2);
+			h[1]->SetLineWidth(2);
+			h[2]->SetLineWidth(2);
+	
+	
+			h[0]->Draw();
+			h[1]->Draw("same");
+			h[2]->Draw("same");
 			
 		}
 		void drawEp(){
 			tree->Draw("protonEnergy>>hEp(200,0,100)",gate);
 		}
 
-		void drawPhi(){
-			//tree->Draw("abs(espriPhi-telePhi)>>hPlane(60,150,210)",gate);
-			tree->Draw("abs(espriPhi-fdc0Phi)>>hPlane(60,150,210)",gate);
-		}
 		void drawPlaneBPA(){
 
 			TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
@@ -527,7 +470,6 @@ class CheckEx{
 		~CheckEx(){
 			delete tree;
 			delete dc;
-			delete calibPara;
 		}
 };
 TString getHodGate(){
@@ -575,20 +517,22 @@ TString getGate(){
 	//return "(espriAngle<67&&espriAngle>65&&teleAngle>6&&teleAngle<8)";
 	//return "(espriAngle<63.5)";
 	gROOT->ProcessLine(".x cutAABe10.C");
-	gROOT->ProcessLine(".x cutPPAEA.C");
 	//return "(AABe10)&&((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
 	//return "((abs(protonEnergy-40)<10&&abs(alphaEnergy-550)<10))";
 	
 	TString planeOfBPA = "(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))";
 	//return "abs(xB*(yA*zP-yP*zA)+yB*(zA*xP-zP*xA)+zB*(xA*yP-xP*yA))<0.05";
 	//return "(csiHit==1)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
-	//return "(PPEA)&&((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
-	return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	//return "((espriHitSide==0&&teleHitSide==1)||(espriHitSide==1&&teleHitSide==0))";
+	return "(espriHitSide==1&&teleHitSide==0)";
+	//return "((espriHitSide==0&&teleHitSide==1))";
+	//return "((espriHitSide==1&&teleHitSide==0))";
 	//return "(abs(exEnergy-5.5)<0.15)";
 }
 void drawExEnergy(){
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe10.root");
+	ce->addFile("ppaBe10.root_ang");
 	//ce->addFile("ppaBe12.root");
 	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
@@ -597,25 +541,27 @@ void drawExEnergy(){
 	ce->addGate(getHodGate());
 	//ce->setGate(getHodGate());
 
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
+	TCanvas *cPad = new TCanvas("cPad","cPad",900,600);
 //	cPad->Divide(2,2);
 //	cPad->cd(1);
 	//ce->drawEp();
 	//ce->drawProtonResAA();
 	ce->drawEx();
+	//ce->drawCsiHit();
 	ce->output();
 
 }
 void drawPACorrelation(){
 
 	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe10.root");
+	ce->addFile("ppaBe10.root");
+	//ce->addFile("ppaBe10.root_ang");
 	//ce->addFile("ppaBe12.root");
 	//ce->addFile("ppaBe14.root");
 	ce->setAlias();
 	ce->loadCut();
 	ce->setGate(getGate());
-	//ce->addGate(getHodGate());
+	ce->addGate(getHodGate());
 	//ce->setGate(getHodGate());
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
@@ -645,22 +591,25 @@ void drawPlaneBPA(){
 	ce->drawPlaneBPA();
 	ce->output();
 }
-void drawPhi(){
 
-	CheckEx *ce = new CheckEx();
-	ce->addFile("ppBe10.root");
-	ce->setAlias();
-	ce->loadCut();
-	ce->setGate(getGate());
-	//ce->addGate(getHodGate());
-
-	TCanvas *cPad = new TCanvas("cPad","cPad",1200,900);
-	ce->drawPhi();
-	ce->output();
-}
 void drawTree(){
-	drawPACorrelation();	
-	//drawExEnergy();
-	//drawPhi();
+	//drawPACorrelation();	
+	drawExEnergy();
+	//drawPlaneBPA();
+}
+
+void drawH(){
+
+	DrawTree *dt = new DrawTree();
+	dt->addFile("ppaBe10.root_ang");
+	dt->setAlias();
+	dt->loadCut();
+	dt->setGate(getGate());
+	//dt->addGate(getHodGate());
+	dt->setVar("abs(espriPhi-fdc0Phi)");
+	dt->setBin(100,150,210);
+
+	TCanvas *cPad = new TCanvas("cPad","cPad",900,600);
+	dt->drawH();
 }
 
