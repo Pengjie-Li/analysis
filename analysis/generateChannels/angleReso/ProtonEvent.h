@@ -88,10 +88,10 @@ class ProtonEvent{
 		ProtonPara *protonPara;
 
 		void setProtonEnergy(){
-			if(rf->isNaiHit()){
-				protonAngle_sig3 = rf->getEspriAngle() + gRandom->Gaus(0,0.3);
-				protonEnergy_sig3 = protonPara->getProtonEnergy(rf->getNaiEnergy(),rf->getEspriLocusAngle(),protonAngle_sig3);
-			}
+			//if(rf->isNaiHit()){
+			//	protonAngle_sig3 = rf->getEspriAngle() + gRandom->Gaus(0,0.3);
+			//	protonEnergy_sig3 = protonPara->getProtonEnergy(rf->getNaiEnergy(),rf->getEspriLocusAngle(),protonAngle_sig3);
+			//}
 		}
 	public:
 		ProtonEvent(){

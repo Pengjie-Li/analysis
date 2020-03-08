@@ -90,16 +90,27 @@ class AlphaEvent{
 		TVector3 *vBeam;
 
 		TVector3 *targetCenter;
-		double teleAngle_up;
-		double teleAngle_down;
-		double teleAngle_left;
-		double teleAngle_right;
-
 
 		double teleAngle_right_1;
 		double teleAngle_right_2;
-		double teleAngle_up_4;
-		double teleAngle_up_6;
+		double teleAngle_right_3;
+		double teleAngle_right_4;
+		double teleAngle_right_5;
+
+		double teleAngle_left_1;
+		double teleAngle_left_2;
+		double teleAngle_left_3;
+		double teleAngle_left_4;
+		double teleAngle_left_5;
+	
+		double teleAngle_up_1;
+		double teleAngle_up_2;
+		double teleAngle_up_3;
+
+		double teleAngle_down_1;
+		double teleAngle_down_2;
+		double teleAngle_down_3;
+
 
 		void shiftLR(double angle){
 			(*telePosition) = (*telePosition) - (*targetCenter);
@@ -121,7 +132,7 @@ class AlphaEvent{
 		AlphaEvent(){
 			vTele = new TVector3;
 			targetCenter = new TVector3;
-			targetCenter->SetXYZ(0,0,-4222.45);
+			targetCenter->SetXYZ(0,0,0);
 		}
 		~AlphaEvent(){
 		}
@@ -129,15 +140,26 @@ class AlphaEvent{
 		void init(){
 			rf = NULL;
 			vTele->SetXYZ(NAN,NAN,NAN);
-			teleAngle_up = NAN;
-			teleAngle_down = NAN;
-			teleAngle_left = NAN;
-			teleAngle_right = NAN;
 
+			teleAngle_up_1 = NAN;
+			teleAngle_up_2 = NAN;
+			teleAngle_up_3 = NAN;
+
+			teleAngle_down_1 = NAN;
+			teleAngle_down_2 = NAN;
+			teleAngle_down_3 = NAN;
+	
+			teleAngle_left_1 = NAN;
+			teleAngle_left_2 = NAN;
+			teleAngle_left_3 = NAN;
+			teleAngle_left_4 = NAN;
+			teleAngle_left_5 = NAN;
+	
 			teleAngle_right_1 = NAN;
 			teleAngle_right_2 = NAN;
-			teleAngle_up_4 = NAN;
-			teleAngle_up_6 = NAN;
+			teleAngle_right_3 = NAN;
+			teleAngle_right_4 = NAN;
+			teleAngle_right_5 = NAN;
 		}
 		void load(ReadFile *te){
 			rf = te;
@@ -147,49 +169,81 @@ class AlphaEvent{
 			targetPosition = rf->getTargetPosition();
 			vBeam = rf->getBeamDirection();
 
-			shiftUD(0.5);
-			teleAngle_down= setAngle();
-			shiftUD(-1);
-			teleAngle_up = setAngle();
-			shiftUD(0.5);
-
-			shiftLR(0.5);
-			teleAngle_right = setAngle();
-			shiftLR(-1);
-			teleAngle_left = setAngle();
-			shiftLR(0.5);
-
-			telePosition->Print();
+			//targetPosition->Print();
+			//vBeam->Print();
+			//telePosition->Print();
 			shiftLR(0.1);
-			telePosition->Print();
 			teleAngle_right_1 = setAngle();
 			shiftLR(0.1);
-			telePosition->Print();
 			teleAngle_right_2 = setAngle();
-			shiftLR(-0.2);
-			telePosition->Print();
-			
-			shiftUD(-0.4);
-			telePosition->Print();
-			teleAngle_up_4 = setAngle();
-			shiftUD(-0.2);
-			telePosition->Print();
-			teleAngle_up_6 = setAngle();
-			shiftUD(0.6);
+			shiftLR(0.1);
+			teleAngle_right_3 = setAngle();
+			shiftLR(0.1);
+			teleAngle_right_4 = setAngle();
+			shiftLR(0.1);
+			teleAngle_right_5 = setAngle();
+			//telePosition->Print();
+	
+			shiftLR(-0.5);
+
+			shiftLR(-0.1);
+			teleAngle_left_1 = setAngle();
+			shiftLR(-0.1);
+			//telePosition->Print();
+			teleAngle_left_2 = setAngle();
+			shiftLR(-0.1);
+			teleAngle_left_3 = setAngle();
+			shiftLR(-0.1);
+			teleAngle_left_4 = setAngle();
+			shiftLR(-0.1);
+			teleAngle_left_5 = setAngle();
+			//telePosition->Print();
+		
+			shiftLR(0.5);
+
+			shiftUD(-0.1);
+			teleAngle_up_1 = setAngle();
+			shiftUD(-0.1);
+			teleAngle_up_2 = setAngle();
+			shiftUD(-0.1);
+			teleAngle_up_3 = setAngle();
+			//telePosition->Print();
+
+			shiftUD(0.3);
+
+			shiftUD(0.1);
+			teleAngle_down_1 = setAngle();
+			shiftUD(0.1);
+			teleAngle_down_2 = setAngle();
+			shiftUD(0.1);
+			teleAngle_down_3 = setAngle();
+			//telePosition->Print();
+			shiftUD(-0.3);
+	
 		}
 		void print(){
-			cout<<"Alpha Angle: "<<rf->getTeleAngle()<<"  "<<teleAngle_up<<"  "<<teleAngle_down<<"  "<<teleAngle_left<<"  "<<teleAngle_right<<endl;
+			//cout<<"Alpha Angle: "<<rf->getTeleAngle()<<"  "<<teleAngle_up<<"  "<<teleAngle_down<<"  "<<teleAngle_left<<"  "<<teleAngle_right<<endl;
 		}
 		void setOutputBranch(TTree *tree){
-			tree->Branch("teleAngle_up",&teleAngle_up,"teleAngle_up/D");
-			tree->Branch("teleAngle_down",&teleAngle_down,"teleAngle_down/D");
-			tree->Branch("teleAngle_left",&teleAngle_left,"teleAngle_left/D");
-			tree->Branch("teleAngle_right",&teleAngle_right,"teleAngle_right/D");
 
+			tree->Branch("teleAngle_up_1",&teleAngle_up_1,"teleAngle_up_1/D");
+			tree->Branch("teleAngle_up_2",&teleAngle_up_2,"teleAngle_up_2/D");
+			tree->Branch("teleAngle_up_3",&teleAngle_up_3,"teleAngle_up_3/D");
 
-			tree->Branch("teleAngle_up_4",&teleAngle_up_4,"teleAngle_up_4/D");
-			tree->Branch("teleAngle_up_6",&teleAngle_up_6,"teleAngle_up_6/D");
+			tree->Branch("teleAngle_down_1",&teleAngle_down_1,"teleAngle_down_1/D");
+			tree->Branch("teleAngle_down_2",&teleAngle_down_2,"teleAngle_down_2/D");
+			tree->Branch("teleAngle_down_3",&teleAngle_down_3,"teleAngle_down_3/D");
+
+			tree->Branch("teleAngle_left_1",&teleAngle_left_1,"teleAngle_left_1/D");
+			tree->Branch("teleAngle_left_2",&teleAngle_left_2,"teleAngle_left_2/D");
+			tree->Branch("teleAngle_left_3",&teleAngle_left_3,"teleAngle_left_3/D");
+			tree->Branch("teleAngle_left_4",&teleAngle_left_4,"teleAngle_left_4/D");
+			tree->Branch("teleAngle_left_5",&teleAngle_left_5,"teleAngle_left_5/D");
+	
 			tree->Branch("teleAngle_right_1",&teleAngle_right_1,"teleAngle_right_1/D");
 			tree->Branch("teleAngle_right_2",&teleAngle_right_2,"teleAngle_right_2/D");
+			tree->Branch("teleAngle_right_3",&teleAngle_right_3,"teleAngle_right_3/D");
+			tree->Branch("teleAngle_right_4",&teleAngle_right_4,"teleAngle_right_4/D");
+			tree->Branch("teleAngle_right_5",&teleAngle_right_5,"teleAngle_right_5/D");
 		}
 };

@@ -91,7 +91,7 @@ class Event{
 		}
 		bool isAlpha(){
 			//return gc->isProton(rf->getNaiQ(),rf->getPlasQ());
-			return gc->isAlpha(rf->getCsiEnergy(),rf->getTeleDssdE());
+			return gc->isAlpha(rf->getTeleCsiE(),rf->getTeleDssdE());
 		}
 		bool isTargetArea(){
 			return gc->isInsideTargetArea(rf->getTargetX(),rf->getTargetY());

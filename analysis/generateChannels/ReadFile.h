@@ -372,6 +372,7 @@ class ReadFile{
 			inputTree->SetBranchAddress("bdc1Position",&bdc1Position);
 			inputTree->SetBranchAddress("bdc2Position",&bdc2Position);
 			inputTree->SetBranchAddress("targetPosition",&targetPosition);
+			inputTree->SetBranchAddress("telePosition",&telePosition);
 			inputTree->SetBranchAddress("sbtPosition",&sbtPosition);
 			inputTree->SetBranchAddress("FDC0_nhits",&FDC0_nhits);
 			inputTree->SetBranchAddress("FDC0_TDC",&FDC0_TDC);
@@ -810,6 +811,16 @@ class ReadFile{
 		double getTeleDssdE(){
 			return teleDssdFE; 
 		}
+		TVector3 * getTelePosition(){
+			return telePosition;
+		}
+		TVector3 * getBeamDirection(){
+			return vBeam;
+		}
+		TVector3 * getTargetPosition(){
+			return targetPosition;
+		}
+	
 		double getTargetX(){
 			return targetPosition->X();
 		}
