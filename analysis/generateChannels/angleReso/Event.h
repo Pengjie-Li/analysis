@@ -41,7 +41,8 @@ class GateCut{
 		TCutG *alphaCut;
 		HodCut *hodCut;
 		void loadCut(){
-                        gROOT->ProcessLine(".x inputRootfiles/cutBeamBe10.C");
+                        //gROOT->ProcessLine(".x inputRootfiles/cutBeamBe10.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutBeamBe12.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutProton.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutAlpha.C");
 		}

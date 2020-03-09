@@ -1,4 +1,4 @@
-TARGET =ppaBe10
+TARGET =ppBe10
 SOURCE = main.cpp ppBe.cpp 
 #TARGET =bdc
 

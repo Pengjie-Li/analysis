@@ -546,9 +546,7 @@ class ReadFile{
 			setReadBranch();
 		}
 
-		void setBranch(TTree *tree){
-
-			// Set branch addresses.
+		void setGeneralBranch(TTree *tree){
 			tree->Branch("RunNumber",&RunNumber);
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("CoincidenceTrigger",&CoincidenceTrigger);
@@ -559,6 +557,10 @@ class ReadFile{
 			tree->Branch("Trig_BxHODP",&Trig_BxHODP);
 			tree->Branch("Trig_BxHODF",&Trig_BxHODF);
 			tree->Branch("Trig_BxNEBULA",&Trig_BxNEBULA);
+
+		}
+		void setDetectorBranch(TTree *tree){
+			// Plas  
 			tree->Branch("F3TRaw",F3TRaw);
 			tree->Branch("F3QRaw",F3QRaw);
 			tree->Branch("F3TCal",F3TCal);
@@ -591,14 +593,7 @@ class ReadFile{
 			tree->Branch("SBVQCal",SBVQCal);
 			tree->Branch("SBVT",&SBVT);
 			tree->Branch("SBVQ",&SBVQ);
-			tree->Branch("TOF37",&TOF37);
-			tree->Branch("Beta37",&Beta37);
-			tree->Branch("Gamma37",&Gamma37);
-			tree->Branch("Ek37",&Ek37);
-			tree->Branch("TOF713",&TOF713);
-			tree->Branch("Beta713",&Beta713);
-			tree->Branch("Gamma713",&Gamma713);
-			tree->Branch("Ek713",&Ek713);
+
 			tree->Branch("BDC1_nhits",&BDC1_nhits);
 			tree->Branch("BDC1_TDC",&BDC1_TDC);
 			tree->Branch("BDC1_layerid",&BDC1_layerid);
@@ -629,12 +624,8 @@ class ReadFile{
 			tree->Branch("BDC2_Y",&BDC2_Y);
 			tree->Branch("BDC2_ThetaX",&BDC2_ThetaX);
 			tree->Branch("BDC2_ThetaY",&BDC2_ThetaY);
-			tree->Branch("beamFL",&beamFL);
-			tree->Branch("vBeam",&vBeam);
-			tree->Branch("bdc1Position",&bdc1Position);
-			tree->Branch("bdc2Position",&bdc2Position);
-			tree->Branch("targetPosition",&targetPosition);
-			tree->Branch("sbtPosition",&sbtPosition);
+
+
 			tree->Branch("FDC0_nhits",&FDC0_nhits);
 			tree->Branch("FDC0_TDC",&FDC0_TDC);
 			tree->Branch("FDC0_layerid",&FDC0_layerid);
@@ -650,9 +641,6 @@ class ReadFile{
 			tree->Branch("FDC0_Y",&FDC0_Y);
 			tree->Branch("FDC0_ThetaX",&FDC0_ThetaX);
 			tree->Branch("FDC0_ThetaY",&FDC0_ThetaY);
-			tree->Branch("fdc0Angle",&fdc0Angle);
-			tree->Branch("fdc0Position",&fdc0Position);
-			tree->Branch("vFDC0",&vFDC0);
 
 			tree->Branch("dssdQRaw",dssdQRaw,"dssdQRaw[4][32]/I");
                         tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[2][32]/I");
@@ -660,18 +648,6 @@ class ReadFile{
                         tree->Branch("csiQRaw",csiQRaw,"csiQRaw[7]/I");
                         tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
                         tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
-
-
-                        tree->Branch("hodNHit",&hodNHit,"hodNHit/I");
-                        tree->Branch("hodID",hodID,"hodID[40]/I");
-                        tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
-                        tree->Branch("hodQRaw",hodQRaw,"hodQRaw[2][40]/I");
-
-                        tree->Branch("hodQPed",hodQPed,"hodQPed[2][40]/D");
-                        tree->Branch("hodTCal",hodTCal,"hodTCal[2][40]/D");
-                        tree->Branch("hodQCal",hodQCal,"hodQCal[2][40]/D");
-                        tree->Branch("hodBarTCal",hodBarTCal,"hodBarTCal[40]/D");
-                        tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
 
 			tree->Branch("rdcHit",&rdcHit,"rdcHit/I");
 			tree->Branch("rdcHitSide",rdcHitSide,"rdcHitSide[rdcHit]/I");
@@ -689,11 +665,65 @@ class ReadFile{
 			tree->Branch("plasHitQPed",plasHitQPed,"plasHitQPed[plasHit]/D");
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
 
+			tree->Branch("csiHit",&csiHit,"csiHit/I");
+			tree->Branch("csiHitId",csiHitId,"csiHitId[csiHit]/I");
+			tree->Branch("csiHitQPed",csiHitQPed,"csiHitQPed[csiHit]/D");
+			tree->Branch("csiHitTCal",csiHitTCal,"csiHitTCal[csiHit]/D");
+	
+			tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
+                        tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
+                        tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
+                        tree->Branch("apWinE",&apWinE,"apWinE/D");
+                        tree->Branch("apDssdE",&apDssdE,"apDssdE/D");
+                        tree->Branch("apDegraderE",&apDegraderE,"apDegraderE/D");
+
+			tree->Branch("teleHitFid",teleHitFid,"teleHitFid[teleHit]/I");
+			tree->Branch("teleHitBid",teleHitBid,"teleHitBid[teleHit]/I");
+			tree->Branch("teleHitDssdFQPed",teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/I");
+			tree->Branch("teleHitDssdBQPed",teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/I");
+			tree->Branch("teleHitDssdTCal",teleHitDssdTCal,"teleHitDssdTCal[teleHit]/I");
+			tree->Branch("teleHitCid",teleHitCid,"teleHitCid[teleHit]/I");
+			tree->Branch("teleHitCsiQPed",teleHitCsiQPed,"teleHitCsiQPed[teleHit]/I");
+			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/I");
+	
+			tree->Branch("hodQRaw",hodQRaw,"hodQRaw[2][40]/I");
+                        tree->Branch("hodQPed",hodQPed,"hodQPed[2][40]/D");
+                        tree->Branch("hodTCal",hodTCal,"hodTCal[2][40]/D");
+                        tree->Branch("hodQCal",hodQCal,"hodQCal[2][40]/D");
+                        tree->Branch("hodBarTCal",hodBarTCal,"hodBarTCal[40]/D");
+
+		}
+		void setBranch(TTree *tree){
+
+			setGeneralBranch(tree);
+			tree->Branch("TOF37",&TOF37);
+			tree->Branch("Beta37",&Beta37);
+			tree->Branch("Gamma37",&Gamma37);
+			tree->Branch("Ek37",&Ek37);
+			tree->Branch("TOF713",&TOF713);
+			tree->Branch("Beta713",&Beta713);
+			tree->Branch("Gamma713",&Gamma713);
+			tree->Branch("Ek713",&Ek713);
+			tree->Branch("beamFL",&beamFL);
+			tree->Branch("vBeam",&vBeam);
+			tree->Branch("bdc1Position",&bdc1Position);
+			tree->Branch("bdc2Position",&bdc2Position);
+			tree->Branch("targetPosition",&targetPosition);
+			tree->Branch("sbtPosition",&sbtPosition);
+			tree->Branch("fdc0Angle",&fdc0Angle);
+			tree->Branch("fdc0Position",&fdc0Position);
+			tree->Branch("vFDC0",&vFDC0);
+
+
+                        tree->Branch("hodNHit",&hodNHit,"hodNHit/I");
+                        tree->Branch("hodID",hodID,"hodID[40]/I");
+			tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
+                        tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
+
+
 			tree->Branch("espriHit",&espriHit,"espriHit/I");
 			tree->Branch("espriHitSide",espriHitSide,"espriHitSide[espriHit]/I");
 
-			tree->Branch("espriPlasE_Birks",&espriPlasE_Birks);
-			tree->Branch("espriNaiE_Pol3",&espriNaiE_Pol3);
 			tree->Branch("espriPlasE",&espriPlasE);
 			tree->Branch("espriPlasT",&espriPlasT);
 			tree->Branch("espriNaiE",&espriNaiE);
@@ -709,22 +739,10 @@ class ReadFile{
 
 			tree->Branch("espriPosition",&espriPosition);
 
-			tree->Branch("csiHit",&csiHit,"csiHit/I");
-			tree->Branch("csiHitId",csiHitId,"csiHitId[csiHit]/I");
-			tree->Branch("csiHitQPed",csiHitQPed,"csiHitQPed[csiHit]/D");
-			tree->Branch("csiHitTCal",csiHitTCal,"csiHitTCal[csiHit]/D");
-	
+
 			tree->Branch("teleHit",&teleHit,"teleHit/I");
 			tree->Branch("teleHitSide",teleHitSide,"teleHitSide[teleHit]/I");
-			tree->Branch("teleHitFid",teleHitFid,"teleHitFid[teleHit]/I");
-			tree->Branch("teleHitBid",teleHitBid,"teleHitBid[teleHit]/I");
-			tree->Branch("teleHitDssdFQPed",teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/I");
-			tree->Branch("teleHitDssdBQPed",teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/I");
-			tree->Branch("teleHitDssdTCal",teleHitDssdTCal,"teleHitDssdTCal[teleHit]/I");
-			tree->Branch("teleHitCid",teleHitCid,"teleHitCid[teleHit]/I");
-			tree->Branch("teleHitCsiQPed",teleHitCsiQPed,"teleHitCsiQPed[teleHit]/I");
-			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/I");
-	
+
 
                         tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
                         tree->Branch("teleCsiE_sync",&teleCsiE_sync,"teleCsiE_sync/D");
@@ -751,17 +769,8 @@ class ReadFile{
 			tree->Branch("beamBeta",&beamBeta);
 
 
-                        tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
-                        tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
-                        tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
-                        tree->Branch("apWinE",&apWinE,"apWinE/D");
-                        tree->Branch("apDssdE",&apDssdE,"apDssdE/D");
-                        tree->Branch("apDegraderE",&apDegraderE,"apDegraderE/D");
-
-                        tree->Branch("alphaEnergy",&alphaEnergy,"alphaEnergy/D");
+			tree->Branch("alphaEnergy",&alphaEnergy,"alphaEnergy/D");
                         tree->Branch("vTele","TVector3",&vTele);
-
-
 
 
 		}
