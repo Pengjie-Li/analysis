@@ -5318,3 +5318,101 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/ppAlpha/.drawTree.C_ang.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ec775c0] v1.0
+ 105 files changed, 1564 insertions(+), 158 deletions(-)
+ create mode 100644 analysis/generateChannels/angleReso/.convert.sh.swp
+ create mode 100644 analysis/generateChannels/angleReso/.loop.sh.swp
+ rewrite analysis/generateChannels/angleReso/ppaBe10 (85%)
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0331_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0332_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0333_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0334_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0335_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0336_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0337_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0338_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0339_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0340_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0341_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0342_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0343_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0344_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0345_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0346_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0347_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0348_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0349_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0350_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0351_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0352_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0353_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0354_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0355_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0356_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0357_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0358_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0359_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0360_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0361_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0362_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0363_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0364_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/angleReso/rootfiles/run0365_ppaBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/.EnergyShift.h.swp
+ create mode 100644 analysis/generateChannels/energyShift/.Event.h.swp
+ create mode 100644 analysis/generateChannels/energyShift/.configPPBe.prm.swp
+ create mode 100644 analysis/generateChannels/energyShift/.convert.sh.swp
+ create mode 100644 analysis/generateChannels/energyShift/.loop.sh.swp
+ rewrite analysis/generateChannels/energyShift/EnergyShift.h (63%)
+ rename analysis/generateChannels/energyShift/{ => old}/EnergyShift.h (100%)
+ create mode 100644 analysis/generateChannels/energyShift/old/Event.h
+ create mode 100755 analysis/generateChannels/energyShift/old/Makefile
+ create mode 120000 analysis/generateChannels/energyShift/old/ReadFile.h
+ create mode 100644 analysis/generateChannels/energyShift/old/configPPBe.prm
+ create mode 100644 analysis/generateChannels/energyShift/old/convert.sh
+ create mode 100755 analysis/generateChannels/energyShift/old/header.h
+ create mode 120000 analysis/generateChannels/energyShift/old/inputRootfiles
+ create mode 100644 analysis/generateChannels/energyShift/old/loop.sh
+ create mode 100644 analysis/generateChannels/energyShift/old/main.cpp
+ create mode 100644 analysis/generateChannels/energyShift/old/ppBe.cpp
+ create mode 100644 analysis/generateChannels/energyShift/old/ppBe.h
+ create mode 100755 analysis/generateChannels/energyShift/old/ppaBe10
+ create mode 100644 analysis/generateChannels/energyShift/old/tele.C
+ create mode 100644 analysis/generateChannels/energyShift/old/test.C
+ create mode 100755 analysis/generateChannels/energyShift/ppBe10
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0298_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0299_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0300_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0301_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0302_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0303_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0304_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0305_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0306_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0307_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0308_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0309_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0310_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0311_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0312_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0313_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0314_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0315_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0316_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0317_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0318_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0319_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0320_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0321_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0322_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0323_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0324_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0325_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0326_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0327_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0328_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0329_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/energyShift/rootfiles/run0330_ppBe10.root_test
+ create mode 100644 merger/rootfiles/.drawCurveProtonBe10.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
