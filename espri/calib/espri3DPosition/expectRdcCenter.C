@@ -88,10 +88,15 @@ class LeftPlane: public Plane{
 class RightPlane: public Plane{
 	public:
 		RightPlane(){
-			A=TMath::Sqrt(3)/2;
+			//A=TMath::Sqrt(3)/2;
+			//B=0;
+			//C=0.5;
+			//D=1100.73;
+			A=0.869;
 			B=0;
-			C=0.5;
-			D=1100.73;
+			C=0.495;
+			D=1079.53;
+	
 			calBaseVector();
 		}
 
