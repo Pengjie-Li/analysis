@@ -2,6 +2,7 @@
 using namespace std;
 #include "ReadFile.h"
 #include "Event.h"
+#include "EspriEvent.h"
 class PPBe{
 	private:
 		TEnv *env;
@@ -12,6 +13,8 @@ class PPBe{
 		TFile *outputFile;
 		TTree *tree;
 		Long64_t nentries;
+
+		EspriEvent *espriEvent;
 	public:
 
 		PPBe(){}
@@ -24,6 +27,7 @@ class PPBe{
 		void eventLoop();
 		void saveOutput();
 		void print();
+		void setEspriEvent();
 
 		~PPBe(){
 			delete env;

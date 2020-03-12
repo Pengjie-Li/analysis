@@ -823,6 +823,10 @@ class ReadFile{
 		TVector3 * getTelePosition(){
 			return telePosition;
 		}
+		TVector3 * getEspriPosition(){
+			return espriPosition;
+		}
+
 		TVector3 * getBeamDirection(){
 			return vBeam;
 		}

@@ -4,6 +4,7 @@ PPBe::PPBe(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNumber
 	env= new TEnv("configPPBe.prm");
 	rf = new ReadFile(runNumber);
 	event = new Event(rf);
+	espriEvent = new EspriEvent();
 }
 bool PPBe::isFilesExist(){
 	return rf->isFilesExist();
@@ -25,6 +26,7 @@ void PPBe::createOutput(){
 void PPBe::setOutputBranch(){
 	rf->setBranch(tree);
 	event->setBranch(tree);
+	espriEvent->setOutputBranch(tree);
 }
 void PPBe::saveOutput(){
 	tree->Write();
@@ -34,11 +36,13 @@ void PPBe::eventLoop(){
 	nentries = rf->getEntries();
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
+	//for(Long64_t ientry = 55940; ientry<nentries;ientry++){
 	for(Long64_t ientry = 0; ientry<nentries;ientry++){
 
 		rf->getEntry(ientry);
 
 		if(event->selectEvent()){
+			setEspriEvent();
 			tree->Fill();
 
 			cout<<"Event Number = "<<ientry<<endl;
@@ -53,5 +57,12 @@ void PPBe::eventLoop(){
 
 	}
 }
+
+void PPBe::setEspriEvent(){
+	espriEvent->init();
+        espriEvent->load(rf);
+        espriEvent->setEvent();
+}
 void PPBe::print(){
+	espriEvent->print();
 }

@@ -58,3 +58,7 @@
 	3. shift plasPlane D from 923 into -1188.17
 	4. remove naiToProton calibration
 	5. add Phi function to ESPRI,Tele, FDC0
+2020-03-11
+	1. change Right Espri 3D Position (0.869,0,0.495)
+2020-03-12
+	1. modify Phi function xAxis Unit()
