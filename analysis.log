@@ -5815,3 +5815,51 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v9_changeRightEspriPosition/tree.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master db2fb41] v1.0
+ 54 files changed, 561 insertions(+), 223 deletions(-)
+ create mode 100644 analysis/generateChannels/espriPosition/.PhiFunction.h.swp
+ create mode 100644 analysis/generateChannels/espriPosition/.configPPBe.prm.swp
+ create mode 100644 analysis/generateChannels/espriPosition/.ppBe.cpp.swp
+ create mode 100644 analysis/generateChannels/espriPosition/.ppBe.h.swp
+ rewrite analysis/generateChannels/espriPosition/EspriEvent.h (76%)
+ create mode 100644 analysis/generateChannels/espriPosition/PhiFunction.h
+ rewrite analysis/generateChannels/espriPosition/ppBe10 (92%)
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0298_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0299_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0300_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0301_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0302_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0303_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0304_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0305_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0306_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0307_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0308_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0309_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0310_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0311_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0312_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0313_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0314_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0315_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0316_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0317_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0318_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0319_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0320_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0321_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0322_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0323_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0324_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0325_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0326_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0327_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0328_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0329_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/espriPosition/rootfiles/run0330_ppBe10.root_test
+ create mode 100644 merger/.BdcEvent.h.swp
+ create mode 100644 merger/.BeamEvent.h.swp
+ create mode 100644 merger/.PhiFunction.h.swp
+ create mode 100644 merger/.logMerger.txt.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
