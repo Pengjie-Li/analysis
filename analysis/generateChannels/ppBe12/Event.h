@@ -38,7 +38,7 @@ class GateCut{
 		HodCut *hodCut;
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe12.C");
-                        gROOT->ProcessLine(".x inputRootfiles/cutProtonBe12.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutProton.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutPRAngleBe12.C");
 		}
 		void getCut(){

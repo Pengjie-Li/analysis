@@ -4,4 +4,4 @@ runSuffix:_analysed.root
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_ppBe14.root
+outputSuffix:_ppBe14.root_test

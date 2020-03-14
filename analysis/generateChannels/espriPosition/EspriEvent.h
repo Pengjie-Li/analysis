@@ -13,6 +13,7 @@ class EspriEvent{
 		double espriAngle[4][5];
 		double espriPhi[4][5];
 
+
 		void shiftLR(double angle){
 			(*espriPosition) = (*espriPosition) - (*targetCenter);
 			(*espriPosition).RotateY(angle*TMath::DegToRad());
@@ -59,6 +60,22 @@ class EspriEvent{
 		}
 		void load(ReadFile *te){
 			rf = te;
+		}
+		void setRdcPosition(int sideLR,double dcX,double dcY){
+			(*espriRdcPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
+			shiftCenter();
+		}
+		void shiftCenter(){
+			double tempZ = (*espriRdcPosition).Z();
+			(*espriRdcPosition).SetZ(tempZ + 4222.34);
+		}
+		void setESPRIAngle(double offsetX, double offsetY,double &angle,double &phi){
+
+			TVector3 *espriRdcPosition = setRdcPosition(rf->getEspriSide(),rf->getRdcX()+offsetX,rf->getRdcY()+offsetY);
+			(*vESPRI)	= (*espriRdcPosition)-(*targetPosition);
+			(*vESPRI)	= (*vESPRI).Unit();
+			angle      = (*vESPRI).Angle((*vBeam))*TMath::RadToDeg();
+			phi 	= phiFunction->getPhi((*vBeam),(*vESPRI));
 		}
 
 		void setEvent(){
