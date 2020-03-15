@@ -852,6 +852,16 @@ class ReadFile{
 		double getHodBarQRaw(int id){
 			return hodBarQCal[id];
 		}
+		int getEspriSide(){
+			return espriHitSide[0];
+		}
+		double getRdcX(){
+			return rdcHitX[0];
+		}
+		double getRdcY(){
+			return rdcHitY[0];
+		}
+
 		bool isPALR(){
 			if((espriHit==1&&espriHitSide[0]==0&&teleHit==1&&teleHitSide[0]==1)||(espriHit==1&&espriHitSide[0]==1&&teleHit==1&&teleHitSide[0]==0)) return true;
 			else return false;

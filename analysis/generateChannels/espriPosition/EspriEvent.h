@@ -1,4 +1,5 @@
 #include "PhiFunction.h"
+#include "PositionESPRI.h"
 class EspriEvent{
 	private:
 
@@ -9,10 +10,13 @@ class EspriEvent{
 		TVector3 *vBeam;
 		PhiFunction *phiFunction;
 		TVector3 *targetCenter;
+		ESPRI3DPosition *espri3DPosition;
 
 		double espriAngle[4][5];
 		double espriPhi[4][5];
 
+		double espriPhiS[4][7];
+		double espriAngleS[4][7];
 
 		void shiftLR(double angle){
 			(*espriPosition) = (*espriPosition) - (*targetCenter);
@@ -41,6 +45,7 @@ class EspriEvent{
 		EspriEvent(){
 			vESPRI = new TVector3;
 			phiFunction = new PhiFunction();
+			espri3DPosition = new ESPRI3DPosition();
 			targetCenter = new TVector3;
 			targetCenter->SetXYZ(0,0,0);
 		}
@@ -55,23 +60,26 @@ class EspriEvent{
 				for (int j = 0; j < 5; ++j) {
 					espriAngle[i][j] =NAN;	
 					espriPhi[i][j] =NAN;	
+
 				}
+				for (int j = 0; j < 7; ++j) {
+					espriAngleS[i][j] =NAN;	
+					espriPhiS[i][j] =NAN;	
+				}
+	
 			}
 		}
 		void load(ReadFile *te){
 			rf = te;
 		}
-		void setRdcPosition(int sideLR,double dcX,double dcY){
-			(*espriRdcPosition) = espri3DPosition->getESPRIPosition(sideLR,dcX,dcY);
-			shiftCenter();
-		}
-		void shiftCenter(){
-			double tempZ = (*espriRdcPosition).Z();
-			(*espriRdcPosition).SetZ(tempZ + 4222.34);
-		}
 		void setESPRIAngle(double offsetX, double offsetY,double &angle,double &phi){
 
-			TVector3 *espriRdcPosition = setRdcPosition(rf->getEspriSide(),rf->getRdcX()+offsetX,rf->getRdcY()+offsetY);
+			TVector3 *espriRdcPosition = new TVector3;
+			(*espriRdcPosition) = espri3DPosition->getESPRIPosition(rf->getEspriSide(),rf->getRdcX()+offsetX,rf->getRdcY()+offsetY);
+			double tempZ = (*espriRdcPosition).Z();
+			(*espriRdcPosition).SetZ(tempZ + 4222.34);
+
+
 			(*vESPRI)	= (*espriRdcPosition)-(*targetPosition);
 			(*vESPRI)	= (*vESPRI).Unit();
 			angle      = (*vESPRI).Angle((*vBeam))*TMath::RadToDeg();
@@ -117,7 +125,12 @@ class EspriEvent{
 			}
 			//espriPosition->Print();
 			shiftUD(-0.5);
-
+			for (int i = 0; i < 7; ++i) {
+				setESPRIAngle(i+1 ,0,espriAngleS[0][i],espriPhiS[0][i]);
+				setESPRIAngle(-i-1,0,espriAngleS[1][i],espriPhiS[1][i]);
+				setESPRIAngle(0 ,i+1,espriAngleS[2][i],espriPhiS[2][i]);
+				setESPRIAngle(0,-i-1,espriAngleS[3][i],espriPhiS[3][i]);
+			}
 	
 		}
 		void print(){
@@ -131,5 +144,9 @@ class EspriEvent{
 
 			tree->Branch("espriAngleR",espriAngle,"espriAngleR[4][5]/D");
 			tree->Branch("espriPhiR",espriPhi,"espriPhiR[4][5]/D");
+
+			tree->Branch("espriAngleS",espriAngleS,"espriAngleS[4][7]/D");
+			tree->Branch("espriPhiS",espriPhiS,"espriPhiS[4][7]/D");
+
 		}
 };
