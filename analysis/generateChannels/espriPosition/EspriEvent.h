@@ -126,8 +126,11 @@ class EspriEvent{
 			//espriPosition->Print();
 			shiftUD(-0.5);
 			for (int i = 0; i < 7; ++i) {
-				setESPRIAngle(i+1 ,0,espriAngleS[0][i],espriPhiS[0][i]);
-				setESPRIAngle(-i-1,0,espriAngleS[1][i],espriPhiS[1][i]);
+				//setESPRIAngle(i+1 ,0,espriAngleS[0][i],espriPhiS[0][i]);
+				//setESPRIAngle(-i-1,0,espriAngleS[1][i],espriPhiS[1][i]);
+
+				setESPRIAngle(0,i+1+7 ,espriAngleS[0][i],espriPhiS[0][i]);
+				setESPRIAngle(0,-i-1-7,espriAngleS[1][i],espriPhiS[1][i]);
 				setESPRIAngle(0 ,i+1,espriAngleS[2][i],espriPhiS[2][i]);
 				setESPRIAngle(0,-i-1,espriAngleS[3][i],espriPhiS[3][i]);
 			}

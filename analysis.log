@@ -6012,3 +6012,91 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/.logMerger.txt.swp (67%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 52930e8] v1.0
+ 230 files changed, 183 insertions(+), 130 deletions(-)
+ rewrite analysis/generateChannels/espriPosition/.EspriEvent.h.swp (67%)
+ rename analysis/generateChannels/espriPosition/{.EspriEvent.h.swp => .PositionESPRI.h.swp} (51%)
+ rewrite analysis/generateChannels/espriPosition/ppBe10 (90%)
+ rewrite analysis/generateChannels/espriPosition/rootfiles/run0306_ppBe10.root_test (61%)
+ rewrite analysis/generateChannels/espriPosition/rootfiles/run0307_ppBe10.root_test (60%)
+ create mode 100644 merger/rootfiles/run0230_analysed.root_test
+ create mode 100644 merger/rootfiles/run0231_analysed.root_test
+ create mode 100644 merger/rootfiles/run0232_analysed.root_test
+ rewrite merger/rootfiles/run0233_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0234_analysed.root_test
+ rewrite merger/rootfiles/run0237_analysed.root_test (81%)
+ create mode 100644 merger/rootfiles/run0238_analysed.root_test
+ rewrite merger/rootfiles/run0239_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0241_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0242_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0243_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0244_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0245_analysed.root_test (97%)
+ create mode 100644 merger/rootfiles/run0246_analysed.root_test
+ create mode 100644 merger/rootfiles/run0247_analysed.root_test
+ rewrite merger/rootfiles/run0249_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0250_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0251_analysed.root_test
+ create mode 100644 merger/rootfiles/run0252_analysed.root_test
+ rewrite merger/rootfiles/run0253_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0254_analysed.root_test
+ rewrite merger/rootfiles/run0256_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0257_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0260_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0263_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0265_analysed.root_test
+ rewrite merger/rootfiles/run0266_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0267_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0268_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0271_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0272_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0274_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0279_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0280_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0283_analysed.root_test
+ rewrite merger/rootfiles/run0285_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0287_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0288_analysed.root_test
+ create mode 100644 merger/rootfiles/run0289_analysed.root_test
+ create mode 100644 merger/rootfiles/run0290_analysed.root_test
+ rewrite merger/rootfiles/run0291_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0292_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0295_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0296_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0298_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0299_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0301_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0302_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0304_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0306_analysed.root_test
+ rewrite merger/rootfiles/run0309_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0312_analysed.root_test
+ rewrite merger/rootfiles/run0318_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0324_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0332_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0336_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0342_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0343_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0354_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0360_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0365_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0370_analysed.root_test
+ rewrite merger/rootfiles/run0375_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0379_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0382_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0384_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0387_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0393_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0395_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0410_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0412_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0417_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0421_analysed.root_test (78%)
+ rewrite merger/rootfiles/run0450_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0451_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0464_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0477_analysed.root_test
+ rewrite merger/rootfiles/run0493_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0497_analysed.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
