@@ -696,6 +696,7 @@ class ReadFile{
 		void setBranch(TTree *tree){
 
 			setGeneralBranch(tree);
+			setDetectorBranch(tree);
 			tree->Branch("TOF37",&TOF37);
 			tree->Branch("Beta37",&Beta37);
 			tree->Branch("Gamma37",&Gamma37);
