@@ -6,7 +6,7 @@ class PhiFunction{
 		~PhiFunction(){}
 		double getPhi(TVector3 zAxis,TVector3 vT){
 			TVector3 yAxis;
-			yAxis.SetXYZ(0,1,0);
+			yAxis.SetXYZ(TMath::Sqrt(2)/2,TMath::Sqrt(2)/2,0);
 			TVector3 xAxis = yAxis.Cross(zAxis);	
 			xAxis = xAxis.Unit();
 			yAxis = zAxis.Cross(xAxis);
@@ -22,3 +22,4 @@ class PhiFunction{
 		}
 
 };
+

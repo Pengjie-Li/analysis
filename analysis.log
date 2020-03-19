@@ -6176,3 +6176,42 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 72 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 5eb14df] v1.0
+ 41 files changed, 6 insertions(+), 1 deletion(-)
+ rewrite analysis/generateChannels/.ReadFile.h.swp (91%)
+ create mode 100644 analysis/generateChannels/ppBe10/.configPPBe.prm.swp
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (86%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0298_ppBe10.root_test (69%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0299_ppBe10.root_test (89%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0300_ppBe10.root_test
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0301_ppBe10.root_test (91%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0302_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0303_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0304_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0305_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0306_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0307_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0308_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0309_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0310_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0311_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0312_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0313_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0314_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0315_ppBe10.root_test
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0316_ppBe10.root_test (92%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0317_ppBe10.root_test (92%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0318_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0319_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0320_ppBe10.root_test
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0321_ppBe10.root_test (87%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0322_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0323_ppBe10.root_test
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0324_ppBe10.root_test (90%)
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0325_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0326_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0327_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0329_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/ppBe10/rootfiles/run0330_ppBe10.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
