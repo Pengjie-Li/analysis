@@ -11,8 +11,8 @@ class Fdc0Event{
 		TVector3 *targetCenter;
 
 
-		double fdc0PhiS[2][7];
-		double fdc0AngleS[2][7];
+		double fdc0PhiS[4][4];
+		double fdc0AngleS[4][4];
 
 		void shiftLR(double angle){
 			(*fdc0Position) = (*fdc0Position) - (*targetCenter);
@@ -42,6 +42,23 @@ class Fdc0Event{
 			(*fdc0Position).RotateZ(-rotateAng*TMath::DegToRad());
 		}
 
+
+		void shiftFdc0(double dx,double dy,double &angle,double &phi){
+
+			double xTemp = (*fdc0Position).X();
+			double yTemp = (*fdc0Position).Y();
+			(*fdc0Position).SetX(xTemp+dx);
+			(*fdc0Position).SetY(yTemp+dy);
+			//fdc0Position->Print();
+			(*vFDC0)        = (*fdc0Position)-(*targetPosition);
+			(*vFDC0)        = (*vFDC0).Unit();
+			angle 		 = (*vFDC0).Angle((*vBeam))*TMath::RadToDeg();
+			phi  	         = phiFunction->getPhi((*vBeam),(*vFDC0));
+
+			(*fdc0Position).SetX(xTemp);
+			(*fdc0Position).SetY(yTemp);
+		}
+
 	public:
 		Fdc0Event(){
 			vFDC0 = new TVector3;
@@ -56,8 +73,8 @@ class Fdc0Event{
 			rf = NULL;
 			vFDC0->SetXYZ(NAN,NAN,NAN);
 
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j < 7; ++j) {
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
 					fdc0AngleS[i][j] =NAN;	
 					fdc0PhiS[i][j] =NAN;	
 				}
@@ -79,26 +96,31 @@ class Fdc0Event{
 				setAngle(-0.6*(i+1),fdc0AngleS[1][i],fdc0PhiS[1][i]);
 			}
 
-			setAngle(1.1,fdc0AngleS[0][4],fdc0PhiS[0][4]);
-			setAngle(1.3,fdc0AngleS[0][5],fdc0PhiS[0][5]);
-			setAngle(1.4,fdc0AngleS[0][6],fdc0PhiS[0][6]);
+			shiftFdc0( 0.64, 0.75,fdc0AngleS[2][0],fdc0PhiS[2][0]);
+			shiftFdc0(-0.64,-0.75,fdc0AngleS[2][1],fdc0PhiS[2][1]);
+			shiftFdc0(-0.64, 0.75,fdc0AngleS[2][2],fdc0PhiS[2][2]);
+			shiftFdc0( 0.64,-0.75,fdc0AngleS[2][3],fdc0PhiS[2][3]);
 
-			setAngle(-1.1,fdc0AngleS[1][4],fdc0PhiS[1][4]);
-			setAngle(-1.3,fdc0AngleS[1][5],fdc0PhiS[1][5]);
-			setAngle(-1.4,fdc0AngleS[1][6],fdc0PhiS[1][6]);
+
+			shiftFdc0( 0.64*2, 0.75*2,fdc0AngleS[3][0],fdc0PhiS[3][0]);
+			shiftFdc0(-0.64*2,-0.75*2,fdc0AngleS[3][1],fdc0PhiS[3][1]);
+			shiftFdc0(-0.64*2, 0.75*2,fdc0AngleS[3][2],fdc0PhiS[3][2]);
+			shiftFdc0( 0.64*2,-0.75*2,fdc0AngleS[3][3],fdc0PhiS[3][3]);
+
+
 
 		}
 		void print(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j < 7; ++j) {
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
 					cout<<fdc0AngleS[i][j]<<"  "<<fdc0PhiS[i][j]<<endl;	
 				}
 			}
 		}
 		void setOutputBranch(TTree *tree){
 
-			tree->Branch("fdc0AngleS",fdc0AngleS,"fdc0AngleS[2][7]/D");
-			tree->Branch("fdc0PhiS",fdc0PhiS,"fdc0PhiS[2][7]/D");
+			tree->Branch("fdc0AngleS",fdc0AngleS,"fdc0AngleS[4][4]/D");
+			tree->Branch("fdc0PhiS",fdc0PhiS,"fdc0PhiS[4][4]/D");
 
 		}
 };

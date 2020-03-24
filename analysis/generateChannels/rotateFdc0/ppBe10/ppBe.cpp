@@ -37,6 +37,7 @@ void PPBe::eventLoop(){
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
 	//for(Long64_t ientry = 55940; ientry<nentries;ientry++){
+	int printNumber = 0;
 	for(Long64_t ientry = 0; ientry<nentries;ientry++){
 
 		rf->getEntry(ientry);
@@ -47,12 +48,12 @@ void PPBe::eventLoop(){
 
 			cout<<"Event Number = "<<ientry<<endl;
 			//print();
-			//if(nentries<1000) {
-			//	cout<<endl;
-			//	cout<<"Event Number = "<<ientry<<endl;
-
-			//	print();
-			//}
+			if(printNumber<10) {
+				cout<<endl;
+				cout<<"Event Number = "<<ientry<<endl;
+				print();
+				printNumber++;	
+			}
 		}
 
 	}

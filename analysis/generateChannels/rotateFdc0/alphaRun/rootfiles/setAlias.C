@@ -5,8 +5,11 @@
 	tree->SetAlias("bdc1Y","(bdc1Position.Y())");
 	tree->SetAlias("bdc2X","(bdc2Position.X())");
 	tree->SetAlias("bdc2Y","(bdc2Position.Y())");
-	tree->SetAlias("Fdc0X","(fdc0Position.X()+0.64)");
-	tree->SetAlias("Fdc0Y","(fdc0Position.Y()+0.75)");
+	tree->SetAlias("Fdc0X","(fdc0Position.X())");
+	tree->SetAlias("Fdc0Y","(fdc0Position.Y())");
+	//tree->SetAlias("Fdc0X","(fdc0Position.X()+0.64)");
+	//tree->SetAlias("Fdc0Y","(fdc0Position.Y()+0.75)");
+
 
 	//tree->SetAlias("rFDC0X","(fdc0X[0][6])");
 	//tree->SetAlias("rFDC0Y","(fdc0Y[0][6])");

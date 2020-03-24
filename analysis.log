@@ -6817,3 +6817,15 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 46ca41e] v1.0
+ 11 files changed, 46 insertions(+)
+ rewrite analysis/generateChannels/.ReadFile.h.swp (65%)
+ create mode 100644 analysis/generateChannels/rotateFdc0/alphaRun/rootfiles/.run.C.swp
+ create mode 100644 analysis/generateChannels/rotateFdc0/alphaRun/rootfiles/.run.swp
+ create mode 100644 analysis/generateChannels/rotateFdc0/alphaRun/rootfiles/.setAlias.C.swp
+ create mode 100644 analysis/generateChannels/rotateFdc0/alphaRun/rootfiles/run.C
+ create mode 100644 analysis/generateChannels/rotateFdc0/alphaRun/rootfiles/setAlias.C
+ create mode 100644 analysis/generateChannels/rotateFdc0/ppBe14/.Fdc0Event.h.swp
+ create mode 100644 merger/rootfiles/.cutTargetArea.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
