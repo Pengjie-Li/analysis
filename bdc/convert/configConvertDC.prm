@@ -4,7 +4,7 @@ inputSuffix:.ridf.gz
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_DC.root_1
+outputSuffix:_DC.root_test
 
 plaDataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/db/SAMURAIPlastic.xml
 bdc1DataBase:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SAMURAIBDC1.xml

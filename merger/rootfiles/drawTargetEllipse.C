@@ -14,12 +14,12 @@
 ////        Si1->Draw();
 //
         Double_t targetRadius=15;
-        TEllipse *targetArea = new TEllipse(targetx,targety,targetRadius,targetRadius);
-        targetArea->SetLineColor(2);
-        targetArea->SetLineWidth(2);
-        targetArea->SetFillStyle(0);
-        targetArea->SetLineStyle(1);
-        targetArea->Draw("same");
+        TEllipse *targetEdge = new TEllipse(targetx,targety,targetRadius,targetRadius);
+        targetEdge->SetLineColor(2);
+        targetEdge->SetLineWidth(2);
+        targetEdge->SetFillStyle(0);
+        targetEdge->SetLineStyle(1);
+        targetEdge->Draw("same");
 
         Double_t selectRadius=13;
         TEllipse *selectArea = new TEllipse(targetx,targety,selectRadius,selectRadius);
