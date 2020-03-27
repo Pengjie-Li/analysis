@@ -97,6 +97,7 @@ class ConvertDC{
 
 		Int_t FDC0_nlayerx;
 		Int_t FDC0_nlayery;
+		vector<double> FDC0_Track_wire;
 		vector<double> FDC0_Track_dl;
 		vector<double> FDC0_Track_XY;
 		vector<double> FDC0_Track_Z;
@@ -265,7 +266,7 @@ class ConvertDC{
 			fout_BDC = NULL;
 			tree_BDC = NULL;
 			if(kBDC){
-				fout_BDC = new TFile(Form("./rootfiles/run0%d_BDC.root",runnum),"recreate");
+				fout_BDC = new TFile(Form("./rootfiles/run0%d_BDC.root_test",runnum),"recreate");
 				tree_BDC = new TTree(treeName+(TString)"BDC","Analysis Tree BDC");
 				tree_BDC->AutoSave("SaveSelf");
 				tree_BDC->SetAutoSave(1e5);
@@ -276,7 +277,7 @@ class ConvertDC{
 			fout_FDC = NULL;
 			tree_FDC = NULL;
 			if(kFDC){
-				fout_FDC = new TFile(Form("./rootfiles/run0%d_FDCG.root",runnum),"recreate");
+				fout_FDC = new TFile(Form("./rootfiles/run0%d_FDCG.root_test",runnum),"recreate");
 				tree_FDC = new TTree(treeName+(TString)"FDC","Analysis Tree FDC");
 				tree_FDC->AutoSave("SaveSelf");
 				tree_FDC->SetAutoSave(1e5);
@@ -355,6 +356,7 @@ class ConvertDC{
 	
 			//TraFk
 			tree_FDC->Branch("FDC0_Track_dl",&FDC0_Track_dl);
+			tree_FDC->Branch("FDC0_Track_wire",&FDC0_Track_wire);
 			tree_FDC->Branch("FDC0_Track_XY",&FDC0_Track_XY);
 			tree_FDC->Branch("FDC0_Track_Z",&FDC0_Track_Z);
 			tree_FDC->Branch("FDC0_Track_dXY",&FDC0_Track_dXY);
@@ -735,6 +737,9 @@ class ConvertDC{
 				FDC0_nlayery=0;
 				FDC0_Track_dl.clear();
 				FDC0_Track_dl.resize(8,-9999);
+				FDC0_Track_wire.clear();
+				FDC0_Track_wire.resize(8,-9999);
+		
 				FDC0_Track_XY.clear();
 				FDC0_Track_XY.resize(8,-9999);
 				FDC0_Track_Z.clear();
@@ -785,6 +790,7 @@ class ConvertDC{
 
 											}
 											FDC0_Track_dl[planeid]=TrackFDC0->GetDriftLength(st);
+											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
 											FDC0_Track_XY[planeid]=TrackFDC0->GetHitXPosition(st);
 											FDC0_Track_Z[planeid]=TrackFDC0->GetHitZPosition(st);
 											FDC0_Track_dXY[planeid]=TrackFDC0->GetAngle(0)*FDC0_Track_Z[planeid]+TrackFDC0->GetPosition(0)-FDC0_Track_XY[planeid];
@@ -812,6 +818,7 @@ class ConvertDC{
 
 											}
 											FDC0_Track_dl[planeid]=TrackFDC0->GetDriftLength(st);
+											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
 											FDC0_Track_XY[planeid]=TrackFDC0->GetHitXPosition(st);
 											FDC0_Track_Z[planeid]=TrackFDC0->GetHitZPosition(st);
 											FDC0_Track_dXY[planeid]=TrackFDC0->GetAngle(1)*FDC0_Track_Z[planeid]+TrackFDC0->GetPosition(1)-FDC0_Track_XY[planeid];
@@ -885,6 +892,7 @@ class ConvertDC{
 
 		void printFDC0(){
 			cout<<"EventNumber = "<< EventNumber <<endl;
+			cout<<"FDC0 Check Data "<<endl;
 			printFDC0Raw();
 			printFDC0Track();
 			cout<<endl;
@@ -898,7 +906,7 @@ class ConvertDC{
 		void printFDC0Track(){
 			cout<<"Printing Track Info:"<<endl;
 			for(int i = 0;i<FDC0_Track_Z.size(); i++)
-			cout<<"Layer = "<<i<<" Drift length="<<setw(9)<<FDC0_Track_dl[i]<<" xypos="<<setw(9)<<FDC0_Track_XY[i]<<" zpos="<<setw(9)<<FDC0_Track_Z[i]<<" Residue dxy = "<<setw(9)<<FDC0_Track_dXY[i]<<endl;
+			cout<<"Layer = "<<i<<" Wire = "<<setw(9)<<FDC0_Track_wire[i]<<" Drift length="<<setw(9)<<FDC0_Track_dl[i]<<" xypos="<<setw(9)<<FDC0_Track_XY[i]<<" zpos="<<setw(9)<<FDC0_Track_Z[i]<<" Residue dxy = "<<setw(9)<<FDC0_Track_dXY[i]<<endl;
 
 		}
 

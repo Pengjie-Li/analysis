@@ -6888,3 +6888,28 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 55 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e51a126] v1.0
+ 118 files changed, 3303 insertions(+), 186 deletions(-)
+ rewrite analysis/generateChannels/rotateFdc0/ppBe14/.Fdc0Event.h.swp (67%)
+ create mode 100644 analysis/generateChannels/rotateFdc0/ppBe14/.configPPBe.prm.swp
+ rewrite analysis/generateChannels/rotateFdc0/ppBe14/rootfiles/run0441_ppBe10.root_test (67%)
+ rewrite analysis/generateChannels/rotateFdc0/ppBe14/rootfiles/run0452_ppBe10.root_test (63%)
+ rewrite bdc/convert/ConvertDC (96%)
+ create mode 120000 bdc/convert/db
+ create mode 100644 bdc/convert/v2_NewStructure/.DCTracking.h.swp
+ rename bdc/convert/{ => v3_myTracking}/ConvertDC (100%)
+ create mode 100644 bdc/convert/v3_myTracking/ConvertDC.C
+ create mode 100755 bdc/convert/v3_myTracking/ConvertDC.C_old
+ create mode 100644 bdc/convert/v3_myTracking/DCReadRaw.h
+ create mode 100644 bdc/convert/v3_myTracking/DCTrack.h
+ create mode 100644 bdc/convert/v3_myTracking/DCTracking.h
+ create mode 100755 bdc/convert/v3_myTracking/Makefile
+ create mode 100644 bdc/convert/v3_myTracking/configConvertDC.prm
+ create mode 100644 bdc/convert/v3_myTracking/convert.sh
+ create mode 100755 bdc/convert/v3_myTracking/distance.h
+ create mode 100755 bdc/convert/v3_myTracking/header.h
+ create mode 100644 bdc/convert/v3_myTracking/loop.sh
+ create mode 100644 bdc/convert/v3_myTracking/looprun.sh
+ rename analysis/generateChannels/rotateFdc0/ppBe14/.Fdc0Event.h.swp => merger/rootfiles/.tchain.C.swp (72%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
