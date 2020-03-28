@@ -773,7 +773,7 @@ class ConvertDC{
 
 								if(TempChi2 > 0 ){
 
-									if(TMath::Abs(TempXPosition) < 50 && TempChi2<MinChi2x){
+									if(TMath::Abs(TempXPosition) < 100 && TempChi2<MinChi2x){
 										MinChi2x = TempChi2;
 										FDC0_X = TempXPosition;
 										FDC0_ThetaX = TMath::ATan(TrackFDC0->GetAngle(0));
@@ -801,7 +801,7 @@ class ConvertDC{
 
 									}
 
-									if (TMath::Abs(TempYPosition) < 50 && TempChi2<MinChi2y){
+									if (TMath::Abs(TempYPosition) < 100 && TempChi2<MinChi2y){
 										FDC0_Y = TempYPosition;
 										FDC0_ThetaY = TMath::ATan(TrackFDC0->GetAngle(1));
 										MinChi2y = TempChi2;
@@ -906,7 +906,7 @@ class ConvertDC{
 		void printFDC0Track(){
 			cout<<"Printing Track Info:"<<endl;
 			for(int i = 0;i<FDC0_Track_Z.size(); i++)
-			cout<<"Layer = "<<i<<" Wire = "<<setw(9)<<FDC0_Track_wire[i]<<" Drift length="<<setw(9)<<FDC0_Track_dl[i]<<" xypos="<<setw(9)<<FDC0_Track_XY[i]<<" zpos="<<setw(9)<<FDC0_Track_Z[i]<<" Residue dxy = "<<setw(9)<<FDC0_Track_dXY[i]<<endl;
+			cout<<"Layer = "<<i<<" Wire = "<<setw(4)<<FDC0_Track_wire[i]<<" Drift length="<<setw(9)<<FDC0_Track_dl[i]<<" xypos="<<setw(9)<<FDC0_Track_XY[i]<<" zpos="<<setw(9)<<FDC0_Track_Z[i]<<" Residue dxy = "<<setw(9)<<FDC0_Track_dXY[i]<<endl;
 
 		}
 
