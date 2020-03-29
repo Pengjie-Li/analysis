@@ -33,7 +33,7 @@ class Fdc0Event{
 		~Fdc0Event(){}
 		void setFDC0Event(){
 			init();
-			fdc0Position->SetXYZ(getFDC0X(),getFDC0Y(),getFDC0Z());
+			fdc0Position->SetXYZ(getFDC0X()+0.55,getFDC0Y()+0.76,getFDC0Z());
 			
 			(*vFDC0) = (*fdc0Position) - (*targetPosition);
 			(*vFDC0) = (*vFDC0).Unit();

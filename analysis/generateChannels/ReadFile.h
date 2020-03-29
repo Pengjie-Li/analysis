@@ -506,6 +506,7 @@ class ReadFile{
 			inputTree->SetBranchAddress("protonEnergy",&protonEnergy);
 			inputTree->SetBranchAddress("beamEnergy",&beamEnergy);
 			inputTree->SetBranchAddress("beamBeta",&beamBeta);
+			inputTree->SetBranchAddress("tofSBTTarget",&tofSBTTarget);
 
 			inputTree->SetBranchAddress("alphaEnergy",&alphaEnergy);
 			inputTree->SetBranchAddress("vTele",&vTele);
@@ -768,6 +769,7 @@ class ReadFile{
 			tree->Branch("protonEnergy",&protonEnergy);
 			tree->Branch("beamEnergy",&beamEnergy);
 			tree->Branch("beamBeta",&beamBeta);
+			tree->Branch("tofSBTTarget",&tofSBTTarget);
 
 
 			tree->Branch("alphaEnergy",&alphaEnergy,"alphaEnergy/D");

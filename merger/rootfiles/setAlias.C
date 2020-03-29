@@ -1,5 +1,6 @@
 {
 
+	gROOT->ProcessLine(".x dcAlias.C");
 
 	TString hodBe10Be10 = "(Be10Bar23Be10||Be10Bar22Be10||Be10Bar21Be10||Be10Bar20Be10||Be10Bar19Be10)";
         TString hodBe10Be9  = "(Be10Bar23Be9||Be10Bar22Be9||Be10Bar21Be9||Be10Bar20Be9||Be10Bar19Be9)";
