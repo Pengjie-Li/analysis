@@ -60,7 +60,7 @@ class MergeESPRI:public Convert{
 	public:
 
 		MergeESPRI(int run){
-			isStoreRawData = false;
+			isStoreRawData = true;
 			detector = "ESPRI";
 			treeName = "CalTreeESPRI";
 			runNumber = run;

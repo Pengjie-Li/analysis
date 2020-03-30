@@ -195,6 +195,9 @@ class ReadFile{
 		Int_t           plasHitSide[2];
 		Double_t        plasHitQPed[2];
 		Double_t        plasTCal[4];
+		Double_t        plasTRef[4];
+		Int_t	        plasTRaw[4];
+		Int_t		plasTimeRef;
 		Int_t           espriHit;
 		Int_t           espriHitSide[1];
 		Double_t        espriPlasE_Birks;
@@ -416,6 +419,10 @@ class ReadFile{
 			inputTree->SetBranchAddress("plasHitSide",plasHitSide);
 			inputTree->SetBranchAddress("plasHitQPed",plasHitQPed);
 			inputTree->SetBranchAddress("plasTCal",plasTCal);
+			inputTree->SetBranchAddress("plasTRef",plasTRef);
+			inputTree->SetBranchAddress("plasTRaw",plasTRaw);
+			inputTree->SetBranchAddress("plasTimeRef",&plasTimeRef);
+
 			inputTree->SetBranchAddress("espriHit",&espriHit);
 			inputTree->SetBranchAddress("espriHitSide",espriHitSide);
 			inputTree->SetBranchAddress("espriPlasE_Birks",&espriPlasE_Birks);
@@ -665,6 +672,9 @@ class ReadFile{
 			tree->Branch("plasHitSide",plasHitSide,"plasHitSide[plasHit]/I");
 			tree->Branch("plasHitQPed",plasHitQPed,"plasHitQPed[plasHit]/D");
 			tree->Branch("plasTCal",plasTCal,"plasTCal[4]/D");
+			tree->Branch("plasTRef",plasTRef,"plasTRef[4]/D");
+			tree->Branch("plasTRaw",plasTRaw,"plasTRaw[4]/I");
+			tree->Branch("plasTimeRef",&plasTimeRef,"plasTimeRef/I");
 
 			tree->Branch("csiHit",&csiHit,"csiHit/I");
 			tree->Branch("csiHitId",csiHitId,"csiHitId[csiHit]/I");
