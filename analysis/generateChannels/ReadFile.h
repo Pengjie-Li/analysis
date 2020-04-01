@@ -862,6 +862,10 @@ class ReadFile{
 		double getFdc0Phi(){
 			return fdc0Phi;
 		}
+		double getEspriLocusAngle(){
+			return espriLocusAngle;
+		}
+	
 		double getEspriAngle(){
 			return espriAngle;
 		}
@@ -873,6 +877,12 @@ class ReadFile{
 		}
 		int getEspriSide(){
 			return espriHitSide[0];
+		}
+		double getNaiQPed(){
+				return naiHitQPed[0];
+		}
+		int getNaiId(){
+			return naiHitBarId[0];
 		}
 		double getRdcX(){
 			return rdcHitX[0];
