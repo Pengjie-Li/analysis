@@ -8369,3 +8369,67 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/run0597_analysed.root_test (76%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 2927756] v1.0
+ 63 files changed, 1752 insertions(+)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.CalibESPRI.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.EspriEvent.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.ProtonEvent.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.convert.sh.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.ppBe..swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.ppBe.cpp.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/.ppBe.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/CalibESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/EspriEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/Event.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe10/Makefile
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/PositionESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/ProtonEvent.h
+ create mode 120000 analysis/generateChannels/newNaiCalib/ppBe10/ReadFile.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/configPPBe.prm
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/convert.sh
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe10/header.h
+ create mode 120000 analysis/generateChannels/newNaiCalib/ppBe10/inputRootfiles
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/loop.sh
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/main.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/ppBe.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/ppBe.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe10/ppBe10
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0298_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0299_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0300_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0301_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0302_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0303_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0304_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0305_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0306_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0307_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0308_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0309_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0310_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0311_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0312_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0313_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0314_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0315_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0316_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0317_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0318_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0319_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0320_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0322_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0323_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0324_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0325_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0326_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0327_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0329_ppBe10.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/test.C
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt.jRJ8W6
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt
+ create mode 100644 merger/.AnalysingProton.h.swp
+ create mode 100644 tele/calib/peak5Calib/.csiCalib.C.swp
+ create mode 100644 tele/calib/peak5Calib/txt/.peak5CsiCalibInput.txt.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
