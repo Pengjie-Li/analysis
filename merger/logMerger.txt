@@ -66,3 +66,5 @@
 	1. change Phi range in to 0-360 and init guess of Y (45,45) direction
 2020-03-29
 	1. Add FDC0 shift (0.55,0.76)
+2020-04-05
+	1. find configCalib_Be14_2.prm beamEnergy offset sign is minus, change it into positive
