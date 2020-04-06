@@ -8508,3 +8508,31 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/.drawProtonBe14.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7585f9e] v1.0
+ 32 files changed, 1530 insertions(+), 2 deletions(-)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/.CalibESPRI.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/.EspriEvent.h.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/CalibESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/EspriEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/Event.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe14/Makefile
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/ProtonEvent.h
+ create mode 120000 analysis/generateChannels/newNaiCalib/ppBe14/ReadFile.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/ReadFile.h_backup
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/configPPBe.prm
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/convert.sh
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe14/header.h
+ create mode 120000 analysis/generateChannels/newNaiCalib/ppBe14/inputRootfiles
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/loop.sh
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/main.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/ppBe.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/ppBe.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe14/ppBe14
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/rootfiles/run0380_ppBe14.root_test
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14
+ create mode 100644 merger/config/.configCalib_Be14_2.prm.swp
+ create mode 100644 merger/config/.configCalib_He4_1.prm.swp
+ create mode 100644 merger/config/.configCalib_He4_2.prm.swp
+ create mode 100644 merger/config/.ls.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
