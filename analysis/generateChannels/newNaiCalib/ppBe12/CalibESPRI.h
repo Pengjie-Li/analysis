@@ -61,7 +61,7 @@ class ESPRINaiCalPara{
 		void load(){
 
 			ifstream in;
-			TString inputName = "txt/naiCalibOutput.txt_Be12";
+			TString inputName = "txt/naiCalibOutput.txt";
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
