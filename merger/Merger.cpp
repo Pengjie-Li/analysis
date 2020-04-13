@@ -20,8 +20,8 @@ TString calibParaName(int runNumber){
 	TString calibFileName;
 	if(runNumber<331&&runNumber>290)      calibFileName = "config/configCalib_Be10.prm";
 	else if(runNumber<366&&runNumber>330) calibFileName = "config/configCalib_Be12.prm";
-	else if(runNumber>365&&runNumber<433) calibFileName = "config/configCalib_Be14.prm";
-	else if(runNumber>432&&runNumber<457) calibFileName = "config/configCalib_Be14_2.prm";
+	else if(runNumber>365&&runNumber<457) calibFileName = "config/configCalib_Be14.prm";
+	else if(runNumber>586&&runNumber<595) calibFileName = "config/configCalib_Be14_2.prm";
 	else if(runNumber>594&&runNumber<598) calibFileName = "config/configCalib_He4_1.prm";
 	else if(runNumber>597&&runNumber<601) calibFileName = "config/configCalib_He4_2.prm";
 	else                                  calibFileName = "config/configCalib_Be10.prm";
