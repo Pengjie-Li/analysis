@@ -51,6 +51,7 @@ class ESPRINaiCalPara{
 	private:
 		double naiBirksParA[2][7];
 		double naiBirksParB[2][7];
+		double naiBirksParC[2][7];
 
 	public:
 		ESPRINaiCalPara(){
@@ -68,12 +69,15 @@ class ESPRINaiCalPara{
 			int barID;
 			double parA;
 			double parB;
+			double parC;
 			while(1){
-				in >>side>>barID>>parA>>parB;
+				//in >>side>>barID>>parA>>parB;
+				in >>side>>barID>>parA>>parB>>parC;
 				if(!in.good()) break;
 				//cout<<side<<":"<<barID<<":"<<ped<<endl;
 				naiBirksParA[side][barID] = parA;
 				naiBirksParB[side][barID] = parB;
+				naiBirksParC[side][barID] = parC;
 			}
 
 			in.close();
@@ -93,6 +97,7 @@ class ESPRINaiCalPara{
 				for(int j = 0;j<7;j++){
 					naiBirksParA[i][j] = 1;
 					naiBirksParB[i][j] = 0;
+					naiBirksParC[i][j] = 0;
 			}
 			}
 		}
@@ -101,6 +106,9 @@ class ESPRINaiCalPara{
 		}
 		double getBirksParB(int i, int j){
 			return naiBirksParB[i][j];
+		}
+		double getBirksParC(int i, int j){
+			return naiBirksParC[i][j];
 		}
 };
 
@@ -184,6 +192,10 @@ class EspriEnergy{
                 double getNaiBirksParB(int i,int j){
                         return naiPara->getBirksParB(i,j);
                 }
+                double getNaiBirksParC(int i,int j){
+                        return naiPara->getBirksParC(i,j);
+                }
+
 
                 double getBirksParA(int i){
                         return plasPara->getBirksParA(i);
@@ -219,7 +231,7 @@ class EspriEnergy{
 			return plasBarQPed/(getBirksParA(side)+getBirksParB(side)*plasBarQPed);
 		}
 		double getNaiQ(int side, int barId,double naiBarQPed){
-			return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed);
+			return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
 		}
 		
 
