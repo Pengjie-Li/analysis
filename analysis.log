@@ -8861,3 +8861,16 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/run0600_analysed.root_test (76%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a9fcb09] v1.0
+ 174 files changed, 293 insertions(+), 9 deletions(-)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/ppBe10 (86%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v6.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v7.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v6
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v7
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/ppBe12 (85%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v4
+ rewrite analysis/generateChannels/newNaiCalib/ppBe14/ppBe14 (87%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14_v4
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
