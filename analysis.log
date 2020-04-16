@@ -8874,3 +8874,12 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14_v4
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a8a8d76] v1.0
+ 41 files changed, 28 insertions(+), 1 deletion(-)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v9.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_v7.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_v8.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_v9.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v9
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
