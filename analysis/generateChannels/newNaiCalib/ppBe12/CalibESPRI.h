@@ -53,13 +53,40 @@ class ESPRINaiCalPara{
 		double naiBirksParB[2][7];
 		double naiBirksParC[2][7];
 
+		double naiLinearParA[2][7];
+		double naiLinearParB[2][7];
+
+
 	public:
 		ESPRINaiCalPara(){
 			init();
-			load();
+			loadBirks();
+			loadLinear();
 			print();
 		}
-		void load(){
+		void loadLinear(){
+
+			ifstream in;
+			TString inputName = "txt/naiCalibOutput.txt_Be12_Linear";
+			cout<<inputName<<endl;
+			in.open(inputName);
+			int side;
+			int barID;
+			double parA;
+			double parB;
+			while(1){
+				//in >>side>>barID>>parA>>parB;
+				in >>side>>barID>>parA>>parB;
+				if(!in.good()) break;
+				//cout<<side<<":"<<barID<<":"<<ped<<endl;
+				naiLinearParA[side][barID] = parA;
+				naiLinearParB[side][barID] = parB;
+			}
+
+			in.close();
+		}
+
+		void loadBirks(){
 
 			ifstream in;
 			TString inputName = "txt/naiCalibOutput.txt";
@@ -90,6 +117,14 @@ class ESPRINaiCalPara{
 				}
 			}	
 
+
+			cout<<" Nai Linear Bar Para:"<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					cout<<i<<":"<<j<<":"<<naiLinearParA[i][j]<<":"<<naiLinearParB[i][j]<<endl;
+				}
+			}	
+
 		}
 		~ESPRINaiCalPara(){}
 		void init(){
@@ -98,6 +133,9 @@ class ESPRINaiCalPara{
 					naiBirksParA[i][j] = 1;
 					naiBirksParB[i][j] = 0;
 					naiBirksParC[i][j] = 0;
+					naiLinearParA[i][j] = 1;
+					naiLinearParB[i][j] = 0;
+				
 			}
 			}
 		}
@@ -110,6 +148,14 @@ class ESPRINaiCalPara{
 		double getBirksParC(int i, int j){
 			return naiBirksParC[i][j];
 		}
+
+		double getLinearParA(int i, int j){
+			return naiLinearParA[i][j];
+		}
+		double getLinearParB(int i, int j){
+			return naiLinearParB[i][j];
+		}
+	
 };
 
 class EspriEnergyPara{
@@ -186,6 +232,13 @@ class EspriEnergy{
 		ESPRIPlasCalPara *plasPara;
 		ESPRINaiCalPara *naiPara;
 
+                double getNaiLinearParA(int i,int j){
+                        return naiPara->getLinearParA(i,j);
+                }
+                double getNaiLinearParB(int i,int j){
+                        return naiPara->getLinearParB(i,j);
+                }
+ 
                 double getNaiBirksParA(int i,int j){
                         return naiPara->getBirksParA(i,j);
                 }
@@ -233,6 +286,9 @@ class EspriEnergy{
 		double getNaiQ(int side, int barId,double naiBarQPed){
 			return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
 		}
+		double getNaiQLinear(int side, int barId,double naiBarQPed){
+			return getNaiLinearParA(side,barId)*naiBarQPed+getNaiLinearParB(side,barId);
+		}
 		
 
 	
@@ -265,11 +321,16 @@ class CalibESPRI{
 		EspriEnergy *calibEspri;	
 
 		double espriNaiE;
+		double espriNaiE_Linear;
 
 
 		double getNaiQ(){
 			return calibEspri->getNaiQ(rf->getEspriSide(),rf->getNaiId(),rf->getNaiQPed());
 		}
+		double getNaiQLinear(){
+			return calibEspri->getNaiQLinear(rf->getEspriSide(),rf->getNaiId(),rf->getNaiQPed());
+		}
+
 
 	public:
 
@@ -282,6 +343,7 @@ class CalibESPRI{
 			rf = NULL;
 
 			espriNaiE	= NAN;
+			espriNaiE_Linear= NAN;
 
 		}
 
@@ -291,7 +353,12 @@ class CalibESPRI{
 		void calibrate(){
 
 				espriNaiE  = getNaiQ();
+				espriNaiE_Linear  = getNaiQLinear();
 
+		}
+		
+		double getNaiEnergyLinear(){
+			return espriNaiE_Linear;
 		}
 	
 		double getNaiEnergy(){
@@ -299,6 +366,7 @@ class CalibESPRI{
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("espriNaiE_Birks",&espriNaiE,"espriNaiE_Birks/D");
+			tree->Branch("espriNaiE_Linear",&espriNaiE_Linear,"espriNaiE_Linear/D");
 		}
 		void print(){
 			cout<<" espriNaiE = "<<espriNaiE<<" MeV" <<endl;

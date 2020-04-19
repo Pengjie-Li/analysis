@@ -74,6 +74,7 @@ class ProtonPara{
 class ProtonEvent{
 	private:
 		double protonEnergy;
+		double protonEnergy_Linear;
 
 
 		EspriEvent *espriEvent;
@@ -81,6 +82,7 @@ class ProtonEvent{
 
 		void setProtonEnergy(){
 				protonEnergy = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle());
+				protonEnergy_Linear = protonPara->getProtonEnergy(espriEvent->getNaiEnergyLinear(),espriEvent->getLocusAngle(),espriEvent->getAngle());
 		}
 	public:
 		ProtonEvent(){
@@ -91,6 +93,7 @@ class ProtonEvent{
 			protonPara->init();
 			espriEvent = NULL;
 			protonEnergy = NAN;
+			protonEnergy_Linear = NAN;
 		}
 		void load(EspriEvent *ee){
 			espriEvent = ee;
@@ -105,5 +108,6 @@ class ProtonEvent{
 		void setOutputBranch(TTree *tree){
 			//protonPara->setOutputBranch(tree);
 			tree->Branch("protonEnergy_Birks",&protonEnergy,"protonEnergy_Birks/D");
+			tree->Branch("protonEnergy_Linear",&protonEnergy_Linear,"protonEnergy_Linear/D");
 		}
 };

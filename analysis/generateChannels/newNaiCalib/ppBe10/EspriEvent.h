@@ -41,6 +41,10 @@ class EspriEvent{
 			calibESPRI->calibrate();
 
 		}
+		double getNaiEnergyLinear(){
+			return calibESPRI->getNaiEnergyLinear();
+		}
+		
 		double getNaiEnergy(){
 			return calibESPRI->getNaiEnergy();
 		}
