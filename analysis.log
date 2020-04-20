@@ -8902,3 +8902,62 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v11
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ddf7b32] v1.0
+ 132 files changed, 4570 insertions(+), 6 deletions(-)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/ppBe10 (86%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0298_ppBe10.root_test (69%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.DeterminNaiPara.txt.swo
+ rename espri/convert/txt/.naiPedestal.txt.swp => analysis/generateChannels/newNaiCalib/ppBe10/txt/.DeterminNaiPara.txt.swp (91%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_Linear.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v16.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/DeterminNaiPara.txt
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_Linear
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v12
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v13
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v14
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v16
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/CalibESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/EspriEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/Event.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/Makefile
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/PositionESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/ProtonEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/ReadFile.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/configPPBe.prm
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/convert.sh
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/header.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/loop.sh
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/main.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/ppBe.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/ppBe.h
+ rename analysis/generateChannels/newNaiCalib/ppBe10/{ => v1_beforAddLinearNaiEnergy}/ppBe10 (100%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/v1_beforAddLinearNaiEnergy/test.C
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/ppBe12 (87%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0331_ppBe12.root_test (99%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0332_ppBe12.root_test (99%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0333_ppBe12.root_test (61%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0363_ppBe12.root_test (99%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/.naiCalibOutput.txt_Be12_Linear.swp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_Linear
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v8
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v9
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/CalibESPRI.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/EspriEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/Event.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/Makefile
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/ProtonEvent.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/ReadFile.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/configPPBe.prm
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/convert.sh
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/header.h
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/loop.sh
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/main.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/ppBe.cpp
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/ppBe.h
+ create mode 100755 analysis/generateChannels/newNaiCalib/ppBe12/v1_beforeAddLinear/ppBe10
+ rename analysis/generateChannels/newNaiCalib/ppBe12/{ => v1_beforeAddLinear}/ppBe12 (100%)
+ rewrite espri/convert/txt/.naiPedestal.txt.swp (67%)
+ create mode 100644 merger/rootfiles/.drawNaiPedestal.C.swp
+ create mode 100644 merger/rootfiles/drawNaiPedestal.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
