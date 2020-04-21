@@ -8961,3 +8961,17 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/drawNaiPedestal.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ec8a85c] v1.0
+ 169 files changed, 151 insertions(+), 8 deletions(-)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe10/txt/naiCalibOutput.txt_Be10_v17
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0331_ppBe12.root_test (76%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/rootfiles/run0332_ppBe12.root_test (76%)
+ rename analysis/generateChannels/newNaiCalib/{ppBe14/.loop.sh.swp => ppBe12/txt/.naiCalibOutput.txt_Be12_v10.swp} (93%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v10
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v11
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe12/txt/naiCalibOutput.txt_Be12_v12
+ rewrite analysis/generateChannels/newNaiCalib/ppBe14/.loop.sh.swp (67%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14_v5
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14_v6
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
