@@ -49,46 +49,45 @@ class ESPRIPlasCalPara{
 };
 class ESPRINaiCalPara{
 	private:
-		double naiPol3P0[2][7];
-		double naiPol3P1[2][7];
-		double naiPol3P2[2][7];
+		double naiBirksParA[2][7];
+		double naiBirksParB[2][7];
+		double naiBirksParC[2][7];
 
 	public:
 		ESPRINaiCalPara(){
 			init();
-			load();
+			loadBirks();
 			print();
 		}
-		void load(){
-			loadPol3Gain();
-		}
 
-		void loadPol3Gain(){
+		void loadBirks(){
+
 			ifstream in;
-			TString inputName = calib->GetValue("naiPol3Calib","naiPol3Calib.txt");
+			TString inputName = calib->GetValue("naiCalib","naiCalibErrorPath.txt");
 			cout<<inputName<<endl;
 			in.open(inputName);
 			int side;
 			int barID;
-			double p0;
-			double p1;
-			double p2;
+			double parA;
+			double parB;
+			double parC;
 			while(1){
-				in >>side>>barID>>p0>>p1>>p2;
+				//in >>side>>barID>>parA>>parB;
+				in >>side>>barID>>parA>>parB>>parC;
 				if(!in.good()) break;
 				//cout<<side<<":"<<barID<<":"<<ped<<endl;
-				naiPol3P0[side][barID] = p0;
-				naiPol3P1[side][barID] = p1;
-				naiPol3P2[side][barID] = p2;
+				naiBirksParA[side][barID] = parA;
+				naiBirksParB[side][barID] = parB;
+				naiBirksParC[side][barID] = parC;
 			}
 
 			in.close();
 		}
 		void print(){
-			cout<<" Nai BarQCal Pol3 Para:"<<endl;
+			cout<<" Nai Birks Bar Para:"<<endl;
 			for (int i = 0; i < 2; ++i) {
 				for (int j = 0; j < 7; ++j) {
-					cout<<i<<":"<<j<<":"<<naiPol3P0[i][j]<<":"<<naiPol3P1[i][j]<<":"<<naiPol3P2[i][j]<<endl;
+					cout<<i<<":"<<j<<":"<<naiBirksParA[i][j]<<":"<<naiBirksParB[i][j]<<endl;
 				}
 			}	
 
@@ -97,22 +96,25 @@ class ESPRINaiCalPara{
 		void init(){
 			for(int i =0;i<2;i++){
 				for(int j = 0;j<7;j++){
-						naiPol3P0[i][j] = 1;
-						naiPol3P1[i][j] = 0;
-						naiPol3P2[i][j] = 0;
-				}
+					naiBirksParA[i][j] = 1;
+					naiBirksParB[i][j] = 0;
+					naiBirksParC[i][j] = 0;
+				
+			}
 			}
 		}
-		double getPol3P0(int i, int j){
-			return naiPol3P0[i][j];
+		double getBirksParA(int i, int j){
+			return naiBirksParA[i][j];
 		}
-		double getPol3P1(int i, int j){
-			return naiPol3P1[i][j];
+		double getBirksParB(int i, int j){
+			return naiBirksParB[i][j];
 		}
-		double getPol3P2(int i, int j){
-			return naiPol3P2[i][j];
+		double getBirksParC(int i, int j){
+			return naiBirksParC[i][j];
 		}
+
 };
+
 
 class EspriEnergyPara{
 	private:
@@ -188,16 +190,7 @@ class EspriEnergy{
 		ESPRIPlasCalPara *plasPara;
 		ESPRINaiCalPara *naiPara;
 
-                double getPol3P0(int i,int j){
-                        return naiPara->getPol3P0(i,j);
-                }
-                double getPol3P1(int i,int j){
-                        return naiPara->getPol3P1(i,j);
-                }
-                double getPol3P2(int i,int j){
-                        return naiPara->getPol3P2(i,j);
-                }
-                double getBirksParA(int i){
+		double getBirksParA(int i){
                         return plasPara->getBirksParA(i);
                 }
                 double getBirksParB(int i){
@@ -209,13 +202,18 @@ class EspriEnergy{
 		double getPlasDead(int side){
 			return calibPara->getPlasDead(side);
 		}
-		double getNaiGain(int side,int barId){
-			return calibPara->getNaiGain(side,barId);
-		}
-		double getNaiDead(int side,int barId){
-			return calibPara->getNaiDead(side,barId);
-		}
 		
+		double getNaiBirksParA(int i,int j){
+			cout<<naiPara->getBirksParA(i,j)<<endl;
+                        return naiPara->getBirksParA(i,j);
+                }
+                double getNaiBirksParB(int i,int j){
+                        return naiPara->getBirksParB(i,j);
+                }
+                double getNaiBirksParC(int i,int j){
+                        return naiPara->getBirksParC(i,j);
+                }
+
 
 	public:
 		EspriEnergy(){
@@ -230,15 +228,10 @@ class EspriEnergy{
 		double getPlasQ_Birks(int side,double plasBarQPed){
 			return plasBarQPed/(getBirksParA(side)+getBirksParB(side)*plasBarQPed);
 		}
-		double getNaiQ(int side, int barId,double naiBarQPed){
-			return getNaiGain(side,barId)*naiBarQPed+getNaiDead(side,barId);
-		}
-		
-		double getNaiQ_Pol3(int i, int j,double ped){
-			return getPol3P0(i,j)*ped + getPol3P1(i,j)*ped*ped+getPol3P2(i,j)*ped*ped*ped;
-		}
-		
-
+	
+                double getNaiQ(int side, int barId,double naiBarQPed){
+                        return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
+                }
 	
 
 };
@@ -270,7 +263,6 @@ class CalibESPRI{
 		EspriPlasTime *plasTime;
 
 		double espriPlasE_Birks;
-		double espriNaiE_Pol3;
 
 		double espriPlasT;
 		double espriPlasE;
@@ -290,10 +282,6 @@ class CalibESPRI{
 		double getNaiQ(){
 			return calibEspri->getNaiQ(mergeData->getSide(),mergeData->getNaiId(),mergeData->getNaiQPed());
 		}
-		double getNaiQ_Pol3(){
-			return calibEspri->getNaiQ_Pol3(mergeData->getSide(),mergeData->getNaiId(),mergeData->getNaiQPed());
-		}
-
 
 
 	public:
@@ -307,7 +295,6 @@ class CalibESPRI{
 
 			mergeData = NULL;
 			espriPlasE_Birks = NAN;
-			espriNaiE_Pol3 = NAN;
 
 			espriPlasT	= NAN;
 			espriPlasE	= NAN;
@@ -326,7 +313,6 @@ class CalibESPRI{
 
 			if(mergeData->getNaiHit()==1){
 
-				espriNaiE_Pol3 = getNaiQ_Pol3();
 				espriNaiE  = getNaiQ();
 
 				espriDeeEnergy = espriPlasE + espriNaiE;
@@ -345,7 +331,6 @@ class CalibESPRI{
 		void setBranch(TTree *tree){
 
 			tree->Branch("espriPlasE_Birks",&espriPlasE_Birks,"espriPlasE_Birks/D");
-			tree->Branch("espriNaiE_Pol3",&espriNaiE_Pol3,"espriNaiE_Pol3/D");
 
 			tree->Branch("espriPlasE",&espriPlasE,"espriPlasE/D");
 			tree->Branch("espriPlasT",&espriPlasT,"espriPlasT/D");
@@ -355,7 +340,7 @@ class CalibESPRI{
 		}
 		void print(){
 			cout<<"Plas Energy versions:  "<< espriPlasE<<" "<<espriPlasE_Birks<<endl;
-			cout<<"Nai  Energy versions:  "<< espriNaiE<<" "<<espriNaiE_Pol3<<endl;
+			cout<<"Nai  Energy versions:  "<< espriNaiE<<" "<<endl;
 
 			cout<<"espriPlasT = "<<espriPlasT<<" ns"<<endl;
 			cout<<"espriPlasE = "<<espriPlasE<<" MeV espriNaiE = "<<espriNaiE<<" MeV  espriDeeEnergy = "<<espriDeeEnergy<<" MeV "<<endl;

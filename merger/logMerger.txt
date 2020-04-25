@@ -68,3 +68,6 @@
 	1. Add FDC0 shift (0.55,0.76)
 2020-04-05
 	1. find configCalib_Be14_2.prm beamEnergy offset sign is minus, change it into positive
+2020-04-25
+	1. remove espriNaiE_Pol3
+	2. add new Nai Calibration under pp' scattering

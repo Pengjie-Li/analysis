@@ -275,7 +275,9 @@ class EspriEnergy{
 		double getPlasQ_Birks(int side,double plasBarQPed){
 			return plasBarQPed/(getBirksParA(side)+getBirksParB(side)*plasBarQPed);
 		}
+		
 		double getNaiQ(int side, int barId,double naiBarQPed){
+				//cout<<naiBarQPed<<" "<<getNaiBirksParA(side,barId)<<" "<<getNaiBirksParB(side,barId)<<" "<<getNaiBirksParC(side,barId)<<endl;
 			return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
 		}
 		double getNaiQLinear(int side, int barId,double naiBarQPed){

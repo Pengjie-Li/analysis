@@ -3,5 +3,5 @@ beamEnergyOffset:-2.903
 
 plasCalib:txt/plasCalib_Be12.txt
 plasBirksCalib:txt/plasBirksBe12.txt
-naiPol3Calib:txt/naiPol3Be12.txt
+naiCalib:txt/naiCalibOutput.txt_Be12
 espriCalib:txt/espriEnergyCalibParaBe12.txt

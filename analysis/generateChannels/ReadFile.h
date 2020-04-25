@@ -201,7 +201,6 @@ class ReadFile{
 		Int_t           espriHit;
 		Int_t           espriHitSide[1];
 		Double_t        espriPlasE_Birks;
-		Double_t        espriNaiE_Pol3;
 		Double_t        espriPlasE;
 		Double_t        espriPlasT;
 		Double_t        espriNaiE;
@@ -426,7 +425,6 @@ class ReadFile{
 			inputTree->SetBranchAddress("espriHit",&espriHit);
 			inputTree->SetBranchAddress("espriHitSide",espriHitSide);
 			inputTree->SetBranchAddress("espriPlasE_Birks",&espriPlasE_Birks);
-			inputTree->SetBranchAddress("espriNaiE_Pol3",&espriNaiE_Pol3);
 			inputTree->SetBranchAddress("espriPlasE",&espriPlasE);
 			inputTree->SetBranchAddress("espriPlasT",&espriPlasT);
 			inputTree->SetBranchAddress("espriNaiE",&espriNaiE);
@@ -808,7 +806,6 @@ class ReadFile{
 		}
 		double getEspriNaiE(){
 			return espriNaiE;
-			//return espriNaiE_Pol3;
 		}
 		double getEspriPlasE(){
 			return espriPlasE;
@@ -819,9 +816,6 @@ class ReadFile{
 		double getPlasQ(){
 			//return plasHitQPed[0];
 			return espriPlasE;
-		}
-		double getNaiQ_Pol3(){
-			return espriNaiE_Pol3;
 		}
 		double getPlasQ_Birks(){
 			//return plasHitQPed[0];
