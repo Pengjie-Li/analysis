@@ -8998,3 +8998,346 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14/txt/naiCalibOutput.txt_Be14_v11
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b1aec81] v1.0
+ 572 files changed, 6624 insertions(+), 1748 deletions(-)
+ rewrite analysis/generateChannels/.ReadFile.h.swp (93%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/.CalibESPRI.h.swp (83%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/rootfiles/run0310_ppBe10.root_test (99%)
+ rename merger/.loop.sh.swp => analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v19.swp (91%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/.Event.h.swp
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0298_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0300_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0301_ppaBe10.root_test (91%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0302_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0303_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0304_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0305_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0306_ppaBe10.root_test (86%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0307_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0308_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0309_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0311_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0312_ppaBe10.root_test (86%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0313_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0314_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0315_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0316_ppaBe10.root_test (91%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0317_ppaBe10.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0318_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0319_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0320_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0321_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0322_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0323_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0324_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0325_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0326_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0327_ppaBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0329_ppaBe10.root_test (84%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0330_ppaBe10.root_test (88%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/.configPPBe.prm.swp
+ rewrite analysis/generateChannels/ppAlphaBe12/ReadFile.h (100%)
+ mode change 100644 => 120000
+ rewrite analysis/generateChannels/ppAlphaBe12/ppaBe12 (96%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0331_ppaBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0332_ppaBe12.root_test (71%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0333_ppaBe12.root_test (68%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0334_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0335_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0336_ppaBe12.root_test
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0337_ppaBe12.root_test (91%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0338_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0339_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0340_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0341_ppaBe12.root_test
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0342_ppaBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0343_ppaBe12.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0344_ppaBe12.root_test (89%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0345_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0346_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0347_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0348_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0349_ppaBe12.root_test
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0350_ppaBe12.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0351_ppaBe12.root_test (88%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0352_ppaBe12.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0353_ppaBe12.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0354_ppaBe12.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0355_ppaBe12.root_test (88%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0356_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0357_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0358_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0359_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0360_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0361_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0362_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0363_ppaBe12.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/run0364_ppaBe12.root_test
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0365_ppaBe12.root_test (88%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/.Event.h.swp
+ create mode 100644 analysis/generateChannels/ppAlphaBe14/.configPPBe.prm.swp
+ rewrite analysis/generateChannels/ppAlphaBe14/ReadFile.h (100%)
+ mode change 100644 => 120000
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (96%)
+ rewrite merger/.loop.sh.swp (69%)
+ create mode 100644 merger/CalibESPRI.h_new
+ create mode 100644 merger/EspriEvent.h_new
+ rewrite merger/Merger (88%)
+ rewrite merger/config/.configCalib_Be10.prm.swp (67%)
+ create mode 100644 merger/rootfiles/.cutProton.C.swp
+ rename merger/{config/.configCalib_Be10.prm.swp => rootfiles/.drawProton.C.swp} (94%)
+ rewrite merger/rootfiles/cutProton.C (74%)
+ create mode 100644 merger/rootfiles/drawProton.C
+ create mode 100644 merger/rootfiles/run0101_analysed.root_test
+ rewrite merger/rootfiles/run0109_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0111_analysed.root_test
+ create mode 100644 merger/rootfiles/run0112_analysed.root_test
+ create mode 100644 merger/rootfiles/run0113_analysed.root_test
+ create mode 100644 merger/rootfiles/run0115_analysed.root_test
+ create mode 100644 merger/rootfiles/run0117_analysed.root_test
+ create mode 100644 merger/rootfiles/run0118_analysed.root_test
+ create mode 100644 merger/rootfiles/run0119_analysed.root_test
+ rewrite merger/rootfiles/run0121_analysed.root_test (96%)
+ create mode 100644 merger/rootfiles/run0122_analysed.root_test
+ create mode 100644 merger/rootfiles/run0123_analysed.root_test
+ rewrite merger/rootfiles/run0125_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0126_analysed.root_test
+ create mode 100644 merger/rootfiles/run0127_analysed.root_test
+ create mode 100644 merger/rootfiles/run0129_analysed.root_test
+ create mode 100644 merger/rootfiles/run0130_analysed.root_test
+ create mode 100644 merger/rootfiles/run0131_analysed.root_test
+ create mode 100644 merger/rootfiles/run0132_analysed.root_test
+ rewrite merger/rootfiles/run0133_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0135_analysed.root_test
+ create mode 100644 merger/rootfiles/run0138_analysed.root_test
+ create mode 100644 merger/rootfiles/run0141_analysed.root_test
+ create mode 100644 merger/rootfiles/run0143_analysed.root_test
+ rewrite merger/rootfiles/run0144_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0146_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0153_analysed.root_test
+ rewrite merger/rootfiles/run0154_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0157_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0158_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0161_analysed.root_test
+ create mode 100644 merger/rootfiles/run0163_analysed.root_test
+ create mode 100644 merger/rootfiles/run0165_analysed.root_test
+ create mode 100644 merger/rootfiles/run0168_analysed.root_test
+ create mode 100644 merger/rootfiles/run0171_analysed.root_test
+ rewrite merger/rootfiles/run0172_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0174_analysed.root_test
+ rename merger/rootfiles/{run0177_analysed.root_test => run0176_analysed.root_test} (81%)
+ rewrite merger/rootfiles/run0177_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0178_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0180_analysed.root_test (96%)
+ rewrite merger/rootfiles/run0181_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0182_analysed.root_test (99%)
+ rename merger/rootfiles/{run0178_analysed.root_test => run0184_analysed.root_test} (71%)
+ rewrite merger/rootfiles/run0186_analysed.root_test (99%)
+ rename merger/rootfiles/{run0182_analysed.root_test => run0187_analysed.root_test} (90%)
+ create mode 100644 merger/rootfiles/run0188_analysed.root_test
+ create mode 100644 merger/rootfiles/run0190_analysed.root_test
+ create mode 100644 merger/rootfiles/run0191_analysed.root_test
+ rewrite merger/rootfiles/run0195_analysed.root_test (89%)
+ create mode 100644 merger/rootfiles/run0196_analysed.root_test
+ create mode 100644 merger/rootfiles/run0197_analysed.root_test
+ create mode 100644 merger/rootfiles/run0198_analysed.root_test
+ create mode 100644 merger/rootfiles/run0201_analysed.root_test
+ create mode 100644 merger/rootfiles/run0203_analysed.root_test
+ rewrite merger/rootfiles/run0204_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0206_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0207_analysed.root_test
+ rewrite merger/rootfiles/run0208_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0209_analysed.root_test
+ create mode 100644 merger/rootfiles/run0210_analysed.root_test
+ create mode 100644 merger/rootfiles/run0213_analysed.root_test
+ create mode 100644 merger/rootfiles/run0214_analysed.root_test
+ rewrite merger/rootfiles/run0216_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0217_analysed.root_test
+ rename merger/rootfiles/{run0208_analysed.root_test => run0218_analysed.root_test} (88%)
+ rewrite merger/rootfiles/run0220_analysed.root_test (99%)
+ rename merger/rootfiles/{run0180_analysed.root_test => run0221_analysed.root_test} (86%)
+ rename merger/rootfiles/{run0220_analysed.root_test => run0224_analysed.root_test} (78%)
+ create mode 100644 merger/rootfiles/run0227_analysed.root_test
+ rewrite merger/rootfiles/run0230_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0237_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0238_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0241_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0243_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0247_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0249_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0251_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0252_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0254_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0255_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0262_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0263_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0264_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0265_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0267_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0272_analysed.root_test (100%)
+ create mode 100644 merger/rootfiles/run0273_analysed.root_test
+ rewrite merger/rootfiles/run0274_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0275_analysed.root_test
+ rewrite merger/rootfiles/run0282_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0288_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0293_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0294_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0295_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0296_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0300_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0305_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0307_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0309_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0322_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0325_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0329_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0333_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0340_analysed.root_test (85%)
+ rewrite merger/rootfiles/run0341_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0342_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0344_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0349_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0350_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0351_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0353_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0360_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0361_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0363_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0366_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0367_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0368_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0369_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0370_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0372_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0376_analysed.root_test (70%)
+ rewrite merger/rootfiles/run0377_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0379_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0380_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0382_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0385_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0390_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0397_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0403_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0406_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0409_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0410_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0411_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0413_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0423_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0424_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0425_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0426_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0427_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0429_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0430_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0434_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0435_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0441_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0449_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0456_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0460_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0461_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0469_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0472_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0473_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (66%)
+ rewrite merger/rootfiles/run0475_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0481_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0489_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0498_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0501_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0503_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0505_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0509_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0515_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0516_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0521_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0524_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0526_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0527_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0528_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0531_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0537_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0538_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0552_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0556_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0559_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0569_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0572_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0575_analysed.root_test (87%)
+ rewrite merger/rootfiles/run0578_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0579_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0584_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0585_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0588_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (73%)
+ create mode 120000 merger/txt/naiCalibOutput.txt_Be10
+ create mode 120000 merger/txt/naiCalibOutput.txt_Be12
+ create mode 120000 merger/txt/naiCalibOutput.txt_Be14
+ create mode 100644 merger/v10_newNaiCalibration/'
+ create mode 100644 merger/v10_newNaiCalibration/AlphaEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingAlpha.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingBDC.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingBeam.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingESPRI.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingFDC0.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingHOD.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingMAIN.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingPLA.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingProton.h
+ create mode 100644 merger/v10_newNaiCalibration/AnalysingTELE.h
+ create mode 100644 merger/v10_newNaiCalibration/BdcEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/BeamEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/CalibESPRI.h
+ create mode 100644 merger/v10_newNaiCalibration/CalibTELE.h
+ create mode 100644 merger/v10_newNaiCalibration/Convert.h
+ create mode 100644 merger/v10_newNaiCalibration/CsiCal.h
+ create mode 100644 merger/v10_newNaiCalibration/DSSDEnergyCal.h
+ create mode 100644 merger/v10_newNaiCalibration/Detector.h
+ create mode 100644 merger/v10_newNaiCalibration/EspriEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/Fdc0Event.h
+ create mode 100644 merger/v10_newNaiCalibration/FindPixel.h
+ create mode 100755 merger/v10_newNaiCalibration/Makefile
+ create mode 100644 merger/v10_newNaiCalibration/MergeBDC.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeESPRI.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeFDC0.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeHOD.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeMAIN.h
+ create mode 100644 merger/v10_newNaiCalibration/MergePLA.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeSample.h
+ create mode 100644 merger/v10_newNaiCalibration/MergeTELE.h
+ rename merger/{ => v10_newNaiCalibration}/Merger (100%)
+ create mode 100644 merger/v10_newNaiCalibration/Merger.cpp
+ create mode 100644 merger/v10_newNaiCalibration/Merger.h
+ create mode 100644 merger/v10_newNaiCalibration/PhiFunction.h
+ create mode 100644 merger/v10_newNaiCalibration/PlaEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/PositionESPRI.h
+ create mode 100644 merger/v10_newNaiCalibration/PositionTELE.h
+ create mode 100644 merger/v10_newNaiCalibration/ProtonEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/TeleEvent.h
+ create mode 100644 merger/v10_newNaiCalibration/backup_1st_Merger.C
+ create mode 100644 merger/v10_newNaiCalibration/constant.h
+ create mode 100644 merger/v10_newNaiCalibration/convert.sh
+ create mode 100755 merger/v10_newNaiCalibration/distance.h
+ create mode 100755 merger/v10_newNaiCalibration/header.h
+ create mode 100644 merger/v10_newNaiCalibration/logMerger.txt
+ create mode 100644 merger/v10_newNaiCalibration/loop.sh
+ create mode 100644 merger/v10_newNaiCalibration/looprun.sh
+ create mode 100644 merger/v10_newNaiCalibration/main.cpp
+ create mode 100644 merger/v10_newNaiCalibration/mvRootVersion.sh
+ create mode 100644 merger/v10_newNaiCalibration/read.me
+ create mode 100644 merger/v10_newNaiCalibration/sampleESPRI.C
+ create mode 100644 merger/v10_newNaiCalibration/t1.txt
+ create mode 100644 merger/v10_newNaiCalibration/t2.txt
+ create mode 100644 merger/v10_newNaiCalibration/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
