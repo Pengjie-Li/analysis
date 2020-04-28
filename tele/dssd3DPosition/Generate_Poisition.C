@@ -128,6 +128,7 @@ public:
 		fInterval=2*p->e2;
 		bInterval=2*p->e1;
 
+		
 		int cornerfid=p->cfid;
 		int cornerbid=p->cbid;
 		corner.SetXYZ(x0,y0,z0);
@@ -177,12 +178,20 @@ public:
 };
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
-	new GeneratePosition(0,16,26,-32.466,-1.40);	
-	new GeneratePosition(1,16,26,32.17,-1.75);	
+//	new GeneratePosition(0,16,26,-32.466,-1.40);	
+//	new GeneratePosition(1,16,26,32.17,-1.75);	
 
 
-//	LeftPlane *lp=new LeftPlane();
-//	RightPlane *rp=new RightPlane();
+	LeftPlane *lp=new LeftPlane();
+	RightPlane *rp=new RightPlane();
+	cout<<"Left DSSD"<<endl;	
+	cout<<(lp->e1).Print()<<endl;
+	cout<<(lp->e2).Print()<<endl;
+	
+	cout<<"Right DSSD"<<endl;	
+	cout<<(rp->e1).Print()<<endl;
+	cout<<(rp->e2).Print()<<endl;
+	
 
 // C++ 多态
 //	Plane *lp=new LeftPlane();

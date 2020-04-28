@@ -859,9 +859,17 @@ class ReadFile{
 		double getEspriLocusAngle(){
 			return espriLocusAngle;
 		}
-	
 		double getEspriAngle(){
 			return espriAngle;
+		}
+		int getTeleSide(){
+			return teleHitSide[0];
+		}
+		double getTeleAngle(){
+			return teleAngle;
+		}
+		double getTelePhi(){
+			return telePhi;
 		}
 		double getHodBarTRaw(int id){
 			return 0.5*(hodTRaw[0][id]+hodTRaw[1][id]);
