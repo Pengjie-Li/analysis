@@ -49,13 +49,13 @@ void PPBe::eventLoop(){
 			tree->Fill();
 
 			cout<<"Event Number = "<<ientry<<endl;
-			print();
-			//if(nentries<1000) {
-			//	cout<<endl;
-			//	cout<<"Event Number = "<<ientry<<endl;
+			//print();
+			if(nentries<1000) {
+				cout<<endl;
+				cout<<"Event Number = "<<ientry<<endl;
 
-			//	print();
-			//}
+				print();
+			}
 		}
 
 	}
