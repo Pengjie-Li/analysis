@@ -91,7 +91,6 @@ class AlphaEvent{
 		TVector3 *vBeam;
 		int isLR;
 		PhiFunction *phiFuction;
-		TVector3 *targetCenter;
 
 		TVector3 *teleLXAxis;
 		TVector3 *teleLYAxis;
@@ -109,6 +108,8 @@ class AlphaEvent{
 		double telePhiUp[10];
 		double telePhiDown[10];
 
+		double teleAngleNew;
+		double telePhiNew;
 
 		void shiftLR(double dx){
 			if(isLR==0) (*telePosition) = (*telePosition) + dx*(*teleLXAxis);
@@ -132,8 +133,6 @@ class AlphaEvent{
 	public:
 		AlphaEvent(){
 			vTele = new TVector3;
-			targetCenter = new TVector3;
-			targetCenter->SetXYZ(0,0,0);
 			phiFuction = new PhiFunction();
 
 			teleLXAxis=new TVector3();teleLXAxis->SetXYZ(0.989134,0.000000,0.147020);
@@ -149,6 +148,8 @@ class AlphaEvent{
 			vTele->SetXYZ(NAN,NAN,NAN);
 			isLR = -1;
 
+			teleAngleNew = NAN;
+			telePhiNew = NAN;
 			for (int i = 0; i < 10; ++i) {
 
 				teleAngleLeft[i] = NAN;
@@ -171,6 +172,13 @@ class AlphaEvent{
 			targetPosition = rf->getTargetPosition();
 			vBeam = rf->getBeamDirection();
 			isLR = rf->getTeleSide();
+
+			if(isLR == 0) shiftLR(0.9);
+			else shiftLR(2.4);
+
+			setAngle();
+			teleAngleNew = getAngle();
+			telePhiNew = getPhi();
 
 			//targetPosition->Print();
 			//vBeam->Print();
@@ -253,6 +261,9 @@ class AlphaEvent{
 
 		}
 		void setOutputBranch(TTree *tree){
+			tree->Branch("teleAngleNew",&teleAngleNew,"teleAngleNew/D");
+			tree->Branch("telePhiNew",&telePhiNew,"telePhiNew/D");
+
 			tree->Branch("teleAngleRight",teleAngleRight,"teleAngleRight[10]/D");
 			tree->Branch("teleAngleLeft",teleAngleLeft,"teleAngleLeft[10]/D");
 			tree->Branch("teleAngleUp",teleAngleUp,"teleAngleUp[10]/D");
