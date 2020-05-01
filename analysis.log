@@ -9655,3 +9655,166 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe12/rootfiles/run0365_ppaBe12.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 850cf37] v1.0
+ 196 files changed, 2685 insertions(+), 8 deletions(-)
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe10/.Event.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe10/.log.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe10/Event.h~
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe10/log
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/ppaBe10 (73%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0298_ppaBe10.root_test (97%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0299_ppaBe10.root_test (97%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0300_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0301_ppaBe10.root_test (96%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0302_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0303_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0304_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0305_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0306_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0307_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0308_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0309_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0311_ppaBe10.root_test (86%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0312_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0313_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0314_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0315_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0316_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0317_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0318_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0319_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0320_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0321_ppaBe10.root_test (90%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0322_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0323_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0324_ppaBe10.root_test (85%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0325_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0326_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0327_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0328_ppaBe10.root_test (89%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0329_ppaBe10.root_test (88%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe10/rootfiles/run0330_ppaBe10.root_test (88%)
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe12/.AlphaEvent.h.swp
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe12/ppaBe12 (72%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe12/rootfiles/run0331_ppaBe12.root_test (66%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe12/rootfiles/run0332_ppaBe12.root_test (62%)
+ rewrite analysis/generateChannels/shiftTele/ppAlphaBe12/rootfiles/run0333_ppaBe12.root_test (70%)
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.CalibESPRI.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.EspriEvent.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.Event.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.ProtonEvent.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.configPPBe.prm.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.ppBe.cpp.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/.ppBe.h.swp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/AlphaEvent.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/CalibESPRI.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/EspriEvent.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/Event.h
+ create mode 100755 analysis/generateChannels/shiftTele/ppAlphaBe14/Makefile
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/PhiFunction.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/PositionESPRI.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/ProtonEvent.h
+ create mode 120000 analysis/generateChannels/shiftTele/ppAlphaBe14/ReadFile.h
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/configPPBe.prm
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/convert.sh
+ create mode 100755 analysis/generateChannels/shiftTele/ppAlphaBe14/header.h
+ create mode 120000 analysis/generateChannels/shiftTele/ppAlphaBe14/inputRootfiles
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/loop.sh
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/main.cpp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/ppBe.cpp
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/ppBe.h
+ create mode 100755 analysis/generateChannels/shiftTele/ppAlphaBe14/ppaBe14
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0366_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0367_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0368_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0369_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0370_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0371_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0372_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0373_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0374_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0375_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0376_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0377_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0378_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0379_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0380_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0381_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0382_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0383_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0384_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0385_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0386_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0387_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0388_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0389_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0390_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0391_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0392_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0393_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0394_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0395_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0396_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0397_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0398_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0399_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0400_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0401_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0402_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0403_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0404_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0405_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0406_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0407_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0408_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0409_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0410_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0411_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0412_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0413_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0414_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0415_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0416_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0417_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0418_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0419_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0420_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0421_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0422_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0423_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0424_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0425_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0426_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0427_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0428_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0429_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0430_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0433_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0434_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0435_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0436_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0437_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0438_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0439_ppaBe14.root_test
+ rename analysis/generateChannels/shiftTele/{ppAlphaBe12/rootfiles/run0333_ppaBe12.root_test => ppAlphaBe14/rootfiles/run0441_ppaBe14.root_test} (96%)
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0442_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0443_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0444_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0445_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0446_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0447_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0448_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0449_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0450_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0451_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0452_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0453_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0454_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/rootfiles/run0455_ppaBe14.root_test
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/test.C
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/tree.C
+ create mode 100644 analysis/generateChannels/shiftTele/ppAlphaBe14/txt/espriEnergyCalibParaBe14.txt
+ create mode 100644 merger/txt/.espriEnergyCalibParaBe14.txt.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
