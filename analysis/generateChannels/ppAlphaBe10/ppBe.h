@@ -2,6 +2,8 @@
 using namespace std;
 #include "ReadFile.h"
 #include "Event.h"
+#include "PPAlphaKinetics.h"
+
 class PPBe{
 	private:
 		TEnv *env;
@@ -12,6 +14,8 @@ class PPBe{
 		TFile *outputFile;
 		TTree *tree;
 		Long64_t nentries;
+
+		PPAlphaKinetics *ppAlpha;
 	public:
 
 		PPBe(){}

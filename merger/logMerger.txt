@@ -71,3 +71,5 @@
 2020-04-25
 	1. remove espriNaiE_Pol3
 	2. add new Nai Calibration under pp' scattering
+2020-05-08
+	1. shift Tele : L 0.9 R 2.4 mm along plane

@@ -12,10 +12,20 @@ class PositionTELE{
 		TVector3 leftNorm;
 		TVector3 rightNorm;
 
+                TVector3 *teleLXAxis;
+                TVector3 *teleLYAxis;
+                TVector3 *teleRXAxis;
+                TVector3 *teleRYAxis;
+
 		PositionTELE(){
 			env = new TEnv("./config/configMerger.prm");
 			loadLeftPosition();
 			loadRightPosition();
+
+                        teleLXAxis=new TVector3();teleLXAxis->SetXYZ(0.989134,0.000000,0.147020);
+                        teleLYAxis=new TVector3();teleLYAxis->SetXYZ(0.000588,0.999992,-0.003957);
+                        teleRXAxis=new TVector3();teleRXAxis->SetXYZ(0.988069,0.000000,-0.154011);
+                        teleRYAxis=new TVector3();teleRYAxis->SetXYZ(0.000308,0.999998,0.001976);
 
 			leftNorm.SetXYZ(-0.147,0.004,0.989);
 			leftNorm.Unit();
@@ -88,10 +98,14 @@ class PositionTELE{
 
 		}
 		TVector3 getPosition(int isLR, int fid, int bid){
-			TVector3 result;
-			if(isLR == 0) result.SetXYZ(leftXPosition[fid][bid],leftYPosition[fid][bid],leftZPosition[fid][bid]);
-			else result.SetXYZ(rightXPosition[fid][bid],rightYPosition[fid][bid],rightZPosition[fid][bid]);
-			return result;
+			TVector3 telePosition;
+			if(isLR == 0) telePosition.SetXYZ(leftXPosition[fid][bid],leftYPosition[fid][bid],leftZPosition[fid][bid]);
+			else telePosition.SetXYZ(rightXPosition[fid][bid],rightYPosition[fid][bid],rightZPosition[fid][bid]);
+
+                        if(isLR==0) telePosition = telePosition + 0.9*(*teleLXAxis);
+                        else telePosition = telePosition + 2.4*(*teleRXAxis);
+ 
+			return telePosition;
 		}
 		TVector3 getDssdPlaneNorm(int isLR){
 			if(isLR == 0) return leftNorm;

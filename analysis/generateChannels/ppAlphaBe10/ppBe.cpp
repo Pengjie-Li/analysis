@@ -4,6 +4,7 @@ PPBe::PPBe(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNumber
 	env= new TEnv("configPPBe.prm");
 	rf = new ReadFile(runNumber);
 	event = new Event(rf);
+	ppAlpha = new PPAlphaKinetics(rf);
 }
 bool PPBe::isFilesExist(){
 	return rf->isFilesExist();
@@ -25,6 +26,7 @@ void PPBe::createOutput(){
 void PPBe::setOutputBranch(){
 	rf->setBranch(tree);
 	event->setBranch(tree);
+	ppAlpha->setBranch(tree);
 }
 void PPBe::saveOutput(){
 	tree->Write();
@@ -40,6 +42,7 @@ void PPBe::eventLoop(){
 		rf->getEntry(ientry);
 
 		if(event->selectEvent()){
+			ppAlpha->calculate();
 			tree->Fill();
 
 			cout<<"Event Number = "<<ientry<<endl;

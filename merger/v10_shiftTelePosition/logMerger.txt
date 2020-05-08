@@ -1,0 +1,73 @@
+2019-11-18
+	1. add espri local angle 
+	2. add vector direction for residue, resAngle which is most likely the residue Theta
+2019-11-19 
+	1. find a mistake in FDC0 Z position which should be negative
+	2. change Analying BDC into BdcEvent mode
+2019-11-21
+	1. add Theta for FDC0, then use it Theta_proton vs Theta_Residue
+2019-12-16
+	1. v3 naiCalib under each Beam
+	2. v4 naiCalib using linear calib from ppBe14
+2019-12-27
+	1. revise RDC Plane and Plas Plane
+	Left:965.69:1011.19:1188.19
+	Right:964.93:1010.43:1187.43
+2020-01-02
+	restructureed EspriEvent
+	1. everything goes to espriEnergy, espriAngle, espriPosition
+	2. CalibESPRI gives calibrated plas Energy and Time, nai Energy
+		i. by add branch, we have different version calibration
+		ii. easy to compare
+	3. PositionESPRI gives position and angle info
+2020-01-03
+	1. add BeamEvent,
+	2. add beamEnergy branch; make beamEnergy to be energy before Target, tofSBTTarget
+	2. determine beamEnergy offset , beta Offset compared to Lise++
+2020-01-05
+	1. add proton Event, 
+	2. calculate ProtonEnergy from NaiEnergy
+	3. proton gate now can apply for all beam setting
+2020-01-13
+	1. add TeleEvent and Alpha Event
+	2. add Hit Structure for alpha
+	3. alpha gate can apply for all beam setting
+	3. new calibration for Csi with Peak5
+2020-01-14
+	1. problem: Csi Id ==4 before run 305, has a small gain, need para "1.8" to gain back
+2020-01-15
+	1. move teleHit into TeleEvent.h
+	2. give teleDssdE = 0.5(FE+BE) or teleDssdMax = max(FE,BE)
+	3. remove abs(FE-BE)>5MeV and FE/BE>2 or FE/BE<0.5 in TeleHit
+2020-01-17
+	1. dssd Calib must use linear equation, no-linear like ax/(1+bx) makes distortion in highest and lowest region
+	2. linear calib for DSSD, LF,LB,RF,RB all take 15 stripId as ref, txt/peak5DssdCalib.txt
+2020-01-19
+	1. add Proton Eloss depend on angle
+	2. move alpha Angle into teleAngle, telePosition, vTele
+2020-01-20
+	1. add Alpha Eloss depend on angle
+	2. add ppPlasE, ppWinE, apDssdE,apDegraderE
+2020-01-21
+	1. Find Eval Function must use Eval(x,0,"S") mode
+2020-02-07
+	1. change beam offset sign into plus, put it minus is dangerous
+2020-03-03
+	1. add vector(0,0,4222.34) to all position
+	2. clean espri structure 
+	3. shift plasPlane D from 923 into -1188.17
+	4. remove naiToProton calibration
+	5. add Phi function to ESPRI,Tele, FDC0
+2020-03-11
+	1. change Right Espri 3D Position (0.869,0,0.495)
+2020-03-12
+	1. modify Phi function xAxis Unit()
+2020-03-20
+	1. change Phi range in to 0-360 and init guess of Y (45,45) direction
+2020-03-29
+	1. Add FDC0 shift (0.55,0.76)
+2020-04-05
+	1. find configCalib_Be14_2.prm beamEnergy offset sign is minus, change it into positive
+2020-04-25
+	1. remove espriNaiE_Pol3
+	2. add new Nai Calibration under pp' scattering

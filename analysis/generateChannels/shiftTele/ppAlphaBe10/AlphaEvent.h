@@ -173,6 +173,7 @@ class AlphaEvent{
 			vBeam = rf->getBeamDirection();
 			isLR = rf->getTeleSide();
 
+			telePosition->Print();
 			if(isLR == 0) shiftLR(0.9);
 			else shiftLR(2.4);
 
@@ -182,7 +183,7 @@ class AlphaEvent{
 
 			//targetPosition->Print();
 			//vBeam->Print();
-			//telePosition->Print();
+			telePosition->Print();
 			for (int i = 0; i < 10; ++i) {
 				shiftLR(0.3);
 				setAngle();

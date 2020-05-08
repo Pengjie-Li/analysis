@@ -204,7 +204,7 @@ class EspriEnergy{
 		}
 		
 		double getNaiBirksParA(int i,int j){
-			cout<<naiPara->getBirksParA(i,j)<<endl;
+			//cout<<naiPara->getBirksParA(i,j)<<endl;
                         return naiPara->getBirksParA(i,j);
                 }
                 double getNaiBirksParB(int i,int j){

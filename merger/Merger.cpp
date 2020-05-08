@@ -66,6 +66,7 @@ void Merger::eventLoop(){
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
 	for(Long64_t ientry = 0; ientry<nentries;ientry++){
+	//for(Long64_t ientry = 767; ientry<770;ientry++){
 
 		//inputTree->GetEntry(ientry);
 		getEntry(ientry);
@@ -104,7 +105,7 @@ void Merger::print(){
 	//printBeam();
 	//printESPRI();
 	//printProton();
-	//printTELE();
+	printTELE();
 	//printAlpha();
 	//printFDC0();
 }
