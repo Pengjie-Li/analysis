@@ -840,6 +840,9 @@ class ReadFile{
 		TVector3 * getBeamDirection(){
 			return vBeam;
 		}
+		double getBeamEnergy(){
+			return beamEnergy;
+		}
 		TVector3 * getTargetPosition(){
 			return targetPosition;
 		}
@@ -853,11 +856,17 @@ class ReadFile{
 		double getResAngle(){
 			return fdc0Angle;
 		}
+		double getFdc0Angle(){
+			return fdc0Angle;
+		}
 		double getFdc0Phi(){
 			return fdc0Phi;
 		}
 		double getEspriLocusAngle(){
 			return espriLocusAngle;
+		}
+		double getEspriPhi(){
+			return espriPhi;
 		}
 		double getEspriAngle(){
 			return espriAngle;

@@ -5,3 +5,9 @@ runSuffix:_analysed.root
 outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_ppaBe14.root_test
+
+ma:14.04069708
+mb:1.007276466621
+m1:1.007276466621
+m2:4.001506105
+m3:10.050167077
