@@ -10088,3 +10088,45 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v10_shiftTelePosition/tree.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 2180f9f] v1.0
+ 195 files changed, 1012 insertions(+), 485 deletions(-)
+ create mode 100644 analysis/generateChannels/.PPAlphaKinetics.h.swp
+ rewrite analysis/generateChannels/.ReadFile.h.swp (69%)
+ create mode 100644 analysis/generateChannels/PPAlphaKinetics.h
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/.PPAlphaKinetics.h_backup.swp
+ rename analysis/generateChannels/ppAlphaBe10/{.ppBe.h.swp => .log.swp} (92%)
+ rewrite analysis/generateChannels/ppAlphaBe10/.ppBe.cpp.swp (67%)
+ rewrite analysis/generateChannels/ppAlphaBe10/.ppBe.h.swp (67%)
+ rewrite analysis/generateChannels/ppAlphaBe10/PPAlphaKinetics.h (100%)
+ mode change 100644 => 120000
+ rewrite analysis/generateChannels/ppAlphaBe10/PPAlphaKinetics.h_backup (77%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/PPAlphaKinetics.h~
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/log
+ create mode 100644 analysis/generateChannels/ppAlphaBe10/log~
+ rewrite analysis/generateChannels/ppAlphaBe10/ppaBe10 (91%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/.Event.h.swp
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/.ppBe.cpp.swp
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/.ppBe.h.swp
+ create mode 120000 analysis/generateChannels/ppAlphaBe12/PPAlphaKinetics.h
+ rewrite analysis/generateChannels/ppAlphaBe12/ppaBe12 (92%)
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/rootfiles/.PPAlphaKinetics.h.swp
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0331_ppaBe12.root_test (63%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0332_ppaBe12.root_test (60%)
+ rewrite analysis/generateChannels/ppAlphaBe12/rootfiles/run0333_ppaBe12.root_test (68%)
+ rename merger/.ProtonEvent.h.swp => analysis/generateChannels/ppAlphaBe14/.configPPBe.prm.swp (64%)
+ rename analysis/generateChannels/{ppAlphaBe10 => ppAlphaBe14}/.ppBe.cpp.swp (96%)
+ create mode 120000 analysis/generateChannels/ppAlphaBe14/PPAlphaKinetics.h
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (91%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0373_ppaBe14.root_test (71%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0441_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0442_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0443_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0444_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0445_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0446_ppaBe14.root_test (68%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0447_ppaBe14.root_test (68%)
+ create mode 100644 merger/.AlphaEvent.h.swp
+ create mode 100644 merger/.CalibTELE.h.swp
+ rewrite merger/.ProtonEvent.h.swp (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
