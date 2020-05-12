@@ -218,7 +218,7 @@ class PPAlphaKinetics{
 					//r3.setTheta(theta3);
 					//cout<<cosPhi12<<" "<<cosTheta1To2<<endl;
 					//cout<<theta3<<" "<<r3.theta*TMath::RadToDeg()<<" "<<cosTheta3<<endl;
-					//r3.print();
+					r3.print();
 				}
 				void setParticle3BeamSystem(){
 					r3B.setName("r3B");
@@ -226,9 +226,10 @@ class PPAlphaKinetics{
 					//double cosTheta3 = cos(theta3);
 					//cout<<cosTheta3<<endl;
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P*cosTheta3)/a.M);
-					r3B.setMP(r3.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
+					//r3B.setMP(r3.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
+					r3B.setEP((a.E*r3.E-a.P*r3.P*cosTheta3)/a.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P)/a.M);
-					//r3B.print();
+					r3B.print();
 				}
 				void setExEnergy(){
 					exEnergy = r3.M - m3*AMU;
