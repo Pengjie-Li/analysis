@@ -223,11 +223,21 @@ class PPAlphaKinetics{
 				void setParticle3BeamSystem(){
 					r3B.setName("r3B");
 					double cosTheta3 = cos(r3.theta);
-					//double cosTheta3 = cos(theta3);
+					double sinTheta3 = sin(r3.theta);
 					//cout<<cosTheta3<<endl;
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P*cosTheta3)/a.M);
 					//r3B.setMP(r3.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
-					r3B.setEP((a.E*r3.E-a.P*r3.P*cosTheta3)/a.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
+					//r3B.setEP((a.E*r3.E-a.P*r3.P*cosTheta3)/a.M,(a.E*r3.P-a.P*r3.E*cosTheta3)/a.M);
+					double gamma = a.E/a.M; double beta = a.P/a.E;
+					double EStar =(gamma*r3.E- gamma*beta*r3.P*cosTheta3);
+					double PzStar = (-gamma*beta*r3.E + gamma*r3.P*cosTheta3);
+					double PpenStar = r3.P*sinTheta3;
+					double PStar = sqrt(PpenStar*PpenStar + PzStar*PzStar);
+					a.print();
+					cout<<gamma<<" "<<beta<<endl;
+					r3B.setME(r3.M,EStar);
+			
+					//r3B.setEP(EStar,PStar);
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P)/a.M);
 					r3B.print();
 				}
