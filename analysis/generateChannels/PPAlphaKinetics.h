@@ -236,7 +236,7 @@ class PPAlphaKinetics{
 					a.print();
 					cout<<gamma<<" "<<beta<<endl;
 					r3B.setME(r3.M,EStar);
-			
+					cout<<PStar<<" "<<PzStar<<" "<<PpenStar<<endl;	
 					//r3B.setEP(EStar,PStar);
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P)/a.M);
 					r3B.print();
