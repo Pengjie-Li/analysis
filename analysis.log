@@ -10154,3 +10154,8 @@ Branch master set up to track remote branch master from origin.
  rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test (96%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 67d24eb] v1.0
+ 7 files changed, 9 insertions(+), 3 deletions(-)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test (87%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
