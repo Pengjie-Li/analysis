@@ -118,8 +118,8 @@ class Event{
 			//return isAlpha();
 			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isPALR();
 			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea(); // Add small gate later
-			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea(); // Add small gate later
-			return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid();
+			return isBeam()&&isProton()&&isAlpha()&&isTargetArea(); // Add small gate later
+			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid();
 			//return isBeam()&&isProton()&&isAlpha()&&isTargetArea()&&isHodPid()&&isPALR();
 			//return isBeam();
 			//return isProton();

@@ -73,3 +73,5 @@
 	2. add new Nai Calibration under pp' scattering
 2020-05-08
 	1. shift Tele : L 0.9 R 2.4 mm along plane
+2020-05-19
+	1. add Phi starting from (0,1,0), Phi calculation

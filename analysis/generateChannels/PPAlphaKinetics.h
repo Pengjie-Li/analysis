@@ -233,13 +233,13 @@ class PPAlphaKinetics{
 					double PzStar = (-gamma*beta*r3.E + gamma*r3.P*cosTheta3);
 					double PpenStar = r3.P*sinTheta3;
 					double PStar = sqrt(PpenStar*PpenStar + PzStar*PzStar);
-					a.print();
-					cout<<gamma<<" "<<beta<<endl;
+					//a.print();
+					//cout<<gamma<<" "<<beta<<endl;
 					r3B.setME(r3.M,EStar);
-					cout<<PStar<<" "<<PzStar<<" "<<PpenStar<<endl;	
+					//cout<<PStar<<" "<<PzStar<<" "<<PpenStar<<endl;	
 					//r3B.setEP(EStar,PStar);
 					//r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P)/a.M);
-					r3B.print();
+					//r3B.print();
 				}
 				void setExEnergy(){
 					exEnergy = r3.M - m3*AMU;
