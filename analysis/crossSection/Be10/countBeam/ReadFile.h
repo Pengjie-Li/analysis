@@ -901,6 +901,12 @@ class ReadFile{
 		double getRdcY(){
 			return rdcHitY[0];
 		}
+		int getTrigDSB(){
+			return Trig_DSB;
+		}
+		int getRunNumber(){
+			return RunNumber;
+		}
 
 		bool isPALR(){
 			if((espriHit==1&&espriHitSide[0]==0&&teleHit==1&&teleHitSide[0]==1)||(espriHit==1&&espriHitSide[0]==1&&teleHit==1&&teleHitSide[0]==0)) return true;

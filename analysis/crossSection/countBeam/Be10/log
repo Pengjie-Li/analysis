@@ -1,0 +1,5 @@
+2020-05-09
+	1. add PPAlphaKinetics
+	2. P3 get from Particle 1 and 2, M3 is not a fixed value, can be used for exEnergy
+2020-05-11
+	1. r3B using setMP
