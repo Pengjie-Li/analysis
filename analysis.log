@@ -10626,3 +10626,275 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 5 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 715c6f4] v1.0
+ 279 files changed, 3322 insertions(+), 1 deletion(-)
+ create mode 100644 analysis/gate/PRAngle/ppBe10/.Event.h.swp
+ create mode 100644 analysis/gate/PRAngle/ppBe10/.ReadFile.h.swp
+ create mode 100644 analysis/gate/PRAngle/ppBe10/Event.h
+ create mode 100755 analysis/gate/PRAngle/ppBe10/Makefile
+ create mode 120000 analysis/gate/PRAngle/ppBe10/ReadFile.h
+ create mode 100644 analysis/gate/PRAngle/ppBe10/configPPBe.prm
+ create mode 100644 analysis/gate/PRAngle/ppBe10/convert.sh
+ create mode 100755 analysis/gate/PRAngle/ppBe10/header.h
+ create mode 120000 analysis/gate/PRAngle/ppBe10/inputRootfiles
+ create mode 100644 analysis/gate/PRAngle/ppBe10/loop.sh
+ create mode 100644 analysis/gate/PRAngle/ppBe10/main.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe10/ppBe.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe10/ppBe.h
+ create mode 100755 analysis/gate/PRAngle/ppBe10/ppBe10
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0298_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0299_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0300_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0301_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0302_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0303_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0304_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0305_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0306_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0307_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0308_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0309_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0310_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0311_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0312_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0313_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0314_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0315_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0316_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0317_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0318_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0319_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0320_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0321_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0322_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0323_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0324_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0325_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0326_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0327_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0328_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0329_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/rootfiles/run0330_ppBe10.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe10/test.C
+ create mode 100644 analysis/gate/PRAngle/ppBe12/.Event.h.swp
+ create mode 100644 analysis/gate/PRAngle/ppBe12/Event.h
+ create mode 100755 analysis/gate/PRAngle/ppBe12/Makefile
+ create mode 120000 analysis/gate/PRAngle/ppBe12/ReadFile.h
+ create mode 100644 analysis/gate/PRAngle/ppBe12/ReadFile.h_backup
+ create mode 100644 analysis/gate/PRAngle/ppBe12/configPPBe.prm
+ create mode 100644 analysis/gate/PRAngle/ppBe12/convert.sh
+ create mode 100755 analysis/gate/PRAngle/ppBe12/header.h
+ create mode 120000 analysis/gate/PRAngle/ppBe12/inputRootfiles
+ create mode 100644 analysis/gate/PRAngle/ppBe12/loop.sh
+ create mode 100644 analysis/gate/PRAngle/ppBe12/main.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe12/ppBe.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe12/ppBe.h
+ create mode 100755 analysis/gate/PRAngle/ppBe12/ppBe12
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0331_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0332_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0333_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0334_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0335_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0336_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0337_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0338_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0339_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0340_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0341_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0342_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0343_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0344_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0345_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0346_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0347_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0348_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0349_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0350_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0351_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0352_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0353_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0354_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0355_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0356_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0357_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0358_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0359_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0360_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0361_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0362_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0363_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0364_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/rootfiles/run0365_ppBe12.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe12/test.C
+ create mode 100644 analysis/gate/PRAngle/ppBe14/.Event.h.swp
+ create mode 100644 analysis/gate/PRAngle/ppBe14/Event.h
+ create mode 100755 analysis/gate/PRAngle/ppBe14/Makefile
+ create mode 120000 analysis/gate/PRAngle/ppBe14/ReadFile.h
+ create mode 100644 analysis/gate/PRAngle/ppBe14/ReadFile.h_backup
+ create mode 100644 analysis/gate/PRAngle/ppBe14/configPPBe.prm
+ create mode 100644 analysis/gate/PRAngle/ppBe14/convert.sh
+ create mode 100755 analysis/gate/PRAngle/ppBe14/header.h
+ create mode 120000 analysis/gate/PRAngle/ppBe14/inputRootfiles
+ create mode 100644 analysis/gate/PRAngle/ppBe14/loop.sh
+ create mode 100644 analysis/gate/PRAngle/ppBe14/main.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe14/ppBe.cpp
+ create mode 100644 analysis/gate/PRAngle/ppBe14/ppBe.h
+ create mode 100755 analysis/gate/PRAngle/ppBe14/ppBe14
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0366_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0367_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0368_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0369_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0370_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0371_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0372_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0373_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0374_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0375_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0376_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0377_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0378_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0379_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0380_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0381_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0382_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0383_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0384_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0385_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0386_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0387_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0388_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0389_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0390_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0391_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0392_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0393_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0394_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0395_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0396_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0397_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0398_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0399_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0400_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0401_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0402_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0403_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0404_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0405_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0406_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0407_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0408_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0409_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0410_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0411_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0412_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0413_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0414_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0415_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0416_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0417_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0418_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0419_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0420_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0421_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0422_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0423_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0424_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0425_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0426_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0427_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0428_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0429_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0430_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0433_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0434_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0435_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0436_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0437_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0438_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0439_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0441_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0442_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0443_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0444_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0445_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0446_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0447_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0448_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0449_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0450_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0451_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0452_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0453_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0454_ppBe14.root_test
+ create mode 100644 analysis/gate/PRAngle/ppBe14/rootfiles/run0455_ppBe14.root_test
+ rewrite analysis/generateChannels/.ReadFile.h.swp (69%)
+ create mode 100644 analysis/generateChannels/ppBe10/.loop.sh.swp
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (72%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0299_ppBe10.root_test (90%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0300_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0302_ppBe10.root_test (85%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0303_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0304_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0305_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0306_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0307_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0308_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0309_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0310_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0311_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0312_ppBe10.root_test (86%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0313_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0314_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0315_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0316_ppBe10.root_test (90%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0317_ppBe10.root_test (91%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0318_ppBe10.root_test (88%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0319_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0320_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0321_ppBe10.root_test (93%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0322_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0323_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0324_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0325_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0326_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0327_ppBe10.root_test (86%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0329_ppBe10.root_test (87%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0330_ppBe10.root_test (86%)
+ rewrite analysis/generateChannels/ppBe12/ppBe12 (74%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0331_ppBe12.root_test (65%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0332_ppBe12.root_test (70%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0333_ppBe12.root_test (64%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0334_ppBe12.root_test (85%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0335_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0336_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0337_ppBe12.root_test (84%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0338_ppBe12.root_test (84%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0339_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0340_ppBe12.root_test (84%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0341_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0342_ppBe12.root_test (91%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0343_ppBe12.root_test (89%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0344_ppBe12.root_test (93%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0345_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0346_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0347_ppBe12.root_test (86%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0348_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0349_ppBe12.root_test (77%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0350_ppBe12.root_test (84%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0351_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0352_ppBe12.root_test (89%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0353_ppBe12.root_test (88%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0354_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0355_ppBe12.root_test (88%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0356_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0357_ppBe12.root_test (85%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0358_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0359_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0360_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0361_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0362_ppBe12.root_test (83%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0363_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0364_ppBe12.root_test (87%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0365_ppBe12.root_test (93%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
