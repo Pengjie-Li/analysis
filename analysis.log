@@ -11148,3 +11148,101 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/rootfiles/.cutPRAngleBe14.C.mYqPuk
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ce78563] v1.0
+ 105 files changed, 2193 insertions(+)
+ create mode 100644 analysis/calibNai/ppBe14/.Event.h.swp
+ create mode 100644 analysis/calibNai/ppBe14/.ppBe.cpp.swp
+ create mode 100644 analysis/calibNai/ppBe14/Event.h
+ create mode 100755 analysis/calibNai/ppBe14/Makefile
+ create mode 100644 analysis/calibNai/ppBe14/ReadFile.h
+ create mode 100644 analysis/calibNai/ppBe14/ReadFile.h_backup
+ create mode 100644 analysis/calibNai/ppBe14/configPPBe.prm
+ create mode 100644 analysis/calibNai/ppBe14/convert.sh
+ create mode 100755 analysis/calibNai/ppBe14/header.h
+ create mode 120000 analysis/calibNai/ppBe14/inputRootfiles
+ create mode 100644 analysis/calibNai/ppBe14/loop.sh
+ create mode 100644 analysis/calibNai/ppBe14/main.cpp
+ create mode 100644 analysis/calibNai/ppBe14/ppBe.cpp
+ create mode 100644 analysis/calibNai/ppBe14/ppBe.h
+ create mode 100755 analysis/calibNai/ppBe14/ppBe14
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0366_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0367_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0368_ppBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0369_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0370_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0371_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0372_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0374_ppBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0375_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0376_ppBe14.root_test (84%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0377_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0378_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0379_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0380_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0381_ppBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0382_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0383_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0384_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0385_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0386_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0387_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0388_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0389_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0390_ppBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0391_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0392_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0393_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0394_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0395_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0396_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0397_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0398_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0399_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0400_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0401_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0402_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0403_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0404_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0405_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0406_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0407_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0408_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0409_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0410_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0411_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0412_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0413_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0414_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0415_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0416_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0417_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0418_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0419_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0420_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0421_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0422_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0423_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0424_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0425_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0426_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0427_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0428_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0429_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0430_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0433_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0434_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0435_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0436_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0437_ppBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0438_ppBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0439_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0448_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0449_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0450_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0451_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0452_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0453_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0454_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0455_ppBe14.root_test (86%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
