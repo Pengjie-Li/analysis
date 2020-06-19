@@ -250,7 +250,8 @@ class EspriPlasTime{
 		~EspriPlasTime(){}
 
 		double getPlasT(int side,double upTime,double downTime,double posY){
-			if(downTime!=-9999) return  downTime + timeOffset[side]+posPara[side]*(posY-225);
+			if(downTime!=-9999) return  downTime + positionCorr(side) + slewCorr(side) + tofBeam();
+			//if(downTime!=-9999) return  downTime + timeOffset[side]+posPara[side]*(posY-225);
 			else return -9999;
 		}
 };
