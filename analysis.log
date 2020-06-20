@@ -11286,3 +11286,171 @@ Branch master set up to track remote branch master from origin.
  rewrite analysis/generateChannels/ppBe12/rootfiles/run0365_ppBe12.root_test (88%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 6d86c1e] v1.0
+ 237 files changed, 6228 insertions(+), 8 deletions(-)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v19.swp (68%)
+ rewrite analysis/generateChannels/newNaiCalib/ppBe12/txt/.naiCalibOutput.txt_Be12_v13.swp (68%)
+ rename analysis/generateChannels/newNaiCalib/{ppBe12/txt/.naiCalibOutput.txt_Be12_v13.swp => ppBe14/txt/.naiCalibOutput.txt_Be14_v9.swp} (93%)
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14_v2/txt/.naiCalibOutput.txt.YbLq4v
+ create mode 100644 analysis/generateChannels/newNaiCalib/ppBe14_v2/txt/naiCalibOutput.txt
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0366_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0367_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0368_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0369_ppBe14.root_test (79%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0370_ppBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0371_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0372_ppBe14.root_test (79%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0374_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0375_ppBe14.root_test (73%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0376_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0377_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0378_ppBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0379_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0380_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0381_ppBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0382_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0383_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0384_ppBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0385_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0386_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0387_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0388_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0389_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0390_ppBe14.root_test (78%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0391_ppBe14.root_test (82%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0392_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0393_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0394_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0395_ppBe14.root_test (83%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0396_ppBe14.root_test (82%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0397_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0398_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0399_ppBe14.root_test (82%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0400_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0401_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0402_ppBe14.root_test (77%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0403_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0404_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0405_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0406_ppBe14.root_test (81%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0407_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0408_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0409_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0410_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0411_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0412_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0413_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0414_ppBe14.root_test (80%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0415_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0416_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0417_ppBe14.root_test (84%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0418_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0419_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0420_ppBe14.root_test (81%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0421_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0422_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0423_ppBe14.root_test (82%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0424_ppBe14.root_test (84%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0425_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0426_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0427_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0428_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0429_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0430_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0433_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0434_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0435_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0436_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0437_ppBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0438_ppBe14.root_test (85%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0439_ppBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0448_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0449_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0450_ppBe14.root_test (83%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0451_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0452_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0453_ppBe14.root_test (87%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0454_ppBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0455_ppBe14.root_test (90%)
+ rename analysis/generateChannels/newNaiCalib/ppBe10/txt/.naiCalibOutput.txt_Be10_v19.swp => merger/.logMerger.txt.swp (69%)
+ rename merger/{config/.configCalib_Be14_2.prm.swp => .loop.sh.swp} (93%)
+ rewrite merger/config/.configCalib_Be14.prm.swp (67%)
+ create mode 100644 merger/config/.configCalib_Be14.swp
+ rewrite merger/config/.configCalib_Be14_2.prm.swp (67%)
+ rewrite merger/rootfiles/run0374_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0375_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0380_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0382_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0386_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0392_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0397_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0411_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0414_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0427_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0429_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0435_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0441_analysed.root_test (71%)
+ rewrite merger/rootfiles/run0448_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0455_analysed.root_test (76%)
+ create mode 100644 merger/txt/.espriEnergyCalibParaBe10.txt.swp
+ create mode 100644 merger/txt/.plasBirksBe10.txt.swp
+ create mode 120000 merger/txt/naiCalibOutput.txt_Be14_ToF
+ create mode 100644 merger/v11_plasTime/'
+ create mode 100644 merger/v11_plasTime/AlphaEvent.h
+ create mode 100644 merger/v11_plasTime/AnalysingAlpha.h
+ create mode 100644 merger/v11_plasTime/AnalysingBDC.h
+ create mode 100644 merger/v11_plasTime/AnalysingBeam.h
+ create mode 100644 merger/v11_plasTime/AnalysingESPRI.h
+ create mode 100644 merger/v11_plasTime/AnalysingFDC0.h
+ create mode 100644 merger/v11_plasTime/AnalysingHOD.h
+ create mode 100644 merger/v11_plasTime/AnalysingMAIN.h
+ create mode 100644 merger/v11_plasTime/AnalysingPLA.h
+ create mode 100644 merger/v11_plasTime/AnalysingProton.h
+ create mode 100644 merger/v11_plasTime/AnalysingTELE.h
+ create mode 100644 merger/v11_plasTime/BdcEvent.h
+ create mode 100644 merger/v11_plasTime/BeamEvent.h
+ create mode 100644 merger/v11_plasTime/CalibESPRI.h
+ create mode 100644 merger/v11_plasTime/CalibTELE.h
+ create mode 100644 merger/v11_plasTime/Convert.h
+ create mode 100644 merger/v11_plasTime/CsiCal.h
+ create mode 100644 merger/v11_plasTime/DSSDEnergyCal.h
+ create mode 100644 merger/v11_plasTime/Detector.h
+ create mode 100644 merger/v11_plasTime/EspriEvent.h
+ create mode 100644 merger/v11_plasTime/EspriEvent.h_new
+ create mode 100644 merger/v11_plasTime/Fdc0Event.h
+ create mode 100644 merger/v11_plasTime/FindPixel.h
+ create mode 100755 merger/v11_plasTime/Makefile
+ create mode 100644 merger/v11_plasTime/MergeBDC.h
+ create mode 100644 merger/v11_plasTime/MergeESPRI.h
+ create mode 100644 merger/v11_plasTime/MergeFDC0.h
+ create mode 100644 merger/v11_plasTime/MergeHOD.h
+ create mode 100644 merger/v11_plasTime/MergeMAIN.h
+ create mode 100644 merger/v11_plasTime/MergePLA.h
+ create mode 100644 merger/v11_plasTime/MergeSample.h
+ create mode 100644 merger/v11_plasTime/MergeTELE.h
+ create mode 100755 merger/v11_plasTime/Merger
+ create mode 100644 merger/v11_plasTime/Merger.cpp
+ create mode 100644 merger/v11_plasTime/Merger.h
+ create mode 100644 merger/v11_plasTime/PhiFunction.h
+ create mode 100644 merger/v11_plasTime/PlaEvent.h
+ create mode 100644 merger/v11_plasTime/PositionESPRI.h
+ create mode 100644 merger/v11_plasTime/PositionTELE.h
+ create mode 100644 merger/v11_plasTime/ProtonEvent.h
+ create mode 100644 merger/v11_plasTime/TeleEvent.h
+ create mode 100644 merger/v11_plasTime/backup_1st_Merger.C
+ create mode 100644 merger/v11_plasTime/constant.h
+ create mode 100644 merger/v11_plasTime/convert.sh
+ create mode 100755 merger/v11_plasTime/distance.h
+ create mode 100755 merger/v11_plasTime/header.h
+ create mode 100644 merger/v11_plasTime/logMerger.txt
+ create mode 100644 merger/v11_plasTime/loop.sh
+ create mode 100644 merger/v11_plasTime/looprun.sh
+ create mode 100644 merger/v11_plasTime/main.cpp
+ create mode 100644 merger/v11_plasTime/mvRootVersion.sh
+ create mode 100644 merger/v11_plasTime/read.me
+ create mode 100644 merger/v11_plasTime/sampleESPRI.C
+ create mode 100644 merger/v11_plasTime/t1.txt
+ create mode 100644 merger/v11_plasTime/t2.txt
+ create mode 100644 merger/v11_plasTime/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
