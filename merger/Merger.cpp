@@ -76,13 +76,12 @@ void Merger::eventLoop(){
 		if(kMAIN)	 analysingMAIN();
 		if(kPLA)	 analysingPLA();
 		if(kBDC)	 analysingBDC();
-
+		setBeamEvent();
 		if(kFDC0)	 analysingFDC0();
 		if(kTELE)	 analysingTELE();
 		if(kHOD)	 analysingHOD();
 		if(kESPRI)	 analysingESPRI();
 
-		setBeamEvent();
 		setProtonEvent();
 		setAlphaEvent();
 		//cout<<"Event Number = "<<ientry<<endl;

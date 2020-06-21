@@ -45,6 +45,7 @@ class BeamEvent{
 			beamBeta = getF713Beta() + beamBetaOffset/SOL;
 			tofSBTTarget = getBeamFL()/(beamBeta*SOL);
 			beamEnergy = getF713Ek() + beamEnergyOffset;
+			//cout<<beamEnergy<<" "<<beamBeta<<getBeamFL()<<endl;
 
 		}
 		void setOutputBranch(TTree *tree){
@@ -58,6 +59,9 @@ class BeamEvent{
 			cout<<"Beam Energy before Target : "<<beamEnergy<<endl;
 			cout<<"Beam Tof SBT Target : "<<tofSBTTarget<<endl;
 			cout<<"beamFL= "<<getBeamFL()<<endl;
+		}
+		double getBeamToF(){
+			return tofSBTTarget;
 		}
 		
 };

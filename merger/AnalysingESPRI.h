@@ -9,6 +9,7 @@ void Merger::analysingESPRI(){
 	espriEvent->loadData(mergeESPRI);
 	espriEvent->loadTargetPosition(bdcEvent->getTargetPosotion());
 	espriEvent->loadBeamVector(bdcEvent->getBeamVector());
+	espriEvent->loadBeamToF(beamEvent->getBeamToF());
 	
 	espriEvent->setESPRIEvent();
 

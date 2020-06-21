@@ -6,6 +6,7 @@ class EspriEvent{
 		MergeESPRI *mergeData;
 		TVector3 *targetPosition;
 		TVector3 *vBeam;
+		double beamToF;
 
 		CalibESPRI *calibESPRI;
 		PositionESPRI *positionESPRI;
@@ -26,11 +27,15 @@ class EspriEvent{
 		void loadData(MergeESPRI *mergeESPRI){
 			mergeData = mergeESPRI;
 		}
+		void loadBeamToF(double tof){
+			beamToF = tof;
+		}
 
 		void init(){
 
 			mergeData = NULL;
 		
+			beamToF = NAN;
 			calibESPRI->init();
 			positionESPRI->init();
 		}
@@ -59,6 +64,7 @@ class EspriEvent{
 		void setESPRIEnergy(){
 
 			calibESPRI->loadData(mergeData);
+			calibESPRI->loadBeamToF(beamToF);
 			calibESPRI->calibrate();
 			
 		}
@@ -79,5 +85,14 @@ class EspriEvent{
 		}
 		double getAngle(){
 			return positionESPRI->getAngle();
+		}
+		int getEspriSide(){
+			return mergeData->getSide();
+		}
+		TVector3 * getTargetPosition(){
+			return targetPosition;
+		}
+		TVector3 * getRdcPosition(){
+			return positionESPRI->getRdcPosition();
 		}
 };
