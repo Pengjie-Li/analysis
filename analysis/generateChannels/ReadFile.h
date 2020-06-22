@@ -221,6 +221,8 @@ class ReadFile{
 		Double_t        beamBeta;
 		Double_t        tofSBTTarget;
 
+		Double_t        degraderThickness;
+		Double_t        ppDegraderE;
 		Double_t        ppPlasE;
 		Double_t        ppWinE;
 		Double_t        ppShtE;
@@ -517,6 +519,8 @@ class ReadFile{
 			inputTree->SetBranchAddress("vTele",&vTele);
 
 
+			inputTree->SetBranchAddress("degraderThickness",&degraderThickness);
+			inputTree->SetBranchAddress("ppDegraderE",&ppDegraderE);
 			inputTree->SetBranchAddress("ppPlasE",&ppPlasE);
 			inputTree->SetBranchAddress("ppWinE",&ppWinE);
 			inputTree->SetBranchAddress("ppShtE",&ppShtE);
@@ -679,6 +683,8 @@ class ReadFile{
 			tree->Branch("csiHitQPed",csiHitQPed,"csiHitQPed[csiHit]/D");
 			tree->Branch("csiHitTCal",csiHitTCal,"csiHitTCal[csiHit]/D");
 	
+			tree->Branch("ppDegraderE",&ppDegraderE,"ppDegraderE/D");
+			tree->Branch("degraderThickness",&degraderThickness,"degraderThickness/D");
 			tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
                         tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
                         tree->Branch("ppShtE",&ppShtE,"ppShtE/D");

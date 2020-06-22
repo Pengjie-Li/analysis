@@ -194,6 +194,12 @@ class MergeESPRI:public Convert{
 			tree->Branch("plasTRef",plasTRef,"plasTRef[4]/D");
 		}
 
+		int getRunNumber(){
+			return RunNumber;
+		}
+		int getEventNumber(){
+			return EventNumber;
+		}
 		double getRdcX(int side){
 			return rdcX[side];
 		}

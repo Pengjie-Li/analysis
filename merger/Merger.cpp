@@ -104,7 +104,7 @@ void Merger::print(){
 	//printBeam();
 	//printESPRI();
 	//printProton();
-	printTELE();
+//	printTELE();
 	//printAlpha();
 	//printFDC0();
 }
