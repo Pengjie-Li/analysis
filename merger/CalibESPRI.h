@@ -264,12 +264,13 @@ class CalibESPRI{
 			int run = mergeData->getRunNumber();
 			int evt = mergeData->getEventNumber();
 			double sf = 1;
-			if((run<=433&&run>=431)||(run<=447&&run>=440)) sf = 0;				
-			else if(run==434) sf = 1.75754;
-			else if(run ==435) sf = 1.12507;
-			else if((run == 436&&evt>1000000)||run == 437) sf = 1.44163;
-			else if(run ==438) sf = 2.39333;
-			else if(run ==439) sf = 3.47167;
+			//if((run<=433&&run>=431)||(run<=447&&run>=440)) sf = 0;				
+			//else if(run==434) sf = 1.75754;
+			//else if(run ==435) sf = 1.12507;
+			//else if((run == 436&&evt>1000000)||run == 437) sf = 1.44163;
+			//else if(run ==438) sf = 2.39333;
+			//else if(run ==439) sf = 3.47167;
+			if(run>=431&&run<=447) sf = 0;				
 			else if(run>=448) sf = 1.52916;
 			else {}
 			//cout<<run<<" "<<sf<<endl;

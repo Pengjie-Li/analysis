@@ -813,6 +813,9 @@ class ReadFile{
 		double getEspriNaiE(){
 			return espriNaiE;
 		}
+		double getEspriToF(){
+			return espriPlasT;
+		}
 		double getEspriPlasE(){
 			return espriPlasE;
 		}

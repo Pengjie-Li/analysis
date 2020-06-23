@@ -11804,3 +11804,133 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v13_PlasTime/tree.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a3efaa5] v1.0
+ 342 files changed, 7036 insertions(+), 3 deletions(-)
+ rewrite analysis/generateChannels/ppBe10/ppBe10 (73%)
+ rewrite analysis/generateChannels/ppBe10/rootfiles/run0298_ppBe10.root_test (67%)
+ rewrite analysis/generateChannels/ppBe12/ppBe12 (73%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0331_ppBe12.root_test (62%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0332_ppBe12.root_test (70%)
+ rewrite analysis/generateChannels/ppBe12/rootfiles/run0333_ppBe12.root_test (65%)
+ rewrite analysis/generateChannels/ppBe14/ppBe14 (73%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0373_ppBe14.root_test (64%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0441_ppBe14.root_test (71%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0442_ppBe14.root_test (67%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0443_ppBe14.root_test (67%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0444_ppBe14.root_test (67%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0445_ppBe14.root_test (67%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0446_ppBe14.root_test (67%)
+ rewrite analysis/generateChannels/ppBe14/rootfiles/run0447_ppBe14.root_test (67%)
+ rewrite merger/Merger (86%)
+ rewrite merger/rootfiles/run0434_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0437_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0438_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0448_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0449_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0452_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0453_analysed.root_test (82%)
+ rewrite merger/rootfiles/run0454_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0455_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0458_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0459_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0462_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0464_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0466_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0469_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0475_analysed.root_test (83%)
+ rewrite merger/rootfiles/run0477_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0495_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0500_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0501_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0502_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0504_analysed.root_test (80%)
+ rewrite merger/rootfiles/run0510_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0511_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0512_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0514_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0515_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0517_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0520_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0523_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0527_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0529_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0540_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0546_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0548_analysed.root_test (70%)
+ rewrite merger/rootfiles/run0550_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0555_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0557_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0558_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0564_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0571_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0574_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0577_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0587_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0588_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0591_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0592_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0595_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0597_analysed.root_test (100%)
+ create mode 100644 merger/v14_NaiRight3/'
+ create mode 100644 merger/v14_NaiRight3/AlphaEvent.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingAlpha.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingBDC.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingBeam.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingESPRI.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingFDC0.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingHOD.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingMAIN.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingPLA.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingProton.h
+ create mode 100644 merger/v14_NaiRight3/AnalysingTELE.h
+ create mode 100644 merger/v14_NaiRight3/BdcEvent.h
+ create mode 100644 merger/v14_NaiRight3/BeamEvent.h
+ create mode 100644 merger/v14_NaiRight3/CalibESPRI.h
+ create mode 100644 merger/v14_NaiRight3/CalibTELE.h
+ create mode 100644 merger/v14_NaiRight3/Convert.h
+ create mode 100644 merger/v14_NaiRight3/CsiCal.h
+ create mode 100644 merger/v14_NaiRight3/DSSDEnergyCal.h
+ create mode 100644 merger/v14_NaiRight3/DegraderPosition.h
+ create mode 100644 merger/v14_NaiRight3/Detector.h
+ create mode 100644 merger/v14_NaiRight3/EspriEvent.h
+ create mode 100644 merger/v14_NaiRight3/EspriEvent.h_new
+ create mode 100644 merger/v14_NaiRight3/Fdc0Event.h
+ create mode 100644 merger/v14_NaiRight3/FindPixel.h
+ create mode 100755 merger/v14_NaiRight3/Makefile
+ create mode 100644 merger/v14_NaiRight3/MergeBDC.h
+ create mode 100644 merger/v14_NaiRight3/MergeESPRI.h
+ create mode 100644 merger/v14_NaiRight3/MergeFDC0.h
+ create mode 100644 merger/v14_NaiRight3/MergeHOD.h
+ create mode 100644 merger/v14_NaiRight3/MergeMAIN.h
+ create mode 100644 merger/v14_NaiRight3/MergePLA.h
+ create mode 100644 merger/v14_NaiRight3/MergeSample.h
+ create mode 100644 merger/v14_NaiRight3/MergeTELE.h
+ rename merger/{ => v14_NaiRight3}/Merger (100%)
+ create mode 100644 merger/v14_NaiRight3/Merger.cpp
+ create mode 100644 merger/v14_NaiRight3/Merger.h
+ create mode 100644 merger/v14_NaiRight3/PhiFunction.h
+ create mode 100644 merger/v14_NaiRight3/PlaEvent.h
+ create mode 100644 merger/v14_NaiRight3/PlasTime.h
+ create mode 100644 merger/v14_NaiRight3/PositionESPRI.h
+ create mode 100644 merger/v14_NaiRight3/PositionTELE.h
+ create mode 100644 merger/v14_NaiRight3/ProtonEvent.h
+ create mode 100644 merger/v14_NaiRight3/ProtonEvent.h_local
+ create mode 100644 merger/v14_NaiRight3/TeleEvent.h
+ create mode 100644 merger/v14_NaiRight3/backup_1st_Merger.C
+ create mode 100644 merger/v14_NaiRight3/constant.h
+ create mode 100644 merger/v14_NaiRight3/convert.sh
+ create mode 100755 merger/v14_NaiRight3/distance.h
+ create mode 100755 merger/v14_NaiRight3/header.h
+ create mode 100644 merger/v14_NaiRight3/logMerger.txt
+ create mode 100644 merger/v14_NaiRight3/loop.sh
+ create mode 100644 merger/v14_NaiRight3/looprun.sh
+ create mode 100644 merger/v14_NaiRight3/main.cpp
+ create mode 100644 merger/v14_NaiRight3/mvRootVersion.sh
+ create mode 100644 merger/v14_NaiRight3/read.me
+ create mode 100644 merger/v14_NaiRight3/sampleESPRI.C
+ create mode 100644 merger/v14_NaiRight3/t1.txt
+ create mode 100644 merger/v14_NaiRight3/t2.txt
+ create mode 100644 merger/v14_NaiRight3/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
