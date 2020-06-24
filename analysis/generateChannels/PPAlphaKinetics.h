@@ -218,7 +218,7 @@ class PPAlphaKinetics{
 					//r3.setTheta(theta3);
 					//cout<<cosPhi12<<" "<<cosTheta1To2<<endl;
 					//cout<<theta3<<" "<<r3.theta*TMath::RadToDeg()<<" "<<cosTheta3<<endl;
-					r3.print();
+					//r3.print();
 				}
 				void setParticle3BeamSystem(){
 					r3B.setName("r3B");

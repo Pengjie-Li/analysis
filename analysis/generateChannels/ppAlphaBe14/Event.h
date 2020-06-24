@@ -149,7 +149,8 @@ class Event{
 			return gc->isBeam(rf->getTof713(),rf->getF13Q());
 		}
 		bool isProton(){
-			return (gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE()))||(gc->isProtonToF(rf->getEspriToF(),rf->getEspriNaiE()));
+			// dEE and dE-ToF - Protons 
+			return (gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE()))||(gc->isProtonToF(rf->getEspriToF(),rf->getEspriPlasE()));
 		}
 		bool isAlpha(){
 			return gc->isAlpha(rf->getTeleCsiE(),rf->getTeleDssdE());

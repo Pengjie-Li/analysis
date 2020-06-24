@@ -38,17 +38,19 @@ class GateCut{
 	private:
 		TCutG *beamCut;
 		TCutG *protonCut;
+		TCutG *protonToFCut;
 		TCutG *alphaCut;
-		TCutG *prAngleCut;
 		HodCut *hodCut;
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe12.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutProton.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutProtonToF.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutAlpha.C");
 		}
 		void getCut(){
 			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Beam");
 			protonCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Proton");
+			protonToFCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("ProtonToF");
 			alphaCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Alpha");
 		}
 	public:
@@ -66,6 +68,9 @@ class GateCut{
 		}
 		bool isProton(double E,double dE){
 			return protonCut->IsInside(E,dE);
+		}
+		bool isProtonToF(double tof,double dE){
+			return protonToFCut->IsInside(tof,dE);
 		}
 		bool isAlpha(double E,double dE){
 			return alphaCut->IsInside(E,dE);
@@ -86,7 +91,8 @@ class Event{
 			return gc->isBeam(rf->getTof713(),rf->getF13Q());
 		}
 		bool isProton(){
-			return gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE());
+			//return gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE());
+			return (gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE()))||(gc->isProtonToF(rf->getEspriToF(),rf->getEspriPlasE()));
 		}
 		bool isAlpha(){
 			return gc->isAlpha(rf->getTeleCsiE(),rf->getTeleDssdE());
