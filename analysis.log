@@ -12312,3 +12312,11 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ac66e52] v1.0
+ 7 files changed, 4 insertions(+)
+ rewrite analysis/generateChannels/ppAlphaBe14/.Event.h.swp (75%)
+ rename analysis/generateChannels/ppAlphaBe14/.Event.h.swp => espri/convert/.ESPRIReadRaw.h.swp (66%)
+ rename merger/{.logMerger.txt.swp => .CalibESPRI.h.swp} (52%)
+ rewrite merger/.logMerger.txt.swp (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
