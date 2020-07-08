@@ -95,6 +95,7 @@ class GateCut{
 	private:
 		TCutG *beamCut;
 		TCutG *protonCut;
+		TCutG *deutronCut;
 		TCutG *protonToFCut;
 		TCutG *alphaCut;
 		TCutG *prAngleCut;
@@ -102,12 +103,14 @@ class GateCut{
 		void loadCut(){
                         gROOT->ProcessLine(".x inputRootfiles/cutBeamBe14.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutProton.C");
+                        gROOT->ProcessLine(".x inputRootfiles/cutDeutron.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutProtonToF.C");
                         gROOT->ProcessLine(".x inputRootfiles/cutAlpha.C");
 		}
 		void getCut(){
 			beamCut		= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Beam");
 			protonCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Proton");
+			deutronCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Deutron");
 			protonToFCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("ProtonToF");
 			alphaCut	= (TCutG*)gROOT->GetListOfSpecials()->FindObject("Alpha");
 		}
@@ -130,6 +133,9 @@ class GateCut{
 		bool isProtonToF(double tof,double dE){
 			return protonToFCut->IsInside(tof,dE);
 		}
+		bool isNoDeutron(double E,double dE){
+			return !(deutronCut->IsInside(E,dE));
+		}
 		bool isAlpha(double E,double dE){
 			return alphaCut->IsInside(E,dE);
 		}
@@ -150,7 +156,20 @@ class Event{
 		}
 		bool isProton(){
 			// dEE and dE-ToF - Protons 
-			return (gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE()))||(gc->isProtonToF(rf->getEspriToF(),rf->getEspriPlasE()));
+			// remove events from deutrons
+			return isEspriRDCHit()&&isEspriPlasTime()&&(isProtonDEE()||isProtonToF());
+		}
+		bool isEspriRDCHit(){
+			return rf->isEspriRDCHit();
+		}
+		bool isEspriPlasTime(){
+			return rf->isEspriPlasTime();
+		}
+		bool isProtonDEE(){
+			return (gc->isProton(rf->getEspriNaiE(),rf->getEspriPlasE()));
+		}
+		bool isProtonToF(){
+			return (gc->isProtonToF(rf->getEspriToF(),rf->getEspriPlasE())&&gc->isNoDeutron(rf->getEspriNaiE(),rf->getEspriPlasE()));
 		}
 		bool isAlpha(){
 			return gc->isAlpha(rf->getTeleCsiE(),rf->getTeleDssdE());

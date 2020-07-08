@@ -816,6 +816,12 @@ class ReadFile{
 		double getEspriToF(){
 			return espriPlasT;
 		}
+		bool isEspriRDCHit(){
+			return (espriAngle>0);
+		}
+		bool isEspriPlasTime(){
+			return (espriPlasT>0);
+		}
 		double getEspriPlasE(){
 			return espriPlasE;
 		}
