@@ -12342,3 +12342,146 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f096ce7] v1.0
+ 153 files changed, 1744 insertions(+), 30 deletions(-)
+ create mode 100644 analysis/calibTof/generate/.Event.h.swp
+ create mode 100644 analysis/calibTof/generate/.Makefile.swp
+ create mode 100644 analysis/calibTof/generate/.configPPBe.prm.swp
+ create mode 100644 analysis/calibTof/generate/.convert.sh.swp
+ create mode 100644 analysis/calibTof/generate/.loop.sh.swp
+ create mode 100644 analysis/calibTof/generate/.ppBe.cpp.swp
+ create mode 100644 analysis/calibTof/generate/.ppBe.h.swp
+ create mode 100644 analysis/calibTof/generate/Event.h
+ create mode 100755 analysis/calibTof/generate/Makefile
+ create mode 100644 analysis/calibTof/generate/PPAlphaKinetics.h
+ create mode 120000 analysis/calibTof/generate/ReadFile.h
+ create mode 100644 analysis/calibTof/generate/configPPBe.prm
+ create mode 100644 analysis/calibTof/generate/convert.sh
+ create mode 100755 analysis/calibTof/generate/header.h
+ create mode 120000 analysis/calibTof/generate/inputRootfiles
+ create mode 100644 analysis/calibTof/generate/loop.sh
+ create mode 100644 analysis/calibTof/generate/main.cpp
+ create mode 100755 analysis/calibTof/generate/plasTime
+ create mode 100644 analysis/calibTof/generate/ppBe.cpp
+ create mode 100644 analysis/calibTof/generate/ppBe.h
+ create mode 100755 analysis/calibTof/generate/ppaBe14
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0298_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0299_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0300_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0301_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0302_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0303_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0304_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0305_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0306_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0307_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0308_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0309_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0310_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0311_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0312_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0313_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0314_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0315_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0316_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0317_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0318_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0319_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0320_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0321_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0322_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0323_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0324_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0325_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0326_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0327_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0328_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0329_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0330_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/test.C
+ create mode 100644 analysis/calibTof/generate/tree.C
+ rewrite analysis/generateChannels/ppAlphaBe14/ppaBe14 (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0366_ppaBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0367_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0368_ppaBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0369_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0370_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0371_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0372_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0374_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0375_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0376_ppaBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0377_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0378_ppaBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0379_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0380_ppaBe14.root_test (94%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0381_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0382_ppaBe14.root_test (94%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0383_ppaBe14.root_test (88%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0384_ppaBe14.root_test (94%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0385_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0386_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0387_ppaBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0388_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0389_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0390_ppaBe14.root_test (94%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0391_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0392_ppaBe14.root_test (91%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0393_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0394_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0395_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0396_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0397_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0398_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0399_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0400_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0401_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0402_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0403_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0404_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0405_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0406_ppaBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0407_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0408_ppaBe14.root_test (89%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0409_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0410_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0411_ppaBe14.root_test (86%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0412_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0413_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0414_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0415_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0416_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0417_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0418_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0419_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0420_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0421_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0422_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0423_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0424_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0425_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0426_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0427_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0428_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0429_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0430_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0433_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0434_ppaBe14.root_test (94%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0435_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0436_ppaBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0437_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0438_ppaBe14.root_test (91%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0439_ppaBe14.root_test (90%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0448_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0449_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0450_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0451_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0452_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0453_ppaBe14.root_test (93%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0454_ppaBe14.root_test (92%)
+ rewrite analysis/generateChannels/ppAlphaBe14/rootfiles/run0455_ppaBe14.root_test (90%)
+ rename merger/rootfiles/{ => backupGate}/cutProton.C (100%)
+ create mode 100644 merger/rootfiles/cutDeutron.C
+ rewrite merger/rootfiles/cutProton.C (81%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

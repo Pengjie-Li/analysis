@@ -820,7 +820,7 @@ class ReadFile{
 			return (espriAngle>0);
 		}
 		bool isEspriPlasTime(){
-			return (espriPlasT>0);
+			return (espriPlasT>0)||(plasTRaw[0]!=-9999)||(plasTRaw[2]!=-9999);
 		}
 		double getEspriPlasE(){
 			return espriPlasE;
