@@ -1,0 +1,6 @@
+2019-12-19 : remove Parameter 0.7 for stc and add Tch Offset 27 in src
+2019-12-31: 	1. add plasHit and plasSide,
+		2. for plasTRaw add Overflow = 2000, underflow = 0 , no cut raw to check plasTdcRaw0-3 vector
+2020-01-01:	1. add hit structure to rdc plas nai and espri, hit, hitSide
+2020-01-02:	1. after we have espriHit, remove useless plasHit, rdcHit,and naiHit
+2020-01-03:	1. clear useless naiHit, remove badHit,make sure nai,plas,rdc on the same side, then naiHit has correct meanning

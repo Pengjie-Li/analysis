@@ -12485,3 +12485,174 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/cutProton.C (81%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9ca8c25] v1.0
+ 178 files changed, 148 insertions(+), 2 deletions(-)
+ rename analysis/calibTof/generate/{.loop.sh.swp => .Event.h.swp} (65%)
+ rewrite analysis/calibTof/generate/.loop.sh.swp (67%)
+ create mode 100644 analysis/calibTof/generate/rootfiles/.haddBe10.sh.swp
+ create mode 100644 analysis/calibTof/generate/rootfiles/.haddBe12.sh.swp
+ create mode 100644 analysis/calibTof/generate/rootfiles/.haddBe14.sh.swp
+ create mode 100644 analysis/calibTof/generate/rootfiles/haddBe10.sh
+ create mode 100644 analysis/calibTof/generate/rootfiles/haddBe12.sh
+ create mode 100644 analysis/calibTof/generate/rootfiles/haddBe14.sh
+ create mode 100644 analysis/calibTof/generate/rootfiles/plasTime.root_Be10
+ create mode 100644 analysis/calibTof/generate/rootfiles/plasTime.root_Be12
+ create mode 100644 analysis/calibTof/generate/rootfiles/plasTime.root_Be14
+ rewrite analysis/calibTof/generate/rootfiles/run0298_plasTime.root_test (91%)
+ rewrite analysis/calibTof/generate/rootfiles/run0299_plasTime.root_test (90%)
+ rewrite analysis/calibTof/generate/rootfiles/run0300_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0301_plasTime.root_test (92%)
+ rewrite analysis/calibTof/generate/rootfiles/run0302_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0303_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0304_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0305_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0306_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0307_plasTime.root_test (86%)
+ rewrite analysis/calibTof/generate/rootfiles/run0308_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0309_plasTime.root_test (85%)
+ rewrite analysis/calibTof/generate/rootfiles/run0310_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0311_plasTime.root_test (86%)
+ rewrite analysis/calibTof/generate/rootfiles/run0312_plasTime.root_test (85%)
+ rewrite analysis/calibTof/generate/rootfiles/run0313_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0314_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0315_plasTime.root_test (78%)
+ rewrite analysis/calibTof/generate/rootfiles/run0316_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0317_plasTime.root_test (84%)
+ rewrite analysis/calibTof/generate/rootfiles/run0318_plasTime.root_test (84%)
+ rewrite analysis/calibTof/generate/rootfiles/run0319_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0320_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0321_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0322_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0323_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0324_plasTime.root_test (82%)
+ rewrite analysis/calibTof/generate/rootfiles/run0325_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0326_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0327_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0328_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0329_plasTime.root_test (78%)
+ rewrite analysis/calibTof/generate/rootfiles/run0330_plasTime.root_test (86%)
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0331_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0332_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0333_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0334_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0335_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0336_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0337_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0338_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0339_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0340_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0341_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0342_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0343_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0344_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0345_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0346_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0347_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0348_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0349_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0350_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0351_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0352_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0353_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0354_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0355_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0356_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0357_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0358_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0359_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0360_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0361_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0362_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0363_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0364_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0365_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0366_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0367_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0368_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0369_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0370_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0371_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0372_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0373_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0374_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0375_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0376_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0377_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0378_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0379_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0380_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0381_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0382_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0383_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0384_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0385_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0386_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0387_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0388_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0389_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0390_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0391_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0392_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0393_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0394_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0395_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0396_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0397_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0398_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0399_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0400_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0401_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0402_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0403_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0404_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0405_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0406_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0407_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0408_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0409_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0410_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0411_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0412_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0413_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0414_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0415_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0416_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0417_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0418_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0419_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0420_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0421_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0422_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0423_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0424_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0425_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0426_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0427_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0428_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0429_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0430_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0433_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0434_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0435_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0436_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0437_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0438_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0439_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0441_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0442_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0443_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0444_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0445_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0446_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0447_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0448_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0449_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0450_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0451_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0452_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0453_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0454_plasTime.root_test
+ create mode 100644 analysis/calibTof/generate/rootfiles/run0455_plasTime.root_test
+ create mode 100644 analysis/generateChannels/ppAlphaBe12/.loop.sh.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
