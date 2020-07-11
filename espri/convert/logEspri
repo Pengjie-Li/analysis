@@ -4,3 +4,4 @@
 2020-01-01:	1. add hit structure to rdc plas nai and espri, hit, hitSide
 2020-01-02:	1. after we have espriHit, remove useless plasHit, rdcHit,and naiHit
 2020-01-03:	1. clear useless naiHit, remove badHit,make sure nai,plas,rdc on the same side, then naiHit has correct meanning
+2020-07-11 1. update overflow and underflow of plasTime -100 - 2200

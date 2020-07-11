@@ -186,7 +186,7 @@ class ESPRIPlasRaw{
 		double plasUnderflow;
 	public:
 		ESPRIPlasRaw(){
-			plasOverflow = 2000;
+			plasOverflow = 2200;
 			plasUnderflow = 0;
 		}
 		void init(){
