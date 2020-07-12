@@ -186,8 +186,9 @@ class ESPRIPlasRaw{
 		double plasUnderflow;
 	public:
 		ESPRIPlasRaw(){
-			plasOverflow = 2200;
-			plasUnderflow = 0;
+			//plasOverflow = 2100;
+			plasOverflow = 6000;
+			plasUnderflow = -100;
 		}
 		void init(){
 			plasTimeRef = -9999;
@@ -238,7 +239,7 @@ class ESPRIPlasRaw{
 				for (int j = 0; j < tdcPlasRaw[i].size(); ++j) {
 					//cout<<i<<":"<<j<<":"<<tdcPlasRaw[i][j]<<endl;	
 					if(tdcPlasRaw[i][j]<plasOverflow&&tdcPlasRaw[i][j]>plasUnderflow){
-						plasTRaw[i] = tdcPlasRaw[i][j];
+						if(plasTRaw[i]==-9999||plasTRaw[i]>tdcPlasRaw[i][j]) plasTRaw[i] = tdcPlasRaw[i][j];
 					}
 				}
 				//cout<<"plasTRaw "<<i<<":"<<plasTRaw[i]<<endl;

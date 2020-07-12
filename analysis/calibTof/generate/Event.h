@@ -69,7 +69,8 @@ class Event{
 		bool isProton(){
 			// dEE and dE-ToF - Protons 
 			// remove events from deutrons
-			return isEspriRDCHit()&&isEspriPlasTime()&&(isProtonDEE()||isProtonToF());
+			//return isEspriRDCHit()&&isEspriPlasTime()&&(isProtonDEE()||isProtonToF());
+			return isEspriRDCHit()&&isEspriPlasTime();
 		}
 		bool isEspriRDCHit(){
 			return rf->isEspriRDCHit();

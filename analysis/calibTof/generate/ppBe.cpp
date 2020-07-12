@@ -42,14 +42,14 @@ void PPBe::eventLoop(){
 		if(event->selectEvent()){
 			tree->Fill();
 
-			cout<<"Event Number = "<<ientry<<endl;
+			//cout<<"Event Number = "<<ientry<<endl;
 			//print();
-			//if(nentries<1000) {
+			if(nentries<1000) {
 			//	cout<<endl;
 			//	cout<<"Event Number = "<<ientry<<endl;
 
 			//	print();
-			//}
+			}
 		}
 
 	}

@@ -1,0 +1,10 @@
+1st Level: 
+	readRaw->convertRaw->extractHit
+	class:ESPRIReadRaw; ESPRIConvertCal;ESPRIHit
+2nd Level:
+	ESPRIReadRaw: intermediate class as a setter and getter
+	ESPRITdcRaw; ESPRINaiRaw; ESPRIPlasRaw
+3rd Level:
+	ESPRITdcRaw: rdcTDC, plasTDC, plasTimeRef
+	ESPRINaiRaw: naiQRaw[4][7]
+	ESPRIPlasRaw: plasQRaw[4],plasTRaw[4](0-2100), plasTimeRef

@@ -181,6 +181,10 @@ class ReadFile{
 		Double_t        hodBarTCal[40];
 		Double_t        hodBarQCal[40];
 
+		vector<int>     *plasTdcRaw0;
+                vector<int>     *plasTdcRaw1;
+                vector<int>     *plasTdcRaw2;
+                vector<int>     *plasTdcRaw3;
 
 		Int_t           rdcHit;
 		Int_t           rdcHitSide[2];
@@ -289,8 +293,12 @@ class ReadFile{
 			FDC0_Track_dXY	= 0;
 
 
+                        plasTdcRaw0 = 0;
+                        plasTdcRaw1 = 0;
+                        plasTdcRaw2 = 0;
+                        plasTdcRaw3 = 0;
 
-			// Set branch addresses.
+           			// Set branch addresses.
 			inputTree->SetBranchAddress("RunNumber",&RunNumber);
 			inputTree->SetBranchAddress("EventNumber",&EventNumber);
 			inputTree->SetBranchAddress("CoincidenceTrigger",&CoincidenceTrigger);
@@ -406,6 +414,12 @@ class ReadFile{
 			inputTree->SetBranchAddress("hodQCal",hodQCal);
 			inputTree->SetBranchAddress("hodBarTCal",hodBarTCal);
 			inputTree->SetBranchAddress("hodBarQCal",hodBarQCal);
+
+			inputTree->SetBranchAddress("plasTdcRaw0",&plasTdcRaw0);
+                        inputTree->SetBranchAddress("plasTdcRaw1",&plasTdcRaw1);
+                        inputTree->SetBranchAddress("plasTdcRaw2",&plasTdcRaw2);
+                        inputTree->SetBranchAddress("plasTdcRaw3",&plasTdcRaw3);
+
 
 			inputTree->SetBranchAddress("rdcHit",&rdcHit);
 			inputTree->SetBranchAddress("rdcHitSide",rdcHitSide);
@@ -659,6 +673,10 @@ class ReadFile{
                         tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
                         tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
 
+			tree->Branch("plasTdcRaw0",&plasTdcRaw0);
+                        tree->Branch("plasTdcRaw1",&plasTdcRaw1);
+                        tree->Branch("plasTdcRaw2",&plasTdcRaw2);
+                        tree->Branch("plasTdcRaw3",&plasTdcRaw3);
 			tree->Branch("rdcHit",&rdcHit,"rdcHit/I");
 			tree->Branch("rdcHitSide",rdcHitSide,"rdcHitSide[rdcHit]/I");
 			tree->Branch("rdcHitX",rdcHitX,"rdcHitX[rdcHit]/D");
