@@ -12692,3 +12692,570 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/.vim.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master d014742] v1.0
+ 619 files changed, 4262 insertions(+), 10 deletions(-)
+ rewrite analysis/calibTof/generate/.Event.h.swp (69%)
+ rewrite analysis/calibTof/generate/plasTime (80%)
+ rewrite analysis/calibTof/generate/rootfiles/plasTime.root_Be10 (100%)
+ rewrite analysis/calibTof/generate/rootfiles/run0298_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0299_plasTime.root_test (90%)
+ rewrite analysis/calibTof/generate/rootfiles/run0300_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0301_plasTime.root_test (89%)
+ rewrite analysis/calibTof/generate/rootfiles/run0302_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0303_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0304_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0305_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0306_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0307_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0308_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0309_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0310_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0311_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0312_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0313_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0314_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0315_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0316_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0317_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0318_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0319_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0320_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0321_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0322_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0323_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0324_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0325_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0326_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0327_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0328_plasTime.root_test (93%)
+ rewrite analysis/calibTof/generate/rootfiles/run0329_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0330_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0331_plasTime.root_test (93%)
+ rewrite analysis/calibTof/generate/rootfiles/run0332_plasTime.root_test (94%)
+ rewrite analysis/calibTof/generate/rootfiles/run0333_plasTime.root_test (93%)
+ rewrite analysis/calibTof/generate/rootfiles/run0334_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0335_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0336_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0337_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0338_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0339_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0340_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0341_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0342_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0343_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0344_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0345_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0346_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0347_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0348_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0349_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0350_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0351_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0352_plasTime.root_test (89%)
+ rewrite analysis/calibTof/generate/rootfiles/run0353_plasTime.root_test (89%)
+ rewrite analysis/calibTof/generate/rootfiles/run0354_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0355_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0356_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0357_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0358_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0359_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0360_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0361_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0362_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0363_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0364_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0365_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0366_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0367_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0368_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0369_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0370_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0371_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0372_plasTime.root_test (89%)
+ rewrite analysis/calibTof/generate/rootfiles/run0373_plasTime.root_test (92%)
+ rewrite analysis/calibTof/generate/rootfiles/run0374_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0375_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0376_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0377_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0378_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0379_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0380_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0381_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0382_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0383_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0384_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0385_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0386_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0387_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0388_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0389_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0390_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0391_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0392_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0393_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0394_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0395_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0396_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0397_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0398_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0399_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0400_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0401_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0402_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0403_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0404_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0405_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0406_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0407_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0408_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0409_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0410_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0411_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0412_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0413_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0414_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0415_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0416_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0417_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0418_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0419_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0420_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0421_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0422_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0423_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0424_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0425_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0426_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0427_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0428_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0429_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0430_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0433_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0434_plasTime.root_test (86%)
+ rewrite analysis/calibTof/generate/rootfiles/run0435_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0436_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0437_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0438_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0439_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0441_plasTime.root_test (90%)
+ rewrite analysis/calibTof/generate/rootfiles/run0442_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0443_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0444_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0445_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0446_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0447_plasTime.root_test (69%)
+ rewrite analysis/calibTof/generate/rootfiles/run0448_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0449_plasTime.root_test (87%)
+ rewrite analysis/calibTof/generate/rootfiles/run0450_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0451_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0452_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0453_plasTime.root_test (89%)
+ rewrite analysis/calibTof/generate/rootfiles/run0454_plasTime.root_test (88%)
+ rewrite analysis/calibTof/generate/rootfiles/run0455_plasTime.root_test (88%)
+ rewrite analysis/generateChannels/.ReadFile.h.swp (77%)
+ rename analysis/generateChannels/.ReadFile.h.swp => espri/convert/.ConvertESPRI.C.swp (50%)
+ create mode 100644 espri/convert/.ConvertESPRI.swp
+ rewrite espri/convert/.ESPRIConvertCal.h.swp (86%)
+ rename analysis/calibTof/generate/.Event.h.swp => espri/convert/.ESPRIHit.h.swp (65%)
+ create mode 100644 espri/convert/.loop.sh.swp
+ create mode 100644 espri/convert/.structrue.swp
+ rewrite espri/convert/ConvertESPRI (64%)
+ create mode 100644 espri/convert/rootfiles/run0100_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0101_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0102_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0103_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0104_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0105_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0106_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0107_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0108_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0109_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0110_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0111_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0112_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0113_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0114_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0115_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0116_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0117_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0119_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0120_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0121_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0122_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0123_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0124_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0125_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0126_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0127_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0128_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0129_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0130_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0131_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0132_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0133_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0134_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0135_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0136_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0137_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0138_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0139_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0140_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0141_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0142_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0143_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0144_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0145_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0146_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0147_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0148_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0149_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0150_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0151_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0152_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0153_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0154_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0155_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0156_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0157_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0158_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0159_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0160_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0161_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0162_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0163_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0164_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0165_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0166_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0167_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0168_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0169_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0170_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0171_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0172_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0173_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0174_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0175_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0176_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0177_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0179_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0180_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0181_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0182_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0183_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0184_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0185_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0186_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0187_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0188_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0189_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0190_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0191_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0192_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0207_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0208_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0209_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0210_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0211_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0212_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0213_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0214_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0215_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0216_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0217_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0218_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0219_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0220_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0221_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0222_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0223_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0225_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0226_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0231_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0232_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0233_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0234_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0235_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0237_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0238_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0239_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0240_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0241_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0242_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0243_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0244_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0245_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0246_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0247_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0248_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0249_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0250_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0251_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0252_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0253_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0254_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0255_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0256_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0257_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0258_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0259_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0260_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0261_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0262_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0263_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0264_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0265_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0266_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0267_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0268_ESPRI.root_test (80%)
+ create mode 100644 espri/convert/rootfiles/run0269_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0270_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0271_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0272_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0273_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0274_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0275_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0276_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0277_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0278_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0279_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0283_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0284_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0285_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0286_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0287_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0288_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0289_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0290_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0291_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0292_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0293_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0294_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0295_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0296_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0297_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0298_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0299_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0301_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0302_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0303_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0304_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0305_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0306_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0307_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0308_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0309_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0310_ESPRI.root_test (77%)
+ create mode 100644 espri/convert/rootfiles/run0311_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0312_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0313_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0314_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0315_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0316_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0317_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0318_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0319_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0320_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0321_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0322_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0323_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0324_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0325_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0326_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0327_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0328_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0329_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0330_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0331_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0332_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0333_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0334_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0335_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0336_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0337_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0338_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0339_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0340_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0341_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0342_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0343_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0344_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0345_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0346_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0347_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0348_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0349_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0350_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0351_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0352_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0353_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0354_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0355_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0356_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0357_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0358_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0359_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0360_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0361_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0362_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0363_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0364_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0365_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0366_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0367_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0368_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0369_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0370_ESPRI.root_test (78%)
+ create mode 100644 espri/convert/rootfiles/run0371_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0372_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0374_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0375_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0376_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0377_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0378_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0379_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0380_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0381_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0382_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0383_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0384_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0385_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0386_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0387_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0388_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0389_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0390_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0391_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0392_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0393_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0394_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0395_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0396_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0397_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0398_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0399_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0400_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0401_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0402_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0403_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0404_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0405_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0406_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0407_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0408_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0409_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0410_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0411_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0412_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0413_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0414_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0415_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0416_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0417_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0418_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0419_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0420_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0421_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0422_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0423_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0424_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0425_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0426_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0427_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0428_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0429_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0430_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0433_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0434_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0435_ESPRI.root_test
+ rewrite espri/convert/rootfiles/run0436_ESPRI.root_test (70%)
+ create mode 100644 espri/convert/rootfiles/run0437_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0438_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0439_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0440_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0448_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0449_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0450_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0451_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0452_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0453_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0454_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0455_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0456_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0457_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0458_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0460_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0461_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0462_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0463_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0464_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0465_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0466_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0467_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0468_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0470_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0471_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0472_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0473_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0475_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0476_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0477_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0478_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0480_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0481_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0482_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0483_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0484_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0485_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0486_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0487_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0488_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0494_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0495_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0496_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0497_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0500_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0501_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0502_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0503_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0504_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0505_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0506_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0507_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0510_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0511_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0512_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0513_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0514_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0517_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0521_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0522_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0523_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0524_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0527_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0530_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0531_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0532_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0534_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0540_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0541_ESPRI.root_test
+ create mode 100644 espri/convert/structrue
+ create mode 100755 espri/convert/v9_HitStructure/ConvertESPRI
+ create mode 100644 espri/convert/v9_HitStructure/ConvertESPRI.C
+ create mode 100644 espri/convert/v9_HitStructure/ESPRIConvertCal.h
+ create mode 100644 espri/convert/v9_HitStructure/ESPRIHit.h
+ create mode 100644 espri/convert/v9_HitStructure/ESPRINaiCal.h
+ create mode 100644 espri/convert/v9_HitStructure/ESPRIPlasCal.h
+ create mode 100644 espri/convert/v9_HitStructure/ESPRIRdcCal.h
+ create mode 100644 espri/convert/v9_HitStructure/ESPRIReadRaw.h
+ create mode 100755 espri/convert/v9_HitStructure/Makefile
+ create mode 100755 espri/convert/v9_HitStructure/caltree.C
+ create mode 100644 espri/convert/v9_HitStructure/configConvertESPRI.prm
+ create mode 100644 espri/convert/v9_HitStructure/convert.sh
+ create mode 100755 espri/convert/v9_HitStructure/header.h
+ create mode 100644 espri/convert/v9_HitStructure/logEspri
+ create mode 100644 espri/convert/v9_HitStructure/loop.sh
+ create mode 100644 espri/convert/v9_HitStructure/looprun.sh
+ create mode 100644 espri/convert/v9_HitStructure/structrue
+ create mode 100644 espri/convert/v9_HitStructure/v1_ConvertESPRI.C_Sample
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

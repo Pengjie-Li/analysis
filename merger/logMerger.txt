@@ -82,3 +82,5 @@
 2020-06-22
 	1. add plastiming calibration with 2 correction in PlasTime class
 	2. NaI Right #3 Gain problem
+2020-07-13
+	1. degrader shape + position update, 46.5, left right diff

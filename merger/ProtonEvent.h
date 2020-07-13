@@ -15,7 +15,8 @@ class ProtonPara{
 		TGraph *shtEnergyToRange;
 		TGraph *shtRangeToEnergy;
 		TGraph *winEloss;
-		TGraph *wedgeThick;
+		TGraph *wedgeThick[2];
+		TGraph *lrWedgeThick;
 
 		double degraderThickness;
 		double plasThickness;
@@ -52,7 +53,8 @@ class ProtonPara{
 		}
 
 		double getDegraderThickness(double xPos){
-			return wedgeThick->Eval(xPos + 227.5);
+			//return wedgeThick->Eval(xPos + 227.5);
+			return lrWedgeThick->Eval(-xPos + 46.5);
 		}
 
 	public:
@@ -75,14 +77,16 @@ class ProtonPara{
 			winEloss = (TGraph *)gDirectory->Get("windowEloss");
 			fWinEloss->Close();
 
-			TString wedgeFileName = "/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/espri/calib/wedge/wedgeThickness.root";
+			TString wedgeFileName = "/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/espri/calib/wedge/wedgeShape.root";
 			TFile *fWedgeThick = new TFile(wedgeFileName,"READ");
-			wedgeThick = (TGraph *)gDirectory->Get("th2");
+			wedgeThick[0] = (TGraph *)gDirectory->Get("leftDegrader");
+			wedgeThick[1] = (TGraph *)gDirectory->Get("rightDegrader");
 			fWedgeThick->Close();
 
 		}
 		~ProtonPara(){}
-		double getProtonEnergy(double naiE,double locusAngle,double angle,double xPos){
+		double getProtonEnergy(int side,double naiE,double locusAngle,double angle,double xPos){
+			lrWedgeThick = wedgeThick[side];
 			ppPlasE = getPlasE(locusAngle,naiE);
 			ppDegraderE = getDegraderE(locusAngle,naiE+ppPlasE,xPos);
 			ppWinE = getWindowE(naiE+ppPlasE+ppDegraderE);
@@ -127,7 +131,7 @@ class ProtonEvent{
 				else{ 
 						xPos = -xPos;
 				}
-				protonEnergy = protonPara->getProtonEnergy(espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
+				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
 			}
 		}
 	public:
