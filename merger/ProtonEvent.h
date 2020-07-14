@@ -144,7 +144,7 @@ class ProtonEvent{
 			delete degraderPosition;
 		}
 		bool isGoodEvent(){
-			return espriEvent->isGoodEvent();
+			return espriEvent->isGoodNaiEvent();
 		}
 
 		void init(){

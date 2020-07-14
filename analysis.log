@@ -13259,3 +13259,141 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 espri/convert/v9_HitStructure/v1_ConvertESPRI.C_Sample
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 8c5986f] v1.0
+ 163 files changed, 7264 insertions(+), 6 deletions(-)
+ create mode 100644 espri/calib/wedge/.wedgeShape.root.J4kzJ3
+ create mode 100644 espri/convert/rootfiles/run0459_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0469_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0479_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0489_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0498_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0499_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0508_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0509_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0515_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0516_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0519_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0525_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0526_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0528_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0529_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0533_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0535_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0536_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0537_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0543_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0544_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0545_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0546_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0547_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0548_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0549_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0550_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0551_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0552_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0553_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0554_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0555_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0556_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0558_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0559_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0560_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0562_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0563_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0564_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0565_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0566_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0567_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0568_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0569_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0570_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0571_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0573_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0574_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0575_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0576_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0577_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0578_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0579_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0587_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0588_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0589_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0590_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0591_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0592_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0594_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0595_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0596_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0597_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0598_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0599_ESPRI.root_test
+ create mode 100644 espri/convert/rootfiles/run0600_ESPRI.root_test
+ rewrite merger/.PlasTime.h.swp (67%)
+ rename merger/{.PlasTime.h.swp => .logMerger.txt.swp} (63%)
+ rewrite merger/Merger (74%)
+ rewrite merger/rootfiles/run0433_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0434_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0436_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0439_analysed.root_test (99%)
+ create mode 100644 merger/v15_newDegraderThick/'
+ create mode 100644 merger/v15_newDegraderThick/AlphaEvent.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingAlpha.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingBDC.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingBeam.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingESPRI.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingFDC0.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingHOD.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingMAIN.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingPLA.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingProton.h
+ create mode 100644 merger/v15_newDegraderThick/AnalysingTELE.h
+ create mode 100644 merger/v15_newDegraderThick/BdcEvent.h
+ create mode 100644 merger/v15_newDegraderThick/BeamEvent.h
+ create mode 100644 merger/v15_newDegraderThick/CalibESPRI.h
+ create mode 100644 merger/v15_newDegraderThick/CalibTELE.h
+ create mode 100644 merger/v15_newDegraderThick/Convert.h
+ create mode 100644 merger/v15_newDegraderThick/CsiCal.h
+ create mode 100644 merger/v15_newDegraderThick/DSSDEnergyCal.h
+ create mode 100644 merger/v15_newDegraderThick/DegraderPosition.h
+ create mode 100644 merger/v15_newDegraderThick/Detector.h
+ create mode 100644 merger/v15_newDegraderThick/EspriEvent.h
+ create mode 100644 merger/v15_newDegraderThick/EspriEvent.h_new
+ create mode 100644 merger/v15_newDegraderThick/Fdc0Event.h
+ create mode 100644 merger/v15_newDegraderThick/FindPixel.h
+ create mode 100755 merger/v15_newDegraderThick/Makefile
+ create mode 100644 merger/v15_newDegraderThick/MergeBDC.h
+ create mode 100644 merger/v15_newDegraderThick/MergeESPRI.h
+ create mode 100644 merger/v15_newDegraderThick/MergeFDC0.h
+ create mode 100644 merger/v15_newDegraderThick/MergeHOD.h
+ create mode 100644 merger/v15_newDegraderThick/MergeMAIN.h
+ create mode 100644 merger/v15_newDegraderThick/MergePLA.h
+ create mode 100644 merger/v15_newDegraderThick/MergeSample.h
+ create mode 100644 merger/v15_newDegraderThick/MergeTELE.h
+ rename merger/{ => v15_newDegraderThick}/Merger (100%)
+ create mode 100644 merger/v15_newDegraderThick/Merger.cpp
+ create mode 100644 merger/v15_newDegraderThick/Merger.h
+ create mode 100644 merger/v15_newDegraderThick/PhiFunction.h
+ create mode 100644 merger/v15_newDegraderThick/PlaEvent.h
+ create mode 100644 merger/v15_newDegraderThick/PlasTime.h
+ create mode 100644 merger/v15_newDegraderThick/PositionESPRI.h
+ create mode 100644 merger/v15_newDegraderThick/PositionTELE.h
+ create mode 100644 merger/v15_newDegraderThick/ProtonEvent.h
+ create mode 100644 merger/v15_newDegraderThick/ProtonEvent.h_local
+ create mode 100644 merger/v15_newDegraderThick/TeleEvent.h
+ create mode 100644 merger/v15_newDegraderThick/backup_1st_Merger.C
+ create mode 100644 merger/v15_newDegraderThick/constant.h
+ create mode 100644 merger/v15_newDegraderThick/convert.sh
+ create mode 100755 merger/v15_newDegraderThick/distance.h
+ create mode 100755 merger/v15_newDegraderThick/header.h
+ create mode 100644 merger/v15_newDegraderThick/logMerger.txt
+ create mode 100644 merger/v15_newDegraderThick/loop.sh
+ create mode 100644 merger/v15_newDegraderThick/looprun.sh
+ create mode 100644 merger/v15_newDegraderThick/main.cpp
+ create mode 100644 merger/v15_newDegraderThick/mvRootVersion.sh
+ create mode 100644 merger/v15_newDegraderThick/read.me
+ create mode 100644 merger/v15_newDegraderThick/sampleESPRI.C
+ create mode 100644 merger/v15_newDegraderThick/t1.txt
+ create mode 100644 merger/v15_newDegraderThick/t2.txt
+ create mode 100644 merger/v15_newDegraderThick/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

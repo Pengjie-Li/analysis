@@ -44,7 +44,6 @@ class ESPRITdcRaw{
 
 		}
 		void readRaw(TClonesArray *tdcArray){
-			init();
 			for(int i=0;i<tdcArray->GetEntries();i++){
 				TArtTDCHit *tdcHit = (TArtTDCHit *)tdcArray->At(i);
 				//cout<<"RawData:"<<tdc->GetPlaneId()<<" "<<tdc->GetLayer()<<" "<<tdc->GetWireId()<<" "<<tdc->Get()<<" "<<tdc->GetTrail()<<endl;
@@ -144,7 +143,6 @@ class ESPRINaiRaw{
 		}
 
 		void readRaw(TClonesArray *naiArray){
-			init();
 			for(int i=0;i<naiArray->GetEntries();i++){
 				TArtRNaI *nai = (TArtRNaI*)naiArray->At(i);
 				{
@@ -218,7 +216,6 @@ class ESPRIPlasRaw{
 			printT();
 		}
 		void readRaw(TClonesArray *plasArray,ESPRITdcRaw *tdcRaw){
-			init();
 			//cout<<endl;
 			for(int i=0;i<plasArray->GetEntries();i++){
 				TArtPlas *plas = (TArtPlas*)plasArray->At(i);
@@ -283,6 +280,11 @@ class ESPRIReadRaw{
 			delete plasRaw;
 		}
 
+		void init(){
+			tdcRaw->init();
+			naiRaw->init();
+			plasRaw->init();
+		}
 		void readRaw(TClonesArray *tdc,TClonesArray *nai,TClonesArray *plas){
 			tdcRaw->readRaw(tdc);
 			naiRaw->readRaw(nai);

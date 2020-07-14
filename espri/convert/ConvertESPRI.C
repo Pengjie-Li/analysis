@@ -2,7 +2,7 @@
 
 TEnv *env = new TEnv("configConvertESPRI.prm");
 #include "ESPRIReadRaw.h"
-#include "ESPRIConvertCal.h"
+#include "ESPRIDetHit.h"
 #include "ESPRIHit.h"
 
 class ConvertESPRI{
@@ -35,7 +35,7 @@ class ConvertESPRI{
 		int RunNumber;
 
 		ESPRIReadRaw *espriReadRaw;
-		ESPRIConvertCal *espriConvertCal;
+		ESPRIDetHit *espriDetHit;
 		ESPRIHit *espriHit;
 
 
@@ -93,7 +93,7 @@ class ConvertESPRI{
 			tree->Branch("EventNumber",&EventNumber);
 			tree->Branch("RunNumber",&RunNumber);
 			espriReadRaw->setBranch(tree);
-			espriConvertCal->setBranch(tree);
+			espriDetHit->setBranch(tree);
 			espriHit->setBranch(tree);
 		}
 
@@ -123,28 +123,34 @@ class ConvertESPRI{
 
 				showAnalysisProgress();
 
+				init();
 				EventNumber++;
 				getRawData();
 				readRawData();
-				convertRawData();
+				sortRawData();
 				extractHit();
-				tree->Fill();
+				//tree->Fill();
 
 				if(maxEventNumber<100) print();
 				print();
 			}
 		}
 		void print(){
-			if(espriConvertCal->getNaiHit()>=1){
+			if(espriDetHit->getNaiHit()>=1){
 				cout<<"EventNumber = "<<EventNumber<<endl;
 				//espriReadRaw->printTDC();
 				//espriReadRaw->printPlas();
-				espriConvertCal->printRdc();
-				espriConvertCal->printPlas();
-				espriConvertCal->printNai();
+				espriDetHit->printRdc();
+				espriDetHit->printPlas();
+				espriDetHit->printNai();
 				espriHit->print();
 			}
 
+		}
+		void init(){
+			espriReadRaw->init();	
+			espriDetHit->init();
+			espriHit->init();
 		}
 		void getRawData(){
 			clearReconstructedData();
@@ -181,13 +187,12 @@ class ConvertESPRI{
 		void readRawData(){
 			espriReadRaw->readRaw(tdcDataContainer,naiDataContainer,plasDataContainer);
 		}
-		void convertRawData(){
-			espriConvertCal->updateRunNumber(runNumber);
-			espriConvertCal->convertCal(espriReadRaw);
-			espriConvertCal->readReconstructedData(rdcDataContainer);
+		void sortRawData(){
+			espriDetHit->sortHit(espriReadRaw);
+			espriDetHit->readAndSortReconstructedData(rdcDataContainer);
 		}
 		void extractHit(){
-			espriHit->hitEvent(espriConvertCal);
+			espriHit->hitEvent(espriDetHit);
 		}
 		void showAnalysisProgress(){
 			if (EventNumber%DISPLAY_EVERY_EVENT == 0)
@@ -238,7 +243,7 @@ class ConvertESPRI{
 			tree = new TTree("CalTreeESPRI","Convert Raw Cal Sync");
 
 			espriReadRaw = new ESPRIReadRaw();
-			espriConvertCal = new ESPRIConvertCal();
+			espriDetHit = new ESPRIDetHit();
 			espriHit = new ESPRIHit();
 
 			setOutputBranch();

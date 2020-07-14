@@ -1,73 +1,67 @@
 class ESPRIHit{
 	private:
 		int espriHit;
-		int espriHitSide[2];
-		void init(){
-			espriHit = 0;
-			espriHitSide[0] = -1;
-			espriHitSide[1] = -1;
-		}
+		int espriSide;
+		double espriRdcX;
+		double espriRdcY;
+		double espriPlasQPed;
+		double espriNaiQPed;
 	public:
 		ESPRIHit(){}
 		~ESPRIHit(){}
 
-		void hitEvent(ESPRIConvertCal *espriCal){
-			init();
-			if(espriCal->getRdcHit()==1&&espriCal->getPlasHit()==1){
-				if(espriCal->getRdcSide(0) == espriCal->getPlasSide(0)){
-					espriHitSide[espriHit] = espriCal->getRdcSide(0);
+		void init(){
+			espriHit = 0;
+			espriSide = -1;
+			espriRdcX = -9999;
+			espriRdcY = -9999;
+			espriPlasQPed = -9999;
+			espriNaiQPed = -9999;
+		}
+		void hitEvent(ESPRIDetHit *espriDetHit){
+			if(espriDetHit->getRdcHit()==1&&espriDetHit->getPlasHit()==1){
+				if(espriDetHit->getRdcSide(0) == espriDetHit->getPlasSide(0)){
+					espriSide = espriDetHit->getRdcSide(0);
 					espriHit++; // espriHit = 1;
-					if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
 				}else{
-					espriHit = 0;
+					espriHit = -1; // rdc and plas not in the same side, check
 				}
-			}else if(espriCal->getRdcHit()==2&&espriCal->getPlasHit()==1){
-				espriHitSide[espriHit] = espriCal->getPlasSide(0);
+			}else if(espriDetHit->getRdcHit()==2&&espriDetHit->getPlasHit()==1){
+				espriSide = espriDetHit->getPlasSide(0);
 				espriHit++;
-
-				espriCal->keepRdcSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
-				if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
-			}else if(espriCal->getRdcHit()==1&&espriCal->getPlasHit()==2){
-				espriHitSide[espriHit] = espriCal->getRdcSide(0);
+			}else if(espriDetHit->getRdcHit()==1&&espriDetHit->getPlasHit()==2){
+				espriSide = espriDetHit->getRdcSide(0);
 				espriHit++;
-
-				espriCal->keepPlasSide(espriCal->getRdcSide(0)); // remove bad Hit on RDC
-				if(espriCal->getNaiHit()>0) espriCal->keepNaiSide(espriCal->getPlasSide(0)); // remove bad Hit on RDC
-			}else if(espriCal->getRdcHit()==2&&espriCal->getPlasHit()==2){
-				espriHitSide[0] = espriCal->getRdcSide(0);
-				espriHitSide[1] = espriCal->getRdcSide(1);
+			}else if(espriDetHit->getRdcHit()==2&&espriDetHit->getPlasHit()==2){
 				espriHit == 2;
-
-				if(espriCal->getRdcSide(0) == espriCal->getPlasSide(0)) {}
-				else{
-					espriCal->swapPlasSide();
-				}
-				if(espriCal->getRdcSide(0) == espriCal->getNaiSide(0)) {}
-				else{
-					espriCal->swapNaiSide();
-				}
-
 			}else{
 				espriHit = 0;
+			}
+			if(espriSide!=-1){
+				espriRdcX = espriDetHit->getRdcX(espriSide);
+				espriRdcY = espriDetHit->getRdcY(espriSide);
+				espriPlasQPed = espriDetHit->getPlasQPed(espriSide);
+				if(espriDetHit->getNaiHit()>0) espriNaiQPed = espriDetHit->getNaiQPed(espriSide); 
 			}
 		}
 		void setBranch(TTree *tree){
 			tree->Branch("espriHit",&espriHit,"espriHit/I");
-			tree->Branch("espriHitSide",espriHitSide,"espriHitSide[espriHit]/I");
+			tree->Branch("espriSide",&espriSide,"espriSide/I");
+			tree->Branch("espriRdcX",&espriRdcX,"espriRdcX/D");
+			tree->Branch("espriRdcY",&espriRdcY,"espriRdcY/D");
+			tree->Branch("espriPlasQPed",&espriPlasQPed,"espriPlasQPed/D");
+			tree->Branch("espriNaiQPed",&espriNaiQPed,"espriNaiQPed/D");
 		}
 		void print(){
 			for (int i = 0; i < espriHit; ++i) {
-				cout<<"ESPI Hit"<<i<<" Side = "<<espriHitSide[i]<<endl;
+				cout<<" ESPRI Hit"<<i<<" Side = "<<espriSide<<" rdcX ="<<espriRdcX<<" rdcY ="<<espriRdcY<<" plasQPed = "<<espriPlasQPed<<" naiQPed = "<<espriNaiQPed<<endl;
 			}
 		}
 		int getHit(){
 			return espriHit;
 		}
 		int getSide(){
-			return espriHitSide[0];
-		}
-		int getSide(int hitId){
-			return espriHitSide[hitId];
+			return espriSide;
 		}
 
 };
