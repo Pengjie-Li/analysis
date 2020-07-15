@@ -141,11 +141,14 @@ class ESPRINaiHit{
 		int getSide(int nHit){
 			return naiHitSide[nHit];
 		}
-		double getNaiQPed(int side){
+		double getNaiQPed(int side,int &barId){
 			double qPed = 0;			
 			for (int i = 0; i < naiHit; ++i) {
 				if(naiHitSide[i] == side){
-					if(naiHitBarId[i]>qPed) qPed = naiHitBarId[i];
+					if(getNaiBarQPed(side,naiHitBarId[i])>qPed){
+						qPed = getNaiBarQPed(side,naiHitBarId[i]);
+						barId = naiHitBarId[i];
+					}
 				}
 			}
 			return qPed;

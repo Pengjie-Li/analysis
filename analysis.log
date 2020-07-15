@@ -13397,3 +13397,82 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v15_newDegraderThick/tree.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 32212d1] v1.0
+ 135 files changed, 917 insertions(+), 218 deletions(-)
+ rename espri/{convert/.ESPRIHit.h.swp => calib/pedestal/.drawNaiPed.C.swp} (78%)
+ create mode 100644 espri/calib/pedestal/drawNaiPed.C
+ create mode 100644 espri/calib/pedestal/drawPedestal.C
+ rename merger/.ProtonEvent.h.swp => espri/convert/.ConvertESPRI.C.swp (54%)
+ create mode 100644 espri/convert/.ESPRIDetHit.h.swp
+ rewrite espri/convert/.ESPRIHit.h.swp (67%)
+ create mode 100644 espri/convert/.ESPRINaiHit.h.swp
+ create mode 100644 espri/convert/.ESPRIPlasHit.h.swp
+ create mode 100644 espri/convert/.ESPRIRdcHit.h.swp
+ rewrite espri/convert/ConvertESPRI (93%)
+ rewrite espri/convert/ESPRIConvertCal.h (71%)
+ create mode 100644 espri/convert/ESPRIDetHit.h
+ rewrite espri/convert/ESPRIHit.h (77%)
+ create mode 100644 espri/convert/ESPRINaiHit.h
+ create mode 100644 espri/convert/ESPRIPlasHit.h
+ create mode 100644 espri/convert/ESPRIRdcHit.h
+ rename merger/.EspriEvent.h.swp => espri/convert/rootfiles/.drawNaiPed.C.swp (77%)
+ rewrite espri/convert/rootfiles/run0310_ESPRI.root_test (99%)
+ rewrite espri/convert/txt/naiPedestal.txt (100%)
+ rename espri/convert/txt/{naiPedestal.txt => naiPedestal.txt_backup} (100%)
+ rewrite merger/.EspriEvent.h.swp (67%)
+ rewrite merger/.ProtonEvent.h.swp (81%)
+ rewrite merger/rootfiles/run0102_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0105_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0107_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0109_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0111_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0113_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0118_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0119_analysed.root_test (62%)
+ rewrite merger/rootfiles/run0121_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0124_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0132_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0138_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0139_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0151_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0154_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0158_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0159_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0165_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0166_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0175_analysed.root_test (99%)
+ rename merger/rootfiles/{run0224_analysed.root_test => run0176_analysed.root_test} (69%)
+ rename merger/rootfiles/{run0226_analysed.root_test => run0178_analysed.root_test} (88%)
+ rewrite merger/rootfiles/run0180_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0181_analysed.root_test (76%)
+ rename merger/rootfiles/{run0220_analysed.root_test => run0183_analysed.root_test} (73%)
+ rewrite merger/rootfiles/run0184_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0192_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0195_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0196_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0198_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0205_analysed.root_test (76%)
+ rename merger/rootfiles/{run0183_analysed.root_test => run0208_analysed.root_test} (79%)
+ rewrite merger/rootfiles/run0213_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0220_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0224_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0226_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0231_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0235_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0239_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0244_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0246_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0253_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0254_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0255_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0258_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0259_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0261_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0270_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0275_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0276_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0279_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0286_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0301_analysed.root_test (76%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

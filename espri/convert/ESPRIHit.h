@@ -5,6 +5,7 @@ class ESPRIHit{
 		double espriRdcX;
 		double espriRdcY;
 		double espriPlasQPed;
+		int espriNaiBarId;
 		double espriNaiQPed;
 	public:
 		ESPRIHit(){}
@@ -16,6 +17,7 @@ class ESPRIHit{
 			espriRdcX = -9999;
 			espriRdcY = -9999;
 			espriPlasQPed = -9999;
+			espriNaiBarId = -1;
 			espriNaiQPed = -9999;
 		}
 		void hitEvent(ESPRIDetHit *espriDetHit){
@@ -41,7 +43,9 @@ class ESPRIHit{
 				espriRdcX = espriDetHit->getRdcX(espriSide);
 				espriRdcY = espriDetHit->getRdcY(espriSide);
 				espriPlasQPed = espriDetHit->getPlasQPed(espriSide);
-				if(espriDetHit->getNaiHit()>0) espriNaiQPed = espriDetHit->getNaiQPed(espriSide); 
+				if(espriDetHit->getNaiHit()>0) {
+					espriNaiQPed = espriDetHit->getNaiQPed(espriSide,espriNaiBarId); 
+				}
 			}
 		}
 		void setBranch(TTree *tree){
@@ -50,6 +54,7 @@ class ESPRIHit{
 			tree->Branch("espriRdcX",&espriRdcX,"espriRdcX/D");
 			tree->Branch("espriRdcY",&espriRdcY,"espriRdcY/D");
 			tree->Branch("espriPlasQPed",&espriPlasQPed,"espriPlasQPed/D");
+			tree->Branch("espriNaiBarId",&espriNaiBarId,"espriNaiBarId/I");
 			tree->Branch("espriNaiQPed",&espriNaiQPed,"espriNaiQPed/D");
 		}
 		void print(){

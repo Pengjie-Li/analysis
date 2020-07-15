@@ -74,9 +74,9 @@ class EspriEvent{
 		void loadBeamVector(TVector3 *beam){
 			vBeam = beam;
 		}
-		bool isNaiHit(){
-			return (mergeData->getNaiHit()==1);
-		}
+		//bool isNaiHit(){
+		//	return (mergeData->getNaiHit()==1);
+		//}
 		double getNaiEnergy(){
 			return calibESPRI->getNaiEnergy();
 		}

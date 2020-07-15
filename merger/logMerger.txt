@@ -81,6 +81,9 @@
 	1. add degrader energy loss for proton
 2020-06-22
 	1. add plastiming calibration with 2 correction in PlasTime class
-	2. NaI Right #3 Gain problem
+	2. NaI Right #3 Gain problem,remove all the bar3 hit if gain changed
 2020-07-13
 	1. degrader shape + position update, 46.5, left right diff
+2020-07-15
+	1. add ESPRI HitSturcture
+	2. update PlasTime for 4 channels

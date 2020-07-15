@@ -246,9 +246,9 @@ class CalibESPRI{
 
 		double espriPlasE;
 		double espriNaiE;
-		double espriDeeEnergy;
 
 		double beamToF;
+		double tdcOffset;
 
 		double getPlasQ(){
 			return calibEspri->getPlasQ(mergeData->getSide(),mergeData->getPlasQPed());
@@ -271,7 +271,8 @@ class CalibESPRI{
 			//else if(run ==438) sf = 2.39333;
 			//else if(run ==439) sf = 3.47167;
 			if(run>=431&&run<=447) sf = 0;				
-			else if(run>=448) sf = 1.52916;
+			//else if(run>=448) sf = 1.52916;
+			else if(run>=448) sf = 0;
 			else {}
 			//cout<<run<<" "<<sf<<endl;
 			return calibEspri->getNaiQ(mergeData->getSide(),mergeData->getNaiId(),sf*mergeData->getNaiQPed());
@@ -281,6 +282,7 @@ class CalibESPRI{
 	public:
 
 		CalibESPRI(){
+			tdcOffset = 329*0.025;
 			calibEspri = new EspriEnergy();
 			plasTime = new PlasTime();
 		}
@@ -296,7 +298,6 @@ class CalibESPRI{
 			espriPlasE	= NAN;
 			espriNaiE	= NAN;
 
-			espriDeeEnergy	= NAN;
 			beamToF = NAN;
 
 			plasTime->init();
@@ -312,27 +313,20 @@ class CalibESPRI{
 
 			espriPlasE_Birks = getPlasQ_Birks();
 			espriPlasE = getPlasQ();
-
-			if(mergeData->getNaiHit()==1){
-
-				espriNaiE  = getNaiQ();
-
-				espriDeeEnergy = espriPlasE + espriNaiE;
-			}else{
-				espriDeeEnergy = espriPlasE;
-			}
+			if(mergeData->getNaiQPed()>0) espriNaiE  = getNaiQ();
 			calibPlasTime();
 		}
 		
 		void calibPlasTime(){
-				if(plasTime->read(mergeData->getSide(),mergeData->getPlasT(0),mergeData->getPlasT(1))){
-						plasTime->positionCorr(mergeData->getRdcY()); 
-						plasTime->slewCorr(mergeData->getPlasQPed());
-						plasTime->tofBeamCorr(beamToF);
-				}
-		}
-		double getEnergy(){
-			return espriDeeEnergy;
+			plasTime->setEnergyPara(mergeData->getSide(),mergeData->getPlasQPed());
+			int offset = 0;
+			if(mergeData->getRunNumber()<=306) offset = tdcOffset;
+			if(plasTime->read(mergeData->getSide(),mergeData->getPlasT(0),mergeData->getPlasT(1))){
+				plasTime->positionCorr(mergeData->getRdcY()); 
+				plasTime->slewCorr(mergeData->getPlasQPed());
+				plasTime->tofBeamCorr(beamToF);
+			}
+			plasTime->addOffset(offset);
 		}
 		double getNaiEnergy(){
 			return espriNaiE;
@@ -344,13 +338,12 @@ class CalibESPRI{
 
 			tree->Branch("espriPlasE",&espriPlasE,"espriPlasE/D");
 			tree->Branch("espriNaiE",&espriNaiE,"espriNaiE/D");
-			tree->Branch("espriDeeEnergy",&espriDeeEnergy,"espriDeeEnergy/D");
 
 		}
 		void print(){
 			cout<<"Plas Energy versions:  "<< espriPlasE<<" "<<espriPlasE_Birks<<endl;
 			cout<<"Nai  Energy versions:  "<< espriNaiE<<" "<<endl;
-			cout<<"espriPlasE = "<<espriPlasE<<" MeV espriNaiE = "<<espriNaiE<<" MeV  espriDeeEnergy = "<<espriDeeEnergy<<" MeV "<<endl;
+			cout<<"espriPlasE = "<<espriPlasE<<" MeV espriNaiE = "<<espriNaiE<<" MeV  "<<endl;
 			plasTime->print();
 
 		}

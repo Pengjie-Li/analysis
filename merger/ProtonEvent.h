@@ -124,7 +124,6 @@ class ProtonEvent{
 		DegraderPosition *degraderPosition;
 
 		void setProtonEnergy(){
-			if(espriEvent->isNaiHit()){
 				double xPos = degraderPosition->getPosition(espriEvent->getEspriSide(),espriEvent->getRdcPosition(),espriEvent->getTargetPosition()); 
 				if(espriEvent->getEspriSide() == 1) {
 				}
@@ -132,7 +131,6 @@ class ProtonEvent{
 						xPos = -xPos;
 				}
 				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
-			}
 		}
 	public:
 		ProtonEvent(){

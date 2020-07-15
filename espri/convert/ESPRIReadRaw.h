@@ -217,15 +217,16 @@ class ESPRIPlasRaw{
 		}
 		void readRaw(TClonesArray *plasArray,ESPRITdcRaw *tdcRaw){
 			//cout<<endl;
+			//cout<<"ch  layer ADC"<<endl;
 			for(int i=0;i<plasArray->GetEntries();i++){
 				TArtPlas *plas = (TArtPlas*)plasArray->At(i);
-				//cout << plas->GetPlaneID() <<" "<< plas->GetLayer()<<" "<<plas->GetRawADC()<<" "<<plas->GetTime() << endl; 
 				int ID= plas->GetID();
 				int layer = plas->GetLayer();
 				int ADC = plas->GetRawADC();
 				//int TDC = plas->GetTime();
 				plasQRaw[ID-1]=ADC;
 				//plasTRaw[ID-1]=TDC;
+				//cout << ID <<" "<< layer<<" "<<ADC<< endl; 
 			}
 			plasTimeRef = tdcRaw->getPlasTimeRef();
 

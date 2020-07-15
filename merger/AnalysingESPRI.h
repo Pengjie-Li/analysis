@@ -15,6 +15,7 @@ void Merger::analysingESPRI(){
 
 }
 void Merger::printESPRI(){
+	mergeESPRI->print();
 	if(mergeESPRI->isGoodEvent()){
 		mergeESPRI->print();
 		espriEvent->print();	

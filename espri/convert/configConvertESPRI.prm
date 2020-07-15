@@ -18,4 +18,3 @@ inputSuffix:.ridf.gz
 outputPath:./rootfiles/
 outputPrefix:run0
 outputSuffix:_ESPRI.root_test
-

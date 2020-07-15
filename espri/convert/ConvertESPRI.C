@@ -129,14 +129,15 @@ class ConvertESPRI{
 				readRawData();
 				sortRawData();
 				extractHit();
-				//tree->Fill();
+				tree->Fill();
 
 				if(maxEventNumber<100) print();
-				print();
+				//print();
 			}
 		}
 		void print(){
-			if(espriDetHit->getNaiHit()>=1){
+			if(espriDetHit->getRdcHit()>1||espriDetHit->getPlasHit()>1){
+				cout<<endl;
 				cout<<"EventNumber = "<<EventNumber<<endl;
 				//espriReadRaw->printTDC();
 				//espriReadRaw->printPlas();

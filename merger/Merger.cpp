@@ -65,14 +65,15 @@ void Merger::eventLoop(){
 	nentries = mergeMAIN->inputTree->GetEntries();
 	nentries = (nentries > maxEventNumber)?maxEventNumber:nentries;
 	cout << "NUMBER OF EVENTS = " << nentries << endl;
-	for(Long64_t ientry = 0; ientry<nentries;ientry++){
-	//for(Long64_t ientry = 767; ientry<770;ientry++){
+	//for(Long64_t ientry = 0; ientry<nentries;ientry++){
+	for(Long64_t ientry = 335656; ientry<355657;ientry++){
 
 		//inputTree->GetEntry(ientry);
 		getEntry(ientry);
 
 		//initAnalysedOutput();
 
+		print();
 		if(kMAIN)	 analysingMAIN();
 		if(kPLA)	 analysingPLA();
 		if(kBDC)	 analysingBDC();
@@ -84,8 +85,8 @@ void Merger::eventLoop(){
 
 		setProtonEvent();
 		setAlphaEvent();
-		//cout<<"Event Number = "<<ientry<<endl;
-		//print();
+		cout<<"Event Number = "<<ientry<<endl;
+		print();
 		if(nentries<1000) {
 			cout<<endl;
 			cout<<"Event Number = "<<ientry<<endl;
@@ -102,7 +103,7 @@ void Merger::print(){
 	//printPLA();	
 	//printBDC();	
 	//printBeam();
-	//printESPRI();
+	printESPRI();
 	//printProton();
 //	printTELE();
 	//printAlpha();

@@ -85,8 +85,8 @@ class ESPRIDetHit{
 		int getNaiSide(int hitId){
 			return naiHit->getSide(hitId);
 		}
-		double getNaiQPed(int side){
-			return naiHit->getNaiQPed(side);
+		double getNaiQPed(int side,int &barId){
+			return naiHit->getNaiQPed(side,barId);
 		}
 
 
