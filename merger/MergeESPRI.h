@@ -30,14 +30,15 @@ class MergeESPRI:public Convert{
 		Double_t        rdcTch[2][7];
 		Double_t        rdcRes[2][7];
 		Int_t           naiHit;
-		Int_t           naiHitSide[4];
-		Int_t           naiHitBarId[4];
+		Int_t           naiHitSide[14];
+		Int_t           naiHitBarId[14];
 		Double_t        naiQPed[4][7];
 		Int_t           plasHit;
 		Int_t           plasHitSide[2];
 		Int_t           plasTHit;
 		Int_t           plasQHit;
 		Double_t        plasQPed[4];
+
 		Int_t           espriHit;
 		Int_t           espriSide;
 		Double_t        espriRdcX;
@@ -214,9 +215,9 @@ class MergeESPRI:public Convert{
 		double getNaiQPed(){
 			return espriNaiQPed;
 		}
-		double getNaiId(){
+		int getNaiId(){
 			//return espriNaiBarId;
-                        double barId = -1;
+                        int barId = -1;
                         for (int i = 0; i < naiHit; ++i) {
                                 if(naiHitSide[i] == getSide()){
                                         if(getNaiQPed(getSide(),naiHitBarId[i]) == espriNaiQPed){
@@ -227,10 +228,12 @@ class MergeESPRI:public Convert{
                         return barId;
 		}
 		double getPlasQPed(int side){
-			return sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
+			if(plasQPed[2*side]>0&&plasQPed[2*side+1]>0) return sqrt(plasQPed[2*side]*plasQPed[2*side+1]);
+			else return 0;
 		}
 		double getNaiQPed(int side,int id){
-			return sqrt(naiQPed[2*side][id]*naiQPed[2*side+1][id]);
+			if(naiQPed[2*side][id]>0&&naiQPed[2*side+1][id]>0) return sqrt(naiQPed[2*side][id]*naiQPed[2*side+1][id]);
+			else return 0;
 		}
 		int getNaiHit(){
 			return naiHit;
