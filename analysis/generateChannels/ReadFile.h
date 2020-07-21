@@ -866,8 +866,14 @@ class ReadFile{
 		double getTof713(){
 			return TOF713;
 		}
+		double getF13T(){
+			return F13T;
+		}
 		double getF13Q(){
 			return F13Q;
+		}
+		int getTrigESPRI(){
+			return Trig_BxESPRI;
 		}
 		double getEspriNaiE(){
 			return espriNaiE;

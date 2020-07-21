@@ -14227,3 +14227,8 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 35 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ff47947] v1.0
+ 2 files changed, 5 insertions(+)
+ create mode 120000 channel/ppAlpha/inputRootfiles
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
