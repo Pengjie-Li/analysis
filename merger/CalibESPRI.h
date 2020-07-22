@@ -319,7 +319,6 @@ class CalibESPRI{
 		}
 		
 		void calibPlasTime(){
-			plasTime->setEnergyPara(mergeData->getSide(),mergeData->getPlasQPed());
 			int offset = 0;
 			if(mergeData->getRunNumber()<=306) offset = tdcOffset;
 			if(plasTime->read(mergeData->getSide(),mergeData->getPlasT(0),mergeData->getPlasT(1))){

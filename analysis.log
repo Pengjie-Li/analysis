@@ -14232,3 +14232,31 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 channel/ppAlpha/inputRootfiles
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 8d1aeb9] v1.0
+ 30 files changed, 1370 insertions(+)
+ create mode 100644 channel/ppAlpha/.Event.h.swp
+ create mode 100644 channel/ppAlpha/.Makefile.swp
+ create mode 100644 channel/ppAlpha/.configPPBe.prm.swp
+ create mode 100644 channel/ppAlpha/.header.h.swp
+ create mode 100644 channel/ppAlpha/.main.cpp.swp
+ create mode 100644 channel/ppAlpha/.ppBe.cpp.swp
+ create mode 100644 channel/ppAlpha/.ppBe.h.swp
+ create mode 100644 channel/ppAlpha/Event.h
+ create mode 100755 channel/ppAlpha/Makefile
+ create mode 100644 channel/ppAlpha/PPAlphaKinetics.h
+ create mode 100644 channel/ppAlpha/PPAlphaKinetics.h_backup
+ create mode 120000 channel/ppAlpha/ReadFile.h
+ create mode 100644 channel/ppAlpha/configPPBe.prm
+ create mode 100644 channel/ppAlpha/convert.sh
+ create mode 100755 channel/ppAlpha/header.h
+ create mode 100644 channel/ppAlpha/log
+ create mode 100644 channel/ppAlpha/loop.sh
+ create mode 100644 channel/ppAlpha/main.cpp
+ create mode 100755 channel/ppAlpha/ppA
+ create mode 100644 channel/ppAlpha/ppBe.cpp
+ create mode 100644 channel/ppAlpha/ppBe.h
+ create mode 100755 channel/ppAlpha/ppaBe10
+ create mode 100644 channel/ppAlpha/rootfiles/run0310_ppaBe10.root_test
+ create mode 100644 channel/ppAlpha/test.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

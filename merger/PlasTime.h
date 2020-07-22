@@ -1,52 +1,76 @@
 class PlasTimePara{
 	private:
-		TString inputName;
 		double offset[4];
 		double rdcSlope[4];
 		double rdcOffset[4];
-		double magSlope[4];
-		double magOffset[4];
+		vector<vector<double> > magMin;
+		vector<vector<double> > magMax;
+		vector<vector<double> > magOffset;
+		vector<vector<double> > magSlope;
 	public:
-		PlasTimePara(TString input){
-			inputName = input;
+		PlasTimePara(){
 			init();
 			load();
 			print();
 		}
 		~PlasTimePara(){}
 		void init(){
+			magMin.clear();
+			magMax.clear();
+			magSlope.clear();
+			magOffset.clear();
+			magMin.resize(4);
+			magMax.resize(4);
+			magSlope.resize(4);
+			magOffset.resize(4);
 			for (int i = 0; i < 4; ++i) {
 				offset[i]	 = NAN;
 				rdcSlope[i]	 = NAN;
 				rdcOffset[i] = NAN;
-				magSlope[i]	 = NAN;
-				magOffset[i] = NAN;
 			}
 		}
 		void load(){
+			loadRdcParameters();
+			loadSlewParameters();
+		}
+		void loadRdcParameters(){
 			ifstream inputFile;
-			//TString inputName = "txt/plasParameters.txt";
+			TString inputName = "txt/plasRdcParameters.txt";
 			inputFile.open(inputName);
 			cout<<inputName<<endl;
-			int side;
-			int ud;
-			double a,b,c,d,e;
+			int ch;
+			double boff,slp,off;
 
 			while(1){
-				inputFile>>side>>ud>>a>>b>>c>>d>>e;
+				inputFile>>ch>>boff>>slp>>off;
 				if(!inputFile.good()) break;
-				offset[2*side+ud] 	 = a;
-				rdcSlope[2*side+ud]	 = b;
-				rdcOffset[2*side+ud]  = c;
-				magSlope[2*side+ud]	 = d;
-				magOffset[2*side+ud]  = e;
+				offset[ch] 	 	= boff;
+				rdcSlope[ch]	= slp;
+				rdcOffset[ch]	= off;
 			}
 
+		}
+		void loadSlewParameters(){
+			ifstream inputFile;
+			TString inputName = "txt/plasSlewParameters.txt";
+			inputFile.open(inputName);
+			cout<<inputName<<endl;
+			int ch;
+			double min,max,slp,off;
+
+			while(1){
+				inputFile>>ch>>min>>max>>slp>>off;
+				if(!inputFile.good()) break;
+				magMin[ch].push_back(min);
+				magMax[ch].push_back(max);
+				magSlope[ch].push_back(slp);
+				magOffset[ch].push_back(off);
+			}
 		}
 		void print(){
 			cout<<"Plas Time Para:"<<endl;
 			for (int i = 0; i < 4; ++i) {
-				cout<<offset[i]<<"\t"<<rdcSlope[i]<<"\t"<<rdcOffset[i]<<"\t"<<magSlope[i]<<"\t"<<magOffset[i]<<"\t"<<endl;
+				cout<<offset[i]<<"\t"<<rdcSlope[i]<<"\t"<<rdcOffset[i]<<"\t"<<magSlope[i][0]<<"\t"<<magOffset[i][0]<<"\t"<<endl;
 			}
 		}
 		double getOffset(int side,int ud){
@@ -59,16 +83,23 @@ class PlasTimePara{
 			return rdcSlope[2*side+ud];
 		}
 
-		double getMagOffset(int side,int ud){
-			return magOffset[2*side+ud];
+		double getMagOffset(int side,int ud,double mag){
+			int ch = 2*side+ud;
+			for (int i = 0; i < magOffset[ch].size(); ++i) {
+				if(magMin[ch][i]<=mag&&mag<=magMax[ch][i])	return magOffset[ch][i];
+			}
+			return 0;
 		}
-		double getMagSlope(int side,int ud){
-			return magSlope[2*side+ud];
+		double getMagSlope(int side,int ud,double mag){
+			int ch = 2*side+ud;
+			for (int i = 0; i < magOffset[ch].size(); ++i) {
+				if(magMin[ch][i]<=mag&&mag<=magMax[ch][i])	return magSlope[ch][i];
+			}
+			return 0;
 		}
-};		
+};
 class PlasTime{
 	private:
-		PlasTimePara *calibTimePara[2];
 		PlasTimePara *plasPara;
 		double espriPlasT;
 
@@ -78,8 +109,7 @@ class PlasTime{
 		double downTime;
 	public:
 		PlasTime(){
-			calibTimePara[0] = new PlasTimePara("txt/plasParameters.txt_Low");
-			calibTimePara[1] = new PlasTimePara("txt/plasParameters.txt_High");
+			plasPara = new PlasTimePara();
 		}
 		~PlasTime(){}
 
@@ -121,16 +151,12 @@ class PlasTime{
 				return true;
 			}
 		}
-		void setEnergyPara(int side, int qPed){
-			if((side==0&&qPed>=2000)||(side==1&&qPed>=1500)) plasPara = calibTimePara[0]; // Low
-			if((side==0&&qPed<2000)||(side==1&&qPed<1500)) plasPara = calibTimePara[1]; // High 
-		}
 		void positionCorr(double posY){
 			espriPlasT += (plasPara->getRdcSlope(side,ud)*posY + plasPara->getRdcOffset(side,ud));
 			//cout<<espriPlasT<<endl;
 		}
 		void slewCorr(double mag){
-			if(mag>0) espriPlasT += (plasPara->getMagSlope(side,ud)*mag + plasPara->getMagOffset(side,ud));
+			if(mag>0) espriPlasT += (plasPara->getMagSlope(side,ud,mag)*mag + plasPara->getMagOffset(side,ud,mag));
 			//cout<<plasPara->getMagSlope(side,ud)<<" "<< plasPara->getMagOffset(side,ud)<<" "<<espriPlasT<<endl;
 		}
 		void tofBeamCorr(double tofBeam){

@@ -1,0 +1,240 @@
+class Particle{
+	private:
+	public:
+		TString pName;
+		double M;
+		double T;
+		double P;
+		double E;
+		double Theta;
+		double Phi;
+		double Beta;
+		double Gamma;
+		Particle(){
+			init();
+		}
+		Particle(TString name){
+			pName = name;
+			init();
+		}
+
+		~Particle(){}
+		void init(){
+			M = NAN;
+			T = NAN;
+			P = NAN;
+			E = NAN;
+			Theta = 0;
+			Phi = 0;
+			Beta = NAN;
+			Gamma = NAN; 	
+		}
+		void setName(TString name){
+			pName = name;
+		}
+		void setP(double p){
+			P = p;
+		}
+		void setM(double m){
+			M = m;
+		}
+		void setE(double e){
+			E = e;
+		}
+		void setT(double t){
+			T = t;
+		}
+		void setTheta(double th){
+			Theta = th*TMath::DegToRad();
+		}
+		void setPhi(double pi){
+			Phi = pi;
+		}
+		void print(){
+			cout<<"Particle "<<pName<<"\t"<<M<<"\t"<<E<<"\t"<<P<<"\t"<<Gamma<<"\t"<<Beta<<"\t"<<Theta*TMath::RadToDeg()<<"\t"<<Phi<<endl;
+		}
+		void setMT(double m,double t){
+			M = m; T = t;
+			E = M + T;
+			P = sqrt(E*E - M*M);
+			Gamma = E/M;
+			Beta = P/E;
+		}
+		void setMP(double m,double p){
+			M = m; P = p;
+			E = sqrt(M*M + P*P);
+			T = E - M;
+			Gamma = E/M;
+			Beta = P/E;
+		}
+		void setME(double m,double e){
+			M = m; E = e;
+			P = sqrt(E*E - M*M);
+			T = E - M;
+			Gamma = E/M;
+			Beta = P/E;
+		}
+
+		void setEP(double e,double p){
+			E = e; P = p;
+			M = sqrt(E*E - P*P);
+			T = E - M;
+			Gamma = E/M;
+			Beta = P/E;
+		}
+		void setLorentzVector(TLorentzVector x){
+			P = x.P();
+			M = x.M();
+			E = x.E();
+			T = x.T();
+			Gamma = E/M;
+			Beta = P/E;
+		}
+		void setBranch(TTree *tree){
+			tree->Branch("M"+pName,&M,"M"+pName+"/D");
+			tree->Branch("E"+pName,&E,"E"+pName+"/D");
+			tree->Branch("P"+pName,&P,"P"+pName+"/D");
+			tree->Branch("T"+pName,&T,"T"+pName+"/D");
+			tree->Branch("Theta"+pName,&Theta,"Theta"+pName+"/D");
+			tree->Branch("Phi"+pName,&Phi,"Phi"+pName+"/D");
+		}
+};
+class Gate{
+	private:
+		ReadFile *rf;
+
+		bool isBeam(){
+			return (rf->getTof713()>0)&&(rf->getF13Q()>0);
+		}
+                bool isInsideTargetArea(double x,double y){
+                        return (sqrt((x-2.0)*(x-2.0)+(y+1.1)*(y+1.1))<15);
+                }
+		bool isTarget(){
+			return isInsideTargetArea(rf->getTargetX(),rf->getTargetY());
+		}
+		bool isProton(){
+			return (rf->getTrigESPRI()>0);		
+		}
+		bool isAlpha(){
+			return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
+		}
+	public:
+		Gate(ReadFile *rf):rf(rf){}
+		~Gate(){}
+		bool isGoodEvent(){
+			return isBeam()&&isTarget()&&isProton()&&isAlpha();
+			//return true;
+		}
+};
+class Event{
+	private:
+		ReadFile *rf;
+		Gate	*gate;
+
+		Particle *a;
+		Particle *b;
+		Particle *r0;
+		Particle *r1;
+		Particle *r2;
+		Particle *r3;
+
+		void buildParticleA(){
+			a.setMT(ma*AMU,rf->getBeamEnergy()*ma);
+		}
+		void buildParticleB(){
+			double tb = 0;
+			b.setMT(mb*AMU,tb*mb);
+		}
+		void setCM(){
+			TLorentzVector cm = a.getLorentzVector() + b.getLorentzVector();		
+			r0.setLorentzVector(cm);
+		}
+
+		void buildParticle1(){
+			r1.setMT(m1*AMU,rf->getProtonEnergy());
+			r1.setTheta(rf->getEspriAngle());
+			r1.setPhi(rf->getEspriPhi());
+		}
+		void setParticle2(){
+			r2.setMT(m2*AMU,rf->getAlphaEnergy());	
+			r2.setTheta(rf->getTeleAngle());
+			r2.setPhi(rf->getTelePhi());
+		}
+		void buildParticle3(){
+
+			double theta3 = rf->getFdc0Angle();
+			//cout<<rf->getEspriPhi() - rf->getTelePhi()<<endl;
+			double cosPhi12 = cos((rf->getEspriPhi()-rf->getTelePhi())*TMath::DegToRad());
+			//double cosPhi12 = -1;
+			double cosTheta1To2 = cos(r1.theta)*cos(r2.theta) + sin(r1.theta)*sin(r2.theta)*cosPhi12;
+
+			r3.setEP(r0.E-r1.E-r2.E,sqrt( pow(r0.P,2) + pow(r1.P,2) +  pow(r2.P,2) - 2*r0.P*r1.P*cos(r1.theta) - 2*r0.P*r2.P*cos(r2.theta) + 2*r1.P*r2.P*cosTheta1To2));
+			//r3.setME(m3*AMU,r0.E-r1.E-r2.E);
+			double cosTheta3 = (r0.P-r1.P*cos(r1.theta)-r2.P*cos(r2.theta))/r3.P;
+			r3.setTheta(acos(cosTheta3)*TMath::RadToDeg());
+			//r3.setTheta(theta3);
+			//r3.print();
+		}
+
+	public:
+		Event(){}
+		Event(ReadFile *rf):rf(rf){
+
+			ma = env->GetValue("ma",9.0);
+			mb = env->GetValue("mb",1.0);
+			m1 = env->GetValue("m1",1.0);
+			m2 = env->GetValue("m2",4.0);
+			m3 = env->GetValue("m3",6.0);
+
+			a	= new Particle("a");
+			b	= new Particle("b");
+			r0	= new Particle("CM");
+			r1	= new Particle("1");
+			r2	= new Particle("2");
+			r3	= new Particle("3");
+			gate	= new Gate(rf);
+		}
+
+		void init(){
+			a.init();
+			b.init();
+			r1.init();
+			r2.init();
+			r3.init();
+		}
+		bool isSelectedEvent(){
+			return gate->isGoodEvent();
+		}
+		void reconstruct(){
+			init();
+			buildParticleA();
+			buildParticleB();
+			buildParticle1();
+			buildParticle2();
+			buildParticle3();
+		}
+		~Event(){
+			delete a;
+			delete b;
+			delete r0;
+			delete r1;
+			delete r2;
+			delete r3;
+		}
+		void setBranch(TTree *tree){
+			a ->setBranch(tree);
+			b ->setBranch(tree);      
+			r0->setBranch(tree);	
+			r1->setBranch(tree);	
+			r2->setBranch(tree);	
+			r3->setBranch(tree);			
+		}
+		void print(){
+			a.print();
+			b.print();
+			r1.print();
+			r2.print();
+			r3.print();
+		}
+
+};
