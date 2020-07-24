@@ -14608,3 +14608,148 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/txt/plasSlewParameters.txt
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master dd2b555] v1.0
+ 452 files changed, 351 insertions(+)
+ create mode 100644 channel/selectBeamEspriTele/.configPPBe.prm.swp
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/.haddBe10.sh.swp
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/.haddBe12.sh.swp
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/.haddBe14.sh.swp
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/haddBe10.sh
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/haddBe12.sh
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/haddBe14.sh
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/ppA.root_Be10
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/ppA.root_Be12
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/ppA.root_Be14
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0420_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0449_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0459_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0460_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0469_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0479_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0480_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0489_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0499_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0500_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0506_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0508_ppaBe10.root_test (100%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0509_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0512_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0519_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0520_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0526_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0527_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0528_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0529_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0532_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0534_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0535_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0536_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0539_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0540_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0542_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0543_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0545_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0546_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0547_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0548_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0549_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0550_ppaBe10.root_test (76%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0551_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0552_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0554_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0555_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0556_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0558_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0559_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0560_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0561_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0562_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0563_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0564_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0565_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0566_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0567_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0568_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0569_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0570_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0571_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0572_ppaBe10.root_test
+ rewrite channel/selectBeamEspriTele/rootfiles/run0573_ppaBe10.root_test (76%)
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0574_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0575_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0576_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0578_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0579_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0580_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0581_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0582_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0583_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0584_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0585_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0586_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0587_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0588_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0589_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0590_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0591_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0592_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0593_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0594_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0595_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0596_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0598_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0599_ppaBe10.root_test
+ create mode 100644 channel/selectBeamEspriTele/rootfiles/run0600_ppaBe10.root_test
+ rewrite merger/rootfiles/run0377_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0381_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0384_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0385_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0386_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0391_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0393_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0396_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0397_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0398_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0405_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0409_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0411_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0413_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0417_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0418_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0421_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0428_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0434_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0435_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0439_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0455_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0461_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0463_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0467_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0469_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0475_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0484_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0486_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (91%)
+ rewrite merger/rootfiles/run0502_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0504_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0507_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0514_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0523_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0527_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0534_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0536_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0541_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0542_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0559_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0560_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0571_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0579_analysed.root_test (63%)
+ rewrite merger/rootfiles/run0581_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0584_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0588_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0590_analysed.root_test (90%)
+ rewrite merger/rootfiles/run0591_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0599_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0600_analysed.root_test (100%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
