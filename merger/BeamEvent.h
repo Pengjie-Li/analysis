@@ -63,6 +63,5 @@ class BeamEvent{
 		double getBeamToF(){
 			return tofSBTTarget;
 		}
-		
 };
 

@@ -14753,3 +14753,9 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/run0600_analysed.root_test (100%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f0d87ce] v1.0
+ 8 files changed, 145 insertions(+)
+ create mode 100644 merger/.Merger.h.swp
+ create mode 100644 merger/.main.cpp.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
