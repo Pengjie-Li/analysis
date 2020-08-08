@@ -5,6 +5,7 @@
  */
 #include <math.h>
 #include <fstream>
+#include <iostream>
 #include <TFile.h>
 #include <TH3D.h>
 #include <TTree.h>
@@ -23,7 +24,7 @@
 #include <TPolyMarker3D.h>
 #include <Math/Vector3D.h>
 #include <Fit/Fitter.h>
-
+using namespace std;
 
 class Plane{
 	public:
@@ -117,6 +118,7 @@ public:
 		y0=y;
 		findCornerPoint();
 		outputPosition();
+
 	}
 	void findCornerPoint(){
 
@@ -140,8 +142,8 @@ public:
 	void outputPosition(){
 		if(side==0) outputName="LeftDSSDPixelPosition.txt";
 		else outputName="RightDSSDPixelPosition.txt";
-		ofstream out(outputName,ios_base::app | ios_base::out);
-		out.flags (ios::left);
+		ofstream output(outputName,ios_base::app | ios_base::out);
+		output.flags (ios::left);
 
 		TVector3 targetCenter(0,0,-4222.45);
 		for(int i=0;i<32;i++)
@@ -168,29 +170,29 @@ public:
 					tempfid=31-i;
 					tempbid=31-j;
 				}
-				out<<setw(20)<<tempfid<<setw(20)<<tempbid<<setw(20)<<tempx<<setw(20)<<tempy<<setw(20)<<tempz<<endl;
+				output<<setw(20)<<tempfid<<setw(20)<<tempbid<<setw(20)<<tempx<<setw(20)<<tempy<<setw(20)<<tempz<<endl;
 				cout<<setw(20)<<tempfid<<setw(20)<<tempbid<<setw(20)<<tempx<<setw(20)<<tempy<<setw(20)<<tempz<<endl;
 			}
-		out.close();
+		output.close();
 	}
 
 
 };
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
-//	new GeneratePosition(0,16,26,-32.466,-1.40);	
+	new GeneratePosition(0,16,26,-32.466,-1.40);	
 //	new GeneratePosition(1,16,26,32.17,-1.75);	
 
 
-	LeftPlane *lp=new LeftPlane();
-	RightPlane *rp=new RightPlane();
-	cout<<"Left DSSD"<<endl;	
-	cout<<(lp->e1).Print()<<endl;
-	cout<<(lp->e2).Print()<<endl;
-	
-	cout<<"Right DSSD"<<endl;	
-	cout<<(rp->e1).Print()<<endl;
-	cout<<(rp->e2).Print()<<endl;
+//	LeftPlane *lp=new LeftPlane();
+//	RightPlane *rp=new RightPlane();
+//	cout<<"Left DSSD"<<endl;	
+//	cout<<(lp->e1).Print()<<endl;
+//	cout<<(lp->e2).Print()<<endl;
+//	
+//	cout<<"Right DSSD"<<endl;	
+//	cout<<(rp->e1).Print()<<endl;
+//	cout<<(rp->e2).Print()<<endl;
 	
 
 // C++ 多态
