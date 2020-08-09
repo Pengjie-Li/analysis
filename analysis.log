@@ -14821,3 +14821,17 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 28c01d3] v1.0
+ 14 files changed, 2536 insertions(+), 15 deletions(-)
+ rewrite tele/dssd3DPosition/.Generate_Poisition.C.swp (75%)
+ create mode 100644 tele/dssd3DPosition/.expectDssdCenter.C.swp
+ rewrite tele/dssd3DPosition/.teleXYAxis.txt.swp (67%)
+ create mode 100644 tele/dssd3DPosition/LeftDSSDPixelPosition.txt
+ create mode 100644 tele/dssd3DPosition/expectDssdCenter.C
+ create mode 100644 tele/dssd3DPosition/expectRdcCenter.C
+ rename tele/dssd3DPosition/{.teleXYAxis.txt.swp => output/.LeftABCD.txt.swp} (93%)
+ rename tele/dssd3DPosition/{.Generate_Poisition.C.swp => output/.RightABCD.txt.swp} (69%)
+ create mode 100644 tele/dssd3DPosition/output/LeftABCD.txt
+ create mode 100644 tele/dssd3DPosition/output/RightABCD.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
