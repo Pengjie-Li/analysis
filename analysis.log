@@ -14843,3 +14843,20 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 pla/slewEffect/txt/.SlewParaRun310.txt.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 80b4502] v1.0
+ 18 files changed, 137 insertions(+), 1 deletion(-)
+ create mode 100755 bdc/Calib/OneHitInEachLayer/TDCSpectrum
+ rename merger/.EspriEvent.h.swp => bdc/Calib/rootfiles/.histogramIntoTGraph.C.swp (77%)
+ create mode 100644 bdc/Calib/stc/calib/fdc0TDCCalibSpectrum.root_new
+ create mode 100644 bdc/Calib/stc/checkConsistency.C
+ create mode 100644 bdc/Calib/stc/checkWindow.C
+ create mode 100644 bdc/Calib/stc/histogramIntoTGraph.C
+ create mode 100644 bdc/Resolution/rootfiles/.draw_check.C.swp
+ create mode 100644 bdc/Resolution/rootfiles/.draw_evaluate.C.swp
+ create mode 100644 bdc/Resolution/rootfiles/.draw_simulate.C.swp
+ rewrite bdc/convert/.ConvertDC.C.swp (65%)
+ rewrite merger/.EspriEvent.h.swp (67%)
+ create mode 100644 merger/.MergeBDC.h.swp
+ create mode 100644 merger/.MergeTELE.h.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
