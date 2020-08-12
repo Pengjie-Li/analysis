@@ -125,13 +125,13 @@ class ESPRIRdcCal{
 			for (int i = 0; i < rdcHit; ++i) {
 				cout<<" rdc Hit"<<i<<" Side = "<<rdcHitSide[i]<< " X ="<<rdcHitX[i]<<" Y = "<<rdcHitY[i]<<" Chi2 = "<<rdcHitChi2[i]<<endl;	
 			}
-			//cout<<"Left RDC: "<<rdcX[0]<<" "<<rdcY[0]<<endl;
-			//cout<<"Right RDC:"<<rdcX[1]<<" "<<rdcY[1]<<endl;
-			//for (int i = 0; i < 2; ++i) {
-			//	for (int j = 0; j < 7; ++j) {
-			//		cout<<"i = "<<i<<" j = "<<j<<"\t"<<" ch = "<<"\t"<<rdcTch[i][j]<<"\t"<<" dl = "<<"\t"<<rdcDL[i][j]<<endl;
-			//	}
-			//}
+			cout<<"Left RDC: "<<rdcX[0]<<" "<<rdcY[0]<<endl;
+			cout<<"Right RDC:"<<rdcX[1]<<" "<<rdcY[1]<<endl;
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 7; ++j) {
+					cout<<"i = "<<i<<" j = "<<j<<"\t"<<" ch = "<<"\t"<<rdcTch[i][j]<<"\t"<<" dl = "<<"\t"<<rdcDL[i][j]<<"\t"<<rdcRes[i][j]<<endl;
+				}
+			}
 		}
 };
 

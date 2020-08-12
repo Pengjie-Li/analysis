@@ -14860,3 +14860,12 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/.MergeTELE.h.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 27fdfc9] v1.0
+ 7 files changed, 17 insertions(+)
+ create mode 100644 bdc/Resolution/.CheckBDC2.C.swp
+ create mode 100644 bdc/Resolution/.calculatePropagationError.C.swp
+ rename merger/{.MergeBDC.h.swp => .BdcEvent.h.swp} (53%)
+ rewrite merger/.MergeBDC.h.swp (75%)
+ rewrite merger/rootfiles/.setAlias.C.swp (75%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

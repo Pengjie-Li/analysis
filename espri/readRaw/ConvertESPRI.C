@@ -136,9 +136,9 @@ class ConvertESPRI{
 		void print(){
 			if(espriConvertCal->getNaiHit()>=1){
 				cout<<"EventNumber = "<<EventNumber<<endl;
-				//espriReadRaw->printTDC();
+				espriReadRaw->printTDC();
 				//espriReadRaw->printPlas();
-				//espriConvertCal->printRdc();
+				espriConvertCal->printRdc();
 				//espriConvertCal->printPlas();
 				//espriConvertCal->printNai();
 				//espriHit->print();
