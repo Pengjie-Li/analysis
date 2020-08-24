@@ -759,14 +759,6 @@ class ReadFile{
 			tree->Branch("apDssdE",&apDssdE,"apDssdE/D");
 			tree->Branch("apDegraderE",&apDegraderE,"apDegraderE/D");
 
-			tree->Branch("teleHitFid",teleHitFid,"teleHitFid[teleHit]/I");
-			tree->Branch("teleHitBid",teleHitBid,"teleHitBid[teleHit]/I");
-			tree->Branch("teleHitDssdFQPed",teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/I");
-			tree->Branch("teleHitDssdBQPed",teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/I");
-			tree->Branch("teleHitDssdTCal",teleHitDssdTCal,"teleHitDssdTCal[teleHit]/I");
-			tree->Branch("teleHitCid",teleHitCid,"teleHitCid[teleHit]/I");
-			tree->Branch("teleHitCsiQPed",teleHitCsiQPed,"teleHitCsiQPed[teleHit]/I");
-			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/I");
 
 			tree->Branch("hodQRaw",hodQRaw,"hodQRaw[2][40]/I");
 			tree->Branch("hodQPed",hodQPed,"hodQPed[2][40]/D");
@@ -817,6 +809,14 @@ class ReadFile{
 
 			tree->Branch("teleHit",&teleHit,"teleHit/I");
 			tree->Branch("teleHitSide",teleHitSide,"teleHitSide[teleHit]/I");
+			tree->Branch("teleHitFid",teleHitFid,"teleHitFid[teleHit]/I");
+			tree->Branch("teleHitBid",teleHitBid,"teleHitBid[teleHit]/I");
+			tree->Branch("teleHitDssdFQPed",teleHitDssdFQPed,"teleHitDssdFQPed[teleHit]/D");
+			tree->Branch("teleHitDssdBQPed",teleHitDssdBQPed,"teleHitDssdBQPed[teleHit]/D");
+			tree->Branch("teleHitDssdTCal",teleHitDssdTCal,"teleHitDssdTCal[teleHit]/D");
+			tree->Branch("teleHitCid",teleHitCid,"teleHitCid[teleHit]/I");
+			tree->Branch("teleHitCsiQPed",teleHitCsiQPed,"teleHitCsiQPed[teleHit]/D");
+			tree->Branch("teleHitCsiTCal",teleHitCsiTCal,"teleHitCsiTCal[teleHit]/D");
 
 
 			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
@@ -951,9 +951,25 @@ class ReadFile{
 		double getEspriAngle(){
 			return espriAngle;
 		}
+		int getTeleHit(){
+			return teleHit;
+		}
 		int getTeleSide(){
 			return teleHitSide[0];
 		}
+		double  getTeleDssdFQPed(){
+			return teleHitDssdFQPed[0];
+		}
+		double getTeleDssdBQPed(){
+			return teleHitDssdBQPed[0];
+		}
+		int getTeleDssdFid(){
+			return teleHitFid[0];
+		}
+		int getTeleDssdBid(){
+			return teleHitBid[0];
+		}
+
 		double getTeleAngle(){
 			return teleAngle;
 		}
