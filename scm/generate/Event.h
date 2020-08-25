@@ -116,14 +116,15 @@ class Event{
 			return rf->getTeleDssdBQPed()>300&&rf->getTeleDssdBQPed()<4000;
 		}
 		bool isFBEffective(){
-			return abs(rf->getTeleDssdFQPed()-rf->getTeleDssdBQPed())<300;
+			//return abs(rf->getTeleDssdFQPed()-rf->getTeleDssdBQPed())<300;
+			return rf->getTeleDssdFQPed()>0.7*rf->getTeleDssdBQPed()&&rf->getTeleDssdFQPed()<1.3*rf->getTeleDssdBQPed();
 		}
 
 		bool isDssdInRange(){
 			return isFQPedInRange()&&isBQPedInRange()&&isFBEffective();
 		}
 		bool isRefStrip(){
-			return (rf->getTeleDssdFid()==15) || (rf->getTeleDssdFid()==15) ;
+			return (rf->getTeleDssdFid()==15) || (rf->getTeleDssdBid()==15) ;
 		}
 
 	public:

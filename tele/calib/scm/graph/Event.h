@@ -38,7 +38,8 @@ class TGraphContainer{
 	public:
 		TGraphContainer(){}
 		~TGraphContainer(){}
-		void fill(double x,double y){
+		//void fill(double x,double y){ 
+		void fill(double y,double x){ //For making Ref Strip to be Y axis
 			xArray.push_back(x);
 			yArray.push_back(y);
 		}
