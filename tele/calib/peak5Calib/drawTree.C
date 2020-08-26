@@ -32,79 +32,12 @@ class DrawCurve{
 		~DrawCurve(){}
 };
 
-class TCalibPara{
-	private:
-		double plasGain[2][7];
-		double plasDead[2][7];
-		double naiGain[2][7];
-		double naiDead[2][7];
 
-		void init(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					plasGain[i][j]= 0;
-					plasDead[i][j]= 0;
-					naiGain[i][j]= 0;
-					naiDead[i][j]= 0;
-				}
-
-			}
-
-		}
-		void loadCalibPara(){
-			init();
-			ifstream in;
-			TString inputName = "calibPara.txt";
-			cout<<inputName<<endl;
-			in.open(inputName);
-			int side;
-			int barId;
-			double gPlas;
-			double dPlas;
-			double gNai;
-			double dNai;
-			while(1){
-				if(!in.good()) break;
-				in>>side>>barId>>gPlas>>dPlas>>gNai>>dNai;
-				naiGain[side][barId] = gNai;
-				naiDead[side][barId] = dNai;
-				plasGain[side][barId] = gPlas;
-				plasDead[side][barId] = dPlas;
-			}
-		}
-		void print(){
-			for (int i = 0; i < 2; ++i) {
-				for (int j = 0; j< 7; ++j) {
-					cout<<i<<"\t"<<j<<"\t"<<plasGain[i][j]<<"\t"<<plasDead[i][j]<<"\t"<<naiGain[i][j]<<"\t"<<naiDead[i][j]<<endl;
-				}
-
-			}
-		}
-	public:
-		TCalibPara(){
-			loadCalibPara();
-			//print();
-		}
-		~TCalibPara(){}
-		double getNaiGain(int side,int barId){
-			return naiGain[side][barId];
-		}
-		double getNaiDead(int side,int barId){
-			return naiDead[side][barId];
-		}
-		double getPlasGain(int side,int barId){
-			return plasGain[side][barId];
-		}
-		double getPlasDead(int side,int barId){
-			return plasDead[side][barId];
-		}
-};
 class CheckEx{
 	private:
 		TChain *tree;
 		int markerStyle;
 
-		TCalibPara *calibPara;
 		int side;
 		int barId;
 		double gPlas;
@@ -139,20 +72,6 @@ class CheckEx{
 		double tofOffset;
 
 
-		double getNaiGain(){
-			return calibPara->getNaiGain(side,barId);
-		}
-		double getNaiDead(){
-			return calibPara->getNaiDead(side,barId);
-		}
-
-		double getPlasGain(){
-			return calibPara->getPlasGain(side,barId);
-		}
-		double getPlasDead(){
-			return calibPara->getPlasDead(side,barId);
-		}
-
 
 
 	public:
@@ -165,7 +84,6 @@ class CheckEx{
 			//tree->Add("run0383_ppBe14.root");
 			//tree->Add("run0383_ppBe14.root");
 			dc = new DrawCurve();
-			calibPara = new TCalibPara();
 			markerStyle = 1;
 		}
 		void addFile(TString fileName){
@@ -179,14 +97,11 @@ class CheckEx{
 			tree = new TChain("tree");
 			//tree->Add("ppBe10.root");
 			//tree->Add("ppBe14.root_BeamProtonPRAngleHodBar28-33");
-			calibPara = new TCalibPara();
-			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 			setAlias();
 		}
 
 		void setBar(int s, int b){
 			side = s; barId = b;
-			setCalibParas(getNaiGain(),getNaiDead(),getPlasGain(),getPlasDead());
 		}
 		void setCalibParas(double gN,double dN,double gP,double dP){
 			gNai = gN; dNai = dN;gPlas = gP; dPlas = dP;
@@ -485,7 +400,7 @@ class CheckEx{
 
 		TH2F *hTargetArea[5];
 		void drawTargetArea(int peakId){
-			tree->Draw(Form("vTarget.Y():vTarget.X()>>hPeak%d(1000,-50,50,1000,-50,50)",peakId),gate,"colz");
+			tree->Draw(Form("targetPosition.Y():targetPosition.X()>>hPeak%d(1000,-50,50,1000,-50,50)",peakId),gate,"colz");
 			hTargetArea[peakId] = (TH2F *)gDirectory->Get(Form("hPeak%d",peakId));
 			//hTargetArea[peakId]->SetLpeakIdneColor(peakId+1);
 			hTargetArea[peakId]->Draw("colz");
@@ -531,20 +446,19 @@ class CheckEx{
 		~CheckEx(){
 			delete tree;
 			delete dc;
-			delete calibPara;
 		}
 };
 TString getGate(int peakId){
 	TString gate;
-	TString targetArea="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<13)";
-	TString Frame="((vTarget.X()-2.0)<30&&(vTarget.X()-2.0)>-30&&(vTarget.Y()+1.1)<25&&(vTarget.Y()+1.1)>-35)";
-	TString Neck="((vTarget.X()-2.0)<4&&(vTarget.X()-2.0)>-4&&(vTarget.Y()+1.1)>15&&(vTarget.Y()+1.1)<25)";
+	TString targetArea="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<13)";
+	TString Frame="((targetPosition.X()-2.0)<30&&(targetPosition.X()-2.0)>-30&&(targetPosition.Y()+1.1)<25&&(targetPosition.Y()+1.1)>-35)";
+	TString Neck="((targetPosition.X()-2.0)<4&&(targetPosition.X()-2.0)>-4&&(targetPosition.Y()+1.1)>15&&(targetPosition.Y()+1.1)<25)";
 
-	TString R5="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<14)";
-	TString R4="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<17)";
-	TString R3="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<20)";
-	TString R2="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<21)";
-	TString R1="(sqrt((vTarget.X()-2.0)*(vTarget.X()-2.0)+(vTarget.Y()+1.1)*(vTarget.Y()+1.1))<15)";
+	TString R5="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<14)";
+	TString R4="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<17)";
+	TString R3="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<20)";
+	TString R2="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<21)";
+	TString R1="(sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<15)";
 
 	TString peak[5];
 	 TString peak3_1="(!"+R5+"&&"+R4+"&&!"+Neck+")";
@@ -644,7 +558,7 @@ void drawCsiEnergy(){
 }
 void drawDssdQPed(){
 
-	int peakId = 4;
+	int peakId = 0;
 	TString fileName = "calibDssdQPedPeak5.root";
 	CheckEx *ce = new CheckEx();
 	ce->addFile("rootfiles/run0596_analysed.root");
@@ -696,10 +610,10 @@ void checkCsiEnergy(){
 
 
 void drawTree(){
-	//drawDssdQPed();	
+	drawDssdQPed();	
 	//checkCsiEnergy();	
 	//drawCsiQPed();	
-	drawCsiEnergy();	
+	//drawCsiEnergy();	
 	//checkTargetGate();
 }
 

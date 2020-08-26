@@ -15449,3 +15449,528 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 scm/scm_old/scm_v1/scm.h
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0325ffc] v1.0
+ 535 files changed, 6984 insertions(+), 6 deletions(-)
+ rewrite analysis/generateChannels/.ReadFile.h.swp (68%)
+ rewrite analysis/generateChannels/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test (98%)
+ create mode 120000 channel/PPAlphaKinetics.h
+ create mode 120000 channel/ReadFile.h
+ create mode 100644 channel/ppAlphaBe10/.Event.h.swp
+ create mode 100644 channel/ppAlphaBe10/.convert.sh.swp
+ create mode 100644 channel/ppAlphaBe10/.loop.sh.swp
+ create mode 100644 channel/ppAlphaBe10/Event.h
+ create mode 100755 channel/ppAlphaBe10/Makefile
+ create mode 120000 channel/ppAlphaBe10/PPAlphaKinetics.h
+ create mode 100644 channel/ppAlphaBe10/PPAlphaKinetics.h_backup
+ create mode 120000 channel/ppAlphaBe10/ReadFile.h
+ create mode 100644 channel/ppAlphaBe10/configPPBe.prm
+ create mode 100644 channel/ppAlphaBe10/convert.sh
+ create mode 100755 channel/ppAlphaBe10/header.h
+ create mode 120000 channel/ppAlphaBe10/inputRootfiles
+ create mode 100644 channel/ppAlphaBe10/log
+ create mode 100644 channel/ppAlphaBe10/loop.sh
+ create mode 100644 channel/ppAlphaBe10/main.cpp
+ create mode 100644 channel/ppAlphaBe10/ppBe.cpp
+ create mode 100644 channel/ppAlphaBe10/ppBe.h
+ create mode 100755 channel/ppAlphaBe10/ppaBe10
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0298_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0299_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0300_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0301_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0302_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0303_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0304_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0305_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0306_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0307_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0308_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0309_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0310_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0311_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0312_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0313_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0314_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0315_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0316_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0317_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0318_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0319_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0320_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0321_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0322_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0323_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0324_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0325_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0326_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0327_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0328_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0329_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/rootfiles/run0330_ppaBe10.root_test
+ create mode 100644 channel/ppAlphaBe10/test.C
+ create mode 100644 channel/ppAlphaBe12/.Event.h.swp
+ create mode 100644 channel/ppAlphaBe12/Event.h
+ create mode 100755 channel/ppAlphaBe12/Makefile
+ create mode 120000 channel/ppAlphaBe12/PPAlphaKinetics.h
+ create mode 120000 channel/ppAlphaBe12/ReadFile.h
+ create mode 100644 channel/ppAlphaBe12/configPPBe.prm
+ create mode 100644 channel/ppAlphaBe12/convert.sh
+ create mode 100755 channel/ppAlphaBe12/header.h
+ create mode 120000 channel/ppAlphaBe12/inputRootfiles
+ create mode 100644 channel/ppAlphaBe12/loop.sh
+ create mode 100644 channel/ppAlphaBe12/main.cpp
+ create mode 100644 channel/ppAlphaBe12/ppBe.cpp
+ create mode 100644 channel/ppAlphaBe12/ppBe.h
+ create mode 100755 channel/ppAlphaBe12/ppaBe12
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0331_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0332_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0333_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0334_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0335_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0336_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0337_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0338_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0339_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0340_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0341_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0342_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0343_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0344_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0345_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0346_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0347_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0348_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0349_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0350_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0351_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0352_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0353_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0354_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0355_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0356_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0357_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0358_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0359_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0360_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0361_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0362_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0363_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0364_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/rootfiles/run0365_ppaBe12.root_test
+ create mode 100644 channel/ppAlphaBe12/test.C
+ create mode 100644 channel/ppAlphaBe14/Event.h
+ create mode 100755 channel/ppAlphaBe14/Makefile
+ create mode 120000 channel/ppAlphaBe14/PPAlphaKinetics.h
+ create mode 120000 channel/ppAlphaBe14/ReadFile.h
+ create mode 100644 channel/ppAlphaBe14/configPPBe.prm
+ create mode 100644 channel/ppAlphaBe14/convert.sh
+ create mode 100755 channel/ppAlphaBe14/header.h
+ create mode 120000 channel/ppAlphaBe14/inputRootfiles
+ create mode 100644 channel/ppAlphaBe14/loop.sh
+ create mode 100644 channel/ppAlphaBe14/main.cpp
+ create mode 100644 channel/ppAlphaBe14/ppBe.cpp
+ create mode 100644 channel/ppAlphaBe14/ppBe.h
+ create mode 100755 channel/ppAlphaBe14/ppaBe14
+ create mode 100644 channel/ppAlphaBe14/test.C
+ create mode 100644 channel/ppAlphaBe14/tree.C
+ create mode 100644 channel/ppBe10/Event.h
+ create mode 100755 channel/ppBe10/Makefile
+ create mode 120000 channel/ppBe10/ReadFile.h
+ create mode 100644 channel/ppBe10/configPPBe.prm
+ create mode 100644 channel/ppBe10/convert.sh
+ create mode 100644 channel/ppBe10/draw/draw.C
+ create mode 100644 channel/ppBe10/draw/png/Bar00.png
+ create mode 100644 channel/ppBe10/draw/png/Bar01.png
+ create mode 100644 channel/ppBe10/draw/png/Bar02.png
+ create mode 100644 channel/ppBe10/draw/png/Bar03.png
+ create mode 100644 channel/ppBe10/draw/png/Bar04.png
+ create mode 100644 channel/ppBe10/draw/png/Bar05.png
+ create mode 100644 channel/ppBe10/draw/png/Bar06.png
+ create mode 100644 channel/ppBe10/draw/png/Bar10.png
+ create mode 100644 channel/ppBe10/draw/png/Bar11.png
+ create mode 100644 channel/ppBe10/draw/png/Bar12.png
+ create mode 100644 channel/ppBe10/draw/png/Bar13.png
+ create mode 100644 channel/ppBe10/draw/png/Bar14.png
+ create mode 100644 channel/ppBe10/draw/png/Bar15.png
+ create mode 100644 channel/ppBe10/draw/png/Bar16.png
+ create mode 100755 channel/ppBe10/header.h
+ create mode 120000 channel/ppBe10/inputRootfiles
+ create mode 100644 channel/ppBe10/log
+ create mode 100644 channel/ppBe10/loop.sh
+ create mode 100644 channel/ppBe10/main.cpp
+ create mode 100644 channel/ppBe10/ppBe.cpp
+ create mode 100644 channel/ppBe10/ppBe.h
+ create mode 100755 channel/ppBe10/ppBe10
+ create mode 100644 channel/ppBe10/test.C
+ create mode 100644 channel/ppBe12/Event.h
+ create mode 100755 channel/ppBe12/Makefile
+ create mode 120000 channel/ppBe12/ReadFile.h
+ create mode 100644 channel/ppBe12/ReadFile.h_backup
+ create mode 100644 channel/ppBe12/configPPBe.prm
+ create mode 100644 channel/ppBe12/convert.sh
+ create mode 100755 channel/ppBe12/header.h
+ create mode 120000 channel/ppBe12/inputRootfiles
+ create mode 100644 channel/ppBe12/loop.sh
+ create mode 100644 channel/ppBe12/main.cpp
+ create mode 100644 channel/ppBe12/ppBe.cpp
+ create mode 100644 channel/ppBe12/ppBe.h
+ create mode 100755 channel/ppBe12/ppBe12
+ create mode 100644 channel/ppBe12/test.C
+ create mode 100644 channel/ppBe14/Event.h
+ create mode 100755 channel/ppBe14/Makefile
+ create mode 120000 channel/ppBe14/ReadFile.h
+ create mode 100644 channel/ppBe14/ReadFile.h_backup
+ create mode 100644 channel/ppBe14/configPPBe.prm
+ create mode 100644 channel/ppBe14/convert.sh
+ create mode 100755 channel/ppBe14/header.h
+ create mode 120000 channel/ppBe14/inputRootfiles
+ create mode 100644 channel/ppBe14/loop.sh
+ create mode 100644 channel/ppBe14/main.cpp
+ create mode 100644 channel/ppBe14/ppBe.cpp
+ create mode 100644 channel/ppBe14/ppBe.h
+ create mode 100755 channel/ppBe14/ppBe14
+ create mode 100644 channel/selectBeamEspriTele/.Event.h.swp
+ rewrite channel/selectBeamEspriTele/ppA (89%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0298_ppaBe10.root_test (86%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0299_ppaBe10.root_test (86%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0300_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0301_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0302_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0303_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0304_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0305_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0306_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0307_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0308_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0309_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0310_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0311_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0312_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0313_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0314_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0315_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0316_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0317_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0318_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0319_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0320_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0321_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0322_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0323_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0324_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0325_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0326_ppaBe10.root_test (86%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0327_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0328_ppaBe10.root_test (91%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0329_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0330_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0331_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0332_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0333_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0334_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0335_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0336_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0337_ppaBe10.root_test (86%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0338_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0339_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0340_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0341_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0342_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0343_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0344_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0345_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0346_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0347_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0348_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0349_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0350_ppaBe10.root_test (91%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0351_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0352_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0353_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0354_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0355_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0356_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0357_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0358_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0359_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0360_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0361_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0362_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0363_ppaBe10.root_test (90%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0364_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0365_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0366_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0367_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0368_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0369_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0370_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0371_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0372_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0373_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0374_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0375_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0376_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0377_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0378_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0379_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0380_ppaBe10.root_test (86%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0381_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0382_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0383_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0384_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0385_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0386_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0387_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0388_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0389_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0390_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0391_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0392_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0393_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0394_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0395_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0396_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0397_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0398_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0399_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0400_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0401_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0402_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0403_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0404_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0405_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0406_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0407_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0408_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0409_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0410_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0411_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0412_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0413_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0414_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0415_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0416_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0417_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0418_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0419_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0420_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0421_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0422_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0423_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0424_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0425_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0426_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0427_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0428_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0430_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0433_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0435_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0436_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0437_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0438_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0441_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0442_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0443_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0446_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0447_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0448_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0451_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0452_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0453_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0456_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0457_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0461_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0462_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0466_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0467_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0471_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0472_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0476_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0477_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0481_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0482_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0486_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0487_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0491_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0492_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0496_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0497_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0501_ppaBe10.root_test (100%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0502_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0507_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0512_ppaBe10.root_test (99%)
+ create mode 100644 scm/generate/.convert.sh.swp
+ rewrite scm/generate/.loop.sh.swp (67%)
+ rewrite scm/generate/dssd (60%)
+ rename scm/generate/{.loop.sh.swp => rootfiles/.haddBe10.sh.swp} (95%)
+ create mode 100644 scm/generate/rootfiles/.haddBe12.sh.swp
+ create mode 100644 scm/generate/rootfiles/.haddBe14.sh.swp
+ create mode 100644 scm/generate/rootfiles/haddBe10.sh
+ create mode 100644 scm/generate/rootfiles/haddBe12.sh
+ create mode 100644 scm/generate/rootfiles/haddBe14.sh
+ rewrite scm/generate/rootfiles/run0298_ppBe10.root_test (88%)
+ rewrite scm/generate/rootfiles/run0299_ppBe10.root_test (88%)
+ rewrite scm/generate/rootfiles/run0300_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0301_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0302_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0303_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0304_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0305_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0306_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0307_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0308_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0309_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0310_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0311_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0312_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0313_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0314_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0315_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0316_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0317_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0318_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0319_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0320_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0321_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0322_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0323_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0324_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0325_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0326_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0327_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0328_ppBe10.root_test (97%)
+ rewrite scm/generate/rootfiles/run0329_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0330_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0331_ppBe10.root_test (88%)
+ rewrite scm/generate/rootfiles/run0332_ppBe10.root_test (92%)
+ rewrite scm/generate/rootfiles/run0333_ppBe10.root_test (92%)
+ rewrite scm/generate/rootfiles/run0334_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0335_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0336_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0337_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0338_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0339_ppBe10.root_test (88%)
+ rewrite scm/generate/rootfiles/run0340_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0341_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0342_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0343_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0344_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0345_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0346_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0347_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0348_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0349_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0350_ppBe10.root_test (93%)
+ rewrite scm/generate/rootfiles/run0351_ppBe10.root_test (86%)
+ rewrite scm/generate/rootfiles/run0352_ppBe10.root_test (88%)
+ rewrite scm/generate/rootfiles/run0353_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0354_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0355_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0356_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0357_ppBe10.root_test (86%)
+ create mode 100644 scm/generate/rootfiles/run0358_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0359_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0360_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0361_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0362_ppBe10.root_test (86%)
+ create mode 100644 scm/generate/rootfiles/run0363_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0364_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0365_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0366_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0367_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0368_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0369_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0370_ppBe10.root_test (88%)
+ create mode 100644 scm/generate/rootfiles/run0371_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0372_ppBe10.root_test (87%)
+ rewrite scm/generate/rootfiles/run0373_ppBe10.root_test (99%)
+ create mode 100644 scm/generate/rootfiles/run0374_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0375_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0376_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0377_ppBe10.root_test (89%)
+ create mode 100644 scm/generate/rootfiles/run0378_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0379_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0380_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0381_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0382_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0383_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0384_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0385_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0386_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0387_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0388_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0389_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0390_ppBe10.root_test (91%)
+ create mode 100644 scm/generate/rootfiles/run0391_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0392_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0393_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0394_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0395_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0396_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0397_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0398_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0399_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0400_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0401_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0402_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0403_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0404_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0405_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0406_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0407_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0408_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0409_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0410_ppBe10.root_test (87%)
+ create mode 100644 scm/generate/rootfiles/run0411_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0412_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0413_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0414_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0415_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0416_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0417_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0418_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0419_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0420_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0421_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0422_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0423_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0424_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0425_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0426_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0427_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0428_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0429_ppBe10.root_test
+ rewrite scm/generate/rootfiles/run0430_ppBe10.root_test (86%)
+ create mode 100644 scm/generate/rootfiles/run0433_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0434_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0435_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0436_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0437_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0438_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0439_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0441_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0442_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0443_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0444_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0445_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0446_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0447_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0448_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0449_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0450_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0451_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0452_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0453_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0454_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/run0455_ppBe10.root_test
+ create mode 100644 scm/generate/rootfiles/scm1515.root_Be10
+ create mode 100644 scm/generate/rootfiles/scm1515.root_Be12
+ create mode 100644 scm/generate/rootfiles/scm1515.root_Be14
+ create mode 100644 tele/calib/dssd/.fit.C.swp
+ create mode 100644 tele/calib/scm/fit/.fitTGraph.C.swp
+ create mode 100644 tele/calib/scm/generate/.Event.h.swp
+ create mode 100644 tele/calib/scm/graph/.Event.h.swp
+ create mode 100644 tele/calib/scm/graph/.ReadFile.h.swp
+ create mode 100644 tele/calib/scm/graph/.configScmGenerator.prm.swp
+ create mode 100644 tele/resolution/.Draw_reso.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

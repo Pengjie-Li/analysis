@@ -9,17 +9,17 @@ class DssdInput{
 			dssdQPedEnergy.resize(4);	
 
 			TString inputName = "txt/peak5DssdCalibInput.txt";
-			ifstream in;
-			in.open(inputName);
+			ifstream inputFile;
+			inputFile.open(inputName);
 			int caseId;
 			double hQPed[4];
 			double hQPedEnergy;
 	
 			while (1){
-				if(!in.good()) break;
-				in>>caseId>>hQPedEnergy;
+				if(!inputFile.good()) break;
+				inputFile>>caseId>>hQPedEnergy;
 				for (int i = 0; i < 4; ++i) {
-					in>>hQPed[i];
+					inputFile>>hQPed[i];
 				}
 
 				for (int i = 0; i < 4; ++i){
@@ -60,7 +60,7 @@ class DssdFit{
 		DssdFit(){
 			dssdInput = new DssdInput();
 			dssdInput->print();
-			fitFunction = new TF1("fit","[0]*x",0,3000);
+			fitFunction = new TF1("fit","[1]*x+[0]",0,3000);
 			//fitFunction = new TF1("fit","[0]*x/(1+[1]*x)",0,3000);
 
 		}
@@ -72,16 +72,16 @@ class DssdFit{
 			qPed = dssdInput->getQPed(dssdId);
 			energy = dssdInput->getEnergy(dssdId);
 			
-			qPed.push_back(0);
-			energy.push_back(0);
+			//qPed.push_back(0);
+			//energy.push_back(0);
 			TGraph *gr = new TGraph(qPed.size(),&qPed[0],&energy[0]);
 			//fitFunction->SetParameters(dssdInput->getQPedAlign(teleSide),0);
 			//gr->Fit(fitFunction,"Q");
 			//fitFunction->SetParameters(0.29,0.01);
 			gr->Draw("ap*");
 			gr->Fit(fitFunction,"Q");
-			//cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
-			cout<<fitFunction->GetParameter(0)<<endl;
+			cout<<fitFunction->GetParameter(0)<<"\t"<<fitFunction->GetParameter(1)<<endl;
+			//cout<<fitFunction->GetParameter(0)<<endl;
 			//fitFunction->Draw("same");
 		}
 		

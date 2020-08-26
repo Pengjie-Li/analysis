@@ -9,7 +9,9 @@ class DssdEnergyPara{
 		double bCalOffset[2];
 
 		double kScmGain[4][32]; // new Para
+		double kScmOffset[4][32]; // new Para
 		double kCalibGain[4]; // new Para
+		double kCalibOffset[4]; // new Para
 		//double kRefA[4]; // Ref LF,LB,RF,RB
 		//double kRefB[4]; // 
 
@@ -23,15 +25,16 @@ class DssdEnergyPara{
 			in.open(inputName);
 			int side;
 			int strip;
-			int refId;
+			//int refId;
 			double offset;
 			double gain;
 			while (1)
 			{
-				in >>side>>strip>>refId>>offset>>gain;
+				in >>side>>strip>>offset>>gain;
 				cout<<side<<"\t"<<strip<<"\t"<<offset<<"\t"<<gain<<endl;
 				if (!in.good()) break;
 				kScmGain[side][strip]=gain;
+				kScmOffset[side][strip]=offset;
 			}
 			in.close();
 		}
@@ -44,12 +47,14 @@ class DssdEnergyPara{
 			in.open(inputName);
 			int side;
 			double gain;
+			double offset;
 			while (1)
 			{
-				in >>side>>gain;
+				in >>side>>offset>>gain;
 				cout<<side<<"\t"<<gain<<endl;
 				if (!in.good()) break;
 				kCalibGain[side] = gain;
+				kCalibOffset[side] = offset;
 			}
 			in.close();
 		}
@@ -118,9 +123,17 @@ class DssdEnergyPara{
 		double getScmGain(int side,int id){
 			return kScmGain[side][id];
 		}
+		double getScmOffset(int side,int id){
+			return kScmOffset[side][id];
+		}
+
 		double getCalibGain(int side){
 			return kCalibGain[side];
 		}
+		double getCalibOffset(int side){
+			return kCalibOffset[side];
+		}
+
 
 
 };
@@ -135,12 +148,13 @@ class DssdEnergy{
 		}
 
 		double getScm(int side,int id,double qPed){
-			return qPed/dssdPara->getScmGain(side,id);
+			//return qPed/dssdPara->getScmGain(side,id);
+			return qPed*dssdPara->getScmGain(side,id)+dssdPara->getScmOffset(side,id);
 		}
 		double getQCal(int side,double scm){
 			//cout<<side<<" scm="<<scm<<" "<<dssdPara->getRefParaA(side)<<" "<<dssdPara->getRefParaB(side)<<endl;	
 			//return dssdPara->getRefParaA(side)*scm/(1+dssdPara->getRefParaB(side)*scm);
-			return dssdPara->getCalibGain(side)*scm;
+			return dssdPara->getCalibGain(side)*scm + dssdPara->getCalibOffset(side);
 		}
 
 
@@ -161,6 +175,7 @@ class DssdEnergy{
 
 		double getFront(int side,int fid,double fQPed){
 			double scm = getScm(2*side,fid,fQPed);
+			scm = getScm(2*side+1,15,scm);
 			//cout<<2*side<<" scm="<<scm<<endl;
 			return getQCal(2*side,scm);
 		}
