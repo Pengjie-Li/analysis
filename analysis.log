@@ -15974,3 +15974,216 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/resolution/.Draw_reso.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b465ac7] v1.0
+ 224 files changed, 8145 insertions(+), 132 deletions(-)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0429_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0434_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0439_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0444_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0445_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0449_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0450_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0454_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0455_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0458_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0459_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0460_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0463_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0464_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0465_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0468_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0469_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0470_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0473_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0474_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0475_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0478_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0479_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0480_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0483_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0484_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0485_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0488_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0489_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0490_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0493_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0494_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0495_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0498_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0499_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0500_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0503_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0504_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0505_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0506_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0508_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0509_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0510_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0511_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0513_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0514_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0515_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0516_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0517_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0518_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0519_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0520_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0521_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0522_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0523_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0524_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0525_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0526_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0527_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0528_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0529_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0530_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0531_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0532_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0533_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0534_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0535_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0536_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0537_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0538_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0539_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0540_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0541_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0542_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0543_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0544_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0545_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0546_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0547_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0548_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0549_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0550_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0551_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0552_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0553_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0554_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0555_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0556_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0557_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0558_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0559_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0560_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0561_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0562_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0563_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0564_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0565_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0566_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0567_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0568_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0569_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0570_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0571_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0572_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0573_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0574_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0575_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0576_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0577_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0578_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0579_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0580_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0581_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0582_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0583_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0584_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0585_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0586_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0587_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0588_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0589_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0590_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0591_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0592_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0593_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0594_ppaBe10.root_test (87%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0595_ppaBe10.root_test (88%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0596_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0597_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0598_ppaBe10.root_test (99%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0599_ppaBe10.root_test (98%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0600_ppaBe10.root_test (99%)
+ create mode 100644 merger/.DSSDEnergyCal.h.swp
+ rewrite merger/Merger (83%)
+ rewrite merger/rootfiles/run0596_analysed.root_test (99%)
+ create mode 120000 merger/txt/dssdSCMPara2ndRun.txt
+ create mode 100644 merger/v17_updateSCMParameter/'
+ create mode 100644 merger/v17_updateSCMParameter/AlphaEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingAlpha.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingBDC.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingBeam.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingESPRI.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingFDC0.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingHOD.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingMAIN.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingPLA.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingProton.h
+ create mode 100644 merger/v17_updateSCMParameter/AnalysingTELE.h
+ create mode 100644 merger/v17_updateSCMParameter/BdcEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/BeamEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/CalibESPRI.h
+ create mode 100644 merger/v17_updateSCMParameter/CalibTELE.h
+ create mode 100644 merger/v17_updateSCMParameter/Convert.h
+ create mode 100644 merger/v17_updateSCMParameter/CsiCal.h
+ create mode 100644 merger/v17_updateSCMParameter/DSSDEnergyCal.h
+ create mode 100644 merger/v17_updateSCMParameter/DegraderPosition.h
+ create mode 100644 merger/v17_updateSCMParameter/Detector.h
+ create mode 100644 merger/v17_updateSCMParameter/EspriEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/EspriEvent.h_new
+ create mode 100644 merger/v17_updateSCMParameter/Fdc0Event.h
+ create mode 100644 merger/v17_updateSCMParameter/FindPixel.h
+ create mode 100755 merger/v17_updateSCMParameter/Makefile
+ create mode 100644 merger/v17_updateSCMParameter/MergeBDC.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeESPRI.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeFDC0.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeHOD.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeMAIN.h
+ create mode 100644 merger/v17_updateSCMParameter/MergePLA.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeSample.h
+ create mode 100644 merger/v17_updateSCMParameter/MergeTELE.h
+ rename merger/{ => v17_updateSCMParameter}/Merger (100%)
+ create mode 100644 merger/v17_updateSCMParameter/Merger.cpp
+ create mode 100644 merger/v17_updateSCMParameter/Merger.h
+ create mode 100644 merger/v17_updateSCMParameter/PhiFunction.h
+ create mode 100644 merger/v17_updateSCMParameter/PlaEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/PlasTime.h
+ create mode 100644 merger/v17_updateSCMParameter/PlasTime.h_backup
+ create mode 100644 merger/v17_updateSCMParameter/PlasTime.h_backup_v2
+ create mode 100644 merger/v17_updateSCMParameter/PositionESPRI.h
+ create mode 100644 merger/v17_updateSCMParameter/PositionTELE.h
+ create mode 100644 merger/v17_updateSCMParameter/ProtonEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/ProtonEvent.h_local
+ create mode 100644 merger/v17_updateSCMParameter/TeleEvent.h
+ create mode 100644 merger/v17_updateSCMParameter/backup_1st_Merger.C
+ create mode 100644 merger/v17_updateSCMParameter/constant.h
+ create mode 100644 merger/v17_updateSCMParameter/convert.sh
+ create mode 100755 merger/v17_updateSCMParameter/distance.h
+ create mode 100644 merger/v17_updateSCMParameter/espri.C
+ create mode 100755 merger/v17_updateSCMParameter/header.h
+ create mode 100644 merger/v17_updateSCMParameter/logMerger.txt
+ create mode 100644 merger/v17_updateSCMParameter/loop.sh
+ create mode 100644 merger/v17_updateSCMParameter/looprun.sh
+ create mode 100644 merger/v17_updateSCMParameter/main.cpp
+ create mode 100644 merger/v17_updateSCMParameter/mvRootVersion.sh
+ create mode 100644 merger/v17_updateSCMParameter/read.me
+ create mode 100644 merger/v17_updateSCMParameter/sampleESPRI.C
+ create mode 100644 merger/v17_updateSCMParameter/serverPlasTime.h
+ create mode 100644 merger/v17_updateSCMParameter/t1.txt
+ create mode 100644 merger/v17_updateSCMParameter/t2.txt
+ create mode 100644 merger/v17_updateSCMParameter/tree.C
+ create mode 100644 tele/calib/peak5Calib/.drawTree.C.swp
+ create mode 100644 tele/calib/peak5Calib/.dssdCalib.C.swp
+ create mode 100644 tele/calib/peak5Calib/txt/.peak5DssdCalib.txt.swp
+ create mode 100644 tele/calib/peak5Calib/txt/.peak5DssdCalib.txt_gain.swp
+ create mode 100644 tele/calib/peak5Calib/txt/.peak5DssdCalibInput.txt.swp
+ create mode 100644 tele/calib/peak5Calib/txt/peak5DssdCalib.txt_gain
+ create mode 100644 tele/calib/scm/fit/txt/.dssdScmParaRaw.txt.swp
+ rewrite tele/calib/scm/fit/txt/dssdScmParaRaw.txt (100%)
+ create mode 100644 tele/calib/scm/txt/dssdSCMPara2ndRun.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

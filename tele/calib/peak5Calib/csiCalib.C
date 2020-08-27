@@ -11,18 +11,18 @@ class CsiInput{
 			csiQPedEnergy.resize(7);	
 
 			TString inputName = "txt/peak5CsiCalibInput.txt";
-			ifstream in;
-			in.open(inputName);
+			ifstream inputFile;
+			inputFile.open(inputName);
 			int caseId;
 			double hQPed[7];
 			double hQPedSigma[7];
 			double hQPedEnergy;
 	
 			while (1){
-				if(!in.good()) break;
-				in>>caseId>>hQPedEnergy;
+				if(!inputFile.good()) break;
+				inputFile>>caseId>>hQPedEnergy;
 				for (int i = 0; i < 7; ++i) {
-					in>>hQPed[i]>>hQPedSigma[i];
+					inputFile>>hQPed[i]>>hQPedSigma[i];
 				}
 				if(caseId != 0) continue;
 				for (int i = 0; i < 7; ++i){
