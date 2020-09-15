@@ -171,6 +171,7 @@ class ReadFile{
 
 		Double_t        teleAngle;
 		Double_t        teleLocusAngle;
+
 		Int_t           hodNHit;
 		Int_t           hodID[40];
 		Int_t           hodTRaw[2][40];
@@ -180,6 +181,12 @@ class ReadFile{
 		Double_t        hodQCal[2][40];
 		Double_t        hodBarTCal[40];
 		Double_t        hodBarQCal[40];
+
+
+		Int_t           hodQHit;
+		Int_t           hodQId[40];
+		Int_t           hodTHit;
+		Int_t           hodTId[40];
 
 		vector<int>     *plasTdcRaw0;
 		vector<int>     *plasTdcRaw1;
@@ -795,6 +802,10 @@ class ReadFile{
 			tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
 			tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
 
+			tree->Branch("hodQHit",&hodQHit,"hodQHit/I");
+			tree->Branch("hodQId",&hodQId,"hodQId/I");
+			tree->Branch("hodTId",&hodTId,"hodTId/I");
+
 			tree->Branch("espriPlasE",&espriPlasE);
 			tree->Branch("espriPlasT",&espriPlasT);
 			tree->Branch("espriNaiE",&espriNaiE);
@@ -1008,4 +1019,21 @@ class ReadFile{
 		int getRunNumber(){
 			return RunNumber;
 		}
+		int getHodQHit(){
+			int hQHit = 0;
+			for (int i = 0; i < 39; ++i) {
+				if(hodBarQCal[i]>50&&hodBarQCal[i+1]>50) { hQHit+=2; }	
+			}
+			//cout<<hQHit<<endl;
+			return hQHit;
+		}
+		int getHodTHit(){
+			int hTHit = 0;
+			for (int i = 0; i < 39; ++i) {
+				if(hodBarTCal[i]>0&&hodBarTCal[i+1]>0) {hTHit+=2;}
+			}
+			//cout<<hTHit<<endl;
+			return hTHit;
+		}
+
 };
