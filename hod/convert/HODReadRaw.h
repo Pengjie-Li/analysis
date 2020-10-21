@@ -102,7 +102,6 @@ class HODPlasticRaw{
 			}
 
 		}
-
 		void readOneHit(PlasticRaw *plastic){
 			int ID = plastic->getID();
 			hodTRaw[0][ID] = plastic->getTimeUpRaw();

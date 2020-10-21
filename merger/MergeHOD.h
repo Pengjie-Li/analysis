@@ -67,6 +67,15 @@ class MergeHOD:public Convert{
 		}
 		void init(){
 		}
+		void print(){
+			cout<<" Hod Raw  NHit = "<<hodNHit<<endl;
+		}
+		double getHodBarQCal(int i){
+			return hodBarQCal[i];
+		}
+		double getHodBarTRaw(int i){
+			return 0.5*(hodTRaw[0][i]+hodTRaw[1][i]);
+		}
 
 };
 

@@ -17,6 +17,7 @@ class Event{
 			return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
 		}
 		bool isHodTwoHit(){
+			cout<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
 			return (rf->getHodQHit()>=2&&rf->getHodTHit()>=2);
 		}
 

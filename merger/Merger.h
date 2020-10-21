@@ -18,6 +18,7 @@ extern TEnv *env;
 #include "Fdc0Event.h"
 #include "BdcEvent.h"
 #include "TeleEvent.h"
+#include "HodEvent.h"
 #include "BeamEvent.h"
 #include "ProtonEvent.h"
 #include "AlphaEvent.h"
@@ -100,7 +101,9 @@ class Merger{
 
 
 		void analysingHOD();
+		HodEvent *hodEvent;
 		void setHODOutputBranch();
+		void printHOD();
 
 		void analysingESPRI();
 		EspriEvent *espriEvent;

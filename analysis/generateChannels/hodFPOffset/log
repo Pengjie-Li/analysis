@@ -1,0 +1,3 @@
+2020-07-22
+	1. It only select events with Pattern: BeamHit, EspriHit, TeleHit, TargetArea
+	2. Users will reconstruct channels in the local folder

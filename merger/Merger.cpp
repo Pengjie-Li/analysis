@@ -47,7 +47,10 @@ Merger::Merger(int runNumber,int maxEventNumber):runNumber(runNumber),maxEventNu
 		fdc0Event = new Fdc0Event();
 	}
 //	if(kFDC2) mergeFDC2 =new MergeFDC2(runNumber);
-	if(kHOD) mergeHOD =new MergeHOD(runNumber);
+	if(kHOD){
+		mergeHOD =new MergeHOD(runNumber);
+		hodEvent = new HodEvent();
+	}
 	if(kTELE) {
 		mergeTELE =new MergeTELE(runNumber);
 		teleEvent = new TeleEvent();
@@ -102,11 +105,12 @@ void Merger::print(){
 	//printPLA();	
 	//printBDC();	
 	//printBeam();
-	printESPRI();
+	//printESPRI();
 	//printProton();
 //	printTELE();
 	//printAlpha();
 	//printFDC0();
+	printHOD();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){

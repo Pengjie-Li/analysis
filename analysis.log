@@ -16733,3 +16733,17 @@ Branch master set up to track remote branch master from origin.
  2 files changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f507a70] v1.0
+ 16 files changed, 11 insertions(+), 3 deletions(-)
+ rename channel/selectBeamEspriTele/rootfiles/.haddBe10.sh.swp => analysis/generateChannels/.ReadFile.h.swp (68%)
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/.haddBe10.sh.swp
+ rename channel/selectBeamEspriTele/rootfiles/.haddBe14.sh.swp => analysis/generateChannels/alignHodT/rootfiles/.haddBe12.sh.swp (95%)
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/.haddBe14.sh.swp
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/haddBe10.sh
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/haddBe12.sh
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/haddBe14.sh
+ create mode 100644 analysis/generateChannels/alignHodT/rootfiles/hod2Hit.root_Be10
+ rewrite channel/selectBeamEspriTele/rootfiles/.haddBe10.sh.swp (67%)
+ rewrite channel/selectBeamEspriTele/rootfiles/.haddBe14.sh.swp (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
