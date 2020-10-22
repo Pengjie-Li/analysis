@@ -16747,3 +16747,272 @@ Branch master set up to track remote branch master from origin.
  rewrite channel/selectBeamEspriTele/rootfiles/.haddBe14.sh.swp (67%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master cd1d715] v1.0
+ 470 files changed, 8877 insertions(+), 5 deletions(-)
+ rewrite analysis/generateChannels/alignHodT/rootfiles/run0310_ppaBe10.root_test (97%)
+ rewrite analysis/generateChannels/alignHodT/rootfiles/run0380_ppaBe10.root_test (84%)
+ create mode 100644 analysis/generateChannels/hodFPOffset/Event.h
+ create mode 100755 analysis/generateChannels/hodFPOffset/Makefile
+ create mode 100644 analysis/generateChannels/hodFPOffset/ReadFile.h
+ create mode 100644 analysis/generateChannels/hodFPOffset/configPPBe.prm
+ create mode 100644 analysis/generateChannels/hodFPOffset/convert.sh
+ create mode 100755 analysis/generateChannels/hodFPOffset/header.h
+ create mode 120000 analysis/generateChannels/hodFPOffset/inputRootfiles
+ create mode 100644 analysis/generateChannels/hodFPOffset/log
+ create mode 100644 analysis/generateChannels/hodFPOffset/loop.sh
+ create mode 100644 analysis/generateChannels/hodFPOffset/main.cpp
+ create mode 100755 analysis/generateChannels/hodFPOffset/ppA
+ create mode 100644 analysis/generateChannels/hodFPOffset/ppBe.cpp
+ create mode 100644 analysis/generateChannels/hodFPOffset/ppBe.h
+ create mode 100644 hod/convert/.ConvertHOD.C.swp
+ rename merger/.Merger.cpp.swp => hod/convert/.HODConvertCal.h.swp (53%)
+ create mode 100644 hod/convert/.HODReadRaw.h.swp
+ create mode 100644 hod/pedestal/.read.me.swp
+ create mode 100644 merger/.AnalysingHOD.h.swp
+ create mode 100644 merger/.HodEvent.h.swp
+ create mode 100644 merger/.MergeHOD.h.swp
+ rewrite merger/.Merger.cpp.swp (75%)
+ create mode 100644 merger/HodEvent.h
+ rewrite merger/Merger (86%)
+ create mode 100644 merger/config/.configHod.prm.swp
+ create mode 100644 merger/config/configHod.prm
+ rename tele/calib/dssd/.fit.C.swp => merger/rootfiles/.drawHodWall.C.swp (93%)
+ rewrite merger/rootfiles/run0104_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0107_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0111_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0115_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0117_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0127_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0132_analysed.root_test (77%)
+ rewrite merger/rootfiles/run0134_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0136_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0138_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0139_analysed.root_test (94%)
+ rewrite merger/rootfiles/run0143_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0145_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0147_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0151_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0161_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0163_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0164_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0166_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0167_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0171_analysed.root_test (70%)
+ rewrite merger/rootfiles/run0172_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0174_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0179_analysed.root_test (61%)
+ rewrite merger/rootfiles/run0180_analysed.root_test (76%)
+ rename merger/rootfiles/{run0220_analysed.root_test => run0182_analysed.root_test} (88%)
+ rename merger/rootfiles/{run0188_analysed.root_test => run0183_analysed.root_test} (76%)
+ rename merger/rootfiles/{run0208_analysed.root_test => run0184_analysed.root_test} (77%)
+ rewrite merger/rootfiles/run0188_analysed.root_test (61%)
+ rewrite merger/rootfiles/run0194_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0197_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0198_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0200_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0202_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0204_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0205_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0208_analysed.root_test (92%)
+ rewrite merger/rootfiles/run0215_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0220_analysed.root_test (89%)
+ rewrite merger/rootfiles/run0222_analysed.root_test (76%)
+ rename merger/rootfiles/{run0179_analysed.root_test => run0223_analysed.root_test} (62%)
+ rewrite merger/rootfiles/run0230_analysed.root_test (96%)
+ rewrite merger/rootfiles/run0236_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0238_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0247_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0249_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0251_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0254_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0255_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0259_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0261_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0262_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0264_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0265_analysed.root_test (87%)
+ rewrite merger/rootfiles/run0271_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0274_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0276_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0277_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0279_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0281_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0283_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0288_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0290_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0291_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0294_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0300_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0303_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0304_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0305_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0307_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0309_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0311_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0312_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0313_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0314_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0315_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0316_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0320_analysed.root_test (83%)
+ rewrite merger/rootfiles/run0321_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0322_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0324_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0325_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0326_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0327_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0328_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0329_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0332_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0334_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0336_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0340_analysed.root_test (98%)
+ rewrite merger/rootfiles/run0341_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0343_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0345_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0355_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0359_analysed.root_test (89%)
+ rewrite merger/rootfiles/run0360_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0362_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0363_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0367_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0368_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0373_analysed.root_test (69%)
+ rewrite merger/rootfiles/run0375_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0377_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0378_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0380_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0381_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0383_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0385_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0390_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0392_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0395_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0397_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0398_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0400_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0409_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0412_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0413_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0417_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0422_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0425_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0426_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0430_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0437_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0450_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0451_analysed.root_test (65%)
+ rewrite merger/rootfiles/run0453_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0461_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0463_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0467_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0469_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0472_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (69%)
+ rewrite merger/rootfiles/run0476_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0478_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0482_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0484_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0494_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0504_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0507_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0509_analysed.root_test (86%)
+ rewrite merger/rootfiles/run0522_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0526_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0527_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0536_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0542_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0544_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0548_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0552_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0554_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0555_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0556_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0561_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0574_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0577_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0580_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0585_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0590_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0594_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0595_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0597_analysed.root_test (62%)
+ create mode 100644 merger/txt/.alignHodTSlpFixed.txt.swp
+ create mode 100644 merger/txt/alignHodTSlpFixed.txt
+ create mode 100644 merger/v18_HodHitSort/'
+ create mode 100644 merger/v18_HodHitSort/AlphaEvent.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingAlpha.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingBDC.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingBeam.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingESPRI.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingFDC0.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingHOD.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingMAIN.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingPLA.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingProton.h
+ create mode 100644 merger/v18_HodHitSort/AnalysingTELE.h
+ create mode 100644 merger/v18_HodHitSort/BdcEvent.h
+ create mode 100644 merger/v18_HodHitSort/BeamEvent.h
+ create mode 100644 merger/v18_HodHitSort/CalibESPRI.h
+ create mode 100644 merger/v18_HodHitSort/CalibTELE.h
+ create mode 100644 merger/v18_HodHitSort/Convert.h
+ create mode 100644 merger/v18_HodHitSort/CsiCal.h
+ create mode 100644 merger/v18_HodHitSort/DSSDEnergyCal.h
+ create mode 100644 merger/v18_HodHitSort/DegraderPosition.h
+ create mode 100644 merger/v18_HodHitSort/Detector.h
+ create mode 100644 merger/v18_HodHitSort/EspriEvent.h
+ create mode 100644 merger/v18_HodHitSort/EspriEvent.h_new
+ create mode 100644 merger/v18_HodHitSort/Fdc0Event.h
+ create mode 100644 merger/v18_HodHitSort/FindPixel.h
+ create mode 100755 merger/v18_HodHitSort/Makefile
+ create mode 100644 merger/v18_HodHitSort/MergeBDC.h
+ create mode 100644 merger/v18_HodHitSort/MergeESPRI.h
+ create mode 100644 merger/v18_HodHitSort/MergeFDC0.h
+ create mode 100644 merger/v18_HodHitSort/MergeHOD.h
+ create mode 100644 merger/v18_HodHitSort/MergeMAIN.h
+ create mode 100644 merger/v18_HodHitSort/MergePLA.h
+ create mode 100644 merger/v18_HodHitSort/MergeSample.h
+ create mode 100644 merger/v18_HodHitSort/MergeTELE.h
+ rename merger/{ => v18_HodHitSort}/Merger (100%)
+ create mode 100644 merger/v18_HodHitSort/Merger.cpp
+ create mode 100644 merger/v18_HodHitSort/Merger.h
+ create mode 100644 merger/v18_HodHitSort/PhiFunction.h
+ create mode 100644 merger/v18_HodHitSort/PlaEvent.h
+ create mode 100644 merger/v18_HodHitSort/PlasTime.h
+ create mode 100644 merger/v18_HodHitSort/PlasTime.h_backup
+ create mode 100644 merger/v18_HodHitSort/PlasTime.h_backup_v2
+ create mode 100644 merger/v18_HodHitSort/PositionESPRI.h
+ create mode 100644 merger/v18_HodHitSort/PositionTELE.h
+ create mode 100644 merger/v18_HodHitSort/ProtonEvent.h
+ create mode 100644 merger/v18_HodHitSort/ProtonEvent.h_local
+ create mode 100644 merger/v18_HodHitSort/TeleEvent.h
+ create mode 100644 merger/v18_HodHitSort/backup_1st_Merger.C
+ create mode 100644 merger/v18_HodHitSort/constant.h
+ create mode 100644 merger/v18_HodHitSort/convert.sh
+ create mode 100755 merger/v18_HodHitSort/distance.h
+ create mode 100644 merger/v18_HodHitSort/espri.C
+ create mode 100755 merger/v18_HodHitSort/header.h
+ create mode 100644 merger/v18_HodHitSort/logMerger.txt
+ create mode 100644 merger/v18_HodHitSort/loop.sh
+ create mode 100644 merger/v18_HodHitSort/looprun.sh
+ create mode 100644 merger/v18_HodHitSort/main.cpp
+ create mode 100644 merger/v18_HodHitSort/mvRootVersion.sh
+ create mode 100644 merger/v18_HodHitSort/read.me
+ create mode 100644 merger/v18_HodHitSort/sampleESPRI.C
+ create mode 100644 merger/v18_HodHitSort/serverPlasTime.h
+ create mode 100644 merger/v18_HodHitSort/t1.txt
+ create mode 100644 merger/v18_HodHitSort/t2.txt
+ create mode 100644 merger/v18_HodHitSort/tree.C
+ rewrite tele/calib/dssd/.fit.C.swp (67%)
+ create mode 100644 tele/calib/pedestral/.dssdPedestal.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

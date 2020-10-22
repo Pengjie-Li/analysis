@@ -12,8 +12,8 @@
 	//TString peak1=Frame+"&&!("+R4+")&&!("+Neck+")";
 	//TString targetArea="sqrt((Target_X+2.0)*(Target_X+2.0)+(Target_Y+1.1)*(Target_Y+1.1))<13";
 	//TString smallTargetArea="sqrt((Target_X+2.0)*(Target_X+2.0)+(Target_Y+1.1)*(Target_Y+1.1))<10";
-	//TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<13";
-	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<1";
+	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<13";
+	//TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<1";
 
         TString Frame="((targetPosition.X()-2.0)<30&&(targetPosition.X()-2.0)>-30&&(targetPosition.Y()+1.1)<25&&(targetPosition.Y()+1.1)>-35)";
         TString Neck="((targetPosition.X()-2.0)<4&&(targetPosition.X()-2.0)>-4&&(targetPosition.Y()+1.1)>15&&(targetPosition.Y()+1.1)<25)";

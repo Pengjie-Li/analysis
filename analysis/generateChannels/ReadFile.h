@@ -182,11 +182,18 @@ class ReadFile{
 		Double_t        hodBarTCal[40];
 		Double_t        hodBarQCal[40];
 
+		int 		hodQHit;
+		int 		hodQHitId[40];
+		double 		hodQHitQPed[40];
 
-		Int_t           hodQHit;
-		Int_t           hodQId[40];
-		Int_t           hodTHit;
-		Int_t           hodTId[40];
+		int 		hodTHit;
+		int 		hodTHitId[40];
+		double 		hodTHitTSyn[40];
+
+		int 		hodHit;
+		int 		hodHitId[40];
+		double 		hodHitQ[40];
+		double 		hodHitT[40];
 
 		vector<int>     *plasTdcRaw0;
 		vector<int>     *plasTdcRaw1;
@@ -437,6 +444,17 @@ class ReadFile{
 			inputTree->SetBranchAddress("hodQCal",hodQCal);
 			inputTree->SetBranchAddress("hodBarTCal",hodBarTCal);
 			inputTree->SetBranchAddress("hodBarQCal",hodBarQCal);
+
+                        inputTree->SetBranchAddress("hodQHit",&hodQHit);
+                        inputTree->SetBranchAddress("hodQHitId",hodQHitId);
+                        inputTree->SetBranchAddress("hodQHitQPed",hodQHitQPed);
+                        inputTree->SetBranchAddress("hodTHit",&hodTHit);
+                        inputTree->SetBranchAddress("hodTHitId",hodTHitId);
+                        inputTree->SetBranchAddress("hodTHitTSyn",hodTHitTSyn);
+                        inputTree->SetBranchAddress("hodHit",&hodHit);
+                        inputTree->SetBranchAddress("hodHitId",hodHitId);
+                        inputTree->SetBranchAddress("hodHitT",hodHitT);
+                        inputTree->SetBranchAddress("hodHitQ",hodHitQ);
 
 			inputTree->SetBranchAddress("plasTdcRaw0",&plasTdcRaw0);
 			inputTree->SetBranchAddress("plasTdcRaw1",&plasTdcRaw1);
@@ -801,10 +819,17 @@ class ReadFile{
 			tree->Branch("hodID",hodID,"hodID[40]/I");
 			tree->Branch("hodTRaw",hodTRaw,"hodTRaw[2][40]/I");
 			tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
-
 			tree->Branch("hodQHit",&hodQHit,"hodQHit/I");
-			tree->Branch("hodQId",&hodQId,"hodQId/I");
-			tree->Branch("hodTId",&hodTId,"hodTId/I");
+                        tree->Branch("hodQHitId",hodQHitId,"hodQHitId[hodQHit]/I");
+                        tree->Branch("hodQHitQPed",hodQHitQPed,"hodQHitQPed[hodQHit]/D");
+                        tree->Branch("hodTHit",&hodTHit,"hodTHit/I");
+                        tree->Branch("hodTHitId",hodTHitId,"hodTHitId[hodTHit]/I");
+                        tree->Branch("hodTHitTSyn",hodTHitTSyn,"hodTHitTSyn[hodTHit]/D");
+                        tree->Branch("hodHit",&hodHit,"hodHit/I");
+                        tree->Branch("hodHitId",hodHitId,"hodHitId[hodHit]/I");
+                        tree->Branch("hodHitT",hodHitT,"hodHitT[hodHit]/D");
+                        tree->Branch("hodHitQ",hodHitQ,"hodHitQ[hodHit]/D");
+
 
 			tree->Branch("espriPlasE",&espriPlasE);
 			tree->Branch("espriPlasT",&espriPlasT);
@@ -1019,21 +1044,32 @@ class ReadFile{
 		int getRunNumber(){
 			return RunNumber;
 		}
+		double getHodBarQCal(int i){
+			return hodBarQCal[i];
+		}
 		int getHodQHit(){
-			int hQHit = 0;
-			for (int i = 0; i < 39; ++i) {
-				if(hodBarQCal[i]>50&&hodBarQCal[i+1]>50) { hQHit+=2; }	
-			}
-			//cout<<hQHit<<endl;
-			return hQHit;
+			return hodQHit;
+			//int hQHit = 0;
+			//for (int i = 0; i < 39; ++i) {
+			//	if(hodBarQCal[i]>50&&hodBarQCal[i+1]>50) { hQHit+=2; }	
+			//}
+			////cout<<hQHit<<endl;
+			//return hQHit;
 		}
 		int getHodTHit(){
-			int hTHit = 0;
-			for (int i = 0; i < 39; ++i) {
-				if(hodBarTCal[i]>0&&hodBarTCal[i+1]>0) {hTHit+=2;}
-			}
-			//cout<<hTHit<<endl;
-			return hTHit;
+			return hodTHit;
+			//int hTHit = 0;
+			//for (int i = 0; i < 39; ++i) {
+			//	if(hodBarTCal[i]>0&&hodBarTCal[i+1]>0) {hTHit+=2;}
+			//}
+			////cout<<hTHit<<endl;
+			//return hTHit;
+		}
+		int getHodHit(){
+			return hodHit;
+		}
+		int getHodHitId(int i){
+			return hodHitId[i];
 		}
 
 };

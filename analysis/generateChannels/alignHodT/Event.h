@@ -17,8 +17,10 @@ class Event{
 			return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
 		}
 		bool isHodTwoHit(){
-			cout<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
-			return (rf->getHodQHit()>=2&&rf->getHodTHit()>=2);
+			//cout<<rf->getHodBarQCal(10)<<" "<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
+			//cout<<rf->getHodHit()<<" "<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
+			//return (rf->getHodQHit()>=2&&rf->getHodTHit()>=2);
+			return (rf->getHodHit()==2)&&(rf->getHodQHit()==2)&&(rf->getHodTHit()==2)&&(abs(rf->getHodHitId(0)-rf->getHodHitId(1)) == 1);
 		}
 
 	public:

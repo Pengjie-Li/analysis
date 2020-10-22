@@ -1,0 +1,13 @@
+inputPath:inputRootfiles/
+runPrefix:run
+runSuffix:_analysed.root
+
+outputPath:./rootfiles/
+outputPrefix:run0
+outputSuffix:_ppaBe10.root_test
+
+ma:10.0113404
+mb:1.007276466621
+m1:1.007276466621
+m2:4.001506105
+m3:6.017788744
