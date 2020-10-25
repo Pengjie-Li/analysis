@@ -17631,3 +17631,18 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/run0600_ppaBe10.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 5eb51dd] v1.0
+ 13 files changed, 86 insertions(+)
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/.drawHodWall.C.swp
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/.haddBe10.sh.swp
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/drawHodBarQT.C
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/drawHodWall.C
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/haddBe10.sh
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/haddBe12.sh
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/haddBe14.sh
+ create mode 100644 hod/calib/upDownTimeOffset/.checkTRawOffset.C.swp
+ create mode 100644 hod/calib/upDownTimeOffset/txt/.hodUDTOffset.txt.swp
+ create mode 100644 hod/calib/upDownTimeOffset/txt/.upDownOffset1_601.txt.swp
+ create mode 100644 hod/pedestal/.Fit_SlicesD.C.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
