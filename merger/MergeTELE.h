@@ -6,54 +6,23 @@ class MergeTELE:public Convert{
 
 		Int_t           dssdQRaw[4][32];
 		Int_t           dssdTRaw[2][32];
+		Double_t        dssdQPed[4][32];
+
 		Int_t           RefTime1;
 		Int_t           RefTime2;
+
 		Int_t           csiQRaw[7];
 		Int_t           csiTRaw[7];
-
-		Int_t           dssdQHit;
-		Int_t           dssdQHitSide[10];
-		Int_t           dssdQHitStripId[10];
-		Double_t        dssdQHitQPed[10];
-		Double_t        dssdQPed[4][32];
+		Double_t        csiQPed[7];
 
 		Int_t           dssdTHit;
 		Int_t           dssdTHitSide[10];
 		Int_t           dssdTHitStripId[10];
 		Double_t        dssdTHitTCal[10];
 
-		Int_t         dssdHit;
-		Int_t           dssdHitSide[0];
-		Int_t           dssdHitFid[0];
-		Int_t           dssdHitBid[0];
-		Double_t        dssdHitFQPed[0];
-		Double_t        dssdHitBQPed[0];
-		Double_t        dssdHitTCal[0];
-
-		Int_t           csiQHit;
-		Int_t           csiQHitId[7];
-		Double_t        csiQHitQPed[7];
-		Double_t        csiQPed[7];
-
 		Int_t           csiTHit;
 		Int_t           csiTHitId[7];
 		Double_t        csiTHitTCal[7];
-
-		Int_t	        csiHit;
-		Int_t           csiHitId[7];
-		Double_t        csiHitQPed[7];
-		Double_t        csiHitTCal[7];
-
-		Int_t           teleHit;
-		Int_t           teleHitSide[10];
-		Int_t           teleHitFid[10];
-		Int_t           teleHitBid[10];
-		Double_t        teleHitDssdFQPed[10];
-		Double_t        teleHitDssdBQPed[10];
-		Double_t        teleHitDssdTCal[10];
-		Int_t           teleHitCid[10];
-		Double_t        teleHitCsiQPed[10];
-		Double_t        teleHitCsiTCal[10];
 
 
 		void setBranch(){
@@ -61,48 +30,23 @@ class MergeTELE:public Convert{
 		
 			inputTree->SetBranchAddress("dssdQRaw",dssdQRaw);
 			inputTree->SetBranchAddress("dssdTRaw",dssdTRaw);
+			inputTree->SetBranchAddress("dssdQPed",dssdQPed);
+
 			inputTree->SetBranchAddress("RefTime1",&RefTime1);
 			inputTree->SetBranchAddress("RefTime2",&RefTime2);
+
 			inputTree->SetBranchAddress("csiQRaw",csiQRaw);
 			inputTree->SetBranchAddress("csiTRaw",csiTRaw);
-			inputTree->SetBranchAddress("dssdQHit",&dssdQHit);
-			inputTree->SetBranchAddress("dssdQHitSide",dssdQHitSide);
-			inputTree->SetBranchAddress("dssdQHitStripId",dssdQHitStripId);
-			inputTree->SetBranchAddress("dssdQHitQPed",dssdQHitQPed);
-			inputTree->SetBranchAddress("dssdQPed",dssdQPed);
+			inputTree->SetBranchAddress("csiQPed",csiQPed);
+
 			inputTree->SetBranchAddress("dssdTHit",&dssdTHit);
 			inputTree->SetBranchAddress("dssdTHitSide",dssdTHitSide);
 			inputTree->SetBranchAddress("dssdTHitStripId",dssdTHitStripId);
 			inputTree->SetBranchAddress("dssdTHitTCal",dssdTHitTCal);
-			inputTree->SetBranchAddress("dssdHit",&dssdHit);
-			inputTree->SetBranchAddress("dssdHitSide",&dssdHitSide);
-			inputTree->SetBranchAddress("dssdHitFid",&dssdHitFid);
-			inputTree->SetBranchAddress("dssdHitBid",&dssdHitBid);
-			inputTree->SetBranchAddress("dssdHitFQPed",&dssdHitFQPed);
-			inputTree->SetBranchAddress("dssdHitBQPed",&dssdHitBQPed);
-			inputTree->SetBranchAddress("dssdHitTCal",&dssdHitTCal);
-			inputTree->SetBranchAddress("csiQHit",&csiQHit);
-			inputTree->SetBranchAddress("csiQHitId",csiQHitId);
-			inputTree->SetBranchAddress("csiQHitQPed",csiQHitQPed);
-			inputTree->SetBranchAddress("csiQPed",csiQPed);
+
 			inputTree->SetBranchAddress("csiTHit",&csiTHit);
 			inputTree->SetBranchAddress("csiTHitId",csiTHitId);
 			inputTree->SetBranchAddress("csiTHitTCal",csiTHitTCal);
-			inputTree->SetBranchAddress("csiHit",&csiHit);
-			inputTree->SetBranchAddress("csiHitId",&csiHitId);
-			inputTree->SetBranchAddress("csiHitQPed",&csiHitQPed);
-			inputTree->SetBranchAddress("csiHitTCal",&csiHitTCal);
-			inputTree->SetBranchAddress("teleHit",&teleHit);
-			inputTree->SetBranchAddress("teleHitSide",teleHitSide);
-			inputTree->SetBranchAddress("teleHitFid",teleHitFid);
-			inputTree->SetBranchAddress("teleHitBid",teleHitBid);
-			inputTree->SetBranchAddress("teleHitDssdFQPed",teleHitDssdFQPed);
-			inputTree->SetBranchAddress("teleHitDssdBQPed",teleHitDssdBQPed);
-			inputTree->SetBranchAddress("teleHitDssdTCal",teleHitDssdTCal);
-			inputTree->SetBranchAddress("teleHitCid",teleHitCid);
-			inputTree->SetBranchAddress("teleHitCsiQPed",teleHitCsiQPed);
-			inputTree->SetBranchAddress("teleHitCsiTCal",teleHitCsiTCal);
-
 
 
 		}
@@ -110,53 +54,33 @@ class MergeTELE:public Convert{
 
 			tree->Branch("dssdQRaw",dssdQRaw,"dssdQRaw[4][32]/I");
 			tree->Branch("dssdTRaw",dssdTRaw,"dssdTRaw[2][32]/I");
+			tree->Branch("dssdQPed",dssdQPed,"dssdQPed[4][32]/D");
 
 			tree->Branch("csiQRaw",csiQRaw,"csiQRaw[7]/I");
+			tree->Branch("csiTRaw",csiTRaw,"csiTRaw[7]/I");
 			tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
 
 			tree->Branch("RefTime1",&RefTime1);
 			tree->Branch("RefTime2",&RefTime2);
 
-			tree->Branch("dssdQPed",dssdQPed,"dssdQPed[4][32]/D");
-                        tree->Branch("csiQPed",csiQPed,"csiQPed[7]/D");
 		}
 
 
 		void setOutputBranch(TTree *tree){
 
 			if(kWriteStatus) setOutputBranchRaw(tree);
-                        tree->Branch("dssdQHit",&dssdQHit,"dssdQHit/I");
-                        tree->Branch("dssdQHitSide",dssdQHitSide,"dssdQHitSide[dssdQHit]/I");
-                        tree->Branch("dssdQHitStripId",dssdQHitStripId,"dssdQHitStripId[dssdQHit]/I");
-                        tree->Branch("dssdQHitQPed",dssdQHitQPed,"dssdQHitQPed[dssdQHit]/D");
 
-                        tree->Branch("dssdTHit",&dssdTHit,"dssdTHit/I");
+			tree->Branch("dssdTHit",&dssdTHit,"dssdTHit/I");
                         tree->Branch("dssdTHitSide",dssdTHitSide,"dssdTHitSide[dssdTHit]/I");
                         tree->Branch("dssdTHitStripId",dssdTHitStripId,"dssdTHitStripId[dssdTHit]/I");
                         tree->Branch("dssdTHitTCal",dssdTHitTCal,"dssdTHitTCal[dssdTHit]/D");
 
-                        tree->Branch("dssdHit",&dssdHit,"dssdHit/I");
-                        tree->Branch("dssdHitSide",&dssdHitSide,"dssdHitSide[dssdHit]/I");
-                        tree->Branch("dssdHitFid",&dssdHitFid,"dssdHitFid[dssdHit]/I");
-                        tree->Branch("dssdHitBid",&dssdHitBid,"dssdHitBid[dssdHit]/I");
-                        tree->Branch("dssdHitFQPed",&dssdHitFQPed,"dssdHitFQPed[dssdHit]/D");
-                        tree->Branch("dssdHitBQPed",&dssdHitBQPed,"dssdHitBQPed[dssdHit]/D");
-                        tree->Branch("dssdHitTCal",&dssdHitTCal,"dssdHitTCal[dssdHit]/D");
-
-                        tree->Branch("csiQHit",&csiQHit,"csiQHit/I");
-                        tree->Branch("csiQHitId",csiQHitId,"csiQHitId[csiQHit]/I");
-                        tree->Branch("csiQHitQPed",csiQHitQPed,"csiQHitQPed[csiQHit]/D");
-
-                        tree->Branch("csiTHit",&csiTHit,"csiTHit/I");
+			tree->Branch("csiTHit",&csiTHit,"csiTHit/I");
                         tree->Branch("csiTHitId",csiTHitId,"csiTHitId[csiTHit]/I");
                         tree->Branch("csiTHitTCal",csiTHitTCal,"csiTHitTCal[csiTHit]/D");
 
-                        tree->Branch("csiHit",&csiHit,"csiHit/I");
-                        tree->Branch("csiHitId",&csiHitId,"csiHitId[csiHit]/I");
-                        tree->Branch("csiHitQPed",&csiHitQPed,"csiHitQPed[csiHit]/D");
-                        tree->Branch("csiHitTCal",&csiHitTCal,"csiHitTCal[csiHit]/D");
 
-              		}
+		}
 
 		MergeTELE(){}
 		MergeTELE(int run){

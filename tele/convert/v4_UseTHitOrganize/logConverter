@@ -1,0 +1,5 @@
+2020-01-14
+	1. optimize hit structure
+	2. if dssdHit ==0, make dssdQHit and dssdTHit ==0, to save space
+	3. lower Threshod to 5*QPedSigma, make better selection in teleHit
+	4. csiHit = csiQHit, no matter has T or not

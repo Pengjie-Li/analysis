@@ -17646,3 +17646,8 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 hod/pedestal/.Fit_SlicesD.C.swp
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 6eff36a] v1.0
+ 5 files changed, 18 insertions(+), 2 deletions(-)
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/.haddBe12.sh.swp
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
