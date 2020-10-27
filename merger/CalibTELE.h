@@ -179,10 +179,26 @@ class DssdEnergy{
 			//cout<<2*side<<" scm="<<scm<<endl;
 			return getQCal(2*side,scm);
 		}
+		double getFQSync(int side,int fid,double fQPed){
+			double scm = getScm(2*side,fid,fQPed);
+			scm = getScm(2*side+1,15,scm);
+			//cout<<2*side<<" scm="<<scm<<endl;
+			return scm;
+		}
 		double getBack(int side,int bid,double bQPed){
 			double scm = getScm(2*side+1,bid,bQPed);
 			return getQCal(2*side+1,scm);
 		}
+
+		double getBQSync(int side,int bid,double bQPed){
+			double scm = getScm(2*side+1,bid,bQPed);
+			return scm;
+		}
+		double getDssdE(int side, double qPed){
+			return getQCal(2*side+1,qPed);
+		}
+
+
 	
 };
 class CsiEnergyPara{
@@ -347,6 +363,17 @@ class EnergyTELE{
 		double getDssdBackE_old(int side, int bid,double bQPed){
 			return dssdEnergy->getBack_old(side,bid,bQPed);
 		}
+		double getDssdBQSync(int side, int bid, double bQPed){
+			return dssdEnergy->getBQSync(side,bid,bQPed);
+		}
+		double getDssdFQSync(int side, int bid, double fQPed){
+			return dssdEnergy->getFQSync(side,bid,fQPed);
+		}
+
+		double getDssdE(int side, double qPed){
+			return dssdEnergy->getDssdE(side,qPed);
+		}
+
 
 
 };

@@ -95,7 +95,7 @@ void Merger::eventLoop(){
 
 			print();
 		}
-		if(ientry%100000==0) cout<<(double)ientry/nentries*100<<"%"<<endl;
+		if(ientry%1000==0) cout<<(double)ientry/nentries*100<<"%"<<endl;
 
 		tree->Fill();
 	}
@@ -107,10 +107,10 @@ void Merger::print(){
 	//printBeam();
 	//printESPRI();
 	//printProton();
-//	printTELE();
+	printTELE();
 	//printAlpha();
 	//printFDC0();
-	printHOD();
+	//printHOD();
 }
 void Merger::getEntry(Long64_t ientry){
 		if(kMAIN){

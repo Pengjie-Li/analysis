@@ -16,9 +16,9 @@ class MergeTELE:public Convert{
 		Double_t        csiQPed[7];
 
 		Int_t           dssdTHit;
-		Int_t           dssdTHitSide[10];
-		Int_t           dssdTHitStripId[10];
-		Double_t        dssdTHitTCal[10];
+		Int_t           dssdTHitSide[64];
+		Int_t           dssdTHitStripId[64];
+		Double_t        dssdTHitTCal[64];
 
 		Int_t           csiTHit;
 		Int_t           csiTHitId[7];
@@ -104,40 +104,45 @@ class MergeTELE:public Convert{
 		void init(){
 		}
 		void print(){
-			cout<<"Tele Hit:"<<endl;
-			for (int i = 0; i < teleHit; ++i) {
-				cout<<" Hit"<<i<<" Side= "<<teleHitSide[i]<<" fid="<<"\t"<<teleHitFid[i]<<" bid="<<"\t"<<teleHitBid[i]<<"\t"<<teleHitDssdFQPed[i]<<"\t"<<teleHitDssdBQPed[i]<<"\t"<<teleHitDssdTCal[i]<<"\t"<<teleHitCid[i]<<"\t"<<teleHitCsiQPed[i]<<"\t"<<teleHitCsiTCal[i]<<endl;
-			}
+		//	cout<<"Tele Hit:"<<endl;
+		//	for (int i = 0; i < teleHit; ++i) {
+		//		cout<<" Hit"<<i<<" Side= "<<teleHitSide[i]<<" fid="<<"\t"<<teleHitFid[i]<<" bid="<<"\t"<<teleHitBid[i]<<"\t"<<teleHitDssdFQPed[i]<<"\t"<<teleHitDssdBQPed[i]<<"\t"<<teleHitDssdTCal[i]<<"\t"<<teleHitCid[i]<<"\t"<<teleHitCsiQPed[i]<<"\t"<<teleHitCsiTCal[i]<<endl;
+		//	}
 		}
-		int getHit(){
-			return teleHit;
+		int getCsiTHit(){
+			return csiTHit;
 		}
-		int getHitSide(int i){
-			return teleHitSide[i];
+		int getDssdTHit(){
+			return dssdTHit;
 		}
-		int getHitFid(int i){
-			return teleHitFid[i];
+		double getCsiTHitTCal(int i){
+			return csiTHitTCal[i] - RefTime1;
 		}
-		int getHitBid(int i){
-			return teleHitBid[i];
+		int getCsiTHitId(int i){
+			return csiTHitId[i];
 		}
-		int getHitCid(int i){
-			return teleHitCid[i];
+		double getCsiQPed(int id){
+			return csiQPed[id];
 		}
-		double getHitCsiQPed(int i){
-			return teleHitCsiQPed[i];
+		double getCsiTRef(int id){
+			return (double)(csiTRaw[id] - RefTime1);
 		}
-		double getHitCsiTCal(int i){
-			return teleHitCsiTCal[i];
+
+		double getDssdTHitTCal(int i){
+			return dssdTHitTCal[i];
 		}
-		double getHitDssdTCal(int i){
-			return teleHitDssdTCal[i];
+		int getDssdTHitStripId(int i){
+			return dssdTHitStripId[i];
 		}
-		double getHitDssdFQPed(int i){
-			return teleHitDssdFQPed[i];
+		int getDssdTHitSide(int i){
+			return dssdTHitSide[i];
 		}
-		double getHitDssdBQPed(int i){
-			return teleHitDssdBQPed[i];
+		double getDssdFQPed(int side, int fid){
+			return dssdQPed[2*side][fid];
 		}
+		double getDssdBQPed(int side, int bid){
+			return dssdQPed[2*side+1][bid];
+		}
+		
 
 };
