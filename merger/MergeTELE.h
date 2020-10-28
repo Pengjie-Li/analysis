@@ -104,10 +104,10 @@ class MergeTELE:public Convert{
 		void init(){
 		}
 		void print(){
-		//	cout<<"Tele Hit:"<<endl;
-		//	for (int i = 0; i < teleHit; ++i) {
-		//		cout<<" Hit"<<i<<" Side= "<<teleHitSide[i]<<" fid="<<"\t"<<teleHitFid[i]<<" bid="<<"\t"<<teleHitBid[i]<<"\t"<<teleHitDssdFQPed[i]<<"\t"<<teleHitDssdBQPed[i]<<"\t"<<teleHitDssdTCal[i]<<"\t"<<teleHitCid[i]<<"\t"<<teleHitCsiQPed[i]<<"\t"<<teleHitCsiTCal[i]<<endl;
-		//	}
+			cout<<"Csi THit:"<<endl;
+			for (int i = 0; i < csiTHit; ++i) {
+				cout<<" csiTHit"<<i<<" cid="<<"\t"<<csiTHitId[i]<<" csiTCal ="<<"\t"<<csiTHitTCal[i]<<endl;
+			}
 		}
 		int getCsiTHit(){
 			return csiTHit;

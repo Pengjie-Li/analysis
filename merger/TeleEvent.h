@@ -163,6 +163,7 @@ class TeleHit{
 		}
 
 		void fillPossibleHit(int cid){
+			cout<<"cid = "<<cid<<endl;
 			int side = getHitSide(cid);
 			double fQPedTh = 50; // fQSync > 50 ch
 			for (int i = 0; i < mergeData->getDssdTHit(); ++i) {

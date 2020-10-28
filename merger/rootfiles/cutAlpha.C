@@ -1,32 +1,34 @@
 {
 //========= Macro generated from object: Alpha/Graph
-//========= by ROOT version5.34/20
+//========= by ROOT version5.34/36
    
-   cutg = new TCutG("Alpha",21);
+   TCutG *cutg = new TCutG("Alpha",23);
    cutg->SetVarX("teleCsiE");
-   cutg->SetVarY("teleDssdFE");
+   cutg->SetVarY("teleDssdE");
    cutg->SetTitle("Graph");
    cutg->SetFillColor(1);
-   cutg->SetPoint(0,77.5692,26.6892);
-   cutg->SetPoint(1,106.225,21.9532);
-   cutg->SetPoint(2,170.455,16.184);
-   cutg->SetPoint(3,257.411,12.6105);
-   cutg->SetPoint(4,363.142,10.4148);
-   cutg->SetPoint(5,628.953,7.14265);
-   cutg->SetPoint(6,651.68,7.01349);
-   cutg->SetPoint(7,619.071,5.93714);
-   cutg->SetPoint(8,492.589,6.41073);
-   cutg->SetPoint(9,391.798,7.35792);
-   cutg->SetPoint(10,338.439,8.13289);
-   cutg->SetPoint(11,273.221,9.76894);
-   cutg->SetPoint(12,199.111,11.9216);
-   cutg->SetPoint(13,133.893,15.5812);
-   cutg->SetPoint(14,81.5217,21.3074);
-   cutg->SetPoint(15,53.8537,25.4406);
-   cutg->SetPoint(16,51.8775,26.4739);
-   cutg->SetPoint(17,77.5692,26.6461);
-   cutg->SetPoint(18,78.5573,26.603);
-   cutg->SetPoint(19,78.5573,26.603);
-   cutg->SetPoint(20,77.5692,26.6892);
+   cutg->SetPoint(0,76.1986,27.3);
+   cutg->SetPoint(1,86.9007,26.3);
+   cutg->SetPoint(2,101.884,23.75);
+   cutg->SetPoint(3,121.147,21.2);
+   cutg->SetPoint(4,148.973,18.3);
+   cutg->SetPoint(5,194.991,15.5);
+   cutg->SetPoint(6,257.063,13.4);
+   cutg->SetPoint(7,320.205,11.4);
+   cutg->SetPoint(8,479.666,9.1);
+   cutg->SetPoint(9,669.092,6.4);
+   cutg->SetPoint(10,570.634,5.5);
+   cutg->SetPoint(11,501.07,5.4);
+   cutg->SetPoint(12,346.961,7.75);
+   cutg->SetPoint(13,263.485,9.8);
+   cutg->SetPoint(14,203.553,11.9);
+   cutg->SetPoint(15,161.815,14.1);
+   cutg->SetPoint(16,123.288,17.05);
+   cutg->SetPoint(17,93.3219,20.75);
+   cutg->SetPoint(18,72.988,23.8);
+   cutg->SetPoint(19,58.0051,26.25);
+   cutg->SetPoint(20,55.8647,27.05);
+   cutg->SetPoint(21,67.637,27.35);
+   cutg->SetPoint(22,76.1986,27.3);
    cutg->Draw("same");
 }

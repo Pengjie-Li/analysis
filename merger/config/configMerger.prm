@@ -31,7 +31,7 @@ ESPRIRunSuffix:_ESPRI.root
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_analysed.root_test
+outputSuffix:_analysed.root_test_test
 
 
 plasQThreshold:0.1

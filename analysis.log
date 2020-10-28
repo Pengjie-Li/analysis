@@ -18303,3 +18303,414 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/convert/v4_UseTHitOrganize/tele.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 23e9a76] v1.0
+ 633 files changed, 851 insertions(+), 115 deletions(-)
+ rewrite merger/.MergeTELE.h.swp (80%)
+ create mode 100644 merger/.cd.swp
+ rewrite merger/Merger (88%)
+ create mode 100644 merger/rootfiles/.drawAlpha.C.swp
+ create mode 100644 merger/rootfiles/.drawCsiQRaw.C.swp
+ rename merger/rootfiles/{.drawTargetXY.C.swp => .drawCsiTRaw.C.swp} (86%)
+ rewrite merger/rootfiles/.drawTargetXY.C.swp (67%)
+ create mode 100644 merger/rootfiles/.scanTele.C.swp
+ create mode 100644 merger/rootfiles/drawCsiTRaw.C
+ rewrite merger/rootfiles/run0102_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0105_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0107_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0108_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0111_analysed.root_test (81%)
+ rewrite merger/rootfiles/run0114_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0118_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0119_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0128_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0130_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0131_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0135_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0137_analysed.root_test (74%)
+ rewrite merger/rootfiles/run0147_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0148_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0150_analysed.root_test (96%)
+ rewrite merger/rootfiles/run0153_analysed.root_test (89%)
+ rewrite merger/rootfiles/run0156_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0158_analysed.root_test (64%)
+ rewrite merger/rootfiles/run0159_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0162_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0165_analysed.root_test (77%)
+ rewrite merger/rootfiles/run0168_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0170_analysed.root_test (76%)
+ rename merger/rootfiles/{run0221_analysed.root_test => run0175_analysed.root_test} (80%)
+ rewrite merger/rootfiles/run0176_analysed.root_test (76%)
+ rename merger/rootfiles/{run0225_analysed.root_test => run0177_analysed.root_test} (87%)
+ rewrite merger/rootfiles/run0185_analysed.root_test (73%)
+ rewrite merger/rootfiles/run0186_analysed.root_test (99%)
+ rename merger/rootfiles/{run0186_analysed.root_test => run0187_analysed.root_test} (78%)
+ rewrite merger/rootfiles/run0188_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0192_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0194_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0202_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0203_analysed.root_test (66%)
+ rewrite merger/rootfiles/run0206_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0216_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0217_analysed.root_test (99%)
+ rename merger/rootfiles/{run0185_analysed.root_test => run0218_analysed.root_test} (81%)
+ rewrite merger/rootfiles/run0219_analysed.root_test (85%)
+ rename merger/rootfiles/{run0188_analysed.root_test => run0220_analysed.root_test} (71%)
+ rewrite merger/rootfiles/run0221_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0223_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0225_analysed.root_test (66%)
+ rewrite merger/rootfiles/run0230_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0231_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0250_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0270_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0272_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0273_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0274_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0276_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0282_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0290_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0296_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0297_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0298_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0301_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0302_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0303_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0305_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0307_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0309_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0310_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0311_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0313_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0315_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0319_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0320_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0325_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0326_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0328_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0334_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0335_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0338_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0339_analysed.root_test (92%)
+ rewrite merger/rootfiles/run0351_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0356_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0357_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0368_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0370_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0373_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0395_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0398_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0404_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0419_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0422_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0433_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0442_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0443_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0444_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0445_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0446_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0447_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0450_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0453_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0455_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0459_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0460_analysed.root_test (67%)
+ rewrite merger/rootfiles/run0464_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0467_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0473_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0474_analysed.root_test (71%)
+ rewrite merger/rootfiles/run0481_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0483_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0491_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0500_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0503_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0508_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0511_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0513_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0516_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0517_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0523_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0526_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0527_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0528_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0533_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0544_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0558_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0560_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0561_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0562_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0564_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0569_analysed.root_test (72%)
+ rewrite merger/rootfiles/run0572_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0584_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0586_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0593_analysed.root_test (75%)
+ rewrite merger/rootfiles/run0594_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0597_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0598_analysed.root_test (76%)
+ create mode 100644 merger/txt/peak5DssdCalib.txt_backup
+ rewrite tele/convert/.DssdCal.h.swp (80%)
+ create mode 100644 tele/convert/rootfiles/run0271_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0273_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0274_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0275_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0277_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0278_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0279_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0280_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0281_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0282_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0283_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0284_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0285_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0286_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0287_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0288_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0289_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0290_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0291_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0292_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0293_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0294_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0295_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0296_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0297_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0298_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0299_TELE.root_test
+ rewrite tele/convert/rootfiles/run0300_TELE.root_test (85%)
+ create mode 100644 tele/convert/rootfiles/run0301_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0302_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0303_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0304_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0305_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0306_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0307_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0308_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0309_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0311_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0312_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0313_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0314_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0315_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0316_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0317_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0318_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0319_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0320_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0321_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0322_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0323_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0324_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0325_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0326_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0327_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0328_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0329_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0330_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0331_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0332_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0333_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0334_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0335_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0336_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0337_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0338_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0339_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0340_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0341_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0342_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0343_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0344_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0345_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0346_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0347_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0348_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0349_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0350_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0351_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0352_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0353_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0354_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0355_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0356_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0357_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0358_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0359_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0360_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0361_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0362_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0363_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0364_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0365_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0366_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0367_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0368_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0369_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0370_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0371_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0372_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0373_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0374_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0375_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0376_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0377_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0378_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0379_TELE.root_test
+ rewrite tele/convert/rootfiles/run0380_TELE.root_test (76%)
+ rewrite tele/convert/rootfiles/run0381_TELE.root_test (75%)
+ create mode 100644 tele/convert/rootfiles/run0382_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0383_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0384_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0385_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0386_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0387_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0388_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0389_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0390_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0391_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0392_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0393_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0394_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0395_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0396_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0397_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0398_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0399_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0400_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0401_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0402_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0403_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0404_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0405_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0406_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0407_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0408_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0409_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0410_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0411_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0412_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0413_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0414_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0415_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0416_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0417_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0418_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0419_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0420_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0421_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0422_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0423_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0424_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0425_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0426_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0427_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0428_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0429_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0430_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0433_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0434_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0435_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0436_TELE.root_test
+ rewrite tele/convert/rootfiles/run0437_TELE.root_test (75%)
+ create mode 100644 tele/convert/rootfiles/run0438_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0439_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0440_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0448_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0449_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0450_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0451_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0452_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0453_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0454_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0455_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0456_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0457_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0458_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0459_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0460_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0461_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0462_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0463_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0464_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0465_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0466_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0467_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0468_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0469_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0470_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0471_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0472_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0473_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0475_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0476_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0477_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0478_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0479_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0480_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0481_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0482_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0483_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0484_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0485_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0486_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0487_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0488_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0489_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0490_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0491_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0492_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0493_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0494_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0495_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0496_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0497_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0498_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0499_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0500_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0501_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0502_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0503_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0504_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0505_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0506_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0507_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0508_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0509_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0510_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0511_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0512_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0513_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0514_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0515_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0516_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0517_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0518_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0519_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0520_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0521_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0522_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0523_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0524_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0525_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0526_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0527_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0528_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0529_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0530_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0531_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0532_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0533_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0534_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0535_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0536_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0537_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0540_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0541_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0542_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0543_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0544_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0550_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0551_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0552_TELE.root_test
+ create mode 100644 tele/convert/rootfiles/run0562_TELE.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
