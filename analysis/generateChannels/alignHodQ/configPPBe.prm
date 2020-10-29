@@ -4,7 +4,7 @@ runSuffix:_analysed.root
 
 outputPath:./rootfiles/
 outputPrefix:run0
-outputSuffix:_ppaBe10.root_test
+outputSuffix:_ppaBe10.root_reaction
 
 ma:10.0113404
 mb:1.007276466621

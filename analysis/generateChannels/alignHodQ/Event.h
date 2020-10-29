@@ -20,7 +20,8 @@ class Event{
 			//cout<<rf->getHodBarQCal(10)<<" "<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
 			//cout<<rf->getHodHit()<<" "<<rf->getHodQHit()<<" "<<rf->getHodTHit()<<endl;
 			//return (rf->getHodQHit()>=2&&rf->getHodTHit()>=2);
-			return (rf->getHodHit()==1)&&(rf->getHodQHit()==1)&&(rf->getHodTHit()==1)&&(rf->getTrigDSB()>0);
+			//return (rf->getHodHit()==1)&&(rf->getHodQHit()==1)&&(rf->getHodTHit()==1)&&(rf->getTrigDSB()>0);
+			return (rf->getHodHit()==1)&&(rf->getHodQHit()==1)&&(rf->getHodTHit()==1)&&(rf->getTrigDSB()==0)&&isTarget();
 		}
 
 	public:
