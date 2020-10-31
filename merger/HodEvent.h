@@ -2,15 +2,19 @@ class HodSynPara{
 	private:
 		
 		double tSynPara[40]; // Para Offset for i and i + 1
+
+		double qSynPara[40]; // Para Offset for i and i + 1
 	public:
 		HodSynPara(TEnv *hodEnv){
 			
-			TString inputName = hodEnv->GetValue("hodTSynPara","le.txt");
-			loadPara(inputName);
+			TString tInputName = hodEnv->GetValue("hodTSynPara","le.txt");
+			TString qInputName = hodEnv->GetValue("hodQSynPara","le.txt");
+			loadTPara(tInputName);
+			loadQPara(qInputName);
 			print();
 		}
 		~HodSynPara(){}
-		void loadPara(TString inputName){
+		void loadTPara(TString inputName){
 			ifstream inputFile;
 			cout<<inputName<<endl;
 			inputFile.open(inputName);
@@ -25,13 +29,32 @@ class HodSynPara{
 			}
 			inputFile.close();
 		}
+
+		void loadQPara(TString inputName){
+			ifstream inputFile;
+			cout<<inputName<<endl;
+			inputFile.open(inputName);
+			int ch;
+			int ch2;
+			double gain;
+			while (1)
+			{
+				inputFile >>ch>>ch2>>gain;
+				if (!inputFile.good()) break;
+				qSynPara[ch] = gain;
+			}
+			inputFile.close();
+		}
 		void print(){
 			for (int i = 0; i < 40; ++i) {
-				cout<<" ch = "<<i<<" tSynPara = "<<tSynPara[i]<<endl;	
+				cout<<" ch = "<<i<<"\t tSynPara = "<<tSynPara[i]<<"\t qSynPara = "<<qSynPara[i]<<endl;	
 			}
 		}
 		double getTSynPara(int i){
 			return tSynPara[i];
+		}
+		double getQSynPara(int i){
+			return qSynPara[i];
 		}
 
 };
@@ -48,7 +71,7 @@ class HodEvent{
 
 		int hodQHit;
 		int hodQHitId[40];
-		double hodQHitQPed[40];
+		double hodQHitQSyn[40];
 
 		int hodTHit;
 		int hodTHitId[40];
@@ -59,18 +82,38 @@ class HodEvent{
 		double hodHitQ[40];
 		double hodHitT[40];
 
-		double getHodTSyn(int id, double hodT){
-			double offset = 0;
-			if(id<24){ // HODF
-				for (int i = 23; i >= id; i--) {
-					offset -= hodSynPara->getTSynPara(i);	
-				}
-			}else{ //HODP
-				for (int i = 24; i <= id; i++) {
-					offset += hodSynPara->getTSynPara(i - 1);	
-				}
+		double getHodQSyn(int id, double hodQ){
 
-			}		
+			double gain = hodSynPara->getQSynPara(id);
+			//Q all aligned to Bar23
+			//double gain = 1;
+			//if(id<24){ // HODF
+			//	for (int i = 22; i >= id; i--) { // Gain 22 To 23
+			//		gain = gain*hodSynPara->getQSynPara(i);	
+			//		//cout<<i<<" "<<gain<<endl;
+			//	}
+			//}else{ //HODP
+			//	for (int i = 23; i < id; i++) { //Gain 23 to 24
+			//		gain = gain/hodSynPara->getQSynPara(i);	
+			//		//cout<<i<<" "<<gain<<endl;
+			//	}
+			//}
+			//cout<<"id = "<<id<<" gain = "<<gain<<endl;
+			return gain*hodQ;
+		}
+		double getHodTSyn(int id, double hodT){
+			double offset = hodSynPara->getTSynPara(id);
+			//double offset = 0;
+			//if(id<24){ // HODF
+			//	for (int i = 23; i >= id; i--) {
+			//		offset -= hodSynPara->getTSynPara(i);	
+			//	}
+			//}else{ //HODP
+			//	for (int i = 24; i <= id; i++) {
+			//		offset += hodSynPara->getTSynPara(i - 1);	
+			//	}
+
+			//}		
 			return hodT+offset;
 		}
 		void setHodQHit(){
@@ -81,7 +124,8 @@ class HodEvent{
 						||(i<39&&i>0&&hodQ>10) 
 				  ){
 					hodQHitId[hodQHit] = i;
-					hodQHitQPed[hodQHit] = hodQ;
+					hodQHitQSyn[hodQHit] = getHodQSyn(i,hodQ);
+					//cout<<hodQHitQSyn[hodQHit]<<" "<<hodQ<<endl;
 					hodQHit++;
 				}
 			}
@@ -105,7 +149,7 @@ class HodEvent{
 				for (int j = 0; j < hodTHit; ++j) {
 					if(hodQHitId[i] == hodTHitId[j]){
 						hodHitId[hodHit] = hodQHitId[i];
-						hodHitQ[hodHit] = hodQHitQPed[i];
+						hodHitQ[hodHit] = hodQHitQSyn[i];
 						hodHitT[hodHit] = hodTHitTSyn[j];
 						hodHit++;
 					}
@@ -132,7 +176,7 @@ class HodEvent{
 		~HodEvent(){}
 		void print(){
 			for (int i = 0; i < hodQHit; ++i) {
-				cout<<"QHit "<<i<<" Id = "<<hodQHitId[i]<<" QPed = "<<hodQHitQPed[i]<<endl;	
+				cout<<"QHit "<<i<<" Id = "<<hodQHitId[i]<<" QSyn = "<<hodQHitQSyn[i]<<endl;	
 			}
 			for (int i = 0; i < hodTHit; ++i) {
 				cout<<"THit "<<i<<" Id = "<<hodTHitId[i]<<" TSyn = "<<hodTHitTSyn[i]<<endl;	
@@ -144,7 +188,7 @@ class HodEvent{
 		void setOutputBranch(TTree *tree){
 			tree->Branch("hodQHit",&hodQHit,"hodQHit/I");
 			tree->Branch("hodQHitId",&hodQHitId,"hodQHitId[hodQHit]/I");
-			tree->Branch("hodQHitQPed",&hodQHitQPed,"hodQHitQPed[hodQHit]/D");
+			tree->Branch("hodQHitQSyn",&hodQHitQSyn,"hodQHitQSyn[hodQHit]/D");
 			tree->Branch("hodTHit",&hodTHit,"hodTHit/I");
 			tree->Branch("hodTHitId",&hodTHitId,"hodTHitId[hodTHit]/I");
 			tree->Branch("hodTHitTSyn",&hodTHitTSyn,"hodTHitTSyn[hodTHit]/D");
@@ -160,7 +204,7 @@ class HodEvent{
 			hodHit = 0;
 			for (int i = 0; i < 40; ++i) {
 				hodQHitId[i] = -1;	
-				hodQHitQPed[i] = -1;	
+				hodQHitQSyn[i] = -1;	
 
 				hodTHitId[i] = -1;	
 				hodTHitTSyn[i] = -1;	

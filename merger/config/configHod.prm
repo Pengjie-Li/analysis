@@ -3,4 +3,5 @@ hodfTRawMax:20500
 hodpTRawMin:1300
 hodpTRawMax:2200
 hodQRawTh:50
-hodTSynPara:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/merger/txt/alignHodTSlpFixed.txt
+hodQSynPara:txt/alignQPara.txt
+hodTSynPara:txt/alignTPara.txt

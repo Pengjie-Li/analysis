@@ -79,7 +79,7 @@ class TeleHit{
 
 		void init(){
 
-			mergeData = NULL;
+			//mergeData = NULL;
 			bestHit = -1;
 			teleHit = 0;
 			for (int i = 0; i < 10; ++i) {
@@ -163,11 +163,12 @@ class TeleHit{
 		}
 
 		void fillPossibleHit(int cid){
-			cout<<"cid = "<<cid<<endl;
+			//cout<<"cid = "<<cid<<endl;
 			int side = getHitSide(cid);
 			double fQPedTh = 50; // fQSync > 50 ch
 			for (int i = 0; i < mergeData->getDssdTHit(); ++i) {
-				if(mergeData->getDssdTHitSide(i) != side && teleHit>=10) continue;
+				if((mergeData->getDssdTHitSide(i) != side) || (teleHit>=10)) continue;
+				//cout<<"TeleHit = "<<teleHit<<endl;
 				if( csiTimeInRange( mergeData->getDssdTHitTCal(i) ) ){
 
 					teleHitSide[teleHit]	 = getHitSide(cid);
@@ -186,6 +187,7 @@ class TeleHit{
 
 						if(findTeleHitDssdBackStrip(side, teleHitDssdFQPed[teleHit]) ){// If fid cann't find bid, then bad hit
 
+							if(teleHit>10) cout<<"TeleHit = "<<teleHit<<endl;
 							teleHit++;
 						}
 					}
@@ -331,26 +333,27 @@ class TeleEvent{
 			teleHit->loadData(mergeTELE);
 		}
 		void init(){
+
 			teleHit->init();
 			teleSide= -1;
-			teleCsiE=NAN;
-			teleDssdFE=NAN;
-			teleDssdBE=NAN;
+			teleCsiE=-9999;
+			teleDssdFE=-9999;
+			teleDssdBE=-9999;
 	
-			teleDssdE=NAN;
+			teleDssdE=-9999;
 
-			teleDssdMaxE=NAN;
-			teleCsiT=NAN;
-			teleDssdT=NAN;
-			teleEnergy=NAN;
-			teleX = NAN;
-			teleY = NAN;
-			teleZ = NAN;
-			telePosition->SetXYZ(NAN,NAN,NAN);
-			teleAngle = NAN;
-			telePhi = NAN;
-			teleLocusAngle = NAN;
-			vTele->SetXYZ(NAN,NAN,NAN);
+			teleDssdMaxE=-9999;
+			teleCsiT=-9999;
+			teleDssdT=-9999;
+			teleEnergy=-9999;
+			teleX = -9999;
+			teleY = -9999;
+			teleZ = -9999;
+			telePosition->SetXYZ(-9999,-9999,-9999);
+			teleAngle = -9999;
+			telePhi = -9999;
+			teleLocusAngle = -9999;
+			vTele->SetXYZ(-9999,-9999,-9999);
 
 
 		}
@@ -388,7 +391,6 @@ class TeleEvent{
 		void setHit(){
 
 			teleHit->sortHit();
-			//teleHit->removeBadHit();
 			teleHit->findBestHit();
 		}
 		void setEvent(){
