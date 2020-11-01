@@ -19428,3 +19428,293 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/hodOneHitBe14.root_reaction
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 09656c9] v1.0
+ 370 files changed, 414 insertions(+), 51 deletions(-)
+ create mode 100644 analysis/generateChannels/alignHodQ/rootfiles/hodOneHitBe10.root_reaction
+ rewrite merger/.TeleEvent.h.swp (75%)
+ create mode 100644 merger/HodEvent.h_mac
+ rewrite merger/Merger (87%)
+ create mode 100644 merger/rootfiles/run0290_analysed.root_test_test
+ rewrite merger/rootfiles/run0291_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0291_analysed.root_test_test
+ rewrite merger/rootfiles/run0292_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0292_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0293_analysed.root_test_test
+ rewrite merger/rootfiles/run0294_analysed.root_test (100%)
+ create mode 100644 merger/rootfiles/run0294_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0295_analysed.root_test_test
+ rewrite merger/rootfiles/run0296_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0296_analysed.root_test_test
+ rewrite merger/rootfiles/run0297_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0297_analysed.root_test_test
+ rewrite merger/rootfiles/run0298_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0298_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0299_analysed.root_test_test
+ rewrite merger/rootfiles/run0300_analysed.root_test_test (99%)
+ rewrite merger/rootfiles/run0301_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0301_analysed.root_test_test (99%)
+ create mode 100644 merger/rootfiles/run0302_analysed.root_test_test
+ rewrite merger/rootfiles/run0303_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0303_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0304_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0305_analysed.root_test_test
+ rewrite merger/rootfiles/run0306_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0306_analysed.root_test_test
+ rewrite merger/rootfiles/run0307_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0307_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0308_analysed.root_test_test
+ rewrite merger/rootfiles/run0310_analysed.root_test_test (99%)
+ rewrite merger/rootfiles/run0311_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0312_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0312_analysed.root_test_test (99%)
+ rewrite merger/rootfiles/run0313_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0313_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0315_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0316_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0317_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0318_analysed.root_test_test
+ rewrite merger/rootfiles/run0319_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0319_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0320_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0321_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0323_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0324_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0325_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0326_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0327_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0328_analysed.root_test_test
+ rewrite merger/rootfiles/run0329_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0329_analysed.root_test_test
+ rewrite merger/rootfiles/run0330_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0330_analysed.root_test_test
+ rewrite merger/rootfiles/run0331_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0331_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0332_analysed.root_test_test
+ rewrite merger/rootfiles/run0333_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0333_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0334_analysed.root_test_test
+ rewrite merger/rootfiles/run0335_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0335_analysed.root_test_test
+ rewrite merger/rootfiles/run0336_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0336_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0337_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0338_analysed.root_test_test
+ rewrite merger/rootfiles/run0339_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0339_analysed.root_test_test
+ rewrite merger/rootfiles/run0340_analysed.root_test (99%)
+ rename merger/rootfiles/{run0340_analysed.root_test => run0340_analysed.root_test_test} (83%)
+ rewrite merger/rootfiles/run0341_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0341_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0342_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0344_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0346_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0347_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0349_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0351_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0353_analysed.root_test_test
+ rewrite merger/rootfiles/run0354_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0354_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0355_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0357_analysed.root_test_test
+ rewrite merger/rootfiles/run0358_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0358_analysed.root_test_test
+ rewrite merger/rootfiles/run0359_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0362_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0362_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0364_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0365_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0367_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0368_analysed.root_test_test
+ rewrite merger/rootfiles/run0369_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0369_analysed.root_test_test
+ rewrite merger/rootfiles/run0370_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0370_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0371_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0372_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0373_analysed.root_test_test
+ rewrite merger/rootfiles/run0374_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0374_analysed.root_test_test
+ rewrite merger/rootfiles/run0375_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0375_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0377_analysed.root_test_test
+ rewrite merger/rootfiles/run0378_analysed.root_test (61%)
+ create mode 100644 merger/rootfiles/run0378_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0379_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0380_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0381_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0382_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0383_analysed.root_test_test
+ rewrite merger/rootfiles/run0384_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0384_analysed.root_test_test
+ rewrite merger/rootfiles/run0385_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0385_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0386_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0388_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0389_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0390_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0391_analysed.root_test_test
+ rewrite merger/rootfiles/run0393_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0393_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0394_analysed.root_test_test
+ rewrite merger/rootfiles/run0395_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0396_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0396_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0397_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0398_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0399_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0400_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0401_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0402_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0403_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0406_analysed.root_test_test
+ rewrite merger/rootfiles/run0407_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0407_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0408_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0409_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0410_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0411_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0412_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0413_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0414_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0416_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0417_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0418_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0419_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0421_analysed.root_test_test
+ rewrite merger/rootfiles/run0422_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0422_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0423_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0424_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0425_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0426_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0428_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0430_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0433_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0434_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0435_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0436_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0437_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0438_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0439_analysed.root_test_test
+ rewrite merger/rootfiles/run0442_analysed.root_test (73%)
+ create mode 100644 merger/rootfiles/run0442_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0443_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0444_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0445_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0446_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0447_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0450_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0451_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0452_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0454_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0455_analysed.root_test_test
+ rewrite merger/rootfiles/run0456_analysed.root_test (99%)
+ create mode 100644 merger/rootfiles/run0461_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0462_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0463_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0465_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0466_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0467_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0468_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0470_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0471_analysed.root_test_test
+ rewrite merger/rootfiles/run0472_analysed.root_test (76%)
+ create mode 100644 merger/rootfiles/run0472_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0473_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0474_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0475_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0477_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0478_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0481_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0482_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0484_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0485_analysed.root_test_test
+ rewrite merger/rootfiles/run0487_analysed.root_test (98%)
+ create mode 100644 merger/rootfiles/run0488_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0489_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0490_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0491_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0492_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0493_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0494_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0497_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0498_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0499_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0501_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0502_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0503_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0505_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0508_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0509_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0510_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0512_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0513_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0515_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0516_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0517_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0518_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0519_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0520_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0521_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0522_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0523_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0524_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0525_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0526_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0527_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0528_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0529_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0531_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0532_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0534_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0537_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0538_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0539_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0540_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0541_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0542_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0543_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0545_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0546_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0547_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0549_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0550_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0552_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0554_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0555_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0556_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0559_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0561_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0562_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0563_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0564_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0565_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0567_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0570_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0571_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0573_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0574_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0575_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0576_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0578_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0580_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0582_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0583_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0585_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0586_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0588_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0590_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0591_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0592_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0593_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0594_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0595_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0597_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0598_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0599_analysed.root_test_test
+ create mode 100644 merger/rootfiles/run0600_analysed.root_test_test
+ rename merger/{.TeleEvent.h.swp => txt/.alignQPara.txt.swp} (66%)
+ create mode 100644 merger/txt/alignQPara.txt
+ create mode 100644 merger/txt/alignTPara.txt
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

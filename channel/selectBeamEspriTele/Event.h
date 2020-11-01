@@ -14,7 +14,8 @@ class Event{
 			return (rf->getTrigESPRI()>0&&rf->isEspriRDCHit());		
 		}
 		bool isAlpha(){
-			return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
+			//return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
+			return (rf->getTrigTele())&&(rf->getTeleHit()>0);
 		}
 
 	public:

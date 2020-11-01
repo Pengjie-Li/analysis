@@ -200,12 +200,12 @@ class ReadFile{
 		Double_t        naiQPed[4][7];
 		Double_t        plasQPed[4];
 		Int_t           rdcHit;
-		Int_t           rdcHitSide[0];
+		Int_t           rdcHitSide[10];
 		Int_t           naiHit;
-		Int_t           naiHitSide[0];
-		Int_t           naiHitBarId[0];
+		Int_t           naiHitSide[10];
+		Int_t           naiHitBarId[10];
 		Int_t           plasHit;
-		Int_t           plasHitSide[0];
+		Int_t           plasHitSide[10];
 		Int_t           plasTHit;
 		Int_t           plasQHit;
 		Int_t           espriHit;
@@ -959,6 +959,10 @@ class ReadFile{
 		double getEspriAngle(){
 			return espriAngle;
 		}
+		bool getTrigTele(){
+			return (Trig_BxESPRIxTEL>0)||(Trig_BxTEL>0);
+		}
+
 		int getTeleHit(){
 			return teleHit;
 		}

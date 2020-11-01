@@ -4,6 +4,7 @@ class HodSynPara{
 		double tSynPara[40]; // Para Offset for i and i + 1
 
 		double qSynPara[40]; // Para Offset for i and i + 1
+		double qSynOffset[40]; // Para Offset for i and i + 1
 	public:
 		HodSynPara(TEnv *hodEnv){
 			
@@ -35,19 +36,20 @@ class HodSynPara{
 			cout<<inputName<<endl;
 			inputFile.open(inputName);
 			int ch;
-			int ch2;
+			double offset;
 			double gain;
 			while (1)
 			{
-				inputFile >>ch>>ch2>>gain;
+				inputFile >>ch>>offset>>gain;
 				if (!inputFile.good()) break;
 				qSynPara[ch] = gain;
+				qSynOffset[ch] = offset;
 			}
 			inputFile.close();
 		}
 		void print(){
 			for (int i = 0; i < 40; ++i) {
-				cout<<" ch = "<<i<<"\t tSynPara = "<<tSynPara[i]<<"\t qSynPara = "<<qSynPara[i]<<endl;	
+				cout<<" ch = "<<i<<"\t tSynPara = "<<tSynPara[i]<<"\t qSynPara = "<<qSynPara[i]<< "   "<<qSynOffset[i]<<endl;	
 			}
 		}
 		double getTSynPara(int i){
@@ -56,11 +58,16 @@ class HodSynPara{
 		double getQSynPara(int i){
 			return qSynPara[i];
 		}
+		double getQSynOffset(int i){
+			return qSynOffset[i];
+		}
+
 
 };
 class HodEvent{
 	private:
 		MergeHOD *mergeHOD;
+		double offsetHodFP;
 		TEnv *hodEnv;
 		HodSynPara *hodSynPara;
 		int hodfTRawMin;
@@ -85,6 +92,7 @@ class HodEvent{
 		double getHodQSyn(int id, double hodQ){
 
 			double gain = hodSynPara->getQSynPara(id);
+			double offset = hodSynPara->getQSynOffset(id);
 			//Q all aligned to Bar23
 			//double gain = 1;
 			//if(id<24){ // HODF
@@ -99,7 +107,7 @@ class HodEvent{
 			//	}
 			//}
 			//cout<<"id = "<<id<<" gain = "<<gain<<endl;
-			return gain*hodQ;
+			return gain*(hodQ+offset);
 		}
 		double getHodTSyn(int id, double hodT){
 			double offset = hodSynPara->getTSynPara(id);
@@ -114,7 +122,9 @@ class HodEvent{
 			//	}
 
 			//}		
-			return hodT+offset;
+			if(id<24) return hodT+offset;
+			else return hodT+offset+offsetHodFP;
+				
 		}
 		void setHodQHit(){
 			for (int i = 0; i < 40; ++i) {
@@ -172,6 +182,7 @@ class HodEvent{
 			cout<<"HOD Qth "<<hodQRawTh<<endl;
 	
 			hodSynPara = new HodSynPara(hodEnv);
+			offsetHodFP = 16800;
 		}
 		~HodEvent(){}
 		void print(){
