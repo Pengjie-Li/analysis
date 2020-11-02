@@ -166,7 +166,7 @@ class ReadFile{
 
 		int 		hodQHit;
 		int 		hodQHitId[40];
-		double 		hodQHitQPed[40];
+		double 		hodQHitQSyn[40];
 
 		int 		hodTHit;
 		int 		hodTHitId[40];
@@ -429,7 +429,7 @@ class ReadFile{
 
                         inputTree->SetBranchAddress("hodQHit",&hodQHit);
                         inputTree->SetBranchAddress("hodQHitId",hodQHitId);
-                        inputTree->SetBranchAddress("hodQHitQPed",hodQHitQPed);
+                        inputTree->SetBranchAddress("hodQHitQSyn",hodQHitQSyn);
                         inputTree->SetBranchAddress("hodTHit",&hodTHit);
                         inputTree->SetBranchAddress("hodTHitId",hodTHitId);
                         inputTree->SetBranchAddress("hodTHitTSyn",hodTHitTSyn);
@@ -778,7 +778,7 @@ class ReadFile{
 			tree->Branch("hodBarQCal",hodBarQCal,"hodBarQCal[40]/D");
 			tree->Branch("hodQHit",&hodQHit,"hodQHit/I");
                         tree->Branch("hodQHitId",hodQHitId,"hodQHitId[hodQHit]/I");
-                        tree->Branch("hodQHitQPed",hodQHitQPed,"hodQHitQPed[hodQHit]/D");
+                        tree->Branch("hodQHitQSyn",hodQHitQSyn,"hodQHitQSyn[hodQHit]/D");
                         tree->Branch("hodTHit",&hodTHit,"hodTHit/I");
                         tree->Branch("hodTHitId",hodTHitId,"hodTHitId[hodTHit]/I");
                         tree->Branch("hodTHitTSyn",hodTHitTSyn,"hodTHitTSyn[hodTHit]/D");
