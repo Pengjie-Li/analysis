@@ -20194,3 +20194,9 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/rootfiles/run0598_analysed.root_test (99%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0fa3639] v1.0
+ 8 files changed, 220 insertions(+), 4 deletions(-)
+ rewrite channel/selectBeamEspriTele/rootfiles/.haddBe10.sh.swp (67%)
+ rename channel/selectBeamEspriTele/rootfiles/{.haddBe10.sh.swp => .haddBe12.sh.swp} (95%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

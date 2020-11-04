@@ -11,8 +11,8 @@ class Event{
 			return isInsideTargetArea(rf->getTargetX(),rf->getTargetY());
 		}
 		bool isProton(){
-			//return (rf->getTrigESPRI()>0&&rf->isEspriRDCHit());		
-			return (rf->getTrigESPRI()>0);		
+			return (rf->getTrigESPRI()>0&&rf->isEspriRDCHit());		
+			//return (rf->getTrigESPRI()>0);		
 		}
 		bool isAlpha(){
 			//return (rf->getTeleCsiE()>0)&&(rf->getTeleDssdE()>0);
