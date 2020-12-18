@@ -58,7 +58,7 @@ class ESPRI3DPosition{
 			else{
 				//X = X -centerX ;
 				X = X -centerX -2.27;
-				Y = Y -centerY;
+				Y = Y -centerY + 3.0; // Shift ESPRI from Phi
 
 				pedal = rightPedal;
 				baseX = rightBaseX;

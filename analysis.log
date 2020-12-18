@@ -20659,3 +20659,28 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master ed645bd] v1.0
+ 32 files changed, 1676 insertions(+), 1 deletion(-)
+ create mode 100644 .DrawCurve.h.swp
+ create mode 100644 DrawCurve.h
+ create mode 100644 DrawTree.h
+ create mode 100644 HodGate.h
+ create mode 100644 LoadCut.h
+ rename merger/config/.configMerger.prm.swp => analysis/generateChannels/shiftFDC0/emptyTarget/.drawTree.C.swp (77%)
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/.generateBDC1.C.swp
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/.generateBDC2.C.swp
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/.generateFDC0.C.swp
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/drawTree.C
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/generateBDC1.C
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/generateBDC1.C~
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/generateBDC2.C
+ create mode 100644 analysis/generateChannels/shiftFDC0/emptyTarget/generateFDC0.C
+ create mode 120000 analysis/generateChannels/shiftFDC0/emptyTarget/rootfiles
+ rename merger/.EspriEvent.h.swp => channel/ppBe10/.Event.h.swp (64%)
+ rename merger/.AnalysingProton.h.swp => channel/ppBe12/.configPPBe.prm.swp (94%)
+ create mode 100644 merger/.AnalysingFDC0.h.swp
+ rewrite merger/.AnalysingProton.h.swp (67%)
+ rewrite merger/.EspriEvent.h.swp (67%)
+ rewrite merger/config/.configMerger.prm.swp (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
