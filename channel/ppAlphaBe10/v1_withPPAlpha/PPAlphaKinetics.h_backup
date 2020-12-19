@@ -1,0 +1,223 @@
+#include <TLorentzVector.h>
+class Particle{
+		private:
+		public:
+				TString pName;
+				double M;
+				double T;
+				double P;
+				double E;
+				double theta;
+				double phi;
+				double beta;
+				double gamma;
+				Particle(){
+					phi = 0;
+					theta = 0;
+				}
+				~Particle(){}
+				void init(){
+
+					M = NAN;
+					T = NAN;
+					P = NAN;
+					E = NAN;
+					theta = 0;
+					phi = 0;
+					beta = NAN;
+					gamma = NAN; 	
+				}
+				void setName(TString name){
+					pName = name;
+				}
+				void setP(double p){
+					P = p;
+				}
+				void setM(double m){
+					M = m;
+				}
+				void setE(double e){
+					E = e;
+				}
+				void setT(double t){
+					T = t;
+				}
+				void setTheta(double th){
+					theta = th*TMath::DegToRad();
+				}
+				void setPhi(double pi){
+					phi = pi;
+				}
+				void print(){
+						cout<<"Particle "<<pName<<"\t"<<M<<"\t"<<E<<"\t"<<P<<"\t"<<gamma<<"\t"<<beta<<"\t"<<theta*TMath::RadToDeg()<<endl;
+				}
+				TLorentzVector getLorentzVector(){
+						TLorentzVector x(0,0,P,E);
+						return x;
+				}
+				void setMT(double m,double t){
+					M = m; T = t;
+					E = M + T;
+					P = sqrt(E*E - M*M);
+					gamma = E/M;
+					beta = P/E;
+				}
+				void setMP(double m,double p){
+					M = m; P = p;
+					E = sqrt(M*M + P*P);
+					T = E - M;
+					gamma = E/M;
+					beta = P/E;
+				}
+				void setME(double m,double e){
+					M = m; E = e;
+					P = sqrt(E*E - M*M);
+					T = E - M;
+					gamma = E/M;
+					beta = P/E;
+				}
+	
+				void setEP(double e,double p){
+					E = e; P = p;
+					M = sqrt(E*E - P*P);
+					T = E - M;
+					gamma = E/M;
+					beta = P/E;
+				}
+				void setLorentzVector(TLorentzVector x){
+						P = x.P();
+						M = x.M();
+						E = x.E();
+						T = x.T();
+						gamma = E/M;
+						beta = P/E;
+				}
+				void setBranch(TTree *tree){
+					tree->Branch("M"+pName,&M,"M"+pName+"/D");
+					tree->Branch("E"+pName,&E,"E"+pName+"/D");
+					tree->Branch("P"+pName,&P,"P"+pName+"/D");
+					tree->Branch("T"+pName,&T,"T"+pName+"/D");
+					tree->Branch("theta"+pName,&theta,"theta"+pName+"/D");
+					tree->Branch("phi"+pName,&phi,"phi"+pName+"/D");
+					//tree->Branch("M"+pName,&M,"M"+pName+"/D");
+				}
+};
+class PPAlphaKinetics{
+		private:
+				TEnv *env;
+				double SOL;
+				double AMU;	
+				Particle a;
+				Particle b;
+				Particle r0;
+				Particle r1;
+				Particle r2;
+				Particle r3;
+				Particle r3B;
+				double P3Prime;
+
+				double ma;
+				double mb;
+				double m1;
+				double m2;
+				double m3;
+				ReadFile *rf;
+		public:
+				PPAlphaKinetics(ReadFile *rf):rf(rf){
+					env = new TEnv("configPPBe.prm");
+						SOL= 299.792458;//mm/ns
+						AMU= 931.49410242;//MeV/u	
+
+						a.setName("a");
+						b.setName("b");
+						r0.setName("CM");
+						r1.setName("1");
+						r2.setName("2");
+						r3.setName("3");
+
+						ma = env->GetValue("ma",9.0);
+						mb = env->GetValue("mb",1.0);
+						m1 = env->GetValue("m1",1.0);
+						m2 = env->GetValue("m2",4.0);
+						m3 = env->GetValue("m3",6.0);
+				}
+
+				~PPAlphaKinetics(){}
+				void setBranch(TTree *tree){
+					a.setBranch(tree);
+					b.setBranch(tree);
+					r1.setBranch(tree);
+					r2.setBranch(tree);
+					r3.setBranch(tree);
+					tree->Branch("P3Prime", &P3Prime, "P3Prime");
+				}
+				void init(){
+					a.init();
+					b.init();
+					r1.init();
+					r2.init();
+					r3.init();
+					r3B.init();
+					P3Prime = NAN;
+				}
+				void calculate(){
+					init();
+					setParticleA();
+					setParticleB();
+					setCM();
+					setParticle1();
+					setParticle2();
+					setParticle3();
+					setParticle3BeamSystem();
+					setP3Prime();
+				}
+				void setParticleA(){
+						a.setMT(ma*AMU,rf->getBeamEnergy()*ma);
+						//a.setMT(9327.6075,rf->getBeamEnergy()*10);
+						//a.print();
+				}
+				void setParticleB(){
+						double tb = 0;
+						b.setMT(mb*AMU,tb*mb);
+						//b.print();
+				}
+				void setCM(){
+						TLorentzVector cm = a.getLorentzVector() + b.getLorentzVector();		
+						r0.setLorentzVector(cm);
+						//r0.print();
+				}
+				void setParticle1(){
+						//r1.setMT(,t1);
+						r1.setMT(m1*AMU,rf->getProtonEnergy());
+						r1.setTheta(rf->getEspriAngle());
+						//r1.print();
+				}
+				void setParticle2(){
+						r2.setMT(m2*AMU,rf->getAlphaEnergy());	
+						r2.setTheta(rf->getTeleAngle());
+						//r2.print();
+				}
+				void setParticle3(){
+						//r3.setM();
+
+					double theta3 = rf->getFdc0Angle();
+					r3.setME(m3*AMU,r0.E-r1.E-r2.E);
+					double cosTheta3 = (r0.P-r1.P*cos(r1.theta)-r2.P*cos(r2.theta))/r3.P;
+					r3.setTheta(acos(cosTheta3)*TMath::RadToDeg());
+					//r3.setTheta(theta3);
+					//cout<<cosTheta3<<" "<<cos(r3.theta)<<endl;
+					//r3.print();
+				}
+				void setParticle3BeamSystem(){
+					r3B.setName("r3B");
+					double cosTheta3 = cos(r3.theta);
+					//double cosTheta3 = cos(theta3);
+					r3B.setME(r3.M,(a.E*r3.E-a.P*r3.P*cosTheta3)/a.M);
+					//r3B.print();
+				}
+				void setP3Prime(){
+					if(a.beta<=r3.beta*cos(r3.theta)) P3Prime = r3B.P;
+					else P3Prime = -r3B.P;
+					//cout<<P3Prime<<endl;
+				}
+};
