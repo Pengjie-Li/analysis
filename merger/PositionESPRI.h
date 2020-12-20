@@ -41,7 +41,7 @@ class ESPRI3DPosition{
 			rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
 	
 			centerX = 227.5;
-			centerY = 227.5;
+			centerY = 227.5 - 3.0; // 3 mm offset comes from ppBe phi center offset
 		}
 		TVector3 getESPRIPosition(int lr,double X,double Y){
 			TVector3 pedal;
@@ -58,7 +58,7 @@ class ESPRI3DPosition{
 			else{
 				//X = X -centerX ;
 				X = X -centerX -2.27;
-				Y = Y -centerY + 3.0; // Shift ESPRI from Phi
+				Y = Y -centerY; // Shift ESPRI from Phi
 
 				pedal = rightPedal;
 				baseX = rightBaseX;
