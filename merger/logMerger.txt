@@ -90,3 +90,5 @@
 2020-12-17
 	1. Add FDC0 shift (0.51,0.78)
 	2. Shift ESPRI Y Center + 3.0 mm
+2020-12-21
+	1. RotateY Left ESPRI from 60 into 60.13

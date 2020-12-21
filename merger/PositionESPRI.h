@@ -28,10 +28,9 @@ class ESPRI3DPosition{
 			//rightBaseX.SetXYZ(0.494954,0.000000,-0.868919);
 			//rightBaseY.SetXYZ(0.000000,1.000000,-0.000000);
 			// Expected position
-			leftPlaneNorm.SetXYZ(-TMath::Sqrt(3)/2,0,0.5);
-			//leftPedal.SetXYZ(-900.813644,0.000000,-3702.255000);
-			leftPedal.SetXYZ(-875.716228,0.000000,-3716.745000);
-			leftBaseX.SetXYZ(0.500000,0.000000,0.866025);
+			leftPlaneNorm.SetXYZ(-0.867158, 0.000000,0.498034);
+			leftPedal.SetXYZ(-877.015389,0.000000,-3718.644642);
+			leftBaseX.SetXYZ(0.498034,0.000000,0.867158);
 			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
 
 			rightPlaneNorm.SetXYZ(0.868919,0,0.494954);

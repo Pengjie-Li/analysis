@@ -85,6 +85,7 @@ class LeftPlane: public Plane{
 			//D=966; // Distance = 1435.17
 			D=923; // Distance = 1435.17
 			//D=1188.19; // Distance = 1435.17
+			cout<<A<<" "<<B<<" "<<C<<endl;
 			calBaseVector();
 		}
 
