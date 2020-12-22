@@ -8,3 +8,5 @@ espriCalib:txt/espriEnergyCalibParaBe12.txt
 plasTimePara:txt/plasTimeParameters.txt
 offsetLeft:-0.062
 offsetRight:-0.052
+lScaleFactor:0.9877
+rScaleFactor:1.01

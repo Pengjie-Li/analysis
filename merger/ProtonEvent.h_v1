@@ -117,8 +117,6 @@ class ProtonPara{
 class ProtonEvent{
 	private:
 		double protonEnergy;
-		double lScaleFactor;
-		double rScaleFactor;
 
 
 		EspriEvent *espriEvent;
@@ -133,19 +131,11 @@ class ProtonEvent{
 						xPos = -xPos;
 				}
 				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
-				if(espriEvent->getEspriSide()==0) protonEnergy = lScaleFactor*protonEnergy;
-				if(espriEvent->getEspriSide()==1) protonEnergy = rScaleFactor*protonEnergy;
 		}
 	public:
 		ProtonEvent(){
 			protonPara = new ProtonPara();
 			degraderPosition = new DegraderPosition();
-			lScaleFactor = calib->GetValue("lScaleFactor", 1.0);
-                        rScaleFactor = calib->GetValue("rScaleFactor", 1.0);
-			cout<<"Reading Scale Facotr: "<<lScaleFactor<<" "<<rScaleFactor<<endl;
-			cout<<endl;
-			cout<<endl;
-			cout<<endl;
 		}
 		~ProtonEvent(){
 			delete protonPara;
