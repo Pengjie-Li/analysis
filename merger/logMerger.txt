@@ -92,3 +92,5 @@
 	2. Shift ESPRI Y Center + 3.0 mm
 2020-12-21
 	1. RotateY Left ESPRI from 60 into 60.13
+2020-12-23
+	1. RotateY Left ESPRI from 60 into 60.0 - 0.19
