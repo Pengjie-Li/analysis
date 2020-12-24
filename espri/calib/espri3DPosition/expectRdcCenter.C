@@ -77,11 +77,12 @@ class Plane{
 class LeftPlane: public Plane{
 	public:
 		LeftPlane(){
-			double polarAngle = 60.13;
+			double polarAngle = 60.0-0.19;
 			A=-sin(polarAngle*TMath::DegToRad());
 			B=-0.0;
 			C=cos(polarAngle*TMath::DegToRad());
-			D=1091.5;
+			D=1112.1;
+			//D=1091.5; 60.13
 			//A=-TMath::Sqrt(3)/2;
 			//B=-0.0;
 			//C=0.5;
