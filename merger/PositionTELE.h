@@ -102,8 +102,8 @@ class PositionTELE{
 			if(isLR == 0) telePosition.SetXYZ(leftXPosition[fid][bid],leftYPosition[fid][bid],leftZPosition[fid][bid]);
 			else telePosition.SetXYZ(rightXPosition[fid][bid],rightYPosition[fid][bid],rightZPosition[fid][bid]);
 
-                        if(isLR==0) telePosition = telePosition + 0.9*(*teleLXAxis);
-                        else telePosition = telePosition + 2.4*(*teleRXAxis);
+                        //if(isLR==0) telePosition = telePosition + 0.9*(*teleLXAxis);
+                        //else telePosition = telePosition + 2.4*(*teleRXAxis);
  
 			return telePosition;
 		}

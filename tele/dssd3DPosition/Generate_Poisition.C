@@ -58,10 +58,18 @@ class Plane{
 			e3.SetXYZ(A,B,C);
 			e3=e3.Unit();
 
-			e1.SetXYZ(1,0,-e3.X()/e3.Z());
+			double x3= e3.X();
+			double z3= e3.Z();
+			double x1 = abs(z3)/sqrt(z3*z3+x3*x3);
+			double z1 = -x3*x1/z3;
+			e1.SetXYZ(x1,0,z1);
 			e1=e1.Unit();
 			e2 = e1.Cross(e3);
 			if(e2.Y()<0) e2=-e2;
+			cout<<"X Direction:"<<endl;
+			e1.Print();
+			cout<<"Y Direction:"<<endl;
+			e2.Print();
 		}
 		
 
@@ -145,7 +153,8 @@ public:
 		ofstream output(outputName,ios_base::app | ios_base::out);
 		output.flags (ios::left);
 
-		TVector3 targetCenter(0,0,-4222.45);
+		//TVector3 targetCenter(0,0,-4222.45);
+		TVector3 targetCenter(0,0,-4222.34);
 		for(int i=0;i<32;i++)
 			for(int j=0;j<32;j++){
 				TVector3 temp=corner+i*fInterval+j*bInterval;
@@ -181,7 +190,7 @@ public:
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
 	new GeneratePosition(0,16,26,-32.466,-1.40);	
-//	new GeneratePosition(1,16,26,32.17,-1.75);	
+	//new GeneratePosition(1,16,26,32.17,-1.75);	
 
 
 //	LeftPlane *lp=new LeftPlane();
