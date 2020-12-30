@@ -26,9 +26,9 @@ class ESPRI3DPosition{
 			leftBaseX.SetXYZ(0.502869,0.000000,0.864363);
 			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
 
-			rightPlaneNorm.SetXYZ(0.868919,0,0.494954);
-			rightPedal.SetXYZ(877.985787,0.000000,-3722.221514);
-			rightBaseX.SetXYZ(0.494954,0.000000,-0.868919);
+			rightPlaneNorm.SetXYZ(0.869150,0,0.494549);
+			rightPedal.SetXYZ(878.217762,0.000000,-3722.631582);
+			rightBaseX.SetXYZ(0.494549,0.000000,-0.869150);
 			rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
 	
 			centerX = 227.5;

@@ -96,3 +96,5 @@
 	1. RotateY Left ESPRI from 60 into 60.0 - 0.19
 2020-12-29
 	1. Remove TelePosition Offset 2.4 and 0.9 
+2020-12-30
+	1. RotateY Right ESPRI from 60.333 into 60.36
