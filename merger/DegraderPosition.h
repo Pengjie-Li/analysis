@@ -65,12 +65,20 @@ class ESPRIDegraderPosition{
 		public:
 				ESPRIDegraderPosition(){
 						// Distance: 1188.17, 1187.47
-						leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,-1124.17);
-						rightPlane = new Plane(sqrt(3)/2,0.0,0.5,-1123.47);
-						leftPedal.SetXYZ(-973.559778,0.000000,562.085000);
-						rightPedal.SetXYZ(972.953560,0.000000,561.735000);
-						leftXBase.SetXYZ(0.500000,0.000000,sqrt(3)/2);
-						rightXBase.SetXYZ(0.500000,0.000000,-sqrt(3)/2);
+						//leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,-1124.17);
+						//rightPlane = new Plane(sqrt(3)/2,0.0,0.5,-1123.47);
+						//leftPedal.SetXYZ(-973.559778,0.000000,562.085000);
+						//rightPedal.SetXYZ(972.953560,0.000000,561.735000);
+						//leftXBase.SetXYZ(0.500000,0.000000,sqrt(3)/2);
+						//rightXBase.SetXYZ(0.500000,0.000000,-sqrt(3)/2);
+
+						leftPlane  = new Plane(-0.864363,0.0,0.502869,-1124.18);
+						rightPlane = new Plane(0.869150,0.0,0.494549,-1123.45);
+						leftPedal.SetXYZ(-971.699128,0.000000,565.315379);
+						rightPedal.SetXYZ(976.446434,0.000000,555.600814);
+						leftXBase.SetXYZ(0.502869,0.000000,0.864363);
+						rightXBase.SetXYZ(0.494549,0.000000,-0.869150);
+
 
 				}
 				~ESPRIDegraderPosition(){}

@@ -22270,3 +22270,44 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/dssd3DPosition/output/RightDSSDPixelPosition.txt_v1
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 0b9800f] v1.0
+ 96 files changed, 445 insertions(+), 67 deletions(-)
+ create mode 100644 espri/calib/espri3DPosition/expectRdcCenter.C~
+ rewrite merger/.AlphaEvent.h.swp (75%)
+ create mode 100644 merger/rootfiles/.drawFDC0.C.swp
+ rename merger/{.AlphaEvent.h.swp => rootfiles/.setAlias.C.swp} (69%)
+ create mode 100644 merger/rootfiles/drawFDC0.C
+ create mode 100644 merger/rootfiles/drawFDC0.C~
+ rewrite merger/rootfiles/run0291_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0294_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0295_analysed.root_test (60%)
+ rewrite merger/rootfiles/run0298_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0302_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0306_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0308_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0310_analysed.root_test (86%)
+ rewrite merger/rootfiles/run0315_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0318_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0321_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0323_analysed.root_test (85%)
+ rewrite merger/rootfiles/run0324_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0326_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0327_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0331_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0332_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0345_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0346_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0350_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0351_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0356_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0357_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0362_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0370_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0390_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0393_analysed.root_test (99%)
+ create mode 100644 merger/txt/.naiCalibOutput.txt_Be10_v20.swp
+ create mode 100644 merger/txt/.naiCalibOutput.txt_Be12_v14.swp
+ rewrite merger/txt/naiCalibOutput.txt_Be12_v14 (100%)
+ rewrite merger/txt/naiCalibOutput.txt_Be14_v10 (100%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

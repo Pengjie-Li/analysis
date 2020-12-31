@@ -1,179 +1,297 @@
 #include "DegraderPosition.h"
 class ProtonPara{
-	private:
-		double ppPlasE;
-		double ppDegraderE;
-		double ppWinE;
-		double ppShtE;
+		private:
+				double ppPlasE;
+				double ppDegraderE;
+				double ppWinE;
+				double ppShtE;
 
-		TGraph *plasEnergyToRange;
-		TGraph *plasRangeToEnergy;
+				TGraph *plasEnergyToRange;
+				TGraph *plasRangeToEnergy;
 
-		TGraph *degraderEnergyToRange;
-		TGraph *degraderRangeToEnergy;
+				TGraph *degraderEnergyToRange;
+				TGraph *degraderRangeToEnergy;
 
-		TGraph *shtEnergyToRange;
-		TGraph *shtRangeToEnergy;
-		TGraph *winEloss;
-		TGraph *wedgeThick[2];
-		TGraph *lrWedgeThick;
+				TGraph *shtEnergyToRange;
+				TGraph *shtRangeToEnergy;
+				TGraph *winEloss;
+				TGraph *wedgeThick[2];
+				TGraph *lrWedgeThick;
 
-		double degraderThickness;
-		double plasThickness;
-		double shtThickness;
+				double degraderThickness;
+				double plasThickness;
+				double shtThickness;
+				double wedgeOffset;
 
 
-		double getSHTE(double angle,double energyOut){
-			double realThickness = shtThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + shtEnergyToRange->Eval(energyOut,0,"S");
-			double energyIn = shtRangeToEnergy->Eval(rangeIn,0,"S");
-			//cout<<"SHT "<<realThickness<<" "<<energyIn<<energyOut<<endl;
-			return (energyIn-energyOut);
-		}
-		double getPlasE(double angle,double energyOut){
-			double realThickness = plasThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + plasEnergyToRange->Eval(energyOut,0,"S");
-			double energyIn = plasRangeToEnergy->Eval(rangeIn,0,"S");
-			//cout<<"Plas "<<realThickness<<" "<<energyIn<<energyOut<<endl;
-			return (energyIn-energyOut);
-		}
-		double getWindowE(double energy){
-			return winEloss->Eval(energy);
-		}
-		double getDegraderE(double angle,double energyOut,double xPos){
-			double realThickness = getDegraderThickness(xPos)/cos(angle*TMath::DegToRad()); 
-			degraderThickness = realThickness;
-			//realThickness = 0.9*realThickness;
-			//double realThickness = getDegraderThickness(xPos); 
-			if(realThickness == 0) return 0;
-			double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
-			double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
-			//cout<<"Degrader "<<xPos<<" "<<realThickness<<" "<<energyIn<<" "<<energyOut<<endl;
-			return (energyIn-energyOut);
-		}
+				double getSHTE(double angle,double energyOut){
+						double realThickness = shtThickness/cos(angle*TMath::DegToRad()); 
+						double rangeIn = realThickness + shtEnergyToRange->Eval(energyOut,0,"S");
+						double energyIn = shtRangeToEnergy->Eval(rangeIn,0,"S");
+						//cout<<"SHT "<<realThickness<<" "<<energyIn<<energyOut<<endl;
+						return (energyIn-energyOut);
+				}
+				double getPlasE(double angle,double energyOut){
+						double realThickness = plasThickness/cos(angle*TMath::DegToRad()); 
+						double rangeIn = realThickness + plasEnergyToRange->Eval(energyOut,0,"S");
+						double energyIn = plasRangeToEnergy->Eval(rangeIn,0,"S");
+						//cout<<"Plas "<<realThickness<<" "<<energyIn<<energyOut<<endl;
+						return (energyIn-energyOut);
+				}
+				double getWindowE(double energy){
+						return winEloss->Eval(energy);
+				}
+				double getDegraderE(double angle,double energyOut,double xPos){
+						double realThickness = getDegraderThickness(xPos)/cos(angle*TMath::DegToRad()); 
+						degraderThickness = realThickness;
+						//realThickness = 0.9*realThickness;
+						//double realThickness = getDegraderThickness(xPos); 
+						if(realThickness == 0) return 0;
+						double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
+						double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
+						//cout<<"Degrader "<<xPos<<" "<<realThickness<<" "<<energyIn<<" "<<energyOut<<endl;
+						return (energyIn-energyOut);
+				}
 
-		double getDegraderThickness(double xPos){
-			//return wedgeThick->Eval(xPos + 227.5);
-			return lrWedgeThick->Eval(-xPos + 46.5);
-		}
 
-	public:
-		ProtonPara(){
-			plasThickness = 4; //mm
-			shtThickness = 1; //mm , assume reaction happened in the middle
+				double getDegraderThickness(double xPos){
+						//return wedgeThick->Eval(xPos + 227.5);
+						//return lrWedgeThick->Eval(-xPos + 46.5);
+						return lrWedgeThick->Eval(-xPos + wedgeOffset);
+				}
 
-			TString eloosName = "/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/energyLossInMaterial/output/protonInMaterials.root";
-			TFile *fEloss = new TFile(eloosName,"READ");
-			shtEnergyToRange = (TGraph *)gDirectory->Get("protonTargetER");
-			shtRangeToEnergy = (TGraph *)gDirectory->Get("protonTargetRE");
-			plasEnergyToRange = (TGraph *)gDirectory->Get("protonPlasER");
-			plasRangeToEnergy = (TGraph *)gDirectory->Get("protonPlasRE");
-			degraderEnergyToRange = (TGraph *)gDirectory->Get("protonDegraderER");
-			degraderRangeToEnergy = (TGraph *)gDirectory->Get("protonDegraderRE");
-			fEloss->Close();	
+		public:
+				ProtonPara(){
+						plasThickness = 4; //mm
+						shtThickness = 1; //mm , assume reaction happened in the middle
 
-			TString winEloosName = "/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/plot/energyLossInMaterial/output/protonWindowEloss.root";
-			TFile *fWinEloss = new TFile(winEloosName,"READ");
-			winEloss = (TGraph *)gDirectory->Get("windowEloss");
-			fWinEloss->Close();
+						TFile *fEloss = new TFile("/Volumes/LPJ/S12/analysis/energyLossInMaterial/output/protonInMaterials.root","READ");
+						shtEnergyToRange = (TGraph *)gDirectory->Get("protonTargetER");
+						shtRangeToEnergy = (TGraph *)gDirectory->Get("protonTargetRE");
+						plasEnergyToRange = (TGraph *)gDirectory->Get("protonPlasER");
+						plasRangeToEnergy = (TGraph *)gDirectory->Get("protonPlasRE");
+						degraderEnergyToRange = (TGraph *)gDirectory->Get("protonDegraderER");
+						degraderRangeToEnergy = (TGraph *)gDirectory->Get("protonDegraderRE");
+						fEloss->Close();	
 
-			TString wedgeFileName = "/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/espri/calib/wedge/wedgeShape.root";
-			TFile *fWedgeThick = new TFile(wedgeFileName,"READ");
-			wedgeThick[0] = (TGraph *)gDirectory->Get("leftDegrader");
-			wedgeThick[1] = (TGraph *)gDirectory->Get("rightDegrader");
-			fWedgeThick->Close();
 
-		}
-		~ProtonPara(){}
-		double getProtonEnergy(int side,double naiE,double locusAngle,double angle,double xPos){
-			lrWedgeThick = wedgeThick[side];
-			ppPlasE = getPlasE(locusAngle,naiE);
-			ppDegraderE = getDegraderE(locusAngle,naiE+ppPlasE,xPos);
-			ppWinE = getWindowE(naiE+ppPlasE+ppDegraderE);
-			ppShtE = getSHTE(angle,naiE+ppPlasE+ppDegraderE+ppWinE);
-		
-			return naiE+ppPlasE+ppDegraderE+ppWinE+ppShtE;
-		}
-		void init(){
-			ppPlasE = -9999;
-			ppDegraderE = -9999;
-			ppWinE = -9999;
-			ppShtE = -9999;
-			degraderThickness = NAN;
-		}
-		void setOutputBranch(TTree *tree){
-			tree->Branch("ppDegraderE",&ppDegraderE,"ppDegraderE/D");
-			tree->Branch("ppPlasE",&ppPlasE,"ppPlasE/D");
-			tree->Branch("ppWinE",&ppWinE,"ppWinE/D");
-			tree->Branch("ppShtE",&ppShtE,"ppShtE/D");
-			tree->Branch("degraderThickness",&degraderThickness,"degraderThickness/D");
-		}
-		void print(){
-			cout<<" shtE = "<<ppShtE<<" winE ="<<ppWinE<<" plasE = "<<ppPlasE<<" degraderE = "<<ppDegraderE<<endl;
-		}
+						TFile *fWinEloss = new TFile("/Volumes/LPJ/S12/analysis/energyLossInMaterial/output/protonWindowEloss.root","READ");
+						winEloss = (TGraph *)gDirectory->Get("windowEloss");
+						fWinEloss->Close();
+
+						//TFile *fWedgeThick = new TFile("/Volumes/LPJ/S12/analysis/workSpace/degrader/wedge/wedgeShape.root","READ");
+						TFile *fWedgeThick = new TFile("/Volumes/LPJ/S12/analysis/ppScattering/degrader/wedge/wedgeShape.root","READ");
+						wedgeThick[0] = (TGraph *)gDirectory->Get("leftDegrader");
+						wedgeThick[1] = (TGraph *)gDirectory->Get("rightDegrader");
+						fWedgeThick->Close();
+
+				}
+				~ProtonPara(){}
+
+				double getProtonEnergyNai(int side,double naiE,double locusAngle,double angle,double xPos){
+						//cout<<side<<" "<<naiE<<" "<<locusAngle<<" "<<angle<<" "<<xPos<<endl;
+						lrWedgeThick = wedgeThick[side];
+						if(side == 0) wedgeOffset = 43.2;
+						else wedgeOffset = 36.7;
+	
+						ppPlasE = getPlasE(locusAngle,naiE);
+						ppDegraderE = getDegraderE(locusAngle,naiE+ppPlasE,xPos);
+						ppWinE = getWindowE(naiE+ppPlasE+ppDegraderE);
+						ppShtE = getSHTE(angle,naiE+ppPlasE+ppDegraderE+ppWinE);
+						//cout<<ppPlasE<<" "<<ppDegraderE<<" "<<ppWinE<<" "<<ppShtE<<endl;
+
+						return naiE+ppPlasE+ppDegraderE+ppWinE+ppShtE;
+				}
+				double getProtonEnergyToF(int side,double tofE,double locusAngle,double angle,double xPos){
+						lrWedgeThick = wedgeThick[side];
+						if(side == 0) wedgeOffset = 43.2;
+						else wedgeOffset = 36.7;
+						ppWinE = 0.25*getWindowE(tofE);
+						ppShtE = getSHTE(angle,tofE+ppWinE);
+						ppPlasE = getPlasE(locusAngle,tofE); // this is just for check
+						ppDegraderE = getDegraderE(locusAngle,tofE,xPos);
+						//cout<<tofE<<" "<<ppWinE<<" "<<ppShtE<<endl;
+						return tofE+ppWinE+ppShtE;
+				}
+
+				void init(){
+						ppPlasE = -9999;
+						ppDegraderE = -9999;
+						ppWinE = -9999;
+						ppShtE = -9999;
+						degraderThickness = -9999;
+				}
+				void setOutputBranch(TTree *tree,TString bName){
+						tree->Branch("ppPlasE"+bName,&ppPlasE,"ppPlasE"+bName+"/D");
+						tree->Branch("ppWinE" +bName,&ppWinE,"ppWinE"+bName+"/D");
+						tree->Branch("ppShtE" +bName,&ppShtE,"ppShtE"+bName+"/D");
+						tree->Branch("ppDegE" +bName,&ppDegraderE,"ppDegE"+bName+"/D");
+						tree->Branch("ppDegTh"+bName,&degraderThickness,"ppDegTh"+bName+"/D");
+				}
+				void print(){
+						cout<<" shtE = "<<ppShtE<<" winE ="<<ppWinE<<" plasE = "<<ppPlasE<<" degraderE = "<<ppDegraderE<<endl;
+				}
 
 };
+class PlasProtonEnergy{
+		private:
 
+				ReadFile *rf;
+				double plasProtonEnergy;
+
+				double SOL;
+				double MassH;
+				double AMU;
+
+				ProtonPara *plasProtonPara;
+				DegraderPosition *degraderPosition;
+
+		public:
+				PlasProtonEnergy(ReadFile *rf):rf(rf){
+						plasProtonPara = new ProtonPara();
+						degraderPosition = new DegraderPosition();
+						SOL = 299.792458;
+						AMU = 931.49410242;
+						MassH = 1.007276466621;
+				}
+				~PlasProtonEnergy(){
+						delete plasProtonPara;
+						delete degraderPosition;
+				}
+				void init(){
+						plasProtonPara->init();
+						plasProtonEnergy = -9999;
+				}
+				void setBranch(TTree *tree){
+						plasProtonPara->setOutputBranch(tree,"Plas");
+						tree->Branch("plasProtonEnergy",&plasProtonEnergy,"plasProtonEnergy/D");
+				}
+				void setPlasProtonEnergy(){
+						double tofPlas = rf->getEspriPlasT();
+						if(tofPlas>0){
+								//cout<<tofPlas<<endl;
+								double espriFL = rf->getEspriFL();
+								double beta = espriFL/(SOL*tofPlas);
+								if(beta<1){
+										double gamma = 1/sqrt(1-beta*beta);
+										//plasProtonEnergy = (gamma-1)*AMU*MassH + ppShtE+0.25*ppWinE;
+										double tofE = (gamma-1)*AMU*MassH;
+
+										double xPos = degraderPosition->getPosition(rf->getEspriSide(),rf->getRdcPosition(),rf->getTargetPosition()); 
+										plasProtonEnergy = plasProtonPara->getProtonEnergyToF(rf->getEspriSide(),tofE,rf->getEspriLocusAngle(),rf->getEspriAngle(),xPos);
+										//cout<<tofE<<" "<<plasProtonEnergy<<endl;
+								}
+						}
+				}
+				double getPlasProtonEnergy(){
+						return plasProtonEnergy;
+				}
+};
+class NaiProtonEnergy{
+		private:
+				ReadFile *rf;
+				double protonEnergy;
+
+				ProtonPara *protonPara;
+				DegraderPosition *degraderPosition;
+
+		public:
+				NaiProtonEnergy(ReadFile *rf):rf(rf){
+						protonPara = new ProtonPara();
+						degraderPosition = new DegraderPosition();
+				}
+				~NaiProtonEnergy(){
+						delete protonPara;
+						delete degraderPosition;
+				}
+				void init(){
+						protonPara->init();
+						protonEnergy = -9999;
+				}
+				void setNaiProtonEnergy(){
+						if(rf->getNaiEnergy()>0){
+								double xPos = degraderPosition->getPosition(rf->getEspriSide(),rf->getRdcPosition(),rf->getTargetPosition()); 
+								if(rf->getEspriSide() == 1) {
+								}
+								else{ 
+										xPos = -xPos;
+								}
+								protonEnergy = protonPara->getProtonEnergyNai(rf->getEspriSide(),rf->getNaiEnergy(),rf->getEspriLocusAngle(),rf->getEspriAngle(),xPos);
+						}
+				}
+				double getNaiProtonEnergy(){
+						return protonEnergy;
+				}
+				void print(){
+						protonPara->print();
+						cout<<"Proton Energy = "<<protonEnergy<<" "<<endl;
+				}
+				void setBranch(TTree *tree){
+						protonPara->setOutputBranch(tree,"Nai");
+						tree->Branch("naiProtonEnergy",&protonEnergy,"naiProtonEnergy/D");
+				}
+};
 class ProtonEvent{
-	private:
-		double protonEnergy;
-		double lScaleFactor;
-		double rScaleFactor;
+		private:
+				double protonEnergy;
+				double protonTheta;
+				double protonPhi;
 
+				PlasProtonEnergy *plasEvent;
+				NaiProtonEnergy *naiEvent;
+				ReadFile *rf;
 
-		EspriEvent *espriEvent;
-		ProtonPara *protonPara;
-		DegraderPosition *degraderPosition;
+				void setProtonEnergy(){
 
-		void setProtonEnergy(){
-				double xPos = degraderPosition->getPosition(espriEvent->getEspriSide(),espriEvent->getRdcPosition(),espriEvent->getTargetPosition()); 
-				if(espriEvent->getEspriSide() == 1) {
+						double plasProtonEnergy = plasEvent->getPlasProtonEnergy();
+						double naiProtonEnergy =  naiEvent->getNaiProtonEnergy();
+
+						if(naiProtonEnergy>0) protonEnergy = naiProtonEnergy;
+						else if((plasProtonEnergy>0)) protonEnergy= plasProtonEnergy;
+						else {}
+						//cout<<naiProtonEnergy<<" "<<plasProtonEnergy<<" "<<protonEnergy<<endl;
 				}
-				else{ 
-						xPos = -xPos;
+				void setProtonAngle(){
+						protonTheta= rf->getEspriAngle();
+						protonPhi = rf->getEspriPhi();
 				}
-				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
-				//if(espriEvent->getEspriSide()==0) protonEnergy = lScaleFactor*protonEnergy;
-				//if(espriEvent->getEspriSide()==1) protonEnergy = rScaleFactor*protonEnergy;
-		}
-	public:
-		ProtonEvent(){
-			protonPara = new ProtonPara();
-			degraderPosition = new DegraderPosition();
-			lScaleFactor = calib->GetValue("lScaleFactor", 1.0);
-                        rScaleFactor = calib->GetValue("rScaleFactor", 1.0);
-			cout<<"Reading Scale Facotr: "<<lScaleFactor<<" "<<rScaleFactor<<endl;
-			cout<<endl;
-			cout<<endl;
-			cout<<endl;
-		}
-		~ProtonEvent(){
-			delete protonPara;
-			delete degraderPosition;
-		}
-		bool isGoodEvent(){
-			return espriEvent->isGoodNaiEvent();
-		}
+		public:
+				ProtonEvent(ReadFile *rf):rf(rf){
+						plasEvent = new PlasProtonEnergy(rf);
+						naiEvent	= new NaiProtonEnergy(rf);
+				}
+				~ProtonEvent(){}
+				void init(){
+						protonEnergy = -9999;
+						protonTheta = -9999;
+						protonPhi = -9999;
+						plasEvent->init();
+						naiEvent->init();
+				}
+				void setEvent(){
+						plasEvent->setPlasProtonEnergy();
+						naiEvent->setNaiProtonEnergy();
+						setProtonEnergy();
+						setProtonAngle();
+				}
+				void print(){
+						cout<<"Proton Energy = "<<protonEnergy<<endl;
+				}
+				void setBranch(TTree *tree){
+						plasEvent->setBranch(tree);
+						naiEvent->setBranch(tree);
+						tree->Branch("protonEnergyNew",&protonEnergy,"protonEnergyNew/D");
+						tree->Branch("protonTheta",&protonTheta,"protonTheta/D");
+						tree->Branch("protonPhi",&protonPhi,"protonPhi/D");
+				}
+				double getEnergy(){
+						return protonEnergy;
+				}
+				double getTheta(){
+						return protonTheta;
+				}
+				double getPhi(){
+						return protonPhi;
+				}
 
-		void init(){
-			protonPara->init();
-			espriEvent = NULL;
-			protonEnergy = NAN;
-		}
-		void load(EspriEvent *ee){
-			espriEvent = ee;
-		}
-		void setEvent(){
-			if(isGoodEvent()){
-				setProtonEnergy();
-			}
-		}
-		void print(){
-			protonPara->print();
-			cout<<"Proton Energy = "<<protonEnergy<<" "<<endl;
-		}
-		void setOutputBranch(TTree *tree){
-			protonPara->setOutputBranch(tree);
-			tree->Branch("protonEnergy",&protonEnergy,"protonEnergy/D");
-		}
 };

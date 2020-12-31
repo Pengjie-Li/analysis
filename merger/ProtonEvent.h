@@ -21,6 +21,7 @@ class ProtonPara{
 		double degraderThickness;
 		double plasThickness;
 		double shtThickness;
+				double wedgeOffset;
 
 
 		double getSHTE(double angle,double energyOut){
@@ -53,8 +54,9 @@ class ProtonPara{
 		}
 
 		double getDegraderThickness(double xPos){
-			//return wedgeThick->Eval(xPos + 227.5);
-			return lrWedgeThick->Eval(-xPos + 46.5);
+						//return wedgeThick->Eval(xPos + 227.5);
+						//return lrWedgeThick->Eval(-xPos + 46.5);
+						return lrWedgeThick->Eval(-xPos + wedgeOffset);
 		}
 
 	public:
@@ -87,6 +89,8 @@ class ProtonPara{
 		~ProtonPara(){}
 		double getProtonEnergy(int side,double naiE,double locusAngle,double angle,double xPos){
 			lrWedgeThick = wedgeThick[side];
+						if(side == 0) wedgeOffset = 43.2;
+						else wedgeOffset = 36.7;
 			ppPlasE = getPlasE(locusAngle,naiE);
 			ppDegraderE = getDegraderE(locusAngle,naiE+ppPlasE,xPos);
 			ppWinE = getWindowE(naiE+ppPlasE+ppDegraderE);
@@ -99,7 +103,7 @@ class ProtonPara{
 			ppDegraderE = -9999;
 			ppWinE = -9999;
 			ppShtE = -9999;
-			degraderThickness = NAN;
+						degraderThickness = -9999;
 		}
 		void setOutputBranch(TTree *tree){
 			tree->Branch("ppDegraderE",&ppDegraderE,"ppDegraderE/D");

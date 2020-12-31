@@ -4,8 +4,8 @@
 #run1=366
 #run2=455
 echo "Hello World"
-#run1=298
-run1=366
+run1=298
+#run1=366
 run2=450
 n=20
 #
