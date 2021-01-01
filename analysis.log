@@ -22311,3 +22311,177 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/txt/naiCalibOutput.txt_Be14_v10 (100%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f43e89a] v1.0
+ 648 files changed, 8220 insertions(+), 190 deletions(-)
+ rewrite channel/selectBeamEspri/rootfiles/run0313_ppBe.root_test (85%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0332_ppaBe10.root_test (62%)
+ create mode 100644 merger/.DegraderPosition.h.jMFbiL
+ rewrite merger/.DegraderPosition.h.swp (76%)
+ rename merger/{.DegraderPosition.h.swp => .ProtonEvent.h.swp} (56%)
+ rewrite merger/Merger (69%)
+ rewrite merger/ProtonEvent.h_v2 (98%)
+ rewrite merger/rootfiles/run0291_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0295_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0297_analysed.root_test (61%)
+ rewrite merger/rootfiles/run0298_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0300_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0302_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0306_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0308_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0310_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0311_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0318_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0323_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0325_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0330_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0333_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0337_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0339_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0345_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0363_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0368_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0369_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0372_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0375_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0376_analysed.root_test (82%)
+ rewrite merger/rootfiles/run0377_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0381_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0390_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0392_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0395_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0398_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0402_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0403_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0404_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0406_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0409_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0411_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0416_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0425_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0426_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0427_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0430_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0435_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0437_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0438_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0439_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0448_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0453_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0454_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0456_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0458_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0459_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0460_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0461_analysed.root_test (80%)
+ rewrite merger/rootfiles/run0466_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0471_analysed.root_test (62%)
+ rewrite merger/rootfiles/run0472_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0478_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0482_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0492_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0493_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0495_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0496_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0498_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0500_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0504_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0508_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0509_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0514_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0516_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0517_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0523_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0525_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0531_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0534_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0537_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0541_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0542_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0545_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0548_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0549_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0550_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0551_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0553_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0555_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0558_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0560_analysed.root_test (77%)
+ rewrite merger/rootfiles/run0561_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0564_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0565_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0566_analysed.root_test (99%)
+ rewrite merger/rootfiles/run0570_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0575_analysed.root_test (100%)
+ rewrite merger/rootfiles/run0580_analysed.root_test (64%)
+ rewrite merger/rootfiles/run0590_analysed.root_test (76%)
+ rewrite merger/rootfiles/run0596_analysed.root_test (76%)
+ create mode 100644 merger/v20_degraderUpdate/'
+ create mode 100644 merger/v20_degraderUpdate/.DegraderPosition.h.swp
+ create mode 100644 merger/v20_degraderUpdate/AlphaEvent.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingAlpha.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingBDC.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingBeam.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingESPRI.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingFDC0.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingHOD.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingMAIN.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingPLA.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingProton.h
+ create mode 100644 merger/v20_degraderUpdate/AnalysingTELE.h
+ create mode 100644 merger/v20_degraderUpdate/BdcEvent.h
+ create mode 100644 merger/v20_degraderUpdate/BeamEvent.h
+ create mode 100644 merger/v20_degraderUpdate/CalibESPRI.h
+ create mode 100644 merger/v20_degraderUpdate/CalibTELE.h
+ create mode 100644 merger/v20_degraderUpdate/Convert.h
+ create mode 100644 merger/v20_degraderUpdate/CsiCal.h
+ create mode 100644 merger/v20_degraderUpdate/DSSDEnergyCal.h
+ create mode 100644 merger/v20_degraderUpdate/DegraderPosition.h
+ create mode 100644 merger/v20_degraderUpdate/Detector.h
+ create mode 100644 merger/v20_degraderUpdate/EspriEvent.h
+ create mode 100644 merger/v20_degraderUpdate/EspriEvent.h_new
+ create mode 100644 merger/v20_degraderUpdate/Fdc0Event.h
+ create mode 100644 merger/v20_degraderUpdate/FindPixel.h
+ create mode 100644 merger/v20_degraderUpdate/HodEvent.h
+ create mode 100755 merger/v20_degraderUpdate/Makefile
+ create mode 100644 merger/v20_degraderUpdate/MergeBDC.h
+ create mode 100644 merger/v20_degraderUpdate/MergeESPRI.h
+ create mode 100644 merger/v20_degraderUpdate/MergeFDC0.h
+ create mode 100644 merger/v20_degraderUpdate/MergeHOD.h
+ create mode 100644 merger/v20_degraderUpdate/MergeMAIN.h
+ create mode 100644 merger/v20_degraderUpdate/MergePLA.h
+ create mode 100644 merger/v20_degraderUpdate/MergeSample.h
+ create mode 100644 merger/v20_degraderUpdate/MergeTELE.h
+ rename merger/{ => v20_degraderUpdate}/Merger (100%)
+ create mode 100644 merger/v20_degraderUpdate/Merger.cpp
+ create mode 100644 merger/v20_degraderUpdate/Merger.h
+ create mode 100644 merger/v20_degraderUpdate/PhiFunction.h
+ create mode 100644 merger/v20_degraderUpdate/PlaEvent.h
+ create mode 100644 merger/v20_degraderUpdate/PlasTime.h
+ create mode 100644 merger/v20_degraderUpdate/PlasTime.h_backup
+ create mode 100644 merger/v20_degraderUpdate/PlasTime.h_backup_v2
+ create mode 100644 merger/v20_degraderUpdate/PositionESPRI.h
+ create mode 100644 merger/v20_degraderUpdate/PositionESPRI.h_v1
+ create mode 100644 merger/v20_degraderUpdate/PositionTELE.h
+ create mode 100644 merger/v20_degraderUpdate/ProtonEvent.h
+ create mode 100644 merger/v20_degraderUpdate/ProtonEvent.h_local
+ rename merger/{ => v20_degraderUpdate}/ProtonEvent.h_v2 (100%)
+ create mode 100644 merger/v20_degraderUpdate/TeleEvent.h
+ create mode 100644 merger/v20_degraderUpdate/backup_1st_Merger.C
+ create mode 100644 merger/v20_degraderUpdate/constant.h
+ create mode 100644 merger/v20_degraderUpdate/convert.sh
+ create mode 100755 merger/v20_degraderUpdate/distance.h
+ create mode 100644 merger/v20_degraderUpdate/espri.C
+ create mode 100755 merger/v20_degraderUpdate/header.h
+ create mode 100644 merger/v20_degraderUpdate/logMerger.txt
+ create mode 100644 merger/v20_degraderUpdate/loop.sh
+ create mode 100644 merger/v20_degraderUpdate/looprun.sh
+ create mode 100644 merger/v20_degraderUpdate/main.cpp
+ create mode 100644 merger/v20_degraderUpdate/mvRootVersion.sh
+ create mode 100644 merger/v20_degraderUpdate/read.me
+ create mode 100644 merger/v20_degraderUpdate/sampleESPRI.C
+ create mode 100644 merger/v20_degraderUpdate/serverPlasTime.h
+ create mode 100644 merger/v20_degraderUpdate/t1.txt
+ create mode 100644 merger/v20_degraderUpdate/t2.txt
+ create mode 100644 merger/v20_degraderUpdate/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
