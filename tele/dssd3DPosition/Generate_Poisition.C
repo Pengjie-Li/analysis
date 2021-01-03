@@ -77,10 +77,23 @@ class Plane{
 class LeftPlane: public Plane{
 	public:
 		LeftPlane(){
-			A=-0.147;
-			B=0.004;
-			C=0.989;
-			D=3818.509;
+			//double angle = (8.45735 - 0.22)*TMath::DegToRad();
+			//A=-sin(angle);
+			//B=0.00;
+			//C=cos(angle);
+			//D=3821.35;
+	
+			double angle = (8.45735 - 0.21)*TMath::DegToRad();
+			//double angle = (8.45735 - 0.22)*TMath::DegToRad();
+			A=-sin(angle);
+			B=0.00;
+			C=cos(angle);
+			D=3821.25;
+	
+			//A=-0.147;
+			//B=0.004;
+			//C=0.989;
+			//D=3818.509;
 			cfid=31;
 			cbid=0;
 			calBaseVector();
@@ -90,10 +103,23 @@ class LeftPlane: public Plane{
 class RightPlane: public Plane{
 	public:
 		RightPlane(){
-			A=0.154;
-			B=-0.002;
-			C=0.988;
-			D=3814.659;
+			//double angle = (8.86016 + 0.44)*TMath::DegToRad();
+			//A=sin(angle);
+			//B=0.00;
+			//C=cos(angle);
+			//D=3809.8;
+	
+			double angle = (8.86016 + 0.41)*TMath::DegToRad();
+			//double angle = (8.86016 + 0.44)*TMath::DegToRad();
+			A=sin(angle);
+			B=0.00;
+			C=cos(angle);
+			D=3810.1;
+	
+			//A=0.154;
+			//B=-0.002;
+			//C=0.988;
+			//D=3814.659;
 			cfid=31;
 			cbid=31;
 			calBaseVector();
@@ -189,9 +215,26 @@ public:
 };
 int Generate_Poisition(){
 // Here input pixel (isLR,fid,bid, x,y)
-	new GeneratePosition(0,16,26,-32.466,-1.40);	
+	//new GeneratePosition(0,16,26,-32.466,-1.40);	
 	//new GeneratePosition(1,16,26,32.17,-1.75);	
+	//new GeneratePosition(0,16,26,-31.158998,-1.40);	
+	new GeneratePosition(1,16,26,34.719,-1.75);	
 
+	//Shift Base Point
+	//TVector3 leftPoint(-32.466,-1.40,-3865.8);
+	//TVector3 rightPoint(32.17,-1.75,-3866.01);
+	//TVector3 shiftTarget(0, 0, 4222.34);
+	//leftPoint = leftPoint + shiftTarget;
+	//rightPoint = rightPoint + shiftTarget;
+	//leftPoint.RotateY(0.21*TMath::DegToRad());
+	//rightPoint.RotateY(0.41*TMath::DegToRad());
+	//leftPoint.Print();
+	//rightPoint.Print();
+
+//TVector3 A 3D physics vector (x,y,z)=(-31.158998,-1.400000,356.656599) (rho,theta,phi)=(358.017839,4.997931,-177.427383)
+//TVector3 A 3D physics vector (x,y,z)=(34.718999,-1.750000,356.090675) (rho,theta,phi)=(357.783510,5.575787,-2.885533)
+//TVector3 A 3D physics vector (x,y,z)=(-31.034499,-1.400000,356.667454) (rho,theta,phi)=(358.017839,4.977952,-177.417076)
+//TVector3 A 3D physics vector (x,y,z)=(34.905442,-1.750000,356.072448) (rho,theta,phi)=(357.783510,5.605749,-2.870146)
 
 //	LeftPlane *lp=new LeftPlane();
 //	RightPlane *rp=new RightPlane();

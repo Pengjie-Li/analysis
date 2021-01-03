@@ -22,14 +22,16 @@ class PositionTELE{
 			loadLeftPosition();
 			loadRightPosition();
 
-                        teleLXAxis=new TVector3();teleLXAxis->SetXYZ(0.989134,0.000000,0.147020);
-                        teleLYAxis=new TVector3();teleLYAxis->SetXYZ(0.000588,0.999992,-0.003957);
-                        teleRXAxis=new TVector3();teleRXAxis->SetXYZ(0.988069,0.000000,-0.154011);
-                        teleRYAxis=new TVector3();teleRYAxis->SetXYZ(0.000308,0.999998,0.001976);
+                        //teleLXAxis=new TVector3();teleLXAxis->SetXYZ(0.989134,0.000000,0.147020);
+                        //teleLYAxis=new TVector3();teleLYAxis->SetXYZ(0.000588,0.999992,-0.003957);
+                        //teleRXAxis=new TVector3();teleRXAxis->SetXYZ(0.988069,0.000000,-0.154011);
+                        //teleRYAxis=new TVector3();teleRYAxis->SetXYZ(0.000308,0.999998,0.001976);
 
-			leftNorm.SetXYZ(-0.147,0.004,0.989);
+			//leftNorm.SetXYZ(-0.147,0.004,0.989);
+			leftNorm.SetXYZ(-0.143447,0.00,0.989658);
 			leftNorm.Unit();
-			rightNorm.SetXYZ(0.154,-0.002,0.988);
+			//rightNorm.SetXYZ(0.154,-0.002,0.988);
+			rightNorm.SetXYZ(0.16109,0.0,0.986940);
 			rightNorm.Unit();
 			//print();
 		}
