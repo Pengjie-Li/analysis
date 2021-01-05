@@ -22668,3 +22668,9 @@ Branch master set up to track remote branch master from origin.
  rename tele/dssd3DPosition/{RightDSSDPixelPosition.txt => output/RightDSSDPixelPosition.txt_v2} (100%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 29377a2] v1.0
+ 16 files changed, 2202 insertions(+), 2073 deletions(-)
+ rewrite tele/dssd3DPosition/output/LeftDSSDPixelPosition.txt (99%)
+ rewrite tele/dssd3DPosition/output/RightDSSDPixelPosition.txt (99%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
