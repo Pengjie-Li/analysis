@@ -176,7 +176,7 @@ class DrawTree{
 		}
 		void setPPAlphaAlias(){
 
-			gROOT->ProcessLine(".x /Volumes/LPJ/S12/analysis/alias/ppAlphaAlias.C");
+			gROOT->ProcessLine(".x /Volumes/LPJ/S12/analysis/alias/ppAlphaNewAlias.C");
 
 		}
 		void setPPBe10Alias(){

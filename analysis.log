@@ -22674,3 +22674,11 @@ Branch master set up to track remote branch master from origin.
  rewrite tele/dssd3DPosition/output/RightDSSDPixelPosition.txt (99%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 9d0884f] v1.0
+ 23 files changed, 14 insertions(+), 8 deletions(-)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0331_ppaBe10.root_test (61%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0332_ppaBe10.root_test (61%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0373_ppaBe10.root_test (69%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0426_ppaBe10.root_test (87%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
