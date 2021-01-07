@@ -22682,3 +22682,11 @@ Branch master set up to track remote branch master from origin.
  rewrite channel/selectBeamEspriTele/rootfiles/run0426_ppaBe10.root_test (87%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b11d606] v1.0
+ 11 files changed, 240 insertions(+), 1 deletion(-)
+ create mode 100644 pla/beamOffset/drawPad.C
+ create mode 100644 pla/beamOffset/generate120.C
+ create mode 100644 pla/beamOffset/generate150.C
+ create mode 120000 pla/beamOffset/rootfiles
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
