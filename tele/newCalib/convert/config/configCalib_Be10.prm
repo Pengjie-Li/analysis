@@ -1,0 +1,10 @@
+beamBetaOffset:-1.297
+beamEnergyOffset:-3.809
+
+plasCalib:txt/plasCalib_Be10.txt
+plasBirksCalib:txt/plasBirksBe10.txt
+naiCalib:txt/naiCalibOutput.txt_Be10
+espriCalib:txt/espriEnergyCalibParaBe10.txt
+plasTimePara:txt/plasTimeParameters.txt
+offsetLeft:-0.103
+offsetRight: -0.002

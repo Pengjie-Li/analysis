@@ -610,9 +610,9 @@ void checkCsiEnergy(){
 
 
 void drawTree(){
-	drawDssdQPed();	
+	//drawDssdQPed();	
 	//checkCsiEnergy();	
-	//drawCsiQPed();	
+	drawCsiQPed();	
 	//drawCsiEnergy();	
 	//checkTargetGate();
 }

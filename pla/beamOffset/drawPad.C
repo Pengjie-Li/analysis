@@ -127,7 +127,7 @@ void drawPad(){
 
         f2->SetLineColor(2);
         f2->SetLineStyle(1);
-        h1D[1]->Fit(f2,"QR","",119.5,121.5);
+        h1D[1]->Fit(f2,"QR","",119.3,121.3);
         cout<<f2->GetParameter(1)<<" "<<f2->GetParameter(2)<<" "<<endl;
 
 
