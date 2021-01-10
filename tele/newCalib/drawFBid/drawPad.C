@@ -49,7 +49,6 @@ void drawPad(){
 		TFile *outputFile = new TFile(fileName,"READ");
 		TCanvas *cPad = new TCanvas("cPad","cPad",900, 900);
 
-		cPad->SetLogy();
 
 		TH1F *hCheck[7];
 		for (int i = 0; i < 7; ++i) {
@@ -63,7 +62,7 @@ void drawPad(){
 
 			if(i==0){
 
-				hCheck[0]->GetYaxis()->SetRangeUser(1,3000);
+				hCheck[0]->GetYaxis()->SetRangeUser(0,30000);
 				hCheck[0]->Draw();
 			}
 			else hCheck[i]->Draw("same");
