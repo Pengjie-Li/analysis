@@ -426,6 +426,10 @@ class TeleEvent{
 		double getCsiEnergy(){
 			return teleCsiE;
 		}
+		double getAngle(){
+			return teleAngle;
+		}
+
 		double getLocusAngle(){
 			return teleLocusAngle;
 		}

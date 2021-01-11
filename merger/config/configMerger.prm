@@ -45,6 +45,6 @@ dssdLeftPosition:txt/LeftDSSDPixelPosition.txt
 dssdRightPosition:txt/RightDSSDPixelPosition.txt
 
 dssdScmPara:./txt/DSSD_Fit_Whole.txt
-csiPeak5CalibPara:txt/peak5CsiCalib.txt
+csiPeak5CalibPara:txt/peak5CsiCalibOutput.txt
 dssdScmNewPara:txt/dssdSCMPara2ndRun.txt
 dssdPeak5CalibPara:txt/peak5DssdCalib.txt

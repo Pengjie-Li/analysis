@@ -82,10 +82,10 @@ void Merger::eventLoop(){
 		setBeamEvent();
 		if(kFDC0)	 analysingFDC0();
 		if(kTELE)	 analysingTELE();
-		if(kHOD)	 analysingHOD();
-		if(kESPRI)	 analysingESPRI();
+		//if(kHOD)	 analysingHOD();
+		//if(kESPRI)	 analysingESPRI();
 
-		setProtonEvent();
+		//setProtonEvent();
 		setAlphaEvent();
 		//cout<<"Event Number = "<<ientry+1<<endl;
 		//print();

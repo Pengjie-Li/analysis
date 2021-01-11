@@ -59,12 +59,12 @@ void generate(){
 
 	DrawTree *dt = new DrawTree();
 	//dt->addFile("../convert/rootfiles/run0595_analysed.root_test");
-	//dt->addFile("../convert/rootfiles/run0596_analysed.root_test");
+	dt->addFile("../convert/rootfiles/run0596_analysed.root_test");
 	//dt->addFile("../convert/rootfiles/requiredPPAlpha/run0596_analysed.root_test");
 	dt->addFile("../convert/rootfiles/run0597_analysed.root_test");
-	//dt->addFile("../convert/rootfiles/run0598_analysed.root_test");
-	//dt->addFile("../convert/rootfiles/run0599_analysed.root_test");
-	//dt->addFile("../convert/rootfiles/run0600_analysed.root_test");
+	dt->addFile("../convert/rootfiles/run0598_analysed.root_test");
+	dt->addFile("../convert/rootfiles/run0599_analysed.root_test");
+	dt->addFile("../convert/rootfiles/run0600_analysed.root_test");
 
 
 	gROOT->ProcessLine(".x rootfiles/cutBeamAlpha150.C");
@@ -86,7 +86,8 @@ void generate(){
 	stripLimit[4] = "(teleDssdBid<=11)";
 	stripLimit[5] = "(teleDssdFid<=10&&teleDssdBid>=20)";
 	stripLimit[6] = "(teleDssdFid>=20&&teleDssdBid>=21)";
-	for (int i = 2; i < 3; ++i) {
+
+	for (int i = 0; i < 7; ++i) {
 
 		int cid =i;
 		hName = Form("hCsi%d", cid);
@@ -101,8 +102,8 @@ void generate(){
 		dt->addGate(stripLimit[cid]);
 
 		dt->setName(hName);
-		dt->setVar("alphaEnergy/4.001506179127");
-		dt->setBin(200,100,170);
+		dt->setVar("teleCsiE");
+		dt->setBin(500,200,700);
 		dt->drawH();
 		dt->saveH1Root();
 	}

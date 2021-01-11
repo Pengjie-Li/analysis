@@ -20,20 +20,25 @@ class AlphaCalibPara{
 
 		double getDssdE(double angle,double energyOut){
 			double realThickness = dssdThickness/cos(angle*TMath::DegToRad()); 
+			//double rangeIn = realThickness + dssdEnergyToRange->Eval(energyOut);
+			//double energyIn = dssdRangeToEnergy->Eval(rangeIn);
+	
 			double rangeIn = realThickness + dssdEnergyToRange->Eval(energyOut,0,"S");
 			double energyIn = dssdRangeToEnergy->Eval(rangeIn,0,"S");
-			//cout<<"DSSD "<<realThickness<<" "<<energyIn<<energyOut<<endl;
+			//cout<<"DSSD "<<realThickness<<" "<<energyIn<<" "<<energyOut<<" "<<energyIn - energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getDegraderE(double angle,double energyOut){
 			double realThickness = degraderThickness/cos(angle*TMath::DegToRad()); 
-			double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
-			double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
-			//cout<<"Degrader "<<realThickness<<" "<<energyIn<<energyOut<<endl;
+			double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut);
+			double energyIn = degraderRangeToEnergy->Eval(rangeIn);
+			//double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
+			//double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
+			cout<<"Degrader "<<realThickness<<" "<<energyIn<<" "<<energyOut<<" "<<energyIn - energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getWindowE(double energy){
-			//cout<<"in "<<energy<<" winE"<<winEloss->Eval(energy,0,"S")<<endl;
+			//cout<<"in "<<energy<<" winE"<<winEloss->Eval(energy)<<endl;
 			return winEloss->Eval(energy);
 		}
 
@@ -90,7 +95,9 @@ class AlphaEvent{
 		void setAlphaEnergy(){
 			alphaEnergy_old = alphaPara->getEnergy_old(teleEvent->getCsiEnergy());
 			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),teleEvent->getLocusAngle());
-			alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(), 0);
+			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(), 0);
+			alphaEnergy = alphaPara->getEnergy(499.45, 0);
+			alphaEnergy = alphaPara->getEnergy(317.74, 0);
 			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),0);
 		}
 	public:

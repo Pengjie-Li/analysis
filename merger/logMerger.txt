@@ -100,3 +100,7 @@
 	1. RotateY Right ESPRI from 60.333 into 60.36
 2020-12-31
 	1. Degrader Update
+2021-01-11
+	1. Alpha Window Loss, remove SHT
+	2. Remove Eval(, , S) option, it gives higher value
+	3. Config Csi to peak5CsiCalibOutput.txt 

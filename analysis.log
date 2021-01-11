@@ -22821,3 +22821,11 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/newCalib/rootlogon.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master b98533e] v1.0
+ 7 files changed, 404 insertions(+), 59 deletions(-)
+ create mode 100644 tele/newCalib/checkCsiCalib/generate.C
+ create mode 100644 tele/newCalib/drawFBid/drawPad.C
+ create mode 100644 tele/newCalib/drawFBid/generate.C
+ create mode 120000 tele/newCalib/drawFBid/rootfiles
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

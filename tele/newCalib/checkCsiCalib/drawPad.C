@@ -12,7 +12,7 @@ void outputText(){
 }
 void drawText(TString name,double x,double y){
 		TLatex l;
-		l.SetTextSize(0.1);
+		l.SetTextSize(0.05);
 		l.SetNDC(kTRUE);
 		l.DrawLatex(x,y,name);
 }
@@ -21,6 +21,13 @@ void drawText(TString name){
 		l.SetTextSize(0.05);
 		l.SetNDC(kTRUE);
 		l.DrawLatex(0.2,0.8,name);
+}
+void drawVerticleLine(double x){
+	TLine *line = new TLine(x,1E4,x,0);
+	line->SetLineColor(1);
+	line->SetLineStyle(2);
+	line->SetLineWidth(2);
+	line->Draw();
 }
 void drawLegend(){
 		TLegend *legends=new TLegend(0.7,0.8,0.9,0.90); // the numbers determine the position of the box
@@ -52,7 +59,7 @@ void drawPad(){
 		cPad->SetLogy();
 
 		TH1F *hCheck[7];
-		for (int i = 0; i < 7; ++i) {
+		for (int i = 4; i < 5; ++i) {
 
 			int cid =i;
 			TString hName = Form("hCsi%d", cid);
@@ -63,12 +70,17 @@ void drawPad(){
 
 			if(i==0){
 
-				hCheck[0]->GetYaxis()->SetRangeUser(1,3000);
+				hCheck[0]->GetYaxis()->SetRangeUser(1,10000);
+				hCheck[0]->GetXaxis()->SetRangeUser(200,600);
 				hCheck[0]->Draw();
 			}
 			else hCheck[i]->Draw("same");
 
 		}
 
+		drawVerticleLine(499.45);
+		drawVerticleLine(317.73);
 
+		drawText("499.45" , 0.8, 0.8);
+		drawText("317.73" , 0.4, 0.8);
 }
