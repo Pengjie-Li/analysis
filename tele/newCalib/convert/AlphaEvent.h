@@ -34,7 +34,7 @@ class AlphaCalibPara{
 			double energyIn = degraderRangeToEnergy->Eval(rangeIn);
 			//double rangeIn = realThickness + degraderEnergyToRange->Eval(energyOut,0,"S");
 			//double energyIn = degraderRangeToEnergy->Eval(rangeIn,0,"S");
-			cout<<"Degrader "<<realThickness<<" "<<energyIn<<" "<<energyOut<<" "<<energyIn - energyOut<<endl;
+			//cout<<"Degrader "<<realThickness<<" "<<energyIn<<" "<<energyOut<<" "<<energyIn - energyOut<<endl;
 			return (energyIn-energyOut);
 		}
 		double getWindowE(double energy){
@@ -95,9 +95,9 @@ class AlphaEvent{
 		void setAlphaEnergy(){
 			alphaEnergy_old = alphaPara->getEnergy_old(teleEvent->getCsiEnergy());
 			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),teleEvent->getLocusAngle());
-			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(), 0);
-			alphaEnergy = alphaPara->getEnergy(499.45, 0);
-			alphaEnergy = alphaPara->getEnergy(317.74, 0);
+			alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(), 0);
+			//alphaEnergy = alphaPara->getEnergy(499.45, 0);
+			//alphaEnergy = alphaPara->getEnergy(317.74, 0);
 			//alphaEnergy = alphaPara->getEnergy(teleEvent->getCsiEnergy(),0);
 		}
 	public:

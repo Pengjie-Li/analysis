@@ -22829,3 +22829,109 @@ Branch master set up to track remote branch master from origin.
  create mode 120000 tele/newCalib/drawFBid/rootfiles
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 58be343] v1.0
+ 111 files changed, 9882 insertions(+), 37 deletions(-)
+ rewrite merger/Merger (88%)
+ rewrite merger/rootfiles/run0596_analysed.root_test (76%)
+ create mode 120000 merger/txt/peak5CsiCalibOutput.txt
+ create mode 100644 merger/v22_RecalibAlpha/'
+ create mode 100644 merger/v22_RecalibAlpha/AlphaEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingAlpha.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingBDC.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingBeam.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingESPRI.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingFDC0.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingHOD.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingMAIN.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingPLA.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingProton.h
+ create mode 100644 merger/v22_RecalibAlpha/AnalysingTELE.h
+ create mode 100644 merger/v22_RecalibAlpha/BdcEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/BeamEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/CalibESPRI.h
+ create mode 100644 merger/v22_RecalibAlpha/CalibTELE.h
+ create mode 100644 merger/v22_RecalibAlpha/Convert.h
+ create mode 100644 merger/v22_RecalibAlpha/CsiCal.h
+ create mode 100644 merger/v22_RecalibAlpha/DSSDEnergyCal.h
+ create mode 100644 merger/v22_RecalibAlpha/DegraderPosition.h
+ create mode 100644 merger/v22_RecalibAlpha/Detector.h
+ create mode 100644 merger/v22_RecalibAlpha/EspriEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/EspriEvent.h_new
+ create mode 100644 merger/v22_RecalibAlpha/Fdc0Event.h
+ create mode 100644 merger/v22_RecalibAlpha/FindPixel.h
+ create mode 100644 merger/v22_RecalibAlpha/HodEvent.h
+ create mode 100755 merger/v22_RecalibAlpha/Makefile
+ create mode 100644 merger/v22_RecalibAlpha/MergeBDC.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeESPRI.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeFDC0.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeHOD.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeMAIN.h
+ create mode 100644 merger/v22_RecalibAlpha/MergePLA.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeSample.h
+ create mode 100644 merger/v22_RecalibAlpha/MergeTELE.h
+ rename merger/{ => v22_RecalibAlpha}/Merger (100%)
+ create mode 100644 merger/v22_RecalibAlpha/Merger.cpp
+ create mode 100644 merger/v22_RecalibAlpha/Merger.h
+ create mode 100644 merger/v22_RecalibAlpha/PhiFunction.h
+ create mode 100644 merger/v22_RecalibAlpha/PlaEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/PlasTime.h
+ create mode 100644 merger/v22_RecalibAlpha/PlasTime.h_backup
+ create mode 100644 merger/v22_RecalibAlpha/PlasTime.h_backup_v2
+ create mode 100644 merger/v22_RecalibAlpha/PositionESPRI.h
+ create mode 100644 merger/v22_RecalibAlpha/PositionESPRI.h_v1
+ create mode 100644 merger/v22_RecalibAlpha/PositionTELE.h
+ create mode 100644 merger/v22_RecalibAlpha/ProtonEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/ProtonEvent.h_local
+ create mode 100644 merger/v22_RecalibAlpha/ProtonEvent.h_v2
+ create mode 100644 merger/v22_RecalibAlpha/TeleEvent.h
+ create mode 100644 merger/v22_RecalibAlpha/backup_1st_Merger.C
+ create mode 100644 merger/v22_RecalibAlpha/constant.h
+ create mode 100644 merger/v22_RecalibAlpha/convert.sh
+ create mode 100755 merger/v22_RecalibAlpha/distance.h
+ create mode 100644 merger/v22_RecalibAlpha/espri.C
+ create mode 100755 merger/v22_RecalibAlpha/header.h
+ create mode 100644 merger/v22_RecalibAlpha/logMerger.txt
+ create mode 100644 merger/v22_RecalibAlpha/loop.sh
+ create mode 100644 merger/v22_RecalibAlpha/looprun.sh
+ create mode 100644 merger/v22_RecalibAlpha/main.cpp
+ create mode 100644 merger/v22_RecalibAlpha/mvRootVersion.sh
+ create mode 100644 merger/v22_RecalibAlpha/read.me
+ create mode 100644 merger/v22_RecalibAlpha/sampleESPRI.C
+ create mode 100644 merger/v22_RecalibAlpha/serverPlasTime.h
+ create mode 100644 merger/v22_RecalibAlpha/t1.txt
+ create mode 100644 merger/v22_RecalibAlpha/t2.txt
+ create mode 100644 merger/v22_RecalibAlpha/tree.C
+ create mode 100644 tele/newCalib/birksPara/csiCalib.C
+ create mode 120000 tele/newCalib/birksPara/rootfiles
+ create mode 100644 tele/newCalib/birksPara/txt/peak5CsiCalibInput.txt
+ create mode 100644 tele/newCalib/birksPara/txt/peak5CsiCalibInput.txt_v1
+ create mode 100644 tele/newCalib/birksPara/txt/peak5CsiCalibOutput.txt
+ create mode 100644 tele/newCalib/checkAlpha/drawPad.C
+ create mode 100644 tele/newCalib/checkAlpha/generate120.C
+ create mode 100644 tele/newCalib/checkAlpha/generate150.C
+ create mode 120000 tele/newCalib/checkAlpha/rootfiles
+ create mode 100644 tele/newCalib/checkBeam/drawPad.C
+ create mode 100644 tele/newCalib/checkBeam/generate120.C
+ create mode 100644 tele/newCalib/checkBeam/generate150.C
+ create mode 120000 tele/newCalib/checkBeam/rootfiles
+ create mode 100644 tele/newCalib/checkBeam/rootlogon.C
+ create mode 100644 tele/newCalib/checkDegraderE/.drawPad.C.swp
+ create mode 100644 tele/newCalib/checkDegraderE/drawPad.C
+ create mode 100644 tele/newCalib/checkDegraderE/generate.C
+ create mode 120000 tele/newCalib/checkDegraderE/rootfiles
+ create mode 100644 tele/newCalib/checkDegraderE/rootlogon.C
+ create mode 100644 tele/newCalib/checkDssd/drawPad.C
+ create mode 100644 tele/newCalib/checkDssd/generate.C
+ create mode 120000 tele/newCalib/checkDssd/rootfiles
+ create mode 100644 tele/newCalib/checkDssd/rootlogon.C
+ create mode 100644 tele/newCalib/convert/.AlphaEvent.h.swp
+ create mode 100644 tele/newCalib/convert/rootfiles/run0596_analysed.root_test
+ rewrite tele/newCalib/convert/txt/peak5CsiCalib.txt (100%)
+ mode change 100644 => 120000
+ rename tele/newCalib/convert/txt/{peak5CsiCalib.txt => peak5CsiCalib.txt_v1} (100%)
+ create mode 100644 tele/newCalib/extractCsiQPed/drawPad.C
+ create mode 100644 tele/newCalib/extractCsiQPed/generate120.C
+ create mode 100644 tele/newCalib/extractCsiQPed/generate150.C
+ create mode 120000 tele/newCalib/extractCsiQPed/rootfiles
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

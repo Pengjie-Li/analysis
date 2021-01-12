@@ -63,6 +63,26 @@ void generate120(){
 	dt->drawH();
 	dt->saveH1Root();
 
+	for (int i = 0; i < 2; ++i) {
+
+		dt->setGate("1");
+		dt->addGate("(Trig_DSB)");
+		dt->addGate("(Beam)");
+		dt->addGate(targetArea);
+		dt->addGate("(Alpha)");
+		dt->addGate(Form("(teleHit==1&&teleSide==%d)",i));
+
+
+
+		dt->setName(Form("hLR%dAlpha120",i));
+		dt->setVar("alphaEnergy");
+		dt->setBin(700,450,520);
+		dt->drawH();
+		dt->saveH1Root();
+
+	}
+
+
 	for (int i = 0; i < 7; ++i) {
 
 		int cid = i;
@@ -71,6 +91,7 @@ void generate120(){
 		dt->addGate("(Beam)");
 		dt->addGate(targetArea);
 		dt->addGate("(Alpha)");
+		dt->addGate("(teleHit==1)");
 
 
 		dt->addGate(Form("(teleCsiId==%d)", cid));

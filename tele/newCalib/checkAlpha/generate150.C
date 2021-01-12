@@ -31,6 +31,32 @@ void generate150(){
 	TCanvas *cPad = new TCanvas("cPad","cPad",900, 900);
 	//cPad->Divide(2,1);
 
+	TString stripLimit[7];
+	stripLimit[0] = "(teleDssdFid<=13&&teleDssdBid>=20)";
+	stripLimit[1] = "(teleDssdFid<=12&&teleDssdBid<=11)";
+	stripLimit[2] = "(teleDssdFid>=20&&teleDssdBid>=19)";
+	stripLimit[3] = "(teleDssdFid>=21&&teleDssdBid<=11)";
+	stripLimit[4] = "(teleDssdBid<=11)";
+	stripLimit[5] = "(teleDssdFid<=10&&teleDssdBid>=20)";
+	stripLimit[6] = "(teleDssdFid>=20&&teleDssdBid>=21)";
+
+	TString csiGate;
+	for (int i = 0; i < 7; ++i) {
+
+		int cid =i;
+		//TString csi = "(" + Form("(teleCsiId==%d)&&",cid) + stripLimit[cid] + ")";
+		TString csi = Form("(teleCsiId==%d)&&",cid);
+		csi = "(" + csi + stripLimit[cid] + ")";
+		if(i == 0) {
+			csiGate = csi;
+		}else{
+			csiGate = csi+"||" + csiGate;
+		}
+	}
+	csiGate = "("+csiGate + ")";
+	cout<<csiGate<<endl;
+
+
 	// General Gate: 1. Total Gate; 2. Side Gate; 3. Phi Gate; 4. Hod Gate; 5. Degrader Gate
 	// 1. Total Gate
 	dt->setGate("1");
@@ -42,6 +68,9 @@ void generate150(){
 	dt->addGate("(Beam)");
 	dt->addGate(targetArea);
 	dt->addGate("(Alpha)");
+	dt->addGate("(teleHit==1)");
+	dt->addGate(csiGate);
+
 
 	TString fileName = "output/generate.root";
 	TFile *outputFile = new TFile(fileName,"UPDATE");
@@ -49,54 +78,79 @@ void generate150(){
 	//cPad->cd(1);
 	dt->setName("hBeam150");
 	dt->setVar("beamEnergy");
-	dt->setBin(900,140,170);
+	dt->setBin(300,140,170);
 	dt->drawH();
 	dt->saveH1Root();
 
 	//cPad->cd(2);
 	dt->setName("hAlpha150");
 	dt->setVar("alphaEnergy/4.001506179127");
-	dt->setBin(200,140,170);
+	dt->setBin(300,140,170);
 	dt->drawH();
 	dt->saveH1Root();
 
-	for (int i = 0; i < 7; ++i) {
+	for (int i = 0; i < 2; ++i) {
 
-		int cid = i;
 		dt->setGate("1");
 		dt->addGate("(Trig_DSB)");
 		dt->addGate("(Beam)");
 		dt->addGate(targetArea);
 		dt->addGate("(Alpha)");
+		dt->addGate(Form("(teleHit==1&&teleSide==%d)",i));
+		dt->addGate(csiGate);
 
 
-		dt->addGate(Form("(teleCsiId==%d)", cid));
 
-		dt->setName(Form("hAlpha150%d",cid));
-		dt->setVar("alphaEnergy/4.001506179127");
-		dt->setBin(100,140,170);
+		dt->setName(Form("hLR%dAlpha150",i));
+		dt->setVar("alphaEnergy");
+		dt->setBin(60,600,660);
 		dt->drawH();
 		dt->saveH1Root();
 
 	}
 
-	TH1F *h1D[2];
-	h1D[0] = (TH1F*)outputFile->Get("hBeam150");
-	h1D[1] = (TH1F*)outputFile->Get("hAlpha150");
 
-	h1D[0]->SetLineColor(1);
-	h1D[1]->SetLineColor(1);
-	h1D[1]->SetLineStyle(2);
-	h1D[0]->Draw();
-	h1D[1]->Draw("same");
-
-	TH1F *hCsi[7];
-	for (int i = 0; i < 7; ++i) {
-
-		int cid = i;
-		hCsi[i] = (TH1F*)outputFile->Get(Form("hAlpha150%d",cid));
-		hCsi[i]->SetLineColor(i+1);
-		hCsi[i]->Draw("same");
-	}
+//	for (int i = 0; i < 7; ++i) {
+//
+//		int cid = i;
+//		dt->setGate("1");
+//		dt->addGate("(Trig_DSB)");
+//		dt->addGate("(Beam)");
+//		dt->addGate(targetArea);
+//		dt->addGate("(Alpha)");
+//		dt->addGate("(teleHit==1)");
+//		dt->addGate(csiGate);
+//
+//
+//
+//
+//		dt->addGate(Form("(teleCsiId==%d)", cid));
+//
+//		dt->setName(Form("hAlpha150%d",cid));
+//		dt->setVar("alphaEnergy/4.001506179127");
+//		dt->setBin(100,140,170);
+//		dt->drawH();
+//		dt->saveH1Root();
+//
+//	}
+//
+//	TH1F *h1D[2];
+//	h1D[0] = (TH1F*)outputFile->Get("hBeam150");
+//	h1D[1] = (TH1F*)outputFile->Get("hAlpha150");
+//
+//	h1D[0]->SetLineColor(1);
+//	h1D[1]->SetLineColor(1);
+//	h1D[1]->SetLineStyle(2);
+//	h1D[0]->Draw();
+//	h1D[1]->Draw("same");
+//
+//	TH1F *hCsi[7];
+//	for (int i = 0; i < 7; ++i) {
+//
+//		int cid = i;
+//		hCsi[i] = (TH1F*)outputFile->Get(Form("hAlpha150%d",cid));
+//		hCsi[i]->SetLineColor(i+1);
+//		hCsi[i]->Draw("same");
+//	}
 
 }
