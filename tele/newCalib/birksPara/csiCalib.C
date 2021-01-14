@@ -19,12 +19,12 @@ class CsiInput{
 			double hQPed[2];
 			double hQPedSigma[2];
 			//double hQPedEnergy[2] = {500.22, 318.27};
-			double hQPedEnergy[2] = {499.45, 317.74};
+			double hQPedEnergy[2];
 			double hQPedEnergyErr[2] = {0,0 };
 
 			while (1){
 				if(!inputFile.good()) break;
-				inputFile>>cid>>hQPed[0]>>hQPedSigma[0]>>hQPed[1]>>hQPedSigma[1];
+				inputFile>>cid>>hQPed[0]>>hQPedSigma[0]>>hQPed[1]>>hQPedSigma[1]>>hQPedEnergy[0]>>hQPedEnergy[1];
 
 				for (int i = 0; i < 2; ++i) {
 

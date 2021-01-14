@@ -104,3 +104,5 @@
 	1. Alpha Window Loss, remove SHT
 	2. Remove Eval(, , S) option, it gives higher value
 	3. Config Csi to peak5CsiCalibOutput.txt 
+2021-01-14
+	1. Add Tele CsiId, Fid, Bid etc

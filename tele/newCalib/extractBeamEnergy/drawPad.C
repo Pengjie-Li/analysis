@@ -53,13 +53,13 @@ void drawPad150(){
 		//cPad->SetLogy();
 
 		TF1 *f = new TF1("fit", "gaus", 0,4000);
-		double peak[7]= {1725,1646,1500,1695,1297, 1924,1720 };
-		double sigma[7]= {21,11.2, 25.9,17, 9.8, 21, 18};
+		//double peak[7]= {1725,1646,1500,1695,1297, 1924,1720 };
+		//double sigma[7]= {21,11.2, 25.9,17, 9.8, 21, 18};
 		TH1F *hCheck[7];
 		for (int i = 0; i < 7; ++i) {
 
-			f->SetParameter(1, peak[i]);
-			f->SetParameter(2, sigma[i]);
+			f->SetParameter(1, 156.6);
+			f->SetParameter(2, 0.5);
 
 			cPad->cd(i+1);
 
@@ -73,9 +73,9 @@ void drawPad150(){
 			hCheck[i]->GetXaxis()->SetRangeUser(500,2500);
 
 			hCheck[i]->Draw();
-			hCheck[i]->Fit(f,"Q","QR", peak[i]-2*sigma[i],peak[i]+2*sigma[i]);
-			//cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParameter(2)<<endl;
-			cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParError(2)<<endl;
+			hCheck[i]->Fit(f,"Q","QR", 155.1,157.6);
+			cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParameter(2)<<endl;
+			//cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParError(2)<<endl;
 
 		}
 
@@ -99,8 +99,8 @@ void drawPad120(){
 		TH1F *hCheck[7];
 		for (int i = 0; i < 7; ++i) {
 
-			f->SetParameter(1, peak[i]);
-			f->SetParameter(2, sigma[i]);
+			f->SetParameter(1, 120.2);
+			f->SetParameter(2, 0.5);
 
 
 			cPad->cd(i+1);
@@ -115,8 +115,8 @@ void drawPad120(){
 
 			hCheck[i]->Draw();
 
-			hCheck[i]->Fit(f,"Q","QR", peak[i]-2*sigma[i],peak[i]+2*sigma[i]);
-			cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParError(2)<<endl;
+			hCheck[i]->Fit(f,"Q","QR", 118.5,121.7);
+			cout<<i<<" "<<f->GetParameter(1)<<" "<<f->GetParameter(2)<<endl;
 
 
 
@@ -125,6 +125,6 @@ void drawPad120(){
 
 }
 void drawPad(){
-	drawPad150();
+	//drawPad150();
 	drawPad120();
 }

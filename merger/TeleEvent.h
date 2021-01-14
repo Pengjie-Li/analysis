@@ -225,6 +225,16 @@ class TeleHit{
 		}
 
 
+		double getCsiQPed(){
+			return teleHitCsiQPed[bestHit];
+		}
+		double getDssdFrontQPed(){
+			return teleHitDssdFQPed[bestHit];
+		}
+		double getDssdBackQPed(){
+			return teleHitDssdBQPed[bestHit];
+		}
+
 		double getCsiE(){
 			return teleHitCsiE[bestHit];
 		}
@@ -258,6 +268,14 @@ class TeleEvent{
 		TeleHit *teleHit;
 		
 		int teleSide;
+
+		int teleCsiId;
+		int teleDssdFid;
+		int teleDssdBid;
+		double teleCsiQPed;
+		double teleDssdFQPed;
+		double teleDssdBQPed;
+			
 		double teleCsiE;
 		double teleDssdFE;
 		double teleDssdBE;
@@ -336,6 +354,13 @@ class TeleEvent{
 
 			teleHit->init();
 			teleSide= -1;
+			teleCsiId = -1;
+			teleDssdFid = -1;
+			teleDssdBid = -1;
+			teleCsiQPed = -9999;
+			teleDssdFQPed = -9999;
+			teleDssdBQPed = -9999;
+
 			teleCsiE=-9999;
 			teleDssdFE=-9999;
 			teleDssdBE=-9999;
@@ -370,6 +395,14 @@ class TeleEvent{
 
 			teleHit->setBranch(tree);
 			tree->Branch("teleSide",&teleSide,"teleSide/I");
+			tree->Branch("teleCsiId",&teleCsiId,"teleCsiId/I");
+			tree->Branch("teleDssdFid",&teleDssdFid,"teleDssdFid/I");
+			tree->Branch("teleDssdBid",&teleDssdBid,"teleDssdBid/I");
+
+			tree->Branch("teleCsiQPed",&teleCsiQPed,"teleCsiQPed/D");
+			tree->Branch("teleDssdFQPed",&teleDssdFQPed,"teleDssdFQPed/D");
+			tree->Branch("teleDssdBQPed",&teleDssdBQPed,"teleDssdBQPed/D");
+	
 			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
 			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
 			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
@@ -399,6 +432,15 @@ class TeleEvent{
 
 
 				teleSide	 =teleHit->getSide();
+				teleCsiId	 =teleHit->getCid();
+				teleDssdFid	 =teleHit->getFid();
+				teleDssdBid	 =teleHit->getBid();
+				
+				teleCsiQPed	 =teleHit->getCsiQPed();
+				teleDssdFQPed	 =teleHit->getDssdFrontQPed();
+				teleDssdBQPed	 =teleHit->getDssdBackQPed();
+	
+
 				teleCsiE	 =teleHit->getCsiE();
 				teleDssdFE	 =teleHit->getDssdFrontE();
 				teleDssdBE	 =teleHit->getDssdBackE();
@@ -426,12 +468,11 @@ class TeleEvent{
 		double getCsiEnergy(){
 			return teleCsiE;
 		}
-		double getAngle(){
-			return teleAngle;
-		}
-
 		double getLocusAngle(){
 			return teleLocusAngle;
+		}
+		double getAngle(){
+			return teleAngle;
 		}
 		bool isGoodEvent(){
 			return teleHit->isGoodEvent()&&(getLocusAngle()>0);

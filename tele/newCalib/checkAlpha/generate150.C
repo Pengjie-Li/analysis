@@ -62,32 +62,32 @@ void generate150(){
 	dt->setGate("1");
 	gROOT->ProcessLine(".x rootfiles/cutBeamAlpha150.C");
 	gROOT->ProcessLine(".x rootfiles/cutAlpha.C");
-	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<13";
+	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<14.5";
 	// 1. BeamGate
 	dt->addGate("(Trig_DSB)");
 	dt->addGate("(Beam)");
 	dt->addGate(targetArea);
 	dt->addGate("(Alpha)");
-	dt->addGate("(teleHit==1)");
-	dt->addGate(csiGate);
+	//dt->addGate("(teleHit==1)");
+	//dt->addGate(csiGate);
 
 
 	TString fileName = "output/generate.root";
 	TFile *outputFile = new TFile(fileName,"UPDATE");
 
-	//cPad->cd(1);
-	dt->setName("hBeam150");
-	dt->setVar("beamEnergy");
-	dt->setBin(300,140,170);
-	dt->drawH();
-	dt->saveH1Root();
-
-	//cPad->cd(2);
-	dt->setName("hAlpha150");
-	dt->setVar("alphaEnergy/4.001506179127");
-	dt->setBin(300,140,170);
-	dt->drawH();
-	dt->saveH1Root();
+//	//cPad->cd(1);
+//	dt->setName("hBeam150");
+//	dt->setVar("beamEnergy");
+//	dt->setBin(300,140,170);
+//	dt->drawH();
+//	dt->saveH1Root();
+//
+//	//cPad->cd(2);
+//	dt->setName("hAlpha150");
+//	dt->setVar("alphaEnergy/4.001506179127");
+//	dt->setBin(300,140,170);
+//	dt->drawH();
+//	dt->saveH1Root();
 
 	for (int i = 0; i < 2; ++i) {
 
@@ -110,28 +110,32 @@ void generate150(){
 	}
 
 
-//	for (int i = 0; i < 7; ++i) {
-//
-//		int cid = i;
-//		dt->setGate("1");
-//		dt->addGate("(Trig_DSB)");
-//		dt->addGate("(Beam)");
-//		dt->addGate(targetArea);
-//		dt->addGate("(Alpha)");
-//		dt->addGate("(teleHit==1)");
-//		dt->addGate(csiGate);
-//
-//
-//
-//
-//		dt->addGate(Form("(teleCsiId==%d)", cid));
-//
-//		dt->setName(Form("hAlpha150%d",cid));
-//		dt->setVar("alphaEnergy/4.001506179127");
-//		dt->setBin(100,140,170);
-//		dt->drawH();
-//		dt->saveH1Root();
-//
+	//for (int i = 0; i < 7; ++i) {
+
+	//	int cid = i;
+	//	dt->setGate("1");
+	//	dt->addGate("(Trig_DSB)");
+	//	dt->addGate("(Beam)");
+	//	dt->addGate(targetArea);
+	//	dt->addGate("(Alpha)");
+	//	dt->addGate("(teleHit==1)");
+	//	dt->addGate(csiGate);
+	//	dt->addGate(Form("(teleCsiId==%d)", cid));
+
+
+	//	dt->setName(Form("hBeam150%d",cid));
+	//	dt->setVar("beamEnergy");
+	//	dt->setBin(100,140,170);
+	//	dt->drawH();
+	//	dt->saveH1Root();
+
+
+		//dt->setName(Form("hAlpha150%d",cid));
+		//dt->setVar("alphaEnergy/4.001506179127");
+		//dt->setBin(100,140,170);
+		//dt->drawH();
+		//dt->saveH1Root();
+
 //	}
 //
 //	TH1F *h1D[2];

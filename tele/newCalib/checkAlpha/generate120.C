@@ -49,19 +49,19 @@ void generate120(){
 	TString fileName = "output/generate.root";
 	TFile *outputFile = new TFile(fileName,"UPDATE");
 
-	//cPad->cd(1);
-	dt->setName("hBeam120");
-	dt->setVar("beamEnergy");
-	dt->setBin(700,100,130);
-	dt->drawH();
-	dt->saveH1Root();
+	////cPad->cd(1);
+	//dt->setName("hBeam120");
+	//dt->setVar("beamEnergy");
+	//dt->setBin(700,100,130);
+	//dt->drawH();
+	//dt->saveH1Root();
 
-	//cPad->cd(2);
-	dt->setName("hAlpha120");
-	dt->setVar("alphaEnergy/4.001506179127");
-	dt->setBin(600,100,130);
-	dt->drawH();
-	dt->saveH1Root();
+	////cPad->cd(2);
+	//dt->setName("hAlpha120");
+	//dt->setVar("alphaEnergy/4.001506179127");
+	//dt->setBin(600,100,130);
+	//dt->drawH();
+	//dt->saveH1Root();
 
 	for (int i = 0; i < 2; ++i) {
 
@@ -83,45 +83,51 @@ void generate120(){
 	}
 
 
-	for (int i = 0; i < 7; ++i) {
+	//for (int i = 0; i < 7; ++i) {
 
-		int cid = i;
-		dt->setGate("1");
-		dt->addGate("(Trig_DSB)");
-		dt->addGate("(Beam)");
-		dt->addGate(targetArea);
-		dt->addGate("(Alpha)");
-		dt->addGate("(teleHit==1)");
-
-
-		dt->addGate(Form("(teleCsiId==%d)", cid));
-
-		dt->setName(Form("hAlpha120%d",cid));
-		dt->setVar("alphaEnergy/4.001506179127");
-		dt->setBin(300,100,130);
-		dt->drawH();
-		dt->saveH1Root();
-
-	}
+	//	int cid = i;
+	//	dt->setGate("1");
+	//	dt->addGate("(Trig_DSB)");
+	//	dt->addGate("(Beam)");
+	//	dt->addGate(targetArea);
+	//	dt->addGate("(Alpha)");
+	//	dt->addGate("(teleHit==1)");
 
 
+	//	dt->addGate(Form("(teleCsiId==%d)", cid));
 
-	TH1F *h1D[2];
-	h1D[0] = (TH1F*)outputFile->Get("hBeam120");
-	h1D[1] = (TH1F*)outputFile->Get("hAlpha120");
-	h1D[0]->SetLineColor(1);
-	h1D[1]->SetLineColor(2);
-	h1D[0]->Draw();
-	h1D[1]->Draw("same");
+	//	//dt->setName(Form("hBeam120%d",cid));
+	//	//dt->setVar("beamEnergy");
+	//	//dt->setBin(300,100,130);
+	//	//dt->drawH();
+	//	//dt->saveH1Root();
+
+	//	dt->setName(Form("hAlpha120%d",cid));
+	//	dt->setVar("alphaEnergy/4.001506179127");
+	//	dt->setBin(300,100,130);
+	//	dt->drawH();
+	//	dt->saveH1Root();
+
+	//}
 
 
-	TH1F *hCsi[7];
-	for (int i = 0; i < 7; ++i) {
-		int cid = i;
-		hCsi[i] = (TH1F*)outputFile->Get(Form("hAlpha120%d",cid));
-		hCsi[i]->SetLineColor(i+1);
-		hCsi[i]->Draw("same");
-	}
+
+	//TH1F *h1D[2];
+	//h1D[0] = (TH1F*)outputFile->Get("hBeam120");
+	//h1D[1] = (TH1F*)outputFile->Get("hAlpha120");
+	//h1D[0]->SetLineColor(1);
+	//h1D[1]->SetLineColor(2);
+	//h1D[0]->Draw();
+	//h1D[1]->Draw("same");
+
+
+	//TH1F *hCsi[7];
+	//for (int i = 0; i < 7; ++i) {
+	//	int cid = i;
+	//	hCsi[i] = (TH1F*)outputFile->Get(Form("hAlpha120%d",cid));
+	//	hCsi[i]->SetLineColor(i+1);
+	//	hCsi[i]->Draw("same");
+	//}
 
 
 }

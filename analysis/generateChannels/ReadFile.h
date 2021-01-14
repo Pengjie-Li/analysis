@@ -139,6 +139,12 @@ class ReadFile{
 		Int_t           bestHit;
 
 		Int_t		teleSide;
+		int             teleCsiId;
+		int             teleDssdFid;
+		int             teleDssdBid;
+		double          teleCsiQPed;
+		double          teleDssdFQPed;
+		double          teleDssdBQPed;
 		Double_t        teleCsiE;
 		Double_t        teleDssdFE;
 		Double_t        teleDssdBE;
@@ -524,6 +530,12 @@ class ReadFile{
 			inputTree->SetBranchAddress("bestHit",&bestHit);
 
 			inputTree->SetBranchAddress("teleSide",&teleSide);
+			inputTree->SetBranchAddress("teleCsiId",&teleCsiId);
+			inputTree->SetBranchAddress("teleDssdFid",&teleDssdFid);
+			inputTree->SetBranchAddress("teleDssdBid",&teleDssdBid);
+			inputTree->SetBranchAddress("teleCsiQPed",&teleCsiQPed);
+			inputTree->SetBranchAddress("teleDssdFQPed",&teleDssdFQPed);
+			inputTree->SetBranchAddress("teleDssdBQPed",&teleDssdBQPed);
 			inputTree->SetBranchAddress("teleCsiE",&teleCsiE);
 			inputTree->SetBranchAddress("teleDssdFE",&teleDssdFE);
 			inputTree->SetBranchAddress("teleDssdBE",&teleDssdBE);
@@ -831,6 +843,12 @@ class ReadFile{
                         tree->Branch("bestHit",&bestHit,"bestHit/I");
 
 			tree->Branch("teleSide",&teleSide,"teleSide/I");
+			tree->Branch("teleCsiId",&teleCsiId,"teleCsiId/I");
+                        tree->Branch("teleDssdFid",&teleDssdFid,"teleDssdFid/I");
+                        tree->Branch("teleDssdBid",&teleDssdBid,"teleDssdBid/I");
+                        tree->Branch("teleCsiQPed",&teleCsiQPed,"teleCsiQPed/D");
+                        tree->Branch("teleDssdFQPed",&teleDssdFQPed,"teleDssdFQPed/D");
+                        tree->Branch("teleDssdBQPed",&teleDssdBQPed,"teleDssdBQPed/D");
 			tree->Branch("teleCsiE",&teleCsiE,"teleCsiE/D");
 			tree->Branch("teleDssdFE",&teleDssdFE,"teleDssdFE/D");
 			tree->Branch("teleDssdBE",&teleDssdBE,"teleDssdBE/D");
