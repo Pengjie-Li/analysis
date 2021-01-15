@@ -59,7 +59,7 @@ void drawPad(){
 		cPad->SetLogy();
 
 		TH1F *hCheck[7];
-		for (int i = 4; i < 5; ++i) {
+		for (int i = 0; i < 7; ++i) {
 
 			int cid =i;
 			TString hName = Form("hCsi%d", cid);

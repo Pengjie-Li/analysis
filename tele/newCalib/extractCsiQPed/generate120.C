@@ -28,7 +28,7 @@ void generate120(){
 
 	gROOT->ProcessLine(".x rootfiles/cutBeamAlpha120.C");
 	gROOT->ProcessLine(".x rootfiles/cutAlpha.C");
-	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<14.5"; 
+	TString targetArea="sqrt((targetPosition.X()-2.0)*(targetPosition.X()-2.0)+(targetPosition.Y()+1.1)*(targetPosition.Y()+1.1))<13"; 
 // Events may hit on the frame, but it's okay, because we are looking for highest energy.
 	TString hName;
 
@@ -57,8 +57,8 @@ void generate120(){
 		dt->addGate(targetArea);
 		dt->addGate("(Alpha)");
 		dt->addGate("(teleHit==1)");
-		dt->addGate(Form("(teleHit==1&&teleCsiId==%d)",cid));
-		dt->addGate(stripLimit[cid]);
+		dt->addGate(Form("(teleCsiId==%d)",cid));
+		//dt->addGate(stripLimit[cid]);
 
 		dt->setName(hName);
 		dt->setVar("teleCsiQPed");

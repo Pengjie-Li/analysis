@@ -24,8 +24,8 @@ void generate120(){
 	//dt->addFile("../convert/rootfiles/run0595_analysed.root_test");
 	//dt->addFile("../convert/rootfiles/run0596_analysed.root_test");
 	//dt->addFile("../convert/rootfiles/run0597_analysed.root_test");
-	dt->addFile("../convert/rootfiles/run0598_analysed.root_test");
-	dt->addFile("../convert/rootfiles/run0599_analysed.root_test");
+	dt->addFile("../convert/rootfiles/run0598_analysed.root_test_");
+	dt->addFile("../convert/rootfiles/run0599_analysed.root_test_");
 	//dt->addFile("../convert/rootfiles/run0600_analysed.root_test");
 
 	TCanvas *cPad = new TCanvas("cPad","cPad",900, 900);
@@ -63,52 +63,52 @@ void generate120(){
 	//dt->drawH();
 	//dt->saveH1Root();
 
-	for (int i = 0; i < 2; ++i) {
+	//for (int i = 0; i < 2; ++i) {
 
-		dt->setGate("1");
-		dt->addGate("(Trig_DSB)");
-		dt->addGate("(Beam)");
-		dt->addGate(targetArea);
-		dt->addGate("(Alpha)");
-		dt->addGate(Form("(teleHit==1&&teleSide==%d)",i));
-
-
-
-		dt->setName(Form("hLR%dAlpha120",i));
-		dt->setVar("alphaEnergy");
-		dt->setBin(700,450,520);
-		dt->drawH();
-		dt->saveH1Root();
-
-	}
-
-
-	//for (int i = 0; i < 7; ++i) {
-
-	//	int cid = i;
 	//	dt->setGate("1");
 	//	dt->addGate("(Trig_DSB)");
 	//	dt->addGate("(Beam)");
 	//	dt->addGate(targetArea);
 	//	dt->addGate("(Alpha)");
-	//	dt->addGate("(teleHit==1)");
+	//	dt->addGate(Form("(teleHit==1&&teleSide==%d)",i));
 
 
-	//	dt->addGate(Form("(teleCsiId==%d)", cid));
 
-	//	//dt->setName(Form("hBeam120%d",cid));
-	//	//dt->setVar("beamEnergy");
-	//	//dt->setBin(300,100,130);
-	//	//dt->drawH();
-	//	//dt->saveH1Root();
-
-	//	dt->setName(Form("hAlpha120%d",cid));
-	//	dt->setVar("alphaEnergy/4.001506179127");
-	//	dt->setBin(300,100,130);
+	//	dt->setName(Form("hLR%dAlpha120",i));
+	//	dt->setVar("alphaEnergy");
+	//	dt->setBin(700,450,520);
 	//	dt->drawH();
 	//	dt->saveH1Root();
 
 	//}
+
+
+	for (int i = 0; i < 7; ++i) {
+
+		int cid = i;
+		dt->setGate("1");
+		dt->addGate("(Trig_DSB)");
+		dt->addGate("(Beam)");
+		dt->addGate(targetArea);
+		dt->addGate("(Alpha)");
+		dt->addGate("(teleHit==1)");
+
+
+		dt->addGate(Form("(teleCsiId==%d)", cid));
+
+		//dt->setName(Form("hBeam120%d",cid));
+		//dt->setVar("beamEnergy");
+		//dt->setBin(300,100,130);
+		//dt->drawH();
+		//dt->saveH1Root();
+
+		dt->setName(Form("hAlpha120%d",cid));
+		dt->setVar("alphaEnergy/4.001506179127");
+		dt->setBin(300,100,130);
+		dt->drawH();
+		dt->saveH1Root();
+
+	}
 
 
 

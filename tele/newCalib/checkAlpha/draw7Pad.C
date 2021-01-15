@@ -94,7 +94,7 @@ void drawPad150(){
 void drawPad120(){
 
 	TString fileName = "output/generate.root";
-	TFile *outputFile = new TFile(fileName,"UPDATE");
+	TFile *outputFile = new TFile(fileName,"READ");
 
 	TCanvas *cPad = new TCanvas("cPad120","cPad120",1400, 700);
 	cPad->Divide(4,2);
@@ -118,6 +118,7 @@ void drawPad120(){
 		//hCsi[i]->Draw("same");
 	}
 
+	//outputFile->Close();
 
 
 	for (int i = 0; i < 7; ++i) {
