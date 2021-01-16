@@ -23318,3 +23318,15 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 tele/newCalib/extractBeamEnergy/rootlogon.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master f3c541e] v1.0
+ 23 files changed, 119 insertions(+), 100 deletions(-)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0441_ppaBe10.root_test (62%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0442_ppaBe10.root_test (72%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0443_ppaBe10.root_test (72%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0444_ppaBe10.root_test (72%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0445_ppaBe10.root_test (72%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0446_ppaBe10.root_test (73%)
+ rewrite channel/selectBeamEspriTele/rootfiles/run0447_ppaBe10.root_test (72%)
+ rewrite tele/newCalib/birksPara/txt/peak5CsiCalibInput.txt (100%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

@@ -77,13 +77,14 @@ class Plane{
 class LeftPlane: public Plane{
 	public:
 		LeftPlane(){
-			double angle = (8.45735 - 0.26)*TMath::DegToRad();
+			//double angle = (8.45735 - 0.26)*TMath::DegToRad();
+			double angle = (8.45735 - 0.24)*TMath::DegToRad();
 			//double angle = (8.45735 - 0.21)*TMath::DegToRad();
 			//double angle = (8.45735 - 0.22)*TMath::DegToRad();
 			A=-sin(angle);
 			B=0.00;
 			C=cos(angle);
-			D=3821.78;
+			D=3821.57;
 	
 			//A=-0.147;
 			//B=0.004;
@@ -97,12 +98,13 @@ class RightPlane: public Plane{
 	public:
 		RightPlane(){
 			//double angle = (8.86016 + 0.41)*TMath::DegToRad();
-			double angle = (8.86016 + 0.46)*TMath::DegToRad();
+			//double angle = (8.86016 + 0.46)*TMath::DegToRad();
+			double angle = (8.86016 + 0.51)*TMath::DegToRad();
 			//double angle = (8.86016 + 0.44)*TMath::DegToRad();
 			A=sin(angle);
 			B=0.00;
 			C=cos(angle);
-			D=3809.5;
+			D=3808.9;
 	
 			//A=0.154;
 			//B=-0.002;
