@@ -98,13 +98,11 @@ class RightPlane: public Plane{
 			//B=0;
 			//C=0.5;
 			//D=1100.73;
-			//double polarAngle = 60.36; // 60.33 + 0.028
-			double polarAngle = 60.36 + 0.18; // 60.33 + 0.028
-			A=sin(polarAngle*TMath::DegToRad());
+			double polarAngle = 60.36; // 60.33 + 0.028
+			A=-sin(polarAngle*TMath::DegToRad());
 			B=-0.0;
 			C=cos(polarAngle*TMath::DegToRad());
-			//D=1077.72; // 60.36
-			D=1066.22;
+			D=1077.72;
 	
 			//A=0.869;
 			//B=0;
