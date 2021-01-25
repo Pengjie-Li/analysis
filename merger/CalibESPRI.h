@@ -258,7 +258,7 @@ class CalibESPRI{
 		}
 		double getNaiQ(){
 			//cout<<mergeData->getNaiId()<<" "<<mergeData->getNaiQPed()<<endl;
-			if(mergeData->getRunNumber()>430&&mergeData->getSide()==1&&mergeData->getNaiId()==3) return naiBar13Treat();
+			if(mergeData->getRunNumber()>394&&mergeData->getSide()==1&&mergeData->getNaiId()==3) return naiBar13Treat();
 			else return calibEspri->getNaiQ(mergeData->getSide(),mergeData->getNaiId(),mergeData->getNaiQPed());
 		}
 		double naiBar13Treat(){
