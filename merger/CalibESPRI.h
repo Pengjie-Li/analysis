@@ -114,8 +114,6 @@ class ESPRINaiCalPara{
 		}
 
 };
-
-
 class EspriEnergyPara{
 	private:
 		double plasGain[2][7];
@@ -184,6 +182,8 @@ class EspriEnergyPara{
 			return plasDead[side][0];
 		}
 };
+
+
 class EspriEnergy{
 	private:
 		EspriEnergyPara *calibPara;
@@ -230,7 +230,8 @@ class EspriEnergy{
 		}
 	
                 double getNaiQ(int side, int barId,double naiBarQPed){
-                        return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
+                        //return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed+getNaiBirksParC(side,barId)*naiBarQPed*naiBarQPed);
+                        return getNaiBirksParA(side,barId)*naiBarQPed/(1+getNaiBirksParB(side,barId)*naiBarQPed)+getNaiBirksParC(side,barId);
                 }
 	
 

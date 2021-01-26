@@ -1,9 +1,3 @@
-class EspriTimeEvent{
-	private:
-	public:
-		EspriTimeEvent(){}
-		~EspriTimeEvent(){}
-};
 class ESPRI3DPosition{
 	private:
 
@@ -18,39 +12,78 @@ class ESPRI3DPosition{
 		double centerX;
 		double centerY;
 
+		double xOffset[2];
+		double yOffset[2];
+	
 	public:
 		ESPRI3DPosition(){
-			// Expected position
-			leftPlaneNorm.SetXYZ(-0.864363, 0.000000,0.502869);
-			leftPedal.SetXYZ(-874.029866,0.000000,-3713.84667);
-			leftBaseX.SetXYZ(0.502869,0.000000,0.864363);
-			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
+			//// Expected position
+			//leftPlaneNorm.SetXYZ(-0.864363, 0.000000,0.502869);
+			//leftPedal.SetXYZ(-874.029866,0.000000,-3713.84667);
+			//leftBaseX.SetXYZ(0.502869,0.000000,0.864363);
+			//leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
 
-			rightPlaneNorm.SetXYZ(0.869150,0,0.494549);
-			rightPedal.SetXYZ(878.217762,0.000000,-3722.631582);
-			rightBaseX.SetXYZ(0.494549,0.000000,-0.869150);
+			////rightPlaneNorm.SetXYZ(0.869150,0,0.494549);
+			////rightPedal.SetXYZ(878.217762,0.000000,-3722.631582);
+			////rightBaseX.SetXYZ(0.494549,0.000000,-0.869150);
+			////rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
+	
+			//rightPlaneNorm.SetXYZ(0.870699,0,0.491816);
+			//rightPedal.SetXYZ(879.748958,0.000000,-3725.412447);
+			//rightBaseX.SetXYZ(0.491816,0.000000, -0.870699);
+			//rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
+	
+			//centerX = 227.5;
+			//centerY = 227.5 - 3.0; // 3 mm offset comes from ppBe phi center offset
+			// Expected position
+			leftPlaneNorm.SetXYZ(-0.866025, 0.000000,0.50);
+			leftPedal.SetXYZ(-875.716228,0.000000,-3716.745000);
+			leftBaseX.SetXYZ(0.500000,0.000000,0.866025);
+			leftBaseY.SetXYZ(0.000000,1.000000,0.000000);
+			//TVector3 leftOffset(xlOffset, 0 , 0);
+			//leftPedal.Add(leftOffset);
+
+			//rightPlaneNorm.SetXYZ(0.869150,0,0.494549);
+			//rightPedal.SetXYZ(878.217762,0.000000,-3722.631582);
+			//rightBaseX.SetXYZ(0.494549,0.000000,-0.869150);
+			//rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
+	
+			rightPlaneNorm.SetXYZ(0.868919,0,0.494954);
+			rightPedal.SetXYZ(877.985787,0.000000,-3722.221514);
+			rightBaseX.SetXYZ(0.494954,0.000000,-0.868919);
 			rightBaseY.SetXYZ(0.000000,1.000000,0.000000);
+			//TVector3 rightOffset(xrOffset, 0 , 0);
+			//rightPedal.Add(rightOffset);
+
+			xOffset[0] = 3.35;
+			yOffset[0] = 3.0;
+			xOffset[1] = 1.40;
+			yOffset[1] = 3.0;
 	
 			centerX = 227.5;
-			centerY = 227.5 - 3.0; // 3 mm offset comes from ppBe phi center offset
+			centerY = 227.5; // 3 mm offset comes from ppBe phi center offset
+			//centerY = 227.5 - 3.0; // 3 mm offset comes from ppBe phi center offset
+
 		}
 		TVector3 getESPRIPosition(int lr,double X,double Y){
 			TVector3 pedal;
 			TVector3 baseX;
 			TVector3 baseY;
+
+			X = X + xOffset[lr] -centerX;
+			Y = Y + yOffset[lr] -centerY;
+
+			//pedal = leftPedal;
+			//baseX = leftBaseX;
+			//baseY = leftBaseY;
+
 			if(lr ==0 ){
-				X = X -centerX;
-				Y = Y -centerY;
 
 				pedal = leftPedal;
 				baseX = leftBaseX;
 				baseY = leftBaseY;
 			}
 			else{
-				//X = X -centerX ;
-				X = X -centerX -2.27;
-				Y = Y -centerY; // Shift ESPRI from Phi
-
 				pedal = rightPedal;
 				baseX = rightBaseX;
 				baseY = rightBaseY;
@@ -63,6 +96,8 @@ class ESPRI3DPosition{
 		}
 		~ESPRI3DPosition(){}
 };
+
+
 class Plane{
 	public:
 		double A;

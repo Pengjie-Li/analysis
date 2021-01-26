@@ -134,7 +134,8 @@ class ProtonEvent{
 				else{ 
 						xPos = -xPos;
 				}
-				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
+				//protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(),espriEvent->getLocusAngle(),espriEvent->getAngle(),xPos);
+				protonEnergy = protonPara->getProtonEnergy(espriEvent->getEspriSide(),espriEvent->getNaiEnergy(), 0,espriEvent->getAngle(),xPos);
 		}
 	public:
 		ProtonEvent(){

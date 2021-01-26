@@ -1,0 +1,77 @@
+#include "header.h"
+#include "Convert.h"
+#include "MergePLA.h"
+#include "MergeBDC.h"
+
+class Merger{
+	private: 
+		const static bool kPLA = true;
+		const static bool kBDC = true;
+	public :
+
+		Double_t TOF713;
+		Double_t Beta713;
+		Double_t Gamma713;
+		Double_t Ek713;
+
+		Double_t TOF37;
+		Double_t Beta37;
+		Double_t Gamma37;
+		Double_t Ek37;
+
+
+		TVector3* vBeam;	
+		TVector3* vBDC1;	
+		TVector3* vBDC2;	
+		TVector3* vTarget;	
+
+		Double_t	Target_X ;
+		Double_t	Target_Y ;
+		Double_t	Target_ThetaX ;
+		Double_t	Target_ThetaY ;
+
+		TEnv *env;
+		int runNumber;
+		TTree *inputTree;
+
+		TFile *outputFile;
+		TTree *tree;
+		Long64_t nentries;
+
+		MergePLA *mergePLA;
+		MergeBDC *mergeBDC;
+
+		Merger(int runNumber);
+
+		void eventLoop();
+		void initAnalysedOutput();
+		void analysingPLA();
+		Double_t getF3Time();
+		Double_t getF7Time();
+		Double_t getF13Time();
+
+		void analysingBDC();
+		void getBDC1X();
+		void getBDC1Y();
+		void getBDC1Z();
+
+		void getBDC2X();
+		void getBDC2Y();
+		void getBDC2Z();
+
+		void createOutput();
+		void setOutputBranch();
+		void setPLAOutputBranch();
+		void setBDCOutputBranch();
+		void saveOutput();
+
+		void addFriend();
+		void setBranch();
+		void loadInputFiles();
+
+		void checkTotalEventNumber();
+		void printTotalEventNumber();
+		bool isFilesExist();
+};
+
+
