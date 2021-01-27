@@ -23387,3 +23387,80 @@ Branch master set up to track remote branch master from origin.
  3 files changed, 6 insertions(+), 1 deletion(-)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 94c5026] v1.0
+ 92 files changed, 9052 insertions(+), 187 deletions(-)
+ rewrite merger/Merger (86%)
+ rewrite merger/ProtonEvent.h_local (97%)
+ create mode 100644 merger/txt/naiCalibOutput.txt_v13
+ create mode 100644 merger/txt/naiCalibOutput.txt_v16
+ create mode 100644 merger/txt/naiCalibOutput.txt_v22
+ create mode 100644 merger/v23_RecalibProton/'
+ create mode 100644 merger/v23_RecalibProton/AlphaEvent.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingAlpha.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingBDC.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingBeam.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingESPRI.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingFDC0.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingHOD.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingMAIN.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingPLA.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingProton.h
+ create mode 100644 merger/v23_RecalibProton/AnalysingTELE.h
+ create mode 100644 merger/v23_RecalibProton/BdcEvent.h
+ create mode 100644 merger/v23_RecalibProton/BeamEvent.h
+ create mode 100644 merger/v23_RecalibProton/CalibESPRI.h
+ create mode 100644 merger/v23_RecalibProton/CalibTELE.h
+ create mode 100644 merger/v23_RecalibProton/Convert.h
+ create mode 100644 merger/v23_RecalibProton/CsiCal.h
+ create mode 100644 merger/v23_RecalibProton/DSSDEnergyCal.h
+ create mode 100644 merger/v23_RecalibProton/DegraderPosition.h
+ create mode 100644 merger/v23_RecalibProton/Detector.h
+ create mode 100644 merger/v23_RecalibProton/EspriEvent.h
+ create mode 100644 merger/v23_RecalibProton/EspriEvent.h_new
+ create mode 100644 merger/v23_RecalibProton/Fdc0Event.h
+ create mode 100644 merger/v23_RecalibProton/FindPixel.h
+ create mode 100644 merger/v23_RecalibProton/HodEvent.h
+ create mode 100755 merger/v23_RecalibProton/Makefile
+ create mode 100644 merger/v23_RecalibProton/MergeBDC.h
+ create mode 100644 merger/v23_RecalibProton/MergeESPRI.h
+ create mode 100644 merger/v23_RecalibProton/MergeFDC0.h
+ create mode 100644 merger/v23_RecalibProton/MergeHOD.h
+ create mode 100644 merger/v23_RecalibProton/MergeMAIN.h
+ create mode 100644 merger/v23_RecalibProton/MergePLA.h
+ create mode 100644 merger/v23_RecalibProton/MergeSample.h
+ create mode 100644 merger/v23_RecalibProton/MergeTELE.h
+ rename merger/{ => v23_RecalibProton}/Merger (100%)
+ create mode 100644 merger/v23_RecalibProton/Merger.cpp
+ create mode 100644 merger/v23_RecalibProton/Merger.h
+ create mode 100644 merger/v23_RecalibProton/PhiFunction.h
+ create mode 100644 merger/v23_RecalibProton/PlaEvent.h
+ create mode 100644 merger/v23_RecalibProton/PlasTime.h
+ create mode 100644 merger/v23_RecalibProton/PlasTime.h_backup
+ create mode 100644 merger/v23_RecalibProton/PlasTime.h_backup_v2
+ create mode 100644 merger/v23_RecalibProton/PositionESPRI.h
+ create mode 100644 merger/v23_RecalibProton/PositionESPRI.h_v1
+ create mode 100644 merger/v23_RecalibProton/PositionTELE.h
+ create mode 100644 merger/v23_RecalibProton/ProtonEvent.h
+ rename merger/{ => v23_RecalibProton}/ProtonEvent.h_local (100%)
+ create mode 100644 merger/v23_RecalibProton/ProtonEvent.h_v2
+ create mode 100644 merger/v23_RecalibProton/TeleEvent.h
+ create mode 100644 merger/v23_RecalibProton/TeleEvent.h_v1
+ create mode 100644 merger/v23_RecalibProton/backup_1st_Merger.C
+ create mode 100644 merger/v23_RecalibProton/constant.h
+ create mode 100644 merger/v23_RecalibProton/convert.sh
+ create mode 100755 merger/v23_RecalibProton/distance.h
+ create mode 100644 merger/v23_RecalibProton/espri.C
+ create mode 100755 merger/v23_RecalibProton/header.h
+ create mode 100644 merger/v23_RecalibProton/logMerger.txt
+ create mode 100644 merger/v23_RecalibProton/loop.sh
+ create mode 100644 merger/v23_RecalibProton/looprun.sh
+ create mode 100644 merger/v23_RecalibProton/main.cpp
+ create mode 100644 merger/v23_RecalibProton/mvRootVersion.sh
+ create mode 100644 merger/v23_RecalibProton/read.me
+ create mode 100644 merger/v23_RecalibProton/sampleESPRI.C
+ create mode 100644 merger/v23_RecalibProton/serverPlasTime.h
+ create mode 100644 merger/v23_RecalibProton/t1.txt
+ create mode 100644 merger/v23_RecalibProton/t2.txt
+ create mode 100644 merger/v23_RecalibProton/tree.C
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

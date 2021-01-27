@@ -119,6 +119,7 @@ class GeneratePosition{
 			vNormalVector = detectorPlane->getNormalVector();
 			calculateCrossPosition();
 			vPedal.SetXYZ(pedalX,pedalY,pedalZ);
+			cout<<"Pedel Position:"<<endl;
 			vPedal.Print();
 			TVector3 zAxis; zAxis.SetXYZ(0,0,1);
 			double RadToDeg = 5.72957795130823229e+01; 
