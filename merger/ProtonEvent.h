@@ -89,8 +89,8 @@ class ProtonPara{
 		~ProtonPara(){}
 		double getProtonEnergy(int side,double naiE,double locusAngle,double angle,double xPos){
 			lrWedgeThick = wedgeThick[side];
-						if(side == 0) wedgeOffset = 43.2;
-						else wedgeOffset = 36.7;
+			if(side == 0) wedgeOffset = 43.9;
+			else wedgeOffset = 45.8;
 			ppPlasE = getPlasE(locusAngle,naiE);
 			ppDegraderE = getDegraderE(locusAngle,naiE+ppPlasE,xPos);
 			ppWinE = getWindowE(naiE+ppPlasE+ppDegraderE);

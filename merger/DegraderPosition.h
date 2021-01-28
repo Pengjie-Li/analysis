@@ -7,6 +7,7 @@ class ESPRIDegraderPosition{
 				TVector3 leftXBase;
 				TVector3 rightXBase;
 
+
 				void calPlaneLineIntersectPoint(double *returnResult,double *planeVector, double *planePoint, double *lineVector, double *linePoint){
 						double vp1, vp2, vp3, n1, n2, n3, v1, v2, v3, m1, m2, m3, t,vpt;
 						vp1 = planeVector[0];
@@ -72,12 +73,12 @@ class ESPRIDegraderPosition{
 						//leftXBase.SetXYZ(0.500000,0.000000,sqrt(3)/2);
 						//rightXBase.SetXYZ(0.500000,0.000000,-sqrt(3)/2);
 
-						leftPlane  = new Plane(-0.864363,0.0,0.502869,-1124.18);
-						rightPlane = new Plane(0.869150,0.0,0.494549,-1123.45);
-						leftPedal.SetXYZ(-971.699128,0.000000,565.315379);
-						rightPedal.SetXYZ(976.446434,0.000000,555.600814);
-						leftXBase.SetXYZ(0.502869,0.000000,0.864363);
-						rightXBase.SetXYZ(0.494549,0.000000,-0.869150);
+						leftPlane  = new Plane(-sqrt(3)/2,0.0,0.5,-1124.17);
+						rightPlane = new Plane(0.869,0.0,0.495,-1123.57);
+						leftPedal.SetXYZ(-973.559778,0.000000,-3660.255000+4222.34);
+						rightPedal.SetXYZ(976.200757,0.000000,-3666.276278+4222.34);
+						leftXBase.SetXYZ(0.500000,0.000000,0.866025);
+						rightXBase.SetXYZ(0.494954,0.000000,-0.868919);
 
 
 				}

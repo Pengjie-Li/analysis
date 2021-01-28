@@ -23464,3 +23464,10 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 merger/v23_RecalibProton/tree.C
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 4325c98] v1.0
+ 6 files changed, 82 insertions(+), 1052 deletions(-)
+ rewrite channel/selectBeamEspri/ReadFile.h (100%)
+ mode change 100644 => 120000
+ rewrite channel/selectBeamEspri/ppBe (71%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
