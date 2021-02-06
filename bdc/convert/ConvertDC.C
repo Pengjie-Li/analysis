@@ -34,6 +34,7 @@ class ConvertDC{
 		TFile *fout_FDC ;
 		TTree *tree_FDC ;
 
+		TEnv *env;
 
 
 
@@ -216,7 +217,9 @@ class ConvertDC{
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/dc/root/dcdist0%d.root",runnum),"READ");
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/dc/root_v20190114/dcdist0%d.root",runnum),"READ");
 			//dcin = new TFile(Form("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/Calib/rootfiles/rootfiles_v1/run0%d_tdcSpectrum.root",runnum),"READ");
-			dcin = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/newCalib/rootfiles/run0310_311_ppBe.root_test","READ");
+			//dcin = new TFile("/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/newCalib/rootfiles/run0310_311_ppBe.root_test","READ");
+			TString dcCalibFile = env->GetValue("dcCalib","text.txt");
+			dcin = new TFile(dcCalibFile,"READ");
 			if(dcin->IsOpen()){
 				loadTDCDistribution(CalibBDC1Track,"bdc1");
 				loadTDCDistribution(CalibBDC2Track,"bdc2");
@@ -383,6 +386,7 @@ class ConvertDC{
 		}
 
 		ConvertDC(int rn, Long64_t men){
+			env = new TEnv("configBe.prm");
 			runnum=rn;
 			MaxEventNumber=men;
 
