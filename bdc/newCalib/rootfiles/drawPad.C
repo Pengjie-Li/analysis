@@ -4,7 +4,9 @@ void drawPad(){
 	//gROOT->SetStyle("BABAR");
 	//TString fileName = "output/generate.root";
 	//TString fileName = "run0300_330_ppBe.root_test";
-	TString fileName = "run0331_365_ppBe.root_test";
+	//TString fileName = "run0331_365_ppBe.root_test";
+	TString fileName = "run0366_450_ppBe.root_test";
+
 	TFile *outputFile = new TFile(fileName,"READ");
 
 	TH1 *hBDC1[8];

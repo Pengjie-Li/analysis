@@ -23539,3 +23539,18 @@ Branch master set up to track remote branch master from origin.
  create mode 100644 bdc/newCalib/rootfiles/run0366_450_ppBe.root_test
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 7aefc8b] v1.0
+ 14 files changed, 132 insertions(+), 1 deletion(-)
+ rewrite bdc/convert/ConvertDC (92%)
+ create mode 120000 bdc/convert/configBe.prm
+ create mode 100644 bdc/convert/configBe10.prm
+ create mode 100644 bdc/convert/configBe12.prm
+ create mode 100644 bdc/convert/configBe14.prm
+ create mode 100644 bdc/convert/ex.sh
+ create mode 100644 bdc/convert/loopBe10.sh
+ create mode 100644 bdc/convert/loopBe12.sh
+ create mode 100644 bdc/convert/loopBe14.sh
+ rewrite bdc/convert/rootfiles/run0380_BDC.root_test (85%)
+ rewrite bdc/convert/rootfiles/run0380_FDCG.root_test (91%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.

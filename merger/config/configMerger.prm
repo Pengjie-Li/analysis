@@ -9,11 +9,11 @@ PLARunSuffix:_PLA.root
 
 BDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles/
 BDCRunPrefix:run
-BDCRunSuffix:_BDC.root
+BDCRunSuffix:_BDC.root_test_test
 
 FDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles/
 FDCRunPrefix:run
-FDCRunSuffix:_FDCG.root
+FDCRunSuffix:_FDCG.root_test_test
 
 TELEInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/convert/rootfiles/
 TELERunPrefix:run

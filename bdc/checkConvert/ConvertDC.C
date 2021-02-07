@@ -83,8 +83,6 @@ class ConvertDC{
 		//DC Possible Track Data
 		Int_t BDC1_nlayerx;
 		Int_t BDC1_nlayery;
-		vector<double> BDC1_Track_TDC;
-		vector<double> BDC1_Track_wire;
 		vector<double> BDC1_Track_dl;
 		vector<double> BDC1_Track_XY;
 		vector<double> BDC1_Track_Z;
@@ -92,8 +90,6 @@ class ConvertDC{
 
 		Int_t BDC2_nlayerx;
 		Int_t BDC2_nlayery;
-		vector<double> BDC2_Track_TDC;
-		vector<double> BDC2_Track_wire;
 		vector<double> BDC2_Track_dl;
 		vector<double> BDC2_Track_XY;
 		vector<double> BDC2_Track_Z;
@@ -286,7 +282,7 @@ class ConvertDC{
 			fout_FDC = NULL;
 			tree_FDC = NULL;
 			if(kFDC){
-				fout_FDC = new TFile(Form("./rootfiles/run0%d_FDCG.root_test",runnum),"recreate");
+				fout_FDC = new TFile(Form("./rootfiles/run0%d_FDCG.root_test_test",runnum),"recreate");
 				tree_FDC = new TTree(treeName+(TString)"FDC","Analysis Tree FDC");
 				tree_FDC->AutoSave("SaveSelf");
 				tree_FDC->SetAutoSave(1e5);
@@ -318,9 +314,6 @@ class ConvertDC{
 			tree_BDC->Branch("BDC1_Track_XY",&BDC1_Track_XY);
 			tree_BDC->Branch("BDC1_Track_Z",&BDC1_Track_Z);
 			tree_BDC->Branch("BDC1_Track_dXY",&BDC1_Track_dXY);
-			tree_BDC->Branch("BDC1_Track_wire",&BDC1_Track_wire);
-			tree_BDC->Branch("BDC1_Track_TDC",&BDC1_Track_TDC);
-	
 
 			//Analysis Result
 			tree_BDC->Branch("BDC1_X",&BDC1_X);
@@ -340,8 +333,6 @@ class ConvertDC{
 			tree_BDC->Branch("BDC2_nlayery",&BDC2_nlayery);
 	
 			//Track
-			tree_BDC->Branch("BDC2_Track_wire",&BDC2_Track_wire);
-			tree_BDC->Branch("BDC2_Track_TDC",&BDC2_Track_TDC);
 			tree_BDC->Branch("BDC2_Track_dl",&BDC2_Track_dl);
 			tree_BDC->Branch("BDC2_Track_XY",&BDC2_Track_XY);
 			tree_BDC->Branch("BDC2_Track_Z",&BDC2_Track_Z);
@@ -532,11 +523,6 @@ class ConvertDC{
 				BDC1_Track_Z.resize(8,-9999);
 				BDC1_Track_dXY.clear();
 				BDC1_Track_dXY.resize(8,-9999);
-				BDC1_Track_wire.clear();
-				BDC1_Track_wire.resize(8,-9999);
-				BDC1_Track_TDC.clear();
-				BDC1_Track_TDC.resize(8,-9999);
-	
 				if (BDC1Track)
 				{
 					Int_t BDC1NumberOfTracks = BDC1Track->GetEntries();
@@ -576,10 +562,6 @@ class ConvertDC{
 											BDC1_Track_XY[planeid]=TrackBDC1->GetHitXPosition(st);
 											BDC1_Track_Z[planeid]=TrackBDC1->GetHitZPosition(st);
 											BDC1_Track_dXY[planeid]=TrackBDC1->GetAngle(0)*BDC1_Track_Z[planeid]+TrackBDC1->GetPosition(0)-BDC1_Track_XY[planeid];
-											BDC1_Track_wire[planeid]=TrackBDC1->GetHitWireID(st);
-											BDC1_Track_TDC[planeid]=TrackBDC1->GetTDC(st);
-					
-
 											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
 
 										}
@@ -601,9 +583,6 @@ class ConvertDC{
 											BDC1_Track_XY[planeid]=TrackBDC1->GetHitXPosition(st);
 											BDC1_Track_Z[planeid]=TrackBDC1->GetHitZPosition(st);
 											BDC1_Track_dXY[planeid]=TrackBDC1->GetAngle(1)*BDC1_Track_Z[planeid]+TrackBDC1->GetPosition(1)-BDC1_Track_XY[planeid];
-											BDC1_Track_wire[planeid]=TrackBDC1->GetHitWireID(st);
-											BDC1_Track_TDC[planeid]=TrackBDC1->GetTDC(st);
-					
 											//if(isEventByEvent) cout<<"    hitlayer="<<planeid<<" drift length="<<BDC1_Track_dl[planeid]<<" xpos="<<BDC1_Track_XY[planeid]<<" zpos="<<BDC1_Track_Z[planeid]<<" dx="<<BDC1_Track_dXY[planeid]<<endl;
 
 										}
@@ -659,11 +638,6 @@ class ConvertDC{
 				BDC2_Track_Z.resize(8,-9999);
 				BDC2_Track_dXY.clear();
 				BDC2_Track_dXY.resize(8,-9999);
-				BDC2_Track_wire.clear();
-				BDC2_Track_wire.resize(8,-9999);
-				BDC2_Track_TDC.clear();
-				BDC2_Track_TDC.resize(8,-9999);
-	
 				if (BDC2Track)
 				{
 					Int_t BDC2NumberOfTracks = BDC2Track->GetEntries();
@@ -699,8 +673,6 @@ class ConvertDC{
 										for(int st=0;st<BDC2_nlayerx;st++)
 										{
 											Int_t planeid=TrackBDC2->GetHitPlaneID(st)-31;
-											BDC2_Track_wire[planeid]=TrackBDC2->GetHitWireID(st);
-											BDC2_Track_TDC[planeid]=TrackBDC2->GetTDC(st);
 											BDC2_Track_dl[planeid]=TrackBDC2->GetDriftLength(st);
 											BDC2_Track_XY[planeid]=TrackBDC2->GetHitXPosition(st);
 											BDC2_Track_Z[planeid]=TrackBDC2->GetHitZPosition(st);
@@ -722,8 +694,6 @@ class ConvertDC{
 										for(int st=0;st<BDC2_nlayery;st++)
 										{
 											Int_t planeid=TrackBDC2->GetHitPlaneID(st)-31;
-											BDC2_Track_wire[planeid]=TrackBDC2->GetHitWireID(st);
-											BDC2_Track_TDC[planeid]=TrackBDC2->GetTDC(st);
 											BDC2_Track_dl[planeid]=TrackBDC2->GetDriftLength(st);
 											BDC2_Track_XY[planeid]=TrackBDC2->GetHitXPosition(st);
 											BDC2_Track_Z[planeid]=TrackBDC2->GetHitZPosition(st);
@@ -829,7 +799,6 @@ class ConvertDC{
 												exit(0);
 
 											}
-											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
 											FDC0_Track_TDC[planeid]=TrackFDC0->GetTDC(st);
 											FDC0_Track_dl[planeid]=TrackFDC0->GetDriftLength(st);
 											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
@@ -859,9 +828,9 @@ class ConvertDC{
 												exit(0);
 
 											}
-											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
 											FDC0_Track_TDC[planeid]=TrackFDC0->GetTDC(st);
 											FDC0_Track_dl[planeid]=TrackFDC0->GetDriftLength(st);
+											FDC0_Track_wire[planeid]=TrackFDC0->GetHitWireID(st);
 											FDC0_Track_XY[planeid]=TrackFDC0->GetHitXPosition(st);
 											FDC0_Track_Z[planeid]=TrackFDC0->GetHitZPosition(st);
 											FDC0_Track_dXY[planeid]=TrackFDC0->GetAngle(1)*FDC0_Track_Z[planeid]+TrackFDC0->GetPosition(1)-FDC0_Track_XY[planeid];
@@ -879,6 +848,7 @@ class ConvertDC{
 
 
 				if(MaxEventNumber<100) printFDC0();
+				//printFDC0();
 
 
 
@@ -929,7 +899,7 @@ class ConvertDC{
 		void printBDC1Track(){
 			cout<<"Printing Track Info:"<<endl;
 			for(int i = 0;i<BDC1_Track_Z.size(); i++)
-			cout<<"Layer = "<<i<<setw(4)<<BDC1_Track_wire[i]<<" TDC = "<<setw(4)<<BDC1_Track_TDC[i]<<" Drift length="<<setw(9)<<BDC1_Track_dl[i]<<" xypos="<<setw(9)<<BDC1_Track_XY[i]<<" zpos="<<setw(9)<<BDC1_Track_Z[i]<<" Residue dxy = "<<setw(9)<<BDC1_Track_dXY[i]<<endl;
+			cout<<"Layer = "<<i<<" Drift length="<<setw(9)<<BDC1_Track_dl[i]<<" xypos="<<setw(9)<<BDC1_Track_XY[i]<<" zpos="<<setw(9)<<BDC1_Track_Z[i]<<" Residue dxy = "<<setw(9)<<BDC1_Track_dXY[i]<<endl;
 
 		}
 

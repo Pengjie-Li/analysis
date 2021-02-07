@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Be14
-run1=587
-run2=594
+run1=366
+run2=600
 
 #run1=1
 #run2=600
 
-n=16
+n=20
 
 
 for (( i=1; i<=$n; i++ )); do
