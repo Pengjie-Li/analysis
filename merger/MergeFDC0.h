@@ -10,6 +10,8 @@ class MergeFDC0:public Convert{
 		vector<int>     *FDC0_layer_hits;
 		Int_t           FDC0_nlayerx;
 		Int_t           FDC0_nlayery;
+		vector<double>  *FDC0_Track_TDC;
+		vector<double>  *FDC0_Track_wire;
 		vector<double>  *FDC0_Track_dl;
 		vector<double>  *FDC0_Track_XY;
 		vector<double>  *FDC0_Track_Z;
@@ -24,6 +26,8 @@ class MergeFDC0:public Convert{
 			FDC0_wireid	=0;
 			FDC0_layer_hits	=0;
 
+			FDC0_Track_TDC   =0;
+			FDC0_Track_wire   =0;
 			FDC0_Track_dl   =0;
 			FDC0_Track_XY   =0;
 			FDC0_Track_Z    =0;
@@ -37,6 +41,8 @@ class MergeFDC0:public Convert{
 			inputTree->SetBranchAddress("FDC0_layer_hits",&FDC0_layer_hits);
 			inputTree->SetBranchAddress("FDC0_nlayerx",&FDC0_nlayerx);
 			inputTree->SetBranchAddress("FDC0_nlayery",&FDC0_nlayery);
+			inputTree->SetBranchAddress("FDC0_Track_TDC",&FDC0_Track_TDC);
+			inputTree->SetBranchAddress("FDC0_Track_wire",&FDC0_Track_wire);
 			inputTree->SetBranchAddress("FDC0_Track_dl",&FDC0_Track_dl);
 			inputTree->SetBranchAddress("FDC0_Track_XY",&FDC0_Track_XY);
 			inputTree->SetBranchAddress("FDC0_Track_Z",&FDC0_Track_Z);
@@ -56,6 +62,8 @@ class MergeFDC0:public Convert{
 			tree->Branch("FDC0_layer_hits",&FDC0_layer_hits);
 			tree->Branch("FDC0_nlayerx",&FDC0_nlayerx);
 			tree->Branch("FDC0_nlayery",&FDC0_nlayery);
+			tree->Branch("FDC0_Track_TDC",&FDC0_Track_TDC);
+			tree->Branch("FDC0_Track_wire",&FDC0_Track_wire);
 			tree->Branch("FDC0_Track_dl",&FDC0_Track_dl);
 			tree->Branch("FDC0_Track_XY",&FDC0_Track_XY);
 			tree->Branch("FDC0_Track_Z",&FDC0_Track_Z);

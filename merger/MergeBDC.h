@@ -12,6 +12,8 @@ class MergeBDC:public Convert{
 		vector<int>     *BDC1_layer_hits;
 		Int_t           BDC1_nlayerx;
 		Int_t           BDC1_nlayery;
+		vector<double>  *BDC1_Track_TDC;
+		vector<double>  *BDC1_Track_wire;
 		vector<double>  *BDC1_Track_dl;
 		vector<double>  *BDC1_Track_XY;
 		vector<double>  *BDC1_Track_Z;
@@ -27,6 +29,8 @@ class MergeBDC:public Convert{
 		vector<int>     *BDC2_layer_hits;
 		Int_t           BDC2_nlayerx;
 		Int_t           BDC2_nlayery;
+		vector<double>  *BDC2_Track_TDC;
+		vector<double>  *BDC2_Track_wire;
 		vector<double>  *BDC2_Track_dl;
 		vector<double>  *BDC2_Track_XY;
 		vector<double>  *BDC2_Track_Z;
@@ -44,6 +48,8 @@ class MergeBDC:public Convert{
 			 BDC1_wireid    = 0;
 			 BDC1_layer_hits= 0;
 
+			 BDC1_Track_TDC  = 0;
+			 BDC1_Track_wire  = 0;
 			 BDC1_Track_dl  = 0;
 			 BDC1_Track_XY  = 0;
 			 BDC1_Track_Z   = 0;
@@ -55,6 +61,8 @@ class MergeBDC:public Convert{
 			 BDC2_wireid    = 0;
 			 BDC2_layer_hits= 0;
 
+			 BDC2_Track_TDC  = 0;
+			 BDC2_Track_wire  = 0;
 			 BDC2_Track_dl  = 0;
 			 BDC2_Track_XY  = 0;
 			 BDC2_Track_Z   = 0;
@@ -71,6 +79,8 @@ class MergeBDC:public Convert{
 			inputTree->SetBranchAddress("BDC1_layer_hits",&BDC1_layer_hits);
 			inputTree->SetBranchAddress("BDC1_nlayerx",&BDC1_nlayerx);
 			inputTree->SetBranchAddress("BDC1_nlayery",&BDC1_nlayery);
+			inputTree->SetBranchAddress("BDC1_Track_TDC",&BDC1_Track_TDC);
+			inputTree->SetBranchAddress("BDC1_Track_wire",&BDC1_Track_wire);
 			inputTree->SetBranchAddress("BDC1_Track_dl",&BDC1_Track_dl);
 			inputTree->SetBranchAddress("BDC1_Track_XY",&BDC1_Track_XY);
 			inputTree->SetBranchAddress("BDC1_Track_Z",&BDC1_Track_Z);
@@ -86,6 +96,8 @@ class MergeBDC:public Convert{
 			inputTree->SetBranchAddress("BDC2_layer_hits",&BDC2_layer_hits);
 			inputTree->SetBranchAddress("BDC2_nlayerx",&BDC2_nlayerx);
 			inputTree->SetBranchAddress("BDC2_nlayery",&BDC2_nlayery);
+			inputTree->SetBranchAddress("BDC2_Track_TDC",&BDC2_Track_TDC);
+			inputTree->SetBranchAddress("BDC2_Track_wire",&BDC2_Track_wire);
 			inputTree->SetBranchAddress("BDC2_Track_dl",&BDC2_Track_dl);
 			inputTree->SetBranchAddress("BDC2_Track_XY",&BDC2_Track_XY);
 			inputTree->SetBranchAddress("BDC2_Track_Z",&BDC2_Track_Z);
@@ -106,6 +118,8 @@ class MergeBDC:public Convert{
 			tree->Branch("BDC1_layer_hits",&BDC1_layer_hits);
 			tree->Branch("BDC1_nlayerx",&BDC1_nlayerx);
 			tree->Branch("BDC1_nlayery",&BDC1_nlayery);
+			tree->Branch("BDC1_Track_TDC",&BDC1_Track_TDC);
+			tree->Branch("BDC1_Track_wire",&BDC1_Track_wire);
 			tree->Branch("BDC1_Track_dl",&BDC1_Track_dl);
 			tree->Branch("BDC1_Track_XY",&BDC1_Track_XY);
 			tree->Branch("BDC1_Track_Z",&BDC1_Track_Z);
@@ -122,6 +136,8 @@ class MergeBDC:public Convert{
 			tree->Branch("BDC2_layer_hits",&BDC2_layer_hits);
 			tree->Branch("BDC2_nlayerx",&BDC2_nlayerx);
 			tree->Branch("BDC2_nlayery",&BDC2_nlayery);
+			tree->Branch("BDC2_Track_TDC",&BDC2_Track_TDC);
+			tree->Branch("BDC2_Track_wire",&BDC2_Track_wire);
 			tree->Branch("BDC2_Track_dl",&BDC2_Track_dl);
 			tree->Branch("BDC2_Track_XY",&BDC2_Track_XY);
 			tree->Branch("BDC2_Track_Z",&BDC2_Track_Z);

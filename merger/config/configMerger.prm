@@ -7,13 +7,13 @@ PLAInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/an
 PLARunPrefix:run
 PLARunSuffix:_PLA.root
 
-BDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles/
+BDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles_v1/
 BDCRunPrefix:run
-BDCRunSuffix:_BDC.root_test_test
+BDCRunSuffix:_BDC.root
 
-FDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles/
+FDCInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/bdc/convert/rootfiles_v1/
 FDCRunPrefix:run
-FDCRunSuffix:_FDCG.root_test_test
+FDCRunSuffix:_FDCG.root
 
 TELEInputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/macros/tele/convert/rootfiles/
 TELERunPrefix:run

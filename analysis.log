@@ -23554,3 +23554,33 @@ Branch master set up to track remote branch master from origin.
  rewrite bdc/convert/rootfiles/run0380_FDCG.root_test (91%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e9e8e09] v1.0
+ 36 files changed, 2371 insertions(+), 15 deletions(-)
+ create mode 100755 bdc/checkConvert/ConvertDC
+ create mode 100644 bdc/checkConvert/ConvertDC.C
+ create mode 100755 bdc/checkConvert/Makefile
+ create mode 120000 bdc/checkConvert/configBe.prm
+ create mode 100644 bdc/checkConvert/configBe10.prm
+ create mode 100644 bdc/checkConvert/configBe12.prm
+ create mode 100644 bdc/checkConvert/configBe14.prm
+ create mode 100644 bdc/checkConvert/convert.sh
+ create mode 120000 bdc/checkConvert/db
+ create mode 100755 bdc/checkConvert/distance.h
+ create mode 100644 bdc/checkConvert/ex.sh
+ create mode 100644 bdc/checkConvert/exampleRun300_10
+ create mode 100755 bdc/checkConvert/header.h
+ create mode 100644 bdc/checkConvert/loop.sh
+ create mode 100644 bdc/checkConvert/loopBe10.sh
+ create mode 100644 bdc/checkConvert/loopBe12.sh
+ create mode 100644 bdc/checkConvert/loopBe14.sh
+ create mode 100644 bdc/checkConvert/looprun.sh
+ create mode 100644 bdc/checkConvert/rootfiles/run0300_BDC.root_test
+ create mode 100644 bdc/checkConvert/rootfiles/run0300_FDCG.root_test_test
+ create mode 100644 bdc/checkConvert/rootfiles/run0303_BDC.root_test
+ create mode 100644 bdc/checkConvert/rootfiles/run0303_FDCG.root_test_test
+ create mode 100644 bdc/checkConvert/rootfiles/run0380_BDC.root_test
+ create mode 100644 bdc/checkConvert/rootfiles/run0380_FDCG.root_test_test
+ create mode 100644 bdc/checkConvert/test
+ rewrite bdc/convert/ConvertDC (67%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
