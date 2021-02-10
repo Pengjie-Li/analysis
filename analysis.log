@@ -23589,3 +23589,13 @@ Branch master set up to track remote branch master from origin.
  rewrite merger/Merger (63%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master a3bc3a2] v1.0
+ 10 files changed, 9 insertions(+), 4 deletions(-)
+ rewrite merger/rootfiles/run0442_analysed.root_test_test (73%)
+ rewrite merger/rootfiles/run0443_analysed.root_test_test (73%)
+ rewrite merger/rootfiles/run0444_analysed.root_test_test (74%)
+ rewrite merger/rootfiles/run0445_analysed.root_test_test (73%)
+ rewrite merger/rootfiles/run0446_analysed.root_test_test (73%)
+ rewrite merger/rootfiles/run0447_analysed.root_test_test (73%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
