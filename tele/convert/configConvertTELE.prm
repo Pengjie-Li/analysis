@@ -1,8 +1,13 @@
 dataBaseFile:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/db/SILICONS.xml
 
-inputPath:/media/Rawdata/RIKEN_Cluster_2018/
-inputPrefix:run0
+iinputPath:/media/Rawdata/RIKEN_Cluster_2018/
+iinputPrefix:run0
+iinputSuffix:.ridf.gz
+
+inputPath:/media/Projects/RIKEN_Cluster_2018/lipj/exp_201805/anaroot/users/analysis/sdaq48/
+inputPrefix:run000
 inputSuffix:.ridf.gz
+
 
 
 outputPath:./rootfiles/
