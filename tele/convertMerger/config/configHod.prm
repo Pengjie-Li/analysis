@@ -1,0 +1,7 @@
+hodfTRawMin:17500
+hodfTRawMax:20500
+hodpTRawMin:1300
+hodpTRawMax:2200
+hodQRawTh:50
+hodQSynPara:txt/alignQPara.txt
+hodTSynPara:txt/alignTPara.txt
