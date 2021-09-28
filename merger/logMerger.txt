@@ -110,3 +110,5 @@
 	1. Load new Proton calibration and method, ProtonEvents changed too
 2021-01-28
 	1. Change degrader position and thick
+2021-09-27
+	1. update Beam Energy Offset for each beam

@@ -1,5 +1,5 @@
 beamBetaOffset:0.255
-beamEnergyOffset:-0.3665
+beamEnergyOffset:-0.452
 
 plasCalib:txt/plasCalib_Be14.txt
 plasBirksCalib:txt/plasBirksBe14.txt
