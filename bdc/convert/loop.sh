@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Be10
-run1=294
-run2=330
+#run1=294
+#run2=330
 # Be12
 #run1=331
 #run2=365
 
-# Be14
-#run1=587
-#run2=594
+# Be14_2
+run1=587
+run2=594
 
 #run1=1
 #run2=600
