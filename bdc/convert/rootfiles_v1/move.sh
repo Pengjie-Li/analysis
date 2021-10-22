@@ -1,0 +1,16 @@
+mv run0587_BDC.root ./newconvert
+mv run0588_BDC.root ./newconvert
+mv run0589_BDC.root ./newconvert
+mv run0590_BDC.root ./newconvert
+mv run0591_BDC.root ./newconvert
+mv run0592_BDC.root ./newconvert
+mv run0593_BDC.root ./newconvert
+mv run0594_BDC.root ./newconvert
+mv run0587_FDCG.root ./newconvert
+mv run0588_FDCG.root ./newconvert
+mv run0589_FDCG.root ./newconvert
+mv run0590_FDCG.root ./newconvert
+mv run0591_FDCG.root ./newconvert
+mv run0592_FDCG.root ./newconvert
+mv run0593_FDCG.root ./newconvert
+mv run0594_FDCG.root ./newconvert

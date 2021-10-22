@@ -205,13 +205,9 @@ class ConvertDC{
 		//	CalibBDC1Track->SetTDCWindow(1770,1860);  
 		//	CalibBDC2Track->SetTDCWindow(1760,1860);  
 		//	CalibFDC0Track->SetTDCWindow(1740,1850);  
-			//CalibBDC1Track->SetTDCWindow(1720,1880);  
-			//CalibBDC2Track->SetTDCWindow(1720,1880);  
-			//CalibFDC0Track->SetTDCWindow(1720,1880);  
-
-			CalibBDC1Track->SetTDCWindow(1760,1870);  
-			CalibBDC2Track->SetTDCWindow(1750,1860);  
-			CalibFDC0Track->SetTDCWindow(1730,1840);  
+			CalibBDC1Track->SetTDCWindow(1720,1880);  
+			CalibBDC2Track->SetTDCWindow(1720,1880);  
+			CalibFDC0Track->SetTDCWindow(1720,1880);  
 
 
 
