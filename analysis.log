@@ -24748,3 +24748,55 @@ Branch master set up to track remote branch master from origin.
  rewrite bdc/convert/rootfiles/run0593_FDCG.root_test (98%)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master dc6c276] v1.0
+ 49 files changed, 1609 insertions(+), 4 deletions(-)
+ create mode 100644 bdc/convert/calib/run0300_330_ppBe.root_test
+ create mode 100644 bdc/convert/calib/run0300_430_ppBe.root_mergeFDC0
+ create mode 100644 bdc/convert/calib/run0300_430_ppBe.root_test
+ create mode 100644 bdc/convert/calib/run0334_365_ppBe.root_test
+ create mode 100644 bdc/convert/calib/run0366_430_ppBe.root_test
+ rewrite bdc/convert/configBe.prm (100%)
+ mode change 120000 => 100644
+ create mode 100644 bdc/convert/log
+ create mode 100644 bdc/convert/rootfiles_v0/bdc.C
+ create mode 100644 bdc/convert/rootfiles_v0/checkBDC_Residue.C
+ create mode 100644 bdc/convert/rootfiles_v0/checkFDC_Residue.C
+ create mode 100644 bdc/convert/rootfiles_v0/drawBDC.C
+ create mode 100644 bdc/convert/rootfiles_v0/drawBDC1.C
+ create mode 100644 bdc/convert/rootfiles_v0/drawBDC2.C
+ create mode 100644 bdc/convert/rootfiles_v0/drawBDCResidue.C
+ create mode 100644 bdc/convert/rootfiles_v0/drawFDC0.C
+ create mode 100644 bdc/convert/rootfiles_v0/fdc.C
+ create mode 100644 bdc/convert/rootfiles_v0/run0700_BDC.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0700_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0710_BDC.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0710_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0711_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0712_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0713_BDC.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0713_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0714_BDC.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0714_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0715_BDC.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0715_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/run0720_FDCG.root_test
+ create mode 100644 bdc/convert/rootfiles_v0/scanFDC0.C
+ create mode 100644 bdc/convert/rootfiles_v1/move.sh
+ create mode 100755 bdc/convert/v5_FDC0_TwoPeak/ConvertDC
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/ConvertDC.C
+ create mode 100755 bdc/convert/v5_FDC0_TwoPeak/Makefile
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/configBe.prm
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/configBe10.prm
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/configBe12.prm
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/configBe14.prm
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/convert.sh
+ create mode 100755 bdc/convert/v5_FDC0_TwoPeak/distance.h
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/ex.sh
+ create mode 100755 bdc/convert/v5_FDC0_TwoPeak/header.h
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/loop.sh
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/loopBe10.sh
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/loopBe12.sh
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/loopBe14.sh
+ create mode 100644 bdc/convert/v5_FDC0_TwoPeak/looprun.sh
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
