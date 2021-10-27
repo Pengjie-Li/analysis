@@ -24814,3 +24814,21 @@ Branch master set up to track remote branch master from origin.
  3 files changed, 7 insertions(+), 2 deletions(-)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master e28e175] v1.0
+ 15 files changed, 4 insertions(+)
+ rewrite bdc/convert/rootfiles/run0441_BDC.root_test (68%)
+ rewrite bdc/convert/rootfiles/run0441_FDCG.root_test (64%)
+ rewrite bdc/convert/rootfiles/run0442_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0442_FDCG.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0443_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0443_FDCG.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0444_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0444_FDCG.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0445_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0445_FDCG.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0446_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0446_FDCG.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0447_BDC.root_test (98%)
+ rewrite bdc/convert/rootfiles/run0447_FDCG.root_test (98%)
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
