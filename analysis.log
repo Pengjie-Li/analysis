@@ -31840,3 +31840,9 @@ Branch master set up to track remote branch master from origin.
  1 file changed, 4 insertions(+)
 Already up-to-date.
 Branch master set up to track remote branch master from origin.
+[master 19109d4] v1.0
+ 3 files changed, 4 insertions(+)
+ mode change 100755 => 100644 bdc/convert/rootfiles/run0447_BDC.root_test
+ mode change 100755 => 100644 bdc/convert/rootfiles/run0447_FDCG.root_test
+Already up-to-date.
+Branch master set up to track remote branch master from origin.
